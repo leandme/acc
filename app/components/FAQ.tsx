@@ -229,16 +229,17 @@ export default function FAQ() {
 
       <div className="hero-content w-full px-4">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl lg:text-4xl font-bold text-center">
+          <div className="flex justify-center mt-10">
+            <p className="text-xs lg:text-sm text-center text-gray-600 px-4 py-2 rounded-full">
+              🔒 Your photos are private and used only to generate your estimate
+            </p>
+          </div>
+          <h2 className="text-3xl lg:text-4xl font-bold text-center mt-4">
             Frequently Asked Questions
           </h2>
 
           <p className="py-6 text-lg mb-6 text-center">
-            Have another question? Reach out to our support team by sending us an{" "}
-            <a href="mailto:matt@leandme.com" className="text-primary">
-              email
-            </a>{" "}
-            and we’ll get back to you as soon as we can.
+            Answers to common questions about our AI-powered body fat estimation tool.
           </p>
 
           <div className="space-y-4">

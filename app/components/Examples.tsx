@@ -17,8 +17,13 @@ export default function Examples() {
   ];
 
   return (
-    <div id="examples" className="flex flex-col mt-12 gap-8 items-center">
-      <h2 className="text-2xl lg:text-4xl font-bold">Recent Scans</h2>
+    <div id="examples" className="flex flex-col mt-40 gap-8 items-center">
+      <h2 className="text-3xl lg:text-4xl font-bold">17,490 Body Fat Estimates...</h2>
+      <div className="flex justify-center mt-10">
+            <p className="text-xs lg:text-sm text-center text-gray-600 px-4 py-2 rounded-full">
+              🔒 Your photos are private and used only to generate your estimate
+            </p>
+          </div>
       <div className="carousel rounded-box">
           {images.map((src, index) => (
               <div key={index} className="carousel-item">

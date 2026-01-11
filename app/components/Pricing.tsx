@@ -126,7 +126,7 @@ export default function Pricing() {
               <ul className="mt-4 space-y-2">
                 <li className="flex items-center text-gray-500">
                   <span className=" mr-2 text-green-600">✓</span>
-                  <span className="bg-[#D6EFE4] px-1 rounded">10</span>&nbsp; estimates
+                  <span className="bg-[#D6EFE4] px-1 rounded">3</span>&nbsp; body fat estimates
                 </li>
                 <li className="flex items-center text-gray-500">
                   <span className=" mr-2 text-green-600">✓</span>

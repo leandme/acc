@@ -25,7 +25,7 @@ export default function PricingPage() {
             Used by thousands for regular check-ins and long-term progress tracking
             </p>
             <a href="/pricing/#pricing">
-              <button className="btn btn-primary btn-lg text-white">Upgrade Now →</button>
+              <button className="btn btn-primary btn-lg text-white">Get a More Accurate Estimate →</button>
             </a>
           </div>
     </div>
