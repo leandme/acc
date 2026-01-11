@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Pricing from "@/app/components/Pricing";
 import PricingFAQ from "@/app/components/PricingFAQ";
 
-const title = "Body Fa Estimator Pricing";
+const title = "Pricing | Body Fat Estimator AI";
 const description = "Body Fat Estimator pricing and plans. Estimate your body fat percentage from a photo and unlock advanced features.";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function PricingPage() {
    <>
    <div className="hero min-h-screen flex items-center justify-center">
    <div className="flex flex-col items-center mt-10 gap-6">
-   <h1 className="text-2xl lg:text-3xl max-w-3xl font-bold text-center">Want an Accurate Body Fat Estimate?</h1>
+   <h1 className="text-2xl lg:text-4xl max-w-3xl font-bold text-center">Want an Accurate Body Fat Estimate?</h1>
     <p className="py-2 text-lg max-w-3xl text-center">One photo gives a rough estimate. Add more photos and body stats to narrow the estimate range.</p>
       <Pricing />
       <PricingFAQ />

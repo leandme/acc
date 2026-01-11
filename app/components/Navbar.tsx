@@ -4,7 +4,7 @@ import { trackEvent } from "../libs/amplitude";
 export default function Navbar() {
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 px-2 sm:px-4 sticky top-0 z-50 border-b border-base-200">
       {/* Navbar Start */}
       <div className="navbar-start">
         {/* Hamburger menu for mobile */}
@@ -27,7 +27,7 @@ export default function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content text-base bg-base-100 rounded-box z-[1] mt-3 w-42 p-2 shadow"
+            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56"
           >
             <li>
               <a href="/upload"
@@ -35,6 +35,18 @@ export default function Navbar() {
               Estimate Body Fat
               </a>
             </li>
+             <li>
+            <a href="/examples"
+             className="hover:bg-transparent focus:bg-transparent active:bg-transparent">
+              Examples
+            </a>
+          </li>
+          <li>
+            <a href="/pricing"
+             className="hover:bg-transparent focus:bg-transparent active:bg-transparent">
+              Pricing
+            </a>
+          </li>
           </ul>
         </div>
 
@@ -60,13 +72,21 @@ export default function Navbar() {
             </a>
           </li>
           <li>
+            <a href="/examples"
+             className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent">
+              Examples
+            </a>
+          </li>
+          <li>
             <a href="/pricing"
              className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent">
               Pricing
             </a>
           </li>
         </ul>
+        
       </div>
+  
 
       {/* Navbar End */}
       {/* Optional: Uncomment this for a Login button */}

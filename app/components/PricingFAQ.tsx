@@ -96,7 +96,7 @@ export default function PricingFAQ() {
             </p>
           </div>
 
-          <h2 className="text-2xl lg:text-3xl text-center font-bold">
+          <h2 className="text-2xl lg:text-4xl text-center font-bold">
             Frequently Asked Questions
           </h2>
           <p className="py-6 text-lg mb-6 text-center">

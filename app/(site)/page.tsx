@@ -18,9 +18,9 @@ export default function Home() {
   return (
    <>
       <HeroWithUpload />
-       {/* <Examples />*/}
-      <ToolExplainer />
+       <Examples />
       <Comparison />
+      <ToolExplainer />
       <FAQ />
       <SecondaryUploadCTA />
    </>

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-const title = "About BodyFatEstimator – How Our AI Body Fat Tool Works";
+const title = "About | Body Fat Estimator AI";
 const description =
   "Learn what BodyFatEstimator is, how our AI-based body fat estimation works, its limitations, and how to use it responsibly for fitness tracking.";
 

@@ -68,7 +68,8 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/#faqs">FAQs</a></li>
-              <li><a className="hover:text-white" href="/contact">Contact</a></li>
+              <li><a className="hover:text-white" href="/contact">Contact us</a></li>
+              <li><a className="hover:text-white" href="/refund">Refunds</a></li>
             </ul>
           </div>
 

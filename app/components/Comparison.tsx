@@ -3,7 +3,7 @@ export default function Comparison() {
     <section className="hero mt-40 flex items-center justify-center">
       <div className="w-full max-w-6xl px-6 lg:px-12">
         <h2 className="text-3xl lg:text-4xl font-bold text-center">
-          Track Body Fat Progress — Without Clinics or Appointments
+          Track Body Fat Progress <i>Easily</i>
         </h2>
 
         <p className="mt-4 text-lg text-center text-gray-600 max-w-3xl mx-auto">

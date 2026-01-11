@@ -1,5 +1,5 @@
 export const metadata = {
-    title: "Privacy Policy - Body Fat Estimator",
+    title: "Privacy Policy | Body Fat Estimator AI",
     description:
       "",
   };
@@ -7,7 +7,8 @@ export const metadata = {
   export default function PrivacyPolicy() {
     return (
       <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-6">Privacy Policy</h1>
+        <h1 className="text-4xl text-center font-bold mb-6">Privacy Policy</h1>
+       
         <p className="text-lg mb-4">
           Welcome to Body Fat Estimator! Your privacy is important to us. This Privacy
           Policy explains how we collect, use, and protect your information.
@@ -85,6 +86,13 @@ export const metadata = {
             </a>
             .
           </p>
+
+         <div className="mt-10 pb-10 text-left">
+          <p className="text-sm text-gray-400">
+            Last updated: 11/01/2026
+          </p>
+        </div>
+
         </section>
       </div>
     );

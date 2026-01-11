@@ -1,7 +1,15 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cookie Policy | Body Fat Estimator AI",
+  description:
+    "",
+};
+
 export default function CookiesPage() {
   return (
     <div className="container mx-auto px-4 py-8 lg:px-8 lg:py-16">
-      <h1 className="text-4xl font-bold mb-6">Cookies Policy</h1>
+      <h1 className="text-4xl text-center font-bold mb-6">Cookies Policy</h1>
 
       <p className="mb-4 text-lg">
         This Cookies Policy explains how Body Fat Estimator uses cookies and similar
@@ -84,6 +92,11 @@ export default function CookiesPage() {
             matt@leandme.com
           </a>.
         </p>
+        <div className="mt-10 pb-10 text-left">
+          <p className="text-sm text-gray-400">
+            Last updated: 11/01/2026
+          </p>
+        </div>
       </section>
     </div>
   );

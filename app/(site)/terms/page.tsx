@@ -1,7 +1,15 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms | Body Fat Estimator AI",
+  description:
+    "",
+};
+
 export default function TermsPage() {
     return (
       <div className="container mx-auto px-4 py-8 lg:px-8 lg:py-16">
-        <h1 className="text-4xl font-bold mb-6">Terms and Conditions</h1>
+        <h1 className="text-3xl lg:text-4xl font-bold mb-6">Terms and Conditions</h1>
         <p className="mb-4 text-lg">
           Welcome to Body Fat Estimator! By accessing or using our service, you agree to be bound by these Terms and Conditions.
           If you disagree with any part of these terms, please discontinue use of our service.
@@ -50,6 +58,11 @@ export default function TermsPage() {
             If you have any questions or concerns about these Terms and Conditions, please contact us at{" "}
             <a href="mailto:support@roast-generator.com" className="text-blue-500 hover:underline">matt@leandme.com</a>.
           </p>
+          <div className="mt-10 pb-10 text-left">
+          <p className="text-sm text-gray-400">
+            Last updated: 11/01/2026
+          </p>
+        </div>
         </section>
       </div>
     );
