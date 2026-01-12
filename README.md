@@ -1,5 +1,3 @@
-Coming next:
-
 Tools:
 ☐ ffmi calculator
 ☐ fbb macro calculator
@@ -7,12 +5,6 @@ Tools:
 ☐ body visualizer
 ☐ body fat calculator
 ☐ bmi calculator
-☐ 
-☐ 
-☐ 
-☐ 
-☐ 
-
 
 Blog posts:
 ☐ best way to measure body fat
