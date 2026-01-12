@@ -27,11 +27,11 @@ export default function RefundPage() {
               14-Day Money-Back Guarantee
             </h2>
 
-            <p className="mt-3 text-gray-700 leading-relaxed">
+            <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               The 14-Day Money-Back Guarantee applies if:
             </p>
 
-            <ul className="mt-4 list-disc pl-5 space-y-2 text-gray-700">
+            <ul className="mt-4 list-disc pl-5 text-lg space-y-2 text-gray-700">
               <li>you purchased a paid plan or credit pack for the first time,</li>
               <li>the purchase was made within the last 14 days,</li>
               <li>
@@ -44,7 +44,7 @@ export default function RefundPage() {
               </li>
             </ul>
 
-            <p className="mt-5 text-gray-700 leading-relaxed">
+            <p className="mt-5 text-gray-700 text-lg leading-relaxed">
               To request a refund, email{" "}
               <a
                 className="underline text-primary"
@@ -57,7 +57,7 @@ export default function RefundPage() {
               wrong. We’ll review your request and respond by email.
             </p>
 
-            <p className="mt-3 text-sm text-gray-500">
+            <p className="mt-3 text-lg text-gray-700">
               We aim to review refund requests within 3 days.
             </p>
           </div>
@@ -66,13 +66,13 @@ export default function RefundPage() {
           <div className="rounded-2xl bg-white p-6 border">
             <h2 className="text-2xl font-semibold">Other Refunds</h2>
 
-            <p className="mt-3 text-gray-700 leading-relaxed">
+            <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               Purchases outside of the 14-Day Money-Back Guarantee are generally
               non-refundable. If you’re unhappy, contact us and we’ll do our best
               to help troubleshoot photo quality or explain your results.
             </p>
 
-            <p className="mt-4 text-gray-700 leading-relaxed">
+            <p className="mt-4 text-gray-700 text-lg leading-relaxed">
               For billing errors or technical issues, email{" "}
               <a
                 className="underline text-primary"
@@ -88,7 +88,7 @@ export default function RefundPage() {
           <div className="rounded-2xl bg-white p-6 border">
             <h2 className="text-2xl font-semibold">Important Notes</h2>
 
-            <ul className="mt-4 list-disc pl-5 space-y-2 text-gray-700">
+            <ul className="mt-4 list-disc pl-5 text-lg space-y-2 text-gray-700">
               <li>
                 Estimates are visual AI-based approximations and may vary with
                 lighting, pose, and image quality.
