@@ -113,7 +113,7 @@ export default function Pricing() {
          <div className="card bg-base-100 w-full max-w-lg shadow-xl border-2 border-green-500 shadow-green-100/50">
             <div className="card-body">
               <h2 className="text-md lg:text-lg text-left">
-                Accurate Estimate
+                Refined Estimate
                  {/*
                 <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
                   MOST CHOSEN
