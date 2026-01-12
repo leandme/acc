@@ -4,6 +4,7 @@ import PricingFAQ from "@/app/components/PricingFAQ";
 
 const title = "Pricing | Body Fat Estimator AI";
 const description = "Body Fat Estimator pricing and plans. Estimate your body fat percentage from a photo and unlock advanced features.";
+const paymentLink = "https://buy.stripe.com/6oU6oHh0DdFL4TxdX2fAc09";
 
 export const metadata: Metadata = {
   title: title,
@@ -24,7 +25,7 @@ export default function PricingPage() {
             <p className="py-6 text-lg">
             Used by thousands for regular check-ins and long-term progress tracking
             </p>
-            <a href="https://buy.stripe.com/8x228r5hV8lrbhV06cfAc08">
+            <a href={paymentLink}>
               <button className="btn btn-primary btn-lg text-white">Get an Accurate Estimate →</button>
             </a>
           </div>

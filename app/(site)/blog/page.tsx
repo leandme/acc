@@ -1,25 +1,13 @@
 // app/(site)/blog/page.tsx
 import { Metadata } from "next";
 import Link from "next/link";
+import { POSTS } from "./posts";
 
 export const metadata: Metadata = {
   title: "Blog | Body Fat Estimator AI",
   description:
     "Body fat estimation guides, photo tips, accuracy improvements, and tracking strategies using AI body fat estimates.",
 };
-
-// Swap this to MDX/CMS later. For now: dead simple, easy to ship.
-const POSTS = [
-  {
-    slug: "",
-    title: "How to Take Photos for Accurate AI Body Fat Estimates",
-    description:
-      "Lighting, distance, posture, and clothing make a huge difference. Here’s the exact setup for consistent results.",
-    date: "Jan 2026",
-    readTime: "5 min read",
-    image: "blog/photo-png",
-  },
-];
 
 export default function BlogIndexPage() {
   return (
