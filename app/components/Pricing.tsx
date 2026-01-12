@@ -1,4 +1,6 @@
+'use client';
 import PaymentMethodsBar from "@/app/components/PaymentMethodsBar";
+import { trackEvent } from "../libs/amplitude";
 
 
 export default function Pricing() {
@@ -146,12 +148,16 @@ export default function Pricing() {
                   href="https://buy.stripe.com/8x228r5hV8lrbhV06cfAc08"
                   target="_blank"
                   rel=""
+                  onClick={() =>
+                    trackEvent("Go to Checkout", { location: "pricing cta" })
+                  }
                   className="btn btn-primary text-lg text-white w-full"
                 >
                   <span className="text-white font-semibold text-base">
                   Upgrade Now
                 </span>
                 </a>
+
                 <p className="text-sm text-center text-green-600 mt-2">
                   🔒  100% Money-Back Guarantee
                 </p>

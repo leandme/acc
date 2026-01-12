@@ -20,7 +20,7 @@ export default function ContactPage() {
         <div className="mt-6 flex justify-center">
           <a
             href="mailto:matt@leandme.com"
-            className="btn btn-primary text-white"
+            className="btn btn-primary btn-lg text-white"
           >
             Email Support
           </a>

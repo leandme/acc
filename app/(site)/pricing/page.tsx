@@ -24,8 +24,8 @@ export default function PricingPage() {
             <p className="py-6 text-lg">
             Used by thousands for regular check-ins and long-term progress tracking
             </p>
-            <a href="/pricing/#pricing">
-              <button className="btn btn-primary btn-lg text-white">Get a More Accurate Estimate →</button>
+            <a href="https://buy.stripe.com/8x228r5hV8lrbhV06cfAc08">
+              <button className="btn btn-primary btn-lg text-white">Get an Accurate Estimate →</button>
             </a>
           </div>
     </div>

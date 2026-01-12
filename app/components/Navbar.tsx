@@ -36,16 +36,26 @@ export default function Navbar() {
               </a>
             </li>
              <li>
-            <a href="/examples"
-             className="hover:bg-transparent focus:bg-transparent active:bg-transparent">
-              Examples
-            </a>
+             <a
+            href="/examples"
+            onClick={() =>
+              trackEvent("Go to Examples", { location: "navbar cta" })
+            }
+            className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+          >
+            <span className="">Examples</span>
+          </a>
           </li>
           <li>
-            <a href="/pricing"
-             className="hover:bg-transparent focus:bg-transparent active:bg-transparent">
-              Pricing
-            </a>
+            <a
+            href="/pricing"
+            onClick={() =>
+              trackEvent("Go to Pricing", { location: "navbar cta" })
+            }
+            className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+          >
+            <span className="">Pricing</span>
+          </a>
           </li>
           </ul>
         </div>
@@ -72,16 +82,26 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="/examples"
-             className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent">
-              Examples
-            </a>
+             <a
+            href="/examples"
+            onClick={() =>
+              trackEvent("Go to Examples", { location: "navbar cta" })
+            }
+            className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent"
+          >
+            <span className="">Examples</span>
+          </a>
           </li>
           <li>
-            <a href="/pricing"
-             className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent">
-              Pricing
-            </a>
+             <a
+            href="/pricing"
+            onClick={() =>
+              trackEvent("Go to Pricing", { location: "navbar cta" })
+            }
+            className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent"
+          >
+            <span className="">Pricing</span>
+          </a>
           </li>
         </ul>
         
