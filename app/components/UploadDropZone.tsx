@@ -22,7 +22,7 @@ export default function UploadDropzone() {
       setFileName(droppedFile.name);
 
       const objectUrl = URL.createObjectURL(droppedFile);
-      router.push(`/upload?imageUrl=${encodeURIComponent(objectUrl)}`);
+      router.push(`/estimate?imageUrl=${encodeURIComponent(objectUrl)}`);
     }
   };
 
@@ -38,7 +38,7 @@ export default function UploadDropzone() {
       setFileName(uploadedFile.name);
 
       const objectUrl = URL.createObjectURL(uploadedFile);
-      router.push(`/upload?imageUrl=${encodeURIComponent(objectUrl)}`);
+      router.push(`/estimate?imageUrl=${encodeURIComponent(objectUrl)}`);
     }
   };
 
@@ -61,7 +61,7 @@ export default function UploadDropzone() {
       return;
     }
 
-    router.push(`/upload?imageUrl=${encodeURIComponent(cleaned)}`);
+    router.push(`/estimate?imageUrl=${encodeURIComponent(cleaned)}`);
   };
 
   return (

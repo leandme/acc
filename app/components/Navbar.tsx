@@ -30,7 +30,7 @@ export default function Navbar() {
             className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56"
           >
             <li>
-              <a href="/upload"
+              <a href="/estimate"
                className="hover:bg-transparent focus:bg-transparent active:bg-transparent">
               Estimate Body Fat
               </a>
@@ -76,7 +76,7 @@ export default function Navbar() {
         {/* Desktop Menu with Spacing */}
         <ul className="menu menu-horizontal gap-4 text-base px-1 hidden lg:flex ml-12">
           <li>
-            <a href="/upload"
+            <a href="/estimate"
              className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent">
               Estimate Body Fat
             </a>

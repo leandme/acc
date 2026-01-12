@@ -26,7 +26,7 @@ const onPick = (src: string) => {
     ? `${window.location.origin}${src}`
     : src;
 
-  router.push(`/upload?imageUrl=${encodeURIComponent(fullUrl)}`);
+  router.push(`/estimate?imageUrl=${encodeURIComponent(fullUrl)}`);
 };
 
 

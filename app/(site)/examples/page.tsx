@@ -24,7 +24,7 @@ export default function ExamplesPage() {
    <div className="flex flex-col items-center mt-10 gap-6">
    <h1 className="text-2xl lg:text-4xl max-w-3xl font-bold text-center">Body Fat Percentage Examples</h1>
     <p className="py-2 text-lg max-w-3xl text-center">Real examples of AI body fat estimates created from photos, showing how different body fat percentages look across body types.</p>
-      <a href="/upload">
+      <a href="/estimate">
               <button className="btn btn-primary btn-lg text-white">Get Your Free Estimate →</button>
             </a>
 

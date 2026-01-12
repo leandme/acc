@@ -9,7 +9,7 @@ export default function CTA() {
             <p className="py-6 text-lg">
             Don't wait - find put your body fat percentage <i>now</i>
             </p>
-            <a href="/upload">
+            <a href="/estimate">
               <button className="btn btn-primary btn-lg text-white">Get My Body Fat % <span className="text-lg">→</span></button>
             </a>
           </div>

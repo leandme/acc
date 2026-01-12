@@ -134,7 +134,7 @@ export default function BlogPostPage() {
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Newer AI-based tools <a href="/upload" className="text-primary underline">estimate body fat</a> percentage by analyzing a
+            Newer AI-based tools <a href="/estimate" className="text-primary underline">estimate body fat</a> percentage by analyzing a
             photo. Instead of relying only on numbers, they evaluate visible
             body composition, fat distribution, and proportions.
           </p>

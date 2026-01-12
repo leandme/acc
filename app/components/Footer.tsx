@@ -57,7 +57,7 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/about">About</a></li>
-                  <li><a className="hover:text-white" href="/upload">Estimate</a></li>
+                  <li><a className="hover:text-white" href="/estimate">Estimate Body Fat</a></li>
               <li><a className="hover:text-white" href="/pricing">Pricing</a></li>
               <li><a className="hover:text-white" href="/examples">Examples</a></li>
               <li><a className="hover:text-white" href="/blog">Blog</a></li>

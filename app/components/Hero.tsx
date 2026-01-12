@@ -11,7 +11,7 @@ export default function Hero() {
             <p className="py-6 text-lg mt-6">
             Upload a photo and let our AI calculate your body fat % in seconds. A fast, accurate, and hassle-free body fat estimate.
             </p>
-            <a href="/upload">
+            <a href="/estimate">
               <button className="btn btn-primary btn-lg text-white mt-6">Get My Body Fat % <span className="text-lg">→</span></button>
             </a>
             <ReviewBox />

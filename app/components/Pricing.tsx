@@ -44,7 +44,7 @@ export default function Pricing() {
               </ul>
               <div className="card-actions mt-6">
                 <a
-                  href="/upload"
+                  href="/estimate"
                   target=""
                   rel=""
                   className="btn bg-gray-300 text-lg text-white w-full"
