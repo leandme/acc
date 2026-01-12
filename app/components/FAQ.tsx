@@ -240,7 +240,7 @@ export default function FAQ() {
           <div className="space-y-4">
             {FAQ_ITEMS.map((item, idx) => (
               <div key={idx} className="collapse collapse-plus border bg-base-500 rounded-lg">
-                <input type="radio" name="faq-accordion" defaultChecked={idx === 0} />
+                <input type="radio" name="faq-accordion" />
                 <div className="collapse-title text-lg lg:text-xl">{item.q}</div>
                 <div className="collapse-content">
                   <p className="text-lg text-gray-700">{item.a}</p>

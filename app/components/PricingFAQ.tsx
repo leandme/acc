@@ -113,7 +113,6 @@ export default function PricingFAQ() {
                 <input
                   type="radio"
                   name="pricing-faq-accordion"
-                  defaultChecked={idx === 0}
                 />
                 <div className="collapse-title text-lg lg:text-xl">
                   {item.q}
