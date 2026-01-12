@@ -80,7 +80,9 @@ export default function Footer() {
               Tools
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
-             
+              <li><a className="hover:text-white" href="/body-fat-calculator">Body Fat Calculator</a></li>
+              <li><a className="hover:text-white" href="/bmi-calculator">BMI Calculator</a></li>
+              <li><a className="hover:text-white" href="/ffmi-calculator">FFMI Calculator</a></li>
             </ul>
           </div>
 
