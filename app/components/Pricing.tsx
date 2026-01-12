@@ -5,6 +5,9 @@ import { trackEvent } from "../libs/amplitude";
 
 export default function Pricing() {
 
+  const paymentLink = "https://buy.stripe.com/6oU6oHh0DdFL4TxdX2fAc09";
+
+
   const PAYMENT_LOGOS = [
   { src: "/payment-methods/visa.png", alt: "Visa" },
   { src: "/payment-methods/paypal.svg", alt: "PayPal" },
@@ -120,15 +123,15 @@ export default function Pricing() {
               </h2>
               <div className="flex items-center mr-12 mt-3">
                 
-                <span className="text-lg text-gray-500 line-through mr-2">$25</span>
-                <span className="text-4xl font-extrabold">$7</span>
+                <span className="text-lg text-gray-500 line-through mr-2">$9</span>
+                <span className="text-4xl font-extrabold">$2.95</span>
                 <span className="text-xs text-gray-500 ml-2">/once</span>
               </div>
 
               <ul className="mt-4 space-y-2">
                 <li className="flex items-center text-gray-500">
                   <span className=" mr-2 text-green-600">✓</span>
-                  <span className="bg-[#D6EFE4] px-1 rounded">3</span>&nbsp; body fat estimates
+                  <span className="bg-[#D6EFE4] px-1 rounded">1</span>&nbsp; body fat estimate
                 </li>
                 <li className="flex items-center text-gray-500">
                   <span className=" mr-2 text-green-600">✓</span>
@@ -145,7 +148,7 @@ export default function Pricing() {
               </ul>
               <div className="card-actions mt-6">
                 <a
-                  href="https://buy.stripe.com/8x228r5hV8lrbhV06cfAc08"
+                  href={paymentLink}
                   target="_blank"
                   rel=""
                   onClick={() =>
@@ -154,7 +157,7 @@ export default function Pricing() {
                   className="btn btn-primary text-lg text-white w-full"
                 >
                   <span className="text-white font-semibold text-base">
-                  Upgrade Now
+                  Get Estimate
                 </span>
                 </a>
 
