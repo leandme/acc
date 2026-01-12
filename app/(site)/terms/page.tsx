@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
     return (
       <div className="container mx-auto px-4 py-8 lg:px-8 lg:py-16">
-        <h1 className="text-3xl lg:text-4xl font-bold mb-6">Terms and Conditions</h1>
+        <h1 className="text-3xl lg:text-4xl font-bold mb-6">Terms & Conditions</h1>
         <p className="mb-4 text-lg">
           Welcome to Body Fat Estimator! By accessing or using our service, you agree to be bound by these Terms and Conditions.
           If you disagree with any part of these terms, please discontinue use of our service.

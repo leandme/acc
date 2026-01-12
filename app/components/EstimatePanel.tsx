@@ -81,7 +81,11 @@ export default function EstimatePanel({
 
   {/* Secondary CTA */}
   <div className="flex flex-col flex-1">
-    <a href="/upload" className="btn btn-outline btn-lg w-full">
+    <a href="/upload"
+    onClick={() =>
+          trackEvent("Estimate Again", { location: "estimate panel cta" })
+        }
+     className="btn btn-outline btn-lg w-full">
       <span className="whitespace-nowrap">Estimate Again</span>
     </a>
   </div>

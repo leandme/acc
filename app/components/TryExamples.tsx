@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { trackEvent } from "../libs/amplitude";
 
 type Example = {
   id: string;
@@ -44,7 +45,10 @@ const onPick = (src: string) => {
             <button
               key={ex.id}
               type="button"
-              onClick={() => onPick(ex.src)}
+              onClick={() => {
+                trackEvent("Try Example", { location: "uploadzone" });
+                onPick(ex.src);
+              }}
               className="group relative rounded-2xl p-[2px] bg-transparent"
               aria-label={`Try ${ex.label}`}
             >
