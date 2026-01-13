@@ -1,6 +1,6 @@
 'use client';
-import PaymentMethodsBar from "@/app/components/PaymentMethodsBar";
-import { trackEvent } from "../libs/amplitude";
+import PaymentMethodsBar from "./PaymentMethodsBar";
+import { trackEvent } from "@/app/libs/amplitude";
 
 
 export default function Pricing() {

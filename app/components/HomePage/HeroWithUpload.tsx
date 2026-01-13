@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import UploadDropzone from "@/app/components/UploadDropZone";
-import TryExamples from "@/app/components/TryExamples";
+import EstimateDropZone from "@/app/components/Common/EstimateDropZone"
+import TryExamples from "../Common/TryExamples";
 // import ReviewBox from "./ReviewBox";
 
 export default function HeroWithUpload() {
@@ -49,9 +49,9 @@ export default function HeroWithUpload() {
         {/* Right side: upload zone */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <div className="w-full max-w-xl">
-            <UploadDropzone />
+            <EstimateDropZone />
             <div className="mt-6">
-              <TryExamples />
+              <TryExamples basePath="/estimate" />
             </div>
           </div>
         </div>

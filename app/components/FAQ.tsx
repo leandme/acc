@@ -1,4 +1,4 @@
-import FaqJsonLd from "@/app/components/FaqJsonLd";
+import FaqJsonLd from "./Helpers/FaqJsonLd";
 
 export default function FAQ() {
   // 1) JSON-LD needs plain strings (no JSX, no <a>, no fragments)

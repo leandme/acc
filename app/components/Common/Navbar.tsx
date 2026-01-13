@@ -1,5 +1,5 @@
 "use client";
-import { trackEvent } from "../libs/amplitude";
+import { trackEvent } from "@/app/libs/amplitude";
 
 export default function Navbar() {
 

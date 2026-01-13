@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import BodyFatCalculator from "@/app/components/BodyFatCalculator";
+import BodyFatCalculator from "@/app/components/BodyFatCalculator/BodyFatCalculator";
 
 export const metadata: Metadata = {
   title: "Body Fat Calculator",

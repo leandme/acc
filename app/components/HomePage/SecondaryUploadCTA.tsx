@@ -1,7 +1,7 @@
 "use client";
 
-import UploadDropzone from "@/app/components/UploadDropZone";
-import TryExamples from "./TryExamples";
+import EstimateDropZone from "@/app/components/Common/EstimateDropZone"
+import TryExamples from "../Common/TryExamples";
 
 export default function SecondaryUploadCTA() {
   return (
@@ -17,10 +17,10 @@ export default function SecondaryUploadCTA() {
           </p>
 
           <div className="mx-auto w-full max-w-md">
-            <UploadDropzone />
+            <EstimateDropZone />
 
             <div className="mt-6 text-left mb-20">
-              <TryExamples />
+              <TryExamples basePath="/estimate" />
             </div>
           </div>
         </div>

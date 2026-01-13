@@ -188,29 +188,20 @@ export default function BlogPostPage() {
 
             <div className="mt-4 flex flex-col sm:flex-row items-center gap-6 rounded-2xl border p-6">
               <img
-                src="/profile/matt-phelps-headshot.jpeg"
+                src="/profile/matt-mapother-headshot.png"
                 alt="Creator of BodyFatEstimator"
                 className="w-24 h-24 rounded-full object-cover"
               />
 
               <div>
                 <p className="text-lg font-bold">
-                  Matt Phelps
+                  Matt Mapother
                 </p>
 
                 <p className="text-gray-500 mt-1">
                   Independent product builder focused on practical fitness tools
                   and visual progress tracking.
                 </p>
-
-                <a
-                  href="https://www.linkedin.com/in/matt-phelps/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-2 text-primary underline"
-                >
-                  LinkedIn
-                </a>
               </div>
             </div>
 

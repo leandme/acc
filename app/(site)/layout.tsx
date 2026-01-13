@@ -1,7 +1,7 @@
 import "../styles/globals.css";
-import AmplitudeInitializer from "../components/AmplitudeInitializer";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import AmplitudeInitializer from "../components/Helpers/AmplitudeInitializer";
+import Navbar from "../components/Common/Navbar";
+import Footer from "../components/Common/Footer";
 import {Toaster} from "react-hot-toast";
 
 export default function RootLayout({

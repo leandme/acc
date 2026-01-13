@@ -1,9 +1,9 @@
 "use client";
 import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import UploadDropzone from "@/app/components/UploadDropZone";
-import TryExamples from "@/app/components/TryExamples";
-import EstimatePanel from "@/app/components/EstimatePanel";
+import EstimateDropZone from "@/app/components/Common/EstimateDropZone"
+import TryExamples from "@/app/components/Common/TryExamples";
+import EstimatePanel from "@/app/components/BodyFatEstimator/EstimatePanel";
 import { useBodyFatEstimate } from "@/app/hooks/useBodyFatEstimate";
 
 function UploadPageContent() {
@@ -18,14 +18,14 @@ function UploadPageContent() {
         <div className="hero min-h-screen -mt-24 flex items-center justify-center">
           <div className="flex flex-col items-center mt-10 gap-6">
             <div className="text-center lg:text-left w-full max-w-md">
-              <h1 className="text-center text-2xl lg:text-3xl font-bold mb-12">
+              <h1 className="text-center text-3xl lg:text-4xl font-bold mb-12">
                 Upload a Photo to Estimate Body Fat %
               </h1>
-              <UploadDropzone />
+              <EstimateDropZone />
             </div>
 
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
-              <TryExamples />
+              <TryExamples basePath="/estimate" />
             </div>
           </div>
         </div>

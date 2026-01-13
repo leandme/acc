@@ -1,6 +1,6 @@
 // app/(site)/ffmi-calculator/page.tsx
 import type { Metadata } from "next";
-import FFMICalculator from "@/app/components/FFMICalculator";
+import FFMICalculator from "@/app/components/FFMICalculator/FFMICalculator";
 
 export const metadata: Metadata = {
   title: "FFMI Calculator",
@@ -29,7 +29,7 @@ export default function FFMICalculatorPage() {
 
         {/* Extra SEO copy */}
         <div className="mt-14 max-w-3xl mx-auto space-y-4 text-gray-700 leading-relaxed">
-          <h2 className="text-2xl font-semibold text-center">
+          <h2 className="text-2xl lg:text-3xl font-semibold text-center">
             What is FFMI?
           </h2>
           <p className="text-lg">

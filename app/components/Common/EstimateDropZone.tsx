@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { showErrorToast } from '../libs/toast';
+import { showErrorToast } from "@/app/libs/toast";
 
 export default function UploadDropzone() {
   const [fileName, setFileName] = useState<string | null>(null);

@@ -91,14 +91,14 @@ export default function AboutPage() {
 
             <div className="mt-4 flex flex-col sm:flex-row items-center gap-6 rounded-2xl border p-6">
               <img
-                src="/profile/matt-phelps-headshot.jpeg"
+                src="/profile/matt-mapother-headshot.png"
                 alt="Creator of BodyFatEstimator"
                 className="w-24 h-24 rounded-full object-cover"
               />
 
               <div>
                 <p className="text-lg font-bold">
-                  Matt Phelps
+                  Matt Mapother
                 </p>
 
                 <p className="text-gray-500 mt-1">

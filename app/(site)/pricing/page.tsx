@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Pricing from "@/app/components/Pricing";
-import PricingFAQ from "@/app/components/PricingFAQ";
+import Pricing from "@/app/components/Pricing/Pricing";
+import PricingFAQ from "@/app/components/Pricing/PricingFAQ";
 
 const title = "Pricing | Body Fat Estimator AI";
 const description = "Body Fat Estimator pricing and plans. Estimate your body fat percentage from a photo and unlock advanced features.";

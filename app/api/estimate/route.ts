@@ -59,4 +59,5 @@ export async function POST(req: NextRequest) {
     console.error("Replicate call failed:", err);
     return NextResponse.json({ error: "Failed to estimate body fat" }, { status: 500 });
   }
+  
 }

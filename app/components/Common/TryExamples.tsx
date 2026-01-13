@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { trackEvent } from "../libs/amplitude";
+import { trackEvent } from "@/app/libs/amplitude";
+
+type BasePath = "/estimate" | "/body-shape-analyzer";
+
+type Props = {
+  basePath: BasePath;
+};
 
 type Example = {
   id: string;
@@ -18,16 +24,13 @@ const EXAMPLES: Example[] = [
   { id: "m1", label: "Example A", sublabel: "", src: "/examples/bfe-example4.png" },
 ];
 
-export default function TryExamples() {
+export default function TryExamples({ basePath }: Props) {
   const router = useRouter();
 
 const onPick = (src: string) => {
-  const fullUrl = src.startsWith("/")
-    ? `${window.location.origin}${src}`
-    : src;
-
-  router.push(`/estimate?imageUrl=${encodeURIComponent(fullUrl)}`);
+  router.push(`${basePath}?imageUrl=${encodeURIComponent(src)}`);
 };
+
 
 
   return (

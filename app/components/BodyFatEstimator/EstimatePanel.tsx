@@ -1,7 +1,7 @@
 "use client";
 import { parsePercent, getCategory, getRange } from "@/app/libs/estimateUtils";
 import ConfidenceBand from "@/app/components/ConfidenceBand";
-import { trackEvent } from "../libs/amplitude";
+import { trackEvent } from "@/app/libs/amplitude";
 
 export default function EstimatePanel({
   estimate,

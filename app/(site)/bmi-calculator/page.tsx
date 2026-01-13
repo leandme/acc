@@ -1,9 +1,9 @@
 // app/(site)/bmi-calculator/page.tsx
 import type { Metadata } from "next";
-import BMICalculator from "@/app/components/BMICalculator";
+import BMICalculator from "@/app/components/BMICalculator/BMICalculator";
 
 export const metadata: Metadata = {
-  title: "BMI Calculator | Body Fat Estimator AI",
+  title: "BMI Calculator",
   description:
     "Calculate your BMI using metric or imperial units. Includes BMI category, healthy weight range, and quick links to body fat estimation tools.",
 };
