@@ -1,7 +1,6 @@
 # Tools
 - body visualizer
 - body fat map  bf by age, by country, by gender
-- body shape analyzer
 
 # Blog posts
 - best way to measure body fat
