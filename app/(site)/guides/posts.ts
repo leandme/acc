@@ -1,7 +1,7 @@
 export const POSTS = [
   {
-    slug: "calculate-body-fat-percentage-at-home",
-    title: "How to Calculate Your Body Fat Percentage at Home",
+    slug: "estimate-body-fat-percentage-at-home",
+    title: "How to Estimate Your Body Fat % at Home (Methods + Accuracy)",
     description:
       "A practical guide to skinfolds, tape measures, smart scales, and AI photo estimates — plus how to track progress accurately.",
     date: "Jan 2026",

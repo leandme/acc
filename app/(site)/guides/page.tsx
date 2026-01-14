@@ -4,18 +4,18 @@ import Link from "next/link";
 import { POSTS } from "./posts";
 
 export const metadata: Metadata = {
-  title: "Blog | Body Fat Estimator AI",
+  title: "Body Fat Estimation Guides",
   description:
     "Body fat estimation guides, photo tips, accuracy improvements, and tracking strategies using AI body fat estimates.",
 };
 
-export default function BlogIndexPage() {
+export default function GuidesIndexPage() {
   return (
     <main className="bg-base-100">
       {/* Hero */}
       <section className="mx-auto max-w-5xl px-6 pt-20">
         <h1 className="text-3xl lg:text-5xl font-bold text-center">
-          Body Fat Blog
+          Body Fat Estimation Guides
         </h1>
 
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
@@ -30,7 +30,7 @@ export default function BlogIndexPage() {
     {POSTS.map((post) => (
       <Link
         key={post.slug}
-        href={`/blog/${post.slug}`}
+        href={`/guides/${post.slug}`}
         className="group rounded-2xl border bg-white transition hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
       >
         {/* Image */}

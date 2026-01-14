@@ -1,4 +1,4 @@
-import ReviewBox from "./ReviewBox";
+
 
 export default function Hero() {
     return (
@@ -14,7 +14,6 @@ export default function Hero() {
             <a href="/estimate">
               <button className="btn btn-primary btn-lg text-white mt-6">Get My Body Fat % <span className="text-lg">→</span></button>
             </a>
-            <ReviewBox />
           </div>
         </div>
       </div>

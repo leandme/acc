@@ -21,7 +21,7 @@ export default function AboutPage() {
 
           <div className="prose prose-invert max-w-3xl text-center lg:text-left">
             <p className="text-lg">
-              BodyFatEstimator is a free online tool designed to help people get a
+              BodyFatEstimator is a free AI tool designed to help people get a
               quick, visual estimate of their body fat percentage using a single photo.
               The goal is simple: make body composition tracking more accessible,
               private, and practical for everyday fitness use.
@@ -38,7 +38,7 @@ export default function AboutPage() {
 
             <h2>How the estimate works (high level)</h2>
             <p className="text-lg">
-              The estimator analyzes visual cues from an uploaded photo — such as body
+              Using AI, the estimator analyzes visual cues from an uploaded photo — such as body
               proportions, fat distribution patterns, and surface features — to produce
               an approximate body fat range. Results are generated automatically and are
               intended for general fitness tracking, not medical evaluation.
@@ -105,20 +105,11 @@ export default function AboutPage() {
                   Independent product builder focused on practical fitness tools
                   and visual progress tracking.
                 </p>
-
-                <a
-                  href="https://www.linkedin.com/in/matt-phelps/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-2 text-primary underline"
-                >
-                  LinkedIn
-                </a>
               </div>
             </div>
 
             <h2>Contact</h2>
-            <p className="text-lg">
+            <p className="text-lg mb-12">
               Have questions, feedback, or need assistance? You can reach us at{" "}
               <a
                 href="mailto:matt@leandme.com"

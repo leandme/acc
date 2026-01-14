@@ -16,35 +16,49 @@ export default function Footer() {
           </div>
 
           <p className="mt-3 text-base text-gray-300 leading-relaxed">
-            Estimate your body fat percentage from a photo with AI.
+            Estimate your body fat % from a photo with AI.
           </p>
 
-          {/* Social proof */}
-          <div className="mt-4 flex items-center gap-3 text-sm text-gray-300">
-            <div className="flex -space-x-2">
-              <img
-                className="w-7 h-7 rounded-full ring-2 ring-[#18181b] object-cover"
-                src="/examples/bfe-example3.png"
-                alt="User avatar"
-              />
-              <img
-                className="w-7 h-7 rounded-full ring-2 ring-[#18181b] object-cover"
-                src="/examples/bfe-example2.png"
-                alt="User avatar"
-              />
-              <img
-                className="w-7 h-7 rounded-full ring-2 ring-[#18181b] object-cover"
-                src="/examples/bfe-example4.png"
-                alt="User avatar"
-              />
-            </div>
+       {/* Social proof */}
+<div className="mt-4 flex items-center gap-4 text-sm text-gray-300">
+  {/* Avatars */}
+  <div className="flex -space-x-3">
+    <img
+      className="w-9 h-9 rounded-full ring-2 ring-[#18181b] object-cover"
+      src="/examples/bfe-example3.png"
+      alt="User avatar"
+    />
+    <img
+      className="w-9 h-9 rounded-full ring-2 ring-[#18181b] object-cover"
+      src="/examples/bfe-example2.png"
+      alt="User avatar"
+    />
+    <img
+      className="w-9 h-9 rounded-full ring-2 ring-[#18181b] object-cover"
+      src="/examples/bfe-example4.png"
+      alt="User avatar"
+    />
+  </div>
 
-            <span>
-              Trusted by{" "}
-              <span className="font-semibold text-white">12,500+</span>{" "}
-              users
-            </span>
-          </div>
+  {/* Stars + text stacked */}
+  <div className="flex flex-col leading-tight">
+    <div className="flex items-center text-yellow-400 text-xs">
+      <span>⭐️</span>
+      <span>⭐️</span>
+      <span>⭐️</span>
+      <span>⭐️</span>
+      <span>⭐️</span>
+    </div>
+
+    <span>
+      Trusted by{" "}
+      <span className="font-semibold text-white">12,500+</span>{" "}
+      users
+    </span>
+  </div>
+</div>
+
+
         </div>
 
         <div className="my-8 h-px bg-white/10" />
@@ -57,10 +71,10 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/about">About</a></li>
-                  <li><a className="hover:text-white" href="/estimate">Estimate Body Fat</a></li>
+                <li><a className="hover:text-white" href="/examples">Body Fat Examples</a></li>
               <li><a className="hover:text-white" href="/pricing">Pricing</a></li>
-              <li><a className="hover:text-white" href="/examples">Examples</a></li>
-              <li><a className="hover:text-white" href="/blog">Blog</a></li>
+              <li><a className="hover:text-white" href="/best-ai-body-fat-estimator">Compare Estimators</a></li>
+                <li><a className="hover:text-white" href="/guides">Guides</a></li>
             </ul>
           </div>
 
@@ -70,20 +84,21 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/#faqs">FAQs</a></li>
-              <li><a className="hover:text-white" href="/contact">Contact us</a></li>
+              <li><a className="hover:text-white" href="/contact">Contact</a></li>
               <li><a className="hover:text-white" href="/refund">Refunds</a></li>
+             
+              
             </ul>
           </div>
 
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
-              Tools
+              Body Fat Tools
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
+              <li><a className="hover:text-white" href="/estimate">Estimate Body Fat</a></li>
+              <li><a className="hover:text-white" href="/body-fat-visualizer">Body Fat Visualizer</a></li>
               <li><a className="hover:text-white" href="/body-shape-analyzer">Body Shape Analyzer</a></li>
-              <li><a className="hover:text-white" href="/body-fat-calculator">Body Fat Calculator</a></li>
-              <li><a className="hover:text-white" href="/bmi-calculator">BMI Calculator</a></li>
-              <li><a className="hover:text-white" href="/ffmi-calculator">FFMI Calculator</a></li>
             </ul>
           </div>
 
@@ -96,7 +111,7 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/privacy">Privacy Policy</a></li>
               <li><a className="hover:text-white" href="/cookies">Cookie Policy</a></li>
               <li><a className="hover:text-white" href="/security">Security Policy</a></li>
-              <li><a className="hover:text-white" href="/subprocessors">Sub-processors</a></li>
+              <li><a className="hover:text-white" href="/subprocessors">Sub-Processors</a></li>
             </ul>
           </div>
         </div>
@@ -107,7 +122,7 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <span className="text-xs text-gray-400">
-            © 2026 — All Rights Reserved.
+             © {new Date().getFullYear()} — All Rights Reserved.
           </span>
 
           <span className="text-[11px] text-gray-500 max-w-2xl leading-relaxed">
