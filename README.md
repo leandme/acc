@@ -58,4 +58,4 @@ weight loss tracker
 body weight planner
 free weight loss planner
 weight loss planner pdf
-body weight planner calculator
+body weight planner calculato
