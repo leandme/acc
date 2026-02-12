@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Body Composition Guides",
   description:
     "Body composition guides, photo tips, accuracy improvements, and tracking strategies for all things related to body composition.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides",
+  },
 };
 
 export default function GuidesIndexPage() {

@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "The 3 Best Ways to Measure Your Body Fat % at Home",
   description:
     "The most useful at-home body fat method is the one you can repeat consistently. Here’s why photo-based AI estimation wins for tracking—plus when the Navy Method or a DEXA scan makes sense.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/best-way-to-measure-body-fat-at-home",
+  },
 };
 
 const toc: TocItem[] = [

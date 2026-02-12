@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Body Fat Calculator vs Body Fat Estimator — What’s the Difference?",
   description:
     "Learn the difference between body fat calculators and estimators, why they give different results, and which approach is best for tracking progress at home.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/body-fat-calculator-vs-estimator",
+  },
 };
 
 

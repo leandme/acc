@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Body Fat Visualizer — See What Body Fat % Looks Like",
   description:
     "Use the body fat visualizer slider to see what different body fat percentages typically look like for men and women. Plus: tips on why photos vary and how to estimate more accurately.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/body-visualizer",
+  },
 };
 
 export default function BodyFatVisualizerPage() {

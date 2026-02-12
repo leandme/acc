@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "How Accurate Are Smart Scales?",
   description:
     "Learn how smart scales estimate body fat using BIA, why results change overnight, and when smart scales are useful (and when they aren’t).",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/how-accurate-are-smart-scales",
+  },
 };
 
 export default function BlogPostPage() {

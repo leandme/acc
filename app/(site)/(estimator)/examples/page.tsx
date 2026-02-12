@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Body Fat % Examples – What Body Fat % Looks Like",
   description:
     "Explore body fat examples generated from photos. See what different body fat % ranges tend to look like, why the same % can look different, and try a free AI estimate from your own photo.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/examples",
+  },
 };
 
 const images = [

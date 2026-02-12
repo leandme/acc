@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "How to Estimate Body Fat Percentage (Methods + Accuracy)",
   description:
     "Learn how to estimate your body fat percentage, compare methods like visual charts, AI photo estimation, calculators, and DEXA, and understand which approach makes sense for you.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/how-to-estimate-body-fat-percentage",
+  },
 };
 
 

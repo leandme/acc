@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "How AI Body Fat Estimation Works",
   description:
     "Learn how an AI body fat estimator works, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/how-ai-body-fat-estimation-works",
+  },
 };
 
 export default function BlogPostPage() {

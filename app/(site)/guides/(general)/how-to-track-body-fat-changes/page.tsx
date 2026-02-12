@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "How to Track Body Fat Changes Over Time (Without a Scale)",
   description:
     "Learn how to track body fat progress over time without relying on a scale. Use photos, consistency, and trends to understand real changes in body composition.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/how-to-track-body-fat-changes",
+  },
 };
 
 export default function BlogPostPage() {

@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Army Body Fat Calculator | U.S. Army One-Site Method",
   description:
     "Calculate estimated body fat with the U.S. Army one-site method using abdomen circumference and body weight, with Army age/sex standard checks and guidance.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/army-body-fat-calculator",
+  },
 };
 
 export default function ArmyBodyFatCalculatorPage() {

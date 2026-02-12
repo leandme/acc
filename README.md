@@ -1,9 +1,6 @@
 # PRIO
 TONIGHT:
-- Body fat calculator
-- army body fat calculator
 - make body visualizer
-- Improve "how to estimate body fat percentage from a photo"
 - Make CTA to download good-looking shareable card. Save to camera role CTA, nice looking card, no accuracy label, branded, category
 
 AT SOmE POinT

@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "How Accurate isn AI Body Fat Estimation?",
   description:
     "Is AI body fat estimation accurate? Learn how accuracy differs from consistency, how AI compares to at-home methods, and how to get the most reliable results from photo-based estimation.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/how-accurate-is-ai-body-fat-estimation",
+  },
 };
 
 

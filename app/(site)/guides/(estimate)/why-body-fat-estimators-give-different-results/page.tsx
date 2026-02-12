@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Why Body Fat Estimators Give Different Results",
   description:
     "Why do body fat estimators give different numbers? Learn how formula assumptions, hydration, timing, and measurement noise affect body fat percentage estimates — and how to interpret changes realistically.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/why-body-fat-estimators-give-different-results",
+  },
 };
 
 export default function BlogPostPage() {

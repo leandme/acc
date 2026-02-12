@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Why Body Fat Measurement Methods Give Different Results",
   description:
     "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/why-body-fat-measurements-give-different-results",
+  },
 };
 
 export default function BlogPostPage() {

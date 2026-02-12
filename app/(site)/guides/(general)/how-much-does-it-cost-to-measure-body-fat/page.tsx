@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "How Much Does It Cost to Measure Body Fat? (Home vs Lab)",
   description:
     "Compare the cost of measuring body fat at home vs lab methods like DEXA. Learn price ranges, accuracy tradeoffs, and which option makes sense for tracking progress.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/how-much-does-it-cost-to-measure-body-fat",
+  },
 };
 
 export default function BlogPostPage() {

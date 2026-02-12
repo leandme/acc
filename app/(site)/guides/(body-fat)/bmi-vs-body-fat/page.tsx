@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "BMI vs Body Fat % – Which Is Important?",
   description:
     "BMI and body fat percentage measure different things. Learn how BMI works, why it often fails individuals, and when body fat % is the more useful metric for tracking health and appearance.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/bmi-vs-body-fat",
+  },
 };
 
 export default function BlogPostPage() {

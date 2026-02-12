@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "How to Take Photos for Body Fat Estimation",
   description:
     "Learn how to take consistent body fat photos for estimation and progress tracking. Lighting, pose, camera setup, and common mistakes explained.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/how-to-take-photos-for-body-fat-estimation",
+  },
 };
 
 export default function BlogPostPage() {

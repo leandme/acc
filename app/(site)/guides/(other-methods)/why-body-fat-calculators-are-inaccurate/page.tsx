@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Why Body Fat Calculators Are Inaccurate",
   description:
     "Body fat calculators look precise, but their results are often misleading. Learn why formulas fail at the individual level, what they actually estimate, and better ways to track body fat over time.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/why-body-fat-calculators-are-inaccurate",
+  },
 };
 
 export default function BlogPostPage() {

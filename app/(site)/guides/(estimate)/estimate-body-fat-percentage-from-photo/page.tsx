@@ -2,29 +2,56 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import CTA from "@/app/components/common/cta";
+import References from "@/app/components/guides/guide-references";
+import FaqJsonLd from "@/app/components/helpers/faq-json-ld";
+
+const faqs = [
+  {
+    question: "Can you estimate body fat percentage from one photo?",
+    answer:
+      "You can estimate it, but one photo is best treated as a rough range. Accuracy improves when photos are consistent in lighting, distance, pose, and clothing.",
+  },
+  {
+    question: "How accurate is photo-based body fat estimation for men?",
+    answer:
+      "For men, photo estimates are usually directionally useful rather than exact. They work best for tracking trend changes over time, not proving a single perfect number.",
+  },
+  {
+    question: "Do mirror selfies work for body fat estimation?",
+    answer:
+      "Yes, mirror selfies can work if setup is consistent. Large changes in angle, flexing, lighting, or camera distance can make estimates less reliable.",
+  },
+];
 
 export const metadata: Metadata = {
-  title: "How to Estimate Body Fat % from Photos (Mirror Selfies)",
+  title: "How to Estimate Body Fat Percentage from Photos (Men + Women)",
   description:
-    "Learn how body fat percentage can be estimated from photos and mirror selfies, which visual cues matter, how accurate photo-based estimates are, and how automated tools compare to human eyeballing.",
+    "How to estimate body fat percentage from photos and mirror selfies for men and women. Learn visual cues, setup tips, accuracy limits, and use our AI estimator.",
+  alternates: {
+    canonical:
+      "https://bodyfatestimator.ai/guides/estimate-body-fat-percentage-from-photo",
+  },
 };
 
 export default function HowToEstimateBodyFatFromPhotos() {
   return (
     <main className="bg-base-100">
+      <FaqJsonLd faqs={faqs} />
+
       <GuideHero
-        title="How to Estimate Body Fat % from Photos"
+        title="How to Estimate Body Fat Percentage from Photos"
         intro={
           <>
             <p>
-              Estimating body fat percentage from photos — including mirror selfies —
-              has become increasingly common. From fitness forums to AI-powered tools,
-              people regularly try to infer body fat levels just by looking.
+              If you searched for terms like "how to estimate body fat percentage
+              from photo men" or "from mirror selfie," this guide is built for
+              that exact use case.
             </p>
             <p>
-              This guide explains how photo-based body fat estimation actually works,
-              which visual cues are used for men and women, how accurate these estimates
-              tend to be, and where photos are useful — and where they fail.
+              Photo-based body fat estimation can be useful, but only when you use
+              consistent photos and interpret the output as a range. Below, you will
+              see what visual cues matter, where estimates fail, and how to improve
+              your accuracy.
             </p>
           </>
         }
@@ -32,201 +59,289 @@ export default function HowToEstimateBodyFatFromPhotos() {
           <figure className="max-w-3xl">
             <img
               src="/guides/estimate-body-fat-percentage-from-photo.png"
-              alt="Estimating body fat percentage from photos and mirror selfies"
+              alt="How to estimate body fat percentage from photo and mirror selfie"
               loading="lazy"
               className="rounded-xl border"
             />
             <figcaption className="mt-2 text-sm text-gray-500 text-center">
-              Photo-based body fat estimation relies on visual patterns, not direct
-              measurement of fat tissue.
+              Photos estimate appearance patterns, not fat tissue directly.
             </figcaption>
           </figure>
         }
       />
 
-      {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
-
-        {/* H2 section */}
+      <section className="mx-auto max-w-3xl px-6 pb-20">
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
-            What it means to estimate body fat from photos
+            Quick Answer: Estimating Body Fat From Photos
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Estimating body fat percentage from photos does not mean measuring fat
-            directly. A photo — whether a professional progress photo or a casual
-            mirror selfie — contains no information about tissue composition.
+            You can estimate body fat percentage from photos by comparing visible
+            cues such as abdominal definition, waist shape, limb softness, and
+            fat distribution patterns. The estimate is usually a useful range,
+            not an exact value.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Instead, photo-based estimation works by comparing visible features of the
-            body to known appearance patterns that tend to correlate with certain body
-            fat ranges. These patterns have been observed across thousands of people,
-            both men and women.
+            For most people, photo estimates are most helpful for tracking trend
+            changes over weeks. They are less reliable as a one-time precision
+            measurement.
           </p>
 
-          <p className="text-gray-700 text-lg leading-relaxed">
-            The result is an inference — not a measurement of fat tissue in your body.
-          </p>
+          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>Use front and side photos with the same lighting.</li>
+            <li>Keep camera height, distance, and posture consistent.</li>
+            <li>Avoid flexing, angle tricks, and dramatic shadows.</li>
+            <li>Compare changes over time, not one isolated scan.</li>
+          </ul>
         </div>
 
-        {/* H2 section */}
-        <div className="space-y-4">
+        <div className="mt-20 lg:mt-40 space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
-            Visual cues used in photo-based body fat estimation
+            How To Estimate Body Fat From a Photo Yourself
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Whether done by a human observer or an automated tool, photo-based body fat
-            estimation relies on a consistent set of visual cues. These cues are not
-            arbitrary — they reflect how fat is distributed on the body as levels rise
-            or fall.
+            If you want to estimate body fat manually, think in terms of ranges.
+            One photo rarely gives a perfect number, but specific visual patterns
+            can place you in a useful bracket.
           </p>
 
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Common visual cues include fat distribution across the abdomen, chest,
-            jawline, limbs, and lower back. In men, abdominal definition, oblique
-            visibility, and jawline sharpness are strong indicators. In women, fat
-            distribution around the hips, thighs, upper arms, and waist-to-hip ratio
-            plays a larger role.
-          </p>
+          <div className="rounded-2xl border bg-white p-6">
+            <h3 className="text-xl font-semibold text-gray-900">
+              Men: Quick Visual Range Guide
+            </h3>
+            <ul className="mt-3 list-disc pl-6 text-lg text-gray-700 space-y-2">
+              <li>
+                10-12%: visible abs at rest, minimal love handles, more vascularity.
+              </li>
+              <li>
+                13-15%: upper abs usually visible, slight lower-ab softness, very small
+                love handles.
+              </li>
+              <li>
+                16-19%: abdominal outline fades, moderate lower-ab softness, clear love
+                handles in relaxed posture.
+              </li>
+              <li>
+                20-24%: no visible abs at rest, softer chest and waist, stronger side
+                fat accumulation.
+              </li>
+              <li>
+                25%+: rounded midsection, larger love handles, less separation in chest
+                and shoulders.
+              </li>
+            </ul>
+          </div>
+
+          <div className="rounded-2xl border bg-white p-6">
+            <h3 className="text-xl font-semibold text-gray-900">
+              Striations, Definition, and What They Usually Mean
+            </h3>
+            <ul className="mt-3 list-disc pl-6 text-lg text-gray-700 space-y-2">
+              <li>
+                Deep ab striations and clear obliques usually indicate low-teens or
+                sub-12% for men under neutral lighting.
+              </li>
+              <li>
+                Visible abs only when flexing usually points to a mid-to-high teen range.
+              </li>
+              <li>
+                If no abdominal lines are visible in consistent photos, body fat is often
+                above high teens for men, though muscle mass still affects appearance.
+              </li>
+            </ul>
+          </div>
+
+          <div className="rounded-2xl border bg-white p-6">
+            <h3 className="text-xl font-semibold text-gray-900">
+              Women: Common Appearance Ranges
+            </h3>
+            <ul className="mt-3 list-disc pl-6 text-lg text-gray-700 space-y-2">
+              <li>
+                18-22%: lean waist profile, clearer muscle lines, lower arm and thigh
+                softness.
+              </li>
+              <li>
+                23-27%: mild waist softness, less separation through midsection and legs.
+              </li>
+              <li>
+                28-33%: noticeably softer midsection and limbs, less definition overall.
+              </li>
+              <li>
+                34%+: greater softness through waist, hips, and thighs with reduced
+                contour visibility.
+              </li>
+            </ul>
+          </div>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Limb thickness, muscle separation, and the presence or absence of soft
-            tissue around joints also provide signals. No single cue determines body
-            fat percentage — estimates emerge from the combination.
+            Use these as directional ranges, not diagnosis. Lighting, pump, posture, and
+            genetics can shift visual appearance by several percentage points.
           </p>
         </div>
 
-        {/* H2 section */}
-        <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
-            Why mirror selfies can work — and where they fail
-          </h2>
-
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Mirror selfies are often dismissed as unreliable, but they can still be
-            useful for body fat estimation if taken consistently. As long as lighting,
-            distance, posture, and clothing remain similar, mirror selfies capture the
-            same visual cues as traditional progress photos.
-          </p>
-
-          <p className="text-gray-700 text-lg leading-relaxed">
-            However, mirror selfies fail when angles, lighting, or poses are manipulated.
-            Overhead lighting, flexing, twisting, or shooting from above can exaggerate
-            leanness and distort fat distribution.
-          </p>
-
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Photos work best for tracking changes over time, not for producing a
-            perfectly precise number from a single image.
-          </p>
-        </div>
-
-        {/* CTA */}
         <CTA
-          title="Estimate Your Body Fat % from a Photo"
+          title="Estimate Your Body Fat from a Photo"
+          description="Upload a photo, get an appearance-based estimate, and track trend changes over time with a consistent workflow."
+          buttonText="Try the estimator now →"
           href="/estimate"
+          className="mt-20 lg:mt-40 my-0"
         />
 
-        {/* H2 section */}
-        <div className="space-y-4">
+        <div className="mt-20 lg:mt-40 space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
-            How close photo-based body fat estimates typically are
+            Men: Visual Cues That Matter Most
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Photo-based body fat estimates are usually directionally accurate rather
-            than exact. Under good conditions, estimates often fall within a few
-            percentage points of lab-based methods like DEXA — but variability is real.
+            For men, estimates often depend most on abdominal contour, oblique
+            visibility, chest definition, lower-back softness, and jawline
+            sharpness. Single cues can mislead, so a full-body pattern matters
+            more than one body part.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Accuracy depends heavily on <a className="underline text-primary" href="/guides/how-to-take-photos-for-body-fat-estimation">photo quality</a>, consistency, sex-specific fat
-            distribution, and individual differences such as muscle mass and frame
-            size. Two people at the same body fat percentage can look meaningfully
-            different.
+            If you are searching for "how to estimate body fat percentage from
+            photos men," focus on consistency first. Variations in lighting and
+            posture can make the same person look multiple percentage points
+            leaner or softer.
           </p>
 
-          <p className="text-gray-700 text-lg leading-relaxed">
-            This is why photo-based methods are best used for trend tracking rather
-            than single-point validation.
-          </p>
+          <figure className="rounded-2xl border bg-white p-4">
+            <img
+              src="/guides/what-does-body-fat-percentage-look-like.png"
+              alt="Male and female body fat percentage appearance examples"
+              loading="lazy"
+              className="rounded-xl border"
+            />
+            <figcaption className="mt-2 text-sm text-gray-500 text-center">
+              Appearance charts provide context ranges, not exact diagnoses.
+            </figcaption>
+          </figure>
         </div>
 
-        {/* H2 section */}
-        <div className="space-y-4">
+        <div className="mt-20 lg:mt-40 space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
-            Automated tools vs human eyeballing
+            Women: Visual Cues That Are Often Weighted Differently
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Human eyeballing relies on subjective pattern recognition. While experienced
-            observers can be reasonably accurate, human estimates vary widely and are
-            influenced by bias, recent comparisons, and expectations.
+            For women, fat distribution around hips, thighs, upper arms, and the
+            waist-to-hip profile often contributes more to appearance-based
+            estimation. Two women with the same estimated percentage can still
+            look meaningfully different due to distribution and muscle mass.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Automated body fat estimation tools analyze photos more consistently. They
-            evaluate the same visual features every time, without fatigue or bias, and
-            are better suited for tracking change across weeks or months.
-          </p>
-
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Automated tools do not “see” fat directly — but they excel at consistency,
-            which is often more valuable than absolute precision.
+            This is one reason photo-based methods should be interpreted as trend
+            tools. They are strongest when you compare your own images over time
+            under repeatable conditions.
           </p>
         </div>
 
-        {/* H2 section */}
-        <div className="space-y-4">
+        <div className="mt-20 lg:mt-40 space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
-            When photo-based estimation makes sense
+            Mirror Selfie Checklist for Better Estimates
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Estimating body fat from photos makes sense when lab methods are unavailable,
-            expensive, or impractical. It is especially useful for people tracking
-            appearance changes during fat loss or recomposition.
+            Mirror selfies can work well if your setup is repeatable. The goal is
+            to reduce visual noise so body composition changes are easier to
+            detect.
           </p>
 
-          <p className="text-gray-700 text-lg leading-relaxed">
-            For both men and women, consistency matters more than perfection. Taking
-            similar photos over time provides more insight than chasing a single
-            “accurate” number.
-          </p>
+          <ol className="list-decimal pl-6 text-lg text-gray-700 space-y-2">
+            <li>Take photos at the same time of day each week.</li>
+            <li>Use the same room lighting and phone camera.</li>
+            <li>Set camera height near mid-torso to reduce distortion.</li>
+            <li>Stand relaxed in the same front and side pose.</li>
+            <li>Use similar minimal clothing each check-in.</li>
+          </ol>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            Used correctly, photos become a practical proxy for body composition trends.
+            Detailed setup guide:{" "}
+            <a
+              className="underline text-primary"
+              href="/guides/how-to-take-photos-for-body-fat-estimation"
+            >
+              how to take photos for body fat estimation
+            </a>
+            .
           </p>
         </div>
 
-         <MoreArticles
-            basePath="/guides"
-            articles={[
-                {
-                slug: "why-body-fat-measurements-give-different-results",
-                title: "Why Body Fat Measurement Methods Give Different Results",
-                tag: "body-analysis",
-                description:
+        <div className="mt-20 lg:mt-40 space-y-4">
+          <h2 className="text-3xl lg:text-4xl font-semibold">FAQ</h2>
+
+          <div className="space-y-6">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="rounded-2xl border bg-white p-6">
+                <h3 className="text-xl font-semibold text-gray-900">{faq.question}</h3>
+                <p className="mt-2 text-lg text-gray-700 leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <CTA
+          title="Get Your Estimate and Track Progress"
+          description="Use the same photo setup each week so your estimate is comparable over time and easier to act on."
+          buttonText="Estimate body fat from a photo →"
+          href="/estimate"
+          className="mt-20 lg:mt-40 my-0"
+        />
+
+        <References
+          className="mt-20 lg:mt-40"
+          references={[
+            {
+              label: "How to Take Photos for Body Fat Estimation",
+              href: "/guides/how-to-take-photos-for-body-fat-estimation",
+            },
+            {
+              label: "What Does Body Fat Percentage Look Like?",
+              href: "/guides/what-does-body-fat-percentage-look-like",
+            },
+            {
+              label: "How Accurate Is AI Body Fat Estimation?",
+              href: "/guides/how-accurate-is-ai-body-fat-estimation",
+            },
+            {
+              label: "How AI Body Fat Estimation Works",
+              href: "/guides/how-ai-body-fat-estimation-works",
+            },
+          ]}
+        />
+
+        <div className="mt-20 lg:mt-40">
+          <MoreArticles
+          basePath="/guides"
+          articles={[
+            {
+              slug: "why-body-fat-measurements-give-different-results",
+              title: "Why Body Fat Measurement Methods Give Different Results",
+              tag: "body-analysis",
+              description:
                 "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
-                date: "Jan 13, 2026",
-                readTime: "7 min read",
-                image: "/guides/why-body-fat-measurements-give-different-results.png",
-                },
-                {
-                slug: "body-fat-estimation-methods",
-                title: "Common Body Fat Estimation Methods Explained",
-                tag: "body-analysis",
-                description:
-                    "An overview of the most common body fat measurement methods — including the Navy tape method, skinfold calipers, BIA smart scales, and DEXA scans — with clear guidance on when each method makes sense.",
-                date: "Jan 8, 2026",
-                readTime: "7 min read",
-                image: "/guides/body-fat-estimation-methods.png",
-                },
-            ]}
-        />
+              date: "Jan 13, 2026",
+              readTime: "7 min read",
+              image: "/guides/why-body-fat-measurements-give-different-results.png",
+            },
+            {
+              slug: "body-fat-estimation-methods",
+              title: "Common Body Fat Estimation Methods Explained",
+              tag: "body-analysis",
+              description:
+                "An overview of the most common body fat measurement methods — including the Navy tape method, skinfold calipers, BIA smart scales, and DEXA scans — with clear guidance on when each method makes sense.",
+              date: "Jan 8, 2026",
+              readTime: "7 min read",
+              image: "/guides/body-fat-estimation-methods.png",
+            },
+          ]}
+          />
+        </div>
       </section>
     </main>
   );

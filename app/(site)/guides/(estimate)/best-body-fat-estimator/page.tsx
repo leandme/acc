@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "The Best Body Fat Estimator of 2026",
   description:
     "What makes the best body fat estimator in 2026? Learn how modern photo-based tools work, how to evaluate accuracy and consistency, and which approach makes the most sense for tracking real progress.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/best-body-fat-estimator",
+  },
 };
 
 export default function BlogPostPage() {

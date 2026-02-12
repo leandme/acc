@@ -15,6 +15,9 @@ const description = "Upload a photo to estimate your body fat percentage visuall
 export const metadata: Metadata = {
   title: title,
   description: description,
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/",
+  },
 };
 
 export default function Home() {

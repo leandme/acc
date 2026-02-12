@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "How Often Should You Measure Body Fat?",
   description:
     "How often should you measure body fat? Learn how measurement frequency affects accuracy, why daily checks create noise, and how to choose a schedule that actually shows progress.",
+  alternates: {
+    canonical: "https://bodyfatestimator.ai/guides/how-often-should-you-measure-body-fat",
+  },
 };
 
 export default function BlogPostPage() {
