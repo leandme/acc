@@ -7,14 +7,28 @@ export const parsePercent = (raw: string) => {
   return n;
 };
 
-export const getCategory = (p: number) => {
-  // generic labels (not gendered)
-  if (p <= 10) return "Very lean";
-  if (p <= 15) return "Lean";
-  if (p <= 20) return "Athletic / Average";
-  if (p <= 25) return "Average";
-  return "Higher body fat";
+export const getCategoryMale = (p: number) => {
+  if (p <= 5) return "ESSENTIAL";
+  if (p <= 10) return "ATHLETIC ";
+  if (p <= 13) return "LEAN";
+  if (p <= 17) return "FIT";
+  if (p <= 22) return "AVERAGE";
+  if (p <= 26) return "ABOVE AVERAGE";
+  if (p <= 30) return "HIGH";
+  return  "VERY HIGH";
 };
+
+export const getCategoryFemale = (p: number) => {
+  if (p <= 13) return "ESEENTIAL";
+  if (p <= 20) return "ATHLETIC";
+  if (p <= 24) return "LEAN";
+  if (p <= 28) return "FIT";
+  if (p <= 33) return "AVERAGE";
+  if (p <= 38) return "ABOVE AVERAGE";
+  if (p <= 43) return "HIGH";
+  return  "VERY HIGH";
+};
+
 
 export const getRange = (p: number) => {
   const low = Math.max(3, Math.round(p - 10));

@@ -12,12 +12,16 @@
     "@amplitude/analytics-browser": "^2.11.10",
     "@amplitude/unified": "^1.0.0-beta.9",
     "@tailwindcss/typography": "^0.5.15",
+    "d3-format": "^3.1.2",
+    "d3-interpolate": "^3.0.1",
+    "d3-scale": "^4.0.2",
     "next": "^16.1.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-dropzone": "^14.3.5",
     "react-hot-toast": "^2.6.0",
-    "react-router-dom": "^7.1.0"
+    "react-router-dom": "^7.1.0",
+    "topojson-client": "^3.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

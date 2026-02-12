@@ -1,10 +1,11 @@
 "use client";
 import { trackEvent } from "@/app/libs/amplitude";
+import { siteConfig } from "@/site-config";
 
 export default function Navbar() {
 
   return (
-    <div className="navbar bg-base-100 px-2 sm:px-4 sticky top-0 z-50 border-b border-base-200">
+    <div className="navbar bg-base-100 px-2 sm:px-4 lg:sticky top-0 z-50 border-b border-base-200">
       {/* Navbar Start */}
       <div className="navbar-start">
         {/* Hamburger menu for mobile */}
@@ -26,39 +27,44 @@ export default function Navbar() {
             </svg>
           </div>
           <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56"
-          >
+  tabIndex={0}
+  className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56 z-[999]"
+>
             <li>
               <a href="/estimate"
+               onClick={() =>
+              trackEvent("Go to Estimate", { location: "navbar cta" })
+            }
                className="hover:bg-transparent focus:bg-transparent active:bg-transparent">
               Estimate Body Fat
               </a>
             </li>
              <li>
              <a
-            href="/examples"
+            href="/tools"
             onClick={() =>
-              trackEvent("Go to Examples", { location: "navbar cta" })
+              trackEvent("Go to Tools Page", { location: "navbar cta" })
             }
             className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
           >
-            <span className="">Examples</span>
+            <span className="">Tools</span>
           </a>
           </li>
           <li>
-            <a
-            href="/pricing"
+             <a
+            href="/guides"
             onClick={() =>
-              trackEvent("Go to Pricing", { location: "navbar cta" })
+              trackEvent("Go to Guides Page", { location: "navbar cta" })
             }
             className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
           >
-            <span className="">Pricing</span>
+            <span className="">Guides</span>
           </a>
           </li>
+
           </ul>
         </div>
+        
 
         {/* Logo */}
         <a
@@ -66,11 +72,11 @@ export default function Navbar() {
           href="/"
         >
           <img
-            src="/favicon.ico"
-            alt="Roast Generator Logo"
+            src= {siteConfig.site.logo}
+            alt="Body Fat Estimator Logo"
             className="w-6 h-6"
           />
-          Body Fat Estimator
+            {siteConfig.site.name}
         </a>
 
         {/* Desktop Menu with Spacing */}
@@ -81,40 +87,42 @@ export default function Navbar() {
               Estimate Body Fat
             </a>
           </li>
-          <li>
+            <li>
              <a
-            href="/examples"
+            href="/tools"
             onClick={() =>
-              trackEvent("Go to Examples", { location: "navbar cta" })
+              trackEvent("Go to Tools Page", { location: "navbar cta" })
             }
-            className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent"
+            className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
           >
-            <span className="">Examples</span>
+            <span className="">Tools</span>
           </a>
           </li>
           <li>
              <a
-            href="/pricing"
+            href="/guides"
             onClick={() =>
-              trackEvent("Go to Pricing", { location: "navbar cta" })
+              trackEvent("Go to Guides Page", { location: "navbar cta" })
             }
-            className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent"
+            className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
           >
-            <span className="">Pricing</span>
+            <span className="">Guides</span>
           </a>
           </li>
+
         </ul>
         
       </div>
   
 
-      {/* Navbar End */}
-      {/* Optional: Uncomment this for a Login button */}
-      {/**
+      {/* Navbar End 
+
+
       <div className="navbar-end pr-4 hidden lg:flex">
-        <a className="btn text-lg ml-auto font-normal" href="/login">Login</a>
+        <a className="btn text-base ml-auto font-normal" href="/subscribe">Subscribe</a>
       </div>
       */}
+
     </div>
   );
 }

@@ -1,134 +1,124 @@
+import { siteConfig } from "@/site-config";
+
 export default function Footer() {
   return (
     <footer className="bg-[#18181b] text-white">
       <div className="mx-auto max-w-7xl px-6 py-12">
         {/* Brand block */}
+        
         <div className="max-w-2xl">
+    <a href="/">      
           <div className="flex items-center gap-2">
             <img
-              src="/favicon.ico"
+              src={siteConfig.site.logo}
               alt="Body Fat Estimator Logo"
-              className="w-7 h-7"
+              className="w-8 h-8"
             />
             <span className="text-lg font-semibold">
-              Body Fat Estimator
+              {siteConfig.site.name}
             </span>
           </div>
-
+ </a>
           <p className="mt-3 text-base text-gray-300 leading-relaxed">
-            Estimate your body fat % from a photo with AI.
+            {siteConfig.site.tagline}
           </p>
 
-       {/* Social proof */}
-<div className="mt-4 flex items-center gap-4 text-sm text-gray-300">
-  {/* Avatars */}
-  <div className="flex -space-x-3">
-    <img
-      className="w-9 h-9 rounded-full ring-2 ring-[#18181b] object-cover"
-      src="/examples/bfe-example3.png"
-      alt="User avatar"
-    />
-    <img
-      className="w-9 h-9 rounded-full ring-2 ring-[#18181b] object-cover"
-      src="/examples/bfe-example2.png"
-      alt="User avatar"
-    />
-    <img
-      className="w-9 h-9 rounded-full ring-2 ring-[#18181b] object-cover"
-      src="/examples/bfe-example4.png"
-      alt="User avatar"
-    />
-  </div>
-
-  {/* Stars + text stacked */}
-  <div className="flex flex-col leading-tight">
-    <div className="flex items-center text-yellow-400 text-xs">
-      <span>⭐️</span>
-      <span>⭐️</span>
-      <span>⭐️</span>
-      <span>⭐️</span>
-      <span>⭐️</span>
-    </div>
-
-    <span>
-      Trusted by{" "}
-      <span className="font-semibold text-white">12,500+</span>{" "}
-      users
-    </span>
-  </div>
-</div>
-
-
         </div>
+       
 
         <div className="my-8 h-px bg-white/10" />
-
-        {/* Links section */}
-        <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
-          <div>
+<div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
+        <div>
             <h6 className="text-lg font-semibold text-gray-200">
-              Links
+              Site
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/about">About</a></li>
-                <li><a className="hover:text-white" href="/examples">Body Fat Examples</a></li>
-              <li><a className="hover:text-white" href="/pricing">Pricing</a></li>
-              <li><a className="hover:text-white" href="/best-ai-body-fat-estimator">Compare Estimators</a></li>
-                <li><a className="hover:text-white" href="/guides">Guides</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h6 className="text-lg font-semibold text-gray-200">
-              Support
-            </h6>
-            <ul className="mt-3 space-y-2 text-base text-gray-300">
-              <li><a className="hover:text-white" href="/#faqs">FAQs</a></li>
+              <li><a className="hover:text-white" href="/estimate">Body Fat Estimate</a></li>
+              <li><a className="hover:text-white" href="/examples">See Examples</a></li>
+              <li><a className="hover:text-white" href="/guides">Guides</a></li>
+              <li><a className="hover:text-white" href="/tools">Tools</a></li>
               <li><a className="hover:text-white" href="/contact">Contact</a></li>
-              <li><a className="hover:text-white" href="/refund">Refunds</a></li>
-             
-              
+            </ul>
+          </div>
+          
+
+          <div>
+            <h6 className="text-lg font-semibold text-gray-200">
+              Body Fat
+            </h6>
+            <ul className="mt-3 space-y-2 text-base text-gray-300">
+              <li><a className="hover:text-white" href="/body-visualizer">Body Fat Visualizer</a></li>
+              <li><a className="hover:text-white" href="/body-fat-calculator">Body Fat Calculator</a></li>
+              <li><a className="hover:text-white" href="/army-body-fat-calculator">Army Body Fat Calculator</a></li>
             </ul>
           </div>
 
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
-              Body Fat Tools
+              Body Composition
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
-              <li><a className="hover:text-white" href="/estimate">Estimate Body Fat</a></li>
-              <li><a className="hover:text-white" href="/body-fat-visualizer">Body Fat Visualizer</a></li>
+              <li><a className="hover:text-white" href="/ffmi-calculator">FFMI Calculator</a></li>
+            </ul>
+          </div>
+
+          {/*
+          <div>
+            <h6 className="text-lg font-semibold text-gray-200">
+              Tools
+            </h6>
+            <ul className="mt-3 space-y-2 text-base text-gray-300">
+              <li><a className="hover:text-white" href="/estimate">Body Fat Estimator</a></li>
+              <li><a className="hover:text-white" href="/body-fat-map">Body Fat Map</a></li>
+              <li><a className="hover:text-white" href="/body-fat-map">Body Fat Map</a></li>
+              <li><a className="hover:text-white" href="/rfm-calculator">RFM Calculator</a></li>
+              <li><a className="hover:text-white" href="/bri-calculator">BRI Calculator</a></li>
+              <li><a className="hover:text-white" href="/bai-calculator">BAI Calculator</a></li>
+              <li><a className="hover:text-white" href="/muscle-mass-calculator">Muscle Mass Calculator</a></li>
+              <li><a className="hover:text-white" href="/ponderal-index-calculator">Ponderal Index Calculator</a></li>
+              <li><a className="hover:text-white" href="/lean-body-mass-calculator">Lean Body Mass Calculator</a></li>
+              <li><a className="hover:text-white" href="/body-recomposition-calculator">Body Recomposition Calculator</a></li>
               <li><a className="hover:text-white" href="/body-shape-analyzer">Body Shape Analyzer</a></li>
+              <li><a className="hover:text-white" href="/visceral-fat-calculator">Visceral Fat Calculator</a></li>
             </ul>
           </div>
+          */}
 
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
-              Legal
+              Guides
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
-              <li><a className="hover:text-white" href="/terms">Terms & Conditions</a></li>
-              <li><a className="hover:text-white" href="/privacy">Privacy Policy</a></li>
-              <li><a className="hover:text-white" href="/cookies">Cookie Policy</a></li>
-              <li><a className="hover:text-white" href="/security">Security Policy</a></li>
-              <li><a className="hover:text-white" href="/subprocessors">Sub-Processors</a></li>
+              
+              <li><a className="hover:text-white" href="/guides/bmi-vs-body-fat">BMI vs Body Fat</a></li>
+              <li><a className="hover:text-white" href="/guides/estimate-body-fat-percentage-from-photo">Estimate Body Fat from a Photo</a></li>
+              <li><a className="hover:text-white" href="/guides/best-way-to-measure-body-fat-at-home">Measure Body Fat at Home</a></li>
+              <li><a className="hover:text-white" href="/guides/best-body-fat-estimator">Best Body Fat Estimator</a></li>
+              <li><a className="hover:text-white" href="/guides/why-body-fat-looks-different">Why Body Fat Looks Different</a></li>
             </ul>
           </div>
+
         </div>
 
         {/* Divider */}
         <div className="my-8 h-px bg-white/10" />
 
-        {/* Bottom row */}
+        {/* Bottom row  */}
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <span className="text-xs text-gray-400">
              © {new Date().getFullYear()} — All Rights Reserved.
           </span>
 
-          <span className="text-[11px] text-gray-500 max-w-2xl leading-relaxed">
-            This site provides a visual AI-based body fat estimate from photos.
-            Results may vary based on lighting, pose, and image quality.
+          <span className="text-xs text-gray-400 max-w-2xl leading-relaxed">
+            <a href="/terms" className="hover:underline">Terms</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/privacy" className="hover:underline">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/cookies" className="hover:underline">Cookie</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/security" className="hover:underline">Security</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="/subprocessors" className="hover:underline">Subprocessors</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a className="hover:text-white" href="/sitemap-html">Sitemap</a>
           </span>
+          
         </div>
       </div>
     </footer>

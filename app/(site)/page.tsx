@@ -1,13 +1,16 @@
 import { Metadata } from "next";
-import Examples from "../components/HomePage/Examples";
-import FAQ from "../components/FAQ";
-import Comparison from "../components/HomePage/Comparison";
-import HeroWithUpload from "../components/HomePage/HeroWithUpload";
-import ToolExplainer from "../components/HomePage/ToolExplainer";
-import SecondaryUploadCTA from "../components/HomePage/SecondaryUploadCTA";
+import Examples from "../components/home/examples";
+import FAQ from "../components/home/faq";
+import Comparison from "../components/home/comparison";
+import ToolExplainer from "../components/home/tool-explainer";
+import Hero from "../components/home/hero";
+import Reviews from "../components/home/reviews";
+import ToolCardLinkGrid from "../components/home/tool-card-links";
+import SEOExplainer from "../components/home/seo-explainer";
+import GuideCards from "../components/home/guide-cards";
 
-const title = "Body Fat Estimator – What Body Fat % Are You?";
-const description = "Upload a photo and let our AI calculate your body fat percentage. Get a quick and accurate body fat percentage estimation to track your progress.";
+const title = "Body Fat Estimator – Estimate Body Fat % from a Photo";
+const description = "Upload a photo to estimate your body fat percentage visually. A simple, repeatable way to track body fat changes over time.";
 
 export const metadata: Metadata = {
   title: title,
@@ -17,12 +20,15 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
    <>
-      <HeroWithUpload />
-       <Examples />
+      <Hero />
+      <Examples />
       <Comparison />
       <ToolExplainer />
+      <ToolCardLinkGrid columns={3} />
+      <SEOExplainer />
+      <Reviews />
       <FAQ />
-      <SecondaryUploadCTA />
+      <GuideCards />
    </>
   );
 }

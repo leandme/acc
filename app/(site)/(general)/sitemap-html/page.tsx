@@ -1,0 +1,163 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import H1 from "@/app/components/common/h1";
+import { POSTS } from "../../guides/posts";
+
+export const metadata: Metadata = {
+  title: "Sitemap",
+  description:
+    "Browse all pages on BodyFatEstimator.ai — tools, guides, and key resources.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+type SiteLink = {
+  href: string;
+  label: string;
+  description?: string;
+};
+
+function LinkList({ items }: { items: SiteLink[] }) {
+  return (
+    <ul className="mt-4 space-y-2">
+      {items.map((item) => (
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            className="text-primary text-lg underline hover:opacity-80"
+          >
+            {item.label}
+          </Link>
+          {item.description ? (
+            <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+              {item.description}
+            </p>
+          ) : null}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function SectionCard({
+  title,
+  subtitle,
+  items,
+}: {
+  title: string;
+  subtitle?: string;
+  items: SiteLink[];
+}) {
+  return (
+    <section className="rounded-2xl border bg-white p-6">
+      <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
+      {subtitle ? (
+        <p className="mt-2 text-lg text-gray-700 leading-relaxed">{subtitle}</p>
+      ) : null}
+      <LinkList items={items} />
+    </section>
+  );
+}
+
+export default function SitemapPage() {
+
+ // --- Tools ---
+  const tools: SiteLink[] = [
+    { href: "/estimate", label: "Estimate Body Fat" },
+    { href: "/body-visualizer", label: "Body Visualizer" },
+    { href: "/ffmi-calculator", label: "FFMI Calculator" },
+    { href: "/army-body-fat-calculator", label: "Army Body Fat Calculator" },
+    { href: "/body-fat-calculator", label: "Body Fat Calculator" },
+  ];
+
+  // --- Guides ---
+    const guides: SiteLink[] = [
+    {
+      href: "/guides",
+      label: "All Guides",
+    },
+
+    ...POSTS
+      // optional: keep ordering stable (newest first if your date is sortable)
+      // .slice().reverse()
+
+      .map((p) => {
+        const raw = p.slug.startsWith("/") ? p.slug : `/${p.slug}`;
+
+        const href = raw.startsWith("/guides/")
+          ? raw
+          : raw.startsWith("/best-way") 
+            ? `/guides${raw}`       
+            : `/guides${raw}`;        
+
+        return {
+          href,
+          label: p.title,
+        };
+      }),
+  ];
+
+
+  // --- Company / general ---
+  const company: SiteLink[] = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/examples", label: "Examples" },
+    { href: "/tools", label: "Tools" },
+    { href: "/guides", label: "Guides" },
+    { href: "/contact", label: "Contact" },
+    { href: "/sitemap-html", label: "Sitemap" },
+  ];
+
+  // --- Legal ---
+  const legal: SiteLink[] = [
+    { href: "/terms", label: "Terms & Conditions" },
+    { href: "/privacy", label: "Privacy Policy" },
+    { href: "/cookies", label: "Cookie Policy" },
+    { href: "/security", label: "Security Policy" },
+    { href: "/subprocessors", label: "Sub-Processors" },
+  ];
+
+  return (
+    <main className="bg-base-100 pt-10">
+      <section className="mx-auto max-w-5xl px-6">
+        <H1>Sitemap</H1>
+
+        <p className="mt-6 text-center text-lg text-gray-700 max-w-3xl mx-auto">
+          A complete index of tools, guides, and important pages on
+          BodyFatEstimator.ai.
+        </p>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-6 pb-20 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <SectionCard
+            title="Company"
+            subtitle="Site information and getting in touch."
+            items={company}
+          />
+          
+          <SectionCard
+            title="Tools"
+            subtitle="Interactive tools and key pages."
+            items={tools}
+          />
+
+          <SectionCard
+            title="Guides"
+            subtitle="Deep dives on body fat estimation, accuracy, and tracking."
+            items={guides}
+          />
+
+          <SectionCard
+            title="Legal"
+            subtitle="Policies and terms."
+            items={legal}
+          />
+        </div>
+      </section>
+    </main>
+  );
+}

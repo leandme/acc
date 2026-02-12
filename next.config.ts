@@ -4,9 +4,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/upload",
-        destination: "/estimate",
-        permanent: true, // 308 permanent redirect (SEO-safe)
+        source: "/body-fat-visualizer",
+        destination: "/body-visualizer",
+        permanent: true, // 301 redirect
       },
     ];
   },
