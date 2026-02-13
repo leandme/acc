@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         destination: "/body-visualizer",
         permanent: true, // 301 redirect
       },
+      {
+        source: "/best-ai-body-fat-estimator",
+        destination: "/guides/best-body-fat-estimator",
+        permanent: true, // 301 redirect
+      },
     ];
   },
 };

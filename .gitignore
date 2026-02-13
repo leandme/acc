@@ -23,6 +23,8 @@
 # misc
 .DS_Store
 *.pem
+data/search-console/
+secrets/
 
 # debug
 npm-debug.log*

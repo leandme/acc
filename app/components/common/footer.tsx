@@ -60,6 +60,8 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/ffmi-calculator">FFMI Calculator</a></li>
+              <li><a className="hover:text-white" href="/rfm-calculator">RFM Calculator</a></li>
+              <li><a className="hover:text-white" href="/visceral-fat-calculator">Visceral Fat Calculator</a></li>
             </ul>
           </div>
 
