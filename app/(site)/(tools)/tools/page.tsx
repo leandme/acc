@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import H1 from "@/app/components/common/h1";
 import { TOOLS } from "../tools";
 import ToolsGridWithTabs from "@/app/components/tools/tools-grid-with-tabs";
@@ -22,7 +23,9 @@ export default function ToolsIndexPage() {
         <H1>Tools</H1>
       </section>
 
-      <ToolsGridWithTabs tools={allTools} />
+      <Suspense fallback={<section className="pt-4 mx-auto max-w-5xl px-6 pb-20" />}>
+        <ToolsGridWithTabs tools={allTools} />
+      </Suspense>
     </main>
   );
 }
