@@ -54,7 +54,9 @@ export default function BlogPostPage() {
 
           <p className="text-gray-700 text-lg leading-relaxed">
             Most body fat calculators do not measure body fat. They estimate it
-            indirectly using population-based formulas.
+            indirectly using population-based formulas. If you want the full
+            method comparison, start with{" "}
+            <a className="text-primary underline" href="/guides/body-fat-calculator-vs-estimator">Body Fat Calculator vs Body Fat Estimator</a>.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -188,7 +190,9 @@ export default function BlogPostPage() {
 
           <p className="text-gray-700 text-lg leading-relaxed">
             Visual estimation combined with consistency and trend tracking
-            often aligns better with real-world progress.
+            often aligns better with real-world progress. You can test this flow
+            with the{" "}
+            <a className="text-primary underline" href="/estimate">Body Fat Estimator</a>.
           </p>
         </div>
 

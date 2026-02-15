@@ -78,7 +78,8 @@ export default function BlogPostPage() {
 
           <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
             <li>
-              <strong>Body fat calculators (Navy, BMI-based):</strong> Free
+              <strong>Body fat calculators (Navy, BMI-based):</strong> Free (try the{" "}
+              <a className="text-primary underline" href="/body-fat-calculator">Body Fat Calculator</a>)
             </li>
             <li>
               <strong>Smart scales (BIA):</strong> $20–$150 one-time
@@ -87,7 +88,8 @@ export default function BlogPostPage() {
               <strong>Skinfold calipers:</strong> $5–$25
             </li>
             <li>
-              <strong>Photo-based estimation tools:</strong> Free to ~$10 per estimate
+              <strong>Photo-based estimation tools:</strong> Free to ~$10 per estimate (see{" "}
+              <a className="text-primary underline" href="/estimate">Body Fat Estimator</a>)
             </li>
           </ul>
 
@@ -191,6 +193,8 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             In practice, affordable methods used consistently tend to deliver
             better insight — especially when paired with visual context.
+            If you want a practical stack by use-case, read{" "}
+            <a className="text-primary underline" href="/guides/best-way-to-measure-body-fat-at-home">The 3 Best Ways to Measure Your Body Fat % at Home</a>.
           </p>
         </div>
 <MoreArticles

@@ -99,7 +99,7 @@ export default function BlogPostPage() {
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            <a className="text-primary underline">AI photo-based body fat estimation</a> analyzes visual cues in photos —
+            <a className="text-primary underline" href="/estimate">AI photo-based body fat estimation</a> analyzes visual cues in photos —
             proportions, silhouette, and fat distribution — to estimate body fat
             directionally.
           </p>
@@ -125,7 +125,9 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             The Navy Method estimates body fat using tape measurements of the
             waist, neck, and sometimes hips. It’s popular because it’s simple and
-            requires no equipment beyond a tape measure.
+            requires no equipment beyond a tape measure. You can run the method
+            directly in our{" "}
+            <a className="text-primary underline" href="/body-fat-calculator">Body Fat Calculator</a>.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -154,7 +156,8 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             While DEXA is precise, it’s expensive, time-consuming, and impractical
             for frequent tracking. Results can also vary slightly between
-            machines and facilities.
+            machines and facilities. For a full price breakdown, see{" "}
+            <a className="text-primary underline" href="/guides/how-much-does-it-cost-to-measure-body-fat">How Much Does It Cost to Measure Body Fat?</a>.
           </p>
 
           <p className="text-gray-500 text-lg leading-relaxed">

@@ -252,6 +252,12 @@ export default function BodyFatVisualizerTool() {
                 Most people underestimate body fat in photos. Lighting and camera distance can
                 change how lean someone looks more than you’d expect.
               </p>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Related guides:{" "}
+                <a className="text-primary underline" href="/guides/what-does-body-fat-percentage-look-like">What Does Body Fat Percentage Look Like?</a>
+                {" "}and{" "}
+                <a className="text-primary underline" href="/guides/why-body-fat-looks-different">Why Two People at the Same Body Fat Percentage Look Different</a>.
+              </p>
             </div>
 
             <div className="mt-6">

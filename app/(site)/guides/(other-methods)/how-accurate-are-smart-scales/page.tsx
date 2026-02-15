@@ -151,7 +151,8 @@ export default function BlogPostPage() {
 
           <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
             <li><strong>DEXA scans:</strong> more accurate, but expensive and infrequent</li>
-            <li><strong>Tape or Navy method:</strong> formula-based, assumption-heavy</li>
+            <li><strong>Tape or Navy method:</strong> formula-based, assumption-heavy (compare with the{" "}
+              <a className="text-primary underline" href="/body-fat-calculator">Body Fat Calculator</a>)</li>
             <li><strong>Photo-based estimation:</strong> aligns better with appearance</li>
             <li><strong>Smart scales:</strong> easy, but noisy</li>
           </ul>
@@ -172,7 +173,8 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             If your goal is understanding how your body actually looks and changes,
             combining visual context with consistent tracking usually beats relying on
-            a single device.
+            a single device. If your estimates disagree, this guide explains why:{" "}
+            <a className="text-primary underline" href="/guides/why-body-fat-estimators-give-different-results">Why Body Fat Estimators Give Different Results</a>.
           </p>
         </div>
 

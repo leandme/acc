@@ -91,6 +91,9 @@ export default function BlogPostPage() {
 
           <p className="text-gray-700 text-lg leading-relaxed">
             BMI is blind to the difference between a heavy squat and a heavy soda.
+            It also misses why people with similar percentages can look very
+            different, which is covered in{" "}
+            <a className="text-primary underline" href="/guides/why-body-fat-looks-different">Why Two People at the Same Body Fat Percentage Look Different</a>.
           </p>
         </div>
 
@@ -155,6 +158,10 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             If your goal is to look leaner, track fat loss, or understand body
             composition changes, BMI will quickly become noise.
+            If you also want to separate lean-mass progress from fat changes,
+            use the{" "}
+            <a className="text-primary underline" href="/ffmi-calculator">FFMI Calculator</a>{" "}
+            alongside body-fat tracking.
           </p>
         </div>
 

@@ -90,6 +90,12 @@ export default function VisceralFatCalculatorPageClient() {
             Use repeat measurements over time rather than one isolated score, and interpret alongside
             blood pressure, lipids, glucose, and clinician guidance.
           </p>
+          <p className={pClass}>
+            For method context, see{" "}
+            <a className="text-primary underline" href="/guides/body-fat-estimation-methods">Common Body Fat Estimation Methods Explained</a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/guides/why-body-fat-measurements-give-different-results">Why Body Fat Measurement Methods Give Different Results</a>.
+          </p>
         </div>
 
         <div className={sectionWrap}>

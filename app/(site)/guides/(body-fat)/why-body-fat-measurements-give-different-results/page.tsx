@@ -193,18 +193,18 @@ export default function BlogPostPage() {
             interpret in context — not the one with the most decimal places.
           </p>
         </div>
-<MoreArticles
+        <MoreArticles
             basePath="/guides"
             articles={[
                 {
-                slug: "why-body-fat-measurements-give-different-results",
-                title: "Why Body Fat Measurement Methods Give Different Results",
+                slug: "how-much-does-it-cost-to-measure-body-fat",
+                title: "How Much Does It Cost to Measure Body Fat? (Home vs Lab)",
                 tag: "body-analysis",
                 description:
-                "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
-                date: "Jan 13, 2026",
+                "Compare the cost of measuring body fat at home vs lab methods like DEXA. Learn price ranges, accuracy tradeoffs, and which option makes sense for tracking progress.",
+                date: "Jan 1, 2026",
                 readTime: "7 min read",
-                image: "/guides/why-body-fat-measurements-give-different-results.png",
+                image: "/guides/body-fat-measurement-cost.png",
                 },
                 {
                 slug: "body-fat-estimation-methods",

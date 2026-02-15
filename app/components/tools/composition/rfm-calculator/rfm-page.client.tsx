@@ -87,6 +87,12 @@ export default function RFMCalculatorPageClient() {
           <p className={pClass}>
             For practical tracking, pair RFM with waist logs, progress photos, and performance markers.
           </p>
+          <p className={pClass}>
+            For deeper context, read{" "}
+            <a className="text-primary underline" href="/guides/why-body-fat-calculators-are-inaccurate">Why Body Fat Calculators Are Inaccurate</a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/guides/body-fat-calculator-vs-estimator">Body Fat Calculator vs Body Fat Estimator</a>.
+          </p>
         </div>
 
         <div className="w-full max-w-3xl mx-auto mt-10 lg:mt-20 mb-10">

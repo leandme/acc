@@ -77,6 +77,10 @@ export default function BlogPostPage() {
             The Navy Method estimates body fat using tape measurements of the
             waist, neck, and sometimes hips. These measurements are plugged into
             a formula derived from population averages.
+            You can test this with the{" "}
+            <a className="text-primary underline" href="/body-fat-calculator">Navy Body Fat Calculator</a>{" "}
+            or compare against the{" "}
+            <a className="text-primary underline" href="/army-body-fat-calculator">Army Body Fat Calculator</a>.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -127,6 +131,8 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             These scales are convenient and easy to use frequently, but results
             can fluctuate day to day due to non-fat factors.
+            For a deeper breakdown, read{" "}
+            <a className="text-primary underline" href="/guides/how-accurate-are-smart-scales">How Accurate Are Smart Scales?</a>.
           </p>
 
           <p className="text-gray-500 text-lg leading-relaxed">

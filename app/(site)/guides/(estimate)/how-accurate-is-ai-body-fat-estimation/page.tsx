@@ -116,7 +116,8 @@ export default function BlogPostPage() {
 
           <p className="text-gray-700 text-lg leading-relaxed">
             AI’s advantage is that it measures what people care about most:
-            visible change.
+            visible change. You can run a check directly with the{" "}
+            <a className="text-primary underline" href="/estimate">Body Fat Estimator</a>.
           </p>
         </div>
 
@@ -150,6 +151,11 @@ export default function BlogPostPage() {
             <li>Avoid loose or bulky clothing</li>
             <li>Track trends over weeks, not days</li>
           </ul>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Use this setup checklist from{" "}
+            <a className="text-primary underline" href="/guides/how-to-take-photos-for-body-fat-estimation">How to Take Photos for Body Fat Estimation</a>{" "}
+            to reduce noise between check-ins.
+          </p>
         </div>
 
         <MoreArticles
