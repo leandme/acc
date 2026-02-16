@@ -34,6 +34,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing image" }, { status: 400 });
   }
 
+  if (Number.isFinite(age as number) && (age as number) < 18) {
+    return NextResponse.json(
+      { error: "This service is available for adults aged 18 and over." },
+      { status: 400 }
+    );
+  }
+
   const system_prompt = `You are a careful body-composition assistant.
 Return ONLY valid JSON. No markdown. No extra text.`;
 

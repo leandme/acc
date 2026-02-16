@@ -130,19 +130,19 @@ export default function VisceralFatCalculatorPageClient() {
               </a>
             </li>
             <li>
-              Samouda H, et al. Anthropometry-based VAT equation with 130 cm2 threshold for visceral
-              obesity and cardiometabolic risk.
-              <a href="https://pubmed.ncbi.nlm.nih.gov/33276249/" className="text-primary underline ml-1">
+              Samouda H, et al. VAT equation with a 130 cm2 threshold for visceral obesity and
+              cardiometabolic risk.
+              <a href="https://pubmed.ncbi.nlm.nih.gov/33907272/" className="text-primary underline ml-1">
                 PubMed record
               </a>
             </li>
             <li>
-              Luxembourg Institute of Health overview of the visceral fat calculator.
+              Lewis CE, et al. Visceral adiposity and incident diabetes in adults.
               <a
-                href="https://www.lih.lu/en/visceral-fat-calculator/"
+                href="https://pubmed.ncbi.nlm.nih.gov/25440591/"
                 className="text-primary underline ml-1"
               >
-                LIH overview
+                PubMed record
               </a>
             </li>
           </ul>

@@ -9,11 +9,18 @@ import { MoreTools } from "../../template/more-tools";
 export default function OverweightPageClient() {
   const [bmi, setBmi] = useState<number | null>(null);
   const [overweightKg, setOverweightKg] = useState<number | null>(null);
+  const [healthyMaxWeightKg, setHealthyMaxWeightKg] = useState<number | null>(null);
 
   const sectionWrap =
     "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
   const pClass = "text-lg leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
+  const overweightPctAboveHealthy =
+    overweightKg != null &&
+    healthyMaxWeightKg != null &&
+    healthyMaxWeightKg > 0
+      ? (overweightKg / healthyMaxWeightKg) * 100
+      : null;
 
   return (
     <main className="bg-base-100">
@@ -27,9 +34,10 @@ export default function OverweightPageClient() {
         <div className="mt-8 w-full flex justify-center px-6">
           <div className="w-full max-w-5xl">
             <OverweightCalculator
-              onChange={({ bmi, overweightKg }) => {
+              onChange={({ bmi, overweightKg, healthyMaxWeightKg }) => {
                 setBmi(bmi);
                 setOverweightKg(overweightKg);
+                setHealthyMaxWeightKg(healthyMaxWeightKg);
               }}
             />
           </div>
@@ -51,13 +59,58 @@ export default function OverweightPageClient() {
               Current result: <strong>BMI {round(bmi, 1)}</strong>
               {overweightKg > 0 ? (
                 <>
-                  {" "}with <strong>{round(overweightKg, 1)} kg</strong> above the BMI 24.9 boundary.
+                  {" "}with <strong>{round(overweightKg, 1)} kg</strong> above the BMI 24.9 boundary
+                  {overweightPctAboveHealthy != null ? (
+                    <> (<strong>{round(overweightPctAboveHealthy, 1)}%</strong> above the upper healthy-weight limit).</>
+                  ) : (
+                    <>.</>
+                  )}
                 </>
               ) : (
                 <> and currently not above the BMI 24.9 boundary.</>
               )}
             </p>
           ) : null}
+        </div>
+
+        <div className={sectionWrap}>
+          <h2 className={h2Class}>How Overweight Is Calculated Here</h2>
+          <p className={pClass}>
+            This page is still BMI-based, but it frames results around a specific question:
+            <strong> how much weight is above the healthy BMI ceiling at your height?</strong>
+          </p>
+          <div className="rounded-2xl border bg-white p-6 text-sm sm:text-base text-gray-800 overflow-x-auto">
+            <p className="font-mono">BMI = weight (kg) / height (m)^2</p>
+            <p className="font-mono mt-2">Upper healthy weight = 24.9 x height (m)^2</p>
+            <p className="font-mono mt-2">Weight above healthy = max(0, current weight - upper healthy weight)</p>
+          </div>
+          <p className={pClass}>
+            That makes this tool useful when you want an actionable “amount above range” value rather than
+            only a category label.
+          </p>
+        </div>
+
+        <div className={sectionWrap}>
+          <h2 className={h2Class}>Why This Page Exists Alongside BMI Calculator</h2>
+          <p className={pClass}>
+            The{" "}
+            <a className="text-primary underline" href="/bmi-calculator">
+              BMI Calculator
+            </a>{" "}
+            is best for broad screening and category checks. This page is tuned for planning conversations
+            like “How far above the upper healthy range am I right now?”
+          </p>
+          <p className={pClass}>
+            If you are setting targets, pair this output with the{" "}
+            <a className="text-primary underline" href="/ideal-weight-calculator">
+              Ideal Weight Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/weight-loss-calculator">
+              Weight Loss Calculator
+            </a>
+            .
+          </p>
         </div>
 
         <div className={sectionWrap}>

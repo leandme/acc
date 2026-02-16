@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "What Does Body Fat Percentage Look Like? (Visual Guide + Examples)",
@@ -267,6 +268,8 @@ export default function BlogPostPage() {
             <li>Interpret your % as a range (e.g., 18–20%)</li>
           </ul>
         </div>
+<GuideStandardReferences />
+
 <MoreArticles
             basePath="/guides"
             articles={[

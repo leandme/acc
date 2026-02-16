@@ -19,6 +19,11 @@ export default function PrivacyPolicy() {
           website and services (the “Service”).
         </p>
 
+        <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
+          The Service is intended for adults 18 and over. We do not knowingly
+          collect personal data from children under 18.
+        </p>
+
         <div className="mt-12 space-y-10">
           {/* 1. What we collect */}
           <div className="rounded-2xl bg-white p-6">
@@ -122,11 +127,13 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-semibold">5. Cookies & Tracking</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We do not run third-party advertising on the Service. We aim to
-              use minimal cookies and similar technologies. Some cookies may be
-              strictly necessary for core site functionality and security. We
-              may also use limited analytics to understand usage and improve the
-              Service.
+              We use a minimal set of cookies and similar technologies for core
+              functionality, security, analytics, and service improvement. When
+              advertising is enabled, approved ad and measurement partners may
+              also use cookies or similar identifiers for ad delivery,
+              frequency capping, fraud prevention, and campaign measurement.
+              Where required by law, we request consent before setting
+              non-essential cookies.
             </p>
           </div>
 
@@ -218,7 +225,7 @@ export default function PrivacyPolicy() {
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 26/1/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 16/2/2026</p>
         </div>
       </section>
     </main>

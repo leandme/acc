@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "How Often Should You Measure Body Fat?",
@@ -140,6 +141,8 @@ export default function BlogPostPage() {
             Learn how to take consistent body fat photos →
           </a>
         </div>
+<GuideStandardReferences />
+
 <MoreArticles
             basePath="/guides"
             articles={[

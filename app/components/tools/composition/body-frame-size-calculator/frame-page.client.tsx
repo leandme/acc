@@ -164,24 +164,24 @@ export default function BodyFrameSizePageClient() {
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>
-              Omni body frame size overview:
-              <a className="text-primary underline ml-1" href="https://www.omnicalculator.com/health/body-frame-size">
-                Body Frame Size Calculator
+              Chumlea WC, et al. Frame size and body composition in middle-aged adults.
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/12036807/">
+                PubMed record
               </a>
             </li>
             <li>
-              Medindia frame-size ratio thresholds:
+              CDC guidance on adult BMI use and interpretation:
               <a
                 className="text-primary underline ml-1"
-                href="https://www.medindia.net/patients/calculators/framesize1.asp"
+                href="https://www.cdc.gov/bmi/about/index.html"
               >
-                Frame Size Calculator
+                About Adult BMI
               </a>
             </li>
             <li>
-              Related guide:
-              <a className="text-primary underline ml-1" href="/guides/why-body-fat-looks-different">
-                Why body fat looks different
+              WHO obesity and overweight clinical/public-health context:
+              <a className="text-primary underline ml-1" href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight">
+                WHO fact sheet
               </a>
             </li>
           </ul>

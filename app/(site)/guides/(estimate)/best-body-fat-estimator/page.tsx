@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "The Best Body Fat Estimator of 2026",
@@ -150,6 +151,8 @@ export default function BlogPostPage() {
             how to use results responsibly stand out as the most useful.
           </p>
         </div>
+<GuideStandardReferences />
+
 <MoreArticles
             basePath="/guides"
             articles={[

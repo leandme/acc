@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "How AI Body Fat Estimation Works",
@@ -176,6 +177,8 @@ export default function BlogPostPage() {
             <li>Track trends over weeks, not days</li>
           </ul>
         </div>
+<GuideStandardReferences />
+
 <MoreArticles
             basePath="/guides"
             articles={[

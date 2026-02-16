@@ -139,33 +139,24 @@ export default function BAIPageClient() {
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>
-              Omni Calculator BAI overview:
-              <a className="text-primary underline ml-1" href="https://www.omnicalculator.com/health/bai">
-                BAI Calculator
+              Bergman RN, et al. A better index of body adiposity (BAI).
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/21372804/">
+                PubMed record
               </a>
             </li>
             <li>
-              Good Calculators formula and range explainer:
-              <a className="text-primary underline ml-1" href="https://goodcalculators.com/bai-calculator/">
-                BAI Calculator
+              Freedman DS, et al. The body adiposity index and cardiovascular risk factors.
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/21862743/">
+                PubMed record
               </a>
             </li>
             <li>
-              MDApp BAI categories by sex and age:
+              Johnson W, et al. BAI, BMI, and body fat percentage in adults.
               <a
                 className="text-primary underline ml-1"
-                href="https://www.mdapp.co/body-adiposity-index-bai-calculator-618/"
+                href="https://pubmed.ncbi.nlm.nih.gov/28316187/"
               >
-                Body Adiposity Index calculator
-              </a>
-            </li>
-            <li>
-              Original BAI publication:
-              <a
-                className="text-primary underline ml-1"
-                href="https://pubmed.ncbi.nlm.nih.gov/21088288/"
-              >
-                Bergman et al. (Obesity, 2011)
+                PubMed record
               </a>
             </li>
           </ul>

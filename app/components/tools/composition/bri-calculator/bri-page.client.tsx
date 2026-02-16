@@ -138,21 +138,22 @@ export default function BRIPageClient() {
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>
-              Omni Calculator BRI method overview:
-              <a className="text-primary underline ml-1" href="https://www.omnicalculator.com/health/bri">
-                BRI Calculator
+              Thomas DM, et al. Relationships between body roundness with body fat and visceral
+              adipose tissue.
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/23519954/">
+                PubMed record
               </a>
             </li>
             <li>
-              BRI formula and range explainer:
-              <a className="text-primary underline ml-1" href="https://webfce.com/bri-calculator/">
-                WebFCE BRI Calculator
+              Krakauer NY, Krakauer JC. A new body shape index and risk association.
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/22815707/">
+                PubMed record
               </a>
             </li>
             <li>
-              Pennington Biomedical public BRI calculator:
-              <a className="text-primary underline ml-1" href="https://www.pbrc.edu/research-and-faculty/calculators/brc.aspx">
-                PBRC BRI Calculator
+              CDC guidance for adult BMI category interpretation:
+              <a className="text-primary underline ml-1" href="https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html">
+                CDC BMI Categories
               </a>
             </li>
           </ul>

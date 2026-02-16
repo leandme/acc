@@ -37,17 +37,34 @@ export function rangeMidpoint(range: Pick<RangeBucket, "min" | "max">, fallbackM
 }
 
 function buildGradient(ranges: RangeBucket[], min: number, max: number) {
-  const stops: string[] = [];
+  if (!ranges.length) {
+    return "linear-gradient(to right, #9ca3af 0%, #9ca3af 100%)";
+  }
 
-  ranges.forEach((range) => {
-    const start = clamp(((range.min - min) / (max - min)) * 100, 0, 100);
-    const endValue = Number.isFinite(range.max) ? range.max : max;
-    const end = clamp(((endValue - min) / (max - min)) * 100, 0, 100);
+  if (max <= min) {
+    return `linear-gradient(to right, ${ranges[0].color} 0%, ${ranges[0].color} 100%)`;
+  }
 
-    stops.push(`${range.color} ${start}%`, `${range.color} ${end}%`);
-  });
+  const blendWindowPct = 1.5;
+  const stops: string[] = [`${ranges[0].color} 0%`];
+  let lastPct = 0;
 
-  return `linear-gradient(to right, ${stops.join(",")})`;
+  for (let i = 0; i < ranges.length - 1; i += 1) {
+    const boundaryValue = Number.isFinite(ranges[i].max) ? ranges[i].max : max;
+    const boundaryPct = clamp(((boundaryValue - min) / (max - min)) * 100, 0, 100);
+
+    const left = clamp(boundaryPct - blendWindowPct, lastPct, 100);
+    const right = clamp(boundaryPct + blendWindowPct, left, 100);
+
+    stops.push(`${ranges[i].color} ${left}%`);
+    stops.push(`${ranges[i + 1].color} ${right}%`);
+
+    lastPct = right;
+  }
+
+  stops.push(`${ranges[ranges.length - 1].color} 100%`);
+
+  return `linear-gradient(to right, ${stops.join(", ")})`;
 }
 
 export function UnitToggle({
@@ -184,12 +201,6 @@ export function InterpretationBar({
             <div className="absolute inset-0" style={{ background: gradient }} />
 
             <div className="absolute inset-0 bg-white/15" />
-
-            <div className="absolute inset-0 flex pointer-events-none opacity-35">
-              {ranges.map((range) => (
-                <div key={range.key} className="flex-1 border-r border-white/60 last:border-r-0" />
-              ))}
-            </div>
           </div>
 
           <div

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "BMI vs Body Fat % – Which Is Important?",
@@ -189,6 +190,8 @@ export default function BlogPostPage() {
             .
           </p>
         </div>
+
+        <GuideStandardReferences />
 
         <MoreArticles
                     basePath="/guides"

@@ -142,27 +142,28 @@ export default function LeanBodyMassCalculatorPageClient() {
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>
-              Lean Body Mass calculator method overview:
+              Boer P. Estimated lean body mass as an index for normalization of body fluid volumes
+              in humans.
               <a
                 className="text-primary underline ml-1"
-                href="https://www.calculator.net/lean-body-mass-calculator.html"
+                href="https://pubmed.ncbi.nlm.nih.gov/6496691/"
               >
-                Calculator.net
+                PubMed record
               </a>
             </li>
             <li>
-              Lean body mass and healthy-range discussion:
-              <a className="text-primary underline ml-1" href="https://www.omnicalculator.com/health/lean-body-mass">
-                Omni Calculator
+              Janmahasatian S, et al. Quantification of lean bodyweight.
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/16176118/">
+                PubMed record
               </a>
             </li>
             <li>
-              Clinical explainer on lean body mass context:
+              Pai MP. Drug dosing based on weight and body size in obese adults.
               <a
                 className="text-primary underline ml-1"
-                href="https://acibademinternational.com/lean-body-mass-calculator/"
+                href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4841935/"
               >
-                Acibadem International
+                Free full text (PMC)
               </a>
             </li>
           </ul>

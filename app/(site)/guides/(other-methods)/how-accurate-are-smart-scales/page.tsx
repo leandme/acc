@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "How Accurate Are Smart Scales?",
@@ -226,6 +227,8 @@ export default function BlogPostPage() {
             <a className="text-primary underline" href="/guides/why-body-fat-estimators-give-different-results">Why Body Fat Estimators Give Different Results</a>.
           </p>
         </div>
+
+        <GuideStandardReferences />
 
         <MoreArticles
             basePath="/guides"

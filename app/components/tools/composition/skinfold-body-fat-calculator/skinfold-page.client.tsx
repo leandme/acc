@@ -227,28 +227,24 @@ export default function SkinfoldBodyFatPageClient() {
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>
-              Omni Calculator skinfold method overview:
-              <a className="text-primary underline ml-1" href="https://www.omnicalculator.com/health/skinfold-body-fat">
-                Skinfold Body Fat Calculator
+              Jackson AS, Pollock ML. Generalized equations for predicting body density of men.
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/718832/">
+                PubMed record
               </a>
             </li>
             <li>
-              TrainerMetrics Jackson-Pollock 3-site equations and site descriptions:
+              Jackson AS, Pollock ML, Ward A. Generalized equations for predicting body density of women.
               <a
                 className="text-primary underline ml-1"
-                href="https://www.trainermetrics.com/fitness-assessment-calculations/body-fat-3-site-skinfold-jackson-pollock/"
+                href="https://pubmed.ncbi.nlm.nih.gov/7402053/"
               >
-                TrainerMetrics reference
+                PubMed record
               </a>
             </li>
             <li>
-              Related context from this site:
-              <a className="text-primary underline ml-1" href="/guides/body-fat-estimation-methods">
-                Common Body Fat Estimation Methods Explained
-              </a>
-              {" | "}
-              <a className="text-primary underline" href="/guides/why-body-fat-measurements-give-different-results">
-                Why methods give different results
+              Ackland TR, et al. Current status of body composition assessment in sport and exercise.
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/22303996/">
+                PubMed record
               </a>
             </li>
           </ul>

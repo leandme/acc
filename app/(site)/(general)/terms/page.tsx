@@ -50,10 +50,9 @@ export default function TermsPage() {
             <h2 className="text-2xl font-semibold">3. Eligibility</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              You must be at least 13 years old to use the Service. If you are
-              under the age of majority in your jurisdiction, you may use the
-              Service only with the consent and supervision of a parent or legal
-              guardian.
+              You must be at least 18 years old to use the Service. The Service
+              is intended only for adults and must not be used for children or
+              minors.
             </p>
           </div>
 
@@ -70,6 +69,9 @@ export default function TermsPage() {
               <li>
                 You agree not to upload illegal content or content that is
                 abusive, harassing, hateful, or otherwise harmful.
+              </li>
+              <li>
+                You agree not to upload images of anyone under 18 years old.
               </li>
               <li>
                 You agree not to misuse the Service (for example: attempting to
@@ -184,7 +186,7 @@ export default function TermsPage() {
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 26/1/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 16/2/2026</p>
         </div>
       </section>
     </main>

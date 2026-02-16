@@ -67,7 +67,7 @@ export default function EstimateRefineInline({
     useRef<HTMLInputElement | null>(null),
   ];
 
-  const ageOptions = useMemo(() => rangeOptions(13, 90, 1), []);
+  const ageOptions = useMemo(() => rangeOptions(18, 90, 1), []);
   const heightOptions = useMemo(() => {
     // metric: 140–210 cm, imperial: 55–83 in
     return units === "metric" ? rangeOptions(140, 210, 1) : rangeOptions(55, 83, 1);

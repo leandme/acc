@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const dynamic = "force-dynamic";
 
@@ -975,6 +976,8 @@ How to Estimate Body Fat % from Home */}
     </p>
   </div>
 </section>
+<GuideStandardReferences />
+
 <MoreArticles
             basePath="/guides"
             articles={[

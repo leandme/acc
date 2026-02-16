@@ -353,25 +353,21 @@ function BodyShapePageContent() {
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>
-              Practical body shape overview and pattern examples:
-              <a className="text-primary underline ml-1" href="https://en.wikipedia.org/wiki/Female_body_shape">
-                Female body shape taxonomy
+              Li B, Mitchell K. A body shape classification scheme for women based on depth image analysis.
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/36126362/">
+                PubMed record
               </a>
             </li>
             <li>
-              WHO BMI context (for broader composition context):
+              Krakauer NY, Krakauer JC. A new body shape index and mortality risk.
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/22815707/">
+                PubMed record
+              </a>
+            </li>
+            <li>
+              WHO clinical/public-health context for adiposity risk:
               <a className="text-primary underline ml-1" href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight">
-                WHO overview
-              </a>
-            </li>
-            <li>
-              Related guides:
-              <a className="text-primary underline ml-1" href="/guides/why-body-fat-looks-different">
-                Why body fat looks different
-              </a>
-              {" | "}
-              <a className="text-primary underline" href="/guides/how-to-track-body-fat-changes">
-                Tracking body-fat changes
+                WHO fact sheet
               </a>
             </li>
           </ul>

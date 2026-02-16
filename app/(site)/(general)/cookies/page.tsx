@@ -50,11 +50,16 @@ export default function CookiesPage() {
                 to understand how the site is used and improve performance and
                 reliability.
               </li>
+              <li>
+                <strong>Advertising and measurement</strong> — when enabled, ad
+                partners may use cookies or similar identifiers for ad delivery,
+                frequency capping, fraud prevention, and campaign measurement.
+              </li>
             </ul>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We do <strong>not</strong> use cookies for third-party advertising,
-              retargeting, or cross-site tracking.
+              Where required by law, we request consent before setting
+              non-essential cookies, including advertising cookies.
             </p>
           </div>
 
@@ -65,14 +70,13 @@ export default function CookiesPage() {
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               Some cookies or similar technologies may be set by trusted
               third-party service providers that help us operate the Service,
-              such as analytics, security, or infrastructure providers.
+              such as analytics, security, infrastructure, and advertising
+              partners.
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               These providers process limited information on our behalf and only
-              for the purposes described in our Privacy Policy. We do not allow
-              third parties to place advertising or tracking cookies on the
-              Service.
+              for the purposes described in our Privacy Policy.
             </p>
           </div>
 
@@ -121,7 +125,7 @@ export default function CookiesPage() {
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 26/1/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 16/2/2026</p>
         </div>
       </section>
     </main>

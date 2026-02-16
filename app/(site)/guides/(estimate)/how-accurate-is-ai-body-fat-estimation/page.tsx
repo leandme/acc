@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "How Accurate isn AI Body Fat Estimation?",
@@ -157,6 +158,8 @@ export default function BlogPostPage() {
             to reduce noise between check-ins.
           </p>
         </div>
+
+        <GuideStandardReferences />
 
         <MoreArticles
                     basePath="/guides"

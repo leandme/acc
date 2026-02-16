@@ -143,11 +143,17 @@ export default function SubProcessorsPage() {
             </h2>
 
             <ul className="mt-4 list-disc pl-5 text-lg space-y-2 text-gray-700">
-              <li>No third-party advertising platforms are used.</li>
-              <li>No email marketing providers are used.</li>
               <li>
-                No tracking or advertising cookies are used beyond those strictly
-                necessary for basic site functionality.
+                Advertising and measurement vendors may be used for ad delivery,
+                fraud prevention, and campaign reporting.
+              </li>
+              <li>
+                Email providers may be used for product or service communication
+                if those features are enabled.
+              </li>
+              <li>
+                Analytics and advertising cookies or similar identifiers may be
+                used depending on your consent status and jurisdiction.
               </li>
             </ul>
           </div>
@@ -172,7 +178,7 @@ export default function SubProcessorsPage() {
 
         <div className="mt-10 pb-10 text-left">
           <p className="text-sm text-gray-400">
-            Last updated: January 2026
+            Last updated: February 2026
           </p>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "Why Body Fat Calculators Are Inaccurate",
@@ -195,6 +196,8 @@ export default function BlogPostPage() {
             <a className="text-primary underline" href="/estimate">Body Fat Estimator</a>.
           </p>
         </div>
+
+        <GuideStandardReferences />
 
         <MoreArticles
             basePath="/guides"

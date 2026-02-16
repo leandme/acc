@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "Why Body Fat Measurement Methods Give Different Results",
@@ -193,6 +194,8 @@ export default function BlogPostPage() {
             interpret in context — not the one with the most decimal places.
           </p>
         </div>
+        <GuideStandardReferences />
+
         <MoreArticles
             basePath="/guides"
             articles={[

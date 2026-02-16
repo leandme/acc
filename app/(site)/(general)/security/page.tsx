@@ -88,7 +88,8 @@ export default function SecurityPage() {
                 operation.
               </li>
               <li>
-                We do not run third-party advertising on the site.
+                When enabled, advertising and measurement providers are limited
+                to approved vendors under contractual controls.
               </li>
               <li>
                 We avoid non-essential tracking; analytics are used to understand
@@ -172,7 +173,7 @@ export default function SecurityPage() {
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 26/1/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 16/2/2026</p>
         </div>
       </section>
     </main>

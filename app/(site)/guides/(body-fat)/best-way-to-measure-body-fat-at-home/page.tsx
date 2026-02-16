@@ -2,6 +2,7 @@ import TableOfContents, { TocItem } from "@/app/components/common/table-of-conte
 import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
+import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
 
 export const metadata: Metadata = {
   title: "The 3 Best Ways to Measure Your Body Fat % at Home",
@@ -219,6 +220,8 @@ export default function BlogPostPage() {
             <strong>AI photo estimation wins because it’s repeatable and appearance-aligned</strong>.
           </p>
         </div>
+
+         <GuideStandardReferences />
 
          <MoreArticles
             basePath="/guides"
