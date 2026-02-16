@@ -14,9 +14,9 @@ export type LinkCardItem = {
 
 const DEFAULT_ITEMS: LinkCardItem[] = [
   {
-    title: "Body Fat Visualizer",
+    title: "Body Visualizer",
     href: "/body-visualizer",
-    description: "See what body fat % looks like.",
+    description: "Visualize BMI, body fat %, height, and weight.",
     eventName: "Go To Body Visualizer",
   },
   {

@@ -1,273 +1,690 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
+import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
+import type { Bone, Group, Mesh, MeshStandardMaterial, SkinnedMesh } from "three";
+import { Color } from "three";
 
 type Gender = "male" | "female";
+type Units = "imperial" | "metric";
 
-type VisualPoint = {
-  pct: number; // representative %
-  label: string; // range label
-  image: string; // path under /public
-  alt: string;
-  bullets: string[];
+type BodyFatBounds = {
+  min: number;
+  max: number;
 };
+
+type Category = {
+  label: string;
+  color: string;
+  note: string;
+};
+
+const HEIGHT_CM_MIN = 145;
+const HEIGHT_CM_MAX = 210;
+const WEIGHT_KG_MIN = 40;
+const WEIGHT_KG_MAX = 220;
+const BMI_MIN = 16;
+const BMI_MAX = 45;
+const MODEL_AGE = 30;
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
 }
 
-function nearestPoint(points: VisualPoint[], pct: number) {
-  let best = points[0];
-  let bestDist = Math.abs(points[0].pct - pct);
-  for (const p of points) {
-    const d = Math.abs(p.pct - pct);
-    if (d < bestDist) {
-      best = p;
-      bestDist = d;
-    }
-  }
-  return best;
+function round(n: number, decimals = 1) {
+  const m = Math.pow(10, decimals);
+  return Math.round(n * m) / m;
 }
 
-const MEN_POINTS: VisualPoint[] = [
-  {
-    pct: 8,
-    label: "Very Lean (7–9%)",
-    image: "/guides/body-fat-visualizer/men-8.jpg",
-    alt: "Male body fat visual reference around 8 percent",
-    bullets: ["Clear ab definition", "More vascularity", "Sharp waist taper"],
-  },
-  {
-    pct: 12,
-    label: "Lean (10–13%)",
-    image: "/guides/body-fat-visualizer/men-12.jpg",
-    alt: "Male body fat visual reference around 12 percent",
-    bullets: ["Abs often visible in good light", "Some softness when relaxed", "Shoulders/arms defined"],
-  },
-  {
-    pct: 16,
-    label: "Fit (14–17%)",
-    image: "/guides/body-fat-visualizer/men-16.jpg",
-    alt: "Male body fat visual reference around 16 percent",
-    bullets: ["Athletic look", "Less ab separation", "Some lower-ab softness"],
-  },
-  {
-    pct: 20,
-    label: "Average (18–22%)",
-    image: "/guides/body-fat-visualizer/men-20.jpg",
-    alt: "Male body fat visual reference around 20 percent",
-    bullets: ["Limited ab definition", "Waist softer", "Muscle shape still present if trained"],
-  },
-  {
-    pct: 26,
-    label: "Above Average (23–26%)",
-    image: "/guides/body-fat-visualizer/men-26.jpg",
-    alt: "Male body fat visual reference around 26 percent",
-    bullets: ["More midsection rounding in photos", "Less shoulder/arm separation", "Face/neck softness may appear"],
-  },
-  {
-    pct: 32,
-    label: "High (27–33%)",
-    image: "/guides/body-fat-visualizer/men-32.jpg",
-    alt: "Male body fat visual reference around 32 percent",
-    bullets: ["Rounded abdomen is common", "Minimal definition", "Fat distribution varies a lot by person"],
-  },
-];
+function kgToLb(kg: number) {
+  return kg * 2.2046226218;
+}
 
-const WOMEN_POINTS: VisualPoint[] = [
-  {
-    pct: 18,
-    label: "Athletic (16–19%)",
-    image: "/guides/body-fat-visualizer/women-18.jpg",
-    alt: "Female body fat visual reference around 18 percent",
-    bullets: ["Lean waist", "Definition in arms/legs in good light", "Shape depends heavily on muscle mass"],
-  },
-  {
-    pct: 22,
-    label: "Fit (20–24%)",
-    image: "/guides/body-fat-visualizer/women-22.jpg",
-    alt: "Female body fat visual reference around 22 percent",
-    bullets: ["Tight waist with some softness", "Curves present", "Abs may show lightly when flexed"],
-  },
-  {
-    pct: 27,
-    label: "Average (25–29%)",
-    image: "/guides/body-fat-visualizer/women-27.jpg",
-    alt: "Female body fat visual reference around 27 percent",
-    bullets: ["Very common range", "Softer midsection", "Hips/thighs often store more fat"],
-  },
-  {
-    pct: 32,
-    label: "Above Average (30–34%)",
-    image: "/guides/body-fat-visualizer/women-32.jpg",
-    alt: "Female body fat visual reference around 32 percent",
-    bullets: ["More softness overall", "Waist less defined", "Shape changes a lot with posture/lighting"],
-  },
-  {
-    pct: 38,
-    label: "High (35–40%)",
-    image: "/guides/body-fat-visualizer/women-38.jpg",
-    alt: "Female body fat visual reference around 38 percent",
-    bullets: ["More visible softness across waist/hips/thighs", "Definition minimal", "Clothing fit changes noticeably"],
-  },
-  {
-    pct: 44,
-    label: "Very High (41%+)",
-    image: "/guides/body-fat-visualizer/women-44.jpg",
-    alt: "Female body fat visual reference around 44 percent",
-    bullets: ["Higher overall softness", "Distribution varies widely", "Progress shows well with consistency"],
-  },
-];
+function lbToKg(lb: number) {
+  return lb / 2.2046226218;
+}
 
-export default function BodyFatVisualizerTool() {
+function cmToIn(cm: number) {
+  return cm / 2.54;
+}
+
+function inToCm(inches: number) {
+  return inches * 2.54;
+}
+
+function bmiFrom(weightKg: number, heightCm: number) {
+  const hM = heightCm / 100;
+  if (hM <= 0) return 0;
+  return weightKg / (hM * hM);
+}
+
+function weightFromBmi(bmi: number, heightCm: number) {
+  const hM = heightCm / 100;
+  return bmi * hM * hM;
+}
+
+function bodyFatBounds(gender: Gender): BodyFatBounds {
+  if (gender === "male") return { min: 6, max: 45 };
+  return { min: 14, max: 55 };
+}
+
+// Deurenberg-style relation with age fixed for auto-sync behavior.
+function predictBodyFatFromBmi(bmi: number, gender: Gender) {
+  const sexFactor = gender === "male" ? 1 : 0;
+  return 1.2 * bmi + 0.23 * MODEL_AGE - 10.8 * sexFactor - 5.4;
+}
+
+function bmiFromPredictedBodyFat(bodyFatPct: number, gender: Gender) {
+  const sexFactor = gender === "male" ? 1 : 0;
+  return (bodyFatPct - 0.23 * MODEL_AGE + 10.8 * sexFactor + 5.4) / 1.2;
+}
+
+function bmiCategory(bmi: number): Category {
+  if (bmi < 18.5) {
+    return {
+      label: "Underweight",
+      color: "#3b82f6",
+      note: "Below the standard BMI range.",
+    };
+  }
+  if (bmi < 25) {
+    return {
+      label: "Normal",
+      color: "#22c55e",
+      note: "Within the standard BMI range.",
+    };
+  }
+  if (bmi < 30) {
+    return {
+      label: "Overweight",
+      color: "#f59e0b",
+      note: "Above standard BMI range.",
+    };
+  }
+  return {
+    label: "Obesity",
+    color: "#ef4444",
+    note: "High BMI range; track trends and context.",
+  };
+}
+
+function bodyFatCategory(gender: Gender, bodyFatPct: number): Category {
+  if (gender === "male") {
+    if (bodyFatPct < 6) {
+      return {
+        label: "Essential",
+        color: "#3b82f6",
+        note: "Extremely lean and hard to sustain.",
+      };
+    }
+    if (bodyFatPct < 14) {
+      return {
+        label: "Athletic",
+        color: "#22c55e",
+        note: "Lean with stronger visual definition.",
+      };
+    }
+    if (bodyFatPct < 18) {
+      return {
+        label: "Fit",
+        color: "#84cc16",
+        note: "Common target range for active adults.",
+      };
+    }
+    if (bodyFatPct < 25) {
+      return {
+        label: "Average",
+        color: "#f59e0b",
+        note: "Typical adult range.",
+      };
+    }
+    if (bodyFatPct < 32) {
+      return {
+        label: "High",
+        color: "#f97316",
+        note: "Higher body-fat range.",
+      };
+    }
+    return {
+      label: "Very High",
+      color: "#ef4444",
+      note: "Use gradual, sustainable changes.",
+    };
+  }
+
+  if (bodyFatPct < 14) {
+    return {
+      label: "Essential",
+      color: "#3b82f6",
+      note: "Very lean and hard to sustain long term.",
+    };
+  }
+  if (bodyFatPct < 21) {
+    return {
+      label: "Athletic",
+      color: "#22c55e",
+      note: "Lean, performance-oriented range.",
+    };
+  }
+  if (bodyFatPct < 28) {
+    return {
+      label: "Fit",
+      color: "#84cc16",
+      note: "Balanced range for many active adults.",
+    };
+  }
+  if (bodyFatPct < 35) {
+    return {
+      label: "Average",
+      color: "#f59e0b",
+      note: "Typical adult range.",
+    };
+  }
+  if (bodyFatPct < 42) {
+    return {
+      label: "High",
+      color: "#f97316",
+      note: "Higher range; evaluate trends.",
+    };
+  }
+  return {
+    label: "Very High",
+    color: "#ef4444",
+    note: "Prioritize consistency and realistic timelines.",
+  };
+}
+
+function SliderField(props: {
+  label: string;
+  valueLabel: string;
+  min: number;
+  max: number;
+  step?: number;
+  value: number;
+  onChange: (value: number) => void;
+}) {
+  const { label, valueLabel, min, max, step = 1, value, onChange } = props;
+
+  return (
+    <div className="mt-5">
+      <div className="flex items-center justify-between">
+        <p className="text-sm font-semibold text-gray-900">{label}</p>
+        <p className="text-sm font-semibold text-gray-700">{valueLabel}</p>
+      </div>
+
+      <input
+        type="range"
+        className="range range-primary mt-2"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+      />
+    </div>
+  );
+}
+
+function StatCard(props: { label: string; value: string; note?: string; valueColor?: string }) {
+  const { label, value, note, valueColor = "#111827" } = props;
+
+  return (
+    <div className="rounded-2xl bg-base-200/60 p-4">
+      <p className="text-sm text-gray-600">{label}</p>
+      <p className="mt-1 text-2xl font-bold" style={{ color: valueColor }}>
+        {value}
+      </p>
+      {note ? <p className="mt-1 text-sm text-gray-600">{note}</p> : null}
+    </div>
+  );
+}
+
+function applyMaterialOverride(root: Group) {
+  root.traverse((obj) => {
+    if (!(obj as Mesh).isMesh) return;
+
+    const mesh = obj as Mesh;
+    const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+    const updated = mats.map((mat) => {
+      const source = mat as MeshStandardMaterial;
+      const clone = source.clone();
+      clone.color = new Color("#b8b8b8");
+      clone.roughness = 0.72;
+      clone.metalness = 0.04;
+      return clone;
+    });
+
+    mesh.material = Array.isArray(mesh.material) ? updated : updated[0];
+  });
+}
+
+function HumanModel(props: {
+  gender: Gender;
+  bmi: number;
+  bodyFatPct: number;
+  heightCm: number;
+}) {
+  const { gender, bmi, bodyFatPct, heightCm } = props;
+  const gltf = useGLTF("/models/body-visualizer/male_base_mesh.glb");
+
+  const modelRoot = useMemo(() => {
+    const cloned = clone(gltf.scene) as Group;
+    applyMaterialOverride(cloned);
+    return cloned;
+  }, [gltf.scene]);
+
+  const skinnedMesh = useMemo<SkinnedMesh | null>(() => {
+    let found: SkinnedMesh | null = null;
+    modelRoot.traverse((obj) => {
+      if (!found && (obj as { isSkinnedMesh?: boolean }).isSkinnedMesh) {
+        found = obj as SkinnedMesh;
+      }
+    });
+    return found;
+  }, [modelRoot]);
+
+  const bones = useMemo(() => {
+    const map = new Map<string, Bone>();
+    skinnedMesh?.skeleton?.bones.forEach((b) => map.set(b.name, b));
+    return map;
+  }, [skinnedMesh]);
+
+  const baseline = useMemo(() => {
+    const values: Record<string, { sx: number; sy: number; sz: number; px: number; py: number; pz: number }> = {};
+    bones.forEach((b, name) => {
+      values[name] = {
+        sx: b.scale.x,
+        sy: b.scale.y,
+        sz: b.scale.z,
+        px: b.position.x,
+        py: b.position.y,
+        pz: b.position.z,
+      };
+    });
+    return values;
+  }, [bones]);
+
+  useEffect(() => {
+    if (!skinnedMesh) return;
+
+    bones.forEach((b, name) => {
+      const base = baseline[name];
+      if (!base) return;
+      b.scale.set(base.sx, base.sy, base.sz);
+      b.position.set(base.px, base.py, base.pz);
+    });
+
+    const bfBounds = bodyFatBounds(gender);
+    const fatNorm = clamp((bodyFatPct - bfBounds.min) / (bfBounds.max - bfBounds.min), 0, 1);
+    const bmiNorm = clamp((bmi - BMI_MIN) / (BMI_MAX - BMI_MIN), 0, 1);
+    const heightNorm = clamp((heightCm - HEIGHT_CM_MIN) / (HEIGHT_CM_MAX - HEIGHT_CM_MIN), 0, 1);
+
+    const leanProxy = clamp((bmi * (1 - bodyFatPct / 100) - 15) / 12, 0, 1);
+
+    const shoulderBias = gender === "female" ? 0.92 : 1;
+    const hipBias = gender === "female" ? 1.12 : 1;
+
+    const scaleBone = (name: string, sx: number, sy: number, sz = sx) => {
+      const bone = bones.get(name);
+      const base = baseline[name];
+      if (!bone || !base) return;
+      bone.scale.set(base.sx * sx, base.sy * sy, base.sz * sz);
+    };
+
+    // Torso shaping.
+    const torsoWidth = 1 + 0.22 * fatNorm + 0.08 * leanProxy;
+    const torsoDepth = 1 + 0.36 * fatNorm + 0.03 * bmiNorm;
+
+    scaleBone("spine", torsoWidth * 0.98, 1 + 0.03 * heightNorm, torsoDepth * 0.95);
+    scaleBone("spine001", torsoWidth, 1 + 0.04 * heightNorm, torsoDepth);
+    scaleBone("spine002", torsoWidth * 1.04, 1 + 0.03 * heightNorm, torsoDepth * 1.08);
+    scaleBone("spine003", torsoWidth * 1.05, 1 + 0.02 * heightNorm, torsoDepth * 1.1);
+    scaleBone("spine004", (1 + 0.12 * leanProxy) * shoulderBias, 1 + 0.03 * heightNorm, 1 + 0.05 * leanProxy);
+    scaleBone("spine005", (1 + 0.1 * leanProxy) * shoulderBias, 1 + 0.02 * heightNorm, 1 + 0.04 * leanProxy);
+
+    // Shoulder and arms.
+    const upperArmBulk = 1 + 0.18 * leanProxy + 0.06 * fatNorm;
+    const forearmBulk = 1 + 0.12 * leanProxy + 0.03 * fatNorm;
+
+    scaleBone("shoulderL", 1 + 0.1 * leanProxy, 1, 1);
+    scaleBone("shoulderR", 1 + 0.1 * leanProxy, 1, 1);
+
+    scaleBone("upper_armL", upperArmBulk, 1 + 0.05 * leanProxy, upperArmBulk);
+    scaleBone("upper_armR", upperArmBulk, 1 + 0.05 * leanProxy, upperArmBulk);
+    scaleBone("forearmL", forearmBulk, 1 + 0.03 * leanProxy, forearmBulk);
+    scaleBone("forearmR", forearmBulk, 1 + 0.03 * leanProxy, forearmBulk);
+
+    // Pelvis and legs.
+    const pelvisScale = (1 + 0.11 * fatNorm) * hipBias;
+    scaleBone("pelvisL", pelvisScale, 1 + 0.03 * fatNorm, 1 + 0.14 * fatNorm);
+    scaleBone("pelvisR", pelvisScale, 1 + 0.03 * fatNorm, 1 + 0.14 * fatNorm);
+
+    const thighBulk = 1 + 0.22 * fatNorm + 0.12 * leanProxy;
+    const shinBulk = 1 + 0.12 * fatNorm + 0.08 * leanProxy;
+
+    scaleBone("thighL", thighBulk * hipBias, 1 + 0.05 * heightNorm, 1 + 0.24 * fatNorm);
+    scaleBone("thighR", thighBulk * hipBias, 1 + 0.05 * heightNorm, 1 + 0.24 * fatNorm);
+    scaleBone("shinL", shinBulk, 1 + 0.05 * heightNorm, 1 + 0.1 * fatNorm);
+    scaleBone("shinR", shinBulk, 1 + 0.05 * heightNorm, 1 + 0.1 * fatNorm);
+
+    // Overall height/size response.
+    const sceneScaleY = 0.92 + heightNorm * 0.24;
+    const sceneScaleX = 0.98 + 0.07 * bmiNorm;
+    const sceneScaleZ = 0.98 + 0.16 * fatNorm;
+    modelRoot.scale.set(sceneScaleX, sceneScaleY, sceneScaleZ);
+  }, [baseline, bmi, bodyFatPct, bones, gender, heightCm, modelRoot, skinnedMesh]);
+
+  return (
+    <primitive
+      object={modelRoot}
+      position={[0, 0, 0]}
+      rotation={[0, 0, 0]}
+    />
+  );
+}
+
+function BodyRender(props: {
+  gender: Gender;
+  bmi: number;
+  bodyFatPct: number;
+  heightCm: number;
+  bodyFatColor: string;
+}) {
+  const { gender, bmi, bodyFatPct, heightCm, bodyFatColor } = props;
+
+  return (
+    <div className="w-full h-full rounded-3xl border bg-[#e8e8e8] overflow-hidden" style={{ borderColor: bodyFatColor }}>
+      <Canvas camera={{ position: [0, -0.02, 5.4], fov: 24 }} dpr={[1, 2]}>
+        <color attach="background" args={["#e8e8e8"]} />
+
+        <hemisphereLight intensity={0.52} groundColor="#c0c0c0" />
+        <directionalLight position={[3.4, 3.8, 2.4]} intensity={1.2} castShadow />
+        <directionalLight position={[-2.6, 1.8, -1.6]} intensity={0.42} />
+        <directionalLight position={[0.4, -1.8, 2.5]} intensity={0.24} />
+
+        <Suspense fallback={null}>
+          <group position={[-0.025, 0.025, 0]}>
+            <HumanModel gender={gender} bmi={bmi} bodyFatPct={bodyFatPct} heightCm={heightCm} />
+          </group>
+        </Suspense>
+      </Canvas>
+    </div>
+  );
+}
+
+export default function BodyVisualizerTool() {
+  const [units, setUnits] = useState<Units>("imperial");
   const [gender, setGender] = useState<Gender>("male");
 
-  // Slider range per gender (keeps UX tidy)
-  const sliderMin = gender === "male" ? 6 : 14;
-  const sliderMax = gender === "male" ? 40 : 50;
+  const [heightCm, setHeightCm] = useState<number>(178);
+  const [weightKg, setWeightKg] = useState<number>(78);
+  const [bodyFatPct, setBodyFatPct] = useState<number>(18);
 
-  const [pct, setPct] = useState<number>(gender === "male" ? 16 : 27);
+  const bmi = useMemo(() => bmiFrom(weightKg, heightCm), [weightKg, heightCm]);
 
-  // When gender changes, nudge pct into the new slider bounds
-  React.useEffect(() => {
-    setPct((prev) => clamp(prev, sliderMin, sliderMax));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gender]);
+  const fatMassKg = useMemo(() => weightKg * (bodyFatPct / 100), [weightKg, bodyFatPct]);
+  const leanMassKg = useMemo(() => weightKg - fatMassKg, [weightKg, fatMassKg]);
 
-  const points = useMemo(() => (gender === "male" ? MEN_POINTS : WOMEN_POINTS), [gender]);
-  const active = useMemo(() => nearestPoint(points, pct), [points, pct]);
+  const ffmi = useMemo(() => {
+    const hM = heightCm / 100;
+    if (hM <= 0) return 0;
+    return leanMassKg / (hM * hM);
+  }, [heightCm, leanMassKg]);
+
+  const bmiClass = useMemo(() => bmiCategory(bmi), [bmi]);
+  const bfClass = useMemo(() => bodyFatCategory(gender, bodyFatPct), [gender, bodyFatPct]);
+
+  const healthyMinWeightKg = useMemo(() => weightFromBmi(18.5, heightCm), [heightCm]);
+  const healthyMaxWeightKg = useMemo(() => weightFromBmi(24.9, heightCm), [heightCm]);
+
+  const estimatedWaistCm = useMemo(() => {
+    const baseRatio = gender === "male" ? 0.43 : 0.4;
+    const fatAnchor = gender === "male" ? 15 : 24;
+    const fatAdj = (bodyFatPct - fatAnchor) * (gender === "male" ? 0.007 : 0.0065);
+    const bmiAdj = (bmi - 22) * 0.004;
+    const ffmiAnchor = gender === "male" ? 20 : 17;
+    const muscleAdj = (ffmi - ffmiAnchor) * -0.003;
+
+    const ratio = clamp(baseRatio + fatAdj + bmiAdj + muscleAdj, 0.35, 0.74);
+    return ratio * heightCm;
+  }, [gender, bodyFatPct, bmi, ffmi, heightCm]);
+
+  const bounds = bodyFatBounds(gender);
+
+  const handleGenderChange = (nextGender: Gender) => {
+    setGender(nextGender);
+
+    const nextBmi = bmiFrom(weightKg, heightCm);
+    const nextBounds = bodyFatBounds(nextGender);
+    const modeled = clamp(round(predictBodyFatFromBmi(nextBmi, nextGender), 1), nextBounds.min, nextBounds.max);
+    setBodyFatPct(modeled);
+  };
+
+  const handleHeightChange = (nextHeightCm: number) => {
+    const clampedHeight = clamp(nextHeightCm, HEIGHT_CM_MIN, HEIGHT_CM_MAX);
+    setHeightCm(clampedHeight);
+
+    const nextBmi = bmiFrom(weightKg, clampedHeight);
+    const modeled = clamp(round(predictBodyFatFromBmi(nextBmi, gender), 1), bounds.min, bounds.max);
+    setBodyFatPct(modeled);
+  };
+
+  const handleWeightChange = (nextWeightKg: number) => {
+    const clampedWeight = clamp(nextWeightKg, WEIGHT_KG_MIN, WEIGHT_KG_MAX);
+    setWeightKg(clampedWeight);
+
+    const nextBmi = bmiFrom(clampedWeight, heightCm);
+    const modeled = clamp(round(predictBodyFatFromBmi(nextBmi, gender), 1), bounds.min, bounds.max);
+    setBodyFatPct(modeled);
+  };
+
+  const handleBmiChange = (nextBmi: number) => {
+    const clampedBmi = clamp(nextBmi, BMI_MIN, BMI_MAX);
+    const nextWeight = clamp(weightFromBmi(clampedBmi, heightCm), WEIGHT_KG_MIN, WEIGHT_KG_MAX);
+    setWeightKg(nextWeight);
+
+    const modeled = clamp(round(predictBodyFatFromBmi(clampedBmi, gender), 1), bounds.min, bounds.max);
+    setBodyFatPct(modeled);
+  };
+
+  const handleBodyFatChange = (nextBodyFatPct: number) => {
+    const clampedBodyFat = clamp(nextBodyFatPct, bounds.min, bounds.max);
+    setBodyFatPct(clampedBodyFat);
+
+    const modeledBmi = clamp(
+      bmiFromPredictedBodyFat(clampedBodyFat, gender),
+      BMI_MIN,
+      BMI_MAX
+    );
+    const modeledWeight = clamp(weightFromBmi(modeledBmi, heightCm), WEIGHT_KG_MIN, WEIGHT_KG_MAX);
+    setWeightKg(modeledWeight);
+  };
+
+  const heightInchesUI = Math.round(cmToIn(heightCm));
+  const heightFeetUI = Math.floor(heightInchesUI / 12);
+  const heightRemainderInchesUI = heightInchesUI % 12;
+
+  const weightLbUI = Math.round(kgToLb(weightKg));
+
+  const healthyWeightText = units === "metric"
+    ? `${round(healthyMinWeightKg, 1)}-${round(healthyMaxWeightKg, 1)} kg`
+    : `${Math.round(kgToLb(healthyMinWeightKg))}-${Math.round(kgToLb(healthyMaxWeightKg))} lb`;
+
+  const fatMassText = units === "metric"
+    ? `${round(fatMassKg, 1)} kg`
+    : `${round(kgToLb(fatMassKg), 1)} lb`;
+
+  const leanMassText = units === "metric"
+    ? `${round(leanMassKg, 1)} kg`
+    : `${round(kgToLb(leanMassKg), 1)} lb`;
+
+  const waistText = units === "metric"
+    ? `${round(estimatedWaistCm, 1)} cm`
+    : `${round(cmToIn(estimatedWaistCm), 1)} in`;
 
   return (
     <section className="w-full">
-      <div className="rounded-3xl border bg-base-100 p-5 sm:p-7 shadow-sm">
-        {/* Header row */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-1">
-            <p className="text-gray-600 text-base sm:text-lg">
-              Drag the slider to see what different body fat ranges typically look like.
-            </p>
-          </div>
+      <div className="w-full max-w-6xl mx-auto rounded-3xl bg-white/80 backdrop-blur border shadow-xl overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_520px]">
+          <div className="p-6 sm:p-8 bg-white min-w-0">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="inline-flex rounded-2xl bg-gray-100 p-1">
+                <button
+                  type="button"
+                  onClick={() => handleGenderChange("male")}
+                  className={`px-4 py-2 rounded-2xl text-sm font-semibold transition ${
+                    gender === "male" ? "bg-white shadow-sm text-gray-900" : "text-gray-600 hover:text-gray-900"
+                  }`}
+                  aria-pressed={gender === "male"}
+                >
+                  Male
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleGenderChange("female")}
+                  className={`px-4 py-2 rounded-2xl text-sm font-semibold transition ${
+                    gender === "female" ? "bg-white shadow-sm text-gray-900" : "text-gray-600 hover:text-gray-900"
+                  }`}
+                  aria-pressed={gender === "female"}
+                >
+                  Female
+                </button>
+              </div>
 
-          <a
-            href="/estimate"
-            className="btn btn-primary text-white btn-lg self-start sm:self-auto"
-          >
-            Estimate from photo →
-          </a>
-        </div>
-
-        {/* Gender tabs */}
-        <div className="mt-6 flex items-center justify-center">
-          <div className="inline-flex rounded-2xl bg-gray-100 p-1">
-            <button
-              type="button"
-              onClick={() => setGender("male")}
-              className={[
-                "px-4 py-2 rounded-2xl text-sm font-semibold transition",
-                gender === "male" ? "bg-white shadow-sm text-gray-900" : "text-gray-600 hover:text-gray-900",
-              ].join(" ")}
-              aria-pressed={gender === "male"}
-            >
-              Men
-            </button>
-            <button
-              type="button"
-              onClick={() => setGender("female")}
-              className={[
-                "px-4 py-2 rounded-2xl text-sm font-semibold transition",
-                gender === "female" ? "bg-white shadow-sm text-gray-900" : "text-gray-600 hover:text-gray-900",
-              ].join(" ")}
-              aria-pressed={gender === "female"}
-            >
-              Women
-            </button>
-          </div>
-        </div>
-
-        {/* Main content grid */}
-        <div className="mt-6 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8 items-start">
-          {/* Left: image + details */}
-          <div className="space-y-4">
-            <div className="overflow-hidden rounded-2xl border bg-gray-50">
-              <img
-                src={active.image}
-                alt={active.alt}
-                loading="lazy"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-
-            <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <span className="text-sm font-semibold text-gray-500">Selected</span>
-                <span className="text-xl font-semibold text-gray-900">
-                  {pct}%
+                <span className={`text-sm font-semibold ${units === "imperial" ? "text-primary" : "text-gray-500"}`}>
+                  Imperial
                 </span>
-                <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-700">
-                  {active.label}
+                <input
+                  type="checkbox"
+                  className="toggle toggle-primary"
+                  checked={units === "metric"}
+                  onChange={(e) => setUnits(e.target.checked ? "metric" : "imperial")}
+                  aria-label="Toggle units"
+                />
+                <span className={`text-sm font-semibold ${units === "metric" ? "text-primary" : "text-gray-500"}`}>
+                  Metric
                 </span>
               </div>
-
-              <p className="text-sm text-gray-500">
-                Visual references vary with muscle mass, lighting, posture, and fat distribution.
-              </p>
             </div>
 
-            <ul className="list-disc pl-6 text-gray-700 space-y-2 text-base sm:text-lg">
-              {active.bullets.map((b, i) => (
-                <li key={i}>{b}</li>
-              ))}
-            </ul>
+            <SliderField
+              label="Body Fat %"
+              valueLabel={`${round(bodyFatPct, 1)}%`}
+              min={bounds.min}
+              max={bounds.max}
+              step={0.1}
+              value={round(bodyFatPct, 1)}
+              onChange={handleBodyFatChange}
+            />
+
+            <p className="mt-2 text-gray-500 text-sm">
+              Don’t know?{" "}
+              <a
+                href="/estimate"
+                className="inline-flex items-center gap-2 text-md font-semibold text-primary underline hover:underline"
+              >
+                Estimate Body Fat %
+              </a>
+            </p>
+
+            <SliderField
+              label="BMI"
+              valueLabel={round(bmi, 1).toString()}
+              min={BMI_MIN}
+              max={BMI_MAX}
+              step={0.1}
+              value={round(bmi, 1)}
+              onChange={handleBmiChange}
+            />
+
+            {units === "metric" ? (
+              <>
+                <SliderField
+                  label="Height"
+                  valueLabel={`${Math.round(heightCm)} cm`}
+                  min={HEIGHT_CM_MIN}
+                  max={HEIGHT_CM_MAX}
+                  step={1}
+                  value={Math.round(heightCm)}
+                  onChange={handleHeightChange}
+                />
+
+                <SliderField
+                  label="Weight"
+                  valueLabel={`${round(weightKg, 1)} kg`}
+                  min={WEIGHT_KG_MIN}
+                  max={WEIGHT_KG_MAX}
+                  step={0.5}
+                  value={round(weightKg, 1)}
+                  onChange={handleWeightChange}
+                />
+              </>
+            ) : (
+              <>
+                <SliderField
+                  label="Height"
+                  valueLabel={`${heightFeetUI}' ${heightRemainderInchesUI}"`}
+                  min={Math.round(cmToIn(HEIGHT_CM_MIN))}
+                  max={Math.round(cmToIn(HEIGHT_CM_MAX))}
+                  step={1}
+                  value={heightInchesUI}
+                  onChange={(inches) => handleHeightChange(inToCm(inches))}
+                />
+
+                <SliderField
+                  label="Weight"
+                  valueLabel={`${weightLbUI} lb`}
+                  min={Math.round(kgToLb(WEIGHT_KG_MIN))}
+                  max={Math.round(kgToLb(WEIGHT_KG_MAX))}
+                  step={1}
+                  value={weightLbUI}
+                  onChange={(lb) => handleWeightChange(lbToKg(lb))}
+                />
+              </>
+            )}
           </div>
 
-          {/* Right: slider */}
-          <div className="rounded-2xl border bg-white p-5 sm:p-6">
-            <div className="space-y-2">
-              <div className="flex items-end justify-between">
-                <p className="text-base font-semibold text-gray-900">Body fat %</p>
-                <p className="text-sm text-gray-500">
-                  {sliderMin}% – {sliderMax}%
-                </p>
-              </div>
+          <div className="p-4 sm:p-6 bg-base-100 border-t lg:border-t-0 lg:border-l flex min-h-[680px] lg:min-h-0">
+            <BodyRender
+              gender={gender}
+              bmi={bmi}
+              bodyFatPct={bodyFatPct}
+              heightCm={heightCm}
+              bodyFatColor={bfClass.color}
+            />
+          </div>
+        </div>
 
-              <input
-                type="range"
-                min={sliderMin}
-                max={sliderMax}
-                value={pct}
-                onChange={(e) => setPct(Number(e.target.value))}
-                className="w-full"
-                aria-label="Body fat percentage slider"
-              />
+        <div className="border-t bg-white p-6 sm:p-8">
+          <h3 className="text-xl sm:text-2xl font-semibold text-gray-900">Results Snapshot</h3>
 
-              <div className="flex justify-between text-xs text-gray-500">
-                <span>{sliderMin}%</span>
-                <span>{sliderMax}%</span>
-              </div>
-            </div>
+          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <StatCard label="BMI" value={round(bmi, 1).toString()} note={bmiClass.label} valueColor={bmiClass.color} />
+            <StatCard label="Body Fat" value={`${round(bodyFatPct, 1)}%`} note={bfClass.label} valueColor={bfClass.color} />
+            <StatCard label="Fat Mass" value={fatMassText} />
+            <StatCard label="Lean Mass" value={leanMassText} />
+            <StatCard label="FFMI" value={round(ffmi, 1).toString()} note="Fat-free mass index" />
+            <StatCard label="Est. Waist" value={waistText} note="Derived from body-fat and BMI" />
+            <StatCard label="Healthy BMI Weight" value={healthyWeightText} note="BMI 18.5-24.9 range" />
+            <StatCard
+              label="Current Weight"
+              value={units === "metric" ? `${round(weightKg, 1)} kg` : `${weightLbUI} lb`}
+              note={units === "metric" ? `${heightFeetUI}' ${heightRemainderInchesUI}"` : `${Math.round(heightCm)} cm`}
+            />
+          </div>
 
-            <div className="mt-6 space-y-3">
-              <p className="text-sm font-semibold text-gray-900">Quick tip</p>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Most people underestimate body fat in photos. Lighting and camera distance can
-                change how lean someone looks more than you’d expect.
-              </p>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Related guides:{" "}
-                <a className="text-primary underline" href="/guides/what-does-body-fat-percentage-look-like">What Does Body Fat Percentage Look Like?</a>
-                {" "}and{" "}
-                <a className="text-primary underline" href="/guides/why-body-fat-looks-different">Why Two People at the Same Body Fat Percentage Look Different</a>.
-              </p>
-            </div>
-
-            <div className="mt-6">
-              <a href="#learn-more" className="btn btn-outline w-full">
-                Learn what affects appearance ↓
-              </a>
-            </div>
+          <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm text-gray-700 leading-relaxed">
+            Tip: keep one setup (same lighting, same pose, same time of day) and compare changes every 2-4 weeks.
+            Pair this with the <a href="/estimate" className="text-primary underline">Body Fat Estimator</a> for photo-based tracking and use
+            <a href="/guides/how-to-track-body-fat-changes" className="text-primary underline ml-1">this tracking guide</a> to reduce noise.
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+useGLTF.preload("/models/body-visualizer/male_base_mesh.glb");

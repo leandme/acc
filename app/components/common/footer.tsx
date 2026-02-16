@@ -48,7 +48,7 @@ export default function Footer() {
               Body Fat
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
-              <li><a className="hover:text-white" href="/body-visualizer">Body Fat Visualizer</a></li>
+              <li><a className="hover:text-white" href="/body-visualizer">Body Visualizer</a></li>
               <li><a className="hover:text-white" href="/body-fat-calculator">Body Fat Calculator</a></li>
               <li><a className="hover:text-white" href="/army-body-fat-calculator">Army Body Fat Calculator</a></li>
             </ul>

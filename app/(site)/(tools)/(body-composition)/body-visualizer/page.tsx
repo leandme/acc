@@ -1,91 +1,129 @@
 import { Metadata } from "next";
-import BodyFatVisualizerTool from "@/app/components/tools/composition/body-visualizer/visualizer";
+import BodyVisualizerTool from "@/app/components/tools/composition/body-visualizer/visualizer";
 import CTA from "@/app/components/common/cta";
+import { MoreTools } from "@/app/components/tools/template/more-tools";
 
-// Body Visualizer – Shape, Mass, Weight, BMI & Fat %
 export const metadata: Metadata = {
-  title: "Body Fat Visualizer — See What Body Fat % Looks Like",
+  title: "Body Visualizer – BMI, Body Fat & Weight",
   description:
-    "Use the body fat visualizer slider to see what different body fat percentages typically look like for men and women. Plus: tips on why photos vary and how to estimate more accurately.",
+    "Use an interactive Body Visualizer with linked sliders for BMI, body fat percentage, height, and weight. See a dynamic body render and trend-focused composition metrics.",
   alternates: {
     canonical: "https://bodyfatestimator.ai/body-visualizer",
   },
 };
 
-export default function BodyFatVisualizerPage() {
+export default function BodyVisualizerPage() {
   return (
     <main className="bg-base-100">
-      <section className={`mx-auto mt-4 mb-10 max-w-3xl px-6`}>
-
-      <h1 className="text-4xl lg:text-5xl font-bold text-center">
-        Body Fat Visualizer
-      </h1>
-
-    </section>
-
-      {/* Tool */}
-      <section className="mx-auto max-w-5xl px-6 pb-10">
-        <BodyFatVisualizerTool />
+      <section className="mx-auto max-w-4xl px-6 pt-10 text-center">
+        <h1 className="text-4xl lg:text-5xl font-bold">Body Visualizer</h1>
+        <p className="mt-4 text-lg text-gray-700 leading-relaxed">
+          Explore how body shape changes as you adjust body fat %, BMI, height, and weight. Use linked sliders for faster
+          scenario testing, then track realistic trends instead of chasing one "perfect" number.
+        </p>
       </section>
 
-      {/* SEO content */}
-      <section id="learn-more" className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
-        {/* H2 #1 */}
-        <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
-            How to use a body fat visualizer (and not get fooled by photos)
-          </h2>
+      <section className="mx-auto max-w-6xl px-6 pt-8 pb-12">
+        <BodyVisualizerTool />
+      </section>
 
+      <section id="learn-more" className="mx-auto max-w-3xl px-6 pb-20">
+        <div className="mt-20 lg:mt-40 space-y-4">
+          <h2 className="text-3xl lg:text-4xl font-semibold">How this Body Visualizer works</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            A body fat visualizer is basically a calibration tool: it gives you a consistent set
-            of reference images so your brain stops using “Instagram lean” as the default.
+            This tool combines a dynamic body render with body-composition math so your visual and numeric outputs update together.
+            You can control body fat %, BMI, height, and weight directly. The figure changes immediately using a consistent shape model,
+            which makes comparison easier across check-ins.
           </p>
-
           <p className="text-gray-700 text-lg leading-relaxed">
-            The tricky part is that <strong>two people at the same body fat % can look very different</strong>.
-            Muscle mass, frame size, and where you store fat (waist vs hips/thighs, upper vs lower body)
-            all change the look. That’s why the slider shows ranges rather than pretending there’s a single
-            perfect “20% body fat body.”
-          </p>
-
-          <p className="text-gray-700 text-lg leading-relaxed">
-            The result is an inference — not a measurement of fat tissue in your body.
+            The result is a practical visualization model, not a medical scan. It is most useful for calibration and trend tracking over
+            time.
           </p>
         </div>
 
-        {/* H2 #2 */}
-        <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
-            Why the same person can look “leaner” or “softer” in different pictures
-          </h2>
-
+        <div className="mt-20 lg:mt-40 space-y-4">
+          <h2 className="text-3xl lg:text-4xl font-semibold">How to use the sliders together</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            Photos are chaos goblins. Lighting, camera distance, and posture can exaggerate or hide definition
-            dramatically. A close camera (wide angle), overhead lighting, or a relaxed posture can add apparent
-            softness even if body composition didn’t change.
+            BMI and body fat are automatically synced in this tool. Adjusting one updates the other using a consistent prediction model,
+            so scenario testing is faster and the render stays coherent.
           </p>
-
           <p className="text-gray-700 text-lg leading-relaxed">
-            The best way to compare visuals over time is to keep things boring: same lighting, same distance,
-            same stance, same angles (front + side). Consistency beats “perfect” photos.
-          </p>
-
-          <p className="text-gray-700 text-lg leading-relaxed">
-            The result is an inference — not a measurement of fat tissue in your body.
+            For real-world tracking, keep setup consistent and compare trends every 2 to 4 weeks. If you want photo-based validation,
+            pair this page with the <a className="text-primary underline" href="/estimate">Body Fat Estimator</a>.
           </p>
         </div>
 
-{/* 
-        <References
-          references={[
-            { label: "How AI Body Fat Estimation Works", href: "/guides/how-ai-body-fat-estimation-works" },
-            { label: "How Accurate Is AI Body Fat Estimation?", href: "/guides/how-accurate-is-ai-body-fat-estimation" },
-            { label: "Why Body Fat Measurement Methods Give Different Results", href: "/guides/why-body-fat-measurements-give-different-results" },
-          ]}
-        />
-*/}
-        <CTA
-        title="Want a Personalized Body Fat Estimate?"/>
+        <div className="mt-20 lg:mt-40 space-y-4">
+          <h2 className="text-3xl lg:text-4xl font-semibold">Formulas and data used</h2>
+          <p className="text-gray-700 text-lg leading-relaxed">Core calculations shown in the results section:</p>
+          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li><strong>BMI:</strong> weight (kg) / height (m)^2</li>
+            <li><strong>Fat mass:</strong> weight x body fat %</li>
+            <li><strong>Lean mass:</strong> weight - fat mass</li>
+            <li><strong>FFMI:</strong> lean mass (kg) / height (m)^2</li>
+            <li><strong>Body fat and BMI sync:</strong> Deurenberg-style age/sex-adjusted BMI equation</li>
+          </ul>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            The silhouette render uses these values as directional drivers (fatness, frame size, and muscularity bias) to provide a stable,
+            interpretable visual model across slider changes.
+          </p>
+        </div>
+
+        <div className="mt-20 lg:mt-40 space-y-4">
+          <h2 className="text-3xl lg:text-4xl font-semibold">Best use cases and limitations</h2>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Best use case: compare hypothetical scenarios, set realistic expectations, and communicate progress direction. This is especially
+            useful when scale weight alone is noisy.
+          </p>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Limitation: no visualizer can exactly match your individual fat distribution, posture, lighting, or muscle insertions. Use this
+            as a range-and-trend tool, then cross-check with repeated photos and consistent measurements.
+          </p>
+        </div>
+
+        <div className="mt-20 lg:mt-40">
+          <CTA
+            title="Want a personalized body fat estimate?"
+            description="Upload a photo and get an appearance-based estimate you can track over time with consistent check-ins."
+            buttonText="Try Body Fat Estimator →"
+            href="/estimate"
+          />
+        </div>
+
+        <div className="mt-20 lg:mt-40 space-y-4">
+          <h2 className="text-3xl lg:text-4xl font-semibold">References</h2>
+          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2 break-words">
+            <li>
+              CDC overview of BMI context:
+              <a href="https://www.cdc.gov/bmi/" className="text-primary underline ml-1">CDC BMI resource</a>
+            </li>
+            <li>
+              FFMI reference context used across this project:
+              <a href="https://pubmed.ncbi.nlm.nih.gov/7496846/" className="text-primary underline ml-1">Kouri et al. (PubMed)</a>
+            </li>
+            <li>
+              3D mannequin model source:
+              <a href="https://github.com/BoQsc/Godot-3D-Male-Base-Mesh" className="text-primary underline ml-1">Godot 3D Male Base Mesh</a>
+              {" | "}
+              <a href="/models/body-visualizer/LICENSE-BoQsc-Godot-3D-Male-Base-Mesh.txt" className="text-primary underline">Local license copy</a>
+            </li>
+            <li>
+              Related guides:
+              <a href="/guides/what-does-body-fat-percentage-look-like" className="text-primary underline ml-1">Visual body-fat examples</a>
+              {" | "}
+              <a href="/guides/how-to-track-body-fat-changes" className="text-primary underline">Tracking body-fat changes</a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="mt-20 lg:mt-40">
+          <MoreTools
+            heading="Related Tools"
+            columns={2}
+            toolSlugs={["estimate", "body-fat-calculator", "ffmi-calculator", "rfm-calculator"]}
+            excludeSlug="body-visualizer"
+          />
+        </div>
       </section>
     </main>
   );

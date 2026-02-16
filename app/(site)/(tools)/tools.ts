@@ -39,8 +39,8 @@ export const TOOLS: Record<string, ToolMeta> = {
 
   "body-visualizer": {
     slug: "body-visualizer",
-    title: "Body Fat Visualizer",
-    description: "See what your body looks like.",
+    title: "Body Visualizer",
+    description: "Visualize body shape from BMI, body fat %, height, and weight.",
     category: "Body Fat",
   },
   estimate: {
