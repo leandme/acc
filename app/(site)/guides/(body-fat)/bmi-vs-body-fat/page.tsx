@@ -169,6 +169,10 @@ export default function BlogPostPage() {
             If you also want to separate lean-mass progress from fat changes,
             use the{" "}
             <a className="text-primary underline" href="/ffmi-calculator">FFMI Calculator</a>{" "}
+            and the{" "}
+            <a className="text-primary underline" href="/muscle-mass-calculator">
+              Muscle Mass Calculator
+            </a>{" "}
             alongside body-fat tracking. For skeletal-build context, add the{" "}
             <a className="text-primary underline" href="/body-frame-size-calculator">
               Body Frame Size Calculator
@@ -188,6 +192,14 @@ export default function BlogPostPage() {
             and{" "}
             <a className="text-primary underline" href="/weight-loss-calculator">
               Weight Loss Calculator
+            </a>
+            . To convert goals into calorie targets, run the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
             </a>
             .
           </p>

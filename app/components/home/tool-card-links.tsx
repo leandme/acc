@@ -32,6 +32,12 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     eventName: "Go to Lean Body Mass Calculator",
   },
   {
+    title: "Muscle Mass Calculator",
+    href: "/muscle-mass-calculator",
+    description: "Estimate skeletal muscle mass from anthropometric inputs.",
+    eventName: "Go to Muscle Mass Calculator",
+  },
+  {
     title: "BRI Calculator",
     href: "/bri-calculator",
     description: "Estimate body roundness from waist and height.",
@@ -60,6 +66,30 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     href: "/weight-loss-calculator",
     description: "Estimate timeline to target weight using calorie intake.",
     eventName: "Go to Weight Loss Calculator",
+  },
+  {
+    title: "Intermittent Fasting Calculator",
+    href: "/intermittent-fasting-calculator",
+    description: "Compare fasting protocols and projected weekly pace.",
+    eventName: "Go to Intermittent Fasting Calculator",
+  },
+  {
+    title: "TDEE Calculator",
+    href: "/tdee-calculator",
+    description: "Estimate maintenance calories from BMR and activity level.",
+    eventName: "Go to TDEE Calculator",
+  },
+  {
+    title: "BMR Calculator",
+    href: "/bmr-calculator",
+    description: "Estimate resting calorie burn with standard equations.",
+    eventName: "Go to BMR Calculator",
+  },
+  {
+    title: "Calorie Deficit Calculator",
+    href: "/calorie-deficit-calculator",
+    description: "Set daily calorie targets from your chosen weekly loss pace.",
+    eventName: "Go to Calorie Deficit Calculator",
   },
   {
     title: "Ideal Weight Calculator",

@@ -77,6 +77,17 @@ export default function PonderalPageClient() {
             </a>
             .
           </p>
+          <p className={pClass}>
+            If you are planning calorie targets around those goals, run the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
+            .
+          </p>
         </div>
 
         <div className={sectionWrap}>
@@ -105,6 +116,8 @@ export default function PonderalPageClient() {
               "bmi-calculator",
               "overweight-calculator",
               "ideal-weight-calculator",
+              "tdee-calculator",
+              "calorie-deficit-calculator",
               "broca-index-calculator",
               "weight-loss-calculator",
               "weight-loss-percentage-calculator",

@@ -132,7 +132,19 @@ export default function BlogPostPage() {
             <a className="text-primary underline" href="/fasting-weight-loss-calculator">
               fasting-day / feeding-day projection
             </a>{" "}
-            so your measurements match an actual plan.
+            and the{" "}
+            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+              intermittent fasting protocol estimator
+            </a>{" "}
+            so your measurements match an actual plan. To set intake targets for that plan, add the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
+            .
           </p>
         </div>
 

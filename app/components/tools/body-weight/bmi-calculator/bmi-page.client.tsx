@@ -74,6 +74,14 @@ export default function BMIPageClient() {
             <a className="text-primary underline" href="/weight-loss-calculator">
               target-weight timeline calculator
             </a>
+            . For calorie targets behind that plan, run the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
             .
           </p>
         </div>
@@ -133,6 +141,8 @@ export default function BMIPageClient() {
             toolSlugs={[
               "overweight-calculator",
               "ideal-weight-calculator",
+              "tdee-calculator",
+              "calorie-deficit-calculator",
               "weight-loss-calculator",
               "weight-loss-percentage-calculator",
               "ponderal-index-calculator",

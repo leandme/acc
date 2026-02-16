@@ -181,6 +181,10 @@ export default function BlogPostPage() {
             <a className="text-primary underline" href="/fasting-weight-loss-calculator">
               fasting-pattern projection
             </a>
+            {" "}and the{" "}
+            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+              intermittent fasting protocol estimator
+            </a>
             . For alternate height-weight screens, compare results with the{" "}
             <a className="text-primary underline" href="/ponderal-index-calculator">
               ponderal index method

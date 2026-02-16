@@ -78,6 +78,17 @@ export default function BrocaPageClient() {
             .
           </p>
           <p className={pClass}>
+            For calorie planning linked to these targets, use the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
             If your goal is body-composition quality rather than scale-only targets, combine with the{" "}
             <a className="text-primary underline" href="/body-fat-calculator">
               Body Fat Calculator
@@ -116,6 +127,8 @@ export default function BrocaPageClient() {
               "ponderal-index-calculator",
               "bmi-calculator",
               "ideal-weight-calculator",
+              "tdee-calculator",
+              "calorie-deficit-calculator",
               "overweight-calculator",
               "weight-loss-calculator",
               "weight-loss-percentage-calculator",

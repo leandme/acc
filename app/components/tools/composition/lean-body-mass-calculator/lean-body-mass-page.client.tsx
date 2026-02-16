@@ -103,6 +103,13 @@ export default function LeanBodyMassCalculatorPageClient() {
             perfect one-time value.
           </p>
           <p className={pClass}>
+            If you want a skeletal-muscle-specific estimate from circumferences and skinfolds, use the{" "}
+            <a className="text-primary underline" href="/muscle-mass-calculator">
+              Muscle Mass Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
             If you want body-fat context alongside this result, use the{" "}
             <a className="text-primary underline" href="/body-fat-calculator">
               Body Fat Calculator
@@ -174,6 +181,7 @@ export default function LeanBodyMassCalculatorPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "muscle-mass-calculator",
               "ffmi-calculator",
               "body-frame-size-calculator",
               "bai-calculator",

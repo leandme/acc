@@ -90,6 +90,10 @@ export default function RFMCalculatorPageClient() {
             <a className="text-primary underline" href="/lean-body-mass-calculator">
               Lean Body Mass Calculator
             </a>
+            . For an anthropometric skeletal muscle estimate, compare with the{" "}
+            <a className="text-primary underline" href="/muscle-mass-calculator">
+              Muscle Mass Calculator
+            </a>
             . For waist-height roundness context, use the{" "}
             <a className="text-primary underline" href="/bri-calculator">
               BRI Calculator
@@ -122,6 +126,7 @@ export default function RFMCalculatorPageClient() {
               "bai-calculator",
               "bri-calculator",
               "skinfold-body-fat-calculator",
+              "muscle-mass-calculator",
               "lean-body-mass-calculator",
               "body-frame-size-calculator",
               "army-body-fat-calculator",

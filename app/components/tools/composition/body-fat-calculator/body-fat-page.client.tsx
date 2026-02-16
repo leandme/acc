@@ -66,6 +66,11 @@ export default function BodyFatCalculatorPageClient() {
             <a className="text-primary underline" href="/lean-body-mass-calculator">
               Lean Body Mass Calculator
             </a>
+            . For a circumference-and-skinfold skeletal muscle estimate, compare
+            with the{" "}
+            <a className="text-primary underline" href="/muscle-mass-calculator">
+              Muscle Mass Calculator
+            </a>
             .
           </p>
         </div>
@@ -211,6 +216,7 @@ export default function BodyFatCalculatorPageClient() {
             toolSlugs={[
               "estimate",
               "skinfold-body-fat-calculator",
+              "muscle-mass-calculator",
               "bai-calculator",
               "bri-calculator",
               "lean-body-mass-calculator",

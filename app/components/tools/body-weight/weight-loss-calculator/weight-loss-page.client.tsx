@@ -72,9 +72,24 @@ export default function WeightLossPageClient() {
             activity. Use this for planning and scenario testing, then recalibrate every 2-4 weeks.
           </p>
           <p className={pClass}>
+            If you need to set calorie targets first, estimate maintenance in the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and convert that to an intake target in the{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
             If you use fasting windows with different intake on fasting vs feeding days, use the{" "}
             <a className="text-primary underline" href="/fasting-weight-loss-calculator">
               fasting-specific intake projection
+            </a>
+            {" "}or compare popular fasting protocols quickly with the{" "}
+            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+              Intermittent Fasting Calculator
             </a>
             .
           </p>
@@ -116,6 +131,10 @@ export default function WeightLossPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "tdee-calculator",
+              "calorie-deficit-calculator",
+              "bmr-calculator",
+              "intermittent-fasting-calculator",
               "fasting-weight-loss-calculator",
               "weight-loss-percentage-calculator",
               "bmi-calculator",

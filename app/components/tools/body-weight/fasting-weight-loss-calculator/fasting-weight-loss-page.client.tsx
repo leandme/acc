@@ -68,6 +68,24 @@ export default function FastingWeightLossPageClient() {
             spontaneous intake changes, sleep, stress, medications, and fluid shifts.
           </p>
           <p className={pClass}>
+            For non-fasting calorie setup, estimate maintenance with the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and set a target with the{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
+            If you want a quick protocol comparison (16:8, 18:6, OMAD, or 5:2), use the{" "}
+            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+              Intermittent Fasting Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
             If you prefer a non-fasting setup based on one daily calorie target, use the{" "}
             <a className="text-primary underline" href="/weight-loss-calculator">
               standard daily-intake timeline model
@@ -112,6 +130,10 @@ export default function FastingWeightLossPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "intermittent-fasting-calculator",
+              "tdee-calculator",
+              "calorie-deficit-calculator",
+              "bmr-calculator",
               "weight-loss-calculator",
               "weight-loss-percentage-calculator",
               "bmi-calculator",

@@ -84,9 +84,24 @@ export default function WeightLossPercentagePageClient() {
             to estimate timeline-to-target based on energy intake and activity.
           </p>
           <p className={pClass}>
+            If you need to calculate intake targets first, use the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
             If you use time-restricted eating or intermittent fasting, compare projections with the{" "}
             <a className="text-primary underline" href="/fasting-weight-loss-calculator">
               fasting-pattern projection model
+            </a>
+            {" "}or compare protocol scenarios in the{" "}
+            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+              Intermittent Fasting Calculator
             </a>
             .
           </p>
@@ -115,6 +130,10 @@ export default function WeightLossPercentagePageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "tdee-calculator",
+              "calorie-deficit-calculator",
+              "bmr-calculator",
+              "intermittent-fasting-calculator",
               "weight-loss-calculator",
               "fasting-weight-loss-calculator",
               "bmi-calculator",

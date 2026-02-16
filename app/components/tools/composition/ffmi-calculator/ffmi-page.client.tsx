@@ -94,6 +94,11 @@ export default function FFMICalculatorPageClient() {
             <a className="text-primary underline" href="/lean-body-mass-calculator">
               Lean Body Mass Calculator
             </a>
+            . For a skeletal-muscle-specific estimate from circumferences and
+            skinfolds, use the{" "}
+            <a className="text-primary underline" href="/muscle-mass-calculator">
+              Muscle Mass Calculator
+            </a>
             .
           </p>
 
@@ -218,6 +223,7 @@ export default function FFMICalculatorPageClient() {
             columns={2}
             toolSlugs={[
               "estimate",
+              "muscle-mass-calculator",
               "lean-body-mass-calculator",
               "body-frame-size-calculator",
               "bai-calculator",

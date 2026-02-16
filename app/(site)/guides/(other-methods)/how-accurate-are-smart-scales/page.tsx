@@ -199,6 +199,17 @@ export default function BlogPostPage() {
               )
             </li>
             <li>
+              <strong>Calorie planning:</strong> estimate maintenance and set intake targets (try the{" "}
+              <a className="text-primary underline" href="/tdee-calculator">
+                TDEE Calculator
+              </a>{" "}
+              and{" "}
+              <a className="text-primary underline" href="/calorie-deficit-calculator">
+                Calorie Deficit Calculator
+              </a>
+              )
+            </li>
+            <li>
               <strong>Skinfold calipers:</strong> site-based fat-thickness estimates (try the{" "}
               <a className="text-primary underline" href="/skinfold-body-fat-calculator">
                 Skinfold Body Fat Calculator

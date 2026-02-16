@@ -3,6 +3,8 @@ export type ToolCategory =
   | "Body Composition"
   | "Body Proportions"
   | "Body Weight"
+  | "Metabolism"
+  | "Calories"
   | "Energy & Metabolism"
   | "Nutrition & Macronutrients"
   | "Calorie Burn";
@@ -28,6 +30,12 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "lean-body-mass-calculator",
     title: "Lean Body Mass Calculator",
     description: "Estimate your lean mass with standard equations.",
+    category: "Body Composition",
+  },
+  "muscle-mass-calculator": {
+    slug: "muscle-mass-calculator",
+    title: "Muscle Mass Calculator",
+    description: "Estimate skeletal muscle mass from anthropometric measurements.",
     category: "Body Composition",
   },
   "rfm-calculator": {
@@ -128,7 +136,13 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "fasting-weight-loss-calculator",
     title: "Fasting Weight Loss Calculator",
     description: "Project weight change from fasting-day and feeding-day calorie patterns.",
-    category: "Body Weight",
+    category: "Calories",
+  },
+  "intermittent-fasting-calculator": {
+    slug: "intermittent-fasting-calculator",
+    title: "Intermittent Fasting Calculator",
+    description: "Estimate fasting-protocol calorie intake, daily expenditure, and weekly pace.",
+    category: "Calories",
   },
   "weight-loss-calculator": {
     slug: "weight-loss-calculator",
@@ -153,6 +167,28 @@ export const TOOLS: Record<string, ToolMeta> = {
     title: "Broca Index Calculator",
     description: "Compare current weight against classic Broca height-based reference.",
     category: "Body Weight",
+  },
+
+  // METABOLISM
+  "tdee-calculator": {
+    slug: "tdee-calculator",
+    title: "TDEE Calculator",
+    description: "Estimate total daily energy expenditure from BMR equation and activity level.",
+    category: "Metabolism",
+  },
+  "bmr-calculator": {
+    slug: "bmr-calculator",
+    title: "BMR Calculator",
+    description: "Estimate basal metabolic rate from standard resting-energy equations.",
+    category: "Metabolism",
+  },
+
+  // CALORIES
+  "calorie-deficit-calculator": {
+    slug: "calorie-deficit-calculator",
+    title: "Calorie Deficit Calculator",
+    description: "Calculate deficit targets and daily calories from your selected weekly pace.",
+    category: "Calories",
   },
 };
 

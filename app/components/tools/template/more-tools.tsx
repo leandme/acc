@@ -14,6 +14,8 @@ const LOW_LINK_TOOL_SLUGS = new Set<string>([
   "ponderal-index-calculator",
   "adjusted-body-weight-calculator",
   "fasting-weight-loss-calculator",
+  "intermittent-fasting-calculator",
+  "muscle-mass-calculator",
 ]);
 
 function promoteLowLinkTool(

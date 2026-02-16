@@ -111,6 +111,17 @@ export default function OverweightPageClient() {
             </a>
             .
           </p>
+          <p className={pClass}>
+            For calorie planning behind that timeline, use the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and the{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
+            .
+          </p>
         </div>
 
         <div className={sectionWrap}>
@@ -192,6 +203,8 @@ export default function OverweightPageClient() {
             toolSlugs={[
               "bmi-calculator",
               "ideal-weight-calculator",
+              "tdee-calculator",
+              "calorie-deficit-calculator",
               "weight-loss-calculator",
               "weight-loss-percentage-calculator",
               "ponderal-index-calculator",

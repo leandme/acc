@@ -33,7 +33,7 @@ Add section- goal weight/body fat%
 - Pagination for blog posts
 - Examples page searchable section
 - Estimate counter
-- dd company name on legal pages and contact
+- dd company name on legal pages and contactgit 
 
 # BACKLINKS
 - PH

@@ -27,7 +27,7 @@ export default function Footer() {
        
 
         <div className="my-8 h-px bg-white/10" />
-<div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+<div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
         <div>
             <h6 className="text-lg font-semibold text-gray-200">
               Site
@@ -63,6 +63,7 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/ffmi-calculator">FFMI Calculator</a></li>
               <li><a className="hover:text-white" href="/lean-body-mass-calculator">Lean Body Mass Calculator</a></li>
+              <li><a className="hover:text-white" href="/muscle-mass-calculator">Muscle Mass Calculator</a></li>
               <li><a className="hover:text-white" href="/body-frame-size-calculator">Body Frame Size Calculator</a></li>
               <li><a className="hover:text-white" href="/rfm-calculator">RFM Calculator</a></li>
               <li><a className="hover:text-white" href="/bri-calculator">BRI Calculator</a></li>
@@ -78,12 +79,24 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/bmi-calculator">BMI Calculator</a></li>
               <li><a className="hover:text-white" href="/weight-loss-calculator">Weight Loss Calculator</a></li>
+              <li><a className="hover:text-white" href="/intermittent-fasting-calculator">Intermittent Fasting Calculator</a></li>
               <li><a className="hover:text-white" href="/weight-loss-percentage-calculator">Weight Loss Percentage Calculator</a></li>
               <li><a className="hover:text-white" href="/ideal-weight-calculator">Ideal Weight Calculator</a></li>
               <li><a className="hover:text-white" href="/overweight-calculator">Overweight Calculator</a></li>
               <li><a className="hover:text-white" href="/adjusted-body-weight-calculator">Adjusted Body Weight Calculator</a></li>
               <li><a className="hover:text-white" href="/ponderal-index-calculator">Ponderal Index Calculator</a></li>
               <li><a className="hover:text-white" href="/broca-index-calculator">Broca Index Calculator</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h6 className="text-lg font-semibold text-gray-200">
+              Metabolism
+            </h6>
+            <ul className="mt-3 space-y-2 text-base text-gray-300">
+              <li><a className="hover:text-white" href="/tdee-calculator">TDEE Calculator</a></li>
+              <li><a className="hover:text-white" href="/bmr-calculator">BMR Calculator</a></li>
+              <li><a className="hover:text-white" href="/calorie-deficit-calculator">Calorie Deficit Calculator</a></li>
             </ul>
           </div>
 

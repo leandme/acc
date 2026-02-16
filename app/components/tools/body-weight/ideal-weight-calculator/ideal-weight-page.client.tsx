@@ -92,6 +92,17 @@ export default function IdealWeightPageClient() {
             for direct category screening.
           </p>
           <p className={pClass}>
+            To plan calories around that target, estimate maintenance in the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and set intake in the{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
             For medication-dosing contexts where adjusted weight is used, see the{" "}
             <a className="text-primary underline" href="/adjusted-body-weight-calculator">
               Adjusted Body Weight Calculator
@@ -131,6 +142,8 @@ export default function IdealWeightPageClient() {
             toolSlugs={[
               "bmi-calculator",
               "overweight-calculator",
+              "tdee-calculator",
+              "calorie-deficit-calculator",
               "weight-loss-calculator",
               "weight-loss-percentage-calculator",
               "adjusted-body-weight-calculator",

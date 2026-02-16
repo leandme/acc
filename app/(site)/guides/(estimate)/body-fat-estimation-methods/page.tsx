@@ -209,6 +209,14 @@ export default function BlogPostPage() {
             <a className="text-primary underline" href="/weight-loss-percentage-calculator">
               Weight Loss Percentage Calculator
             </a>
+            . For maintenance and intake targets, add the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
             .
           </p>
         </div>

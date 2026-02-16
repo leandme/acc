@@ -80,6 +80,17 @@ export default function AdjustedBodyWeightPageClient() {
             </a>
             .
           </p>
+          <p className={pClass}>
+            To set intake from maintenance energy, pair with the{" "}
+            <a className="text-primary underline" href="/tdee-calculator">
+              TDEE Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/calorie-deficit-calculator">
+              Calorie Deficit Calculator
+            </a>
+            .
+          </p>
         </div>
 
         <div className={sectionWrap}>
@@ -108,6 +119,8 @@ export default function AdjustedBodyWeightPageClient() {
               "ideal-weight-calculator",
               "bmi-calculator",
               "overweight-calculator",
+              "tdee-calculator",
+              "calorie-deficit-calculator",
               "weight-loss-calculator",
               "weight-loss-percentage-calculator",
               "broca-index-calculator",

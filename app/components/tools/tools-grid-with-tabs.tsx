@@ -6,7 +6,13 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { trackEvent } from "@/app/libs/amplitude";
 import type { ToolMeta } from "@/app/(site)/(tools)/tools";
 
-type TabKey = "all" | "body-fat" | "body-composition" | "body-weight";
+type TabKey =
+  | "all"
+  | "body-fat"
+  | "body-composition"
+  | "body-weight"
+  | "metabolism"
+  | "calories";
 
 type Tab = {
   key: TabKey;
@@ -18,12 +24,16 @@ const TABS: Tab[] = [
   { key: "body-fat", label: "Body Fat" },
   { key: "body-composition", label: "Body Composition" },
   { key: "body-weight", label: "Body Weight" },
+  { key: "metabolism", label: "Metabolism" },
+  { key: "calories", label: "Calories" },
 ];
 
 function keyToCategory(key: TabKey): ToolMeta["category"] | null {
   if (key === "body-fat") return "Body Fat";
   if (key === "body-composition") return "Body Composition";
   if (key === "body-weight") return "Body Weight";
+  if (key === "metabolism") return "Metabolism";
+  if (key === "calories") return "Calories";
   return null;
 }
 
