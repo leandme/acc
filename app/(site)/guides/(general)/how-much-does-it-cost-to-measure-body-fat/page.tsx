@@ -2,20 +2,20 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "How Much Does It Cost to Measure Body Fat? (Home vs Lab)",
-  description:
-    "Compare the cost of measuring body fat at home vs lab methods like DEXA. Learn price ranges, accuracy tradeoffs, and which option makes sense for tracking progress.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/how-much-does-it-cost-to-measure-body-fat",
-  },
-};
+  description: "Compare the cost of measuring body fat at home vs lab methods like DEXA. Learn price ranges, accuracy tradeoffs, and which option makes sense for tracking progress.",
+  canonical: "https://bodyfatestimator.ai/guides/how-much-does-it-cost-to-measure-body-fat",
+});
 
 export default function BlogPostPage() {
   return (
     <main className="bg-base-100">
       <GuideHero
+              slug="how-much-does-it-cost-to-measure-body-fat"
         title="How Much Does It Cost to Measure Body Fat?"
         intro={
           <>
@@ -33,12 +33,14 @@ export default function BlogPostPage() {
         }
         image={
           <figure className="max-w-3xl">
-            <img
-              src="/guides/body-fat-measurement-cost.png"
-              alt="Cost of measuring body fat at home vs lab"
-              loading="lazy"
-              className="rounded-xl border"
-            />
+            <Image
+  src="/guides/body-fat-measurement-cost.png"
+  alt="Cost of measuring body fat at home vs lab"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
             <figcaption className="mt-2 text-sm text-gray-500 text-center">
               Body fat measurement ranges from free tools to clinical scans
             </figcaption>
@@ -47,7 +49,7 @@ export default function BlogPostPage() {
       />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Big picture */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -198,9 +200,10 @@ export default function BlogPostPage() {
             <a className="text-primary underline" href="/guides/best-way-to-measure-body-fat-at-home">The 3 Best Ways to Measure Your Body Fat % at Home</a>.
           </p>
         </div>
-<GuideStandardReferences />
+<GuideStandardReferences slug="how-much-does-it-cost-to-measure-body-fat" />
 
 <MoreArticles
+            currentSlug="how-much-does-it-cost-to-measure-body-fat"
             basePath="/guides"
             articles={[
                 {

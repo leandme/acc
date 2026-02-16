@@ -190,6 +190,16 @@ export const POSTS = [
 },
 ] as const;
 
+export type GuidePost = (typeof POSTS)[number];
+
+const POSTS_BY_SLUG = new Map<string, GuidePost>(
+  POSTS.map((post) => [post.slug, post])
+);
+
+export function getGuidePostBySlug(slug: string) {
+  return POSTS_BY_SLUG.get(slug);
+}
+
 {/* 
 # BLOG POSTS
 - How to Measure Body Fat at Home Without Equipment

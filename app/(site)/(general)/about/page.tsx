@@ -1,15 +1,17 @@
 import { Metadata } from "next";
 import H1 from "@/app/components/common/h1";
 import Author from "@/app/components/common/author";
+import { buildPageMetadata } from "@/app/libs/seo";
 
 const title = "About";
 const description =
   "Learn what BodyFatEstimator is, how our AI-based body fat estimation works, its limitations, and how to use it responsibly for fitness tracking.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title,
   description,
-};
+  canonical: "https://bodyfatestimator.ai/about",
+});
 
 export default function AboutPage() {
   return (

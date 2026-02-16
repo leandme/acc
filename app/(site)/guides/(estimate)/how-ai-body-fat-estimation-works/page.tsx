@@ -2,15 +2,14 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "How AI Body Fat Estimation Works",
-  description:
-    "Learn how an AI body fat estimator works, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/how-ai-body-fat-estimation-works",
-  },
-};
+  description: "Learn how an AI body fat estimator works, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
+  canonical: "https://bodyfatestimator.ai/guides/how-ai-body-fat-estimation-works",
+});
 
 export default function BlogPostPage() {
 
@@ -18,6 +17,7 @@ export default function BlogPostPage() {
     <main className="bg-base-100 pt-10">
 
       <GuideHero
+              slug="how-ai-body-fat-estimation-works"
               title="How AI Body Fat Estimation Works"
               intro={
                 <>
@@ -31,12 +31,14 @@ export default function BlogPostPage() {
               }
               image={
                 <figure className="max-w-3xl">
-                  <img
-                    src="/guides/how-ai-body-fat-estimation-works.png"
-                    alt="what does x% bodyfat look like?"
-                    loading="lazy"
-                    className="rounded-xl border"
-                  />
+                  <Image
+  src="/guides/how-ai-body-fat-estimation-works.png"
+  alt="what does x% bodyfat look like?"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
                   <figcaption className="mt-2 text-sm text-gray-500 text-center">
                     Body fat percentages can differ wildly despite looking similar
                   </figcaption>
@@ -45,7 +47,7 @@ export default function BlogPostPage() {
             />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -177,9 +179,10 @@ export default function BlogPostPage() {
             <li>Track trends over weeks, not days</li>
           </ul>
         </div>
-<GuideStandardReferences />
+<GuideStandardReferences slug="how-ai-body-fat-estimation-works" />
 
 <MoreArticles
+            currentSlug="how-ai-body-fat-estimation-works"
             basePath="/guides"
             articles={[
                 {

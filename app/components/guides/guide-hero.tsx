@@ -1,8 +1,10 @@
 import React from "react";
 import Breadcrumb from "../common/breadcrumb";
 import GuideAuthor from "./guide-author";
+import GuideArticleSchema from "../schema/guide-article-schema";
 
 type BlogHeroProps = {
+  slug?: string;
   title: React.ReactNode;
   intro?: React.ReactNode;
   image?: React.ReactNode;
@@ -10,6 +12,7 @@ type BlogHeroProps = {
 };
 
 export default function GuideHero({
+  slug,
   title,
   intro,
   image,
@@ -18,6 +21,7 @@ export default function GuideHero({
   return (
 
     <section className={`mx-auto mt-4 mb-10 max-w-3xl px-6 ${className}`}>
+       {slug ? <GuideArticleSchema slug={slug} /> : null}
        <Breadcrumb />
 
       <h1 className="text-4xl lg:text-5xl font-bold text-center">

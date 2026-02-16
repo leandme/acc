@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import H1 from "@/app/components/common/h1";
+import { buildPageMetadata } from "@/app/libs/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Privacy Policy",
-  description:
-    "Privacy policy for BodyFatEstimator.ai. Learn what data we collect, how we use it, how photos are handled, and your privacy rights.",
-};
+  description: "Privacy policy for BodyFatEstimator.ai. Learn what data we collect, how we use it, how photos are handled, and your privacy rights.",
+  canonical: "https://bodyfatestimator.ai/privacy",
+});
 
 export default function PrivacyPolicy() {
   return (
@@ -37,14 +38,15 @@ export default function PrivacyPolicy() {
             <ul className="mt-4 list-disc pl-5 space-y-2 text-gray-700 text-lg">
               <li>
                 <strong>Inputs you provide</strong> — such as an uploaded photo
-                and basic body measurements you enter (e.g., height/weight) in
-                order to generate an estimate.
+                and basic body measurements you enter (for example: age,
+                height, weight, and optional waist) in order to generate an
+                estimate.
               </li>
               <li>
-                <strong>Usage data</strong> — basic analytics about how the site
-                is used (e.g., pages viewed, approximate device/browser info,
-                events like button clicks) to improve reliability and user
-                experience.
+                <strong>Usage data</strong> — analytics and technical telemetry
+                about how the site is used (for example: pages viewed, device
+                and browser metadata, approximate location, and interaction
+                events) to improve reliability and user experience.
               </li>
               <li>
                 <strong>Payment information</strong> — if you purchase a paid
@@ -69,7 +71,7 @@ export default function PrivacyPolicy() {
             <ul className="mt-4 list-disc pl-5 space-y-2 text-gray-700 text-lg">
               <li>Provide and operate the Service (generate your estimate).</li>
               <li>Maintain performance, reliability, and security.</li>
-              <li>Understand usage and improve the product (minimal analytics).</li>
+              <li>Understand usage and improve the product (analytics).</li>
               <li>Process purchases and prevent fraud (via payment providers).</li>
               <li>Respond to support requests and communications.</li>
             </ul>
@@ -85,16 +87,17 @@ export default function PrivacyPolicy() {
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We do <strong>not</strong> intend to permanently store uploaded
-              photos as part of normal operation. Photos may be processed
-              transiently by our infrastructure providers solely to produce the
-              output you request.
+              We do not intentionally maintain a long-term archive of uploaded
+              photos as part of normal operation. Photos are processed by our
+              infrastructure providers to produce the output you request, and
+              temporary copies may exist in provider systems for processing,
+              reliability, security, and abuse-prevention purposes.
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We do not use your uploaded photos to train our own models, and we
-              do not allow third-party providers to use your uploaded photos to
-              train their models for their own purposes.
+              We do not use your uploaded photos to train our own models.
+              Third-party provider handling is governed by their service terms,
+              data processing commitments, and applicable law.
             </p>
           </div>
 
@@ -111,9 +114,9 @@ export default function PrivacyPolicy() {
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               Our sub-processors may include: Vercel (hosting), Cloudflare
-              (security/CDN), Replicate (AI processing), Amplitude (analytics),
-              Namecheap (domain services), and Stripe (payments). See our
-              Sub-processors page for details.
+              (security/CDN), Replicate (AI processing), Google (analytics),
+              Amplitude (analytics), Namecheap (domain services), and Stripe
+              (payments). See our Sub-processors page for details.
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
@@ -127,13 +130,12 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-semibold">5. Cookies & Tracking</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We use a minimal set of cookies and similar technologies for core
-              functionality, security, analytics, and service improvement. When
-              advertising is enabled, approved ad and measurement partners may
-              also use cookies or similar identifiers for ad delivery,
-              frequency capping, fraud prevention, and campaign measurement.
-              Where required by law, we request consent before setting
-              non-essential cookies.
+              We currently use analytics technologies from Google Analytics and
+              Amplitude, which may use cookies or similar identifiers and
+              collect interaction data to help us improve the Service. Amplitude
+              session replay is enabled to diagnose UX issues and reliability
+              problems. We do not currently run third-party display advertising
+              on the Service.
             </p>
           </div>
 

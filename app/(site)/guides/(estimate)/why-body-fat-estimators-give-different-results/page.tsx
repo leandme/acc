@@ -2,15 +2,14 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Why Body Fat Estimators Give Different Results",
-  description:
-    "Why do body fat estimators give different numbers? Learn how formula assumptions, hydration, timing, and measurement noise affect body fat percentage estimates — and how to interpret changes realistically.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/why-body-fat-estimators-give-different-results",
-  },
-};
+  description: "Why do body fat estimators give different numbers? Learn how formula assumptions, hydration, timing, and measurement noise affect body fat percentage estimates — and how to interpret changes realistically.",
+  canonical: "https://bodyfatestimator.ai/guides/why-body-fat-estimators-give-different-results",
+});
 
 export default function BlogPostPage() {
 
@@ -18,6 +17,7 @@ export default function BlogPostPage() {
     <main className="bg-base-100">
 
       <GuideHero
+              slug="why-body-fat-estimators-give-different-results"
                     title="Why Body Fat Estimators Give Different Results"
                     intro={
                       <>
@@ -35,12 +35,14 @@ export default function BlogPostPage() {
                     }
                     image={
                       <figure className="max-w-3xl">
-                        <img
-                          src="/guides/why-body-fat-estimators-give-different-results.png"
-                          alt="estimators may give differing results"
-                          loading="lazy"
-                          className="rounded-xl border"
-                        />
+                        <Image
+  src="/guides/why-body-fat-estimators-give-different-results.png"
+  alt="estimators may give differing results"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
                         <figcaption className="mt-2 text-sm text-gray-500 text-center">
                           Body fat percentages can differ depending on the method used
                         </figcaption>
@@ -49,7 +51,7 @@ export default function BlogPostPage() {
         />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -181,9 +183,10 @@ export default function BlogPostPage() {
             Estimate your body fat from a photo →
           </a>
         </div>
-<GuideStandardReferences />
+<GuideStandardReferences slug="why-body-fat-estimators-give-different-results" />
 
 <MoreArticles
+            currentSlug="why-body-fat-estimators-give-different-results"
             basePath="/guides"
             articles={[
                 {

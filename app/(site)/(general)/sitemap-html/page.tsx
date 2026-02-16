@@ -3,16 +3,17 @@ import Link from "next/link";
 import H1 from "@/app/components/common/h1";
 import { POSTS } from "../../guides/posts";
 import { toolsArray } from "../../(tools)/tools";
+import { buildPageMetadata } from "@/app/libs/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Sitemap",
-  description:
-    "Browse all pages on BodyFatEstimator.ai — tools, guides, and key resources.",
+  description: "Browse all pages on BodyFatEstimator.ai — tools, guides, and key resources.",
+  canonical: "https://bodyfatestimator.ai/sitemap-html",
   robots: {
-    index: true,
+    index: false,
     follow: true,
   },
-};
+});
 
 type SiteLink = {
   href: string;

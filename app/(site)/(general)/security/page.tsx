@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import H1 from "@/app/components/common/h1";
+import { buildPageMetadata } from "@/app/libs/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Security Policy",
-  description:
-    "Learn how BodyFatEstimator.ai protects your data using secure infrastructure, minimal data handling, and trusted providers.",
-};
+  description: "Learn how BodyFatEstimator.ai protects your data using secure infrastructure, minimal data handling, and trusted providers.",
+  canonical: "https://bodyfatestimator.ai/security",
+});
 
 export default function SecurityPage() {
   return (
@@ -56,6 +57,9 @@ export default function SecurityPage() {
                 <strong>Namecheap, Inc.</strong> — domain services and DNS
               </li>
               <li>
+                <strong>Google LLC</strong> — web analytics and tagging
+              </li>
+              <li>
                 <strong>Amplitude, Inc.</strong> — product analytics
               </li>
               <li>
@@ -75,25 +79,27 @@ export default function SecurityPage() {
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               Uploaded photos are processed only to generate your body fat
-              estimate. We do not sell photos, use them for advertising, or use
-              them to train third-party AI models.
+              estimate. We do not sell photos or use them for advertising.
+              We do not use uploaded photos to train our own models.
             </p>
 
             <ul className="mt-4 list-disc pl-5 text-gray-700 text-lg space-y-2">
               <li>
-                Photos are processed transiently for estimation purposes.
+                Photos are processed for estimation purposes through third-party
+                infrastructure.
               </li>
               <li>
-                We do not intend to store photos long-term as part of normal
-                operation.
+                We do not intentionally maintain long-term photo archives inside
+                the product.
               </li>
               <li>
-                When enabled, advertising and measurement providers are limited
-                to approved vendors under contractual controls.
+                Temporary copies may exist in provider systems for reliability,
+                security, and abuse prevention.
               </li>
               <li>
-                We avoid non-essential tracking; analytics are used to understand
-                usage and improve reliability.
+                Analytics currently use Google Analytics and Amplitude
+                (including session replay) to understand usage and improve
+                reliability.
               </li>
             </ul>
           </div>

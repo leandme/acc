@@ -2,17 +2,16 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "How to Estimate Body Fat Percentage (Methods + Accuracy)",
-  description:
-    "Learn how to estimate your body fat percentage, compare methods like visual charts, AI photo estimation, calculators, and DEXA, and understand which approach makes sense for you.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/how-to-estimate-body-fat-percentage",
-  },
-};
+  description: "Learn how to estimate your body fat percentage, compare methods like visual charts, AI photo estimation, calculators, and DEXA, and understand which approach makes sense for you.",
+  canonical: "https://bodyfatestimator.ai/guides/how-to-estimate-body-fat-percentage",
+});
 
 
 export default function BlogPostPage() {
@@ -24,6 +23,7 @@ export default function BlogPostPage() {
 How to Estimate Body Fat % from Home */}
 
       <GuideHero
+              slug="how-to-estimate-body-fat-percentage"
                                       title="How to Estimate Body Fat Percentage (Methods + Accuracy)"
                                       intro={
                                         <>
@@ -49,12 +49,14 @@ How to Estimate Body Fat % from Home */}
                                       }
                                       image={
                                         <figure className="max-w-3xl">
-                                          <img
-                                            src="/guides/how-to-calculate-your-body-fat-percentage-at-home.png"
-                                            alt="how to estimate body fat percentage"
-                                            loading="lazy"
-                                            className="rounded-xl border"
-                                          />
+                                          <Image
+  src="/guides/how-to-calculate-your-body-fat-percentage-at-home.png"
+  alt="how to estimate body fat percentage"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
                                           <figcaption className="mt-2 text-sm text-gray-500 text-center">
                                             There are multiple way to estimate a persons body fat percentage
                                           </figcaption>
@@ -63,7 +65,7 @@ How to Estimate Body Fat % from Home */}
               />
 
       {/* Content */}
-      <div className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <div className="mx-auto max-w-3xl px-6 pb-20 [&>section+section]:mt-20 lg:[&>section+section]:mt-40">
        
        {/* SECTION 1 — WHAT BODY FAT PERCENTAGE REALLY REPRESENTS */}
 <section className="space-y-12">
@@ -233,6 +235,26 @@ How to Estimate Body Fat % from Home */}
 
     <p className="text-gray-700 text-lg leading-relaxed">
       Calculators are best treated as rough context, not definitive answers.
+    </p>
+
+    <p className="text-gray-700 text-lg leading-relaxed">
+      If you want a broader height-weight screening set, compare outputs from the{" "}
+      <a className="text-primary underline" href="/overweight-calculator">
+        overweight gap calculator
+      </a>
+      , the{" "}
+      <a className="text-primary underline" href="/ponderal-index-calculator">
+        ponderal index calculator
+      </a>
+      , and the{" "}
+      <a className="text-primary underline" href="/broca-index-calculator">
+        Broca index calculator
+      </a>
+      . For dosing-style planning contexts, layer in the{" "}
+      <a className="text-primary underline" href="/adjusted-body-weight-calculator">
+        adjusted body weight calculator
+      </a>
+      .
     </p>
   </div>
 
@@ -976,9 +998,10 @@ How to Estimate Body Fat % from Home */}
     </p>
   </div>
 </section>
-<GuideStandardReferences />
+<GuideStandardReferences slug="how-to-estimate-body-fat-percentage" />
 
 <MoreArticles
+            currentSlug="how-to-estimate-body-fat-percentage"
             basePath="/guides"
             articles={[
                 {

@@ -1,16 +1,14 @@
 import { Metadata } from "next";
 import H1 from "@/app/components/common/h1";
+import { buildPageMetadata } from "@/app/libs/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Body Fat % Examples – What Body Fat % Looks Like",
-  description:
-    "Explore body fat examples generated from photos. See what different body fat % ranges tend to look like, why the same % can look different, and try a free AI estimate from your own photo.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/examples",
-  },
-};
+  description: "Explore body fat examples generated from photos. See what different body fat % ranges tend to look like, why the same % can look different, and try a free AI estimate from your own photo.",
+  canonical: "https://bodyfatestimator.ai/examples",
+});
 
 const images = [
   "/examples/boy-selfie.png",

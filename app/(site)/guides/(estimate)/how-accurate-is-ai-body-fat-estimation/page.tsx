@@ -2,15 +2,14 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "How Accurate isn AI Body Fat Estimation?",
-  description:
-    "Is AI body fat estimation accurate? Learn how accuracy differs from consistency, how AI compares to at-home methods, and how to get the most reliable results from photo-based estimation.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/how-accurate-is-ai-body-fat-estimation",
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "How Accurate Is AI Body Fat Estimation?",
+  description: "Is AI body fat estimation accurate? Learn how accuracy differs from consistency, how AI compares to at-home methods, and how to get the most reliable results from photo-based estimation.",
+  canonical: "https://bodyfatestimator.ai/guides/how-accurate-is-ai-body-fat-estimation",
+});
 
 
 export default function BlogPostPage() {
@@ -20,7 +19,8 @@ export default function BlogPostPage() {
     <main className="bg-base-100">
 
        <GuideHero
-                                            title="How Accurate isn AI Body Fat Estimation?"
+              slug="how-accurate-is-ai-body-fat-estimation"
+                                            title="How Accurate Is AI Body Fat Estimation?"
                                             intro={
                                               <>
                                                 <p>
@@ -36,12 +36,14 @@ export default function BlogPostPage() {
                                             }
                                             image={
                                               <figure className="max-w-3xl">
-                                                <img
-                                                  src="/guides/how-accurate-is-ai-body-fat-estimation.png"
-                                                  alt="how accurate is ai body fat estimation"
-                                                  loading="lazy"
-                                                  className="rounded-xl border"
-                                                />
+                                                <Image
+  src="/guides/how-accurate-is-ai-body-fat-estimation.png"
+  alt="how accurate is ai body fat estimation"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
                                                 <figcaption className="mt-2 text-sm text-gray-500 text-center">
                                                   AI can be more accurate than established methods
                                                 </figcaption>
@@ -50,7 +52,7 @@ export default function BlogPostPage() {
                     />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Accuracy vs consistency */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -159,9 +161,10 @@ export default function BlogPostPage() {
           </p>
         </div>
 
-        <GuideStandardReferences />
+        <GuideStandardReferences slug="how-accurate-is-ai-body-fat-estimation" />
 
         <MoreArticles
+            currentSlug="how-accurate-is-ai-body-fat-estimation"
                     basePath="/guides"
                     articles={[
                         {

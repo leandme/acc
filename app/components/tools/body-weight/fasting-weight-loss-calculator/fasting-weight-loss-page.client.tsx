@@ -70,14 +70,14 @@ export default function FastingWeightLossPageClient() {
           <p className={pClass}>
             If you prefer a non-fasting setup based on one daily calorie target, use the{" "}
             <a className="text-primary underline" href="/weight-loss-calculator">
-              Weight Loss Calculator
+              standard daily-intake timeline model
             </a>
             .
           </p>
           <p className={pClass}>
             To summarize progress after a phase, calculate net percentage change with the{" "}
             <a className="text-primary underline" href="/weight-loss-percentage-calculator">
-              Weight Loss Percentage Calculator
+              start-to-current percentage tracker
             </a>
             .
           </p>

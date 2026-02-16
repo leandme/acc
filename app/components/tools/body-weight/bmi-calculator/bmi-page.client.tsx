@@ -59,30 +59,50 @@ export default function BMIPageClient() {
         </div>
 
         <div className={sectionWrap}>
+          <h2 className={h2Class}>If You Searched for an Overweight Calculator</h2>
+          <p className={pClass}>
+            BMI is best for general screening. If your intent is planning around how much weight sits above
+            the healthy range, use the{" "}
+            <a className="text-primary underline" href="/overweight-calculator">
+              BMI-based overweight calculator
+            </a>{" "}
+            for a direct kg-above-threshold result.
+          </p>
+          <p className={pClass}>
+            A practical sequence is: screen with BMI, quantify current gap above healthy range, then map a
+            timeline using the{" "}
+            <a className="text-primary underline" href="/weight-loss-calculator">
+              target-weight timeline calculator
+            </a>
+            .
+          </p>
+        </div>
+
+        <div className={sectionWrap}>
           <h2 className={h2Class}>Limits of BMI</h2>
           <p className={pClass}>
             BMI does not directly measure fat, muscle, or fat distribution. Athletes and highly trained
             individuals can be misclassified despite low body fat.
           </p>
           <p className={pClass}>
-            For body-composition context, compare with the{" "}
+            For body-composition context, compare with a{" "}
             <a className="text-primary underline" href="/body-fat-calculator">
-              Body Fat Calculator
+              tape-based body fat estimate
             </a>
             ,{" "}
             <a className="text-primary underline" href="/bri-calculator">
-              BRI Calculator
+              waist-to-height roundness check
             </a>
             , and{" "}
             <a className="text-primary underline" href="/ffmi-calculator">
-              FFMI Calculator
+              height-normalized muscularity score (FFMI)
             </a>
             .
           </p>
           <p className={pClass}>
-            For a deeper breakdown, read{" "}
+            For a deeper breakdown, read our guide on{" "}
             <a className="text-primary underline" href="/guides/bmi-vs-body-fat">
-              BMI vs Body Fat % - Which Is Important?
+              when BMI helps and when body-fat percentage is more useful
             </a>
             .
           </p>

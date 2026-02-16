@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import H1 from "@/app/components/common/h1";
+import { buildPageMetadata } from "@/app/libs/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Contact",
-  description:
-    "Contact BodyFatEstimator.ai support. Questions about your AI body fat estimate, accuracy, pricing, refunds, or privacy? Email us and we’ll help.",
-};
+  description: "Contact BodyFatEstimator.ai support. Questions about your AI body fat estimate, accuracy, pricing, refunds, or privacy? Email us and we’ll help.",
+  canonical: "https://bodyfatestimator.ai/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -70,8 +71,9 @@ export default function ContactPage() {
             </div>
             <div className="collapse-content">
               <p className="text-gray-700">
-                Photos are processed to generate your estimate. We don’t sell or share your data.
-                We aim to minimize retention and delete data after processing whenever possible.
+                Photos are processed to generate your estimate. We do not sell
+                your photos. Processing may involve trusted infrastructure
+                providers, and we aim to minimize retention wherever possible.
               </p>
             </div>
           </div>

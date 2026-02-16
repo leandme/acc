@@ -25,7 +25,7 @@ export default function OverweightPageClient() {
   return (
     <main className="bg-base-100">
       <section className="flex flex-col items-center justify-start pt-10">
-        <h1 className="text-3xl lg:text-5xl font-bold text-center">Overweight Calculator</h1>
+        <h1 className="text-3xl lg:text-5xl font-bold text-center">Overweight Calculator (BMI-Based)</h1>
 
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
           Check BMI category and estimate how far current weight sits above the upper healthy-BMI boundary.
@@ -95,7 +95,7 @@ export default function OverweightPageClient() {
           <p className={pClass}>
             The{" "}
             <a className="text-primary underline" href="/bmi-calculator">
-              BMI Calculator
+              main BMI screening page
             </a>{" "}
             is best for broad screening and category checks. This page is tuned for planning conversations
             like “How far above the upper healthy range am I right now?”
@@ -103,13 +103,29 @@ export default function OverweightPageClient() {
           <p className={pClass}>
             If you are setting targets, pair this output with the{" "}
             <a className="text-primary underline" href="/ideal-weight-calculator">
-              Ideal Weight Calculator
+              healthy target-weight planner
             </a>{" "}
             and{" "}
             <a className="text-primary underline" href="/weight-loss-calculator">
-              Weight Loss Calculator
+              timeline-to-target projection
             </a>
             .
+          </p>
+        </div>
+
+        <div className={sectionWrap}>
+          <h2 className={h2Class}>Best Use Cases for This Tool</h2>
+          <ul className="list-disc pl-6 space-y-2 text-lg leading-relaxed">
+            <li>Translate BMI screening into a clear “kg above healthy range” number.</li>
+            <li>Set an initial target before running a weight-loss timeline projection.</li>
+            <li>Track progress toward the upper healthy boundary over time.</li>
+          </ul>
+          <p className={pClass}>
+            If you only need category-level screening, the{" "}
+            <a className="text-primary underline" href="/bmi-calculator">
+              BMI calculator
+            </a>{" "}
+            is usually the better starting point.
           </p>
         </div>
 
@@ -122,15 +138,15 @@ export default function OverweightPageClient() {
           <p className={pClass}>
             For better context, combine BMI with waist-based tools and composition-focused tools such as the{" "}
             <a className="text-primary underline" href="/bri-calculator">
-              BRI Calculator
+              body roundness (waist-height) check
             </a>
             ,{" "}
             <a className="text-primary underline" href="/body-fat-calculator">
-              Body Fat Calculator
+              tape-based body fat estimate
             </a>
             , and{" "}
             <a className="text-primary underline" href="/lean-body-mass-calculator">
-              Lean Body Mass Calculator
+              lean-mass estimate
             </a>
             .
           </p>
@@ -139,13 +155,13 @@ export default function OverweightPageClient() {
         <div className={sectionWrap}>
           <h2 className={h2Class}>Related Tools</h2>
           <p className={pClass}>
-            For direct BMI calculation and trend context, use the{" "}
+            For direct BMI category screening, use the{" "}
             <a className="text-primary underline" href="/bmi-calculator">
-              BMI Calculator
+              adult BMI calculator
             </a>
-            . For healthy-weight targets, pair this with the{" "}
+            . For practical goal setting, pair this with the{" "}
             <a className="text-primary underline" href="/ideal-weight-calculator">
-              Ideal Weight Calculator
+              healthy-weight range planner
             </a>
             .
           </p>

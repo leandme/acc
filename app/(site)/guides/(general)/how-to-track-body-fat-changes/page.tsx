@@ -2,15 +2,14 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "How to Track Body Fat Changes Over Time (Without a Scale)",
-  description:
-    "Learn how to track body fat progress over time without relying on a scale. Use photos, consistency, and trends to understand real changes in body composition.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/how-to-track-body-fat-changes",
-  },
-};
+  description: "Learn how to track body fat progress over time without relying on a scale. Use photos, consistency, and trends to understand real changes in body composition.",
+  canonical: "https://bodyfatestimator.ai/guides/how-to-track-body-fat-changes",
+});
 
 export default function BlogPostPage() {
 
@@ -18,6 +17,7 @@ export default function BlogPostPage() {
     <main className="bg-base-100">
 
             <GuideHero
+              slug="how-to-track-body-fat-changes"
                           title="How to Track Body Fat Changes Over Time (Without a Scale)"
                           intro={
                             <>
@@ -34,12 +34,14 @@ export default function BlogPostPage() {
                           }
                           image={
                             <figure className="max-w-3xl">
-                              <img
-                                src="/guides/how-to-track-body-fat-changes-over-time.png"
-                                alt="how to track body fat changes"
-                                loading="lazy"
-                                className="rounded-xl border"
-                              />
+                              <Image
+  src="/guides/how-to-track-body-fat-changes-over-time.png"
+  alt="how to track body fat changes"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
                               <figcaption className="mt-2 text-sm text-gray-500 text-center">
                                 Body fat percentages can differ depending on the method used
                               </figcaption>
@@ -48,7 +50,7 @@ export default function BlogPostPage() {
               />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Why not the scale */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -165,10 +167,35 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             This approach keeps the signal and discards the noise.
           </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            If you also track scale-based targets, use the{" "}
+            <a className="text-primary underline" href="/overweight-calculator">
+              current gap-above-healthy check
+            </a>
+            , the{" "}
+            <a className="text-primary underline" href="/adjusted-body-weight-calculator">
+              adjusted body weight estimator
+            </a>
+            , and the{" "}
+            <a className="text-primary underline" href="/fasting-weight-loss-calculator">
+              fasting-pattern projection
+            </a>
+            . For alternate height-weight screens, compare results with the{" "}
+            <a className="text-primary underline" href="/ponderal-index-calculator">
+              ponderal index method
+            </a>{" "}
+            and the{" "}
+            <a className="text-primary underline" href="/broca-index-calculator">
+              Broca index benchmark
+            </a>
+            .
+          </p>
         </div>
-<GuideStandardReferences />
+<GuideStandardReferences slug="how-to-track-body-fat-changes" />
 
 <MoreArticles
+            currentSlug="how-to-track-body-fat-changes"
             basePath="/guides"
             articles={[
                 {

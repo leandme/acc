@@ -2,15 +2,14 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "What Does Body Fat Percentage Look Like? (Visual Guide + Examples)",
-  description:
-    "See what different body fat percentages look like (10%, 12%, 15%, 18%, 20%, 25%, 30%+) with realistic descriptions, disclaimers, and how to estimate your own body fat visually or with AI.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/what-does-body-fat-percentage-look-like",
-  },
-};
+  description: "See what different body fat percentages look like (10%, 12%, 15%, 18%, 20%, 25%, 30%+) with realistic descriptions, disclaimers, and how to estimate your own body fat visually or with AI.",
+  canonical: "https://bodyfatestimator.ai/guides/what-does-body-fat-percentage-look-like",
+});
 
 export default function BlogPostPage() {
 
@@ -18,6 +17,7 @@ export default function BlogPostPage() {
     <main className="bg-base-100 mt-10">
 
       <GuideHero
+              slug="what-does-body-fat-percentage-look-like"
         title="What Does Body Fat Percentage Look Like?" 
         intro={
           <>
@@ -35,12 +35,14 @@ export default function BlogPostPage() {
         }
         image={
           <figure className="max-w-3xl">
-            <img
-              src="/guides/what-does-body-fat-percentage-look-like.png"
-              alt="what does x% bodyfat look like?"
-              loading="lazy"
-              className="rounded-xl border"
-            />
+            <Image
+  src="/guides/what-does-body-fat-percentage-look-like.png"
+  alt="what does x% bodyfat look like?"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
             <figcaption className="mt-2 text-sm text-gray-500 text-center">
               Body fat percentages can differ wildly despite looking similar
             </figcaption>
@@ -50,7 +52,7 @@ export default function BlogPostPage() {
 
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Quick framing */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -268,9 +270,10 @@ export default function BlogPostPage() {
             <li>Interpret your % as a range (e.g., 18–20%)</li>
           </ul>
         </div>
-<GuideStandardReferences />
+<GuideStandardReferences slug="what-does-body-fat-percentage-look-like" />
 
 <MoreArticles
+            currentSlug="what-does-body-fat-percentage-look-like"
             basePath="/guides"
             articles={[
                 {

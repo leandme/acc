@@ -2,20 +2,20 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Why Body Fat Measurement Methods Give Different Results",
-  description:
-    "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/why-body-fat-measurements-give-different-results",
-  },
-};
+  description: "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
+  canonical: "https://bodyfatestimator.ai/guides/why-body-fat-measurements-give-different-results",
+});
 
 export default function BlogPostPage() {
   return (
     <main className="bg-base-100">
       <GuideHero
+              slug="why-body-fat-measurements-give-different-results"
         title="Why Body Fat Measurement Methods Give Different Results"
         intro={
           <>
@@ -32,12 +32,14 @@ export default function BlogPostPage() {
         }
         image={
           <figure className="max-w-3xl">
-            <img
-              src="/guides/why-body-fat-measurements-give-different-results.png"
-              alt="Different body fat measurement methods compared"
-              loading="lazy"
-              className="rounded-xl border"
-            />
+            <Image
+  src="/guides/why-body-fat-measurements-give-different-results.png"
+  alt="Different body fat measurement methods compared"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
             <figcaption className="mt-2 text-sm text-gray-500 text-center">
               Different methods measure different things — results will vary
             </figcaption>
@@ -46,7 +48,7 @@ export default function BlogPostPage() {
       />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Core idea */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -194,9 +196,10 @@ export default function BlogPostPage() {
             interpret in context — not the one with the most decimal places.
           </p>
         </div>
-        <GuideStandardReferences />
+        <GuideStandardReferences slug="why-body-fat-measurements-give-different-results" />
 
         <MoreArticles
+            currentSlug="why-body-fat-measurements-give-different-results"
             basePath="/guides"
             articles={[
                 {

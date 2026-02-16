@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import H1 from "@/app/components/common/h1";
+import { buildPageMetadata } from "@/app/libs/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Sub-processors",
-  description:
-    "Learn about the sub-processors used by BodyFatEstimator.ai, including hosting, AI processing, analytics, and payment providers.",
-};
+  description: "Learn about the sub-processors used by BodyFatEstimator.ai, including hosting, AI processing, analytics, and payment providers.",
+  canonical: "https://bodyfatestimator.ai/subprocessors",
+});
 
 export default function SubProcessorsPage() {
   return (
@@ -91,15 +92,15 @@ export default function SubProcessorsPage() {
             </h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              BodyFatEstimator.ai does <strong>not</strong> permanently store
-              uploaded images.
+              BodyFatEstimator.ai does not intentionally maintain a long-term
+              archive of uploaded images.
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              Images are processed temporarily for the sole purpose of generating
-              a body fat estimate and are not retained after processing. We do
-              not build user profiles, maintain image histories, or store photos
-              long-term.
+              Images are processed to generate a body fat estimate. Temporary
+              copies may exist in provider systems for processing, reliability,
+              security, and abuse-prevention purposes. We do not build
+              long-term user photo histories inside the product.
             </p>
           </div>
 
@@ -108,11 +109,14 @@ export default function SubProcessorsPage() {
             <h2 className="text-2xl font-semibold">Analytics</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We use minimal analytics to understand site usage and improve
-              reliability.
+              We use analytics to understand site usage and improve reliability.
             </p>
 
             <ul className="mt-4 list-disc pl-5 text-lg space-y-2 text-gray-700">
+              <li>
+                <strong>Google LLC</strong> — Google Analytics and tagging
+                infrastructure (United States)
+              </li>
               <li>
                 <strong>Amplitude, Inc.</strong> — product analytics (United
                 States)
@@ -144,16 +148,15 @@ export default function SubProcessorsPage() {
 
             <ul className="mt-4 list-disc pl-5 text-lg space-y-2 text-gray-700">
               <li>
-                Advertising and measurement vendors may be used for ad delivery,
-                fraud prevention, and campaign reporting.
+                We do not currently use third-party display advertising
+                networks.
               </li>
               <li>
-                Email providers may be used for product or service communication
-                if those features are enabled.
+                We do not currently use a dedicated email marketing provider.
               </li>
               <li>
-                Analytics and advertising cookies or similar identifiers may be
-                used depending on your consent status and jurisdiction.
+                Analytics cookies or similar identifiers are currently used by
+                Google Analytics and Amplitude.
               </li>
             </ul>
           </div>

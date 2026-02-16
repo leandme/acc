@@ -4,6 +4,14 @@ import fs from "fs";
 import path from "path";
 
 const BASE_URL = "https://bodyfatestimator.ai";
+const LEGAL_ROUTES = new Set([
+  "/privacy",
+  "/terms",
+  "/cookies",
+  "/security",
+  "/subprocessors",
+]);
+const UTILITY_ROUTES = new Set(["/sitemap-html"]);
 
 function stripRouteGroups(route: string) {
   // route like "/(general)/about" or "/guides/(body-fat)/bmi-vs-body-fat"
@@ -19,9 +27,51 @@ function stripRouteGroups(route: string) {
   return cleaned === "/" ? "/" : cleaned.replace(/\/+$/g, "");
 }
 
+type SitemapEntry = {
+  url: string;
+  route: string;
+  absolutePath: string;
+  lastModified: Date;
+};
+
+function getRouteSignals(
+  route: string,
+  absolutePath: string
+): Pick<MetadataRoute.Sitemap[number], "changeFrequency" | "priority"> {
+  if (route === "/") {
+    return { changeFrequency: "weekly", priority: 1 };
+  }
+
+  if (route === "/estimate") {
+    return { changeFrequency: "weekly", priority: 0.95 };
+  }
+
+  if (route === "/tools" || route === "/guides") {
+    return { changeFrequency: "weekly", priority: 0.9 };
+  }
+
+  if (absolutePath.includes(`${path.sep}(tools)${path.sep}`)) {
+    return { changeFrequency: "weekly", priority: 0.85 };
+  }
+
+  if (absolutePath.includes(`${path.sep}guides${path.sep}`)) {
+    return { changeFrequency: "monthly", priority: 0.8 };
+  }
+
+  if (LEGAL_ROUTES.has(route)) {
+    return { changeFrequency: "yearly", priority: 0.2 };
+  }
+
+  if (route === "/about" || route === "/contact") {
+    return { changeFrequency: "monthly", priority: 0.4 };
+  }
+
+  return { changeFrequency: "monthly", priority: 0.5 };
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const pagesDirectory = path.join(process.cwd(), "app/(site)");
-  const urls: string[] = [];
+  const entries: SitemapEntry[] = [];
 
   function readPagesDirectory(directory: string) {
     fs.readdirSync(directory).forEach((file) => {
@@ -52,18 +102,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       route = stripRouteGroups(route);
 
+      if (UTILITY_ROUTES.has(route)) return;
+
       // build full URL
       const full = route === "/" ? BASE_URL : `${BASE_URL}${route}`;
-      urls.push(full);
+      entries.push({
+        url: full,
+        route,
+        absolutePath,
+        lastModified: stat.mtime,
+      });
     });
   }
 
   readPagesDirectory(pagesDirectory);
 
-  return urls.map((url) => ({
-    url,
-    lastModified: new Date(),
-    changeFrequency: "daily",
-    priority: 0.7,
-  }));
+  return entries.map((entry) => {
+    const signals = getRouteSignals(entry.route, entry.absolutePath);
+    return {
+      url: entry.url,
+      lastModified: entry.lastModified,
+      changeFrequency: signals.changeFrequency,
+      priority: signals.priority,
+    };
+  });
 }

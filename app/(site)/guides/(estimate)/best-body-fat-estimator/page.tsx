@@ -2,15 +2,14 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "The Best Body Fat Estimator of 2026",
-  description:
-    "What makes the best body fat estimator in 2026? Learn how modern photo-based tools work, how to evaluate accuracy and consistency, and which approach makes the most sense for tracking real progress.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/best-body-fat-estimator",
-  },
-};
+  description: "What makes the best body fat estimator in 2026? Learn how modern photo-based tools work, how to evaluate accuracy and consistency, and which approach makes the most sense for tracking real progress.",
+  canonical: "https://bodyfatestimator.ai/guides/best-body-fat-estimator",
+});
 
 export default function BlogPostPage() {
 
@@ -18,6 +17,7 @@ export default function BlogPostPage() {
     <main className="bg-base-100">
 
       <GuideHero
+              slug="best-body-fat-estimator"
               title="The Best Body Fat Estimator of 2026"
               intro={
                 <>
@@ -34,12 +34,14 @@ export default function BlogPostPage() {
               }
               image={
                 <figure className="max-w-3xl">
-                  <img
-                    src="/guides/"
-                    alt=""
-                    loading="lazy"
-                    className="rounded-xl border"
-                  />
+                  <Image
+  src="/guides/"
+  alt=""
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
                   <figcaption className="mt-2 text-sm text-gray-500 text-center">
                     
                   </figcaption>
@@ -48,7 +50,7 @@ export default function BlogPostPage() {
     />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -151,9 +153,10 @@ export default function BlogPostPage() {
             how to use results responsibly stand out as the most useful.
           </p>
         </div>
-<GuideStandardReferences />
+<GuideStandardReferences slug="best-body-fat-estimator" />
 
 <MoreArticles
+            currentSlug="best-body-fat-estimator"
             basePath="/guides"
             articles={[
                 {

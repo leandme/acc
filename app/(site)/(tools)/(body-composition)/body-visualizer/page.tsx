@@ -2,15 +2,13 @@ import { Metadata } from "next";
 import BodyVisualizerTool from "@/app/components/tools/composition/body-visualizer/visualizer";
 import CTA from "@/app/components/common/cta";
 import { MoreTools } from "@/app/components/tools/template/more-tools";
+import { buildPageMetadata } from "@/app/libs/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Body Visualizer – BMI, Body Fat & Weight",
-  description:
-    "Use an interactive Body Visualizer with linked sliders for BMI, body fat percentage, height, and weight. See a dynamic body render and trend-focused composition metrics.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/body-visualizer",
-  },
-};
+  description: "Use an interactive Body Visualizer with linked sliders for BMI, body fat percentage, height, and weight. See a dynamic body render and trend-focused composition metrics.",
+  canonical: "https://bodyfatestimator.ai/body-visualizer",
+});
 
 export default function BodyVisualizerPage() {
   return (

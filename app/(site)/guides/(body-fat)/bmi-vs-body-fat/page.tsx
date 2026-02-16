@@ -2,20 +2,20 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "BMI vs Body Fat % – Which Is Important?",
-  description:
-    "BMI and body fat percentage measure different things. Learn how BMI works, why it often fails individuals, and when body fat % is the more useful metric for tracking health and appearance.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/bmi-vs-body-fat",
-  },
-};
+  description: "BMI and body fat percentage measure different things. Learn how BMI works, why it often fails individuals, and when body fat % is the more useful metric for tracking health and appearance.",
+  canonical: "https://bodyfatestimator.ai/guides/bmi-vs-body-fat",
+});
 
 export default function BlogPostPage() {
   return (
     <main className="bg-base-100">
       <GuideHero
+              slug="bmi-vs-body-fat"
         title="BMI vs Body Fat % – Which Is Important?"
         intro={
           <>
@@ -33,12 +33,14 @@ export default function BlogPostPage() {
         }
         image={
           <figure className="max-w-3xl">
-            <img
-              src="/guides/BMI-vs-body-fat.png"
-              alt="BMI vs body fat percentage comparison"
-              loading="lazy"
-              className="rounded-xl border"
-            />
+            <Image
+  src="/guides/BMI-vs-body-fat.png"
+  alt="BMI vs body fat percentage comparison"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
             <figcaption className="mt-2 text-sm text-gray-500 text-center">
               BMI and body fat percentage often tell very different stories
             </figcaption>
@@ -47,7 +49,7 @@ export default function BlogPostPage() {
       />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* What BMI actually is */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -189,11 +191,28 @@ export default function BlogPostPage() {
             </a>
             .
           </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            For height-weight-only screening variants, compare your{" "}
+            <a className="text-primary underline" href="/overweight-calculator">
+              weight above the healthy BMI ceiling
+            </a>
+            , check the{" "}
+            <a className="text-primary underline" href="/ponderal-index-calculator">
+              ponderal index alternative
+            </a>
+            , and contrast with the{" "}
+            <a className="text-primary underline" href="/broca-index-calculator">
+              Broca reference method
+            </a>
+            .
+          </p>
         </div>
 
-        <GuideStandardReferences />
+        <GuideStandardReferences slug="bmi-vs-body-fat" />
 
         <MoreArticles
+            currentSlug="bmi-vs-body-fat"
                     basePath="/guides"
                     articles={[
                         {

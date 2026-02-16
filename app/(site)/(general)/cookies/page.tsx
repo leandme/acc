@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import H1 from "@/app/components/common/h1";
+import { buildPageMetadata } from "@/app/libs/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Cookie Policy",
-  description:
-    "Cookie policy for BodyFatEstimator.ai. Learn how we use cookies and similar technologies, and how you can control them.",
-};
+  description: "Cookie policy for BodyFatEstimator.ai. Learn how we use cookies and similar technologies, and how you can control them.",
+  canonical: "https://bodyfatestimator.ai/cookies",
+});
 
 export default function CookiesPage() {
   return (
@@ -50,16 +51,12 @@ export default function CookiesPage() {
                 to understand how the site is used and improve performance and
                 reliability.
               </li>
-              <li>
-                <strong>Advertising and measurement</strong> — when enabled, ad
-                partners may use cookies or similar identifiers for ad delivery,
-                frequency capping, fraud prevention, and campaign measurement.
-              </li>
             </ul>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              Where required by law, we request consent before setting
-              non-essential cookies, including advertising cookies.
+              We currently use Google Analytics and Amplitude. These services
+              may use cookies or similar identifiers and may load automatically
+              when you use the Service.
             </p>
           </div>
 
@@ -70,13 +67,17 @@ export default function CookiesPage() {
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               Some cookies or similar technologies may be set by trusted
               third-party service providers that help us operate the Service,
-              such as analytics, security, infrastructure, and advertising
-              partners.
+              such as analytics, security, and infrastructure providers.
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               These providers process limited information on our behalf and only
               for the purposes described in our Privacy Policy.
+            </p>
+
+            <p className="mt-3 text-gray-700 text-lg leading-relaxed">
+              We do not currently run third-party display advertising cookies on
+              the Service.
             </p>
           </div>
 

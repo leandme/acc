@@ -75,18 +75,18 @@ export default function WeightLossPercentagePageClient() {
           <p className={pClass}>
             Weight change percentage is only one view. Add the{" "}
             <a className="text-primary underline" href="/bmi-calculator">
-              BMI Calculator
+              BMI category screener
             </a>{" "}
             for category screening and the{" "}
             <a className="text-primary underline" href="/weight-loss-calculator">
-              Weight Loss Calculator
+              timeline-to-target planner
             </a>{" "}
             to estimate timeline-to-target based on energy intake and activity.
           </p>
           <p className={pClass}>
             If you use time-restricted eating or intermittent fasting, compare projections with the{" "}
             <a className="text-primary underline" href="/fasting-weight-loss-calculator">
-              Fasting Weight Loss Calculator
+              fasting-pattern projection model
             </a>
             .
           </p>

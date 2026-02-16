@@ -74,14 +74,14 @@ export default function WeightLossPageClient() {
           <p className={pClass}>
             If you use fasting windows with different intake on fasting vs feeding days, use the{" "}
             <a className="text-primary underline" href="/fasting-weight-loss-calculator">
-              Fasting Weight Loss Calculator
+              fasting-specific intake projection
             </a>
             .
           </p>
           <p className={pClass}>
             To summarize completed progress, calculate net percentage change in the{" "}
             <a className="text-primary underline" href="/weight-loss-percentage-calculator">
-              Weight Loss Percentage Calculator
+              start-to-current weight change calculator
             </a>
             .
           </p>

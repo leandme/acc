@@ -2,15 +2,14 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "How to Take Photos for Body Fat Estimation",
-  description:
-    "Learn how to take consistent body fat photos for estimation and progress tracking. Lighting, pose, camera setup, and common mistakes explained.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/how-to-take-photos-for-body-fat-estimation",
-  },
-};
+  description: "Learn how to take consistent body fat photos for estimation and progress tracking. Lighting, pose, camera setup, and common mistakes explained.",
+  canonical: "https://bodyfatestimator.ai/guides/how-to-take-photos-for-body-fat-estimation",
+});
 
 export default function BlogPostPage() {
 
@@ -18,6 +17,7 @@ export default function BlogPostPage() {
     <main className="bg-base-100">
 
       <GuideHero
+              slug="how-to-take-photos-for-body-fat-estimation"
                                 title="How to Take Photos for Body Fat Estimation"
                                 intro={
                                   <>
@@ -30,12 +30,14 @@ export default function BlogPostPage() {
                                 }
                                 image={
                                   <figure className="max-w-3xl">
-                                    <img
-                                      src="/guides/how-to-take-photos-for-body-fat-estimation.png"
-                                      alt="how to take photos for body fat estimation"
-                                      loading="lazy"
-                                      className="rounded-xl border"
-                                    />
+                                    <Image
+  src="/guides/how-to-take-photos-for-body-fat-estimation.png"
+  alt="how to take photos for body fat estimation"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
                                     <figcaption className="mt-2 text-sm text-gray-500 text-center">
                                       Accurate body fat estimates require good photos
                                     </figcaption>
@@ -44,7 +46,7 @@ export default function BlogPostPage() {
         />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -185,9 +187,10 @@ export default function BlogPostPage() {
           </a>
         </div>
 
-        <GuideStandardReferences />
+        <GuideStandardReferences slug="how-to-take-photos-for-body-fat-estimation" />
 
         <MoreArticles
+            currentSlug="how-to-take-photos-for-body-fat-estimation"
             basePath="/guides"
             articles={[
                 {

@@ -8,12 +8,8 @@ Get AHREFS and find all the best terms
 
 - Rewrite the About page
 - Redo the contact page
-- Ensure privacy pages and legal all up to scratch
 - Rewrite existing articles
-- Even breaks between sections
-- consistent formatting and layout
 - Update existing tools
-- 100k pageviews
 - test OpenAI instead of via replicate.
 
 Add references to disclimaer
@@ -44,7 +40,9 @@ Add section- goal weight/body fat%
 - Interview Rory Sutherland on weight lose behavioural side of things.
 
 # KEYWORDS
+weight loss estimator
 best calorie tracker app
+best weight loss app
 best food tracker app
 weight loss planner
 free weight loss planner
@@ -56,51 +54,3 @@ body weight planner
 free weight loss planner
 weight loss planner pdf
 body weight planner calculato
-
-## Search Console data pull
-
-Use this command to pull Google Search Console performance rows to local files:
-
-```bash
-npm run gsc:pull -- --property=sc-domain:bodyfatestimator.ai --start=2026-01-01 --end=2026-01-31
-```
-
-Exports are written to `data/search-console/` as both JSON and CSV.
-
-### Auth option A: Service account (recommended)
-
-1. Create a Google Cloud service account and download the key JSON.
-2. In Google Search Console, add that service account email as a user on your property.
-3. Set:
-
-```bash
-export GSC_SERVICE_ACCOUNT_KEY_FILE="$PWD/secrets/gsc-service-account.json"
-```
-
-Optional (Workspace/domain-wide delegation only):
-
-```bash
-export GSC_IMPERSONATE_USER="you@yourdomain.com"
-```
-
-### Auth option B: OAuth refresh token
-
-Set:
-
-```bash
-export GSC_OAUTH_CLIENT_ID="..."
-export GSC_OAUTH_CLIENT_SECRET="..."
-export GSC_OAUTH_REFRESH_TOKEN="..."
-```
-
-### Extra options
-
-```bash
-# default dims: date,page,query,country,device
-export GSC_DIMENSIONS="date,page,query,country,device"
-export GSC_OUTPUT_DIR="data/search-console"
-export GSC_ROW_LIMIT="25000"
-export GSC_MAX_ROWS="100000"
-export GSC_SEARCH_TYPE="web"
-export GSC_DATA_STATE="final"
-```

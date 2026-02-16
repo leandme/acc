@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import H1 from "@/app/components/common/h1";
+import { buildPageMetadata } from "@/app/libs/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Terms & Conditions",
-  description:
-    "Terms and conditions for using BodyFatEstimator.ai, including acceptable use, disclaimers, and limitations of liability.",
-};
+  description: "Terms and conditions for using BodyFatEstimator.ai, including acceptable use, disclaimers, and limitations of liability.",
+  canonical: "https://bodyfatestimator.ai/terms",
+});
 
 export default function TermsPage() {
   return (

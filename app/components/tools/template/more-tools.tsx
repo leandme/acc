@@ -8,6 +8,35 @@ import { getToolsByCategories } from "@/app/(site)/(tools)/tools";
 import { ToolMeta } from "@/app/(site)/(tools)/tools";
 import { pickTools } from "@/app/(site)/(tools)/tools";
 
+const LOW_LINK_TOOL_SLUGS = new Set<string>([
+  "overweight-calculator",
+  "broca-index-calculator",
+  "ponderal-index-calculator",
+  "adjusted-body-weight-calculator",
+  "fasting-weight-loss-calculator",
+]);
+
+function promoteLowLinkTool(
+  list: ToolMeta[],
+  maxItems: number
+) {
+  if (list.length <= maxItems) return list;
+
+  const top = list.slice(0, maxItems);
+  const topHasLowLink = top.some((t) => LOW_LINK_TOOL_SLUGS.has(t.slug));
+  if (topHasLowLink) return top;
+
+  const candidate = list
+    .slice(maxItems)
+    .find((t) => LOW_LINK_TOOL_SLUGS.has(t.slug));
+
+  if (!candidate) return top;
+
+  const promoted = [...top];
+  promoted[promoted.length - 1] = candidate;
+  return promoted;
+}
+
 type Props = {
   heading?: string;
   columns?: 2 | 3 | 4;
@@ -51,7 +80,7 @@ export function MoreTools({
     // Exclude current page
     if (excludeSlug) list = list.filter((t) => t.slug !== excludeSlug);
 
-    return list.slice(0, maxItems);
+    return promoteLowLinkTool(list, maxItems);
   }, [toolSlugs, categories, excludeSlug, maxItems]);
 
   const gridCols =

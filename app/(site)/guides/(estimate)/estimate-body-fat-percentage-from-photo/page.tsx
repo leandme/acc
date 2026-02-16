@@ -4,6 +4,8 @@ import { MoreArticles } from "@/app/components/guides/more-articles";
 import CTA from "@/app/components/common/cta";
 import References from "@/app/components/guides/guide-references";
 import FaqJsonLd from "@/app/components/helpers/faq-json-ld";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
 const faqs = [
   {
@@ -23,15 +25,11 @@ const faqs = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "How to Estimate Body Fat Percentage from Photos (Men + Women)",
-  description:
-    "How to estimate body fat percentage from photos and mirror selfies for men and women. Learn visual cues, setup tips, accuracy limits, and use our AI estimator.",
-  alternates: {
-    canonical:
-      "https://bodyfatestimator.ai/guides/estimate-body-fat-percentage-from-photo",
-  },
-};
+  description: "How to estimate body fat percentage from photos and mirror selfies for men and women. Learn visual cues, setup tips, accuracy limits, and use our AI estimator.",
+  canonical: "https://bodyfatestimator.ai/guides/estimate-body-fat-percentage-from-photo",
+});
 
 export default function HowToEstimateBodyFatFromPhotos() {
   return (
@@ -39,6 +37,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
       <FaqJsonLd faqs={faqs} />
 
       <GuideHero
+              slug="estimate-body-fat-percentage-from-photo"
         title="How to Estimate Body Fat Percentage from Photos"
         intro={
           <>
@@ -57,12 +56,14 @@ export default function HowToEstimateBodyFatFromPhotos() {
         }
         image={
           <figure className="max-w-3xl">
-            <img
-              src="/guides/estimate-body-fat-percentage-from-photo.png"
-              alt="How to estimate body fat percentage from photo and mirror selfie"
-              loading="lazy"
-              className="rounded-xl border"
-            />
+            <Image
+  src="/guides/estimate-body-fat-percentage-from-photo.png"
+  alt="How to estimate body fat percentage from photo and mirror selfie"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
             <figcaption className="mt-2 text-sm text-gray-500 text-center">
               Photos estimate appearance patterns, not fat tissue directly.
             </figcaption>
@@ -210,12 +211,14 @@ export default function HowToEstimateBodyFatFromPhotos() {
           </p>
 
           <figure className="rounded-2xl border bg-white p-4">
-            <img
-              src="/guides/what-does-body-fat-percentage-look-like.png"
-              alt="Male and female body fat percentage appearance examples"
-              loading="lazy"
-              className="rounded-xl border"
-            />
+            <Image
+  src="/guides/what-does-body-fat-percentage-look-like.png"
+  alt="Male and female body fat percentage appearance examples"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
             <figcaption className="mt-2 text-sm text-gray-500 text-center">
               Appearance charts provide context ranges, not exact diagnoses.
             </figcaption>
@@ -317,6 +320,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
 
         <div className="mt-20 lg:mt-40">
           <MoreArticles
+            currentSlug="estimate-body-fat-percentage-from-photo"
           basePath="/guides"
           articles={[
             {

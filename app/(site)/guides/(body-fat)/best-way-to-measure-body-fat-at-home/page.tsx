@@ -3,15 +3,14 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "The 3 Best Ways to Measure Your Body Fat % at Home",
-  description:
-    "The most useful at-home body fat method is the one you can repeat consistently. Here’s why photo-based AI estimation wins for tracking—plus when the Navy Method or a DEXA scan makes sense.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/best-way-to-measure-body-fat-at-home",
-  },
-};
+  description: "The most useful at-home body fat method is the one you can repeat consistently. Here’s why photo-based AI estimation wins for tracking—plus when the Navy Method or a DEXA scan makes sense.",
+  canonical: "https://bodyfatestimator.ai/guides/best-way-to-measure-body-fat-at-home",
+});
 
 const toc: TocItem[] = [
   { id: "what-body-fat-means", label: "What body fat % actually means", level: 2 },
@@ -29,6 +28,7 @@ export default function BlogPostPage() {
 
    {/* HERO */}
         <GuideHero
+              slug="best-way-to-measure-body-fat-at-home"
               title="The 3 Best Ways to Measure Your Body Fat % at Home"
               intro={
                 <>
@@ -49,12 +49,14 @@ export default function BlogPostPage() {
               }
               image={
                 <figure className="max-w-3xl">
-                  <img
-                    src="/guides/best-body-fat-estimation-method.png"
-                    alt="best way to measure body fat"
-                    loading="lazy"
-                    className="rounded-xl border"
-                  />
+                  <Image
+  src="/guides/best-body-fat-estimation-method.png"
+  alt="best way to measure body fat"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
                   <figcaption className="mt-2 text-sm text-gray-500 text-center">
                     which methods are accurate and reasonably priced?
                   </figcaption>
@@ -63,13 +65,13 @@ export default function BlogPostPage() {
        />
 
        {/* TOC*/}
-       <section className="mx-auto max-w-3xl px-6 space-y-12 mt-12">
+       <section className="mx-auto max-w-3xl px-6 mt-12">
         <TableOfContents items={toc} />
       </section>
 
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 space-y-12 mt-12">
+      <section className="mx-auto max-w-3xl px-6 [&>div+div]:mt-20 lg:[&>div+div]:mt-40 mt-12">
         {/* Framing */}
         <div className="space-y-4">
           <h2 id="what-body-fat-means" className="text-3xl lg:text-4xl font-semibold">
@@ -221,9 +223,10 @@ export default function BlogPostPage() {
           </p>
         </div>
 
-         <GuideStandardReferences />
+         <GuideStandardReferences slug="best-way-to-measure-body-fat-at-home" />
 
          <MoreArticles
+            currentSlug="best-way-to-measure-body-fat-at-home"
             basePath="/guides"
             articles={[
                 {

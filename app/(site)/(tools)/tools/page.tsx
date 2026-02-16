@@ -3,16 +3,14 @@ import { Suspense } from "react";
 import H1 from "@/app/components/common/h1";
 import { TOOLS } from "../tools";
 import ToolsGridWithTabs from "@/app/components/tools/tools-grid-with-tabs";
+import { buildPageMetadata } from "@/app/libs/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Tools",
-  description:
-    "Browse all tools on BodyFatEstimator.ai — calculators, estimators, and visualizers.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/tools",
-  },
+  description: "Browse all tools on BodyFatEstimator.ai — calculators, estimators, and visualizers.",
+  canonical: "https://bodyfatestimator.ai/tools",
   robots: { index: true, follow: true },
-};
+});
 
 export default function ToolsIndexPage() {
   const allTools = Object.values(TOOLS).sort((a, b) => a.title.localeCompare(b.title));

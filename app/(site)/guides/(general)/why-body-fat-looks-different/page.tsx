@@ -2,15 +2,14 @@ import { Metadata } from "next";
 import GuideHero from "@/app/components/guides/guide-hero";
 import { MoreArticles } from "@/app/components/guides/more-articles";
 import GuideStandardReferences from "@/app/components/guides/guide-standard-references";
+import { buildPageMetadata } from "@/app/libs/seo";
+import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Why Two People at the Same Body Fat Percentage Look Different",
-  description:
-    "Two people can have the same body fat percentage and look completely different. Learn how muscle mass, fat distribution, frame size, height, and genetics change appearance — and how to estimate your own body fat more realistically.",
-  alternates: {
-    canonical: "https://bodyfatestimator.ai/guides/why-body-fat-looks-different",
-  },
-};
+  description: "Two people can have the same body fat percentage and look completely different. Learn how muscle mass, fat distribution, frame size, height, and genetics change appearance — and how to estimate your own body fat more realistically.",
+  canonical: "https://bodyfatestimator.ai/guides/why-body-fat-looks-different",
+});
 
 export default function BlogPostPage() {
 
@@ -18,6 +17,7 @@ export default function BlogPostPage() {
     <main className="bg-base-100">
 
       <GuideHero
+              slug="why-body-fat-looks-different"
               title="Why Two People at the Same Body Fat Percentage Look Different?"
               intro={
                 <>
@@ -34,12 +34,14 @@ export default function BlogPostPage() {
               }
               image={
                 <figure className="max-w-3xl">
-                  <img
-                    src="/guides/why-body-fat-look-different.png"
-                    alt="why-body-fat-look-different"
-                    loading="lazy"
-                    className="rounded-xl border"
-                  />
+                  <Image
+  src="/guides/why-body-fat-look-different.png"
+  alt="why-body-fat-look-different"
+  width={1200}
+  height={675}
+  sizes="(max-width: 768px) 100vw, 768px"
+  className="rounded-xl border h-auto w-full"
+/>
                   <figcaption className="mt-2 text-sm text-gray-500 text-center">
                     Body fat will look wildly different on different people
                   </figcaption>
@@ -48,7 +50,7 @@ export default function BlogPostPage() {
     />
 
       {/* Content */}
-      <section className="mx-auto max-w-3xl px-6 pb-20 space-y-12">
+      <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
@@ -198,9 +200,10 @@ export default function BlogPostPage() {
             .
           </p>
         </div>
-        <GuideStandardReferences />
+        <GuideStandardReferences slug="why-body-fat-looks-different" />
 
         <MoreArticles
+            currentSlug="why-body-fat-looks-different"
             basePath="/guides"
             articles={[
                 {
