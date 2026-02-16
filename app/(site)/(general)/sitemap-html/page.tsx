@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import H1 from "@/app/components/common/h1";
 import { POSTS } from "../../guides/posts";
+import { toolsArray } from "../../(tools)/tools";
 
 export const metadata: Metadata = {
   title: "Sitemap",
@@ -64,13 +65,32 @@ function SectionCard({
 export default function SitemapPage() {
 
  // --- Tools ---
-  const tools: SiteLink[] = [
-    { href: "/estimate", label: "Estimate Body Fat" },
-    { href: "/body-visualizer", label: "Body Visualizer" },
-    { href: "/ffmi-calculator", label: "FFMI Calculator" },
-    { href: "/army-body-fat-calculator", label: "Army Body Fat Calculator" },
-    { href: "/body-fat-calculator", label: "Body Fat Calculator" },
-  ];
+  const toolOrder = [
+    "estimate",
+    "body-visualizer",
+    "ffmi-calculator",
+    "rfm-calculator",
+    "visceral-fat-calculator",
+    "army-body-fat-calculator",
+    "body-fat-calculator",
+  ] as const;
+
+  const toolMap = new Map(
+    toolsArray().map((tool) => [tool.slug, tool])
+  );
+
+  const orderedTools = toolOrder
+    .map((slug) => toolMap.get(slug))
+    .filter((tool): tool is NonNullable<typeof tool> => Boolean(tool));
+
+  const extraTools = toolsArray().filter(
+    (tool) => !toolOrder.includes(tool.slug as (typeof toolOrder)[number])
+  );
+
+  const tools: SiteLink[] = [...orderedTools, ...extraTools].map((tool) => ({
+    href: `/${tool.slug}`,
+    label: tool.title,
+  }));
 
   // --- Guides ---
     const guides: SiteLink[] = [
