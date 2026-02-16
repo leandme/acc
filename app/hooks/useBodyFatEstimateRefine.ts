@@ -64,6 +64,15 @@ function isE005SensitiveFlag(msg: string) {
 
 function buildFriendlyErrorMessage(rawMsg: string) {
   const msg = rawMsg || "";
+  const lower = msg.toLowerCase();
+
+  if (lower.includes("monthly spend limit reached") || lower.includes("spend limit")) {
+    return "Refined estimation is temporarily unavailable because the Replicate monthly spend limit was reached. Increase billing limit in Replicate and retry.";
+  }
+
+  if (lower.includes("insufficient credits")) {
+    return "Refined estimation is temporarily unavailable due to insufficient Replicate credits.";
+  }
 
   if (isE005SensitiveFlag(msg)) {
     return [
@@ -128,7 +137,20 @@ export function useBodyFatEstimateRefine() {
       });
 
       if (!startRes.ok) {
-        throw new Error(`Refine start failed: ${startRes.status}`);
+        let startErrDetail = "";
+        try {
+          const startErr = await startRes.json();
+          startErrDetail =
+            startErr?.detail ||
+            startErr?.error ||
+            startErr?.message ||
+            "";
+        } catch {
+          // ignore parse failures and fallback to status-only message
+        }
+
+        const detailPart = startErrDetail ? ` - ${startErrDetail}` : "";
+        throw new Error(`Refine start failed (${startRes.status})${detailPart}`);
       }
 
       const startData = await startRes.json();

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-label="Triceps skinfold site">
+  <rect width="360" height="360" rx="24" fill="#f8fafc"/>
+  <g stroke="#1f2937" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="168" cy="72" r="30"/>
+    <path d="M124 114h88v114c0 22-14 36-44 36s-44-14-44-36z"/>
+    <path d="M214 138c22 10 36 26 36 50v78"/>
+  </g>
+  <line x1="236" y1="172" x2="236" y2="238" stroke="#ef4444" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="236" cy="205" r="9" fill="#ef4444"/>
+  <text x="22" y="34" fill="#334155" font-family="Arial, sans-serif" font-size="20" font-weight="700">Triceps (Vertical)</text>
+</svg>

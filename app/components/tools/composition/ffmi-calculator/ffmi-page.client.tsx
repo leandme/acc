@@ -89,6 +89,36 @@ export default function FFMICalculatorPageClient() {
           </p>
 
           <p className={pClass}>
+            If you want an absolute lean-mass estimate before normalizing for
+            height, use the{" "}
+            <a className="text-primary underline" href="/lean-body-mass-calculator">
+              Lean Body Mass Calculator
+            </a>
+            .
+          </p>
+
+          <p className={pClass}>
+            To understand how skeletal build can change visual appearance at the
+            same body-fat level, check the{" "}
+            <a className="text-primary underline" href="/body-frame-size-calculator">
+              Body Frame Size Calculator
+            </a>
+            .
+          </p>
+
+          <p className={pClass}>
+            If you want a waist-centered roundness score, compare with the{" "}
+            <a className="text-primary underline" href="/bri-calculator">
+              BRI Calculator
+            </a>
+            . If you prefer a hip-height adiposity estimate, use the{" "}
+            <a className="text-primary underline" href="/bai-calculator">
+              BAI Calculator
+            </a>
+            .
+          </p>
+
+          <p className={pClass}>
             For the most accurate results, use a realistic body fat estimate and
             your current body weight. FFMI works best as a{" "}
             <strong>trend metric</strong> — something you track over time as your
@@ -186,7 +216,14 @@ export default function FFMICalculatorPageClient() {
           <MoreTools
             heading="More Tools"
             columns={2}
-            toolSlugs={["estimate", "body-visualizer"]}
+            toolSlugs={[
+              "estimate",
+              "lean-body-mass-calculator",
+              "body-frame-size-calculator",
+              "bai-calculator",
+              "bri-calculator",
+              "body-visualizer",
+            ]}
             excludeSlug="ffmi-calculator"
           />
         </div>

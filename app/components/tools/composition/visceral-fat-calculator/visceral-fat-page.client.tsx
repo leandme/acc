@@ -91,6 +91,24 @@ export default function VisceralFatCalculatorPageClient() {
             blood pressure, lipids, glucose, and clinician guidance.
           </p>
           <p className={pClass}>
+            For lean-mass context alongside VAT trends, compare results with the{" "}
+            <a className="text-primary underline" href="/lean-body-mass-calculator">
+              Lean Body Mass Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
+            For a simpler waist-height roundness estimate, run the{" "}
+            <a className="text-primary underline" href="/bri-calculator">
+              BRI Calculator
+            </a>
+            . For a hip-height adiposity estimate, compare with the{" "}
+            <a className="text-primary underline" href="/bai-calculator">
+              BAI Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
             For method context, see{" "}
             <a className="text-primary underline" href="/guides/body-fat-estimation-methods">Common Body Fat Estimation Methods Explained</a>{" "}
             and{" "}
@@ -134,7 +152,16 @@ export default function VisceralFatCalculatorPageClient() {
           <MoreTools
             heading="More Tools"
             columns={2}
-            toolSlugs={["estimate", "body-fat-calculator", "rfm-calculator", "ffmi-calculator"]}
+            toolSlugs={[
+              "estimate",
+              "body-fat-calculator",
+              "bai-calculator",
+              "lean-body-mass-calculator",
+              "bri-calculator",
+              "body-frame-size-calculator",
+              "rfm-calculator",
+              "ffmi-calculator",
+            ]}
             excludeSlug="visceral-fat-calculator"
           />
         </div>

@@ -56,6 +56,11 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             BMI (Body Mass Index) is calculated using only height and weight. It
             does not measure fat, muscle, bone density, or body composition.
+            You can run a direct BMI check with the{" "}
+            <a className="text-primary underline" href="/bmi-calculator">
+              BMI Calculator
+            </a>
+            .
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -161,7 +166,27 @@ export default function BlogPostPage() {
             If you also want to separate lean-mass progress from fat changes,
             use the{" "}
             <a className="text-primary underline" href="/ffmi-calculator">FFMI Calculator</a>{" "}
-            alongside body-fat tracking.
+            alongside body-fat tracking. For skeletal-build context, add the{" "}
+            <a className="text-primary underline" href="/body-frame-size-calculator">
+              Body Frame Size Calculator
+            </a>
+            . For waist-centered roundness, compare with the{" "}
+            <a className="text-primary underline" href="/bri-calculator">
+              BRI Calculator
+            </a>
+            . For hip-height adiposity context, add the{" "}
+            <a className="text-primary underline" href="/bai-calculator">
+              BAI Calculator
+            </a>
+            . For weight-target planning, add the{" "}
+            <a className="text-primary underline" href="/ideal-weight-calculator">
+              Ideal Weight Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/weight-loss-calculator">
+              Weight Loss Calculator
+            </a>
+            .
           </p>
         </div>
 

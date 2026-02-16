@@ -81,6 +81,10 @@ export default function BlogPostPage() {
             <a className="text-primary underline" href="/body-fat-calculator">Navy Body Fat Calculator</a>{" "}
             or compare against the{" "}
             <a className="text-primary underline" href="/army-body-fat-calculator">Army Body Fat Calculator</a>.
+            For a roundness-focused waist-height metric, compare with the{" "}
+            <a className="text-primary underline" href="/bri-calculator">BRI Calculator</a>. For hip-height
+            adiposity context, compare with the{" "}
+            <a className="text-primary underline" href="/bai-calculator">BAI Calculator</a>.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -103,7 +107,12 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             Skinfold calipers estimate body fat by measuring the thickness of
             subcutaneous fat at specific sites on the body. These measurements
-            are then converted into a body fat estimate using formulas.
+            are then converted into a body fat estimate using formulas. You can
+            run this method in the{" "}
+            <a className="text-primary underline" href="/skinfold-body-fat-calculator">
+              Skinfold Body Fat Calculator
+            </a>
+            .
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -183,6 +192,21 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             For most people, the most useful method is the one they can repeat
             consistently and interpret realistically.
+          </p>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            For scale-based target planning alongside these methods, use the{" "}
+            <a className="text-primary underline" href="/bmi-calculator">
+              BMI Calculator
+            </a>
+            ,{" "}
+            <a className="text-primary underline" href="/weight-loss-calculator">
+              Weight Loss Calculator
+            </a>
+            , and{" "}
+            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+              Weight Loss Percentage Calculator
+            </a>
+            .
           </p>
         </div>
 <MoreArticles

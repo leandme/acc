@@ -57,10 +57,36 @@ export default function BodyVisualizerPage() {
           <h2 className="text-3xl lg:text-4xl font-semibold">Formulas and data used</h2>
           <p className="text-gray-700 text-lg leading-relaxed">Core calculations shown in the results section:</p>
           <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
-            <li><strong>BMI:</strong> weight (kg) / height (m)^2</li>
+            <li>
+              <strong>BMI:</strong> weight (kg) / height (m)^2 (compare with the{" "}
+              <a className="text-primary underline" href="/bmi-calculator">
+                BMI Calculator
+              </a>
+              )
+            </li>
             <li><strong>Fat mass:</strong> weight x body fat %</li>
-            <li><strong>Lean mass:</strong> weight - fat mass</li>
+            <li>
+              <strong>Lean mass:</strong> weight x (1 - body fat %) (compare with the{" "}
+              <a className="text-primary underline" href="/lean-body-mass-calculator">
+                Lean Body Mass Calculator
+              </a>
+              )
+            </li>
             <li><strong>FFMI:</strong> lean mass (kg) / height (m)^2</li>
+            <li>
+              <strong>BRI:</strong> roundness from waist-height geometry (compare with the{" "}
+              <a className="text-primary underline" href="/bri-calculator">
+                BRI Calculator
+              </a>
+              )
+            </li>
+            <li>
+              <strong>BAI:</strong> adiposity estimate from hip and height (compare with the{" "}
+              <a className="text-primary underline" href="/bai-calculator">
+                BAI Calculator
+              </a>
+              )
+            </li>
             <li><strong>Body fat and BMI sync:</strong> Deurenberg-style age/sex-adjusted BMI equation</li>
           </ul>
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -78,6 +104,17 @@ export default function BodyVisualizerPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             Limitation: no visualizer can exactly match your individual fat distribution, posture, lighting, or muscle insertions. Use this
             as a range-and-trend tool, then cross-check with repeated photos and consistent measurements.
+          </p>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            For scale-target planning and timeline estimates, pair this page with the{" "}
+            <a className="text-primary underline" href="/weight-loss-calculator">
+              Weight Loss Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+              Weight Loss Percentage Calculator
+            </a>
+            .
           </p>
         </div>
 
@@ -120,7 +157,19 @@ export default function BodyVisualizerPage() {
           <MoreTools
             heading="Related Tools"
             columns={2}
-            toolSlugs={["estimate", "body-fat-calculator", "ffmi-calculator", "rfm-calculator"]}
+            toolSlugs={[
+              "estimate",
+              "body-fat-calculator",
+              "skinfold-body-fat-calculator",
+              "bai-calculator",
+              "lean-body-mass-calculator",
+              "bri-calculator",
+              "body-frame-size-calculator",
+              "ffmi-calculator",
+              "rfm-calculator",
+              "bmi-calculator",
+              "weight-loss-calculator",
+            ]}
             excludeSlug="body-visualizer"
           />
         </div>

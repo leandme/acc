@@ -11,6 +11,7 @@ import { pickTools } from "@/app/(site)/(tools)/tools";
 type Props = {
   heading?: string;
   columns?: 2 | 3 | 4;
+  maxItems?: number;
 
   /** Option A: pick by categories */
   categories?: ToolCategory[];
@@ -27,6 +28,7 @@ type Props = {
 export function MoreTools({
   heading = "More Tools",
   columns = 2,
+  maxItems = 4,
   categories,
   toolSlugs,
   excludeSlug,
@@ -49,8 +51,8 @@ export function MoreTools({
     // Exclude current page
     if (excludeSlug) list = list.filter((t) => t.slug !== excludeSlug);
 
-    return list;
-  }, [toolSlugs, categories, excludeSlug]);
+    return list.slice(0, maxItems);
+  }, [toolSlugs, categories, excludeSlug, maxItems]);
 
   const gridCols =
     columns === 4

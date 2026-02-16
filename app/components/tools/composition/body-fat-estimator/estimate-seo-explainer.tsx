@@ -252,10 +252,18 @@ export default function EstimateSeoExplainer({ className = "" }: Props) {
         </div>
 
          <div className="w-full max-w-3xl mx-auto mt-10 lg:mt-20 mb-10">
-                  <MoreTools
+                 <MoreTools
                     heading="More Tools"
                     columns={2}
-                    toolSlugs={["ffmi-calculator", "body-visualizer"]}
+                    toolSlugs={[
+                      "skinfold-body-fat-calculator",
+                      "bai-calculator",
+                      "bri-calculator",
+                      "lean-body-mass-calculator",
+                      "body-frame-size-calculator",
+                      "ffmi-calculator",
+                      "body-visualizer",
+                    ]}
                     excludeSlug="estimate"
                   />
                 </div>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" role="img" aria-label="Abdomen skinfold site">
+  <rect width="360" height="360" rx="24" fill="#f8fafc"/>
+  <g stroke="#1f2937" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="180" cy="78" r="34"/>
+    <path d="M122 130c10-16 24-24 58-24s48 8 58 24v120c0 22-15 38-58 38s-58-16-58-38z"/>
+  </g>
+  <line x1="204" y1="170" x2="204" y2="228" stroke="#ef4444" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="204" cy="198" r="9" fill="#ef4444"/>
+  <text x="22" y="34" fill="#334155" font-family="Arial, sans-serif" font-size="20" font-weight="700">Abdomen (Vertical)</text>
+</svg>

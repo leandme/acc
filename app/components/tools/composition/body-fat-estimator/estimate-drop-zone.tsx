@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { showErrorToast } from "@/app/libs/toast";
 
-export default function EstimateDropZone() {
+type Props = {
+  basePath?: "/estimate" | "/body-shape-analyzer";
+  buttonLabel?: string;
+};
+
+export default function EstimateDropZone({
+  basePath = "/estimate",
+  buttonLabel = "Upload Photo",
+}: Props) {
   const [fileName, setFileName] = useState<string | null>(null);
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
   const router = useRouter();
@@ -22,7 +30,7 @@ export default function EstimateDropZone() {
       setFileName(droppedFile.name);
 
       const objectUrl = URL.createObjectURL(droppedFile);
-      router.push(`/estimate?imageUrl=${encodeURIComponent(objectUrl)}`);
+      router.push(`${basePath}?imageUrl=${encodeURIComponent(objectUrl)}`);
     }
   };
 
@@ -38,7 +46,7 @@ export default function EstimateDropZone() {
       setFileName(uploadedFile.name);
 
       const objectUrl = URL.createObjectURL(uploadedFile);
-      router.push(`/estimate?imageUrl=${encodeURIComponent(objectUrl)}`);
+      router.push(`${basePath}?imageUrl=${encodeURIComponent(objectUrl)}`);
     }
   };
 
@@ -61,7 +69,7 @@ export default function EstimateDropZone() {
       return;
     }
 
-    router.push(`/estimate?imageUrl=${encodeURIComponent(cleaned)}`);
+    router.push(`${basePath}?imageUrl=${encodeURIComponent(cleaned)}`);
   };
 
   return (
@@ -104,7 +112,7 @@ export default function EstimateDropZone() {
 
         </span>
 
-        <span className="leading-none">Upload Photo</span>
+        <span className="leading-none">{buttonLabel}</span>
       </span>
     </button>
 

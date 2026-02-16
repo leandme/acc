@@ -117,9 +117,21 @@ Rules:
 
     if (!createRes.ok) {
       console.error("Replicate create prediction error:", createJson);
+      const upstreamStatus =
+        createRes.status >= 400 && createRes.status <= 599 ? createRes.status : 502;
+      const detail =
+        createJson?.detail ||
+        createJson?.error ||
+        createJson?.message ||
+        null;
+
       return NextResponse.json(
-        { error: "Replicate create prediction failed", details: createJson },
-        { status: 502 }
+        {
+          error: "Replicate create prediction failed",
+          detail,
+          details: createJson,
+        },
+        { status: upstreamStatus }
       );
     }
 

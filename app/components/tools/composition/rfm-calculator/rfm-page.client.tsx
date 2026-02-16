@@ -86,6 +86,23 @@ export default function RFMCalculatorPageClient() {
           </p>
           <p className={pClass}>
             For practical tracking, pair RFM with waist logs, progress photos, and performance markers.
+            If you also want a height/weight-based lean-mass estimate, run the{" "}
+            <a className="text-primary underline" href="/lean-body-mass-calculator">
+              Lean Body Mass Calculator
+            </a>
+            . For waist-height roundness context, use the{" "}
+            <a className="text-primary underline" href="/bri-calculator">
+              BRI Calculator
+            </a>
+            . For hip-height adiposity context, use the{" "}
+            <a className="text-primary underline" href="/bai-calculator">
+              BAI Calculator
+            </a>
+            . For caliper-based body-fat measurements, use the{" "}
+            <a className="text-primary underline" href="/skinfold-body-fat-calculator">
+              Skinfold Body Fat Calculator
+            </a>
+            .
           </p>
           <p className={pClass}>
             For deeper context, read{" "}
@@ -99,7 +116,17 @@ export default function RFMCalculatorPageClient() {
           <MoreTools
             heading="More Tools"
             columns={2}
-            toolSlugs={["estimate", "body-fat-calculator", "army-body-fat-calculator", "ffmi-calculator"]}
+            toolSlugs={[
+              "estimate",
+              "body-fat-calculator",
+              "bai-calculator",
+              "bri-calculator",
+              "skinfold-body-fat-calculator",
+              "lean-body-mass-calculator",
+              "body-frame-size-calculator",
+              "army-body-fat-calculator",
+              "ffmi-calculator",
+            ]}
             excludeSlug="rfm-calculator"
           />
         </div>

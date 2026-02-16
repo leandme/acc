@@ -127,7 +127,16 @@ export default function BlogPostPage() {
             waist, neck, and sometimes hips. It’s popular because it’s simple and
             requires no equipment beyond a tape measure. You can run the method
             directly in our{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">Body Fat Calculator</a>.
+            <a className="text-primary underline" href="/body-fat-calculator">Body Fat Calculator</a>{" "}
+            and compare lean-mass-only estimates in the{" "}
+            <a className="text-primary underline" href="/lean-body-mass-calculator">Lean Body Mass Calculator</a>.
+            For waist-to-height roundness context, add the{" "}
+            <a className="text-primary underline" href="/bri-calculator">BRI Calculator</a>.
+            For hip-to-height adiposity, compare with the{" "}
+            <a className="text-primary underline" href="/bai-calculator">BAI Calculator</a>.
+            If you prefer calipers, the{" "}
+            <a className="text-primary underline" href="/skinfold-body-fat-calculator">Skinfold Body Fat Calculator</a>{" "}
+            uses site-based measurements.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -175,6 +184,22 @@ export default function BlogPostPage() {
             <li><strong>Consistency:</strong> AI (high with a consistent setup) → Navy (medium)</li>
             <li><strong>Accessibility:</strong> AI (very high) → Navy (high) → DEXA (low)</li>
           </ul>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            If your main goal is scale-target planning, layer in the{" "}
+            <a className="text-primary underline" href="/weight-loss-calculator">
+              Weight Loss Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+              Weight Loss Percentage Calculator
+            </a>
+            . For quick screening context from height and weight, use the{" "}
+            <a className="text-primary underline" href="/bmi-calculator">
+              BMI Calculator
+            </a>
+            .
+          </p>
         </div>
 
         {/* Verdict */}

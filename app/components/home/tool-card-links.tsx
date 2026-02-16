@@ -26,10 +26,58 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     eventName: "Go to FFMI Calculator",
   },
   {
+    title: "Lean Body Mass Calculator",
+    href: "/lean-body-mass-calculator",
+    description: "Estimate lean mass with Boer, James, and Hume formulas.",
+    eventName: "Go to Lean Body Mass Calculator",
+  },
+  {
+    title: "BRI Calculator",
+    href: "/bri-calculator",
+    description: "Estimate body roundness from waist and height.",
+    eventName: "Go to BRI Calculator",
+  },
+  {
+    title: "BAI Calculator",
+    href: "/bai-calculator",
+    description: "Estimate body adiposity from hip circumference and height.",
+    eventName: "Go to BAI Calculator",
+  },
+  {
+    title: "Body Frame Size Calculator",
+    href: "/body-frame-size-calculator",
+    description: "Classify frame size from height and wrist measurements.",
+    eventName: "Go to Body Frame Size Calculator",
+  },
+  {
+    title: "BMI Calculator",
+    href: "/bmi-calculator",
+    description: "Calculate BMI and check standard adult categories.",
+    eventName: "Go to BMI Calculator",
+  },
+  {
+    title: "Weight Loss Calculator",
+    href: "/weight-loss-calculator",
+    description: "Estimate timeline to target weight using calorie intake.",
+    eventName: "Go to Weight Loss Calculator",
+  },
+  {
+    title: "Ideal Weight Calculator",
+    href: "/ideal-weight-calculator",
+    description: "Compare healthy BMI range and ideal-weight references.",
+    eventName: "Go to Ideal Weight Calculator",
+  },
+  {
     title: "Army Body Fat Calculator",
     href: "/army-body-fat-calculator",
     description: "Estimate body fat % using the US Army tape method.",
     eventName: "Go to Army Body Fat Calculator",
+  },
+  {
+    title: "Skinfold Body Fat Calculator",
+    href: "/skinfold-body-fat-calculator",
+    description: "Estimate body fat % from skinfold caliper sites.",
+    eventName: "Go to Skinfold Body Fat Calculator",
   },
   {
     title: "All Tools",

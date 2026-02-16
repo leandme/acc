@@ -136,6 +136,13 @@ export default function BlogPostPage() {
             <li>Ignore small day-to-day fluctuations</li>
             <li>Use alongside photos or measurements for context</li>
           </ul>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            To quantify progress cleanly from your scale logs, use the{" "}
+            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+              Weight Loss Percentage Calculator
+            </a>
+            .
+          </p>
         </div>
 
         {/* Comparison */}
@@ -153,6 +160,48 @@ export default function BlogPostPage() {
             <li><strong>DEXA scans:</strong> more accurate, but expensive and infrequent</li>
             <li><strong>Tape or Navy method:</strong> formula-based, assumption-heavy (compare with the{" "}
               <a className="text-primary underline" href="/body-fat-calculator">Body Fat Calculator</a>)</li>
+            <li>
+              <strong>BRI:</strong> waist-height roundness estimate (try the{" "}
+              <a className="text-primary underline" href="/bri-calculator">
+                BRI Calculator
+              </a>
+              )
+            </li>
+            <li>
+              <strong>BAI:</strong> hip-height adiposity estimate (try the{" "}
+              <a className="text-primary underline" href="/bai-calculator">
+                BAI Calculator
+              </a>
+              )
+            </li>
+            <li>
+              <strong>Lean mass equations:</strong> fast height/weight estimates (try the{" "}
+              <a className="text-primary underline" href="/lean-body-mass-calculator">
+                Lean Body Mass Calculator
+              </a>
+              )
+            </li>
+            <li>
+              <strong>BMI screening:</strong> quick category context from height and weight (try the{" "}
+              <a className="text-primary underline" href="/bmi-calculator">
+                BMI Calculator
+              </a>
+              )
+            </li>
+            <li>
+              <strong>Timeline planning:</strong> estimate pace to target weight (try the{" "}
+              <a className="text-primary underline" href="/weight-loss-calculator">
+                Weight Loss Calculator
+              </a>
+              )
+            </li>
+            <li>
+              <strong>Skinfold calipers:</strong> site-based fat-thickness estimates (try the{" "}
+              <a className="text-primary underline" href="/skinfold-body-fat-calculator">
+                Skinfold Body Fat Calculator
+              </a>
+              )
+            </li>
             <li><strong>Photo-based estimation:</strong> aligns better with appearance</li>
             <li><strong>Smart scales:</strong> easy, but noisy</li>
           </ul>

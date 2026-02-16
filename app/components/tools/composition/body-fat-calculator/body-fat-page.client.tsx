@@ -61,7 +61,12 @@ export default function BodyFatCalculatorPageClient() {
           <p className={pClass}>
             Weight is optional for the core equation, but this page also uses
             your weight to estimate fat mass and lean mass from the resulting
-            body fat percentage.
+            body fat percentage. For height/weight-only lean-mass formulas,
+            compare with the{" "}
+            <a className="text-primary underline" href="/lean-body-mass-calculator">
+              Lean Body Mass Calculator
+            </a>
+            .
           </p>
         </div>
 
@@ -106,7 +111,25 @@ export default function BodyFatCalculatorPageClient() {
           </p>
           <ul className="list-disc pl-6 space-y-2 text-lg">
             <li>Navy calculator: fast, repeatable, measurement-dependent.</li>
+            <li>
+              Skinfold calipers: site-based fat-thickness estimate using trained
+              pinching technique.
+            </li>
             <li>Smart scales (BIA): convenient, hydration-sensitive.</li>
+            <li>
+              BRI: waist-height roundness estimate (try the{" "}
+              <a className="text-primary underline" href="/bri-calculator">
+                BRI Calculator
+              </a>
+              ).
+            </li>
+            <li>
+              BAI: hip-height adiposity estimate (try the{" "}
+              <a className="text-primary underline" href="/bai-calculator">
+                BAI Calculator
+              </a>
+              ).
+            </li>
             <li>DEXA: stronger lab reference, higher cost and lower frequency.</li>
             <li>Photo estimation: useful visual feedback on appearance changes.</li>
           </ul>
@@ -185,7 +208,17 @@ export default function BodyFatCalculatorPageClient() {
           <MoreTools
             heading="More Tools"
             columns={2}
-            toolSlugs={["estimate", "ffmi-calculator", "army-body-fat-calculator", "body-visualizer"]}
+            toolSlugs={[
+              "estimate",
+              "skinfold-body-fat-calculator",
+              "bai-calculator",
+              "bri-calculator",
+              "lean-body-mass-calculator",
+              "body-frame-size-calculator",
+              "ffmi-calculator",
+              "army-body-fat-calculator",
+              "body-visualizer",
+            ]}
             excludeSlug="body-fat-calculator"
           />
         </div>

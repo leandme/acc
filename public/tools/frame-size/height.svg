@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Height measurement illustration">
+  <rect width="420" height="280" rx="20" fill="#f8fafc"/>
+  <line x1="72" y1="30" x2="72" y2="240" stroke="#1f2937" stroke-width="6"/>
+  <line x1="62" y1="40" x2="82" y2="40" stroke="#1f2937" stroke-width="4"/>
+  <line x1="62" y1="80" x2="82" y2="80" stroke="#1f2937" stroke-width="4"/>
+  <line x1="62" y1="120" x2="82" y2="120" stroke="#1f2937" stroke-width="4"/>
+  <line x1="62" y1="160" x2="82" y2="160" stroke="#1f2937" stroke-width="4"/>
+  <line x1="62" y1="200" x2="82" y2="200" stroke="#1f2937" stroke-width="4"/>
+  <line x1="82" y1="54" x2="270" y2="54" stroke="#ef4444" stroke-width="4"/>
+  <g stroke="#1f2937" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="270" cy="64" r="18"/>
+    <path d="M244 92h52v76c0 20-12 32-26 32s-26-12-26-32z"/>
+    <path d="M256 200v34"/>
+    <path d="M284 200v34"/>
+  </g>
+  <text x="20" y="24" fill="#334155" font-family="Arial, sans-serif" font-size="18" font-weight="700">
+    Measure Height Barefoot
+  </text>
+</svg>

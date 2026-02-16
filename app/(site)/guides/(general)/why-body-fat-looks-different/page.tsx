@@ -107,6 +107,18 @@ export default function BlogPostPage() {
             relaxed posture or flat lighting. Peripheral fat storage often looks
             leaner from the front, even at similar percentages.
           </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            To track waist-centered roundness directly, use the{" "}
+            <a className="text-primary underline" href="/bri-calculator">
+              BRI Calculator
+            </a>{" "}
+            alongside your usual body-fat method, and compare hip-height adiposity with the{" "}
+            <a className="text-primary underline" href="/bai-calculator">
+              BAI Calculator
+            </a>
+            .
+          </p>
         </div>
 
         {/* Frame & height */}
@@ -124,6 +136,14 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             Shorter frames or narrower builds can make fat more visually obvious,
             even when total body fat percentage is similar.
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            If you want to quantify your skeletal build, use the{" "}
+            <a className="text-primary underline" href="/body-frame-size-calculator">
+              Body Frame Size Calculator
+            </a>
+            .
           </p>
         </div>
 
@@ -161,6 +181,21 @@ export default function BlogPostPage() {
             <li>Track changes with consistent photos</li>
             <li>Avoid comparing yourself to posed or edited images</li>
           </ul>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            For scale trend context while you track appearance, add the{" "}
+            <a className="text-primary underline" href="/bmi-calculator">
+              BMI Calculator
+            </a>
+            ,{" "}
+            <a className="text-primary underline" href="/weight-loss-calculator">
+              Weight Loss Calculator
+            </a>
+            , and{" "}
+            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+              Weight Loss Percentage Calculator
+            </a>
+            .
+          </p>
         </div>
         <MoreArticles
             basePath="/guides"
