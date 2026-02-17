@@ -12,11 +12,13 @@ export function SiteNavSchema() {
               "@type": "SiteNavigationElement",
               name: [
                 "Estimate Body Fat",
+                "Calorie Estimator",
                 "Examples",
                 "All Guides",
               ],
               url: [
                 "https://bodyfatestimator.ai/estimate",
+                "https://bodyfatestimator.ai/calorie-estimator",
                 "https://bodyfatestimator.ai/examples",
                 "https://bodyfatestimator.ai/guides",
               ],

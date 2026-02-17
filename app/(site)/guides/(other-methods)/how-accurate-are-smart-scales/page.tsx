@@ -207,6 +207,10 @@ export default function BlogPostPage() {
               <a className="text-primary underline" href="/calorie-deficit-calculator">
                 Calorie Deficit Calculator
               </a>
+              {" "}and the{" "}
+              <a className="text-primary underline" href="/steps-to-calories-calculator">
+                Steps to Calories Calculator
+              </a>
               )
             </li>
             <li>

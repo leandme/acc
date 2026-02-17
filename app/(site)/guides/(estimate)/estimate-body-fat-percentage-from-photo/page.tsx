@@ -26,8 +26,8 @@ const faqs = [
 ];
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "How to Estimate Body Fat Percentage from Photos (Men + Women)",
-  description: "How to estimate body fat percentage from photos and mirror selfies for men and women. Learn visual cues, setup tips, accuracy limits, and use our AI estimator.",
+  title: "How to Estimate Body Fat Percentage from Photo Men, Photo Male, and Mirror Selfie",
+  description: "Searching \"how to estimate body fat percentage from photo men\" or \"from photo male\"? Use this mirror selfie workflow, visual cue checklist, and free AI estimator.",
   canonical: "https://bodyfatestimator.ai/guides/estimate-body-fat-percentage-from-photo",
 });
 
@@ -38,7 +38,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
 
       <GuideHero
               slug="estimate-body-fat-percentage-from-photo"
-        title="How to Estimate Body Fat Percentage from Photos"
+        title="How to Estimate Body Fat Percentage from Photo Men, Photo Male, and Mirror Selfie"
         intro={
           <>
             <p>
@@ -72,6 +72,26 @@ export default function HowToEstimateBodyFatFromPhotos() {
       />
 
       <section className="mx-auto max-w-3xl px-6 pb-20">
+        <div className="rounded-2xl border-2 border-primary/30 bg-white p-6 lg:p-8">
+          <h2 className="text-2xl lg:text-3xl font-semibold">Quick Answer + Free Tool</h2>
+          <p className="mt-4 text-gray-700 text-lg leading-relaxed">
+            If you searched for "how to estimate body fat percentage from photo men", "from photo male",
+            or "from mirror selfie," use a consistent front + side photo setup and estimate a range, not an
+            exact number.
+          </p>
+          <ul className="mt-4 list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>Take one neutral front photo and one side photo in even lighting.</li>
+            <li>Keep camera height, distance, posture, and clothing the same each check-in.</li>
+            <li>Use a repeatable estimate workflow and compare trends every 1 to 2 weeks.</li>
+          </ul>
+
+          <div className="mt-6">
+            <a href="/estimate" className="btn btn-primary btn-lg text-white">
+              Try the free body fat estimator →
+            </a>
+          </div>
+        </div>
+
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">
             Quick Answer: Estimating Body Fat From Photos

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import EstimateDropZone from "../tools/composition/body-fat-estimator/estimate-drop-zone";
 import TryExamples from "../common/try-examples";
 // import ReviewBox from "./ReviewBox";
@@ -38,6 +39,27 @@ export default function Hero() {
               free
             </span>
           </p>
+
+          <div className="mt-1">
+            <p className="text-sm uppercase tracking-wide text-gray-500">Popular tools</p>
+            <div className="mt-3 flex flex-wrap gap-2 justify-center lg:justify-start">
+              <Link href="/body-visualizer" className="rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-primary hover:text-primary transition">
+                Body Visualizer
+              </Link>
+              <Link href="/body-shape-analyzer" className="rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-primary hover:text-primary transition">
+                Body Shape Analyzer
+              </Link>
+              <Link href="/body-fat-calculator" className="rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-primary hover:text-primary transition">
+                Body Fat Calculator
+              </Link>
+              <Link href="/ffmi-calculator" className="rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-primary hover:text-primary transition">
+                FFMI Calculator
+              </Link>
+              <Link href="/calorie-estimator" className="rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:border-primary hover:text-primary transition">
+                Calorie Estimator
+              </Link>
+            </div>
+          </div>
 
           {/*
           <div className="mt-4">

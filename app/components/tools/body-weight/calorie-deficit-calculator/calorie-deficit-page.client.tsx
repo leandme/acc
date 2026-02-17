@@ -71,7 +71,15 @@ export default function CalorieDeficitPageClient() {
             <a className="text-primary underline" href="/weight-loss-calculator">
               Weight Loss Calculator
             </a>{" "}
-            for timeline projection.
+            for timeline projection. To estimate movement-driven calorie output from walking volume, use the{" "}
+            <a className="text-primary underline" href="/steps-to-calories-calculator">
+              Steps to Calories Calculator
+            </a>
+            . If your daily intake varies by meal composition, log meal photos in the{" "}
+            <a className="text-primary underline" href="/calorie-estimator">
+              Calorie Estimator
+            </a>{" "}
+            and average those values across the week.
           </p>
           {weeklyLossKg != null && weeklyLossPct != null ? (
             <p className={pClass}>
@@ -132,6 +140,8 @@ export default function CalorieDeficitPageClient() {
             toolSlugs={[
               "tdee-calculator",
               "bmr-calculator",
+              "calorie-estimator",
+              "steps-to-calories-calculator",
               "intermittent-fasting-calculator",
               "weight-loss-calculator",
               "fasting-weight-loss-calculator",

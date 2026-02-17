@@ -35,7 +35,7 @@ export default function BlogPostPage() {
               image={
                 <figure className="max-w-3xl">
                   <Image
-  src="/guides/"
+  src="/guides/best-body-fat-estimator.png"
   alt=""
   width={1200}
   height={675}

@@ -74,7 +74,15 @@ export default function TDEEPageClient() {
             <a className="text-primary underline" href="/weight-loss-calculator">
               Weight Loss Calculator
             </a>
-            .
+            . To model calorie output from a walking step target, use the{" "}
+            <a className="text-primary underline" href="/steps-to-calories-calculator">
+              Steps to Calories Calculator
+            </a>
+            . If you want meal-level intake estimates from photos, use the{" "}
+            <a className="text-primary underline" href="/calorie-estimator">
+              Calorie Estimator
+            </a>{" "}
+            and compare weekly average intake against this maintenance target.
           </p>
           {mildCutCalories != null && leanGainCalories != null ? (
             <p className={pClass}>
@@ -131,6 +139,8 @@ export default function TDEEPageClient() {
             toolSlugs={[
               "bmr-calculator",
               "calorie-deficit-calculator",
+              "calorie-estimator",
+              "steps-to-calories-calculator",
               "weight-loss-calculator",
               "intermittent-fasting-calculator",
               "fasting-weight-loss-calculator",

@@ -80,6 +80,10 @@ export default function WeightLossPageClient() {
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
             </a>
+            . If movement is a major part of your plan, estimate daily walking output with the{" "}
+            <a className="text-primary underline" href="/steps-to-calories-calculator">
+              Steps to Calories Calculator
+            </a>
             .
           </p>
           <p className={pClass}>
@@ -133,6 +137,7 @@ export default function WeightLossPageClient() {
             toolSlugs={[
               "tdee-calculator",
               "calorie-deficit-calculator",
+              "steps-to-calories-calculator",
               "bmr-calculator",
               "intermittent-fasting-calculator",
               "fasting-weight-loss-calculator",

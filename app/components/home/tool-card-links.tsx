@@ -14,10 +14,22 @@ export type LinkCardItem = {
 
 const DEFAULT_ITEMS: LinkCardItem[] = [
   {
+    title: "Body Shape Analyzer",
+    href: "/body-shape-analyzer",
+    description: "Upload a photo and analyze your visual body type.",
+    eventName: "Go to Body Shape Analyzer",
+  },
+  {
     title: "Body Visualizer",
     href: "/body-visualizer",
     description: "Visualize BMI, body fat %, height, and weight.",
     eventName: "Go To Body Visualizer",
+  },
+  {
+    title: "Body Fat Calculator",
+    href: "/body-fat-calculator",
+    description: "Estimate body fat % from measurements and formulas.",
+    eventName: "Go to Body Fat Calculator",
   },
   {
     title: "FFMI Calculator",
@@ -90,6 +102,18 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     href: "/calorie-deficit-calculator",
     description: "Set daily calorie targets from your chosen weekly loss pace.",
     eventName: "Go to Calorie Deficit Calculator",
+  },
+  {
+    title: "Steps to Calories Calculator",
+    href: "/steps-to-calories-calculator",
+    description: "Estimate calories burned from walking steps and pace.",
+    eventName: "Go to Steps to Calories Calculator",
+  },
+  {
+    title: "Calorie Estimator",
+    href: "/calorie-estimator",
+    description: "Estimate meal calories from a photo with confidence ranges.",
+    eventName: "Go to Calorie Estimator",
   },
   {
     title: "Ideal Weight Calculator",

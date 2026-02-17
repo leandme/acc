@@ -15,6 +15,7 @@ const LOW_LINK_TOOL_SLUGS = new Set<string>([
   "adjusted-body-weight-calculator",
   "fasting-weight-loss-calculator",
   "intermittent-fasting-calculator",
+  "steps-to-calories-calculator",
   "muscle-mass-calculator",
 ]);
 

@@ -190,6 +190,18 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Calculate deficit targets and daily calories from your selected weekly pace.",
     category: "Calories",
   },
+  "steps-to-calories-calculator": {
+    slug: "steps-to-calories-calculator",
+    title: "Steps to Calories Calculator",
+    description: "Estimate calories burned from steps using stride, body weight, and walking pace.",
+    category: "Calories",
+  },
+  "calorie-estimator": {
+    slug: "calorie-estimator",
+    title: "Calorie Estimator",
+    description: "Estimate meal calories from a photo with AI and confidence ranges.",
+    category: "Calories",
+  },
 };
 
 // --- helpers ---

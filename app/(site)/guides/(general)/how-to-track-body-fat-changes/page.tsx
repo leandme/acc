@@ -181,6 +181,10 @@ export default function BlogPostPage() {
             <a className="text-primary underline" href="/fasting-weight-loss-calculator">
               fasting-pattern projection
             </a>
+            {" "}, the{" "}
+            <a className="text-primary underline" href="/steps-to-calories-calculator">
+              steps-to-calories planner
+            </a>
             {" "}and the{" "}
             <a className="text-primary underline" href="/intermittent-fasting-calculator">
               intermittent fasting protocol estimator
