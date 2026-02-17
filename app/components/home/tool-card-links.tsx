@@ -58,6 +58,16 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     description: "Classify frame size from height and wrist measurements.",
   },
   {
+    title: "Waist to Hip Ratio Calculator",
+    href: "/waist-to-hip-ratio-calculator",
+    description: "Assess abdominal fat distribution with a waist-to-hip ratio check.",
+  },
+  {
+    title: "Waist to Height Ratio Calculator",
+    href: "/waist-to-height-ratio-calculator",
+    description: "Screen central-fat risk by comparing waist circumference to height.",
+  },
+  {
     title: "BMI Calculator",
     href: "/bmi-calculator",
     description: "Calculate BMI and check standard adult categories.",
@@ -88,9 +98,19 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     description: "Set daily calorie targets from your chosen weekly loss pace.",
   },
   {
+    title: "Macro Calculator",
+    href: "/macro-calculator",
+    description: "Set protein, carbs, and fat targets from your calorie goal.",
+  },
+  {
     title: "Steps to Calories Calculator",
     href: "/steps-to-calories-calculator",
     description: "Estimate calories burned from walking steps and pace.",
+  },
+  {
+    title: "Calories Burned Calculator",
+    href: "/calories-burned-calculator",
+    description: "Estimate calories burned across many workout and cardio activities.",
   },
   {
     title: "Calorie Estimator",

@@ -98,6 +98,14 @@ export default function RFMCalculatorPageClient() {
             <a className="text-primary underline" href="/bri-calculator">
               BRI Calculator
             </a>
+            . For hip-adjusted waist context, use the{" "}
+            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
+              Waist to Hip Ratio Calculator
+            </a>
+            . For waist-height screening context, use the{" "}
+            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+              Waist to Height Ratio Calculator
+            </a>
             . For hip-height adiposity context, use the{" "}
             <a className="text-primary underline" href="/bai-calculator">
               BAI Calculator
@@ -125,6 +133,7 @@ export default function RFMCalculatorPageClient() {
               "body-fat-calculator",
               "bai-calculator",
               "bri-calculator",
+              "waist-to-height-ratio-calculator",
               "skinfold-body-fat-calculator",
               "muscle-mass-calculator",
               "lean-body-mass-calculator",

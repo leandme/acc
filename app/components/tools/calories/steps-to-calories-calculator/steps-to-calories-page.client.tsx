@@ -86,6 +86,10 @@ export default function StepsToCaloriesPageClient() {
             <a className="text-primary underline" href="/weight-loss-calculator">
               Weight Loss Calculator
             </a>
+            . For non-step activities like cycling, rowing, and HIIT, use the{" "}
+            <a className="text-primary underline" href="/calories-burned-calculator">
+              Calories Burned Calculator
+            </a>
             .
           </p>
         </div>
@@ -140,6 +144,7 @@ export default function StepsToCaloriesPageClient() {
               "tdee-calculator",
               "calorie-deficit-calculator",
               "weight-loss-calculator",
+              "calories-burned-calculator",
               "intermittent-fasting-calculator",
               "fasting-weight-loss-calculator",
               "bmr-calculator",

@@ -155,6 +155,14 @@ export default function OverweightPageClient() {
             <a className="text-primary underline" href="/body-fat-calculator">
               tape-based body fat estimate
             </a>
+            ,{" "}
+            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
+              waist-to-hip ratio risk check
+            </a>
+            ,{" "}
+            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+              waist-to-height ratio screen
+            </a>
             , and{" "}
             <a className="text-primary underline" href="/lean-body-mass-calculator">
               lean-mass estimate
@@ -207,6 +215,8 @@ export default function OverweightPageClient() {
               "calorie-deficit-calculator",
               "weight-loss-calculator",
               "weight-loss-percentage-calculator",
+              "waist-to-hip-ratio-calculator",
+              "waist-to-height-ratio-calculator",
               "ponderal-index-calculator",
               "broca-index-calculator",
               "body-fat-calculator",

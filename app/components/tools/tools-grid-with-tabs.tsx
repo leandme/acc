@@ -10,6 +10,7 @@ type TabKey =
   | "all"
   | "body-fat"
   | "body-composition"
+  | "body-proportions"
   | "body-weight"
   | "metabolism"
   | "calories";
@@ -23,6 +24,7 @@ const TABS: Tab[] = [
   { key: "all", label: "All" },
   { key: "body-fat", label: "Body Fat" },
   { key: "body-composition", label: "Body Composition" },
+  { key: "body-proportions", label: "Body Proportions" },
   { key: "body-weight", label: "Body Weight" },
   { key: "metabolism", label: "Metabolism" },
   { key: "calories", label: "Calories" },
@@ -31,6 +33,7 @@ const TABS: Tab[] = [
 function keyToCategory(key: TabKey): ToolMeta["category"] | null {
   if (key === "body-fat") return "Body Fat";
   if (key === "body-composition") return "Body Composition";
+  if (key === "body-proportions") return "Body Proportions";
   if (key === "body-weight") return "Body Weight";
   if (key === "metabolism") return "Metabolism";
   if (key === "calories") return "Calories";

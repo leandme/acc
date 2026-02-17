@@ -78,11 +78,20 @@ export default function TDEEPageClient() {
             <a className="text-primary underline" href="/steps-to-calories-calculator">
               Steps to Calories Calculator
             </a>
+            . For more activity types (running, lifting, HIIT, cycling, and more), use the{" "}
+            <a className="text-primary underline" href="/calories-burned-calculator">
+              Calories Burned Calculator
+            </a>
             . If you want meal-level intake estimates from photos, use the{" "}
             <a className="text-primary underline" href="/calorie-estimator">
               Calorie Estimator
             </a>{" "}
-            and compare weekly average intake against this maintenance target.
+            and compare weekly average intake against this maintenance target. To convert calorie goals into
+            protein, carb, and fat gram targets, use the{" "}
+            <a className="text-primary underline" href="/macro-calculator">
+              Macro Calculator
+            </a>
+            .
           </p>
           {mildCutCalories != null && leanGainCalories != null ? (
             <p className={pClass}>
@@ -140,7 +149,9 @@ export default function TDEEPageClient() {
               "bmr-calculator",
               "calorie-deficit-calculator",
               "calorie-estimator",
+              "macro-calculator",
               "steps-to-calories-calculator",
+              "calories-burned-calculator",
               "weight-loss-calculator",
               "intermittent-fasting-calculator",
               "fasting-weight-loss-calculator",

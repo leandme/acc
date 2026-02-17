@@ -75,11 +75,20 @@ export default function CalorieDeficitPageClient() {
             <a className="text-primary underline" href="/steps-to-calories-calculator">
               Steps to Calories Calculator
             </a>
+            . For a broader menu of gym and cardio activities, use the{" "}
+            <a className="text-primary underline" href="/calories-burned-calculator">
+              Calories Burned Calculator
+            </a>
             . If your daily intake varies by meal composition, log meal photos in the{" "}
             <a className="text-primary underline" href="/calorie-estimator">
               Calorie Estimator
             </a>{" "}
-            and average those values across the week.
+            and average those values across the week. To set macro gram targets from this intake goal, use
+            the{" "}
+            <a className="text-primary underline" href="/macro-calculator">
+              Macro Calculator
+            </a>
+            .
           </p>
           {weeklyLossKg != null && weeklyLossPct != null ? (
             <p className={pClass}>
@@ -141,7 +150,9 @@ export default function CalorieDeficitPageClient() {
               "tdee-calculator",
               "bmr-calculator",
               "calorie-estimator",
+              "macro-calculator",
               "steps-to-calories-calculator",
+              "calories-burned-calculator",
               "intermittent-fasting-calculator",
               "weight-loss-calculator",
               "fasting-weight-loss-calculator",

@@ -62,6 +62,18 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Estimate frame size from height and wrist ratio.",
     category: "Body Composition",
   },
+  "waist-to-hip-ratio-calculator": {
+    slug: "waist-to-hip-ratio-calculator",
+    title: "Waist to Hip Ratio Calculator",
+    description: "Assess waist-to-hip ratio with sex-specific central-fat risk thresholds.",
+    category: "Body Proportions",
+  },
+  "waist-to-height-ratio-calculator": {
+    slug: "waist-to-height-ratio-calculator",
+    title: "Waist to Height Ratio Calculator",
+    description: "Assess waist-to-height ratio against central-fat risk screening thresholds.",
+    category: "Body Proportions",
+  },
   "body-shape-analyzer": {
     slug: "body-shape-analyzer",
     title: "Body Shape Analyzer",
@@ -190,10 +202,22 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Calculate deficit targets and daily calories from your selected weekly pace.",
     category: "Calories",
   },
+  "macro-calculator": {
+    slug: "macro-calculator",
+    title: "Macro Calculator",
+    description: "Set protein, carb, and fat gram targets from calorie goals and macro split presets.",
+    category: "Calories",
+  },
   "steps-to-calories-calculator": {
     slug: "steps-to-calories-calculator",
     title: "Steps to Calories Calculator",
     description: "Estimate calories burned from steps using stride, body weight, and walking pace.",
+    category: "Calories",
+  },
+  "calories-burned-calculator": {
+    slug: "calories-burned-calculator",
+    title: "Calories Burned Calculator",
+    description: "Estimate calories burned for many activities using MET-based exercise energy equations.",
     category: "Calories",
   },
   "calorie-estimator": {

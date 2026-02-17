@@ -65,6 +65,8 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/lean-body-mass-calculator">Lean Body Mass Calculator</a></li>
               <li><a className="hover:text-white" href="/muscle-mass-calculator">Muscle Mass Calculator</a></li>
               <li><a className="hover:text-white" href="/body-frame-size-calculator">Body Frame Size Calculator</a></li>
+              <li><a className="hover:text-white" href="/waist-to-hip-ratio-calculator">Waist to Hip Ratio Calculator</a></li>
+              <li><a className="hover:text-white" href="/waist-to-height-ratio-calculator">Waist to Height Ratio Calculator</a></li>
               <li><a className="hover:text-white" href="/rfm-calculator">RFM Calculator</a></li>
               <li><a className="hover:text-white" href="/bri-calculator">BRI Calculator</a></li>
               <li><a className="hover:text-white" href="/visceral-fat-calculator">Visceral Fat Calculator</a></li>
@@ -98,7 +100,9 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/tdee-calculator">TDEE Calculator</a></li>
               <li><a className="hover:text-white" href="/bmr-calculator">BMR Calculator</a></li>
               <li><a className="hover:text-white" href="/calorie-deficit-calculator">Calorie Deficit Calculator</a></li>
+              <li><a className="hover:text-white" href="/macro-calculator">Macro Calculator</a></li>
               <li><a className="hover:text-white" href="/steps-to-calories-calculator">Steps to Calories Calculator</a></li>
+              <li><a className="hover:text-white" href="/calories-burned-calculator">Calories Burned Calculator</a></li>
             </ul>
           </div>
 

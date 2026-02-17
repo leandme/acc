@@ -98,6 +98,14 @@ export default function BMIPageClient() {
               tape-based body fat estimate
             </a>
             ,{" "}
+            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
+              waist-to-hip ratio risk check
+            </a>
+            ,{" "}
+            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+              waist-to-height ratio screen
+            </a>
+            ,{" "}
             <a className="text-primary underline" href="/bri-calculator">
               waist-to-height roundness check
             </a>
@@ -145,6 +153,8 @@ export default function BMIPageClient() {
               "calorie-deficit-calculator",
               "weight-loss-calculator",
               "weight-loss-percentage-calculator",
+              "waist-to-hip-ratio-calculator",
+              "waist-to-height-ratio-calculator",
               "ponderal-index-calculator",
               "broca-index-calculator",
               "body-fat-calculator",

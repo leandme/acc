@@ -393,9 +393,21 @@ function CalorieEstimatorPageContent() {
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
             </a>{" "}
-            to set an intake target. For protocol-based intake planning, use the{" "}
+            and track session expenditure with the{" "}
+            <a className="text-primary underline" href="/calories-burned-calculator">
+              Calories Burned Calculator
+            </a>
+            . For step-target calorie burn, use the{" "}
+            <a className="text-primary underline" href="/steps-to-calories-calculator">
+              Steps to Calories Calculator
+            </a>
+            . For protocol-based intake planning, use the{" "}
             <a className="text-primary underline" href="/intermittent-fasting-calculator">
               Intermittent Fasting Calculator
+            </a>
+            . If you want calorie targets converted into daily protein, carb, and fat gram goals, use the{" "}
+            <a className="text-primary underline" href="/macro-calculator">
+              Macro Calculator
             </a>
             .
           </p>
@@ -440,8 +452,11 @@ function CalorieEstimatorPageContent() {
             columns={2}
             toolSlugs={[
               "calorie-deficit-calculator",
+              "macro-calculator",
               "tdee-calculator",
               "bmr-calculator",
+              "calories-burned-calculator",
+              "steps-to-calories-calculator",
               "intermittent-fasting-calculator",
               "fasting-weight-loss-calculator",
               "weight-loss-calculator",
