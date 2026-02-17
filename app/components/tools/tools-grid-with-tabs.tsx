@@ -60,7 +60,6 @@ export default function ToolsGridWithTabs({ tools }: { tools: ToolMeta[] }) {
     else next.set("tag", tag);
 
     router.push(`${pathname}?${next.toString()}`, { scroll: false });
-    trackEvent("tools_tab_click", { tag });
   }
 
   return (
@@ -93,7 +92,12 @@ export default function ToolsGridWithTabs({ tools }: { tools: ToolMeta[] }) {
           <Link
             key={tool.slug}
             href={slugToHref(tool.slug)}
-            onClick={() => trackEvent("Go to Tool", { slug: tool.slug, category: tool.category })}
+            onClick={() =>
+              trackEvent("Go to Tool", {
+                tool: tool.title.toLowerCase(),
+                source: "tools grid",
+              })
+            }
             className="group rounded-2xl border border-2 bg-white p-6 shadow-sm transition hover:shadow-md hover:-translate-y-[1px]"
           >
             <p className="text-xl lg:text-2xl font-semibold text-primary underline group-hover:underline">

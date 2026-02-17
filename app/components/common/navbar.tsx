@@ -33,7 +33,7 @@ export default function Navbar() {
             <li>
               <a href="/estimate"
                onClick={() =>
-              trackEvent("Go to Estimate", { location: "navbar cta" })
+              trackEvent("Go to Tool", { tool: "body fat estimator", location: "navbar cta" })
             }
                className="hover:bg-transparent focus:bg-transparent active:bg-transparent">
               Estimate Body Fat

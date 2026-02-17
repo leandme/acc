@@ -276,7 +276,7 @@ export function useCalorieEstimate(
 
         if (signal.aborted) return;
 
-        trackEvent("Estimate Meal Calories", {
+        trackEvent("Estimate Calories", {
           total_calories: estimate.totalCalories,
           confidence: estimate.confidence,
           source,
@@ -312,4 +312,3 @@ export function useCalorieEstimate(
 
   return state;
 }
-

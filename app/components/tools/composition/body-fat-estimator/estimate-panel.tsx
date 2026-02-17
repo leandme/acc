@@ -106,7 +106,7 @@ export default function EstimatePanel({
               <a
                 href="/estimate"
                 onClick={() =>
-                  trackEvent("Go to Estimate", { location: "estimate panel cta" })
+                  trackEvent("Go to Tool", { tool: "body fat estimator", location: "estimate panel cta" })
                 }
                 className="btn btn-outline btn-lg w-full"
               >

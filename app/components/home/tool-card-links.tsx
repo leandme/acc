@@ -9,7 +9,6 @@ export type LinkCardItem = {
   href: string;
   icon?: React.ReactNode;
   description?: string; // optional (keep short)
-  eventName?: string; // optional amplitude event
 };
 
 const DEFAULT_ITEMS: LinkCardItem[] = [
@@ -17,121 +16,101 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     title: "Body Shape Analyzer",
     href: "/body-shape-analyzer",
     description: "Upload a photo and analyze your visual body type.",
-    eventName: "Go to Body Shape Analyzer",
   },
   {
     title: "Body Visualizer",
     href: "/body-visualizer",
     description: "Visualize BMI, body fat %, height, and weight.",
-    eventName: "Go To Body Visualizer",
   },
   {
     title: "Body Fat Calculator",
     href: "/body-fat-calculator",
     description: "Estimate body fat % from measurements and formulas.",
-    eventName: "Go to Body Fat Calculator",
   },
   {
     title: "FFMI Calculator",
     href: "/ffmi-calculator",
     description: "How much lean mass you carry",
-    eventName: "Go to FFMI Calculator",
   },
   {
     title: "Lean Body Mass Calculator",
     href: "/lean-body-mass-calculator",
     description: "Estimate lean mass with Boer, James, and Hume formulas.",
-    eventName: "Go to Lean Body Mass Calculator",
   },
   {
     title: "Muscle Mass Calculator",
     href: "/muscle-mass-calculator",
     description: "Estimate skeletal muscle mass from anthropometric inputs.",
-    eventName: "Go to Muscle Mass Calculator",
   },
   {
     title: "BRI Calculator",
     href: "/bri-calculator",
     description: "Estimate body roundness from waist and height.",
-    eventName: "Go to BRI Calculator",
   },
   {
     title: "BAI Calculator",
     href: "/bai-calculator",
     description: "Estimate body adiposity from hip circumference and height.",
-    eventName: "Go to BAI Calculator",
   },
   {
     title: "Body Frame Size Calculator",
     href: "/body-frame-size-calculator",
     description: "Classify frame size from height and wrist measurements.",
-    eventName: "Go to Body Frame Size Calculator",
   },
   {
     title: "BMI Calculator",
     href: "/bmi-calculator",
     description: "Calculate BMI and check standard adult categories.",
-    eventName: "Go to BMI Calculator",
   },
   {
     title: "Weight Loss Calculator",
     href: "/weight-loss-calculator",
     description: "Estimate timeline to target weight using calorie intake.",
-    eventName: "Go to Weight Loss Calculator",
   },
   {
     title: "Intermittent Fasting Calculator",
     href: "/intermittent-fasting-calculator",
     description: "Compare fasting protocols and projected weekly pace.",
-    eventName: "Go to Intermittent Fasting Calculator",
   },
   {
     title: "TDEE Calculator",
     href: "/tdee-calculator",
     description: "Estimate maintenance calories from BMR and activity level.",
-    eventName: "Go to TDEE Calculator",
   },
   {
     title: "BMR Calculator",
     href: "/bmr-calculator",
     description: "Estimate resting calorie burn with standard equations.",
-    eventName: "Go to BMR Calculator",
   },
   {
     title: "Calorie Deficit Calculator",
     href: "/calorie-deficit-calculator",
     description: "Set daily calorie targets from your chosen weekly loss pace.",
-    eventName: "Go to Calorie Deficit Calculator",
   },
   {
     title: "Steps to Calories Calculator",
     href: "/steps-to-calories-calculator",
     description: "Estimate calories burned from walking steps and pace.",
-    eventName: "Go to Steps to Calories Calculator",
   },
   {
     title: "Calorie Estimator",
     href: "/calorie-estimator",
     description: "Estimate meal calories from a photo with confidence ranges.",
-    eventName: "Go to Calorie Estimator",
   },
   {
     title: "Ideal Weight Calculator",
     href: "/ideal-weight-calculator",
     description: "Compare healthy BMI range and ideal-weight references.",
-    eventName: "Go to Ideal Weight Calculator",
   },
   {
     title: "Army Body Fat Calculator",
     href: "/army-body-fat-calculator",
     description: "Estimate body fat % using the US Army tape method.",
-    eventName: "Go to Army Body Fat Calculator",
   },
   {
     title: "Skinfold Body Fat Calculator",
     href: "/skinfold-body-fat-calculator",
     description: "Estimate body fat % from skinfold caliper sites.",
-    eventName: "Go to Skinfold Body Fat Calculator",
   },
   {
     title: "All Tools",
@@ -186,8 +165,12 @@ export default function ToolCardLinkGrid({
             key={item.href + item.title}
             href={item.href}
             onClick={() => {
-              if (item.eventName)
-                trackEvent(item.eventName, { href: item.href });
+              if (item.href !== "/tools") {
+                trackEvent("Go to Tool", {
+                  tool: item.title.toLowerCase(),
+                  source: "tool card links",
+                });
+              }
             }}
             className="group rounded-2xl border border-2 bg-white p-6 shadow-sm transition
                        hover:shadow-md hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-primary/30"

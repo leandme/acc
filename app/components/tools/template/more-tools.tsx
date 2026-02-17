@@ -105,13 +105,10 @@ export function MoreTools({
             key={t.slug}
             href={`/${t.slug}`}
             onClick={() => {
-              if (t.eventName) trackEvent("Go to Tool", {
-                'tool name': t.title,
-                'tool slug': t.slug,
-                'tool category': t.category,
-                'source': "more tools"
+              trackEvent("Go to Tool", {
+                tool: t.title.toLowerCase(),
+                source: "more tools",
               });
-
             }}
             className="group rounded-2xl border bg-white transition hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
           >
