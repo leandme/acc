@@ -97,6 +97,21 @@ export default function FastingWeightLossCalculator({ onChange }: Props) {
     return (weeklyLossKg / startWeightKg) * 100;
   }, [weeklyLossKg, startWeightKg]);
 
+  const weeklyLossDisplayValue = useMemo(
+    () => (units === "metric" ? weeklyLossKg : kgToLb(weeklyLossKg)),
+    [units, weeklyLossKg],
+  );
+
+  const weeklyGaugeMin = useMemo(
+    () => (units === "metric" ? (startWeightKg * -1) / 100 : kgToLb((startWeightKg * -1) / 100)),
+    [units, startWeightKg],
+  );
+
+  const weeklyGaugeMax = useMemo(
+    () => (units === "metric" ? (startWeightKg * 2.5) / 100 : kgToLb((startWeightKg * 2.5) / 100)),
+    [units, startWeightKg],
+  );
+
   const category = useMemo(
     () => findRangeBucket(weeklyLossPct, FASTING_WEEKLY_LOSS_RANGES),
     [weeklyLossPct],
@@ -269,11 +284,11 @@ export default function FastingWeightLossCalculator({ onChange }: Props) {
           <div className="bg-base-100 min-w-0">
             <div className="p-8 min-h-[420px] flex flex-col items-center justify-center text-center">
               <Gauge
-                value={weeklyLossPct}
-                label="%/week"
+                value={weeklyLossDisplayValue}
+                label={units === "metric" ? "kg/week" : "lbs/week"}
                 rimColor={category.color}
-                min={-1}
-                max={2.5}
+                min={weeklyGaugeMin}
+                max={weeklyGaugeMax}
                 digits={2}
               />
 

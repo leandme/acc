@@ -16,32 +16,60 @@ function parsePercent(estimate: string): number | null {
 export default function EstimateGauge({
   estimate,
   label = "Body Fat Percentage",
+  compact = false,
+  variant,
 }: {
   estimate: string;
   label?: string;
+  compact?: boolean;
+  variant?: "default" | "compact" | "export";
 }) {
+  const gaugeVariant = variant ?? (compact ? "compact" : "default");
+  const isCompact = gaugeVariant === "compact";
+  const isExport = gaugeVariant === "export";
+
   const p = parsePercent(estimate);
 
   const min = 0;
   const max = 60;
+  const tickStep = 10;
 
-  const t = p === null ? 0.5 : (clamp(p, min, max) - min) / (max - min); // 0..1
+  const t = p === null ? 0.5 : (clamp(p, min, max) - min) / (max - min);
 
-  const geom = {
-    w: 360,
-    h: 220,
-    cx: 180,
-    cy: 175,
-    r: 140,
-    stroke: 14,
-  };
+  const geom = isExport
+    ? {
+        w: 500,
+        h: 310,
+        cx: 250,
+        cy: 240,
+        r: 195,
+        stroke: 18,
+      }
+    : isCompact
+    ? {
+        w: 330,
+        h: 208,
+        cx: 165,
+        cy: 166,
+        r: 130,
+        stroke: 13,
+      }
+    : {
+        w: 360,
+        h: 220,
+        cx: 180,
+        cy: 175,
+        r: 140,
+        stroke: 14,
+      };
 
   const pad = 24;
 
-  // Arc from left (180°) to right (0°)
+  // Arc from left (180deg) to right (0deg).
   const startAngle = Math.PI;
   const endAngle = 0;
-  const angle = startAngle + (endAngle - startAngle) * t;
+  const markerAngle = startAngle + (endAngle - startAngle) * t;
+  const markerAngleDeg = (markerAngle * 180) / Math.PI;
 
   const startX = geom.cx - geom.r;
   const startY = geom.cy;
@@ -49,68 +77,57 @@ export default function EstimateGauge({
   const endY = geom.cy;
 
   // Triangle dimensions
-  const triW = 16;
-  const triH = 14;
+  const triW = isExport ? 20 : isCompact ? 15 : 16;
+  const triH = isExport ? 16 : isCompact ? 13 : 14;
 
-  const tickValues = [10, 20, 30, 40, 50];
+  const tickValues = Array.from({ length: (max - min) / tickStep + 1 }, (_, i) => min + i * tickStep);
+  const ticks = tickValues.map((value) => {
+    const tt = (value - min) / (max - min);
+    const a = startAngle + (endAngle - startAngle) * tt;
 
-const tickSteps = 6; // 0..6 gives 7 marks including ends
-const ticks = Array.from({ length: tickSteps + 1 }, (_, i) => {
-  const tt = i / tickSteps; // 0..1 evenly spaced
-  const a = startAngle + (endAngle - startAngle) * tt;
+    const cos = Math.cos(a);
+    const sin = Math.sin(a);
 
-  const cos = Math.cos(a);
-  const sin = Math.sin(a);
+    const rMid = geom.r;
+    const tickOffset = isExport ? 8 : isCompact ? 5 : 6;
+    const rOuter = rMid + tickOffset;
+    const rInner = rMid - tickOffset;
 
-  const rMid = geom.r;
-  const rOuter = rMid + 6;
-  const rInner = rMid - 6;
+    return {
+      x1: geom.cx + cos * rInner,
+      y1: geom.cy - sin * rInner,
+      x2: geom.cx + cos * rOuter,
+      y2: geom.cy - sin * rOuter,
+      key: value,
+    };
+  });
 
-  return {
-    x1: geom.cx + cos * rInner,
-    y1: geom.cy - sin * rInner,
-    x2: geom.cx + cos * rOuter,
-    y2: geom.cy - sin * rOuter,
-    key: i,
-  };
-});
+  // Triangle is defined with its tip at (0,0). Put the tip on the arc edge.
+  const cosM = Math.cos(markerAngle);
+  const sinM = Math.sin(markerAngle);
+  const markerRadius = geom.r + geom.stroke / 2 + 1;
+  const mx = geom.cx + cosM * markerRadius;
+  const my = geom.cy - sinM * markerRadius;
 
-// --- Marker at 12 o'clock (top center) ---
-const ttMarker = t; // your computed t from estimate
-
-const aMarker = startAngle + (endAngle - startAngle) * ttMarker;
-
-const cosM = Math.cos(aMarker);
-const sinM = Math.sin(aMarker);
-
-// position on the OUTER edge of the stroke
-const rMarkerBase = geom.r + geom.stroke / 2;
-
-// push the marker OUTWARD (increase this)
-const markerOffset = 14; // try 10–20
-const rMarker = rMarkerBase + markerOffset;
-
-const mx = geom.cx + cosM * rMarker;
-const my = geom.cy - sinM * rMarker;
-
-// rotate triangle so it points inward (toward the center)
-const markerRotateDeg = (aMarker * 180) / Math.PI + 90;
-
-const essentialMax = 6;   // essential fat
-const leanMax = 14;       // lean / athletic
-const averageMax = 25;    // average
-const highMax = 40;       // high
-
-const toPct = (v: number) => ((v - min) / (max - min)) * 100;
+  // Local triangle points "up", so rotate to aim inward along the radius.
+  const markerRotateDeg = 270 - markerAngleDeg;
 
 
 
   return (
     <div className="w-full flex justify-center">
-      <div className="relative w-full max-w-sm sm:max-w-md">
-                <svg
-        viewBox={`${-pad} ${-pad} ${geom.w + pad * 2} ${geom.h + pad * 2}`}
-        className="w-full h-auto block"
+      <div
+        className={`relative w-full ${
+          isExport
+            ? "max-w-[36rem]"
+            : isCompact
+            ? "max-w-[20.5rem] sm:max-w-[22rem]"
+            : "max-w-sm sm:max-w-md"
+        }`}
+      >
+        <svg
+          viewBox={`${-pad} ${-pad} ${geom.w + pad * 2} ${geom.h + pad * 2}`}
+          className="w-full h-auto block"
         >
 
           <defs>
@@ -135,56 +152,80 @@ const toPct = (v: number) => ((v - min) / (max - min)) * 100;
             </filter>
           </defs>
 
-                {/* Arc */}
-                <path
-                    d={`M ${startX} ${startY} A ${geom.r} ${geom.r} 0 0 1 ${endX} ${endY}`}
-                    fill="none"
-                    stroke="url(#bfGradient)"
-                    strokeWidth={geom.stroke}
-                    strokeLinecap="round"
-                    filter="url(#softShadow)"
-                />
+          {/* Arc */}
+          <path
+            d={`M ${startX} ${startY} A ${geom.r} ${geom.r} 0 0 1 ${endX} ${endY}`}
+            fill="none"
+            stroke="url(#bfGradient)"
+            strokeWidth={geom.stroke}
+            strokeLinecap="round"
+            filter="url(#softShadow)"
+          />
 
-            {/* Ticks every 10% */}
+          {/* Ticks every 10% */}
+          {ticks.map((tick) => (
+            <line
+              key={tick.key}
+              x1={tick.x1}
+              y1={tick.y1}
+              x2={tick.x2}
+              y2={tick.y2}
+              stroke="#111827"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              opacity={0.55}
+            />
+          ))}
 
-            {/* Ticks every 10% (with halo so they show on gradient) */}
-{ticks.map((tick) => (
-  <line
-    key={tick.key}
-    x1={tick.x1}
-    y1={tick.y1}
-    x2={tick.x2}
-    y2={tick.y2}
-    stroke="#111827"
-    strokeWidth={1.5}
-    strokeLinecap="round"
-    opacity={0.55}
-  />
-))}
-
-{/* Marker (black arrow) at 12 o'clock */}
-<g transform={`translate(${mx}, ${my}) rotate(${markerRotateDeg})`} filter="url(#softShadow)">
-  {/* Triangle points "down" in its local coords; rotation handles direction */}
-  <path
-    d={`M 0 0 L ${-triW / 2} ${triH} L ${triW / 2} ${triH} Z`}
-    fill="#111827"
-  />
-</g>
+          {/* Marker */}
+          <g transform={`translate(${mx}, ${my}) rotate(${markerRotateDeg})`} filter="url(#softShadow)">
+            <path d={`M 0 0 L ${-triW / 2} ${triH} L ${triW / 2} ${triH} Z`} fill="#111827" />
+          </g>
 
         </svg>
 
-                        {/* Number + label inside the arc */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-end pb-14">
-                        <div className="text-center">
-                            <div className="flex items-start justify-center gap-1">
-                <span className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-none">
-                    {estimate}
+        {/* Number + label inside the arc */}
+        <div
+          className={`absolute inset-0 flex flex-col items-center justify-end ${
+            isExport ? "pb-20" : isCompact ? "pb-11 sm:pb-12" : "pb-14"
+          }`}
+        >
+          <div className="text-center">
+            <div className="flex items-start justify-center gap-1">
+                <span
+                  className={`font-extrabold tracking-tight leading-none ${
+                    isExport
+                      ? "text-[6.2rem]"
+                      : isCompact
+                      ? "text-5xl sm:text-6xl"
+                      : "text-5xl sm:text-6xl"
+                  }`}
+                >
+                  {estimate}
                 </span>
-                <span className="text-xl sm:text-2xl font-extrabold leading-none mt-1 text-gray-800">
-                    %
+                <span
+                  className={`font-extrabold leading-none mt-1 text-gray-800 ${
+                    isExport
+                      ? "text-[2.5rem]"
+                      : isCompact
+                      ? "text-xl sm:text-2xl"
+                      : "text-xl sm:text-2xl"
+                  }`}
+                >
+                  %
                 </span>
-                </div>
-            <div className="mt-4 text-sm sm:text-lg text-gray-500">{label}</div>
+              </div>
+            <div
+              className={`text-gray-500 ${
+                isExport
+                  ? "mt-5 text-[2.3rem]"
+                  : isCompact
+                  ? "mt-3 text-sm sm:text-base"
+                  : "mt-4 text-sm sm:text-lg"
+              }`}
+            >
+              {label}
+            </div>
           </div>
         </div>
       </div>

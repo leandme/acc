@@ -26,6 +26,10 @@ type Props = {
   error: string | null;
   gender?: Gender;
   accuracy?: Accuracy;
+  onDownloadResults?: () => void;
+  downloadingResults?: boolean;
+  compactGauge?: boolean;
+  showActions?: boolean;
 };
 
 export default function EstimatePanel({
@@ -34,8 +38,13 @@ export default function EstimatePanel({
   error,
   gender = "male",
   accuracy = "low",
+  onDownloadResults,
+  downloadingResults = false,
+  compactGauge = false,
+  showActions = true,
 }: Props) {
   const p = !loading && typeof estimate === "number" ? estimate : null;
+  const canShowDownload = !loading && p !== null && !error && !!onDownloadResults;
 
   const categoryLabel =
     p !== null
@@ -48,9 +57,13 @@ export default function EstimatePanel({
   // const gaugeValue = loading ? "..." : p !== null ? String(p) : error ? "Error" : "...";
 
   return (
-    <div className="flex-1 px-4 lg:pl-8">
-      <div className="text-center max-w-md">
-        <div className="sm:-mt-4 min-h-[220px] flex items-center justify-center">
+    <div className="flex-1 w-full px-3 sm:px-4 lg:pl-8">
+      <div className={`mx-auto text-center ${compactGauge ? "max-w-[23rem]" : "max-w-md"}`}>
+        <div
+          className={`sm:-mt-4 flex items-center justify-center ${
+            compactGauge ? "min-h-[228px] sm:min-h-[240px]" : "min-h-[176px] sm:min-h-[220px]"
+          }`}
+        >
           {loading ? (
             <LoadingStatus />
           ) : error ? (
@@ -59,13 +72,13 @@ export default function EstimatePanel({
               <p className="text-red-500 text-lg whitespace-pre-line">{error}</p>
             </div>
           ) : p !== null ? (
-            <EstimateGauge estimate={String(p)} />
+            <EstimateGauge estimate={String(p)} compact={compactGauge} />
           ) : null}
         </div>
 
         {/* Pills row (Category + Accuracy) */}
         {!loading && p !== null && !error && (
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm font-semibold text-gray-800">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-sm sm:text-base font-semibold text-gray-800">
             {/* Category */}
             <div className="flex items-center gap-2">
               <span className="font-semibold">Category:</span>
@@ -100,19 +113,30 @@ export default function EstimatePanel({
           </div>
         )}
 
-        {!loading && (
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <div className="flex flex-col gap-4 flex-1">
-              <a
-                href="/estimate"
-                onClick={() =>
-                  trackEvent("Go to Tool", { tool: "body fat estimator", location: "estimate panel cta" })
-                }
-                className="btn btn-outline btn-lg w-full"
+        {!loading && showActions && (
+          <div className="mt-6 sm:mt-8 flex flex-col gap-3">
+            {canShowDownload && (
+              <button
+                type="button"
+                className="btn btn-primary btn-lg w-full text-white"
+                onClick={onDownloadResults}
+                disabled={downloadingResults}
               >
-                <span className="whitespace-nowrap">Estimate Again</span>
-              </a>
-            </div>
+                <span className="whitespace-nowrap">
+                  {downloadingResults ? "Preparing Image..." : "Download Image"}
+                </span>
+              </button>
+            )}
+
+            <a
+              href="/estimate"
+              onClick={() =>
+                trackEvent("Go to Tool", { tool: "body fat estimator", location: "estimate panel cta" })
+              }
+              className="btn btn-outline btn-lg w-full"
+            >
+              <span className="whitespace-nowrap">Estimate Again</span>
+            </a>
           </div>
         )}
       </div>

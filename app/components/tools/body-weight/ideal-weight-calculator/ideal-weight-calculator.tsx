@@ -18,21 +18,25 @@ import {
   type Sex,
   type Units,
 } from "@/app/components/tools/body-weight/shared/math";
+import { findFrameRange } from "@/app/components/tools/composition/body-frame-size-calculator/frame-ranges";
 import { IDEAL_WEIGHT_PERCENT_RANGES } from "./ideal-weight-ranges";
 
 type Props = {
   onChange?: (payload: {
     percentOfTarget: number;
+    idealKg: number;
+    frameLabel: string;
     devineKg: number;
     healthyMinKg: number;
     healthyMaxKg: number;
-    gapToDevineKg: number;
+    gapToIdealKg: number;
   }) => void;
 };
 
 function devineIBWKg(sex: Sex, heightInches: number) {
   const base = sex === "male" ? 50 : 45.5;
-  return base + 2.3 * (heightInches - 60);
+  const inchesOverFiveFeet = Math.max(0, heightInches - 60);
+  return base + 2.3 * inchesOverFiveFeet;
 }
 
 export default function IdealWeightCalculator({ onChange }: Props) {
@@ -40,21 +44,38 @@ export default function IdealWeightCalculator({ onChange }: Props) {
   const [sex, setSex] = useState<Sex>("male");
 
   const [heightCm, setHeightCm] = useState<number>(177.8); // 5'10"
+  const [wristCm, setWristCm] = useState<number>(17.5);
   const [weightKg, setWeightKg] = useState<number>(83.9); // 185 lb
 
   const heightIn = useMemo(() => Math.round(heightCm / 2.54), [heightCm]);
   const weightLb = useMemo(() => Math.round(kgToLb(weightKg)), [weightKg]);
+  const wristIn = useMemo(() => round(wristCm / 2.54, 1), [wristCm]);
 
   const devineKg = useMemo(() => devineIBWKg(sex, heightIn), [sex, heightIn]);
   const healthyMinKg = useMemo(() => 18.5 * Math.pow(cmToM(heightCm), 2), [heightCm]);
   const healthyMaxKg = useMemo(() => 24.9 * Math.pow(cmToM(heightCm), 2), [heightCm]);
 
-  const percentOfTarget = useMemo(() => {
-    if (devineKg <= 0) return 0;
-    return (weightKg / devineKg) * 100;
-  }, [weightKg, devineKg]);
+  const frameRatio = useMemo(() => {
+    if (wristCm <= 0) return 0;
+    return heightCm / wristCm;
+  }, [heightCm, wristCm]);
 
-  const gapToDevineKg = useMemo(() => weightKg - devineKg, [weightKg, devineKg]);
+  const frame = useMemo(() => findFrameRange(sex, frameRatio), [sex, frameRatio]);
+
+  const frameFactor = useMemo(() => {
+    if (frame.key === "large") return 1.1;
+    if (frame.key === "small") return 0.9;
+    return 1;
+  }, [frame.key]);
+
+  const idealKg = useMemo(() => devineKg * frameFactor, [devineKg, frameFactor]);
+
+  const percentOfTarget = useMemo(() => {
+    if (idealKg <= 0) return 0;
+    return (weightKg / idealKg) * 100;
+  }, [weightKg, idealKg]);
+
+  const gapToIdealKg = useMemo(() => weightKg - idealKg, [weightKg, idealKg]);
 
   const category = useMemo(
     () => findRangeBucket(percentOfTarget, IDEAL_WEIGHT_PERCENT_RANGES),
@@ -64,13 +85,16 @@ export default function IdealWeightCalculator({ onChange }: Props) {
   useEffect(() => {
     onChange?.({
       percentOfTarget,
+      idealKg,
+      frameLabel: frame.label,
       devineKg,
       healthyMinKg,
       healthyMaxKg,
-      gapToDevineKg,
+      gapToIdealKg,
     });
-  }, [onChange, percentOfTarget, devineKg, healthyMinKg, healthyMaxKg, gapToDevineKg]);
+  }, [onChange, percentOfTarget, idealKg, frame.label, devineKg, healthyMinKg, healthyMaxKg, gapToIdealKg]);
 
+  const idealDisplay = units === "metric" ? `${round(idealKg, 1)} kg` : `${round(kgToLb(idealKg), 1)} lbs`;
   const devineDisplay = units === "metric" ? `${round(devineKg, 1)} kg` : `${round(kgToLb(devineKg), 1)} lbs`;
   const healthyRangeDisplay =
     units === "metric"
@@ -78,8 +102,8 @@ export default function IdealWeightCalculator({ onChange }: Props) {
       : `${round(kgToLb(healthyMinKg), 1)}-${round(kgToLb(healthyMaxKg), 1)} lbs`;
   const gapDisplay =
     units === "metric"
-      ? `${round(Math.abs(gapToDevineKg), 1)} kg`
-      : `${round(Math.abs(kgToLb(gapToDevineKg)), 1)} lbs`;
+      ? `${round(Math.abs(gapToIdealKg), 1)} kg`
+      : `${round(Math.abs(kgToLb(gapToIdealKg)), 1)} lbs`;
 
   return (
     <div className="w-full max-w-5xl mx-auto">
@@ -124,6 +148,17 @@ export default function IdealWeightCalculator({ onChange }: Props) {
                   step={1}
                   onChange={(lb) => setWeightKg(lbToKg(lb))}
                 />
+
+                <SliderRow
+                  label="Wrist Circumference"
+                  valueLabel={`${wristIn.toFixed(1)} in`}
+                  value={wristIn}
+                  min={4.5}
+                  max={10.5}
+                  step={0.1}
+                  onChange={(inches) => setWristCm(inToCm(inches))}
+                  helper="Used to estimate frame size for ideal-weight adjustment."
+                />
               </>
             ) : (
               <>
@@ -146,6 +181,17 @@ export default function IdealWeightCalculator({ onChange }: Props) {
                   step={0.1}
                   onChange={setWeightKg}
                 />
+
+                <SliderRow
+                  label="Wrist Circumference"
+                  valueLabel={`${round(wristCm, 1).toFixed(1)} cm`}
+                  value={round(wristCm, 1)}
+                  min={11}
+                  max={27}
+                  step={0.1}
+                  onChange={setWristCm}
+                  helper="Used to estimate frame size for ideal-weight adjustment."
+                />
               </>
             )}
           </div>
@@ -154,7 +200,7 @@ export default function IdealWeightCalculator({ onChange }: Props) {
             <div className="p-8 min-h-[420px] flex flex-col items-center justify-center text-center">
               <Gauge
                 value={percentOfTarget}
-                label="% of Target"
+                label="% of Ideal"
                 rimColor={category.color}
                 min={70}
                 max={170}
@@ -168,9 +214,22 @@ export default function IdealWeightCalculator({ onChange }: Props) {
 
               <p className="mt-3 text-sm text-gray-600 max-w-[320px] leading-relaxed">{category.note}</p>
 
+              <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-white border px-3 py-1 text-sm font-semibold text-gray-700">
+                <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: frame.color }} />
+                {frame.label}
+              </div>
+
               <div className="mt-6 w-full grid grid-cols-2 gap-3 text-left">
                 <div className="rounded-xl bg-base-200/60 p-3">
-                  <div className="text-xs text-gray-600">Devine IBW</div>
+                  <div className="text-xs text-gray-600">Frame-Adjusted Ideal</div>
+                  <div className="text-lg font-semibold text-gray-900">{idealDisplay}</div>
+                </div>
+                <div className="rounded-xl bg-base-200/60 p-3">
+                  <div className="text-xs text-gray-600">Frame Ratio (H/W)</div>
+                  <div className="text-lg font-semibold text-gray-900">{round(frameRatio, 2)}</div>
+                </div>
+                <div className="rounded-xl bg-base-200/60 p-3">
+                  <div className="text-xs text-gray-600">Devine Baseline</div>
                   <div className="text-lg font-semibold text-gray-900">{devineDisplay}</div>
                 </div>
                 <div className="rounded-xl bg-base-200/60 p-3">
@@ -178,14 +237,14 @@ export default function IdealWeightCalculator({ onChange }: Props) {
                   <div className="text-lg font-semibold text-gray-900">{healthyRangeDisplay}</div>
                 </div>
                 <div className="rounded-xl bg-base-200/60 p-3">
-                  <div className="text-xs text-gray-600">Current vs Devine</div>
+                  <div className="text-xs text-gray-600">Current vs Ideal</div>
                   <div className="text-lg font-semibold text-gray-900">
-                    {gapToDevineKg >= 0 ? "+" : "-"}
+                    {gapToIdealKg >= 0 ? "+" : "-"}
                     {gapDisplay}
                   </div>
                 </div>
                 <div className="rounded-xl bg-base-200/60 p-3">
-                  <div className="text-xs text-gray-600">Current / Devine</div>
+                  <div className="text-xs text-gray-600">Current / Ideal</div>
                   <div className="text-lg font-semibold text-gray-900">{round(percentOfTarget, 1)}%</div>
                 </div>
               </div>

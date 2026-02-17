@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
+import { toBlob as toImageBlob } from "html-to-image";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimatePanel from "@/app/components/tools/composition/body-fat-estimator/estimate-panel";
@@ -14,9 +15,19 @@ import EstimateWhereYouSit from "@/app/components/tools/composition/body-fat-est
 import EstimateAccuracy from "@/app/components/tools/composition/body-fat-estimator/estimate-accuracy";
 import EstimateRationale from "@/app/components/tools/composition/body-fat-estimator/estimate-rationale";
 import EstimateRefineInline from "@/app/components/tools/composition/body-fat-estimator/estimate-refine-inline";
+import EstimateExportCard from "@/app/components/tools/composition/body-fat-estimator/estimate-export-card";
+import { getCategoryFemale, getCategoryMale } from "@/app/libs/estimateUtils";
+import { showErrorToast, showSuccessToast } from "@/app/libs/toast";
+import { trackEvent } from "@/app/libs/amplitude";
+import { useMediaQuery } from "@/app/hooks/use-media-query";
 
 type Gender = "male" | "female";
 type EstimateSource = "example" | "upload";
+type Accuracy = "low" | "medium" | "high";
+
+// 9:16 portrait ratio (social-story friendly)
+const CARD_EXPORT_WIDTH = 1080;
+const CARD_EXPORT_HEIGHT = 1920;
 
 function EstimatePageContent() {
   const searchParams = useSearchParams();
@@ -42,7 +53,10 @@ function EstimatePageContent() {
   const rationale = initial.estimate?.rationale ?? null;
 
   const [showRefine, setShowRefine] = useState(false);
+  const [downloadingImage, setDownloadingImage] = useState(false);
   const refineRef = useRef<HTMLDivElement | null>(null);
+  const exportCardRef = useRef<HTMLDivElement | null>(null);
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   // If refine has started (loading/estimate/error), always use it for the top panel.
   const refineIsActive = refine.loading || !!refine.estimate || !!refine.error;
@@ -53,10 +67,118 @@ function EstimatePageContent() {
   const activeAccuracy = active?.accuracy ?? accuracy;
   const activeRationale = active?.rationale ?? rationale;
   const activeImprovements = active?.improve ?? improvements;
+  const normalizedActiveAccuracy: Accuracy =
+    activeAccuracy === "high" || activeAccuracy === "medium" ? activeAccuracy : "low";
 
   // gender should come from active estimate if present, else initial
   const activeGender: Gender =
     active?.perceivedGender === "female" ? "female" : gender;
+  const activeCategory =
+    typeof activeBodyFat === "number"
+      ? activeGender === "female"
+        ? getCategoryFemale(activeBodyFat)
+        : getCategoryMale(activeBodyFat)
+      : null;
+  const generatedAtLabel = `Estimated ${new Date().toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  })}`;
+
+  async function downloadResultsImage(
+    location: "estimate cta" | "estimate mobile cta" = "estimate cta"
+  ) {
+    if (downloadingImage) return;
+
+    if (!imageUrl || typeof activeBodyFat !== "number") {
+      showErrorToast("Your estimate is still loading. Try again in a moment.");
+      return;
+    }
+
+    trackEvent("Download File", {
+      "file type": "image",
+      tool: "body fat estimator",
+      "download type": refineIsActive ? "refined estimate" : "standard estimate",
+      location,
+    });
+
+    setDownloadingImage(true);
+    try {
+      const exportCardNode = exportCardRef.current;
+      if (!exportCardNode) {
+        throw new Error("Export card is not ready");
+      }
+
+      if (document.fonts) {
+        await document.fonts.ready;
+      }
+
+      const blob = await toImageBlob(exportCardNode, {
+        cacheBust: true,
+        pixelRatio: 1,
+        width: CARD_EXPORT_WIDTH,
+        height: CARD_EXPORT_HEIGHT,
+        canvasWidth: CARD_EXPORT_WIDTH,
+        canvasHeight: CARD_EXPORT_HEIGHT,
+        skipAutoScale: true,
+      });
+      if (!blob) throw new Error("Could not generate image blob");
+
+      const fileName = `body-fat-estimate-${new Date().toISOString().slice(0, 10)}.png`;
+      const file = new File([blob], fileName, { type: "image/png" });
+
+      const canShareFile =
+        typeof navigator.share === "function" &&
+        typeof navigator.canShare === "function" &&
+        navigator.canShare({ files: [file] });
+
+      if (isMobile && canShareFile) {
+        try {
+          await navigator.share({
+            files: [file],
+            title: "Body Fat Estimate",
+            text: "Generated with bodyfatestimator.ai",
+          });
+          trackEvent("Result Image Shared", {
+            tool: "body fat estimator",
+            location,
+            accuracy: normalizedActiveAccuracy,
+          });
+          showSuccessToast("Share sheet opened. Save it to Photos or Files.");
+          return;
+        } catch (err) {
+          if (err instanceof DOMException && err.name === "AbortError") {
+            return;
+          }
+        }
+      }
+
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+
+      trackEvent("Result Image Downloaded", {
+        tool: "body fat estimator",
+        location,
+        accuracy: normalizedActiveAccuracy,
+      });
+      showSuccessToast(
+        isMobile ? "Image downloaded. Check Files/Downloads." : "Image downloaded to your Downloads folder."
+      );
+    } catch (err) {
+      console.error("Failed to export result image", err);
+      showErrorToast(
+        "Could not generate the image. If this was pasted from a URL, upload the file directly and try again."
+      );
+    } finally {
+      setDownloadingImage(false);
+    }
+  }
 
   // scroll to refine block when it opens
   useEffect(() => {
@@ -92,27 +214,76 @@ function EstimatePageContent() {
 
   return (
     <section className="flex flex-col items-center justify-start min-h-screen">
-      <div className="w-full max-w-none px-0 sm:px-4 lg:max-w-5xl lg:px-8 lg:mt-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 lg:gap-16 items-start justify-items-center lg:justify-items-start">
-          <div className="w-full sm:max-w-sm lg:max-w-none">
+      <div className="w-full max-w-none px-0 sm:px-4 lg:max-w-5xl lg:px-8 lg:mt-10 min-h-[calc(100svh-5.5rem)] md:min-h-0 flex items-center md:block">
+        <div className="mx-auto w-full max-w-md lg:max-w-none">
+          <div className="flex flex-col items-center gap-3 lg:grid lg:grid-cols-[360px_1fr] lg:gap-16 lg:items-start lg:justify-items-start">
+            <div className="w-full max-w-[min(88vw,20.5rem)] sm:max-w-[min(76vw,21.5rem)] lg:max-w-none lg:w-[360px]">
             <img
               src={imageUrl}
               alt="Uploaded image"
-              className="w-full max-w-[95vw] sm:max-w-sm lg:w-[360px] mx-auto rounded-2xl shadow-xl object-cover aspect-[3/4] bg-base-200"
+              className="w-full mx-auto rounded-2xl shadow-xl object-cover aspect-[3/4] bg-base-200"
             />
-          </div>
+            </div>
 
-          <div className="w-full max-w-md lg:max-w-none lg:pt-2">
-            <EstimatePanel
-              estimate={activeBodyFat}
-              loading={activeEstimate.loading}
-              error={activeEstimate.error}
-              gender={activeGender}
-              accuracy={activeAccuracy}
-            />
+            <div className="w-full max-w-[min(92vw,23.5rem)] lg:max-w-none lg:pt-2">
+              <EstimatePanel
+                estimate={activeBodyFat}
+                loading={activeEstimate.loading}
+                error={activeEstimate.error}
+                gender={activeGender}
+                accuracy={normalizedActiveAccuracy}
+                onDownloadResults={() => downloadResultsImage("estimate cta")}
+                downloadingResults={downloadingImage}
+                compactGauge={isMobile}
+                showActions={!isMobile}
+              />
+            </div>
           </div>
         </div>
       </div>
+
+      {isMobile && !activeEstimate.loading && (
+        <div className="w-full max-w-md px-3 sm:px-4 mt-8 sm:mt-10">
+          <div className="flex flex-col gap-3">
+            <button
+              type="button"
+              className="btn btn-primary btn-lg w-full text-white"
+              onClick={() => downloadResultsImage("estimate mobile cta")}
+              disabled={downloadingImage || typeof activeBodyFat !== "number"}
+            >
+              <span className="whitespace-nowrap">
+                {downloadingImage ? "Preparing Image..." : "Save Image"}
+              </span>
+            </button>
+
+            <a
+              href="/estimate"
+              onClick={() =>
+                trackEvent("Go to Tool", {
+                  tool: "body fat estimator",
+                  location: "estimate page mobile actions",
+                })
+              }
+              className="btn btn-outline btn-lg w-full"
+            >
+              <span className="whitespace-nowrap">Estimate Again</span>
+            </a>
+          </div>
+        </div>
+      )}
+
+      {typeof activeBodyFat === "number" && (
+        <div className="fixed left-[-10000px] top-[-10000px] pointer-events-none" aria-hidden="true">
+          <EstimateExportCard
+            ref={exportCardRef}
+            imageUrl={imageUrl}
+            estimate={activeBodyFat}
+            category={activeCategory ?? "UNKNOWN"}
+            accuracy={normalizedActiveAccuracy}
+            generatedAtLabel={generatedAtLabel}
+          />
+        </div>
+      )}
 
       <div id="where-you-sit" className="w-full max-w-3xl mt-20 lg:mt-40">
         <EstimateWhereYouSit
@@ -128,7 +299,7 @@ function EstimatePageContent() {
 
       <div id="accuracy" className="w-full max-w-3xl mt-20 lg:mt-40">
         <EstimateAccuracy
-          accuracy={activeAccuracy}
+          accuracy={normalizedActiveAccuracy}
           improvements={activeImprovements}
           onImproveAccuracy={() => setShowRefine(true)}
           improveCtaLabel="Improve Accuracy →"

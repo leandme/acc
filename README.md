@@ -9,7 +9,6 @@ Get AHREFS and find all the best terms
 - Rewrite the About page
 - Redo the contact page
 - Rewrite existing articles
-- Update existing tools
 - test OpenAI instead of via replicate.
 
 Add references to disclimaer
@@ -25,11 +24,7 @@ Articles:
 
 Add section- goal weight/body fat%
 - link to weight loss calculator
-- Add links on tools page to filter by tool type All, body composition, etc like on the guides page
-- Internal linking for blogs
 - Bam animation with score
-- All tools added to the footer
-- Homepage section linking to all tools
 - Pagination for blog posts
 - Examples page searchable section
 - Estimate counter

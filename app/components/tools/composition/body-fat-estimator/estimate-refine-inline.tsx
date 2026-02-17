@@ -30,6 +30,16 @@ function rangeOptions(min: number, max: number, step = 1) {
   return out;
 }
 
+function formatImperialHeight(totalInches: number) {
+  const feet = Math.floor(totalInches / 12);
+  const rawInches = totalInches - feet * 12;
+  const roundedInches = Math.round(rawInches * 2) / 2;
+  const inchesLabel = Number.isInteger(roundedInches)
+    ? String(roundedInches)
+    : roundedInches.toFixed(1);
+  return `${feet}'${inchesLabel}`;
+}
+
 export default function EstimateRefineInline({
   initialImageUrl = null,
   className = "",
@@ -69,8 +79,8 @@ export default function EstimateRefineInline({
 
   const ageOptions = useMemo(() => rangeOptions(18, 90, 1), []);
   const heightOptions = useMemo(() => {
-    // metric: 140–210 cm, imperial: 55–83 in
-    return units === "metric" ? rangeOptions(140, 210, 1) : rangeOptions(55, 83, 1);
+    // metric: 140-210 cm, imperial: 55-83 in (0.5 in steps)
+    return units === "metric" ? rangeOptions(140, 210, 1) : rangeOptions(55, 83, 0.5);
   }, [units]);
 
   const weightOptions = useMemo(() => {
@@ -84,7 +94,7 @@ export default function EstimateRefineInline({
     return units === "metric" ? rangeOptions(50, 140, 1) : rangeOptions(20, 55, 1);
   }, [units]);
 
-  const heightLabel = units === "metric" ? "Height (cm)" : "Height (in)";
+  const heightLabel = units === "metric" ? "Height (cm)" : "Height (ft/in)";
   const weightLabel = units === "metric" ? "Weight (kg)" : "Weight (lb)";
   const waistLabel = units === "metric" ? "Waist (cm)" : "Waist (in)";
 
@@ -285,7 +295,7 @@ export default function EstimateRefineInline({
               </option>
               {heightOptions.map((v) => (
                 <option key={v} value={String(v)}>
-                  {v}
+                  {units === "metric" ? v : formatImperialHeight(v)}
                 </option>
               ))}
             </select>

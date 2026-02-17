@@ -166,15 +166,34 @@ export default function IntermittentFastingCalculator({ onChange }: Props) {
     protocolDailyIntake,
   ]);
 
+  const weeklyLossKg = useMemo(() => {
+    if (durationWeeks <= 0) return 0;
+    return projection.totalLossKg / durationWeeks;
+  }, [projection.totalLossKg, durationWeeks]);
+
   const weeklyLossPct = useMemo(() => {
-    if (durationWeeks <= 0 || startWeightKg <= 0) return 0;
-    const weeklyLossKg = projection.totalLossKg / durationWeeks;
+    if (startWeightKg <= 0) return 0;
     return (weeklyLossKg / startWeightKg) * 100;
-  }, [durationWeeks, projection.totalLossKg, startWeightKg]);
+  }, [weeklyLossKg, startWeightKg]);
 
   const normalizedWeeklyLossPct = useMemo(
     () => Math.max(-0.99, weeklyLossPct),
     [weeklyLossPct],
+  );
+
+  const weeklyLossDisplayValue = useMemo(
+    () => (units === "metric" ? weeklyLossKg : kgToLb(weeklyLossKg)),
+    [units, weeklyLossKg],
+  );
+
+  const weeklyGaugeMin = useMemo(
+    () => (units === "metric" ? (startWeightKg * -1) / 100 : kgToLb((startWeightKg * -1) / 100)),
+    [units, startWeightKg],
+  );
+
+  const weeklyGaugeMax = useMemo(
+    () => (units === "metric" ? (startWeightKg * 2.5) / 100 : kgToLb((startWeightKg * 2.5) / 100)),
+    [units, startWeightKg],
   );
 
   const averageDailyDeficitKcal = useMemo(() => tdee - protocolDailyIntake, [tdee, protocolDailyIntake]);
@@ -395,11 +414,11 @@ export default function IntermittentFastingCalculator({ onChange }: Props) {
           <div className="bg-base-100 min-w-0">
             <div className="p-8 min-h-[420px] flex flex-col items-center justify-center text-center">
               <Gauge
-                value={normalizedWeeklyLossPct}
-                label="%/week"
+                value={weeklyLossDisplayValue}
+                label={units === "metric" ? "kg/week" : "lbs/week"}
                 rimColor={category.color}
-                min={-1}
-                max={2.5}
+                min={weeklyGaugeMin}
+                max={weeklyGaugeMax}
                 digits={2}
               />
 
