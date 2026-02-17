@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import FastingWeightLossPageClient from "@/app/components/tools/body-weight/fasting-weight-loss-calculator/fasting-weight-loss-page.client";
+import FastingWeightLossPageClient from "@/app/components/tools/calories/fasting-weight-loss-calculator/fasting-weight-loss-page.client";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({

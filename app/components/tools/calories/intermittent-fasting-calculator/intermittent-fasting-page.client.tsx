@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import IntermittentFastingCalculator from "@/app/components/tools/body-weight/intermittent-fasting-calculator/intermittent-fasting-calculator";
-import IntermittentFastingInterpretation from "@/app/components/tools/body-weight/intermittent-fasting-calculator/intermittent-fasting-interpretation";
+import IntermittentFastingCalculator from "@/app/components/tools/calories/intermittent-fasting-calculator/intermittent-fasting-calculator";
+import IntermittentFastingInterpretation from "@/app/components/tools/calories/intermittent-fasting-calculator/intermittent-fasting-interpretation";
 import { round } from "@/app/components/tools/body-weight/shared/math";
 import { MoreTools } from "../../template/more-tools";
 

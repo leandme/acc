@@ -18,7 +18,7 @@ import {
   type Sex,
   type Units,
 } from "@/app/components/tools/body-weight/shared/math";
-import { STEPS_ACTIVITY_RANGES } from "@/app/components/tools/body-weight/steps-to-calories-calculator/steps-to-calories-ranges";
+import { STEPS_ACTIVITY_RANGES } from "@/app/components/tools/calories/steps-to-calories-calculator/steps-to-calories-ranges";
 
 type Props = {
   onChange?: (payload: {

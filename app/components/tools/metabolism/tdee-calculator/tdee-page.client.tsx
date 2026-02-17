@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import TDEECalculator from "@/app/components/tools/body-weight/tdee-calculator/tdee-calculator";
-import TDEEInterpretation from "@/app/components/tools/body-weight/tdee-calculator/tdee-interpretation";
+import TDEECalculator from "@/app/components/tools/metabolism/tdee-calculator/tdee-calculator";
+import TDEEInterpretation from "@/app/components/tools/metabolism/tdee-calculator/tdee-interpretation";
 import { round } from "@/app/components/tools/body-weight/shared/math";
 import { MoreTools } from "../../template/more-tools";
 

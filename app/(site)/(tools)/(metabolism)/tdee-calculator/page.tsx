@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import TDEEPageClient from "@/app/components/tools/body-weight/tdee-calculator/tdee-page.client";
+import TDEEPageClient from "@/app/components/tools/metabolism/tdee-calculator/tdee-page.client";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({

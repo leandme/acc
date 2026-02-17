@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import StepsToCaloriesPageClient from "@/app/components/tools/body-weight/steps-to-calories-calculator/steps-to-calories-page.client";
+import StepsToCaloriesPageClient from "@/app/components/tools/calories/steps-to-calories-calculator/steps-to-calories-page.client";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({

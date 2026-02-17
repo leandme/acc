@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import StepsToCaloriesCalculator from "@/app/components/tools/body-weight/steps-to-calories-calculator/steps-to-calories-calculator";
-import StepsToCaloriesInterpretation from "@/app/components/tools/body-weight/steps-to-calories-calculator/steps-to-calories-interpretation";
+import StepsToCaloriesCalculator from "@/app/components/tools/calories/steps-to-calories-calculator/steps-to-calories-calculator";
+import StepsToCaloriesInterpretation from "@/app/components/tools/calories/steps-to-calories-calculator/steps-to-calories-interpretation";
 import { round } from "@/app/components/tools/body-weight/shared/math";
 import { MoreTools } from "../../template/more-tools";
 

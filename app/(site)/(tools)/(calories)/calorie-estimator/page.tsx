@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CalorieEstimatorPageClient from "@/app/components/tools/body-weight/calorie-estimator/calorie-estimator-page.client";
+import CalorieEstimatorPageClient from "@/app/components/tools/calories/calorie-estimator/calorie-estimator-page.client";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({

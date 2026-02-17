@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import IntermittentFastingPageClient from "@/app/components/tools/body-weight/intermittent-fasting-calculator/intermittent-fasting-page.client";
+import IntermittentFastingPageClient from "@/app/components/tools/calories/intermittent-fasting-calculator/intermittent-fasting-page.client";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({

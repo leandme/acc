@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import CalorieDeficitCalculator from "@/app/components/tools/body-weight/calorie-deficit-calculator/calorie-deficit-calculator";
-import CalorieDeficitInterpretation from "@/app/components/tools/body-weight/calorie-deficit-calculator/calorie-deficit-interpretation";
+import CalorieDeficitCalculator from "@/app/components/tools/calories/calorie-deficit-calculator/calorie-deficit-calculator";
+import CalorieDeficitInterpretation from "@/app/components/tools/calories/calorie-deficit-calculator/calorie-deficit-interpretation";
 import { round } from "@/app/components/tools/body-weight/shared/math";
 import { MoreTools } from "../../template/more-tools";
 

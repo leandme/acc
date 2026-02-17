@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import FastingWeightLossCalculator from "@/app/components/tools/body-weight/fasting-weight-loss-calculator/fasting-weight-loss-calculator";
-import FastingWeightLossInterpretation from "@/app/components/tools/body-weight/fasting-weight-loss-calculator/fasting-weight-loss-interpretation";
+import FastingWeightLossCalculator from "@/app/components/tools/calories/fasting-weight-loss-calculator/fasting-weight-loss-calculator";
+import FastingWeightLossInterpretation from "@/app/components/tools/calories/fasting-weight-loss-calculator/fasting-weight-loss-interpretation";
 import { round } from "@/app/components/tools/body-weight/shared/math";
 import { MoreTools } from "../../template/more-tools";
 

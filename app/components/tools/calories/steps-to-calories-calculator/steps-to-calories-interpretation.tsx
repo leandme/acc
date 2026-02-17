@@ -1,7 +1,7 @@
 "use client";
 
 import InterpretationTable from "@/app/components/tools/body-weight/shared/interpretation-table";
-import { STEPS_ACTIVITY_RANGES } from "@/app/components/tools/body-weight/steps-to-calories-calculator/steps-to-calories-ranges";
+import { STEPS_ACTIVITY_RANGES } from "@/app/components/tools/calories/steps-to-calories-calculator/steps-to-calories-ranges";
 
 export default function StepsToCaloriesInterpretation({
   stepsPerDay,

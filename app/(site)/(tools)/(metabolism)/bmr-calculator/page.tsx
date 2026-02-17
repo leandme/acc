@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BMRPageClient from "@/app/components/tools/body-weight/bmr-calculator/bmr-page.client";
+import BMRPageClient from "@/app/components/tools/metabolism/bmr-calculator/bmr-page.client";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({

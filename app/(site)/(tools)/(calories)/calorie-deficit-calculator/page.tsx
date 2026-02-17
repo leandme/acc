@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CalorieDeficitPageClient from "@/app/components/tools/body-weight/calorie-deficit-calculator/calorie-deficit-page.client";
+import CalorieDeficitPageClient from "@/app/components/tools/calories/calorie-deficit-calculator/calorie-deficit-page.client";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({

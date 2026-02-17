@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import BMRCalculator from "@/app/components/tools/body-weight/bmr-calculator/bmr-calculator";
-import BMRInterpretation from "@/app/components/tools/body-weight/bmr-calculator/bmr-interpretation";
+import BMRCalculator from "@/app/components/tools/metabolism/bmr-calculator/bmr-calculator";
+import BMRInterpretation from "@/app/components/tools/metabolism/bmr-calculator/bmr-interpretation";
 import { round } from "@/app/components/tools/body-weight/shared/math";
 import { MoreTools } from "../../template/more-tools";
 
