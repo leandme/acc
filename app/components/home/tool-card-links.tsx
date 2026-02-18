@@ -18,6 +18,11 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     description: "Upload a photo and analyze your visual body type.",
   },
   {
+    title: "Body Shape Calculator",
+    href: "/body-shape-calculator",
+    description: "Estimate body-shape category from bust, waist, and hip measurements.",
+  },
+  {
     title: "Body Visualizer",
     href: "/body-visualizer",
     description: "Visualize BMI, body fat %, height, and weight.",
@@ -144,6 +149,7 @@ type Props = {
   subhead?: React.ReactNode;
   items?: LinkCardItem[];
   columns?: 2 | 3 | 4;
+  maxItems?: number;
   className?: string;
 };
 
@@ -156,6 +162,7 @@ export default function ToolCardLinkGrid({
   ),
   items = DEFAULT_ITEMS,
   columns = 3,
+  maxItems = 9,
   className = "",
 }: Props) {
   const gridCols =
@@ -180,7 +187,7 @@ export default function ToolCardLinkGrid({
       </div>
 
       <div className={`mt-10 grid gap-5 ${gridCols}`}>
-        {items.map((item) => (
+        {items.slice(0, maxItems).map((item) => (
           <Link
             key={item.href + item.title}
             href={item.href}

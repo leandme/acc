@@ -107,6 +107,14 @@ export default function BRIPageClient() {
             <a className="text-primary underline" href="/visceral-fat-calculator">
               Visceral Fat Calculator
             </a>
+            . For proportion-based silhouette context, compare with the{" "}
+            <a className="text-primary underline" href="/body-shape-calculator">
+              Body Shape Calculator
+            </a>
+            {" "}or the{" "}
+            <a className="text-primary underline" href="/body-shape-analyzer">
+              Body Shape Analyzer
+            </a>
             .
           </p>
           <p className={pClass}>
@@ -172,6 +180,7 @@ export default function BRIPageClient() {
               "ffmi-calculator",
               "body-frame-size-calculator",
               "body-visualizer",
+              "body-shape-calculator",
             ]}
             excludeSlug="bri-calculator"
           />

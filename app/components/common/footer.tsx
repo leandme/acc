@@ -71,6 +71,7 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/bri-calculator">BRI Calculator</a></li>
               <li><a className="hover:text-white" href="/visceral-fat-calculator">Visceral Fat Calculator</a></li>
               <li><a className="hover:text-white" href="/body-shape-analyzer">Body Shape Analyzer</a></li>
+              <li><a className="hover:text-white" href="/body-shape-calculator">Body Shape Calculator</a></li>
             </ul>
           </div>
 

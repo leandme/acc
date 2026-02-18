@@ -332,7 +332,9 @@ function BodyShapePageContent() {
           <p className={pClass}>
             If your goal is body-composition tracking, pair this with{" "}
             <a className="text-primary underline" href="/estimate">Body Fat Estimator</a> and{" "}
-            <a className="text-primary underline" href="/body-visualizer">Body Visualizer</a>.
+            <a className="text-primary underline" href="/body-visualizer">Body Visualizer</a>. For a
+            measurement-based alternative (bust/chest, waist, hips), use the{" "}
+            <a className="text-primary underline" href="/body-shape-calculator">Body Shape Calculator</a>.
           </p>
         </div>
 
@@ -392,6 +394,7 @@ function BodyShapePageContent() {
               "body-fat-calculator",
               "bai-calculator",
               "bri-calculator",
+              "body-shape-calculator",
               "body-frame-size-calculator",
               "lean-body-mass-calculator",
               "ffmi-calculator",

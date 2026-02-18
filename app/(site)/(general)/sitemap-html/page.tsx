@@ -94,6 +94,7 @@ export default function SitemapPage() {
     "rfm-calculator",
     "bri-calculator",
     "visceral-fat-calculator",
+    "body-shape-calculator",
     "army-body-fat-calculator",
     "body-fat-calculator",
   ] as const;

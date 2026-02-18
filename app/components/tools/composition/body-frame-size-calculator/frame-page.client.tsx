@@ -197,6 +197,7 @@ export default function BodyFrameSizePageClient() {
               "bai-calculator",
               "bri-calculator",
               "body-visualizer",
+              "body-shape-calculator",
               "rfm-calculator",
             ]}
             excludeSlug="body-frame-size-calculator"

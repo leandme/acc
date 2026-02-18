@@ -163,6 +163,7 @@ export default function BodyVisualizerPage() {
               "lean-body-mass-calculator",
               "bri-calculator",
               "body-frame-size-calculator",
+              "body-shape-calculator",
               "ffmi-calculator",
               "rfm-calculator",
               "bmi-calculator",

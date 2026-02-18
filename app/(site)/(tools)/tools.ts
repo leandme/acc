@@ -80,6 +80,12 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Upload a photo and analyze your visual body type.",
     category: "Body Composition",
   },
+  "body-shape-calculator": {
+    slug: "body-shape-calculator",
+    title: "Body Shape Calculator",
+    description: "Estimate your body-shape category from bust/chest, waist, and hip measurements.",
+    category: "Body Composition",
+  },
 
   "body-visualizer": {
     slug: "body-visualizer",

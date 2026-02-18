@@ -24,7 +24,7 @@ site: {
 
    // ESTIMATE
 estimate: {
-    totalCount: "6,655",
+    totalCount: "12,655",
   },
 
 // PAYMENT
@@ -34,6 +34,4 @@ payment: {
     lifetimePaymentLink:"https://buy.stripe.com/14AdR94dRbxDgCf4msfAc0g"
     
 }
-
-  
 } as const;
