@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Body Visualizer – BMI, Body Fat & Weight",
-  description: "Use an interactive Body Visualizer with linked sliders for BMI, body fat percentage, height, and weight. See a dynamic body render and trend-focused composition metrics.",
+  description: "Use an interactive Body Visualizer with linked or independent sliders for BMI, body fat percentage, height, and weight. See a dynamic body render and trend-focused composition metrics.",
   canonical: "https://bodyfatestimator.ai/body-visualizer",
 });
 
@@ -16,8 +16,7 @@ export default function BodyVisualizerPage() {
       <section className="mx-auto max-w-4xl px-6 pt-10 text-center">
         <h1 className="text-4xl lg:text-5xl font-bold">Body Visualizer</h1>
         <p className="mt-4 text-lg text-gray-700 leading-relaxed">
-          Explore how body shape changes as you adjust body fat %, BMI, height, and weight. Use linked sliders for faster
-          scenario testing, then track realistic trends instead of chasing one "perfect" number.
+          Explore how body shape changes as you adjust body fat %, BMI, height, and weight.
         </p>
       </section>
 
@@ -42,8 +41,8 @@ export default function BodyVisualizerPage() {
         <div className="mt-20 lg:mt-40 space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold">How to use the sliders together</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            BMI and body fat are automatically synced in this tool. Adjusting one updates the other using a consistent prediction model,
-            so scenario testing is faster and the render stays coherent.
+            You can run the tool in Linked or Independent mode. Linked mode syncs BMI and body fat using a consistent prediction model
+            for faster scenario testing, while Independent mode lets each slider move on its own.
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
             For real-world tracking, keep setup consistent and compare trends every 2 to 4 weeks. If you want photo-based validation,
@@ -135,6 +134,14 @@ export default function BodyVisualizerPage() {
             <li>
               FFMI reference context used across this project:
               <a href="https://pubmed.ncbi.nlm.nih.gov/7496846/" className="text-primary underline ml-1">Kouri et al. (PubMed)</a>
+            </li>
+            <li>
+              MakeHuman + MPFB asset stack for the Phase 2 body model:
+              <a href="https://github.com/makehumancommunity/makehuman-assets" className="text-primary underline ml-1">MakeHuman assets (CC0)</a>
+              {" | "}
+              <a href="https://static.makehumancommunity.org/mpfb/docs.html" className="text-primary underline">MPFB docs</a>
+              {" | "}
+              <a href="/models/body-visualizer/mpfb/asset-manifest.json" className="text-primary underline">Local asset manifest</a>
             </li>
             <li>
               3D mannequin model source:

@@ -2,13 +2,15 @@
 
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 import type { Bone, Group, Mesh, MeshStandardMaterial, SkinnedMesh } from "three";
 import { Color } from "three";
 
 type Gender = "male" | "female";
 type Units = "imperial" | "metric";
+type SyncMode = "linked" | "independent";
+type RenderMode = "legacy" | "mpfb";
 
 type BodyFatBounds = {
   min: number;
@@ -28,6 +30,13 @@ const WEIGHT_KG_MAX = 220;
 const BMI_MIN = 16;
 const BMI_MAX = 45;
 const MODEL_AGE = 30;
+const LEGACY_FRONT_MODEL_YAW = Math.PI / 2;
+const MPFB_FRONT_MODEL_YAW = 0;
+const LEGACY_MODEL_PATH = "/models/body-visualizer/male_base_mesh.glb";
+const MPFB_MODEL_PATHS: Record<Gender, string> = {
+  male: "/models/body-visualizer/mpfb/body_male_v1.glb",
+  female: "/models/body-visualizer/mpfb/body_female_v1.glb",
+};
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
@@ -260,14 +269,125 @@ function applyMaterialOverride(root: Group) {
   });
 }
 
-function HumanModel(props: {
+type MorphChannel =
+  | "macro_weight"
+  | "macro_muscle"
+  | "macro_height"
+  | "local_torso_fat"
+  | "local_torso_muscle"
+  | "local_arms_fat"
+  | "local_arms_muscle"
+  | "local_legs_fat"
+  | "local_legs_muscle";
+
+const MORPH_CHANNEL_ALIASES: Record<MorphChannel, string[]> = {
+  macro_weight: ["macro_weight", "macro-weight", "weight", "maxweight"],
+  macro_muscle: ["macro_muscle", "macro-muscle", "muscle", "maxmuscle"],
+  macro_height: ["macro_height", "macro-height", "height", "maxheight"],
+  local_torso_fat: ["local_torso_fat", "torso_fat", "stomach_tone_decr", "head_fat_incr"],
+  local_torso_muscle: ["local_torso_muscle", "torso_muscle", "torso_muscle_pectoral_incr", "torso_muscle_dorsi_incr"],
+  local_arms_fat: ["local_arms_fat", "arms_fat", "upperarm_fat_incr", "lowerarm_fat_incr"],
+  local_arms_muscle: ["local_arms_muscle", "arms_muscle", "upperarm_muscle_incr", "lowerarm_muscle_incr"],
+  local_legs_fat: ["local_legs_fat", "legs_fat", "upperleg_fat_incr", "lowerleg_fat_incr"],
+  local_legs_muscle: ["local_legs_muscle", "legs_muscle", "upperleg_muscle_incr", "lowerleg_muscle_incr"],
+};
+
+function normalizeMorphName(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function resolveMorphIndex(
+  dictionary: Record<string, number>,
+  channel: MorphChannel
+): number | null {
+  const names = Object.keys(dictionary);
+  if (!names.length) return null;
+
+  const normalizedToIndex = new Map<string, number>();
+  names.forEach((name) => normalizedToIndex.set(normalizeMorphName(name), dictionary[name]));
+
+  for (const alias of MORPH_CHANNEL_ALIASES[channel]) {
+    const exact = normalizedToIndex.get(normalizeMorphName(alias));
+    if (typeof exact === "number") return exact;
+  }
+
+  for (const alias of MORPH_CHANNEL_ALIASES[channel]) {
+    const aliasNorm = normalizeMorphName(alias);
+    for (const [normalizedName, index] of normalizedToIndex.entries()) {
+      if (normalizedName.includes(aliasNorm)) return index;
+    }
+  }
+
+  return null;
+}
+
+function buildMorphChannels(props: {
+  gender: Gender;
+  bmi: number;
+  bodyFatPct: number;
+  heightCm: number;
+}): Record<MorphChannel, number> {
+  const { gender, bmi, bodyFatPct, heightCm } = props;
+  const bfBounds = bodyFatBounds(gender);
+
+  const fatNorm = clamp((bodyFatPct - bfBounds.min) / (bfBounds.max - bfBounds.min), 0, 1);
+  const bmiNorm = clamp((bmi - BMI_MIN) / (BMI_MAX - BMI_MIN), 0, 1);
+  const heightNorm = clamp((heightCm - HEIGHT_CM_MIN) / (HEIGHT_CM_MAX - HEIGHT_CM_MIN), 0, 1);
+  const leanProxy = clamp((bmi * (1 - bodyFatPct / 100) - 15) / 12, 0, 1);
+
+  const torsoFat = clamp(0.62 * fatNorm + 0.15 * bmiNorm, 0, 1);
+  const torsoMuscle = clamp(0.78 * leanProxy - 0.28 * fatNorm + 0.14, 0, 1);
+  const armFat = clamp((0.55 * fatNorm + 0.1 * bmiNorm) * (gender === "female" ? 0.94 : 1.02), 0, 1);
+  const armMuscle = clamp((0.82 * leanProxy - 0.24 * fatNorm + 0.1) * (gender === "female" ? 0.9 : 1), 0, 1);
+  const legFat = clamp((0.58 * fatNorm + 0.14 * bmiNorm) * (gender === "female" ? 1.08 : 0.95), 0, 1);
+  const legMuscle = clamp((0.76 * leanProxy - 0.18 * fatNorm + 0.11) * (gender === "female" ? 0.9 : 1), 0, 1);
+
+  return {
+    macro_weight: clamp(0.52 * bmiNorm + 0.48 * fatNorm, 0, 1),
+    macro_muscle: leanProxy,
+    macro_height: heightNorm,
+    local_torso_fat: torsoFat,
+    local_torso_muscle: torsoMuscle,
+    local_arms_fat: armFat,
+    local_arms_muscle: armMuscle,
+    local_legs_fat: legFat,
+    local_legs_muscle: legMuscle,
+  };
+}
+
+function useAssetAvailable(path: string) {
+  const [available, setAvailable] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const check = async () => {
+      try {
+        const response = await fetch(path, { method: "HEAD" });
+        if (!cancelled) setAvailable(response.ok);
+      } catch {
+        if (!cancelled) setAvailable(false);
+      }
+    };
+
+    check();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [path]);
+
+  return available;
+}
+
+function LegacyHumanModel(props: {
   gender: Gender;
   bmi: number;
   bodyFatPct: number;
   heightCm: number;
 }) {
   const { gender, bmi, bodyFatPct, heightCm } = props;
-  const gltf = useGLTF("/models/body-visualizer/male_base_mesh.glb");
+  const gltf = useGLTF(LEGACY_MODEL_PATH);
 
   const modelRoot = useMemo(() => {
     const cloned = clone(gltf.scene) as Group;
@@ -385,18 +505,81 @@ function HumanModel(props: {
   );
 }
 
+function MpfbMorphModel(props: {
+  gender: Gender;
+  bmi: number;
+  bodyFatPct: number;
+  heightCm: number;
+}) {
+  const { gender, bmi, bodyFatPct, heightCm } = props;
+  const gltf = useGLTF(MPFB_MODEL_PATHS[gender]);
+
+  const modelRoot = useMemo(() => {
+    const cloned = clone(gltf.scene) as Group;
+    applyMaterialOverride(cloned);
+    return cloned;
+  }, [gltf.scene]);
+
+  const morphMeshes = useMemo(() => {
+    const meshes: Array<Mesh> = [];
+    modelRoot.traverse((obj) => {
+      if (!(obj as Mesh).isMesh) return;
+      const mesh = obj as Mesh;
+      if (mesh.morphTargetDictionary && mesh.morphTargetInfluences) {
+        meshes.push(mesh);
+      }
+    });
+    return meshes;
+  }, [modelRoot]);
+
+  const channels = useMemo(
+    () =>
+      buildMorphChannels({
+        gender,
+        bmi,
+        bodyFatPct,
+        heightCm,
+      }),
+    [gender, bmi, bodyFatPct, heightCm]
+  );
+
+  useEffect(() => {
+    morphMeshes.forEach((mesh) => {
+      if (!mesh.morphTargetDictionary || !mesh.morphTargetInfluences) return;
+
+      for (let i = 0; i < mesh.morphTargetInfluences.length; i += 1) {
+        mesh.morphTargetInfluences[i] = 0;
+      }
+
+      (Object.keys(channels) as MorphChannel[]).forEach((channel) => {
+        const index = resolveMorphIndex(mesh.morphTargetDictionary!, channel);
+        if (index === null) return;
+        mesh.morphTargetInfluences![index] = channels[channel];
+      });
+    });
+  }, [channels, morphMeshes]);
+
+  return <primitive object={modelRoot} position={[0, 0, 0]} rotation={[0, 0, 0]} />;
+}
+
 function BodyRender(props: {
   gender: Gender;
   bmi: number;
   bodyFatPct: number;
   heightCm: number;
   bodyFatColor: string;
+  resetNonce: number;
+  renderMode: RenderMode;
 }) {
-  const { gender, bmi, bodyFatPct, heightCm, bodyFatColor } = props;
+  const { gender, bmi, bodyFatPct, heightCm, bodyFatColor, resetNonce, renderMode } = props;
+  const modelYaw = renderMode === "mpfb" ? MPFB_FRONT_MODEL_YAW : LEGACY_FRONT_MODEL_YAW;
 
   return (
-    <div className="w-full h-full rounded-3xl border bg-[#e8e8e8] overflow-hidden" style={{ borderColor: bodyFatColor }}>
-      <Canvas camera={{ position: [0, -0.02, 5.4], fov: 24 }} dpr={[1, 2]}>
+    <div
+      className="w-full h-full rounded-3xl border bg-[#e8e8e8] overflow-hidden cursor-grab active:cursor-grabbing"
+      style={{ borderColor: bodyFatColor }}
+    >
+      <Canvas key={resetNonce} camera={{ position: [0, -0.02, 5.4], fov: 24 }} dpr={[1, 2]}>
         <color attach="background" args={["#e8e8e8"]} />
 
         <hemisphereLight intensity={0.52} groundColor="#c0c0c0" />
@@ -405,10 +588,26 @@ function BodyRender(props: {
         <directionalLight position={[0.4, -1.8, 2.5]} intensity={0.24} />
 
         <Suspense fallback={null}>
-          <group position={[-0.025, 0.025, 0]}>
-            <HumanModel gender={gender} bmi={bmi} bodyFatPct={bodyFatPct} heightCm={heightCm} />
+          <group position={[-0.025, 0.025, 0]} rotation={[0, modelYaw, 0]}>
+            {renderMode === "mpfb" ? (
+              <MpfbMorphModel gender={gender} bmi={bmi} bodyFatPct={bodyFatPct} heightCm={heightCm} />
+            ) : (
+              <LegacyHumanModel gender={gender} bmi={bmi} bodyFatPct={bodyFatPct} heightCm={heightCm} />
+            )}
           </group>
         </Suspense>
+
+        <OrbitControls
+          makeDefault
+          enablePan={false}
+          enableZoom={false}
+          enableDamping
+          dampingFactor={0.08}
+          rotateSpeed={0.8}
+          minPolarAngle={Math.PI / 2 - 0.45}
+          maxPolarAngle={Math.PI / 2 + 0.45}
+          target={[0, 0.95, 0]}
+        />
       </Canvas>
     </div>
   );
@@ -417,10 +616,17 @@ function BodyRender(props: {
 export default function BodyVisualizerTool() {
   const [units, setUnits] = useState<Units>("imperial");
   const [gender, setGender] = useState<Gender>("male");
+  const [syncMode, setSyncMode] = useState<SyncMode>("linked");
+  const [viewerResetNonce, setViewerResetNonce] = useState(0);
+  const maleMpfbAvailable = useAssetAvailable(MPFB_MODEL_PATHS.male);
+  const femaleMpfbAvailable = useAssetAvailable(MPFB_MODEL_PATHS.female);
 
   const [heightCm, setHeightCm] = useState<number>(178);
   const [weightKg, setWeightKg] = useState<number>(78);
   const [bodyFatPct, setBodyFatPct] = useState<number>(18);
+
+  const renderMode: RenderMode =
+    maleMpfbAvailable === true && femaleMpfbAvailable === true ? "mpfb" : "legacy";
 
   const bmi = useMemo(() => bmiFrom(weightKg, heightCm), [weightKg, heightCm]);
 
@@ -458,26 +664,34 @@ export default function BodyVisualizerTool() {
 
     const nextBmi = bmiFrom(weightKg, heightCm);
     const nextBounds = bodyFatBounds(nextGender);
-    const modeled = clamp(round(predictBodyFatFromBmi(nextBmi, nextGender), 1), nextBounds.min, nextBounds.max);
-    setBodyFatPct(modeled);
+    if (syncMode === "linked") {
+      const modeled = clamp(round(predictBodyFatFromBmi(nextBmi, nextGender), 1), nextBounds.min, nextBounds.max);
+      setBodyFatPct(modeled);
+    } else {
+      setBodyFatPct((current) => clamp(current, nextBounds.min, nextBounds.max));
+    }
   };
 
   const handleHeightChange = (nextHeightCm: number) => {
     const clampedHeight = clamp(nextHeightCm, HEIGHT_CM_MIN, HEIGHT_CM_MAX);
     setHeightCm(clampedHeight);
 
-    const nextBmi = bmiFrom(weightKg, clampedHeight);
-    const modeled = clamp(round(predictBodyFatFromBmi(nextBmi, gender), 1), bounds.min, bounds.max);
-    setBodyFatPct(modeled);
+    if (syncMode === "linked") {
+      const nextBmi = bmiFrom(weightKg, clampedHeight);
+      const modeled = clamp(round(predictBodyFatFromBmi(nextBmi, gender), 1), bounds.min, bounds.max);
+      setBodyFatPct(modeled);
+    }
   };
 
   const handleWeightChange = (nextWeightKg: number) => {
     const clampedWeight = clamp(nextWeightKg, WEIGHT_KG_MIN, WEIGHT_KG_MAX);
     setWeightKg(clampedWeight);
 
-    const nextBmi = bmiFrom(clampedWeight, heightCm);
-    const modeled = clamp(round(predictBodyFatFromBmi(nextBmi, gender), 1), bounds.min, bounds.max);
-    setBodyFatPct(modeled);
+    if (syncMode === "linked") {
+      const nextBmi = bmiFrom(clampedWeight, heightCm);
+      const modeled = clamp(round(predictBodyFatFromBmi(nextBmi, gender), 1), bounds.min, bounds.max);
+      setBodyFatPct(modeled);
+    }
   };
 
   const handleBmiChange = (nextBmi: number) => {
@@ -485,21 +699,25 @@ export default function BodyVisualizerTool() {
     const nextWeight = clamp(weightFromBmi(clampedBmi, heightCm), WEIGHT_KG_MIN, WEIGHT_KG_MAX);
     setWeightKg(nextWeight);
 
-    const modeled = clamp(round(predictBodyFatFromBmi(clampedBmi, gender), 1), bounds.min, bounds.max);
-    setBodyFatPct(modeled);
+    if (syncMode === "linked") {
+      const modeled = clamp(round(predictBodyFatFromBmi(clampedBmi, gender), 1), bounds.min, bounds.max);
+      setBodyFatPct(modeled);
+    }
   };
 
   const handleBodyFatChange = (nextBodyFatPct: number) => {
     const clampedBodyFat = clamp(nextBodyFatPct, bounds.min, bounds.max);
     setBodyFatPct(clampedBodyFat);
 
-    const modeledBmi = clamp(
-      bmiFromPredictedBodyFat(clampedBodyFat, gender),
-      BMI_MIN,
-      BMI_MAX
-    );
-    const modeledWeight = clamp(weightFromBmi(modeledBmi, heightCm), WEIGHT_KG_MIN, WEIGHT_KG_MAX);
-    setWeightKg(modeledWeight);
+    if (syncMode === "linked") {
+      const modeledBmi = clamp(
+        bmiFromPredictedBodyFat(clampedBodyFat, gender),
+        BMI_MIN,
+        BMI_MAX
+      );
+      const modeledWeight = clamp(weightFromBmi(modeledBmi, heightCm), WEIGHT_KG_MIN, WEIGHT_KG_MAX);
+      setWeightKg(modeledWeight);
+    }
   };
 
   const heightInchesUI = Math.round(cmToIn(heightCm));
@@ -569,6 +787,33 @@ export default function BodyVisualizerTool() {
                 </span>
               </div>
             </div>
+
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+              <p className="text-sm font-semibold text-gray-900">Slider Sync</p>
+              <div className="inline-flex rounded-xl bg-gray-100 p-1">
+                <button
+                  type="button"
+                  onClick={() => setSyncMode("linked")}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                    syncMode === "linked" ? "bg-white shadow-sm text-gray-900" : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  Linked
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSyncMode("independent")}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                    syncMode === "independent" ? "bg-white shadow-sm text-gray-900" : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  Independent
+                </button>
+              </div>
+            </div>
+            <p className="mt-2 text-xs text-gray-500">
+              Linked mode keeps BMI and body-fat sliders synchronized. Independent mode lets each slider move on its own.
+            </p>
 
             <SliderField
               label="Body Fat %"
@@ -648,13 +893,32 @@ export default function BodyVisualizerTool() {
           </div>
 
           <div className="p-4 sm:p-6 bg-base-100 border-t lg:border-t-0 lg:border-l flex min-h-[680px] lg:min-h-0">
-            <BodyRender
-              gender={gender}
-              bmi={bmi}
-              bodyFatPct={bodyFatPct}
-              heightCm={heightCm}
-              bodyFatColor={bfClass.color}
-            />
+            <div className="w-full flex flex-col gap-3">
+              <div className="flex items-center justify-between px-1">
+                <p className="text-xs font-semibold text-gray-600">Drag on the body to rotate 360°</p>
+                <button
+                  type="button"
+                  onClick={() => setViewerResetNonce((v) => v + 1)}
+                  className="text-xs font-semibold text-primary underline hover:opacity-80"
+                >
+                  Reset View
+                </button>
+              </div>
+              <p className="px-1 text-xs text-gray-500">
+                {renderMode === "mpfb"
+                  ? "Model: MPFB morph-target render"
+                  : "Model: legacy fallback (MPFB files not detected yet)"}
+              </p>
+              <BodyRender
+                gender={gender}
+                bmi={bmi}
+                bodyFatPct={bodyFatPct}
+                heightCm={heightCm}
+                bodyFatColor={bfClass.color}
+                resetNonce={viewerResetNonce}
+                renderMode={renderMode}
+              />
+            </div>
           </div>
         </div>
 
@@ -687,4 +951,6 @@ export default function BodyVisualizerTool() {
   );
 }
 
-useGLTF.preload("/models/body-visualizer/male_base_mesh.glb");
+useGLTF.preload(LEGACY_MODEL_PATH);
+useGLTF.preload(MPFB_MODEL_PATHS.male);
+useGLTF.preload(MPFB_MODEL_PATHS.female);

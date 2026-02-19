@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gsc:pull": "node scripts/pull-search-console.mjs"
+    "gsc:pull": "node scripts/pull-search-console.mjs",
+    "assets:body-visualizer:mpfb": "bash scripts/fetch-body-visualizer-mpfb-assets.sh",
+    "assets:body-visualizer:mpfb:full": "bash scripts/fetch-body-visualizer-mpfb-assets.sh --with-packs",
+    "assets:body-visualizer:mpfb:build": "node scripts/build-body-visualizer-mpfb-glb.mjs"
   },
   "dependencies": {
     "@amplitude/analytics-browser": "^2.11.10",
