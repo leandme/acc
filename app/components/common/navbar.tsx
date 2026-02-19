@@ -27,41 +27,58 @@ export default function Navbar() {
             </svg>
           </div>
           <ul
-  tabIndex={0}
-  className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56 z-[999]"
->
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-56 z-[999]"
+          >
             <li>
-              <a href="/estimate"
-               onClick={() =>
-              trackEvent("Go to Tool", { tool: "body fat estimator", location: "navbar cta" })
-            }
-               className="hover:bg-transparent focus:bg-transparent active:bg-transparent">
-              Estimate Body Fat
+              <a
+                href="/estimate"
+                onClick={() =>
+                  trackEvent("Go to Tool", { tool: "body fat estimator", location: "navbar mobile" })
+                }
+                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
+                Estimate Body Fat
               </a>
             </li>
-             <li>
-             <a
-            href="/tools"
-            onClick={() =>
-              trackEvent("Go to Tools Page", { location: "navbar cta" })
-            }
-            className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
-          >
-            <span className="">Tools</span>
-          </a>
-          </li>
-          <li>
-             <a
-            href="/guides"
-            onClick={() =>
-              trackEvent("Go to Guides Page", { location: "navbar cta" })
-            }
-            className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
-          >
-            <span className="">Guides</span>
-          </a>
-          </li>
-
+            <li>
+              <a
+                href="/body-visualizer"
+                onClick={() => trackEvent("Go to Tool", { tool: "body visualizer", location: "navbar mobile" })}
+                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
+                Body Visualizer
+              </a>
+            </li>
+            <li>
+              <a
+                href="/body-shape-analyzer"
+                onClick={() => trackEvent("Go to Tool", { tool: "body shape analyzer", location: "navbar mobile" })}
+                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
+                Body Shape Analyzer
+              </a>
+            </li>
+            <li>
+              <a
+                href="/ffmi-calculator"
+                onClick={() => trackEvent("Go to Tool", { tool: "ffmi calculator", location: "navbar mobile" })}
+                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
+                FFMI Calculator
+              </a>
+            </li>
+            <li>
+              <a
+                href="/tools"
+                onClick={() =>
+                  trackEvent("Go to Tools Page", { location: "navbar mobile" })
+                }
+                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
+                <span className="">Tools</span>
+              </a>
+            </li>
           </ul>
         </div>
         
@@ -82,32 +99,59 @@ export default function Navbar() {
         {/* Desktop Menu with Spacing */}
         <ul className="menu menu-horizontal gap-4 text-base px-1 hidden lg:flex ml-12">
           <li>
-            <a href="/estimate"
-             className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent">
+            <a
+              href="/estimate"
+              onClick={() =>
+                trackEvent("Go to Tool", { tool: "body fat estimator", location: "navbar desktop" })
+              }
+              className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent"
+            >
               Estimate Body Fat
             </a>
           </li>
-            <li>
-             <a
-            href="/tools"
-            onClick={() =>
-              trackEvent("Go to Tools Page", { location: "navbar cta" })
-            }
-            className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
-          >
-            <span className="">Tools</span>
-          </a>
+          <li>
+            <a
+              href="/body-visualizer"
+              onClick={() =>
+                trackEvent("Go to Tool", { tool: "body visualizer", location: "navbar desktop" })
+              }
+              className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+            >
+              Body Visualizer
+            </a>
           </li>
           <li>
-             <a
-            href="/guides"
-            onClick={() =>
-              trackEvent("Go to Guides Page", { location: "navbar cta" })
-            }
-            className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
-          >
-            <span className="">Guides</span>
-          </a>
+            <a
+              href="/body-shape-analyzer"
+              onClick={() =>
+                trackEvent("Go to Tool", { tool: "body shape analyzer", location: "navbar desktop" })
+              }
+              className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+            >
+              Body Shape Analyzer
+            </a>
+          </li>
+          <li>
+            <a
+              href="/ffmi-calculator"
+              onClick={() =>
+                trackEvent("Go to Tool", { tool: "ffmi calculator", location: "navbar desktop" })
+              }
+              className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+            >
+              FFMI Calculator
+            </a>
+          </li>
+          <li>
+            <a
+              href="/tools"
+              onClick={() =>
+                trackEvent("Go to Tools Page", { location: "navbar desktop" })
+              }
+              className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+            >
+              <span className="">Tools</span>
+            </a>
           </li>
 
         </ul>

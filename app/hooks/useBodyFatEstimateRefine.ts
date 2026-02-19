@@ -106,6 +106,16 @@ export function useBodyFatEstimateRefine() {
 
     setState({ estimate: null, loading: true, error: null });
 
+    trackEvent("Refine Estimate", {
+      source: "upload",
+      units: input.units,
+      age: input.age,
+      height: input.height,
+      weight: input.weight,
+      waist: input.waist ?? null,
+      "extra images count": input.extraImageFiles?.length ?? 0,
+    });
+
     try {
       // 1) Original image → base64
       const resolvedUrl = resolveToAbsoluteUrl(input.imageUrl);
@@ -196,8 +206,10 @@ export function useBodyFatEstimateRefine() {
         throw new Error("Model returned no body fat estimate");
       }
 
-      trackEvent("Estimate Body Fat", {
+      trackEvent("Estimate Body Fat Percentage", {
         'body fat': normalized.bodyFat,
+        'perceived age': normalized.perceivedAge,
+        'perceived gender': normalized.perceivedGender,
         accuracy: normalized.accuracy,
         source: "upload",
         type: "refine"

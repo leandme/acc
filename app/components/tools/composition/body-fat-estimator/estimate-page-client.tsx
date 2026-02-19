@@ -168,7 +168,7 @@ function EstimatePageContent() {
         accuracy: normalizedActiveAccuracy,
       });
       showSuccessToast(
-        isMobile ? "Image downloaded. Check Files/Downloads." : "Image downloaded to your Downloads folder."
+        isMobile ? "Image saved to Photos." : "Image saved to Downloads."
       );
     } catch (err) {
       console.error("Failed to export result image", err);
