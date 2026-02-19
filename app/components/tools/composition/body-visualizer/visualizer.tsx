@@ -746,7 +746,36 @@ export default function BodyVisualizerTool() {
     <section className="w-full">
       <div className="w-full max-w-6xl mx-auto rounded-3xl bg-white/80 backdrop-blur border shadow-xl overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_520px]">
-          <div className="p-6 sm:p-8 bg-white min-w-0">
+          <div className="p-4 sm:p-6 bg-base-100 flex min-h-[680px] lg:min-h-0">
+            <div className="w-full flex flex-col gap-3">
+              <div className="flex items-center justify-between px-1">
+                <p className="text-xs font-semibold text-gray-600">Drag on the body to rotate 360°</p>
+                <button
+                  type="button"
+                  onClick={() => setViewerResetNonce((v) => v + 1)}
+                  className="text-xs font-semibold text-primary underline hover:opacity-80"
+                >
+                  Reset View
+                </button>
+              </div>
+              <p className="px-1 text-xs text-gray-500">
+                {renderMode === "mpfb"
+                  ? "Model: MPFB morph-target render"
+                  : "Model: legacy fallback (MPFB files not detected yet)"}
+              </p>
+              <BodyRender
+                gender={gender}
+                bmi={bmi}
+                bodyFatPct={bodyFatPct}
+                heightCm={heightCm}
+                bodyFatColor={bfClass.color}
+                resetNonce={viewerResetNonce}
+                renderMode={renderMode}
+              />
+            </div>
+          </div>
+
+          <div className="p-6 sm:p-8 bg-white min-w-0 border-t lg:border-t-0 lg:border-l">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="inline-flex rounded-2xl bg-gray-100 p-1">
                 <button
@@ -890,35 +919,6 @@ export default function BodyVisualizerTool() {
                 />
               </>
             )}
-          </div>
-
-          <div className="p-4 sm:p-6 bg-base-100 border-t lg:border-t-0 lg:border-l flex min-h-[680px] lg:min-h-0">
-            <div className="w-full flex flex-col gap-3">
-              <div className="flex items-center justify-between px-1">
-                <p className="text-xs font-semibold text-gray-600">Drag on the body to rotate 360°</p>
-                <button
-                  type="button"
-                  onClick={() => setViewerResetNonce((v) => v + 1)}
-                  className="text-xs font-semibold text-primary underline hover:opacity-80"
-                >
-                  Reset View
-                </button>
-              </div>
-              <p className="px-1 text-xs text-gray-500">
-                {renderMode === "mpfb"
-                  ? "Model: MPFB morph-target render"
-                  : "Model: legacy fallback (MPFB files not detected yet)"}
-              </p>
-              <BodyRender
-                gender={gender}
-                bmi={bmi}
-                bodyFatPct={bodyFatPct}
-                heightCm={heightCm}
-                bodyFatColor={bfClass.color}
-                resetNonce={viewerResetNonce}
-                renderMode={renderMode}
-              />
-            </div>
           </div>
         </div>
 

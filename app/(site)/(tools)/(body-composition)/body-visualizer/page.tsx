@@ -1,18 +1,102 @@
 import { Metadata } from "next";
 import BodyVisualizerTool from "@/app/components/tools/composition/body-visualizer/visualizer";
-import CTA from "@/app/components/common/cta";
 import { MoreTools } from "@/app/components/tools/template/more-tools";
+import FaqJsonLd from "@/app/components/helpers/faq-json-ld";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Body Visualizer – BMI, Body Fat & Weight",
-  description: "Use an interactive Body Visualizer with linked or independent sliders for BMI, body fat percentage, height, and weight. See a dynamic body render and trend-focused composition metrics.",
+  title: "Body Visualizer - BMI Visualizer & Weight Visualizer",
+  description: "Use an interactive body visualizer to test BMI, weight, height, and body-fat scenarios. Compare fat mass and lean mass outputs with a dynamic body render.",
   canonical: "https://bodyfatestimator.ai/body-visualizer",
 });
+
+const VISUALIZER_FAQS = [
+  {
+    question: "What is a BMI visualizer?",
+    answer:
+      "A BMI visualizer maps height and weight to a body-shape model so you can see how BMI changes may look, while still showing the numeric BMI result.",
+  },
+  {
+    question: "How is a weight visualizer different from a BMI visualizer?",
+    answer:
+      "A weight visualizer focuses on scale-weight changes at a given height, while a BMI visualizer translates height and weight into BMI categories. This tool combines both views so you can see shape and metrics together.",
+  },
+  {
+    question: "Why can two people with the same BMI look very different?",
+    answer:
+      "BMI uses only height and weight. It does not measure fat distribution, muscle mass, frame size, posture, or water retention, so two people can share the same BMI but look very different.",
+  },
+  {
+    question: "What happens if I increase height while keeping weight the same?",
+    answer:
+      "BMI drops because the same mass is spread over a taller frame. The visual model usually appears leaner at the same weight when height is increased.",
+  },
+  {
+    question: "Is body-fat mass the same as body-fat percentage?",
+    answer:
+      "No. Body-fat percentage is the share of your total weight that is fat. Fat mass is the absolute amount of fat in kg or lb: body weight x body-fat percentage.",
+  },
+  {
+    question: "How accurate is a body visualizer?",
+    answer:
+      "It is best used as a directional planning and tracking tool, not a diagnosis. Visualizers are useful for trend comparisons and scenario testing but cannot replicate each person's exact anatomy.",
+  },
+  {
+    question: "Should I trust BMI or body-fat percentage for physique tracking?",
+    answer:
+      "For physique changes, body-fat percentage and lean-mass context are usually more informative than BMI alone. BMI is still useful as a screening metric.",
+  },
+  {
+    question: "How should I use this tool week to week?",
+    answer:
+      "Use consistent assumptions and compare changes every 2 to 4 weeks. Pair this visualizer with repeated photos and waist measurements to reduce noise.",
+  },
+] as const;
+
+const SNAPSHOT_ROWS = [
+  {
+    metric: "Height",
+    question: "How large is the frame?",
+    whyItMatters:
+      "Height affects how weight and fat distribution appear. The same weight can look very different at different heights.",
+  },
+  {
+    metric: "Weight",
+    question: "How much total mass is on the frame?",
+    whyItMatters:
+      "Weight alone is incomplete, but it anchors all composition outputs (fat mass, lean mass, BMI, FFMI).",
+  },
+  {
+    metric: "BMI",
+    question: "Where is weight relative to height?",
+    whyItMatters:
+      "BMI is a quick screening metric. It helps compare scenarios but does not distinguish fat from muscle.",
+  },
+  {
+    metric: "Body Fat %",
+    question: "How much of total weight is fat?",
+    whyItMatters:
+      "Body-fat percentage is more appearance-relevant than BMI for physique tracking.",
+  },
+  {
+    metric: "Fat Mass",
+    question: "How much fat mass is present in absolute terms?",
+    whyItMatters:
+      "Fat mass is practical for goal setting because it gives a concrete kg/lb value instead of only a percentage.",
+  },
+  {
+    metric: "Lean Mass",
+    question: "How much non-fat mass is present?",
+    whyItMatters:
+      "Lean mass helps separate fat loss from muscle loss and adds context when scale weight changes.",
+  },
+] as const;
 
 export default function BodyVisualizerPage() {
   return (
     <main className="bg-base-100">
+      <FaqJsonLd faqs={[...VISUALIZER_FAQS]} />
+
       <section className="mx-auto max-w-4xl px-6 pt-10 text-center">
         <h1 className="text-4xl lg:text-5xl font-bold">Body Visualizer</h1>
         <p className="mt-4 text-lg text-gray-700 leading-relaxed">
@@ -115,13 +199,94 @@ export default function BodyVisualizerPage() {
           </p>
         </div>
 
-        <div className="mt-20 lg:mt-40">
-          <CTA
-            title="Want a personalized body fat estimate?"
-            description="Upload a photo and get an appearance-based estimate you can track over time with consistent check-ins."
-            buttonText="Try Body Fat Estimator →"
-            href="/estimate"
-          />
+        <div className="mt-20 lg:mt-40 space-y-4">
+          <h2 className="text-3xl lg:text-4xl font-semibold">
+            BMI Visualizer vs Weight Visualizer: what is the difference?
+          </h2>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            People often search for a <strong>BMI visualizer</strong> or a{" "}
+            <strong>weight visualizer</strong> as if they are separate tools. In practice, they answer different
+            parts of the same question:
+          </p>
+          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>
+              <strong>BMI visualizer:</strong> compares weight relative to height.
+            </li>
+            <li>
+              <strong>Weight visualizer:</strong> focuses on total body mass changes over time.
+            </li>
+            <li>
+              <strong>Body-fat visualizer:</strong> shows how that mass is split between fat and lean tissue.
+            </li>
+          </ul>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            If you want a deeper comparison of BMI versus composition-based tracking, see{" "}
+            <a className="text-primary underline" href="/guides/bmi-vs-body-fat">
+              BMI vs Body Fat
+            </a>
+            .
+          </p>
+        </div>
+
+        <div className="mt-20 lg:mt-40 space-y-4">
+          <h2 className="text-3xl lg:text-4xl font-semibold">How to interpret height, weight, and body-fat outputs</h2>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Use the table below to read each result quickly and avoid over-focusing on one number.
+          </p>
+          <div className="overflow-x-auto rounded-2xl border">
+            <table className="min-w-full text-left">
+              <thead className="bg-base-200">
+                <tr>
+                  <th className="px-4 py-3 text-sm font-semibold text-gray-800">Metric</th>
+                  <th className="px-4 py-3 text-sm font-semibold text-gray-800">Question it answers</th>
+                  <th className="px-4 py-3 text-sm font-semibold text-gray-800">Why it matters</th>
+                </tr>
+              </thead>
+              <tbody>
+                {SNAPSHOT_ROWS.map((row) => {
+                  const isPrimary = row.metric === "Body Fat %" || row.metric === "Fat Mass";
+                  return (
+                    <tr key={row.metric} className={`border-t ${isPrimary ? "bg-blue-50/70" : "bg-white"}`}>
+                      <td className="px-4 py-3 text-sm font-semibold text-gray-900">{row.metric}</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">{row.question}</td>
+                      <td className="px-4 py-3 text-sm text-gray-700">{row.whyItMatters}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Practical rule: when BMI and visual appearance conflict, check body-fat % plus fat mass and lean mass before drawing conclusions.
+          </p>
+        </div>
+
+        <div className="mt-20 lg:mt-40 space-y-4">
+          <h2 className="text-3xl lg:text-4xl font-semibold">Body Visualizer FAQ</h2>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Common questions about body visualization, BMI, height, weight, and body-fat mass.
+          </p>
+          <div className="space-y-4">
+            {VISUALIZER_FAQS.map((faq) => (
+              <details key={faq.question} className="rounded-2xl border bg-white p-5">
+                <summary className="cursor-pointer text-lg font-semibold text-gray-900">
+                  {faq.question}
+                </summary>
+                <p className="mt-3 text-gray-700 text-lg leading-relaxed">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            For more visual context, review{" "}
+            <a className="text-primary underline" href="/guides/what-does-body-fat-percentage-look-like">
+              body-fat percentage look examples
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/guides/why-body-fat-looks-different">
+              why two people at the same body-fat % can look different
+            </a>
+            .
+          </p>
         </div>
 
         <div className="mt-20 lg:mt-40 space-y-4">
@@ -130,6 +295,10 @@ export default function BodyVisualizerPage() {
             <li>
               CDC overview of BMI context:
               <a href="https://www.cdc.gov/bmi/" className="text-primary underline ml-1">CDC BMI resource</a>
+            </li>
+            <li>
+              Deurenberg BMI-to-body-fat relationship reference:
+              <a href="https://pubmed.ncbi.nlm.nih.gov/2043597/" className="text-primary underline ml-1">Deurenberg et al. (PubMed)</a>
             </li>
             <li>
               FFMI reference context used across this project:

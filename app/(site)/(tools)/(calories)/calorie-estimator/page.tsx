@@ -3,7 +3,7 @@ import CalorieEstimatorPageClient from "@/app/components/tools/calories/calorie-
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Calorie Estimator – Estimate Calories from a Photo",
+  title: "Calorie Estimator – AI Calorie Counter from a Photo",
   description:
     "Upload a meal photo and estimate calories with confidence bands, item-level breakdown, and practical accuracy tips.",
   canonical: "https://bodyfatestimator.ai/calorie-estimator",
