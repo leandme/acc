@@ -51,7 +51,6 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/body-visualizer">Body Visualizer</a></li>
               <li><a className="hover:text-white" href="/bai-calculator">BAI Calculator</a></li>
               <li><a className="hover:text-white" href="/body-fat-calculator">Body Fat Calculator</a></li>
-              <li><a className="hover:text-white" href="/skinfold-body-fat-calculator">Skinfold Body Fat Calculator</a></li>
               <li><a className="hover:text-white" href="/army-body-fat-calculator">Army Body Fat Calculator</a></li>
             </ul>
           </div>
@@ -64,9 +63,6 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/ffmi-calculator">FFMI Calculator</a></li>
               <li><a className="hover:text-white" href="/lean-body-mass-calculator">Lean Body Mass Calculator</a></li>
               <li><a className="hover:text-white" href="/muscle-mass-calculator">Muscle Mass Calculator</a></li>
-              <li><a className="hover:text-white" href="/body-frame-size-calculator">Body Frame Size Calculator</a></li>
-              <li><a className="hover:text-white" href="/waist-to-hip-ratio-calculator">Waist to Hip Ratio Calculator</a></li>
-              <li><a className="hover:text-white" href="/waist-to-height-ratio-calculator">Waist to Height Ratio Calculator</a></li>
               <li><a className="hover:text-white" href="/rfm-calculator">RFM Calculator</a></li>
               <li><a className="hover:text-white" href="/bri-calculator">BRI Calculator</a></li>
               <li><a className="hover:text-white" href="/visceral-fat-calculator">Visceral Fat Calculator</a></li>
@@ -83,10 +79,8 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/bmi-calculator">BMI Calculator</a></li>
               <li><a className="hover:text-white" href="/weight-loss-calculator">Weight Loss Calculator</a></li>
               <li><a className="hover:text-white" href="/intermittent-fasting-calculator">Intermittent Fasting Calculator</a></li>
-              <li><a className="hover:text-white" href="/weight-loss-percentage-calculator">Weight Loss Percentage Calculator</a></li>
               <li><a className="hover:text-white" href="/ideal-weight-calculator">Ideal Weight Calculator</a></li>
               <li><a className="hover:text-white" href="/overweight-calculator">Overweight Calculator</a></li>
-              <li><a className="hover:text-white" href="/adjusted-body-weight-calculator">Adjusted Body Weight Calculator</a></li>
               <li><a className="hover:text-white" href="/ponderal-index-calculator">Ponderal Index Calculator</a></li>
               <li><a className="hover:text-white" href="/broca-index-calculator">Broca Index Calculator</a></li>
             </ul>
