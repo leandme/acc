@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import H1 from "@/app/components/common/h1";
 import { POSTS } from "../../guides/posts";
-import { toolsArray } from "../../(tools)/tools";
+import { toolCategoryArray, toolsArray } from "../../(tools)/tools";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -122,6 +122,11 @@ export default function SitemapPage() {
     label: tool.title,
   }));
 
+  const toolTopics: SiteLink[] = toolCategoryArray().map((topic) => ({
+    href: `/tools/${topic.slug}`,
+    label: topic.h1,
+  }));
+
   // --- Guides ---
     const guides: SiteLink[] = [
     {
@@ -193,6 +198,12 @@ export default function SitemapPage() {
             title="Tools"
             subtitle="Interactive tools and key pages."
             items={tools}
+          />
+
+          <SectionCard
+            title="Tool Topics"
+            subtitle="Category hubs for clustered tool navigation."
+            items={toolTopics}
           />
 
           <SectionCard

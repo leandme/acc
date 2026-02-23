@@ -1,103 +1,45 @@
 "use client";
 
-import { useMemo } from "react";
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { trackEvent } from "@/app/libs/amplitude";
-import type { ToolMeta } from "@/app/(site)/(tools)/tools";
-
-type TabKey =
-  | "all"
-  | "muscle"
-  | "height"
-  | "body-fat"
-  | "body-composition"
-  | "body-proportions"
-  | "body-weight"
-  | "metabolism"
-  | "calories";
-
-type Tab = {
-  key: TabKey;
-  label: string;
-};
-
-const TABS: Tab[] = [
-  { key: "all", label: "All" },
-  { key: "muscle", label: "Muscle" },
-  { key: "height", label: "Height" },
-  { key: "body-fat", label: "Body Fat" },
-  { key: "body-composition", label: "Body Composition" },
-  { key: "body-proportions", label: "Body Proportions" },
-  { key: "body-weight", label: "Body Weight" },
-  { key: "metabolism", label: "Metabolism" },
-  { key: "calories", label: "Calories" },
-];
-
-function keyToCategory(key: TabKey): ToolMeta["category"] | null {
-  if (key === "muscle") return "Muscle";
-  if (key === "height") return "Height";
-  if (key === "body-fat") return "Body Fat";
-  if (key === "body-composition") return "Body Composition";
-  if (key === "body-proportions") return "Body Proportions";
-  if (key === "body-weight") return "Body Weight";
-  if (key === "metabolism") return "Metabolism";
-  if (key === "calories") return "Calories";
-  return null;
-}
+import type { ToolCategoryTab, ToolMeta } from "@/app/(site)/(tools)/tools";
 
 function slugToHref(slug: string) {
   return `/${slug}`;
 }
 
-export default function ToolsGridWithTabs({ tools }: { tools: ToolMeta[] }) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const activeTag = (searchParams.get("tag") ?? "all") as TabKey;
-
-  const filtered = useMemo(() => {
-    const activeCategory = keyToCategory(activeTag);
-    if (!activeCategory) return tools;
-    return tools.filter((tool) => tool.category === activeCategory);
-  }, [tools, activeTag]);
-
-  function setTag(tag: TabKey) {
-    const next = new URLSearchParams(searchParams.toString());
-    if (tag === "all") next.delete("tag");
-    else next.set("tag", tag);
-
-    router.push(`${pathname}?${next.toString()}`, { scroll: false });
-  }
-
+export default function ToolsGridWithTabs({
+  tools,
+  tabs,
+  activeTab,
+}: {
+  tools: ToolMeta[];
+  tabs: ToolCategoryTab[];
+  activeTab: ToolCategoryTab["key"];
+}) {
   return (
     <section className="pt-4 mx-auto max-w-5xl px-6 pb-20">
       <div className="mt-10 flex flex-wrap items-center justify-center gap-8">
-        {TABS.map((tab) => {
-          const isActive = activeTag === tab.key;
+        {tabs.map((tab) => {
+          const isActive = activeTab === tab.key;
           return (
-            <button
+            <Link
               key={tab.key}
-              type="button"
-              onClick={() => setTag(tab.key)}
-              className={`relative text-lg transition ${
-                isActive ? "text-primary" : "text-gray-600 hover:text-gray-900"
+              href={tab.href}
+              className={`rounded-btn px-4 py-2 text-lg transition ${
+                isActive
+                  ? "bg-[#64c65d] text-white"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-base-200"
               }`}
             >
               {tab.label}
-              <span
-                className={`absolute left-0 -bottom-2 h-1 w-full rounded-full transition ${
-                  isActive ? "bg-primary" : "bg-transparent"
-                }`}
-              />
-            </button>
+            </Link>
           );
         })}
       </div>
 
       <div className="mt-10 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
-        {filtered.map((tool) => (
+        {tools.map((tool) => (
           <Link
             key={tool.slug}
             href={slugToHref(tool.slug)}

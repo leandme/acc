@@ -6,10 +6,17 @@ export type ToolCategory =
   | "Body Proportions"
   | "Body Weight"
   | "Metabolism"
-  | "Calories"
-  | "Energy & Metabolism"
-  | "Nutrition & Macronutrients"
-  | "Calorie Burn";
+  | "Calories";
+
+export type ToolCategorySlug =
+  | "body-fat"
+  | "body-composition"
+  | "muscle"
+  | "height"
+  | "body-proportions"
+  | "body-weight"
+  | "metabolism"
+  | "calories";
 
 export type ToolMeta = {
   slug: string;
@@ -17,6 +24,109 @@ export type ToolMeta = {
   description?: string;
   eventName?: "Go to Tool"; // optional override if needed later
   category: ToolCategory;
+};
+
+export type ToolCategoryMeta = {
+  category: ToolCategory;
+  slug: ToolCategorySlug;
+  navLabel: string;
+  h1: string;
+  description: string;
+};
+
+const TOOL_CATEGORY_ORDER: ToolCategory[] = [
+  "Muscle",
+  "Height",
+  "Body Fat",
+  "Body Composition",
+  "Body Proportions",
+  "Body Weight",
+  "Metabolism",
+  "Calories",
+];
+
+const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
+  Muscle: {
+    category: "Muscle",
+    slug: "muscle",
+    navLabel: "Muscle",
+    h1: "Muscle Potential and FFMI Tools",
+    description:
+      "Explore muscle-focused calculators for FFMI, natural potential screening, frame-based potential, and bodybuilding-specific context.",
+  },
+  Height: {
+    category: "Height",
+    slug: "height",
+    navLabel: "Height",
+    h1: "Height Prediction and Growth Potential Tools",
+    description:
+      "Use parent-based models for target adult height, expected family range, and probability-style planning context.",
+  },
+  "Body Fat": {
+    category: "Body Fat",
+    slug: "body-fat",
+    navLabel: "Body Fat",
+    h1: "Body Fat Estimation and Screening Tools",
+    description:
+      "Estimate body fat with photo-based, tape-based, and skinfold-based methods, plus visual and adiposity-oriented tools.",
+  },
+  "Body Composition": {
+    category: "Body Composition",
+    slug: "body-composition",
+    navLabel: "Composition",
+    h1: "Body Composition Calculators and Analysis Tools",
+    description:
+      "Compare lean mass, muscle mass, frame context, shape, and composition indices in one place for trend-based tracking.",
+  },
+  "Body Proportions": {
+    category: "Body Proportions",
+    slug: "body-proportions",
+    navLabel: "Proportions",
+    h1: "Body Proportion and Ratio Tools",
+    description:
+      "Assess waist-centered risk proxies and proportionality metrics with ratio-based screening calculators.",
+  },
+  "Body Weight": {
+    category: "Body Weight",
+    slug: "body-weight",
+    navLabel: "Weight",
+    h1: "Body Weight and Weight-Range Tools",
+    description:
+      "Run BMI, healthy-range, ideal-weight, and weight-change tools for practical planning and progress review.",
+  },
+  Metabolism: {
+    category: "Metabolism",
+    slug: "metabolism",
+    navLabel: "Metabolism",
+    h1: "Metabolism and Energy Expenditure Tools",
+    description:
+      "Estimate basal and total daily energy expenditure using common metabolism and activity-based equations.",
+  },
+  Calories: {
+    category: "Calories",
+    slug: "calories",
+    navLabel: "Calories",
+    h1: "Calorie Planning and Burn Tools",
+    description:
+      "Plan deficits, macros, fasting strategies, and calorie burn with practical tools for nutrition and training workflows.",
+  },
+};
+
+const TOOL_CATEGORY_META_BY_SLUG: Record<ToolCategorySlug, ToolCategoryMeta> = {
+  "body-fat": TOOL_CATEGORY_META_BY_NAME["Body Fat"],
+  "body-composition": TOOL_CATEGORY_META_BY_NAME["Body Composition"],
+  muscle: TOOL_CATEGORY_META_BY_NAME["Muscle"],
+  height: TOOL_CATEGORY_META_BY_NAME["Height"],
+  "body-proportions": TOOL_CATEGORY_META_BY_NAME["Body Proportions"],
+  "body-weight": TOOL_CATEGORY_META_BY_NAME["Body Weight"],
+  metabolism: TOOL_CATEGORY_META_BY_NAME["Metabolism"],
+  calories: TOOL_CATEGORY_META_BY_NAME["Calories"],
+};
+
+export type ToolCategoryTab = {
+  key: "all" | ToolCategorySlug;
+  label: string;
+  href: string;
 };
 
 export const TOOLS: Record<string, ToolMeta> = {
@@ -284,4 +394,31 @@ export function pickTools(slugs: string[]) {
 export function getToolsByCategories(categories: ToolCategory[]) {
   const set = new Set(categories);
   return toolsArray().filter((t) => set.has(t.category));
+}
+
+export function toolCategoryArray() {
+  return TOOL_CATEGORY_ORDER.map((category) => TOOL_CATEGORY_META_BY_NAME[category]);
+}
+
+export function getToolCategoryMeta(category: ToolCategory) {
+  return TOOL_CATEGORY_META_BY_NAME[category];
+}
+
+export function getToolCategoryMetaBySlug(slug: string) {
+  return TOOL_CATEGORY_META_BY_SLUG[slug as ToolCategorySlug] ?? null;
+}
+
+export function getToolCategoryTabs(): ToolCategoryTab[] {
+  return [
+    { key: "all", label: "All", href: "/tools" },
+    ...toolCategoryArray().map((meta) => ({
+      key: meta.slug,
+      label: meta.navLabel,
+      href: `/tools/${meta.slug}`,
+    })),
+  ];
+}
+
+export function getToolsByCategory(category: ToolCategory) {
+  return toolsArray().filter((tool) => tool.category === category);
 }

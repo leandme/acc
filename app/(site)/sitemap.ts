@@ -2,6 +2,7 @@
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
+import { toolCategoryArray } from "./(tools)/tools";
 
 const BASE_URL = "https://bodyfatestimator.ai";
 const LEGAL_ROUTES = new Set([
@@ -25,6 +26,10 @@ function stripRouteGroups(route: string) {
 
   // root should be "/"
   return cleaned === "/" ? "/" : cleaned.replace(/\/+$/g, "");
+}
+
+function isDynamicRoute(route: string) {
+  return route.split("/").some((segment) => segment.includes("[") && segment.includes("]"));
 }
 
 type SitemapEntry = {
@@ -101,6 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         .replace(/\/page\.tsx$/, "");
 
       route = stripRouteGroups(route);
+      if (isDynamicRoute(route)) return;
 
       if (UTILITY_ROUTES.has(route)) return;
 
@@ -117,7 +123,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   readPagesDirectory(pagesDirectory);
 
-  return entries.map((entry) => {
+  const toolsConfigPath = path.join(process.cwd(), "app/(site)/(tools)/tools.ts");
+  const categoryMTime = fs.existsSync(toolsConfigPath)
+    ? fs.statSync(toolsConfigPath).mtime
+    : new Date();
+  const categoryTemplatePath = path.join(
+    process.cwd(),
+    "app/(site)/(tools)/tools/[category]/page.tsx"
+  );
+
+  toolCategoryArray().forEach((category) => {
+    entries.push({
+      url: `${BASE_URL}/tools/${category.slug}`,
+      route: `/tools/${category.slug}`,
+      absolutePath: categoryTemplatePath,
+      lastModified: categoryMTime,
+    });
+  });
+
+  const dedupedEntries = Array.from(new Map(entries.map((entry) => [entry.url, entry])).values());
+
+  return dedupedEntries.map((entry) => {
     const signals = getRouteSignals(entry.route, entry.absolutePath);
     return {
       url: entry.url,
