@@ -5,7 +5,7 @@ import FaqJsonLd from "@/app/components/helpers/faq-json-ld";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Body Visualizer - BMI Visualizer & Weight Visualizer",
+  title: "Body Visualizer - BMI, Weight, Body Fat & Height",
   description: "Use an interactive body visualizer to test BMI, weight, height, and body-fat scenarios. Compare fat mass and lean mass outputs with a dynamic body render.",
   canonical: "https://bodyfatestimator.ai/body-visualizer",
 });
