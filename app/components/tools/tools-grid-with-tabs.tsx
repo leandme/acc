@@ -8,6 +8,8 @@ import type { ToolMeta } from "@/app/(site)/(tools)/tools";
 
 type TabKey =
   | "all"
+  | "muscle"
+  | "height"
   | "body-fat"
   | "body-composition"
   | "body-proportions"
@@ -22,6 +24,8 @@ type Tab = {
 
 const TABS: Tab[] = [
   { key: "all", label: "All" },
+  { key: "muscle", label: "Muscle" },
+  { key: "height", label: "Height" },
   { key: "body-fat", label: "Body Fat" },
   { key: "body-composition", label: "Body Composition" },
   { key: "body-proportions", label: "Body Proportions" },
@@ -31,6 +35,8 @@ const TABS: Tab[] = [
 ];
 
 function keyToCategory(key: TabKey): ToolMeta["category"] | null {
+  if (key === "muscle") return "Muscle";
+  if (key === "height") return "Height";
   if (key === "body-fat") return "Body Fat";
   if (key === "body-composition") return "Body Composition";
   if (key === "body-proportions") return "Body Proportions";

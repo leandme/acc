@@ -110,6 +110,20 @@ export default function LeanBodyMassCalculatorPageClient() {
             .
           </p>
           <p className={pClass}>
+            If you want to compare your height-adjusted muscularity to practical natural ceilings, run the{" "}
+            <a className="text-primary underline" href="/natty-or-not-calculator">
+              Natty or Not Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
+            For a composite structure-and-potential score, use the{" "}
+            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
+              Bodybuilding Genetics Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
             If you want body-fat context alongside this result, use the{" "}
             <a className="text-primary underline" href="/body-fat-calculator">
               Body Fat Calculator
@@ -183,6 +197,8 @@ export default function LeanBodyMassCalculatorPageClient() {
             toolSlugs={[
               "muscle-mass-calculator",
               "ffmi-calculator",
+              "natty-or-not-calculator",
+              "bodybuilding-genetics-calculator",
               "body-frame-size-calculator",
               "bai-calculator",
               "bri-calculator",

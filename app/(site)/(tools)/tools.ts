@@ -1,6 +1,8 @@
 export type ToolCategory =
   | "Body Fat"
   | "Body Composition"
+  | "Muscle"
+  | "Height"
   | "Body Proportions"
   | "Body Weight"
   | "Metabolism"
@@ -25,6 +27,30 @@ export const TOOLS: Record<string, ToolMeta> = {
     title: "FFMI Calculator",
     description: "How much of you is muscle?",
     category: "Body Composition",
+  },
+  "natty-or-not-calculator": {
+    slug: "natty-or-not-calculator",
+    title: "Natty or Not Calculator",
+    description: "Compare your frame-adjusted FFMI against common natural muscularity ceilings.",
+    category: "Muscle",
+  },
+  "muscular-potential-calculator": {
+    slug: "muscular-potential-calculator",
+    title: "Muscular Potential Calculator",
+    description: "Estimate modelled natural lean-mass potential from frame-adjusted FFMI limits.",
+    category: "Muscle",
+  },
+  "casey-butt-calculator": {
+    slug: "casey-butt-calculator",
+    title: "Casey Butt Calculator",
+    description: "Estimate frame-based bodybuilding potential from height, wrist, and ankle measures.",
+    category: "Muscle",
+  },
+  "bodybuilding-genetics-calculator": {
+    slug: "bodybuilding-genetics-calculator",
+    title: "Bodybuilding Genetics Calculator",
+    description: "Estimate a modelled bodybuilding genetics score from structure and FFMI-based potential.",
+    category: "Muscle",
   },
   "lean-body-mass-calculator": {
     slug: "lean-body-mass-calculator",
@@ -143,6 +169,18 @@ export const TOOLS: Record<string, ToolMeta> = {
     title: "Ideal Weight Calculator",
     description: "Compare healthy BMI range and Devine ideal body weight.",
     category: "Body Weight",
+  },
+  "height-calculator": {
+    slug: "height-calculator",
+    title: "Height Calculator",
+    description: "Estimate family-based height prediction, potential range, and target probability.",
+    category: "Height",
+  },
+  "mid-parental-height-calculator": {
+    slug: "mid-parental-height-calculator",
+    title: "Mid-Parental Height Calculator",
+    description: "Calculate target adult height from parent heights with the standard mid-parental method.",
+    category: "Height",
   },
   "adjusted-body-weight-calculator": {
     slug: "adjusted-body-weight-calculator",

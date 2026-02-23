@@ -92,6 +92,17 @@ export default function IdealWeightPageClient() {
             for direct category screening.
           </p>
           <p className={pClass}>
+            If you need height-based context first, run the{" "}
+            <a className="text-primary underline" href="/height-calculator">
+              Height Calculator
+            </a>{" "}
+            or{" "}
+            <a className="text-primary underline" href="/mid-parental-height-calculator">
+              Mid-Parental Height Calculator
+            </a>
+            .
+          </p>
+          <p className={pClass}>
             To plan calories around that target, estimate maintenance in the{" "}
             <a className="text-primary underline" href="/tdee-calculator">
               TDEE Calculator
@@ -140,6 +151,8 @@ export default function IdealWeightPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "height-calculator",
+              "mid-parental-height-calculator",
               "bmi-calculator",
               "overweight-calculator",
               "tdee-calculator",

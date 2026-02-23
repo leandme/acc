@@ -145,6 +145,14 @@ export default function BodyFrameSizePageClient() {
               FFMI Calculator
             </a>{" "}
             and{" "}
+            <a className="text-primary underline" href="/natty-or-not-calculator">
+              Natty or Not Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
+              Bodybuilding Genetics Calculator
+            </a>{" "}
+            and{" "}
             <a className="text-primary underline" href="/lean-body-mass-calculator">
               Lean Body Mass Calculator
             </a>{" "}
@@ -193,6 +201,8 @@ export default function BodyFrameSizePageClient() {
             columns={2}
             toolSlugs={[
               "ffmi-calculator",
+              "natty-or-not-calculator",
+              "bodybuilding-genetics-calculator",
               "lean-body-mass-calculator",
               "bai-calculator",
               "bri-calculator",

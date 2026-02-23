@@ -17,6 +17,12 @@ const LOW_LINK_TOOL_SLUGS = new Set<string>([
   "intermittent-fasting-calculator",
   "steps-to-calories-calculator",
   "muscle-mass-calculator",
+  "natty-or-not-calculator",
+  "muscular-potential-calculator",
+  "casey-butt-calculator",
+  "bodybuilding-genetics-calculator",
+  "height-calculator",
+  "mid-parental-height-calculator",
 ]);
 
 function promoteLowLinkTool(

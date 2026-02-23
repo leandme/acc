@@ -84,6 +84,17 @@ export default function BMIPageClient() {
             </a>
             .
           </p>
+          <p className={pClass}>
+            For height-focused planning and family-based context, use the{" "}
+            <a className="text-primary underline" href="/height-calculator">
+              Height Calculator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/mid-parental-height-calculator">
+              Mid-Parental Height Calculator
+            </a>
+            .
+          </p>
         </div>
 
         <div className={sectionWrap}>
@@ -147,6 +158,8 @@ export default function BMIPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "height-calculator",
+              "mid-parental-height-calculator",
               "overweight-calculator",
               "ideal-weight-calculator",
               "tdee-calculator",

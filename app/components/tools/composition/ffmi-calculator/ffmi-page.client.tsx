@@ -112,6 +112,32 @@ export default function FFMICalculatorPageClient() {
           </p>
 
           <p className={pClass}>
+            If your goal is estimating whether your current mass is still within
+            common natural limits after frame adjustment, use the{" "}
+            <a className="text-primary underline" href="/natty-or-not-calculator">
+              Natty or Not Calculator
+            </a>
+            .
+          </p>
+
+          <p className={pClass}>
+            If you want an explicit lean-mass ceiling model and stage table, use the{" "}
+            <a className="text-primary underline" href="/muscular-potential-calculator">
+              Muscular Potential Calculator
+            </a>
+            .
+          </p>
+
+          <p className={pClass}>
+            If you want a combined score that blends structure leverage with projected muscular potential, use
+            the{" "}
+            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
+              Bodybuilding Genetics Calculator
+            </a>
+            .
+          </p>
+
+          <p className={pClass}>
             If you want a waist-centered roundness score, compare with the{" "}
             <a className="text-primary underline" href="/bri-calculator">
               BRI Calculator
@@ -225,6 +251,10 @@ export default function FFMICalculatorPageClient() {
               "estimate",
               "muscle-mass-calculator",
               "lean-body-mass-calculator",
+              "natty-or-not-calculator",
+              "muscular-potential-calculator",
+              "casey-butt-calculator",
+              "bodybuilding-genetics-calculator",
               "body-frame-size-calculator",
               "bai-calculator",
               "bri-calculator",

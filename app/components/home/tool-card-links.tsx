@@ -38,6 +38,36 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     description: "How much lean mass you carry",
   },
   {
+    title: "Natty or Not Calculator",
+    href: "/natty-or-not-calculator",
+    description: "Compare frame-adjusted FFMI to common natural muscularity ceilings.",
+  },
+  {
+    title: "Muscular Potential Calculator",
+    href: "/muscular-potential-calculator",
+    description: "Estimate modelled natural lean-mass potential and current utilization.",
+  },
+  {
+    title: "Casey Butt Calculator",
+    href: "/casey-butt-calculator",
+    description: "Estimate frame-based bodybuilding potential and circumference targets.",
+  },
+  {
+    title: "Bodybuilding Genetics Calculator",
+    href: "/bodybuilding-genetics-calculator",
+    description: "Estimate a modelled genetics score from structure and muscularity potential.",
+  },
+  {
+    title: "Height Calculator",
+    href: "/height-calculator",
+    description: "Estimate adult-height prediction, target range, and target probability.",
+  },
+  {
+    title: "Mid-Parental Height Calculator",
+    href: "/mid-parental-height-calculator",
+    description: "Estimate child target adult height from parent heights.",
+  },
+  {
     title: "Lean Body Mass Calculator",
     href: "/lean-body-mass-calculator",
     description: "Estimate lean mass with Boer, James, and Hume formulas.",

@@ -113,10 +113,21 @@ export default function MuscleMassPageClient() {
               FFMI Calculator
             </a>{" "}
             and{" "}
+            <a className="text-primary underline" href="/natty-or-not-calculator">
+              Natty or Not Calculator
+            </a>{" "}
+            and{" "}
             <a className="text-primary underline" href="/body-fat-calculator">
               Body Fat Calculator
             </a>{" "}
             to separate muscle-focused and fat-focused trends.
+          </p>
+          <p className={pClass}>
+            For a combined structure-and-potential muscle profile, compare with the{" "}
+            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
+              Bodybuilding Genetics Calculator
+            </a>
+            .
           </p>
         </div>
 
@@ -151,6 +162,10 @@ export default function MuscleMassPageClient() {
             toolSlugs={[
               "lean-body-mass-calculator",
               "ffmi-calculator",
+              "natty-or-not-calculator",
+              "muscular-potential-calculator",
+              "casey-butt-calculator",
+              "bodybuilding-genetics-calculator",
               "body-frame-size-calculator",
               "body-fat-calculator",
               "rfm-calculator",

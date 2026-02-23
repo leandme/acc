@@ -36,7 +36,7 @@ export default function BlogPostPage() {
                 <figure className="max-w-3xl">
                   <Image
   src="/guides/best-body-fat-estimator.png"
-  alt=""
+  alt="Best AI body fat estimator guide cover image showing photo-based body fat estimation comparison"
   width={1200}
   height={675}
   sizes="(max-width: 768px) 100vw, 768px"

@@ -61,6 +61,10 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/ffmi-calculator">FFMI Calculator</a></li>
+              <li><a className="hover:text-white" href="/natty-or-not-calculator">Natty or Not Calculator</a></li>
+              <li><a className="hover:text-white" href="/muscular-potential-calculator">Muscular Potential Calculator</a></li>
+              <li><a className="hover:text-white" href="/casey-butt-calculator">Casey Butt Calculator</a></li>
+              <li><a className="hover:text-white" href="/bodybuilding-genetics-calculator">Bodybuilding Genetics Calculator</a></li>
               <li><a className="hover:text-white" href="/lean-body-mass-calculator">Lean Body Mass Calculator</a></li>
               <li><a className="hover:text-white" href="/muscle-mass-calculator">Muscle Mass Calculator</a></li>
               <li><a className="hover:text-white" href="/rfm-calculator">RFM Calculator</a></li>
@@ -77,6 +81,8 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/bmi-calculator">BMI Calculator</a></li>
+              <li><a className="hover:text-white" href="/height-calculator">Height Calculator</a></li>
+              <li><a className="hover:text-white" href="/mid-parental-height-calculator">Mid-Parental Height Calculator</a></li>
               <li><a className="hover:text-white" href="/weight-loss-calculator">Weight Loss Calculator</a></li>
               <li><a className="hover:text-white" href="/intermittent-fasting-calculator">Intermittent Fasting Calculator</a></li>
               <li><a className="hover:text-white" href="/ideal-weight-calculator">Ideal Weight Calculator</a></li>
