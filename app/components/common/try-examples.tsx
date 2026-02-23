@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { trackEvent } from "@/app/libs/amplitude";
 
-type BasePath = "/estimate" | "/body-shape-analyzer";
+type BasePath = "/estimate" | "/body-shape-analyzer" | "/height-estimator";
 
 type Props = {
   basePath: BasePath;

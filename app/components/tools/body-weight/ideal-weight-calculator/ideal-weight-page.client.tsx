@@ -97,6 +97,10 @@ export default function IdealWeightPageClient() {
               Height Calculator
             </a>{" "}
             or{" "}
+            <a className="text-primary underline" href="/height-estimator">
+              Height Estimator
+            </a>{" "}
+            or{" "}
             <a className="text-primary underline" href="/mid-parental-height-calculator">
               Mid-Parental Height Calculator
             </a>
@@ -152,6 +156,7 @@ export default function IdealWeightPageClient() {
             columns={2}
             toolSlugs={[
               "height-calculator",
+              "height-estimator",
               "mid-parental-height-calculator",
               "bmi-calculator",
               "overweight-calculator",

@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { showErrorToast } from "@/app/libs/toast";
 
 type Props = {
-  basePath?: "/estimate" | "/body-shape-analyzer" | "/calorie-estimator";
+  basePath?: "/estimate" | "/body-shape-analyzer" | "/calorie-estimator" | "/height-estimator";
   buttonLabel?: string;
 };
 

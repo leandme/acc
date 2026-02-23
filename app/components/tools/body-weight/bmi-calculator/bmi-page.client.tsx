@@ -90,6 +90,10 @@ export default function BMIPageClient() {
               Height Calculator
             </a>{" "}
             and{" "}
+            <a className="text-primary underline" href="/height-estimator">
+              Height Estimator
+            </a>{" "}
+            and{" "}
             <a className="text-primary underline" href="/mid-parental-height-calculator">
               Mid-Parental Height Calculator
             </a>
@@ -159,6 +163,7 @@ export default function BMIPageClient() {
             columns={2}
             toolSlugs={[
               "height-calculator",
+              "height-estimator",
               "mid-parental-height-calculator",
               "overweight-calculator",
               "ideal-weight-calculator",

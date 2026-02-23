@@ -5,9 +5,6 @@ TONIGHT:
 
 AT SOmE POinT
 Get AHREFS and find all the best terms
-
-- Rewrite the About page
-- Redo the contact page
 - Rewrite existing articles
 - test OpenAI instead of via replicate.
 

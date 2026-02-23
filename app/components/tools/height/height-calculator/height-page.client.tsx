@@ -103,6 +103,10 @@ export default function HeightPageClient() {
             <a className="text-primary underline" href="/mid-parental-height-calculator">
               Mid-Parental Height Calculator
             </a>
+            . If you want a visual, photo-based adult-height estimate, try the{" "}
+            <a className="text-primary underline" href="/height-estimator">
+              Height Estimator
+            </a>
             . If you are planning around adult-weight context after height estimation, compare with the{" "}
             <a className="text-primary underline" href="/ideal-weight-calculator">
               Ideal Weight Calculator
@@ -163,6 +167,7 @@ export default function HeightPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "height-estimator",
               "mid-parental-height-calculator",
               "ideal-weight-calculator",
               "bmi-calculator",

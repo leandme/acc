@@ -83,6 +83,7 @@ export default function SitemapPage() {
     "intermittent-fasting-calculator",
     "ideal-weight-calculator",
     "height-calculator",
+    "height-estimator",
     "mid-parental-height-calculator",
     "overweight-calculator",
     "adjusted-body-weight-calculator",

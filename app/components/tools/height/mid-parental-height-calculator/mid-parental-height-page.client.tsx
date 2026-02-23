@@ -90,7 +90,11 @@ export default function MidParentalHeightPageClient() {
             <a className="text-primary underline" href="/height-calculator">
               Height Calculator
             </a>{" "}
-            for probability modeling.
+            for probability modeling. For photo-based visual height approximation, use the{" "}
+            <a className="text-primary underline" href="/height-estimator">
+              Height Estimator
+            </a>
+            .
           </p>
         </div>
 
@@ -146,6 +150,7 @@ export default function MidParentalHeightPageClient() {
             columns={2}
             toolSlugs={[
               "height-calculator",
+              "height-estimator",
               "ideal-weight-calculator",
               "bmi-calculator",
               "overweight-calculator",

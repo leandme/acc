@@ -82,6 +82,7 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/bmi-calculator">BMI Calculator</a></li>
               <li><a className="hover:text-white" href="/height-calculator">Height Calculator</a></li>
+              <li><a className="hover:text-white" href="/height-estimator">Height Estimator</a></li>
               <li><a className="hover:text-white" href="/mid-parental-height-calculator">Mid-Parental Height Calculator</a></li>
               <li><a className="hover:text-white" href="/weight-loss-calculator">Weight Loss Calculator</a></li>
               <li><a className="hover:text-white" href="/intermittent-fasting-calculator">Intermittent Fasting Calculator</a></li>

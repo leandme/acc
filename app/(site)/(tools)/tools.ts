@@ -286,6 +286,12 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Estimate family-based height prediction, potential range, and target probability.",
     category: "Height",
   },
+  "height-estimator": {
+    slug: "height-estimator",
+    title: "Height Estimator",
+    description: "Estimate apparent adult height from a full-body photo with confidence and range context.",
+    category: "Height",
+  },
   "mid-parental-height-calculator": {
     slug: "mid-parental-height-calculator",
     title: "Mid-Parental Height Calculator",

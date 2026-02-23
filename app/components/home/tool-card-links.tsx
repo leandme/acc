@@ -63,6 +63,11 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     description: "Estimate adult-height prediction, target range, and target probability.",
   },
   {
+    title: "Height Estimator",
+    href: "/height-estimator",
+    description: "Estimate apparent adult height from a full-body photo with confidence and range.",
+  },
+  {
     title: "Mid-Parental Height Calculator",
     href: "/mid-parental-height-calculator",
     description: "Estimate child target adult height from parent heights.",
