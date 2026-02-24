@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Suspense, useEffect, useMemo, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 import type { Bone, Group, Mesh, MeshStandardMaterial, SkinnedMesh } from "three";
@@ -11,6 +11,7 @@ type Gender = "male" | "female";
 type Units = "imperial" | "metric";
 type SyncMode = "linked" | "independent";
 type RenderMode = "legacy" | "mpfb";
+type ViewPreset = "front" | "left" | "right" | "back";
 
 type BodyFatBounds = {
   min: number;
@@ -40,6 +41,11 @@ const MPFB_MODEL_PATHS: Record<Gender, string> = {
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
+}
+
+function smoothstep(edge0: number, edge1: number, x: number) {
+  const t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+  return t * t * (3 - 2 * t);
 }
 
 function round(n: number, decimals = 1) {
@@ -250,7 +256,9 @@ function StatCard(props: { label: string; value: string; note?: string; valueCol
   );
 }
 
-function applyMaterialOverride(root: Group) {
+function applyMaterialOverride(root: Group, gender: Gender) {
+  const flatSkinColor = gender === "female" ? "#f0c9b5" : "#ddb99f";
+
   root.traverse((obj) => {
     if (!(obj as Mesh).isMesh) return;
 
@@ -259,9 +267,15 @@ function applyMaterialOverride(root: Group) {
     const updated = mats.map((mat) => {
       const source = mat as MeshStandardMaterial;
       const clone = source.clone();
-      clone.color = new Color("#b8b8b8");
-      clone.roughness = 0.72;
-      clone.metalness = 0.04;
+      const activeMap = source.map ?? null;
+
+      // Use authored or injected albedo maps where possible, with a neutral fallback tone.
+      clone.map = activeMap;
+      clone.color = activeMap ? new Color("#ffffff") : new Color(flatSkinColor);
+      clone.roughness = activeMap ? 0.73 : 0.62;
+      clone.metalness = 0;
+      clone.envMapIntensity = activeMap ? 0.36 : 0.45;
+      clone.needsUpdate = true;
       return clone;
     });
 
@@ -274,22 +288,48 @@ type MorphChannel =
   | "macro_muscle"
   | "macro_height"
   | "local_torso_fat"
+  | "local_waist_fat"
+  | "local_glute_fat"
+  | "local_chest_fat"
+  | "local_face_fat"
+  | "local_neck_fat"
   | "local_torso_muscle"
+  | "local_chest_muscle"
+  | "local_shoulder_muscle"
   | "local_arms_fat"
+  | "local_forearms_fat"
   | "local_arms_muscle"
+  | "local_forearms_muscle"
   | "local_legs_fat"
-  | "local_legs_muscle";
+  | "local_calves_fat"
+  | "local_legs_muscle"
+  | "local_calves_muscle"
+  | "local_thigh_shape"
+  | "local_calf_shape";
 
 const MORPH_CHANNEL_ALIASES: Record<MorphChannel, string[]> = {
   macro_weight: ["macro_weight", "macro-weight", "weight", "maxweight"],
   macro_muscle: ["macro_muscle", "macro-muscle", "muscle", "maxmuscle"],
   macro_height: ["macro_height", "macro-height", "height", "maxheight"],
   local_torso_fat: ["local_torso_fat", "torso_fat", "stomach_tone_decr", "head_fat_incr"],
+  local_waist_fat: ["local_waist_fat", "waist_fat", "hip_waist_up"],
+  local_glute_fat: ["local_glute_fat", "glute_fat", "buttocks_volume_incr"],
+  local_chest_fat: ["local_chest_fat", "chest_fat", "torso_scale_depth_incr"],
+  local_face_fat: ["local_face_fat", "face_fat", "head_fat_incr", "cheek_volume_incr"],
+  local_neck_fat: ["local_neck_fat", "neck_fat", "neck_double_incr"],
   local_torso_muscle: ["local_torso_muscle", "torso_muscle", "torso_muscle_pectoral_incr", "torso_muscle_dorsi_incr"],
+  local_chest_muscle: ["local_chest_muscle", "chest_muscle", "torso_muscle_pectoral_incr"],
+  local_shoulder_muscle: ["local_shoulder_muscle", "shoulder_muscle", "upperarm_shoulder_muscle_incr"],
   local_arms_fat: ["local_arms_fat", "arms_fat", "upperarm_fat_incr", "lowerarm_fat_incr"],
+  local_forearms_fat: ["local_forearms_fat", "forearms_fat", "lowerarm_fat_incr"],
   local_arms_muscle: ["local_arms_muscle", "arms_muscle", "upperarm_muscle_incr", "lowerarm_muscle_incr"],
+  local_forearms_muscle: ["local_forearms_muscle", "forearms_muscle", "lowerarm_muscle_incr"],
   local_legs_fat: ["local_legs_fat", "legs_fat", "upperleg_fat_incr", "lowerleg_fat_incr"],
+  local_calves_fat: ["local_calves_fat", "calves_fat", "lowerleg_fat_incr"],
   local_legs_muscle: ["local_legs_muscle", "legs_muscle", "upperleg_muscle_incr", "lowerleg_muscle_incr"],
+  local_calves_muscle: ["local_calves_muscle", "calves_muscle", "lowerleg_muscle_incr"],
+  local_thigh_shape: ["local_thigh_shape", "thigh_shape", "upperleg_scale_horiz_incr", "upperleg_scale_depth_incr"],
+  local_calf_shape: ["local_calf_shape", "calf_shape", "lowerleg_scale_horiz_incr", "lowerleg_scale_depth_incr"],
 };
 
 function normalizeMorphName(name: string) {
@@ -335,23 +375,126 @@ function buildMorphChannels(props: {
   const heightNorm = clamp((heightCm - HEIGHT_CM_MIN) / (HEIGHT_CM_MAX - HEIGHT_CM_MIN), 0, 1);
   const leanProxy = clamp((bmi * (1 - bodyFatPct / 100) - 15) / 12, 0, 1);
 
-  const torsoFat = clamp(0.62 * fatNorm + 0.15 * bmiNorm, 0, 1);
-  const torsoMuscle = clamp(0.78 * leanProxy - 0.28 * fatNorm + 0.14, 0, 1);
-  const armFat = clamp((0.55 * fatNorm + 0.1 * bmiNorm) * (gender === "female" ? 0.94 : 1.02), 0, 1);
-  const armMuscle = clamp((0.82 * leanProxy - 0.24 * fatNorm + 0.1) * (gender === "female" ? 0.9 : 1), 0, 1);
-  const legFat = clamp((0.58 * fatNorm + 0.14 * bmiNorm) * (gender === "female" ? 1.08 : 0.95), 0, 1);
-  const legMuscle = clamp((0.76 * leanProxy - 0.18 * fatNorm + 0.11) * (gender === "female" ? 0.9 : 1), 0, 1);
+  // Nonlinear shaping gives stronger visible differences across practical body-fat ranges.
+  const fatCurve = Math.pow(fatNorm, 1.18);
+  const fatMid = smoothstep(0.22, 0.62, fatNorm);
+  const fatHigh = smoothstep(0.58, 0.9, fatNorm);
+  const bmiCurve = Math.pow(bmiNorm, 1.08);
+  const leanCurve = Math.pow(leanProxy, 0.92);
+
+  const maleTorsoBias = gender === "male" ? 1.12 : 0.9;
+  const femaleLowerBias = gender === "female" ? 1.2 : 0.92;
+
+  const torsoFat = clamp(
+    (0.35 * fatCurve + 0.45 * fatMid + 0.25 * fatHigh + 0.12 * bmiCurve) * maleTorsoBias,
+    0,
+    1
+  );
+  const waistFat = clamp(
+    (0.32 * fatCurve + 0.48 * fatMid + 0.28 * fatHigh + 0.1 * bmiCurve) *
+      (gender === "male" ? 1.1 : 0.94),
+    0,
+    1
+  );
+  const gluteFat = clamp(
+    (0.24 * fatCurve + 0.38 * fatMid + 0.24 * fatHigh) * (gender === "female" ? 1.28 : 0.82),
+    0,
+    1
+  );
+  const chestFat = clamp(
+    (0.22 * fatCurve + 0.2 * fatMid + 0.08 * bmiCurve) * (gender === "female" ? 1.1 : 0.9),
+    0,
+    1
+  );
+  const faceFat = clamp(0.18 * fatCurve + 0.26 * fatMid + 0.24 * fatHigh, 0, 1);
+  const neckFat = clamp(0.12 * fatCurve + 0.18 * fatMid + 0.24 * fatHigh, 0, 1);
+  const torsoMuscle = clamp(0.18 + 0.82 * leanCurve - 0.34 * fatCurve, 0, 1);
+  const chestMuscle = clamp(
+    (0.18 + 0.78 * leanCurve - 0.24 * fatCurve) * (gender === "male" ? 1.05 : 0.82),
+    0,
+    1
+  );
+  const shoulderMuscle = clamp(
+    (0.16 + 0.82 * leanCurve - 0.18 * fatCurve) * (gender === "male" ? 1.08 : 0.8),
+    0,
+    1
+  );
+
+  const armFat = clamp(
+    (0.26 * fatCurve + 0.3 * fatMid + 0.1 * bmiCurve) * (gender === "female" ? 0.95 : 1.05),
+    0,
+    1
+  );
+  const forearmFat = clamp(
+    (0.18 * fatCurve + 0.22 * fatMid) * (gender === "female" ? 0.96 : 1),
+    0,
+    1
+  );
+  const armMuscle = clamp(
+    (0.14 + 0.88 * leanCurve - 0.28 * fatCurve) * (gender === "female" ? 0.9 : 1.05),
+    0,
+    1
+  );
+  const forearmMuscle = clamp(
+    (0.18 + 0.74 * leanCurve - 0.16 * fatCurve) * (gender === "female" ? 0.88 : 1.03),
+    0,
+    1
+  );
+
+  const legFat = clamp(
+    (0.34 * fatCurve + 0.38 * fatMid + 0.14 * bmiCurve) * femaleLowerBias,
+    0,
+    1
+  );
+  const calfFat = clamp(
+    (0.2 * fatCurve + 0.24 * fatMid + 0.06 * bmiCurve) * (gender === "female" ? 1.05 : 0.95),
+    0,
+    1
+  );
+  const legMuscle = clamp(
+    (0.16 + 0.78 * leanCurve - 0.2 * fatCurve) * (gender === "female" ? 0.98 : 1),
+    0,
+    1
+  );
+  const calfMuscle = clamp(
+    (0.16 + 0.7 * leanCurve - 0.14 * fatCurve) * (gender === "female" ? 0.92 : 1.02),
+    0,
+    1
+  );
+  const thighShape = clamp(
+    (0.2 + 0.46 * fatMid + 0.22 * leanCurve) * (gender === "female" ? 1.16 : 0.95),
+    0,
+    1
+  );
+  const calfShape = clamp(
+    (0.16 + 0.3 * fatMid + 0.22 * leanCurve) * (gender === "female" ? 1.05 : 0.98),
+    0,
+    1
+  );
 
   return {
-    macro_weight: clamp(0.52 * bmiNorm + 0.48 * fatNorm, 0, 1),
-    macro_muscle: leanProxy,
-    macro_height: heightNorm,
+    macro_weight: clamp(0.28 + 0.52 * bmiCurve + 0.4 * fatCurve + 0.12 * fatHigh, 0, 1),
+    macro_muscle: clamp(0.12 + 0.92 * leanCurve - 0.18 * fatCurve, 0, 1),
+    macro_height: clamp(Math.pow(heightNorm, 1.04), 0, 1),
     local_torso_fat: torsoFat,
+    local_waist_fat: waistFat,
+    local_glute_fat: gluteFat,
+    local_chest_fat: chestFat,
+    local_face_fat: faceFat,
+    local_neck_fat: neckFat,
     local_torso_muscle: torsoMuscle,
+    local_chest_muscle: chestMuscle,
+    local_shoulder_muscle: shoulderMuscle,
     local_arms_fat: armFat,
+    local_forearms_fat: forearmFat,
     local_arms_muscle: armMuscle,
+    local_forearms_muscle: forearmMuscle,
     local_legs_fat: legFat,
+    local_calves_fat: calfFat,
     local_legs_muscle: legMuscle,
+    local_calves_muscle: calfMuscle,
+    local_thigh_shape: thighShape,
+    local_calf_shape: calfShape,
   };
 }
 
@@ -391,9 +534,9 @@ function LegacyHumanModel(props: {
 
   const modelRoot = useMemo(() => {
     const cloned = clone(gltf.scene) as Group;
-    applyMaterialOverride(cloned);
+    applyMaterialOverride(cloned, gender);
     return cloned;
-  }, [gltf.scene]);
+  }, [gender, gltf.scene]);
 
   const skinnedMesh = useMemo<SkinnedMesh | null>(() => {
     let found: SkinnedMesh | null = null;
@@ -516,9 +659,9 @@ function MpfbMorphModel(props: {
 
   const modelRoot = useMemo(() => {
     const cloned = clone(gltf.scene) as Group;
-    applyMaterialOverride(cloned);
+    applyMaterialOverride(cloned, gender);
     return cloned;
-  }, [gltf.scene]);
+  }, [gender, gltf.scene]);
 
   const morphMeshes = useMemo(() => {
     const meshes: Array<Mesh> = [];
@@ -570,25 +713,52 @@ function BodyRender(props: {
   bodyFatColor: string;
   resetNonce: number;
   renderMode: RenderMode;
+  viewPreset: ViewPreset;
+  screenshotToken: number;
+  screenshotFilename: string;
 }) {
-  const { gender, bmi, bodyFatPct, heightCm, bodyFatColor, resetNonce, renderMode } = props;
+  const {
+    gender,
+    bmi,
+    bodyFatPct,
+    heightCm,
+    bodyFatColor,
+    resetNonce,
+    renderMode,
+    viewPreset,
+    screenshotToken,
+    screenshotFilename,
+  } = props;
   const modelYaw = renderMode === "mpfb" ? MPFB_FRONT_MODEL_YAW : LEGACY_FRONT_MODEL_YAW;
+  const viewOffset =
+    viewPreset === "left"
+      ? Math.PI / 2
+      : viewPreset === "right"
+        ? -Math.PI / 2
+        : viewPreset === "back"
+          ? Math.PI
+          : 0;
 
   return (
     <div
       className="w-full h-full rounded-3xl border bg-[#e8e8e8] overflow-hidden cursor-grab active:cursor-grabbing"
       style={{ borderColor: bodyFatColor }}
     >
-      <Canvas key={resetNonce} camera={{ position: [0, -0.02, 5.4], fov: 24 }} dpr={[1, 2]}>
+      <Canvas
+        key={resetNonce}
+        camera={{ position: [0, -0.02, 5.4], fov: 24 }}
+        dpr={[1, 2]}
+        gl={{ antialias: true, preserveDrawingBuffer: true }}
+      >
         <color attach="background" args={["#e8e8e8"]} />
 
-        <hemisphereLight intensity={0.52} groundColor="#c0c0c0" />
-        <directionalLight position={[3.4, 3.8, 2.4]} intensity={1.2} castShadow />
-        <directionalLight position={[-2.6, 1.8, -1.6]} intensity={0.42} />
-        <directionalLight position={[0.4, -1.8, 2.5]} intensity={0.24} />
+        <hemisphereLight intensity={0.46} groundColor="#c0c0c0" />
+        <directionalLight position={[3.4, 3.8, 2.4]} intensity={1.08} castShadow />
+        <directionalLight position={[-2.6, 1.8, -1.6]} intensity={0.56} />
+        <directionalLight position={[0.4, -1.8, 2.5]} intensity={0.28} />
 
         <Suspense fallback={null}>
-          <group position={[-0.025, 0.025, 0]} rotation={[0, modelYaw, 0]}>
+          <group position={[-0.025, 0.025, 0]} rotation={[0, modelYaw + viewOffset, 0]}>
             {renderMode === "mpfb" ? (
               <MpfbMorphModel gender={gender} bmi={bmi} bodyFatPct={bodyFatPct} heightCm={heightCm} />
             ) : (
@@ -597,13 +767,17 @@ function BodyRender(props: {
           </group>
         </Suspense>
 
+        <ScreenshotCapture token={screenshotToken} filename={screenshotFilename} />
+
         <OrbitControls
           makeDefault
           enablePan={false}
-          enableZoom={false}
+          enableZoom
           enableDamping
           dampingFactor={0.08}
           rotateSpeed={0.8}
+          minDistance={3.7}
+          maxDistance={7.4}
           minPolarAngle={Math.PI / 2 - 0.45}
           maxPolarAngle={Math.PI / 2 + 0.45}
           target={[0, 0.95, 0]}
@@ -613,10 +787,44 @@ function BodyRender(props: {
   );
 }
 
+function ScreenshotCapture(props: { token: number; filename: string }) {
+  const { token, filename } = props;
+  const { gl } = useThree();
+
+  useEffect(() => {
+    if (!token) return;
+
+    const run = () => {
+      try {
+        const target = gl.domElement;
+        if (!target) return;
+
+        const dataUrl = target.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = filename;
+        link.click();
+      } catch (error) {
+        console.error("Screenshot export failed:", error);
+      }
+    };
+
+    const id = window.setTimeout(run, 80);
+    return () => window.clearTimeout(id);
+  }, [token, filename, gl]);
+
+  return null;
+}
+
+Object.values(MPFB_MODEL_PATHS).forEach((path) => useGLTF.preload(path));
+
 export default function BodyVisualizerTool() {
   const [units, setUnits] = useState<Units>("imperial");
   const [gender, setGender] = useState<Gender>("male");
   const [syncMode, setSyncMode] = useState<SyncMode>("linked");
+  const [viewPreset, setViewPreset] = useState<ViewPreset>("front");
+  const [screenshotToken, setScreenshotToken] = useState(0);
+  const [screenshotFilename, setScreenshotFilename] = useState("body-visualizer.png");
   const [viewerResetNonce, setViewerResetNonce] = useState(0);
   const maleMpfbAvailable = useAssetAvailable(MPFB_MODEL_PATHS.male);
   const femaleMpfbAvailable = useAssetAvailable(MPFB_MODEL_PATHS.female);
@@ -742,21 +950,63 @@ export default function BodyVisualizerTool() {
     ? `${round(estimatedWaistCm, 1)} cm`
     : `${round(cmToIn(estimatedWaistCm), 1)} in`;
 
+  const triggerScreenshot = () => {
+    const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const file = `body-${gender}-bf${round(bodyFatPct, 1)}-bmi${round(bmi, 1)}-${stamp}.png`;
+    setScreenshotFilename(file);
+    setScreenshotToken((v) => v + 1);
+  };
+
   return (
     <section className="w-full">
       <div className="w-full max-w-6xl mx-auto rounded-3xl bg-white/80 backdrop-blur border shadow-xl overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_520px]">
           <div className="p-4 sm:p-6 bg-base-100 flex min-h-[680px] lg:min-h-0">
             <div className="w-full flex flex-col gap-3">
-              <div className="flex items-center justify-between px-1">
-                <p className="text-xs font-semibold text-gray-600">Drag on the body to rotate 360°</p>
-                <button
-                  type="button"
-                  onClick={() => setViewerResetNonce((v) => v + 1)}
-                  className="text-xs font-semibold text-primary underline hover:opacity-80"
-                >
-                  Reset View
-                </button>
+              <div className="flex flex-wrap items-center justify-between gap-2 px-1">
+                <p className="text-xs font-semibold text-gray-600">Drag to rotate, scroll to zoom</p>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={triggerScreenshot}
+                    className="text-xs font-semibold text-primary underline hover:opacity-80"
+                  >
+                    Take Screenshot
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setScreenshotToken(0);
+                      setViewerResetNonce((v) => v + 1);
+                    }}
+                    className="text-xs font-semibold text-primary underline hover:opacity-80"
+                  >
+                    Reset View
+                  </button>
+                </div>
+              </div>
+              <div className="px-1">
+                <div className="inline-flex rounded-xl bg-gray-100 p-1">
+                  {([
+                    ["front", "Front"],
+                    ["left", "Left"],
+                    ["right", "Right"],
+                    ["back", "Back"],
+                  ] as Array<[ViewPreset, string]>).map(([preset, label]) => (
+                    <button
+                      key={preset}
+                      type="button"
+                      onClick={() => setViewPreset(preset)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                        viewPreset === preset
+                          ? "bg-white shadow-sm text-gray-900"
+                          : "text-gray-600 hover:text-gray-900"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
               </div>
               <p className="px-1 text-xs text-gray-500">
                 {renderMode === "mpfb"
@@ -771,6 +1021,9 @@ export default function BodyVisualizerTool() {
                 bodyFatColor={bfClass.color}
                 resetNonce={viewerResetNonce}
                 renderMode={renderMode}
+                viewPreset={viewPreset}
+                screenshotToken={screenshotToken}
+                screenshotFilename={screenshotFilename}
               />
             </div>
           </div>

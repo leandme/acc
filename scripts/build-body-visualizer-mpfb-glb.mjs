@@ -25,11 +25,24 @@ const CANONICAL_CHANNELS = [
   "macro_muscle",
   "macro_height",
   "local_torso_fat",
+  "local_waist_fat",
+  "local_glute_fat",
+  "local_chest_fat",
+  "local_face_fat",
+  "local_neck_fat",
   "local_torso_muscle",
+  "local_chest_muscle",
+  "local_shoulder_muscle",
   "local_arms_fat",
+  "local_forearms_fat",
   "local_arms_muscle",
+  "local_forearms_muscle",
   "local_legs_fat",
+  "local_calves_fat",
   "local_legs_muscle",
+  "local_calves_muscle",
+  "local_thigh_shape",
+  "local_calf_shape",
 ];
 
 const commonChannelFiles = {
@@ -37,36 +50,93 @@ const commonChannelFiles = {
     "makehuman/data/targets/stomach/stomach-tone-decr.target",
     "makehuman/data/targets/head/head-fat-incr.target",
   ],
+  local_waist_fat: [
+    "makehuman/data/targets/hip/hip-waist-up.target",
+    "makehuman/data/targets/hip/hip-scale-horiz-incr.target",
+    "makehuman/data/targets/hip/hip-scale-depth-incr.target",
+  ],
+  local_glute_fat: [
+    "makehuman/data/targets/buttocks/buttocks-volume-incr.target",
+    "makehuman/data/targets/hip/hip-scale-depth-incr.target",
+    "makehuman/data/targets/hip/hip-scale-horiz-incr.target",
+  ],
+  local_chest_fat: [
+    "makehuman/data/targets/torso/torso-scale-depth-incr.target",
+    "makehuman/data/targets/torso/torso-scale-horiz-incr.target",
+    "makehuman/data/targets/torso/torso-trans-out.target",
+  ],
+  local_face_fat: [
+    "makehuman/data/targets/head/head-fat-incr.target",
+    "makehuman/data/targets/cheek/l-cheek-volume-incr.target",
+    "makehuman/data/targets/cheek/r-cheek-volume-incr.target",
+  ],
+  local_neck_fat: [
+    "makehuman/data/targets/neck/neck-double-incr.target",
+    "makehuman/data/targets/neck/neck-scale-depth-incr.target",
+  ],
   local_torso_muscle: [
     "makehuman/data/targets/stomach/stomach-tone-incr.target",
     "makehuman/data/targets/torso/torso-muscle-dorsi-incr.target",
     "makehuman/data/targets/torso/torso-muscle-pectoral-incr.target",
   ],
+  local_chest_muscle: [
+    "makehuman/data/targets/torso/torso-muscle-pectoral-incr.target",
+    "makehuman/data/targets/torso/torso-muscle-dorsi-incr.target",
+    "makehuman/data/targets/torso/torso-vshape-incr.target",
+  ],
+  local_shoulder_muscle: [
+    "makehuman/data/targets/armslegs/l-upperarm-shoulder-muscle-incr.target",
+    "makehuman/data/targets/armslegs/r-upperarm-shoulder-muscle-incr.target",
+  ],
   local_arms_fat: [
     "makehuman/data/targets/armslegs/l-upperarm-fat-incr.target",
     "makehuman/data/targets/armslegs/r-upperarm-fat-incr.target",
+  ],
+  local_forearms_fat: [
     "makehuman/data/targets/armslegs/l-lowerarm-fat-incr.target",
     "makehuman/data/targets/armslegs/r-lowerarm-fat-incr.target",
+    "makehuman/data/targets/armslegs/l-lowerarm-scale-depth-incr.target",
+    "makehuman/data/targets/armslegs/r-lowerarm-scale-depth-incr.target",
   ],
   local_arms_muscle: [
     "makehuman/data/targets/armslegs/l-upperarm-muscle-incr.target",
     "makehuman/data/targets/armslegs/r-upperarm-muscle-incr.target",
-    "makehuman/data/targets/armslegs/l-upperarm-shoulder-muscle-incr.target",
-    "makehuman/data/targets/armslegs/r-upperarm-shoulder-muscle-incr.target",
+  ],
+  local_forearms_muscle: [
     "makehuman/data/targets/armslegs/l-lowerarm-muscle-incr.target",
     "makehuman/data/targets/armslegs/r-lowerarm-muscle-incr.target",
   ],
   local_legs_fat: [
     "makehuman/data/targets/armslegs/l-upperleg-fat-incr.target",
     "makehuman/data/targets/armslegs/r-upperleg-fat-incr.target",
+    "makehuman/data/targets/armslegs/l-upperleg-scale-horiz-incr.target",
+    "makehuman/data/targets/armslegs/r-upperleg-scale-horiz-incr.target",
+  ],
+  local_calves_fat: [
     "makehuman/data/targets/armslegs/l-lowerleg-fat-incr.target",
     "makehuman/data/targets/armslegs/r-lowerleg-fat-incr.target",
+    "makehuman/data/targets/armslegs/l-lowerleg-scale-horiz-incr.target",
+    "makehuman/data/targets/armslegs/r-lowerleg-scale-horiz-incr.target",
   ],
   local_legs_muscle: [
     "makehuman/data/targets/armslegs/l-upperleg-muscle-incr.target",
     "makehuman/data/targets/armslegs/r-upperleg-muscle-incr.target",
+  ],
+  local_calves_muscle: [
     "makehuman/data/targets/armslegs/l-lowerleg-muscle-incr.target",
     "makehuman/data/targets/armslegs/r-lowerleg-muscle-incr.target",
+  ],
+  local_thigh_shape: [
+    "makehuman/data/targets/armslegs/l-upperleg-scale-depth-incr.target",
+    "makehuman/data/targets/armslegs/r-upperleg-scale-depth-incr.target",
+    "makehuman/data/targets/armslegs/l-upperleg-scale-horiz-incr.target",
+    "makehuman/data/targets/armslegs/r-upperleg-scale-horiz-incr.target",
+  ],
+  local_calf_shape: [
+    "makehuman/data/targets/armslegs/l-lowerleg-scale-depth-incr.target",
+    "makehuman/data/targets/armslegs/r-lowerleg-scale-depth-incr.target",
+    "makehuman/data/targets/armslegs/l-lowerleg-scale-horiz-incr.target",
+    "makehuman/data/targets/armslegs/r-lowerleg-scale-horiz-incr.target",
   ],
 };
 
@@ -135,8 +205,52 @@ async function fetchText(url) {
 
 function parseObj(objText) {
   const vertices = [];
+  const texcoords = [];
   const indices = [];
+  const expandedVertices = [];
+  const expandedTexcoords = [];
+  const expandedToBaseIndex = [];
+  const expandedVertexMap = new Map();
   const lines = objText.split(/\r?\n/);
+
+  const resolveIndex = (value, count) => {
+    const n = Number(value);
+    if (!Number.isFinite(n) || count <= 0) return null;
+    const index = n > 0 ? n - 1 : count + n;
+    if (index < 0 || index >= count) return null;
+    return index;
+  };
+
+  const parseFaceToken = (token) => {
+    const parts = token.split("/");
+    const v = resolveIndex(parts[0], vertices.length / 3);
+    if (v === null) return null;
+
+    const vt = parts.length > 1 && parts[1] !== "" ? resolveIndex(parts[1], texcoords.length / 2) : null;
+    return { v, vt };
+  };
+
+  const addExpandedVertex = (ref) => {
+    const key = `${ref.v}/${ref.vt === null ? "-" : ref.vt}`;
+    const existing = expandedVertexMap.get(key);
+    if (typeof existing === "number") return existing;
+
+    const expandedIndex = expandedToBaseIndex.length;
+    expandedVertexMap.set(key, expandedIndex);
+    expandedToBaseIndex.push(ref.v);
+
+    const vBase = ref.v * 3;
+    expandedVertices.push(vertices[vBase], vertices[vBase + 1], vertices[vBase + 2]);
+
+    if (ref.vt === null) {
+      expandedTexcoords.push(0, 0);
+    } else {
+      const uvBase = ref.vt * 2;
+      expandedTexcoords.push(texcoords[uvBase], texcoords[uvBase + 1]);
+    }
+
+    return expandedIndex;
+  };
 
   for (const line of lines) {
     if (line.startsWith("v ")) {
@@ -145,25 +259,34 @@ function parseObj(objText) {
       continue;
     }
 
+    if (line.startsWith("vt ")) {
+      const parts = line.trim().split(/\s+/);
+      texcoords.push(Number(parts[1]), Number(parts[2]));
+      continue;
+    }
+
     if (!line.startsWith("f ")) continue;
 
     const face = line.trim().split(/\s+/).slice(1);
     if (face.length < 3) continue;
 
-    const vertexCount = vertices.length / 3;
-    const vIdx = face.map((token) => {
-      const first = token.split("/")[0];
-      const n = Number(first);
-      return n > 0 ? n - 1 : vertexCount + n;
-    });
+    const refs = face.map(parseFaceToken).filter(Boolean);
+    if (refs.length < 3) continue;
 
-    for (let i = 1; i < vIdx.length - 1; i += 1) {
-      indices.push(vIdx[0], vIdx[i], vIdx[i + 1]);
+    for (let i = 1; i < refs.length - 1; i += 1) {
+      indices.push(
+        addExpandedVertex(refs[0]),
+        addExpandedVertex(refs[i]),
+        addExpandedVertex(refs[i + 1])
+      );
     }
   }
 
   return {
-    vertices: new Float32Array(vertices),
+    baseVertices: new Float32Array(vertices),
+    vertices: new Float32Array(expandedVertices),
+    uvs: new Float32Array(expandedTexcoords),
+    expandedToBaseIndex: new Uint32Array(expandedToBaseIndex),
     indices: new Uint32Array(indices),
   };
 }
@@ -209,6 +332,59 @@ function scaleArray(source, factor) {
     out[i] = source[i] * factor;
   }
   return out;
+}
+
+function expandPositionArrayByIndex(sourcePositions, expandedToBaseIndex) {
+  const out = new Float32Array(expandedToBaseIndex.length * 3);
+  for (let i = 0; i < expandedToBaseIndex.length; i += 1) {
+    const sourceBase = expandedToBaseIndex[i] * 3;
+    const outBase = i * 3;
+    out[outBase] = sourcePositions[sourceBase];
+    out[outBase + 1] = sourcePositions[sourceBase + 1];
+    out[outBase + 2] = sourcePositions[sourceBase + 2];
+  }
+  return out;
+}
+
+function smoothNormalsAcrossExpandedVertices(geometry, expandedToBaseIndex, sourceVertexCount) {
+  const normalAttr = geometry.getAttribute("normal");
+  if (!normalAttr || normalAttr.itemSize !== 3) return;
+
+  const normalSums = new Float32Array(sourceVertexCount * 3);
+  const counts = new Uint32Array(sourceVertexCount);
+
+  for (let i = 0; i < expandedToBaseIndex.length; i += 1) {
+    const sourceIndex = expandedToBaseIndex[i];
+    if (sourceIndex >= sourceVertexCount) continue;
+
+    const sourceBase = sourceIndex * 3;
+    normalSums[sourceBase] += normalAttr.getX(i);
+    normalSums[sourceBase + 1] += normalAttr.getY(i);
+    normalSums[sourceBase + 2] += normalAttr.getZ(i);
+    counts[sourceIndex] += 1;
+  }
+
+  for (let i = 0; i < expandedToBaseIndex.length; i += 1) {
+    const sourceIndex = expandedToBaseIndex[i];
+    if (sourceIndex >= sourceVertexCount || counts[sourceIndex] === 0) continue;
+
+    const sourceBase = sourceIndex * 3;
+    const invCount = 1 / counts[sourceIndex];
+    let nx = normalSums[sourceBase] * invCount;
+    let ny = normalSums[sourceBase + 1] * invCount;
+    let nz = normalSums[sourceBase + 2] * invCount;
+
+    const length = Math.hypot(nx, ny, nz);
+    if (length > 0.000001) {
+      nx /= length;
+      ny /= length;
+      nz /= length;
+    }
+
+    normalAttr.setXYZ(i, nx, ny, nz);
+  }
+
+  normalAttr.needsUpdate = true;
 }
 
 function measureBounds(positions) {
@@ -278,9 +454,12 @@ async function build() {
 
   console.log("Fetching base mesh...");
   const baseObj = await fetchText(BASE_OBJ_URL);
-  const { vertices: baseVertices, indices } = parseObj(baseObj);
+  const { baseVertices, indices, uvs, expandedToBaseIndex } = parseObj(baseObj);
   const vertexCount = baseVertices.length / 3;
-  console.log(`Base mesh parsed: ${vertexCount} vertices, ${indices.length / 3} triangles`);
+  const expandedVertexCount = expandedToBaseIndex.length;
+  console.log(
+    `Base mesh parsed: ${vertexCount} source vertices, ${expandedVertexCount} runtime vertices, ${indices.length / 3} triangles`
+  );
 
   const targetPaths = new Set();
   for (const sexConfig of Object.values(sexConfigs)) {
@@ -314,6 +493,7 @@ async function build() {
       baseWithSex,
       sexConfig.targetHeightM
     );
+    const expandedNormalizedBase = expandPositionArrayByIndex(normalizedBase, expandedToBaseIndex);
 
     const morphDeltas = {};
     morphDeltas.macro_weight = scaleArray(
@@ -345,14 +525,20 @@ async function build() {
     }
 
     const geometry = new BufferGeometry();
-    geometry.setAttribute("position", new Float32BufferAttribute(normalizedBase, 3));
+    geometry.setAttribute("position", new Float32BufferAttribute(expandedNormalizedBase, 3));
+    geometry.setAttribute("uv", new Float32BufferAttribute(uvs, 2));
     geometry.setIndex(Array.from(indices));
     geometry.computeVertexNormals();
+    smoothNormalsAcrossExpandedVertices(geometry, expandedToBaseIndex, vertexCount);
     geometry.morphTargetsRelative = true;
     geometry.morphAttributes.position = [];
 
     for (const channel of CANONICAL_CHANNELS) {
-      const attr = new Float32BufferAttribute(morphDeltas[channel], 3);
+      const expandedMorphDelta = expandPositionArrayByIndex(
+        morphDeltas[channel],
+        expandedToBaseIndex
+      );
+      const attr = new Float32BufferAttribute(expandedMorphDelta, 3);
       attr.name = channel;
       geometry.morphAttributes.position.push(attr);
     }

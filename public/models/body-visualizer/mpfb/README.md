@@ -62,6 +62,11 @@ This writes:
 - `public/models/body-visualizer/mpfb/body_male_v1.glb`
 - `public/models/body-visualizer/mpfb/body_female_v1.glb`
 
+Notes:
+
+- GLBs include `TEXCOORD_0` UVs for future texture-based skin rendering.
+- GLBs include 22 canonical morph channels.
+
 ## Expected exported web assets (next step)
 
 After authoring in MPFB/Blender, export and place (or replace the generated files above):
@@ -75,10 +80,23 @@ Planned minimum morph channels for runtime:
 - `macro_muscle`
 - `macro_height`
 - `local_torso_fat`
+- `local_waist_fat`
+- `local_glute_fat`
+- `local_chest_fat`
+- `local_face_fat`
+- `local_neck_fat`
 - `local_torso_muscle`
+- `local_chest_muscle`
+- `local_shoulder_muscle`
 - `local_arms_fat`
+- `local_forearms_fat`
 - `local_arms_muscle`
+- `local_forearms_muscle`
 - `local_legs_fat`
+- `local_calves_fat`
 - `local_legs_muscle`
+- `local_calves_muscle`
+- `local_thigh_shape`
+- `local_calf_shape`
 
 Names can differ in Blender; the export step should remap them to the canonical runtime names above.
