@@ -486,7 +486,11 @@ function AgeGuesserPageContent() {
             <a className="text-primary underline" href="/face-symmetry-test">
               Face Symmetry Test
             </a>{" "}
-            for left-right balance context.
+            for left-right balance context. You can also run the{" "}
+            <a className="text-primary underline" href="/attractiveness-test">
+              Attractiveness Test
+            </a>{" "}
+            for appearance-score benchmarking under the same photo setup.
           </p>
           <p className={pClass}>
             For full-body visual analysis, use the{" "}
@@ -556,6 +560,7 @@ function AgeGuesserPageContent() {
             toolSlugs={[
               "face-shape-detector",
               "face-symmetry-test",
+              "attractiveness-test",
               "body-shape-analyzer",
               "body-shape-calculator",
               "estimate",

@@ -103,6 +103,7 @@ export default function SitemapPage() {
     "visceral-fat-calculator",
     "body-shape-calculator",
     "age-guesser",
+    "attractiveness-test",
     "face-shape-detector",
     "face-symmetry-test",
     "army-body-fat-calculator",

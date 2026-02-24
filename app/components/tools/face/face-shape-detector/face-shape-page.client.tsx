@@ -506,7 +506,11 @@ function FaceShapePageContent() {
             <a className="text-primary underline" href="/age-guesser">
               Age Guesser
             </a>{" "}
-            for apparent-age estimates. For full-body visual analysis, use the{" "}
+            and{" "}
+            <a className="text-primary underline" href="/attractiveness-test">
+              Attractiveness Test
+            </a>{" "}
+            for photo-based appearance scoring and apparent-age context. For full-body visual analysis, use the{" "}
             <a className="text-primary underline" href="/body-shape-analyzer">
               Body Shape Analyzer
             </a>{" "}
@@ -577,6 +581,7 @@ function FaceShapePageContent() {
             columns={2}
             toolSlugs={[
               "age-guesser",
+              "attractiveness-test",
               "face-symmetry-test",
               "body-shape-analyzer",
               "body-shape-calculator",

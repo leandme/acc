@@ -13,6 +13,7 @@ export function SiteNavSchema() {
               name: [
                 "Estimate Body Fat",
                 "Age Guesser",
+                "Attractiveness Test",
                 "Face Shape Detector",
                 "Face Symmetry Test",
                 "Calorie Estimator",
@@ -22,6 +23,7 @@ export function SiteNavSchema() {
               url: [
                 "https://bodyfatestimator.ai/estimate",
                 "https://bodyfatestimator.ai/age-guesser",
+                "https://bodyfatestimator.ai/attractiveness-test",
                 "https://bodyfatestimator.ai/face-shape-detector",
                 "https://bodyfatestimator.ai/face-symmetry-test",
                 "https://bodyfatestimator.ai/calorie-estimator",

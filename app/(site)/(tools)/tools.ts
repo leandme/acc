@@ -69,9 +69,9 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Face",
     slug: "face",
     navLabel: "Face",
-    h1: "Face Shape, Symmetry, and Age Analysis Tools",
+    h1: "Face Shape, Symmetry, Age, and Attractiveness Tools",
     description:
-      "Analyze facial shape, symmetry, and apparent age with AI-based classifiers, confidence scoring, and practical photo-standardization guidance.",
+      "Analyze facial shape, symmetry, apparent age, and attractiveness with AI-based classifiers, confidence scoring, and practical photo-standardization guidance.",
   },
   "Body Fat": {
     category: "Body Fat",
@@ -250,6 +250,12 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "age-guesser",
     title: "Age Guesser",
     description: "Estimate how old you look from a face photo with AI age range and confidence.",
+    category: "Face",
+  },
+  "attractiveness-test": {
+    slug: "attractiveness-test",
+    title: "Attractiveness Test",
+    description: "Upload a portrait to get an AI attractiveness score with confidence bands and interpretation table.",
     category: "Face",
   },
 

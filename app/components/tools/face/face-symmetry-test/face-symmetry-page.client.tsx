@@ -646,7 +646,11 @@ function FaceSymmetryPageContent() {
           </p>
           <p className={pClass}>
             In practice, this tool is best used as a structured visual check for balance and photo
-            consistency, not as a universal attractiveness rating.
+            consistency, not as a universal attractiveness rating. If you want a direct score, run the{" "}
+            <a className="text-primary underline" href="/attractiveness-test">
+              Attractiveness Test
+            </a>
+            .
           </p>
         </div>
 
@@ -675,7 +679,11 @@ function FaceSymmetryPageContent() {
             <a className="text-primary underline" href="/age-guesser">
               Age Guesser
             </a>{" "}
-            for apparent-age estimates, then use
+            and{" "}
+            <a className="text-primary underline" href="/attractiveness-test">
+              Attractiveness Test
+            </a>{" "}
+            for appearance-score context, then use
             the{" "}
             <a className="text-primary underline" href="/estimate">
               Body Fat Estimator
@@ -749,6 +757,7 @@ function FaceSymmetryPageContent() {
             columns={2}
             toolSlugs={[
               "age-guesser",
+              "attractiveness-test",
               "face-shape-detector",
               "estimate",
               "body-shape-analyzer",

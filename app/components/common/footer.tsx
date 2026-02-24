@@ -38,6 +38,7 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/face-symmetry-test">Face Symmetry Test</a></li>
               <li><a className="hover:text-white" href="/face-shape-detector">Face Shape Detector</a></li>
               <li><a className="hover:text-white" href="/age-guesser">Age Guesser</a></li>
+              <li><a className="hover:text-white" href="/attractiveness-test">Attractiveness Test</a></li>
               <li><a className="hover:text-white" href="/examples">See Examples</a></li>
               <li><a className="hover:text-white" href="/guides">Guides</a></li>
               <li><a className="hover:text-white" href="/tools">Tools</a></li>
@@ -78,6 +79,7 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/face-symmetry-test">Face Symmetry Test</a></li>
               <li><a className="hover:text-white" href="/face-shape-detector">Face Shape Detector</a></li>
               <li><a className="hover:text-white" href="/age-guesser">Age Guesser</a></li>
+              <li><a className="hover:text-white" href="/attractiveness-test">Attractiveness Test</a></li>
             </ul>
           </div>
 

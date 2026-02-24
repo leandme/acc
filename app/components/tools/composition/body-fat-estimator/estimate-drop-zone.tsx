@@ -10,7 +10,8 @@ type Props = {
     | "/height-estimator"
     | "/face-symmetry-test"
     | "/face-shape-detector"
-    | "/age-guesser";
+    | "/age-guesser"
+    | "/attractiveness-test";
   buttonLabel?: string;
 };
 

@@ -33,6 +33,11 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     description: "Estimate how old you look from a face photo with AI confidence.",
   },
   {
+    title: "Attractiveness Test",
+    href: "/attractiveness-test",
+    description: "Get an AI attractiveness score from a portrait with confidence and score bands.",
+  },
+  {
     title: "Body Shape Calculator",
     href: "/body-shape-calculator",
     description: "Estimate body-shape category from bust, waist, and hip measurements.",
