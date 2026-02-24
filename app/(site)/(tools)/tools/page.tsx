@@ -42,9 +42,6 @@ export default async function ToolsIndexPage({
     <main className="bg-base-100 pt-10">
       <section className="mx-auto max-w-5xl px-6">
         <H1>Tools</H1>
-        <p className="mt-4 text-center text-lg text-gray-700 max-w-3xl mx-auto">
-          Browse every calculator, estimator, and visualizer by topic.
-        </p>
       </section>
 
       <ToolsGridWithTabs tools={allTools} tabs={tabs} activeTab="all" />
