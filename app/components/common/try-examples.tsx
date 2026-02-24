@@ -4,10 +4,17 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { trackEvent } from "@/app/libs/amplitude";
 
-type BasePath = "/estimate" | "/body-shape-analyzer" | "/height-estimator";
+type BasePath =
+  | "/estimate"
+  | "/body-shape-analyzer"
+  | "/height-estimator"
+  | "/face-symmetry-test"
+  | "/face-shape-detector"
+  | "/age-guesser";
 
 type Props = {
   basePath: BasePath;
+  examples?: Example[];
 };
 
 type Example = {
@@ -24,7 +31,7 @@ const EXAMPLES: Example[] = [
   { id: "m1", label: "Example A", sublabel: "", src: "/examples/bfe-example4.png" },
 ];
 
-export default function TryExamples({ basePath }: Props) {
+export default function TryExamples({ basePath, examples = EXAMPLES }: Props) {
   const router = useRouter();
 
 const onPick = (src: string) => {
@@ -45,7 +52,7 @@ const onPick = (src: string) => {
 
 
         <div className="flex flex-wrap items-center gap-3 sm:justify-end">
-          {EXAMPLES.map((ex) => (
+          {examples.map((ex) => (
             <button
               key={ex.id}
               type="button"

@@ -35,6 +35,9 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/about">About</a></li>
               <li><a className="hover:text-white" href="/estimate">Body Fat Estimate</a></li>
+              <li><a className="hover:text-white" href="/face-symmetry-test">Face Symmetry Test</a></li>
+              <li><a className="hover:text-white" href="/face-shape-detector">Face Shape Detector</a></li>
+              <li><a className="hover:text-white" href="/age-guesser">Age Guesser</a></li>
               <li><a className="hover:text-white" href="/examples">See Examples</a></li>
               <li><a className="hover:text-white" href="/guides">Guides</a></li>
               <li><a className="hover:text-white" href="/tools">Tools</a></li>
@@ -72,6 +75,9 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/visceral-fat-calculator">Visceral Fat Calculator</a></li>
               <li><a className="hover:text-white" href="/body-shape-analyzer">Body Shape Analyzer</a></li>
               <li><a className="hover:text-white" href="/body-shape-calculator">Body Shape Calculator</a></li>
+              <li><a className="hover:text-white" href="/face-symmetry-test">Face Symmetry Test</a></li>
+              <li><a className="hover:text-white" href="/face-shape-detector">Face Shape Detector</a></li>
+              <li><a className="hover:text-white" href="/age-guesser">Age Guesser</a></li>
             </ul>
           </div>
 

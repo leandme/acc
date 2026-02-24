@@ -14,7 +14,7 @@ This policy defines which URL patterns should be indexed, noindexed, or canonica
 | Company and legal pages | `/about`, `/contact`, `/privacy`, `/terms`, `/cookies`, `/security`, `/subprocessors` | `index, follow` | Self canonical | Include |
 | Utility pages | `/sitemap-html` | `noindex, follow` | Self canonical | Exclude |
 | Filter/tab query URLs | `/guides?tag=*`, `/tools?tag=*` | Canonicalize to clean route | `/guides`, `/tools` | Exclude (query URLs are never listed) |
-| Ephemeral result query URLs | `/estimate?imageUrl=*&source=*`, `/body-shape-analyzer?imageUrl=*&source=*`, `/calorie-estimator?imageUrl=*&source=*` | Canonicalize to clean route | Base route without query params | Exclude (query URLs are never listed) |
+| Ephemeral result query URLs | `/estimate?imageUrl=*&source=*`, `/body-shape-analyzer?imageUrl=*&source=*`, `/calorie-estimator?imageUrl=*&source=*`, `/face-symmetry-test?imageUrl=*&source=*`, `/face-shape-detector?imageUrl=*&source=*`, `/age-guesser?imageUrl=*&source=*` | Canonicalize to clean route | Base route without query params | Exclude (query URLs are never listed) |
 | API endpoints | `/api/*` | Not indexable pages | N/A | Exclude |
 
 ## Implementation Notes

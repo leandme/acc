@@ -102,6 +102,9 @@ export default function SitemapPage() {
     "bri-calculator",
     "visceral-fat-calculator",
     "body-shape-calculator",
+    "age-guesser",
+    "face-shape-detector",
+    "face-symmetry-test",
     "army-body-fat-calculator",
     "body-fat-calculator",
   ] as const;

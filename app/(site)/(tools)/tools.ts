@@ -3,6 +3,7 @@ export type ToolCategory =
   | "Body Composition"
   | "Muscle"
   | "Height"
+  | "Face"
   | "Body Proportions"
   | "Body Weight"
   | "Metabolism"
@@ -13,6 +14,7 @@ export type ToolCategorySlug =
   | "body-composition"
   | "muscle"
   | "height"
+  | "face"
   | "body-proportions"
   | "body-weight"
   | "metabolism"
@@ -37,6 +39,7 @@ export type ToolCategoryMeta = {
 const TOOL_CATEGORY_ORDER: ToolCategory[] = [
   "Muscle",
   "Height",
+  "Face",
   "Body Fat",
   "Body Composition",
   "Body Proportions",
@@ -61,6 +64,14 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     h1: "Height Prediction and Growth Potential Tools",
     description:
       "Use parent-based models for target adult height, expected family range, and probability-style planning context.",
+  },
+  Face: {
+    category: "Face",
+    slug: "face",
+    navLabel: "Face",
+    h1: "Face Shape, Symmetry, and Age Analysis Tools",
+    description:
+      "Analyze facial shape, symmetry, and apparent age with AI-based classifiers, confidence scoring, and practical photo-standardization guidance.",
   },
   "Body Fat": {
     category: "Body Fat",
@@ -117,6 +128,7 @@ const TOOL_CATEGORY_META_BY_SLUG: Record<ToolCategorySlug, ToolCategoryMeta> = {
   "body-composition": TOOL_CATEGORY_META_BY_NAME["Body Composition"],
   muscle: TOOL_CATEGORY_META_BY_NAME["Muscle"],
   height: TOOL_CATEGORY_META_BY_NAME["Height"],
+  face: TOOL_CATEGORY_META_BY_NAME["Face"],
   "body-proportions": TOOL_CATEGORY_META_BY_NAME["Body Proportions"],
   "body-weight": TOOL_CATEGORY_META_BY_NAME["Body Weight"],
   metabolism: TOOL_CATEGORY_META_BY_NAME["Metabolism"],
@@ -221,6 +233,24 @@ export const TOOLS: Record<string, ToolMeta> = {
     title: "Body Shape Calculator",
     description: "Estimate your body-shape category from bust/chest, waist, and hip measurements.",
     category: "Body Composition",
+  },
+  "face-symmetry-test": {
+    slug: "face-symmetry-test",
+    title: "Face Symmetry Test",
+    description: "Upload a face photo to estimate symmetry score and compare mirrored facial halves.",
+    category: "Face",
+  },
+  "face-shape-detector": {
+    slug: "face-shape-detector",
+    title: "Face Shape Detector",
+    description: "Upload a portrait to detect your face shape with AI and confidence scoring.",
+    category: "Face",
+  },
+  "age-guesser": {
+    slug: "age-guesser",
+    title: "Age Guesser",
+    description: "Estimate how old you look from a face photo with AI age range and confidence.",
+    category: "Face",
   },
 
   "body-visualizer": {

@@ -335,6 +335,12 @@ function BodyShapePageContent() {
             <a className="text-primary underline" href="/body-visualizer">Body Visualizer</a>. For a
             measurement-based alternative (bust/chest, waist, hips), use the{" "}
             <a className="text-primary underline" href="/body-shape-calculator">Body Shape Calculator</a>.
+            {" "}If you want a dedicated face analysis workflow, run the{" "}
+            <a className="text-primary underline" href="/face-symmetry-test">Face Symmetry Test</a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/face-shape-detector">Face Shape Detector</a>{" "}
+            plus{" "}
+            <a className="text-primary underline" href="/age-guesser">Age Guesser</a>.
           </p>
         </div>
 
@@ -395,6 +401,9 @@ function BodyShapePageContent() {
               "bai-calculator",
               "bri-calculator",
               "body-shape-calculator",
+              "age-guesser",
+              "face-shape-detector",
+              "face-symmetry-test",
               "body-frame-size-calculator",
               "lean-body-mass-calculator",
               "ffmi-calculator",

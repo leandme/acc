@@ -60,7 +60,6 @@ export default async function ToolCategoryPage({
     <main className="bg-base-100 pt-10">
       <section className="mx-auto max-w-5xl px-6">
         <H1>{category.h1}</H1>
-        <p className="mt-4 text-center text-lg text-gray-700 max-w-3xl mx-auto">{category.description}</p>
       </section>
 
       <ToolsGridWithTabs

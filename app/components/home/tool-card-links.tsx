@@ -18,6 +18,21 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     description: "Upload a photo and analyze your visual body type.",
   },
   {
+    title: "Face Symmetry Test",
+    href: "/face-symmetry-test",
+    description: "Check facial symmetry score and compare mirrored facial halves.",
+  },
+  {
+    title: "Face Shape Detector",
+    href: "/face-shape-detector",
+    description: "Detect face shape from a portrait with confidence scoring.",
+  },
+  {
+    title: "Age Guesser",
+    href: "/age-guesser",
+    description: "Estimate how old you look from a face photo with AI confidence.",
+  },
+  {
     title: "Body Shape Calculator",
     href: "/body-shape-calculator",
     description: "Estimate body-shape category from bust, waist, and hip measurements.",
