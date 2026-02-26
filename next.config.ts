@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/ads.txt",
+        destination: "https://srv.adstxtmanager.com/19390/bodyfatestimator.ai",
+        permanent: true, // 301 redirect
+      },
+      {
         source: "/blog/calculate-body-fat-percentage-at-home",
         destination: "/guides/how-to-estimate-body-fat-percentage",
         permanent: true, // 301 redirect
