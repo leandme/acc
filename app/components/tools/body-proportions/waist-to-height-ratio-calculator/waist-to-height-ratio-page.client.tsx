@@ -75,7 +75,15 @@ export default function WaistToHeightRatioPageClient() {
             waist trend, and cardiometabolic markers over time.
           </p>
           <p className={pClass}>
-            For hip-adjusted central-fat context, run the{" "}
+            For height-based target planning, use the{" "}
+            <a className="text-primary underline" href="/ideal-waist-size-calculator">
+              Ideal Waist Size Calculator
+            </a>
+            . For upper-body taper context, run the{" "}
+            <a className="text-primary underline" href="/shoulder-to-waist-ratio-calculator">
+              Shoulder to Waist Ratio Calculator
+            </a>
+            . For hip-adjusted central-fat context, run the{" "}
             <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
               Waist to Hip Ratio Calculator
             </a>
@@ -120,6 +128,8 @@ export default function WaistToHeightRatioPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "ideal-waist-size-calculator",
+              "shoulder-to-waist-ratio-calculator",
               "waist-to-hip-ratio-calculator",
               "bmi-calculator",
               "overweight-calculator",

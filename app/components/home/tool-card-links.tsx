@@ -38,6 +38,36 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     description: "Get an AI attractiveness score from a portrait with confidence and score bands.",
   },
   {
+    title: "Golden Face Ratio Analyzer",
+    href: "/golden-face-ratio-analyzer",
+    description: "Upload a portrait to analyze golden-ratio facial proportions with AI.",
+  },
+  {
+    title: "Eyebrow Type Detector",
+    href: "/eyebrow-type-detector",
+    description: "Detect eyebrow type from a portrait with confidence and style context.",
+  },
+  {
+    title: "Eye Shape Detector",
+    href: "/eye-shape-detector",
+    description: "Detect eye shape, eye color, and canthal tilt from a portrait.",
+  },
+  {
+    title: "Nose Shape Detector",
+    href: "/nose-shape-detector",
+    description: "Detect nose shape, bridge profile, and tip orientation from a portrait.",
+  },
+  {
+    title: "Skin Type Detector",
+    href: "/skin-type-detector",
+    description: "Detect likely skin type from a portrait with confidence and care-direction context.",
+  },
+  {
+    title: "Hair Color Detector",
+    href: "/hair-color-detector",
+    description: "Detect likely hair color, undertone, and depth from a portrait with confidence scoring.",
+  },
+  {
     title: "Body Shape Calculator",
     href: "/body-shape-calculator",
     description: "Estimate body-shape category from bust, waist, and hip measurements.",
@@ -128,6 +158,21 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     description: "Screen central-fat risk by comparing waist circumference to height.",
   },
   {
+    title: "Shoulder to Waist Ratio Calculator",
+    href: "/shoulder-to-waist-ratio-calculator",
+    description: "Check shoulder-to-waist taper ratio from circumference measurements.",
+  },
+  {
+    title: "Ideal Waist Size Calculator",
+    href: "/ideal-waist-size-calculator",
+    description: "Estimate ideal and upper-target waist size from your height.",
+  },
+  {
+    title: "Ape Index Calculator",
+    href: "/ape-index-calculator",
+    description: "Calculate wingspan-to-height ratio and reach difference.",
+  },
+  {
     title: "BMI Calculator",
     href: "/bmi-calculator",
     description: "Calculate BMI and check standard adult categories.",
@@ -156,6 +201,11 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
     title: "Calorie Deficit Calculator",
     href: "/calorie-deficit-calculator",
     description: "Set daily calorie targets from your chosen weekly loss pace.",
+  },
+  {
+    title: "Calorie Calculator",
+    href: "/calorie-calculator",
+    description: "Estimate daily calories for maintenance, fat loss, or lean gain.",
   },
   {
     title: "Macro Calculator",

@@ -76,7 +76,11 @@ export default function WeightLossPageClient() {
             <a className="text-primary underline" href="/tdee-calculator">
               TDEE Calculator
             </a>{" "}
-            and convert that to an intake target in the{" "}
+            or the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>
+            , and convert that to an intake target in the{" "}
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
             </a>
@@ -135,6 +139,7 @@ export default function WeightLossPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "tdee-calculator",
               "calorie-deficit-calculator",
               "steps-to-calories-calculator",

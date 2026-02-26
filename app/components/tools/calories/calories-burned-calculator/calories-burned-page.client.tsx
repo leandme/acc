@@ -103,6 +103,10 @@ export default function CaloriesBurnedPageClient() {
             <a className="text-primary underline" href="/tdee-calculator">
               TDEE Calculator
             </a>
+            {" "}or the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>
             . For intake targeting, use the{" "}
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
@@ -151,6 +155,7 @@ export default function CaloriesBurnedPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "steps-to-calories-calculator",
               "tdee-calculator",
               "calorie-deficit-calculator",

@@ -78,6 +78,10 @@ export default function StepsToCaloriesPageClient() {
             <a className="text-primary underline" href="/tdee-calculator">
               TDEE Calculator
             </a>
+            {" "}or the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>
             . Then convert maintenance into a goal intake with the{" "}
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
@@ -141,6 +145,7 @@ export default function StepsToCaloriesPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "tdee-calculator",
               "calorie-deficit-calculator",
               "weight-loss-calculator",

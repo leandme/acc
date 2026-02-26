@@ -100,6 +100,10 @@ export default function IntermittentFastingPageClient() {
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
             </a>
+            {" "}or the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>
             . To estimate real meal intake by photo on feeding days, use the{" "}
             <a className="text-primary underline" href="/calorie-estimator">
               Calorie Estimator
@@ -164,6 +168,7 @@ export default function IntermittentFastingPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "fasting-weight-loss-calculator",
               "weight-loss-calculator",
               "calorie-deficit-calculator",

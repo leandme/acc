@@ -11,7 +11,13 @@ type BasePath =
   | "/face-symmetry-test"
   | "/face-shape-detector"
   | "/age-guesser"
-  | "/attractiveness-test";
+  | "/attractiveness-test"
+  | "/golden-face-ratio-analyzer"
+  | "/eyebrow-type-detector"
+  | "/eye-shape-detector"
+  | "/nose-shape-detector"
+  | "/skin-type-detector"
+  | "/hair-color-detector";
 
 type Props = {
   basePath: BasePath;

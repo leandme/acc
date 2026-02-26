@@ -72,7 +72,11 @@ export default function FastingWeightLossPageClient() {
             <a className="text-primary underline" href="/tdee-calculator">
               TDEE Calculator
             </a>{" "}
-            and set a target with the{" "}
+            or the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>
+            , and set a target with the{" "}
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
             </a>
@@ -138,6 +142,7 @@ export default function FastingWeightLossPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "intermittent-fasting-calculator",
               "tdee-calculator",
               "calorie-deficit-calculator",

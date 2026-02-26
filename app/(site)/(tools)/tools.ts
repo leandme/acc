@@ -222,6 +222,24 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Assess waist-to-height ratio against central-fat risk screening thresholds.",
     category: "Body Proportions",
   },
+  "shoulder-to-waist-ratio-calculator": {
+    slug: "shoulder-to-waist-ratio-calculator",
+    title: "Shoulder to Waist Ratio Calculator",
+    description: "Calculate shoulder-to-waist taper ratio from circumference measurements.",
+    category: "Body Proportions",
+  },
+  "ideal-waist-size-calculator": {
+    slug: "ideal-waist-size-calculator",
+    title: "Ideal Waist Size Calculator",
+    description: "Estimate ideal waist-size targets from height and ratio-based planning bands.",
+    category: "Body Proportions",
+  },
+  "ape-index-calculator": {
+    slug: "ape-index-calculator",
+    title: "Ape Index Calculator",
+    description: "Calculate wingspan-to-height ratio and wingspan-height reach difference.",
+    category: "Body Proportions",
+  },
   "body-shape-analyzer": {
     slug: "body-shape-analyzer",
     title: "Body Shape Analyzer",
@@ -256,6 +274,42 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "attractiveness-test",
     title: "Attractiveness Test",
     description: "Upload a portrait to get an AI attractiveness score with confidence bands and interpretation table.",
+    category: "Face",
+  },
+  "golden-face-ratio-analyzer": {
+    slug: "golden-face-ratio-analyzer",
+    title: "Golden Face Ratio Analyzer",
+    description: "Upload a portrait for AI golden-ratio facial analysis and use the on-page manual calculator.",
+    category: "Face",
+  },
+  "eyebrow-type-detector": {
+    slug: "eyebrow-type-detector",
+    title: "Eyebrow Type Detector",
+    description: "Upload a portrait to detect eyebrow type with confidence and grooming interpretation.",
+    category: "Face",
+  },
+  "eye-shape-detector": {
+    slug: "eye-shape-detector",
+    title: "Eye Shape Detector",
+    description: "Detect eye shape, canthal tilt, and eye color from a portrait with AI.",
+    category: "Face",
+  },
+  "nose-shape-detector": {
+    slug: "nose-shape-detector",
+    title: "Nose Shape Detector",
+    description: "Detect nose shape, bridge profile, and tip direction from a portrait with AI.",
+    category: "Face",
+  },
+  "skin-type-detector": {
+    slug: "skin-type-detector",
+    title: "Skin Type Detector",
+    description: "Detect likely skin type from a portrait with AI confidence and care-direction context.",
+    category: "Face",
+  },
+  "hair-color-detector": {
+    slug: "hair-color-detector",
+    title: "Hair Color Detector",
+    description: "Detect hair color, undertone, and depth from a portrait with AI confidence scoring.",
     category: "Face",
   },
 
@@ -396,6 +450,12 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "calorie-deficit-calculator",
     title: "Calorie Deficit Calculator",
     description: "Calculate deficit targets and daily calories from your selected weekly pace.",
+    category: "Calories",
+  },
+  "calorie-calculator": {
+    slug: "calorie-calculator",
+    title: "Calorie Calculator",
+    description: "Estimate how many calories you need for maintenance, fat loss, or lean gain.",
     category: "Calories",
   },
   "macro-calculator": {

@@ -510,6 +510,30 @@ function FaceShapePageContent() {
             <a className="text-primary underline" href="/attractiveness-test">
               Attractiveness Test
             </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/golden-face-ratio-analyzer">
+              Golden Face Ratio Analyzer
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/eyebrow-type-detector">
+              Eyebrow Type Detector
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/eye-shape-detector">
+              Eye Shape Detector
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/nose-shape-detector">
+              Nose Shape Detector
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/skin-type-detector">
+              Skin Type Detector
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/hair-color-detector">
+              Hair Color Detector
+            </a>{" "}
             for photo-based appearance scoring and apparent-age context. For full-body visual analysis, use the{" "}
             <a className="text-primary underline" href="/body-shape-analyzer">
               Body Shape Analyzer
@@ -580,6 +604,12 @@ function FaceShapePageContent() {
             heading="Related Tools"
             columns={2}
             toolSlugs={[
+              "golden-face-ratio-analyzer",
+              "eyebrow-type-detector",
+              "eye-shape-detector",
+              "nose-shape-detector",
+              "skin-type-detector",
+              "hair-color-detector",
               "age-guesser",
               "attractiveness-test",
               "face-symmetry-test",

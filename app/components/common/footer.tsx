@@ -76,18 +76,25 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/age-guesser">Age Guesser</a></li>
               <li><a className="hover:text-white" href="/attractiveness-test">Attractiveness Test</a></li>
               <li><a className="hover:text-white" href="/face-symmetry-test">Face Symmetry Test</a></li>
+              <li><a className="hover:text-white" href="/golden-face-ratio-analyzer">Golden Face Ratio Analyzer</a></li>
+              <li><a className="hover:text-white" href="/eyebrow-type-detector">Eyebrow Type Detector</a></li>
+              <li><a className="hover:text-white" href="/eye-shape-detector">Eye Shape Detector</a></li>
+              <li><a className="hover:text-white" href="/nose-shape-detector">Nose Shape Detector</a></li>
+              <li><a className="hover:text-white" href="/skin-type-detector">Skin Type Detector</a></li>
+              <li><a className="hover:text-white" href="/hair-color-detector">Hair Color Detector</a></li>
             </ul>
           </div>
 
 
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
-              Metabolism
+              Calories
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
+              <li><a className="hover:text-white" href="/calorie-calculator">Calorie Calculator</a></li>
               <li><a className="hover:text-white" href="/calorie-estimator">Calorie Estimator</a></li>
               <li><a className="hover:text-white" href="/steps-to-calories-calculator">Steps to Calories Calculator</a></li>
-              <li><a className="hover:text-white" href="/tdee-calculator">TDEE Calculator</a></li>
+              <li><a className="hover:text-white" href="/calorie-deficit-calculator">Calorie Deficit Calculator</a></li>
               <li><a className="hover:text-white" href="/calories-burned-calculator">Calories Burned Calculator</a></li>
             </ul>
           </div>

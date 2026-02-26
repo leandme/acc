@@ -84,6 +84,10 @@ export default function MacroPageClient() {
             <a className="text-primary underline" href="/tdee-calculator">
               TDEE Calculator
             </a>
+            {" "}or the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>
             . For weekly pace planning, pair this with the{" "}
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
@@ -154,6 +158,7 @@ export default function MacroPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "calorie-deficit-calculator",
               "tdee-calculator",
               "bmr-calculator",

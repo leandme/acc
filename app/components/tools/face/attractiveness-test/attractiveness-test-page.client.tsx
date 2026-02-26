@@ -531,6 +531,30 @@ function AttractivenessTestPageContent() {
             <a className="text-primary underline" href="/age-guesser">
               Age Guesser
             </a>{" "}
+            plus the{" "}
+            <a className="text-primary underline" href="/golden-face-ratio-analyzer">
+              Golden Face Ratio Analyzer
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/eyebrow-type-detector">
+              Eyebrow Type Detector
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/eye-shape-detector">
+              Eye Shape Detector
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/nose-shape-detector">
+              Nose Shape Detector
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/skin-type-detector">
+              Skin Type Detector
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/hair-color-detector">
+              Hair Color Detector
+            </a>{" "}
             for apparent-age context.
           </p>
           <p className={pClass}>
@@ -600,6 +624,12 @@ function AttractivenessTestPageContent() {
             heading="Related Tools"
             columns={2}
             toolSlugs={[
+              "golden-face-ratio-analyzer",
+              "eyebrow-type-detector",
+              "eye-shape-detector",
+              "nose-shape-detector",
+              "skin-type-detector",
+              "hair-color-detector",
               "face-symmetry-test",
               "face-shape-detector",
               "age-guesser",

@@ -70,7 +70,11 @@ export default function TDEEPageClient() {
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
             </a>{" "}
-            and timeline-check with the{" "}
+            or use the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>{" "}
+            for a maintenance-to-goal intake setup in one view, then timeline-check with the{" "}
             <a className="text-primary underline" href="/weight-loss-calculator">
               Weight Loss Calculator
             </a>
@@ -146,6 +150,7 @@ export default function TDEEPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "bmr-calculator",
               "calorie-deficit-calculator",
               "calorie-estimator",

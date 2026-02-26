@@ -67,7 +67,11 @@ export default function CalorieDeficitPageClient() {
             <a className="text-primary underline" href="/tdee-calculator">
               TDEE Calculator
             </a>{" "}
-            for maintenance estimates and the{" "}
+            or the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>{" "}
+            for maintenance-and-goal calorie targets, and use the{" "}
             <a className="text-primary underline" href="/weight-loss-calculator">
               Weight Loss Calculator
             </a>{" "}
@@ -147,6 +151,7 @@ export default function CalorieDeficitPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "tdee-calculator",
               "bmr-calculator",
               "calorie-estimator",

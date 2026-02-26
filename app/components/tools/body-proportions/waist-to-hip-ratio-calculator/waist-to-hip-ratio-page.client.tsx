@@ -75,7 +75,15 @@ export default function WaistToHipRatioPageClient() {
             ratio, body-fat estimates, and longer trend tracking.
           </p>
           <p className={pClass}>
-            For broader screening, compare with the{" "}
+            For waist-size target planning, compare with the{" "}
+            <a className="text-primary underline" href="/ideal-waist-size-calculator">
+              Ideal Waist Size Calculator
+            </a>
+            . For taper ratio context, use the{" "}
+            <a className="text-primary underline" href="/shoulder-to-waist-ratio-calculator">
+              Shoulder to Waist Ratio Calculator
+            </a>
+            . For broad screening, compare with the{" "}
             <a className="text-primary underline" href="/bmi-calculator">
               BMI Calculator
             </a>
@@ -116,6 +124,8 @@ export default function WaistToHipRatioPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "ideal-waist-size-calculator",
+              "shoulder-to-waist-ratio-calculator",
               "waist-to-height-ratio-calculator",
               "bmi-calculator",
               "overweight-calculator",
@@ -132,4 +142,3 @@ export default function WaistToHipRatioPageClient() {
     </main>
   );
 }
-

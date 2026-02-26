@@ -389,6 +389,10 @@ function CalorieEstimatorPageContent() {
             <a className="text-primary underline" href="/tdee-calculator">
               TDEE Calculator
             </a>{" "}
+            or the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>{" "}
             to estimate maintenance, and the{" "}
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
@@ -451,6 +455,7 @@ function CalorieEstimatorPageContent() {
             heading="Related Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "calorie-deficit-calculator",
               "macro-calculator",
               "tdee-calculator",

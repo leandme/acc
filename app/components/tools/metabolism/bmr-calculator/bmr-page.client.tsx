@@ -69,6 +69,10 @@ export default function BMRPageClient() {
             <a className="text-primary underline" href="/calorie-deficit-calculator">
               Calorie Deficit Calculator
             </a>
+            {" "}or the{" "}
+            <a className="text-primary underline" href="/calorie-calculator">
+              Calorie Calculator
+            </a>
             .
           </p>
           {mifflinBmr != null && harrisBmr != null ? (
@@ -116,6 +120,7 @@ export default function BMRPageClient() {
             heading="More Tools"
             columns={2}
             toolSlugs={[
+              "calorie-calculator",
               "tdee-calculator",
               "calorie-deficit-calculator",
               "weight-loss-calculator",

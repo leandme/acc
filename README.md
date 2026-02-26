@@ -27,10 +27,6 @@ Add section- goal weight/body fat%
 - Estimate counter
 - dd company name on legal pages and contactgit 
 
-# BACKLINKS
-- PH
-- Interview Rory Sutherland on weight lose behavioural side of things.
-
 # KEYWORDS
 weight loss estimator
 best calorie tracker app
