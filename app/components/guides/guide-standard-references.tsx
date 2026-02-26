@@ -1,4 +1,5 @@
 import References from "@/app/components/guides/guide-references";
+import { EzoicAdSlot } from "@/app/components/helpers/ezoic-ad-slot";
 
 type GuideReference = {
   label: string;
@@ -236,5 +237,10 @@ export default function GuideStandardReferences({
   const references = dedupeReferences(
     [...baseGuideReferences, ...specific, ...fallbackReferences].slice(0, 6)
   );
-  return <References references={references} />;
+  return (
+    <>
+      <EzoicAdSlot id={111} className="mt-12" />
+      <References references={references} />
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { POSTS } from "@/app/(site)/guides/posts";
+import { EzoicAdSlot } from "@/app/components/helpers/ezoic-ad-slot";
 
 type ArticleCard = {
   slug: string;
@@ -120,51 +121,53 @@ export function MoreArticles({
   const shownArticles = withDiversity(articles, maxItems, preferredTag, currentSlug);
 
   return (
-    <section className="mt-14 border-t pt-10">
-      <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900"><a className="hover:underline" href="/guides">{heading} →</a></h2>
+    <>
+      <EzoicAdSlot id={114} className="mt-12" />
+      <section className="mt-14 border-t pt-10">
+        <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900"><a className="hover:underline" href="/guides">{heading} →</a></h2>
 
-      <div className="mt-6 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
-        {shownArticles.map((a) => (
-          <Link
-            key={a.slug}
-            href={`${basePath}/${a.slug}`}
-            className="group rounded-2xl border bg-white transition hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
-          >
-            {/* Image */}
-            <div className="w-full aspect-[2/1] bg-base-200 overflow-hidden">
-              <img
-                src={a.image}
-                alt={a.title}
-                className="h-full w-full object-cover transition group-hover:scale-[1.02]"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Content */}
-            <div className="p-6">
-              <div className="flex items-center justify-between gap-3">
-                <span className="text-xs text-gray-500">{a.date ?? ""}</span>
-                {a.tag ? (
-                  <span className="rounded-full bg-base-200 px-2 py-1 text-xs text-gray-700">
-                    {a.tag.replace("-", " ")}
-                  </span>
-                ) : null}
+        <div className="mt-6 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
+          {shownArticles.map((a) => (
+            <Link
+              key={a.slug}
+              href={`${basePath}/${a.slug}`}
+              className="group rounded-2xl border bg-white transition hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
+            >
+              {/* Image */}
+              <div className="w-full aspect-[2/1] bg-base-200 overflow-hidden">
+                <img
+                  src={a.image}
+                  alt={a.title}
+                  className="h-full w-full object-cover transition group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
               </div>
 
-              <h3 className="mt-4 text-xl lg:text-2xl font-semibold text-gray-900 group-hover:underline">
-                {a.title}
-              </h3>
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-xs text-gray-500">{a.date ?? ""}</span>
+                  {a.tag ? (
+                    <span className="rounded-full bg-base-200 px-2 py-1 text-xs text-gray-700">
+                      {a.tag.replace("-", " ")}
+                    </span>
+                  ) : null}
+                </div>
 
-              {a.description ? (
-                <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                  {a.description}
-                </p>
-              ) : null}
-              
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
+                <h3 className="mt-4 text-xl lg:text-2xl font-semibold text-gray-900 group-hover:underline">
+                  {a.title}
+                </h3>
+
+                {a.description ? (
+                  <p className="mt-3 text-sm text-gray-600 leading-relaxed">
+                    {a.description}
+                  </p>
+                ) : null}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
