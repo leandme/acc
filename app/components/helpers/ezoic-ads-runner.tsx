@@ -25,38 +25,79 @@ declare global {
   }
 }
 
-const GUIDE_PLACEHOLDER_IDS = [109, 111, 114] as const;
+const KNOWN_PLACEHOLDER_IDS = [109, 111, 114, 112, 113] as const;
 
-function isGuidesPath(pathname: string | null) {
-  return pathname === "/guides" || pathname?.startsWith("/guides/") === true;
+function getOrCreateEzoicStandalone() {
+  if (typeof window === "undefined") return undefined;
+
+  if (!window.ezstandalone) {
+    window.ezstandalone = { cmd: [] };
+  }
+
+  if (!window.ezstandalone.cmd) {
+    window.ezstandalone.cmd = [];
+  }
+
+  return window.ezstandalone;
+}
+
+function getMountedPlaceholderIds() {
+  if (typeof document === "undefined") return [] as number[];
+
+  return KNOWN_PLACEHOLDER_IDS.filter((id) =>
+    Boolean(document.getElementById(`ezoic-pub-ad-placeholder-${id}`))
+  );
+}
+
+function refreshMountedPlaceholders(ez: EzoicStandalone) {
+  ez.config?.({
+    anchorAdExpansion: false,
+    disableInterstitial: true,
+    vignetteDesktop: false,
+    vignetteMobile: false,
+    vignetteTablet: false,
+  });
+  ez.setEzoicAnchorAd?.(false);
+
+  const mounted = getMountedPlaceholderIds();
+  if (!mounted.length) {
+    ez.destroyPlaceholders?.(...KNOWN_PLACEHOLDER_IDS);
+    return;
+  }
+
+  const mountedSet = new Set<number>(mounted);
+  const unmounted = KNOWN_PLACEHOLDER_IDS.filter((id) => !mountedSet.has(id));
+  if (unmounted.length) {
+    ez.destroyPlaceholders?.(...unmounted);
+  }
+
+  ez.showAds?.(...mounted);
 }
 
 export function EzoicAdsRunner() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    const ez = getOrCreateEzoicStandalone();
+    if (!ez) return;
 
-    const ez = window.ezstandalone;
-    if (!ez?.cmd) return;
-
-    ez.cmd.push(() => {
-      ez.config?.({
-        anchorAdExpansion: false,
-        disableInterstitial: true,
-        vignetteDesktop: false,
-        vignetteMobile: false,
-        vignetteTablet: false,
+    const runWhenDomSettles = () => {
+      if (typeof window === "undefined") return;
+      window.requestAnimationFrame(() => {
+        window.setTimeout(() => {
+          refreshMountedPlaceholders(ez);
+        }, 120);
       });
-      ez.setEzoicAnchorAd?.(false);
+    };
 
-      if (isGuidesPath(pathname)) {
-        ez.showAds?.(...GUIDE_PLACEHOLDER_IDS);
-        return;
-      }
+    // If Ezoic is already initialized, run immediately.
+    if (typeof ez.showAds === "function") {
+      runWhenDomSettles();
+      return;
+    }
 
-      ez.destroyPlaceholders?.(...GUIDE_PLACEHOLDER_IDS);
-    });
+    // Otherwise, queue for Ezoic init.
+    ez.cmd.push(runWhenDomSettles);
   }, [pathname]);
 
   return null;

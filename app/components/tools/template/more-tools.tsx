@@ -7,6 +7,7 @@ import type { ToolCategory } from "@/app/(site)/(tools)/tools";
 import { getToolsByCategories } from "@/app/(site)/(tools)/tools";
 import { ToolMeta } from "@/app/(site)/(tools)/tools";
 import { pickTools } from "@/app/(site)/(tools)/tools";
+import { EzoicAdSlot } from "@/app/components/helpers/ezoic-ad-slot";
 
 const LOW_LINK_TOOL_SLUGS = new Set<string>([
   "overweight-calculator",
@@ -103,33 +104,36 @@ export function MoreTools({
   if (!tools.length) return null;
 
   return (
-    <section className={`mt-14 border-t pt-10 ${className}`}>
-      <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900"><a className="hover:underline" href="/tools">{heading} →</a></h2>
+    <>
+      <EzoicAdSlot id={112} className="mt-10" />
+      <section className={`mt-14 border-t pt-10 ${className}`}>
+        <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900"><a className="hover:underline" href="/tools">{heading} →</a></h2>
 
-      <div className={`mt-6 grid gap-6 ${gridCols}`}>
-        {tools.map((t) => (
-          <Link
-            key={t.slug}
-            href={`/${t.slug}`}
-            onClick={() => {
-              trackEvent("Go to Tool", {
-                tool: t.title.toLowerCase(),
-                source: "more tools",
-              });
-            }}
-            className="group rounded-2xl border bg-white transition hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
-          >
-            <div className="p-6">
-              <h3 className="text-lg lg:text-xl font-semibold text-gray-900 group-hover:underline">
-                {t.title}
-              </h3>
-              <p className="mt-1 text-sm text-gray-600 leading-snug">
-                      {t.description}
-              </p>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
+        <div className={`mt-6 grid gap-6 ${gridCols}`}>
+          {tools.map((t) => (
+            <Link
+              key={t.slug}
+              href={`/${t.slug}`}
+              onClick={() => {
+                trackEvent("Go to Tool", {
+                  tool: t.title.toLowerCase(),
+                  source: "more tools",
+                });
+              }}
+              className="group rounded-2xl border bg-white transition hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
+            >
+              <div className="p-6">
+                <h3 className="text-lg lg:text-xl font-semibold text-gray-900 group-hover:underline">
+                  {t.title}
+                </h3>
+                <p className="mt-1 text-sm text-gray-600 leading-snug">
+                        {t.description}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
