@@ -3,7 +3,7 @@ import AttractivenessTestPageClient from "@/app/components/tools/face/attractive
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Attractiveness Test – How Attractive Am I?",
+  title: "Attractiveness Test – Face Rating & Analysis?",
   description:
     "Upload a portrait to get an AI attractiveness score, confidence rating, interpretation bar, and detailed result table.",
   canonical: "https://bodyfatestimator.ai/attractiveness-test",

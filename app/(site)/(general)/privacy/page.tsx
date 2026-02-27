@@ -134,8 +134,24 @@ export default function PrivacyPolicy() {
               Amplitude, which may use cookies or similar identifiers and
               collect interaction data to help us improve the Service. Amplitude
               session replay is enabled to diagnose UX issues and reliability
-              problems. We do not currently run third-party display advertising
-              on the Service.
+              problems.
+            </p>
+
+            <p className="mt-3 text-gray-700 text-lg leading-relaxed">
+              We also use Ezoic to support third-party advertising on the
+              Service. Ezoic and its partners may use cookies, local storage,
+              and similar technologies to personalize content and ads, measure
+              ad performance, and prevent fraud. For additional details about
+              Ezoic disclosures and partners, see{" "}
+              <a
+                className="underline text-primary"
+                href="https://g.ezoic.net/privacy/bodyfatestimator.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ezoic&apos;s privacy disclosures for this site
+              </a>
+              .
             </p>
           </div>
 
@@ -224,10 +240,22 @@ export default function PrivacyPolicy() {
               .
             </p>
           </div>
+
+          {/* 12. Ezoic policy embed */}
+          <div className="rounded-2xl bg-white p-6">
+            <h2 className="text-2xl font-semibold">12. Ezoic Privacy Disclosures</h2>
+            <p className="mt-3 text-gray-700 text-lg leading-relaxed">
+              The following disclosures are provided by Ezoic and its
+              advertising partners:
+            </p>
+            <div className="mt-4 text-gray-700 text-lg leading-relaxed">
+              <span id="ezoic-privacy-policy-embed"></span>
+            </div>
+          </div>
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 16/2/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 27/2/2026</p>
         </div>
       </section>
     </main>

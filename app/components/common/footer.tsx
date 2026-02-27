@@ -52,6 +52,7 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/body-shape-analyzer">Body Shape Analyzer</a></li>
               <li><a className="hover:text-white" href="/army-body-fat-calculator">Army Body Fat Calculator</a></li>
                <li><a className="hover:text-white" href="/ffmi-calculator">FFMI Calculator</a></li>
+               <li><a className="hover:text-white" href="/bai-calculator">BAI Calculator</a></li>
             </ul>
           </div>
 
@@ -64,6 +65,7 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/weight-loss-calculator">Weight Loss Calculator</a></li>
               <li><a className="hover:text-white" href="/intermittent-fasting-calculator">Intermittent Fasting Calculator</a></li>
               <li><a className="hover:text-white" href="/ideal-weight-calculator">Ideal Weight Calculator</a></li>
+               <li><a className="hover:text-white" href="/ponderal-index-calculator">Ponderal Index Calculator</a></li>
             </ul>
           </div>
 
@@ -77,11 +79,6 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/attractiveness-test">Attractiveness Test</a></li>
               <li><a className="hover:text-white" href="/face-symmetry-test">Face Symmetry Test</a></li>
               <li><a className="hover:text-white" href="/golden-face-ratio-analyzer">Golden Face Ratio Analyzer</a></li>
-              <li><a className="hover:text-white" href="/eyebrow-type-detector">Eyebrow Type Detector</a></li>
-              <li><a className="hover:text-white" href="/eye-shape-detector">Eye Shape Detector</a></li>
-              <li><a className="hover:text-white" href="/nose-shape-detector">Nose Shape Detector</a></li>
-              <li><a className="hover:text-white" href="/skin-type-detector">Skin Type Detector</a></li>
-              <li><a className="hover:text-white" href="/hair-color-detector">Hair Color Detector</a></li>
             </ul>
           </div>
 
@@ -96,6 +93,16 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/steps-to-calories-calculator">Steps to Calories Calculator</a></li>
               <li><a className="hover:text-white" href="/calorie-deficit-calculator">Calorie Deficit Calculator</a></li>
               <li><a className="hover:text-white" href="/calories-burned-calculator">Calories Burned Calculator</a></li>
+            </ul>
+          </div>
+
+           <div>
+            <h6 className="text-lg font-semibold text-gray-200">
+              Height
+            </h6>
+            <ul className="mt-3 space-y-2 text-base text-gray-300">
+              <li><a className="hover:text-white" href="/height-estimator">Height Estimator</a></li>
+              <li><a className="hover:text-white" href="/height-estimator">Mid-Parental Height Calculator</a></li>
             </ul>
           </div>
 
