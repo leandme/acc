@@ -2,9 +2,13 @@
 
 import React, { useMemo } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { trackEvent } from "@/app/libs/amplitude";
 import type { ToolCategory } from "@/app/(site)/(tools)/tools";
+import { getToolCategoryMeta } from "@/app/(site)/(tools)/tools";
+import { getToolsByCategory } from "@/app/(site)/(tools)/tools";
 import { getToolsByCategories } from "@/app/(site)/(tools)/tools";
+import { TOOLS } from "@/app/(site)/(tools)/tools";
 import { ToolMeta } from "@/app/(site)/(tools)/tools";
 import { pickTools } from "@/app/(site)/(tools)/tools";
 import { EzoicAdSlot } from "@/app/components/helpers/ezoic-ad-slot";
@@ -74,10 +78,25 @@ export function MoreTools({
   excludeSlug,
   className = "",
 }: Props) {
+  const pathname = usePathname();
+  const currentSlugFromPath = useMemo(() => {
+    const firstSegment = pathname?.split("/").filter(Boolean)[0];
+    if (!firstSegment) return null;
+    return TOOLS[firstSegment]?.slug ?? null;
+  }, [pathname]);
+
+  const currentTool = currentSlugFromPath ? TOOLS[currentSlugFromPath] : null;
+  const currentCategoryMeta = currentTool
+    ? getToolCategoryMeta(currentTool.category)
+    : null;
+
   const tools = useMemo(() => {
     let list: ToolMeta[] = [];
 
-    if (toolSlugs?.length) list = pickTools(toolSlugs);
+    if (currentTool) {
+      // On tool pages, keep recommendations inside the same topical cluster.
+      list = getToolsByCategory(currentTool.category);
+    } else if (toolSlugs?.length) list = pickTools(toolSlugs);
     else if (categories?.length) list = getToolsByCategories(categories);
 
     // Remove duplicates by slug (in case you mix approaches later)
@@ -88,11 +107,12 @@ export function MoreTools({
       return true;
     });
 
-    // Exclude current page
-    if (excludeSlug) list = list.filter((t) => t.slug !== excludeSlug);
+    // Exclude current page (auto on tool pages, manual fallback elsewhere).
+    const excluded = currentTool?.slug ?? excludeSlug;
+    if (excluded) list = list.filter((t) => t.slug !== excluded);
 
     return promoteLowLinkTool(list, maxItems);
-  }, [toolSlugs, categories, excludeSlug, maxItems]);
+  }, [currentTool, toolSlugs, categories, excludeSlug, maxItems]);
 
   const gridCols =
     columns === 4
@@ -103,11 +123,22 @@ export function MoreTools({
 
   if (!tools.length) return null;
 
+  const headingLabel = currentCategoryMeta
+    ? `More ${currentCategoryMeta.h1}`
+    : heading;
+  const headingHref = currentCategoryMeta
+    ? `/tools/${currentCategoryMeta.slug}`
+    : "/tools";
+
   return (
     <>
       <EzoicAdSlot id={112} className="mt-10" />
       <section className={`mt-14 border-t pt-10 ${className}`}>
-        <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900"><a className="hover:underline" href="/tools">{heading} →</a></h2>
+        <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900">
+          <Link className="hover:underline" href={headingHref}>
+            {headingLabel} →
+          </Link>
+        </h2>
 
         <div className={`mt-6 grid gap-6 ${gridCols}`}>
           {tools.map((t) => (

@@ -1,22 +1,20 @@
 export type ToolCategory =
-  | "Body Fat"
-  | "Body Composition"
+  | "Fat"
+  | "Shape"
   | "Muscle"
   | "Height"
   | "Face"
-  | "Body Proportions"
-  | "Body Weight"
+  | "Weight"
   | "Metabolism"
   | "Calories";
 
 export type ToolCategorySlug =
-  | "body-fat"
-  | "body-composition"
+  | "fat"
+  | "shape"
   | "muscle"
   | "height"
   | "face"
-  | "body-proportions"
-  | "body-weight"
+  | "weight"
   | "metabolism"
   | "calories";
 
@@ -40,10 +38,9 @@ const TOOL_CATEGORY_ORDER: ToolCategory[] = [
   "Muscle",
   "Height",
   "Face",
-  "Body Fat",
-  "Body Composition",
-  "Body Proportions",
-  "Body Weight",
+  "Fat",
+  "Shape",
+  "Weight",
   "Metabolism",
   "Calories",
 ];
@@ -73,33 +70,25 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     description:
       "Analyze facial shape, symmetry, apparent age, and attractiveness with AI-based classifiers, confidence scoring, and practical photo-standardization guidance.",
   },
-  "Body Fat": {
-    category: "Body Fat",
-    slug: "body-fat",
-    navLabel: "Body Fat",
-    h1: "Body Fat Tools",
+  Fat: {
+    category: "Fat",
+    slug: "fat",
+    navLabel: "Fat",
+    h1: "Fat Tools",
     description:
       "Estimate body fat with photo-based, tape-based, and skinfold-based methods, plus visual and adiposity-oriented tools.",
   },
-  "Body Composition": {
-    category: "Body Composition",
-    slug: "body-composition",
-    navLabel: "Composition",
-    h1: "Body Composition Tools",
+  Shape: {
+    category: "Shape",
+    slug: "shape",
+    navLabel: "Shape",
+    h1: "Shape Tools",
     description:
-      "Compare lean mass, muscle mass, frame context, shape, and composition indices in one place for trend-based tracking.",
+      "Analyze body shape, frame context, and proportionality with ratio-based and measurement-based screening tools.",
   },
-  "Body Proportions": {
-    category: "Body Proportions",
-    slug: "body-proportions",
-    navLabel: "Proportions",
-    h1: "Body Proportion Tools",
-    description:
-      "Assess waist-centered risk proxies and proportionality metrics with ratio-based screening calculators.",
-  },
-  "Body Weight": {
-    category: "Body Weight",
-    slug: "body-weight",
+  Weight: {
+    category: "Weight",
+    slug: "weight",
     navLabel: "Weight",
     h1: "Weight Tools",
     description:
@@ -124,15 +113,22 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
 };
 
 const TOOL_CATEGORY_META_BY_SLUG: Record<ToolCategorySlug, ToolCategoryMeta> = {
-  "body-fat": TOOL_CATEGORY_META_BY_NAME["Body Fat"],
-  "body-composition": TOOL_CATEGORY_META_BY_NAME["Body Composition"],
+  fat: TOOL_CATEGORY_META_BY_NAME["Fat"],
+  shape: TOOL_CATEGORY_META_BY_NAME["Shape"],
   muscle: TOOL_CATEGORY_META_BY_NAME["Muscle"],
   height: TOOL_CATEGORY_META_BY_NAME["Height"],
   face: TOOL_CATEGORY_META_BY_NAME["Face"],
-  "body-proportions": TOOL_CATEGORY_META_BY_NAME["Body Proportions"],
-  "body-weight": TOOL_CATEGORY_META_BY_NAME["Body Weight"],
+  weight: TOOL_CATEGORY_META_BY_NAME["Weight"],
   metabolism: TOOL_CATEGORY_META_BY_NAME["Metabolism"],
   calories: TOOL_CATEGORY_META_BY_NAME["Calories"],
+};
+
+const LEGACY_TOOL_CATEGORY_SLUGS: Record<string, ToolCategorySlug> = {
+  "body-fat": "fat",
+  "body-composition": "shape",
+  composition: "shape",
+  "body-proportions": "shape",
+  "body-weight": "weight",
 };
 
 export type ToolCategoryTab = {
@@ -143,12 +139,12 @@ export type ToolCategoryTab = {
 
 export const TOOLS: Record<string, ToolMeta> = {
 
-// BODY COMPOSITION
+// BODY COMPOSITION / SHAPE
   "ffmi-calculator": {
     slug: "ffmi-calculator",
     title: "FFMI Calculator",
     description: "How much of you is muscle?",
-    category: "Body Composition",
+    category: "Muscle",
   },
   "natty-or-not-calculator": {
     slug: "natty-or-not-calculator",
@@ -178,79 +174,79 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "lean-body-mass-calculator",
     title: "Lean Body Mass Calculator",
     description: "Estimate your lean mass with standard equations.",
-    category: "Body Composition",
+    category: "Muscle",
   },
   "muscle-mass-calculator": {
     slug: "muscle-mass-calculator",
     title: "Muscle Mass Calculator",
     description: "Estimate skeletal muscle mass from anthropometric measurements.",
-    category: "Body Composition",
+    category: "Muscle",
   },
   "rfm-calculator": {
     slug: "rfm-calculator",
     title: "RFM Calculator",
     description: "Estimate body fat from height and waist.",
-    category: "Body Composition",
+    category: "Fat",
   },
   "bri-calculator": {
     slug: "bri-calculator",
     title: "BRI Calculator",
     description: "Estimate body roundness from waist and height.",
-    category: "Body Composition",
+    category: "Fat",
   },
   "visceral-fat-calculator": {
     slug: "visceral-fat-calculator",
     title: "Visceral Fat Calculator",
     description: "Estimate visceral fat area from body measurements.",
-    category: "Body Composition",
+    category: "Fat",
   },
   "body-frame-size-calculator": {
     slug: "body-frame-size-calculator",
     title: "Body Frame Size Calculator",
     description: "Estimate frame size from height and wrist ratio.",
-    category: "Body Composition",
+    category: "Shape",
   },
   "waist-to-hip-ratio-calculator": {
     slug: "waist-to-hip-ratio-calculator",
     title: "Waist to Hip Ratio Calculator",
     description: "Assess waist-to-hip ratio with sex-specific central-fat risk thresholds.",
-    category: "Body Proportions",
+    category: "Shape",
   },
   "waist-to-height-ratio-calculator": {
     slug: "waist-to-height-ratio-calculator",
     title: "Waist to Height Ratio Calculator",
     description: "Assess waist-to-height ratio against central-fat risk screening thresholds.",
-    category: "Body Proportions",
+    category: "Shape",
   },
   "shoulder-to-waist-ratio-calculator": {
     slug: "shoulder-to-waist-ratio-calculator",
     title: "Shoulder to Waist Ratio Calculator",
     description: "Calculate shoulder-to-waist taper ratio from circumference measurements.",
-    category: "Body Proportions",
+    category: "Shape",
   },
   "ideal-waist-size-calculator": {
     slug: "ideal-waist-size-calculator",
     title: "Ideal Waist Size Calculator",
     description: "Estimate ideal waist-size targets from height and ratio-based planning bands.",
-    category: "Body Proportions",
+    category: "Shape",
   },
   "ape-index-calculator": {
     slug: "ape-index-calculator",
     title: "Ape Index Calculator",
     description: "Calculate wingspan-to-height ratio and wingspan-height reach difference.",
-    category: "Body Proportions",
+    category: "Shape",
   },
   "body-shape-analyzer": {
     slug: "body-shape-analyzer",
     title: "Body Shape Analyzer",
     description: "Upload a photo and analyze your visual body type.",
-    category: "Body Composition",
+    category: "Shape",
   },
   "body-shape-calculator": {
     slug: "body-shape-calculator",
     title: "Body Shape Calculator",
     description: "Estimate your body-shape category from bust/chest, waist, and hip measurements.",
-    category: "Body Composition",
+    category: "Shape",
   },
   "face-symmetry-test": {
     slug: "face-symmetry-test",
@@ -317,38 +313,38 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "body-visualizer",
     title: "Body Visualizer",
     description: "Visualize body shape from BMI, body fat %, height, and weight.",
-    category: "Body Fat",
+    category: "Fat",
   },
   "bai-calculator": {
     slug: "bai-calculator",
     title: "BAI Calculator",
     description: "Estimate body adiposity from hip circumference and height.",
-    category: "Body Fat",
+    category: "Fat",
   },
   estimate: {
     slug: "estimate",
     title: "Body Fat Estimator",
     description: "Estimate your body fat % from a photo.",
-    category: "Body Fat",
+    category: "Fat",
   },
   "body-fat-calculator": {
     slug: "body-fat-calculator",
     title: "Body Fat Calculator",
     description: "Estimate body fat % from measurements and formulas.",
-    category: "Body Fat",
+    category: "Fat",
   },
   "skinfold-body-fat-calculator": {
     slug: "skinfold-body-fat-calculator",
     title: "Skinfold Body Fat Calculator",
     description: "Estimate body fat % from 3-site skinfold caliper measurements.",
-    category: "Body Fat",
+    category: "Fat",
   },
 
   "army-body-fat-calculator": {
     slug: "army-body-fat-calculator",
     title: "Army Body Fat Calculator",
     description: "Estimate body fat % using the US Army tape method.",
-    category: "Body Fat",
+    category: "Fat",
   },
 
   // BODY WEIGHT
@@ -356,19 +352,19 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "weight-loss-percentage-calculator",
     title: "Weight Loss Percentage Calculator",
     description: "Calculate percentage change from starting to current weight.",
-    category: "Body Weight",
+    category: "Weight",
   },
   "overweight-calculator": {
     slug: "overweight-calculator",
     title: "Overweight Calculator",
     description: "Check BMI category and estimate weight above the healthy range.",
-    category: "Body Weight",
+    category: "Weight",
   },
   "ideal-weight-calculator": {
     slug: "ideal-weight-calculator",
     title: "Ideal Weight Calculator",
     description: "Compare healthy BMI range and Devine ideal body weight.",
-    category: "Body Weight",
+    category: "Weight",
   },
   "height-calculator": {
     slug: "height-calculator",
@@ -392,7 +388,7 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "adjusted-body-weight-calculator",
     title: "Adjusted Body Weight Calculator",
     description: "Calculate IBW, AdjBW, and percent-of-IBW for dosing context.",
-    category: "Body Weight",
+    category: "Weight",
   },
   "fasting-weight-loss-calculator": {
     slug: "fasting-weight-loss-calculator",
@@ -410,25 +406,25 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "weight-loss-calculator",
     title: "Weight Loss Calculator",
     description: "Estimate timeline to target weight with adaptive energy-balance math.",
-    category: "Body Weight",
+    category: "Weight",
   },
   "bmi-calculator": {
     slug: "bmi-calculator",
     title: "BMI Calculator",
     description: "Calculate BMI and view adult category ranges by height and weight.",
-    category: "Body Weight",
+    category: "Weight",
   },
   "ponderal-index-calculator": {
     slug: "ponderal-index-calculator",
     title: "Ponderal Index Calculator",
     description: "Calculate ponderal index and compare with BMI-equivalent ranges.",
-    category: "Body Weight",
+    category: "Weight",
   },
   "broca-index-calculator": {
     slug: "broca-index-calculator",
     title: "Broca Index Calculator",
     description: "Compare current weight against classic Broca height-based reference.",
-    category: "Body Weight",
+    category: "Weight",
   },
 
   // METABOLISM
@@ -507,7 +503,8 @@ export function getToolCategoryMeta(category: ToolCategory) {
 }
 
 export function getToolCategoryMetaBySlug(slug: string) {
-  return TOOL_CATEGORY_META_BY_SLUG[slug as ToolCategorySlug] ?? null;
+  const normalizedSlug = LEGACY_TOOL_CATEGORY_SLUGS[slug] ?? slug;
+  return TOOL_CATEGORY_META_BY_SLUG[normalizedSlug as ToolCategorySlug] ?? null;
 }
 
 export function getToolCategoryTabs(): ToolCategoryTab[] {

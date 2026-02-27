@@ -9,6 +9,31 @@ const nextConfig: NextConfig = {
         permanent: true, // 301 redirect
       },
       {
+        source: "/tools/body-fat",
+        destination: "/tools/fat",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/tools/body-composition",
+        destination: "/tools/shape",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/tools/composition",
+        destination: "/tools/shape",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/tools/body-proportions",
+        destination: "/tools/shape",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/tools/body-weight",
+        destination: "/tools/weight",
+        permanent: true, // 301 redirect
+      },
+      {
         source: "/blog/calculate-body-fat-percentage-at-home",
         destination: "/guides/how-to-estimate-body-fat-percentage",
         permanent: true, // 301 redirect

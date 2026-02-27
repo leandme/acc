@@ -198,7 +198,7 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
       label: "Open Face Shape Detector",
     },
   },
-  "body-fat": {
+  fat: {
     summary: [
       "Body fat tools are strongest when used as a system, not in isolation. This category lets you compare visual, tape-based, and formula-style estimates so you can track trend direction with better context.",
       "Because different methods rely on different inputs, disagreement is normal. The goal is consistency and decision quality over time, not chasing a single perfect percentage.",
@@ -257,101 +257,42 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
       label: "Open Body Fat Calculator",
     },
   },
-  "body-composition": {
+  shape: {
     summary: [
-      "Body composition tools help separate weight into more actionable context: lean mass, fat proxies, frame effects, and shape ratios. This is useful when scale weight alone is not enough.",
-      "Use this category to build a composite view. One metric rarely tells the full story, but a small set of stable metrics can make progress and planning much clearer.",
+      "Shape tools focus on body proportions, frame context, and visual structure metrics such as waist-to-height, waist-to-hip, and body-shape classification.",
+      "These tools are strongest for trend direction and planning context. Small measurement errors can create meaningful ratio shifts, so consistency is critical.",
     ],
     bestFor: [
       {
-        title: "Lean-mass context",
+        title: "Body-shape classification",
         description:
-          "Use FFMI and Lean Body Mass to anchor composition planning.",
+          "Use Body Shape Analyzer and Body Shape Calculator for visual and measurement-based shape context.",
       },
       {
-        title: "Central adiposity proxies",
+        title: "Waist-centered screening",
         description:
-          "Use RFM, BRI, and Visceral Fat tools for waist-linked context.",
+          "Use Waist-to-Height and Waist-to-Hip for practical central-adiposity proxy checks.",
       },
       {
-        title: "Shape and structure",
+        title: "Proportion planning",
         description:
-          "Use Body Shape and Frame tools to interpret visual and anthropometric differences.",
+          "Use Shoulder-to-Waist, Ideal Waist, Ape Index, and Frame Size for physique and structure comparisons.",
       },
     ],
     inputChecklist: [
-      "Use consistent tape and body-weight capture conditions.",
-      "Retest at similar times (for example, morning fasted) when possible.",
-      "Keep units and rounding consistent between sessions.",
+      "Measure waist and hip at the same anatomical landmarks every time.",
+      "Use normal posture and relaxed breathing during circumference capture.",
+      "Repeat each tape measurement 2-3 times and use the average.",
     ],
     interpretationNotes: [
-      "Look for agreement across 2-3 stable signals, not one metric.",
-      "Composition changes usually move slower than scale fluctuations.",
-      "Anchor interpretations to trend direction over several weeks.",
+      "Ratios are best interpreted as ranges, not strict absolutes.",
+      "Track direction over time rather than reacting to one reading.",
+      "Use shape outputs alongside fat and weight trends for better context.",
     ],
     commonMistakes: [
-      "Using single-day outputs as definitive composition shifts.",
-      "Mixing formulas without documenting assumptions.",
-      "Ignoring frame size when comparing against reference values.",
-    ],
-    relatedLinks: [
-      {
-        href: "/guides/bmi-vs-body-fat",
-        label: "BMI vs Body Fat",
-      },
-      {
-        href: "/guides/what-does-body-fat-percentage-look-like",
-        label: "What Body Fat Percentage Looks Like",
-      },
-      {
-        href: "/guides/why-body-fat-measurements-give-different-results",
-        label: "Why Measurement Methods Disagree",
-      },
-    ],
-    cta: {
-      toolSlug: "ffmi-calculator",
-      toolName: "FFMI Calculator",
-      description:
-        "Start with FFMI for lean-mass context, then layer other composition tools for deeper interpretation.",
-      label: "Open FFMI Calculator",
-    },
-  },
-  "body-proportions": {
-    summary: [
-      "Body proportion tools focus on ratio-based structure metrics such as waist-to-height and waist-to-hip. These are useful for quick risk proxy screening and physique planning context.",
-      "These tools are simple, but measurement quality matters. A small tape error can create a meaningful ratio shift, so consistency and protocol are critical.",
-    ],
-    bestFor: [
-      {
-        title: "Central-fat screening proxies",
-        description:
-          "Use Waist-to-Height and Waist-to-Hip for practical risk-oriented context.",
-      },
-      {
-        title: "Physique proportion planning",
-        description:
-          "Use Shoulder-to-Waist and Ideal Waist for aesthetic ratio targets.",
-      },
-      {
-        title: "Structure context",
-        description:
-          "Use Ape Index for reach and proportion comparisons.",
-      },
-    ],
-    inputChecklist: [
-      "Measure waist at the same anatomical point every time.",
-      "Use normal posture and relaxed breathing during tape capture.",
-      "Repeat each tape measurement 2-3 times and average.",
-    ],
-    interpretationNotes: [
-      "Ratios are best interpreted as bands, not strict thresholds.",
-      "Track direction over time rather than isolated readings.",
-      "Use proportion metrics alongside body composition context.",
-    ],
-    commonMistakes: [
-      "Switching waist landmarks between check-ins.",
-      "Comparing measurements taken under different posture/tension.",
-      "Using one ratio without broader health or training context.",
+      "Changing measurement landmarks between check-ins.",
+      "Comparing values collected under different posture or tape tension.",
+      "Using one ratio as a complete health or physique assessment.",
     ],
     relatedLinks: [
       {
@@ -368,14 +309,14 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
       },
     ],
     cta: {
-      toolSlug: "waist-to-height-ratio-calculator",
-      toolName: "Waist to Height Ratio Calculator",
+      toolSlug: "body-shape-calculator",
+      toolName: "Body Shape Calculator",
       description:
-        "Start with this ratio for a quick, repeatable waist-centered baseline.",
-      label: "Open Waist to Height Ratio Calculator",
+        "Start here for a practical baseline, then cross-check with waist-ratio and frame tools.",
+      label: "Open Body Shape Calculator",
     },
   },
-  "body-weight": {
+  weight: {
     summary: [
       "Body weight tools help translate scale numbers into practical context such as BMI category, ideal-range heuristics, and change tracking. This category is useful for planning and monitoring.",
       "Weight alone is incomplete. Pair these outputs with body composition or waist-based metrics to improve decision quality and reduce false conclusions from short-term fluctuations.",
@@ -562,7 +503,7 @@ export default function ToolCategorySeoSection({
   toolCount: number;
 }) {
   const content = CATEGORY_SEO_CONTENT[category.slug];
-  const showRelatedReading = category.slug === "body-fat";
+  const showRelatedReading = category.slug === "fat";
 
   return (
     <section className="mx-auto max-w-3xl px-6 pb-20">
