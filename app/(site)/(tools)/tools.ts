@@ -5,7 +5,6 @@ export type ToolCategory =
   | "Height"
   | "Face"
   | "Weight"
-  | "Metabolism"
   | "Calories";
 
 export type ToolCategorySlug =
@@ -15,7 +14,6 @@ export type ToolCategorySlug =
   | "height"
   | "face"
   | "weight"
-  | "metabolism"
   | "calories";
 
 export type ToolMeta = {
@@ -41,7 +39,6 @@ const TOOL_CATEGORY_ORDER: ToolCategory[] = [
   "Fat",
   "Shape",
   "Weight",
-  "Metabolism",
   "Calories",
 ];
 
@@ -94,21 +91,13 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     description:
       "Run BMI, healthy-range, ideal-weight, and weight-change tools for practical planning and progress review.",
   },
-  Metabolism: {
-    category: "Metabolism",
-    slug: "metabolism",
-    navLabel: "Metabolism",
-    h1: "Metabolism Tools",
-    description:
-      "Estimate basal and total daily energy expenditure using common metabolism and activity-based equations.",
-  },
   Calories: {
     category: "Calories",
     slug: "calories",
-    navLabel: "Calories",
-    h1: "Calorie Tools",
+    navLabel: "Calories & Metabolism",
+    h1: "Calorie & Metabolism Tools",
     description:
-      "Plan deficits, macros, fasting strategies, and calorie burn with practical tools for nutrition and training workflows.",
+      "Estimate BMR/TDEE, then plan deficits, macros, fasting strategies, and calorie burn with practical energy-planning tools.",
   },
 };
 
@@ -119,7 +108,6 @@ const TOOL_CATEGORY_META_BY_SLUG: Record<ToolCategorySlug, ToolCategoryMeta> = {
   height: TOOL_CATEGORY_META_BY_NAME["Height"],
   face: TOOL_CATEGORY_META_BY_NAME["Face"],
   weight: TOOL_CATEGORY_META_BY_NAME["Weight"],
-  metabolism: TOOL_CATEGORY_META_BY_NAME["Metabolism"],
   calories: TOOL_CATEGORY_META_BY_NAME["Calories"],
 };
 
@@ -129,6 +117,7 @@ const LEGACY_TOOL_CATEGORY_SLUGS: Record<string, ToolCategorySlug> = {
   composition: "shape",
   "body-proportions": "shape",
   "body-weight": "weight",
+  metabolism: "calories",
 };
 
 export type ToolCategoryTab = {
@@ -427,18 +416,18 @@ export const TOOLS: Record<string, ToolMeta> = {
     category: "Weight",
   },
 
-  // METABOLISM
+  // METABOLISM (merged into CALORIES)
   "tdee-calculator": {
     slug: "tdee-calculator",
     title: "TDEE Calculator",
     description: "Estimate total daily energy expenditure from BMR equation and activity level.",
-    category: "Metabolism",
+    category: "Calories",
   },
   "bmr-calculator": {
     slug: "bmr-calculator",
     title: "BMR Calculator",
     description: "Estimate basal metabolic rate from standard resting-energy equations.",
-    category: "Metabolism",
+    category: "Calories",
   },
 
   // CALORIES

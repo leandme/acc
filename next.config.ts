@@ -34,6 +34,11 @@ const nextConfig: NextConfig = {
         permanent: true, // 301 redirect
       },
       {
+        source: "/tools/metabolism",
+        destination: "/tools/calories",
+        permanent: true, // 301 redirect
+      },
+      {
         source: "/blog/calculate-body-fat-percentage-at-home",
         destination: "/guides/how-to-estimate-body-fat-percentage",
         permanent: true, // 301 redirect

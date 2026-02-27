@@ -375,71 +375,17 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
       label: "Open BMI Calculator",
     },
   },
-  metabolism: {
-    summary: [
-      "Metabolism tools estimate BMR and TDEE so you can anchor intake and training plans to a realistic starting point. They are model-based estimates and should be adjusted with real-world feedback.",
-      "Use these numbers as calibration baselines. The best process is estimate, apply for 2-3 weeks, then refine based on observed weight and performance trend.",
-    ],
-    bestFor: [
-      {
-        title: "Baseline energy estimates",
-        description:
-          "Use BMR to estimate resting needs before activity adjustment.",
-      },
-      {
-        title: "Daily planning",
-        description:
-          "Use TDEE to set practical maintenance, deficit, or surplus targets.",
-      },
-      {
-        title: "Adaptive updates",
-        description:
-          "Re-estimate when body weight, activity, or training volume changes.",
-      },
-    ],
-    inputChecklist: [
-      "Set activity levels honestly; overestimation is common.",
-      "Update body weight regularly for better estimate quality.",
-      "Use one consistent equation context when comparing periods.",
-    ],
-    interpretationNotes: [
-      "Treat outputs as starting points, not fixed truths.",
-      "Adjust calorie plans based on measured trend response.",
-      "Small weekly adjustments are usually more stable than big changes.",
-    ],
-    commonMistakes: [
-      "Picking a higher activity factor than actual weekly behavior.",
-      "Expecting equation output to match exact maintenance immediately.",
-      "Not recalibrating after significant body-weight change.",
-    ],
-    relatedLinks: [
-      {
-        href: "/guides/how-to-track-body-fat-changes",
-        label: "Tracking Strategy for Better Adjustments",
-      },
-      {
-        href: "/guides/how-often-should-you-measure-body-fat",
-        label: "Update Cadence Best Practices",
-      },
-      {
-        href: "/guides/why-body-fat-measurements-give-different-results",
-        label: "Understanding Estimation Variance",
-      },
-    ],
-    cta: {
-      toolSlug: "tdee-calculator",
-      toolName: "TDEE Calculator",
-      description:
-        "Start with TDEE to set your daily energy baseline before moving into calorie strategy tools.",
-      label: "Open TDEE Calculator",
-    },
-  },
   calories: {
     summary: [
-      "Calorie tools convert your goal into a practical intake framework. This category helps with daily calorie targets, deficit planning, macro distribution, fasting context, and expenditure estimates.",
+      "Calorie and metabolism tools convert your goal into a practical intake framework. This category covers BMR/TDEE baselines, daily calorie targets, deficit planning, macro distribution, fasting context, and expenditure estimates.",
       "Use one primary planning model at a time, then validate against real-world trend data. Too many simultaneous targets can create conflicting signals and poor adherence.",
     ],
     bestFor: [
+      {
+        title: "Energy baseline setup",
+        description:
+          "Use BMR and TDEE calculators first to anchor maintenance and intake strategy.",
+      },
       {
         title: "Daily target setup",
         description:
@@ -486,11 +432,11 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
       },
     ],
     cta: {
-      toolSlug: "calorie-calculator",
-      toolName: "Calorie Calculator",
+      toolSlug: "tdee-calculator",
+      toolName: "TDEE Calculator",
       description:
-        "Start here to set a practical calorie baseline before layering advanced nutrition tools.",
-      label: "Open Calorie Calculator",
+        "Start with TDEE to set your energy baseline, then layer calorie and macro tools.",
+      label: "Open TDEE Calculator",
     },
   },
 };
