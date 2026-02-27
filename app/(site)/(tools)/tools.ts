@@ -94,8 +94,8 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
   Calories: {
     category: "Calories",
     slug: "calories",
-    navLabel: "Calories & Metabolism",
-    h1: "Calorie & Metabolism Tools",
+    navLabel: "Calories",
+    h1: "Calorie Tools",
     description:
       "Estimate BMR/TDEE, then plan deficits, macros, fasting strategies, and calorie burn with practical energy-planning tools.",
   },
