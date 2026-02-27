@@ -49,15 +49,7 @@ export default function Navbar() {
                 Body Visualizer
               </a>
             </li>
-            <li>
-              <a
-                href="/ffmi-calculator"
-                onClick={() => trackEvent("Go to Tool", { tool: "ffmi calculator", location: "navbar mobile" })}
-                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
-              >
-                FFMI Calculator
-              </a>
-            </li>
+          
             <li>
               <a
                 href="/tools"
@@ -107,17 +99,6 @@ export default function Navbar() {
                 className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
               >
                 Body Visualizer
-              </a>
-            </li>
-            <li>
-              <a
-                href="/ffmi-calculator"
-                onClick={() =>
-                  trackEvent("Go to Tool", { tool: "ffmi calculator", location: "navbar desktop" })
-                }
-                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
-              >
-                FFMI Calculator
               </a>
             </li>
             <li>
