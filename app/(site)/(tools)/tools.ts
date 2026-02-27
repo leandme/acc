@@ -53,7 +53,7 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Muscle",
     slug: "muscle",
     navLabel: "Muscle",
-    h1: "Muscle Potential and FFMI Tools",
+    h1: "Muscle Tools",
     description:
       "Explore muscle-focused calculators for FFMI, natural potential screening, frame-based potential, and bodybuilding-specific context.",
   },
@@ -61,7 +61,7 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Height",
     slug: "height",
     navLabel: "Height",
-    h1: "Height Prediction and Growth Potential Tools",
+    h1: "Height Tools",
     description:
       "Use parent-based models for target adult height, expected family range, and probability-style planning context.",
   },
@@ -69,7 +69,7 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Face",
     slug: "face",
     navLabel: "Face",
-    h1: "Face Shape, Symmetry, Age, and Attractiveness Tools",
+    h1: "Face Tools",
     description:
       "Analyze facial shape, symmetry, apparent age, and attractiveness with AI-based classifiers, confidence scoring, and practical photo-standardization guidance.",
   },
@@ -77,7 +77,7 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Body Fat",
     slug: "body-fat",
     navLabel: "Body Fat",
-    h1: "Body Fat Estimation and Screening Tools",
+    h1: "Body Fat Tools",
     description:
       "Estimate body fat with photo-based, tape-based, and skinfold-based methods, plus visual and adiposity-oriented tools.",
   },
@@ -85,7 +85,7 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Body Composition",
     slug: "body-composition",
     navLabel: "Composition",
-    h1: "Body Composition Calculators and Analysis Tools",
+    h1: "Body Composition Tools",
     description:
       "Compare lean mass, muscle mass, frame context, shape, and composition indices in one place for trend-based tracking.",
   },
@@ -93,7 +93,7 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Body Proportions",
     slug: "body-proportions",
     navLabel: "Proportions",
-    h1: "Body Proportion and Ratio Tools",
+    h1: "Body Proportion Tools",
     description:
       "Assess waist-centered risk proxies and proportionality metrics with ratio-based screening calculators.",
   },
@@ -101,7 +101,7 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Body Weight",
     slug: "body-weight",
     navLabel: "Weight",
-    h1: "Body Weight and Weight-Range Tools",
+    h1: "Weight Tools",
     description:
       "Run BMI, healthy-range, ideal-weight, and weight-change tools for practical planning and progress review.",
   },
@@ -109,7 +109,7 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Metabolism",
     slug: "metabolism",
     navLabel: "Metabolism",
-    h1: "Metabolism and Energy Expenditure Tools",
+    h1: "Metabolism Tools",
     description:
       "Estimate basal and total daily energy expenditure using common metabolism and activity-based equations.",
   },
@@ -117,7 +117,7 @@ const TOOL_CATEGORY_META_BY_NAME: Record<ToolCategory, ToolCategoryMeta> = {
     category: "Calories",
     slug: "calories",
     navLabel: "Calories",
-    h1: "Calorie Planning and Burn Tools",
+    h1: "Calorie Tools",
     description:
       "Plan deficits, macros, fasting strategies, and calorie burn with practical tools for nutrition and training workflows.",
   },
