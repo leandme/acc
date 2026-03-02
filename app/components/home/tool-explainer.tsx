@@ -31,14 +31,11 @@ export default function ToolExplainer() {
 
         <div className="rounded-3xl border border-gray-200 bg-white p-3 sm:p-4 shadow-[0_20px_50px_-24px_rgba(15,23,42,0.35)]">
           <img
-            src="/examples/body-fat-estimate-example.webp"
+            src="/examples/home-estimate-result.png"
             alt="AI body fat estimation result screenshot"
             className="w-full rounded-2xl border border-gray-100"
             loading="lazy"
           />
-          <p className="mt-3 text-center text-sm text-gray-500">
-            Sample result preview after photo analysis.
-          </p>
         </div>
       </div>
     </section>
