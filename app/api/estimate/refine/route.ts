@@ -72,6 +72,9 @@ Determine the accuracy of your estimate and provide an explanation as to why you
 Do not mention validated methods like DEXA or multi-frequency BIA.
 Do not mention muscle or fat history or weight trends.
 Provide the explanation in a talkative manner as though you are talking to the person.
+For "estimation_rationale", do not start with generic comments such as "you look fit", "you look healthy", or "you look like...".
+Start immediately with specific visual evidence tied to body-fat estimation (for example: lower-abdomen softness, waist taper, oblique visibility, shoulder-arm separation, chest definition, back/love-handle area).
+The first sentence must include at least two concrete visual cues from the provided images.
 Provide a list of things the person can do to help you provide an even more accurate estimate next time.
 
 Return JSON exactly in this shape:
@@ -93,6 +96,7 @@ Rules:
 - Estimate age to the nearest year. Be as specific as possible.
 - Estimate body fat percentage as accurate as possible with 1 decimal place. Be as specific as possible.
 - Use all images provided. If images disagree due to lighting/pose, explain briefly in rationale.
+- In "estimation_rationale", avoid generic appearance judgments and focus only on specific observable cues.
 - Do not provide medical advice or diagnosis. Provide an approximate, appearance-based estimate for fitness tracking.
 `.trim();
 

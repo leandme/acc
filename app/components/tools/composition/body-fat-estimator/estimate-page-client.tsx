@@ -16,6 +16,7 @@ import EstimateAccuracy from "@/app/components/tools/composition/body-fat-estima
 import EstimateRationale from "@/app/components/tools/composition/body-fat-estimator/estimate-rationale";
 import EstimateRefineInline from "@/app/components/tools/composition/body-fat-estimator/estimate-refine-inline";
 import EstimateExportCard from "@/app/components/tools/composition/body-fat-estimator/estimate-export-card";
+import EstimateCompositionSnapshot from "@/app/components/tools/composition/body-fat-estimator/estimate-composition-snapshot";
 import LoadingStatus from "@/app/components/common/loading-status";
 import { getCategoryFemale, getCategoryMale } from "@/app/libs/estimateUtils";
 import { showErrorToast, showSuccessToast } from "@/app/libs/toast";
@@ -25,6 +26,7 @@ import { useMediaQuery } from "@/app/hooks/use-media-query";
 type Gender = "male" | "female";
 type EstimateSource = "example" | "upload";
 type Accuracy = "low" | "medium" | "high";
+type Units = "metric" | "imperial";
 
 // 9:16 portrait ratio (social-story friendly)
 const CARD_EXPORT_WIDTH = 1080;
@@ -55,6 +57,9 @@ function EstimatePageContent() {
 
   const [showRefine, setShowRefine] = useState(false);
   const [downloadingImage, setDownloadingImage] = useState(false);
+  const [analysisUnits, setAnalysisUnits] = useState<Units>("imperial");
+  const [analysisWeight, setAnalysisWeight] = useState<number | null>(null);
+  const [analysisAutofilledFromRefine, setAnalysisAutofilledFromRefine] = useState(false);
   const refineRef = useRef<HTMLDivElement | null>(null);
   const exportCardRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -309,6 +314,31 @@ function EstimatePageContent() {
             <EstimateRationale estimate={activeBodyFat} rationale={activeRationale} />
           </div>
 
+          <div id="current-snapshot" className="w-full max-w-3xl mt-20 lg:mt-40">
+            <EstimateCompositionSnapshot
+              bodyFat={activeBodyFat}
+              units={analysisUnits}
+              weight={analysisWeight}
+              prefilledFromRefine={analysisAutofilledFromRefine}
+              onUnitsChange={(nextUnits) => {
+                setAnalysisWeight((previousWeight) => {
+                  if (previousWeight === null) return null;
+                  if (nextUnits === analysisUnits) return previousWeight;
+                  if (nextUnits === "metric") {
+                    return Number((previousWeight * 0.45359237).toFixed(1));
+                  }
+                  return Number((previousWeight / 0.45359237).toFixed(1));
+                });
+                setAnalysisUnits(nextUnits);
+                setAnalysisAutofilledFromRefine(false);
+              }}
+              onWeightChange={(nextWeight) => {
+                setAnalysisWeight(nextWeight);
+                setAnalysisAutofilledFromRefine(false);
+              }}
+            />
+          </div>
+
           <div id="accuracy" className="w-full max-w-3xl mt-20 lg:mt-40">
             <EstimateAccuracy
               accuracy={normalizedActiveAccuracy}
@@ -326,6 +356,9 @@ function EstimatePageContent() {
                   if (!imageUrl) return;
 
                   setShowRefine(true);
+                  setAnalysisUnits(payload.units);
+                  setAnalysisWeight(payload.weight);
+                  setAnalysisAutofilledFromRefine(true);
                   window.scrollTo({ top: 0, behavior: "smooth" });
 
                   refine.refine({

@@ -27,6 +27,9 @@ Determine the perceived age and gender of the human in the image. Be as specific
 Estimate the perceived body fat percentage of the individual and take account of the perceived age and gender, as well as all data available around body fat percentage.
 Take into account the fat distribution on the body, muscle mass etc.
 Determine the accuracy of your estimate and provide an explanation as to why you provided that estimate based on the visuals of the human in the photo. Do not mention results from validated methods like DEXA or multi-frequency BIA. Do not mention muscle or fat history or weight trends. Provide this explanation in a talkative manner as though you are talking to the person.
+For "estimation_rationale", do not start with generic comments such as "you look fit", "you look healthy", or "you look like...".
+Start immediately with specific visual evidence tied to body-fat estimation (for example: lower-abdomen softness, waist taper, oblique visibility, shoulder-arm separation, chest definition, back/love-handle area).
+The first sentence must include at least two concrete visual cues from the image.
 Provide a list of things the person in the image to do to help you provide a more accurate estimate.
 
 Return JSON exactly in this shape:
@@ -48,6 +51,7 @@ Rules:
 - Estimate age to the nearest year. Be as specific as possible.
 - Estimate body fat percentage to the nearest integer. Be as specific as possible.
 - Take as much time as you need to be as accurate as you possibly can.
+- In "estimation_rationale", avoid generic appearance judgments and focus only on specific observable cues.
 – Do not provide medical advice or diagnosis. Provide an approximate, appearance-based estimate for fitness tracking.
 `.trim();
 
