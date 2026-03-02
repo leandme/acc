@@ -13,239 +13,44 @@ export type LinkCardItem = {
 
 const DEFAULT_ITEMS: LinkCardItem[] = [
   {
-    title: "Body Shape Analyzer",
-    href: "/body-shape-analyzer",
-    description: "Upload a photo and analyze your visual body type.",
+    title: "Fat",
+    href: "/tools/fat",
+    description: "Body fat estimators, visualizers, and measurement-based calculators.",
   },
   {
-    title: "Face Symmetry Test",
-    href: "/face-symmetry-test",
-    description: "Check facial symmetry score and compare mirrored facial halves.",
+    title: "Shape",
+    href: "/tools/shape",
+    description: "Body-shape, frame-size, and proportion calculators for structure context.",
   },
   {
-    title: "Face Shape Detector",
-    href: "/face-shape-detector",
-    description: "Detect face shape from a portrait with confidence scoring.",
+    title: "Muscle",
+    href: "/tools/muscle",
+    description: "FFMI, muscular potential, and bodybuilding-focused planning tools.",
   },
   {
-    title: "Age Guesser",
-    href: "/age-guesser",
-    description: "Estimate how old you look from a face photo with AI confidence.",
+    title: "Weight",
+    href: "/tools/weight",
+    description: "BMI, ideal-weight, and progress-tracking tools for practical planning.",
   },
   {
-    title: "Attractiveness Test",
-    href: "/attractiveness-test",
-    description: "Get an AI attractiveness score from a portrait with confidence and score bands.",
+    title: "Calories",
+    href: "/tools/calories",
+    description: "BMR, TDEE, calorie, deficit, macro, and energy-burn calculators.",
   },
   {
-    title: "Golden Face Ratio Analyzer",
-    href: "/golden-face-ratio-analyzer",
-    description: "Upload a portrait to analyze golden-ratio facial proportions with AI.",
+    title: "Height",
+    href: "/tools/height",
+    description: "Parent-based and photo-based height estimation tools.",
   },
   {
-    title: "Eyebrow Type Detector",
-    href: "/eyebrow-type-detector",
-    description: "Detect eyebrow type from a portrait with confidence and style context.",
-  },
-  {
-    title: "Eye Shape Detector",
-    href: "/eye-shape-detector",
-    description: "Detect eye shape, eye color, and canthal tilt from a portrait.",
-  },
-  {
-    title: "Nose Shape Detector",
-    href: "/nose-shape-detector",
-    description: "Detect nose shape, bridge profile, and tip orientation from a portrait.",
-  },
-  {
-    title: "Skin Type Detector",
-    href: "/skin-type-detector",
-    description: "Detect likely skin type from a portrait with confidence and care-direction context.",
-  },
-  {
-    title: "Hair Color Detector",
-    href: "/hair-color-detector",
-    description: "Detect likely hair color, undertone, and depth from a portrait with confidence scoring.",
-  },
-  {
-    title: "Body Shape Calculator",
-    href: "/body-shape-calculator",
-    description: "Estimate body-shape category from bust, waist, and hip measurements.",
-  },
-  {
-    title: "Body Visualizer",
-    href: "/body-visualizer",
-    description: "Visualize BMI, body fat %, height, and weight.",
-  },
-  {
-    title: "Body Fat Calculator",
-    href: "/body-fat-calculator",
-    description: "Estimate body fat % from measurements and formulas.",
-  },
-  {
-    title: "FFMI Calculator",
-    href: "/ffmi-calculator",
-    description: "How much lean mass you carry",
-  },
-  {
-    title: "Natty or Not Calculator",
-    href: "/natty-or-not-calculator",
-    description: "Compare frame-adjusted FFMI to common natural muscularity ceilings.",
-  },
-  {
-    title: "Muscular Potential Calculator",
-    href: "/muscular-potential-calculator",
-    description: "Estimate modelled natural lean-mass potential and current utilization.",
-  },
-  {
-    title: "Casey Butt Calculator",
-    href: "/casey-butt-calculator",
-    description: "Estimate frame-based bodybuilding potential and circumference targets.",
-  },
-  {
-    title: "Bodybuilding Genetics Calculator",
-    href: "/bodybuilding-genetics-calculator",
-    description: "Estimate a modelled genetics score from structure and muscularity potential.",
-  },
-  {
-    title: "Height Calculator",
-    href: "/height-calculator",
-    description: "Estimate adult-height prediction, target range, and target probability.",
-  },
-  {
-    title: "Height Estimator",
-    href: "/height-estimator",
-    description: "Estimate apparent adult height from a full-body photo with confidence and range.",
-  },
-  {
-    title: "Mid-Parental Height Calculator",
-    href: "/mid-parental-height-calculator",
-    description: "Estimate child target adult height from parent heights.",
-  },
-  {
-    title: "Lean Body Mass Calculator",
-    href: "/lean-body-mass-calculator",
-    description: "Estimate lean mass with Boer, James, and Hume formulas.",
-  },
-  {
-    title: "Muscle Mass Calculator",
-    href: "/muscle-mass-calculator",
-    description: "Estimate skeletal muscle mass from anthropometric inputs.",
-  },
-  {
-    title: "BRI Calculator",
-    href: "/bri-calculator",
-    description: "Estimate body roundness from waist and height.",
-  },
-  {
-    title: "BAI Calculator",
-    href: "/bai-calculator",
-    description: "Estimate body adiposity from hip circumference and height.",
-  },
-  {
-    title: "Body Frame Size Calculator",
-    href: "/body-frame-size-calculator",
-    description: "Classify frame size from height and wrist measurements.",
-  },
-  {
-    title: "Waist to Hip Ratio Calculator",
-    href: "/waist-to-hip-ratio-calculator",
-    description: "Assess abdominal fat distribution with a waist-to-hip ratio check.",
-  },
-  {
-    title: "Waist to Height Ratio Calculator",
-    href: "/waist-to-height-ratio-calculator",
-    description: "Screen central-fat risk by comparing waist circumference to height.",
-  },
-  {
-    title: "Shoulder to Waist Ratio Calculator",
-    href: "/shoulder-to-waist-ratio-calculator",
-    description: "Check shoulder-to-waist taper ratio from circumference measurements.",
-  },
-  {
-    title: "Ideal Waist Size Calculator",
-    href: "/ideal-waist-size-calculator",
-    description: "Estimate ideal and upper-target waist size from your height.",
-  },
-  {
-    title: "Ape Index Calculator",
-    href: "/ape-index-calculator",
-    description: "Calculate wingspan-to-height ratio and reach difference.",
-  },
-  {
-    title: "BMI Calculator",
-    href: "/bmi-calculator",
-    description: "Calculate BMI and check standard adult categories.",
-  },
-  {
-    title: "Weight Loss Calculator",
-    href: "/weight-loss-calculator",
-    description: "Estimate timeline to target weight using calorie intake.",
-  },
-  {
-    title: "Intermittent Fasting Calculator",
-    href: "/intermittent-fasting-calculator",
-    description: "Compare fasting protocols and projected weekly pace.",
-  },
-  {
-    title: "TDEE Calculator",
-    href: "/tdee-calculator",
-    description: "Estimate maintenance calories from BMR and activity level.",
-  },
-  {
-    title: "BMR Calculator",
-    href: "/bmr-calculator",
-    description: "Estimate resting calorie burn with standard equations.",
-  },
-  {
-    title: "Calorie Deficit Calculator",
-    href: "/calorie-deficit-calculator",
-    description: "Set daily calorie targets from your chosen weekly loss pace.",
-  },
-  {
-    title: "Calorie Calculator",
-    href: "/calorie-calculator",
-    description: "Estimate daily calories for maintenance, fat loss, or lean gain.",
-  },
-  {
-    title: "Macro Calculator",
-    href: "/macro-calculator",
-    description: "Set protein, carbs, and fat targets from your calorie goal.",
-  },
-  {
-    title: "Steps to Calories Calculator",
-    href: "/steps-to-calories-calculator",
-    description: "Estimate calories burned from walking steps and pace.",
-  },
-  {
-    title: "Calories Burned Calculator",
-    href: "/calories-burned-calculator",
-    description: "Estimate calories burned across many workout and cardio activities.",
-  },
-  {
-    title: "Calorie Estimator",
-    href: "/calorie-estimator",
-    description: "Estimate meal calories from a photo with confidence ranges.",
-  },
-  {
-    title: "Ideal Weight Calculator",
-    href: "/ideal-weight-calculator",
-    description: "Compare healthy BMI range and ideal-weight references.",
-  },
-  {
-    title: "Army Body Fat Calculator",
-    href: "/army-body-fat-calculator",
-    description: "Estimate body fat % using the US Army tape method.",
-  },
-  {
-    title: "Skinfold Body Fat Calculator",
-    href: "/skinfold-body-fat-calculator",
-    description: "Estimate body fat % from skinfold caliper sites.",
+    title: "Face",
+    href: "/tools/face",
+    description: "AI-based facial analysis tools for shape, symmetry, and feature detection.",
   },
   {
     title: "All Tools",
     href: "/tools",
-    description: "Everything tool you need is free.",
+    description: "Browse all categories and every available tool.",
   },
 ];
 

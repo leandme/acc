@@ -1,54 +1,125 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import RippleLoader from "./loader";
+import styles from "./loading-status.module.css";
 
-const ROTATION_MS = 7000;
+const STAGE_MS = 3200;
 
 const STATUS_MESSAGES = [
   {
-    title: "Analyzing your photo…",
-    body: "We’re starting with a visual analysis of fat distribution and proportions.",
+    title: "Photo intake and normalization",
+    body: "Preparing the image and normalizing orientation, framing, and scale.",
   },
   {
-    title: "Cross-referencing proven body fat models…",
-    body: "We compare visual markers against patterns derived from validated methods like DEXA and multi-frequency BIA to estimate body fat as accurately as possible from an image.",
+    title: "Visual structure analysis",
+    body: "Scanning silhouette shape and body-proportion patterns across key regions.",
   },
   {
-    title: "Evaluating fat distribution and structure…",
-    body: "We look at how fat and muscle are distributed across the torso, waist, limbs, and posture — not just one area — to avoid misleading single-angle estimates.",
+    title: "Fat distribution modeling",
+    body: "Evaluating torso, waist, limb, and posture cues to reduce single-angle bias.",
   },
   {
-    title: "Calibrating for lighting and perspective…",
-    body: "Lighting, camera distance, and posture can affect appearance. We adjust for these factors to keep the estimate grounded and consistent.",
+    title: "Lighting and perspective calibration",
+    body: "Adjusting for camera distance, angle, and lighting so comparisons stay consistent.",
   },
   {
-    title: "Finalizing your estimate…",
-    body: "Adding optional details like height, weight, or more images can further improve precision — especially for tracking changes over time.",
+    title: "Final estimate assembly",
+    body: "Combining model outputs and confidence cues before finalizing your result.",
   },
 ];
 
+type Props = {
+  imageUrl?: string | null;
+};
 
-export default function LoadingStatus() {
-  const [index, setIndex] = useState(0);
+export default function LoadingStatus({ imageUrl }: Props) {
+  const [elapsedMs, setElapsedMs] = useState(0);
+  const lastIndex = STATUS_MESSAGES.length - 1;
+  const activeIndex = Math.min(lastIndex, Math.floor(elapsedMs / STAGE_MS));
+  const activeMessage = STATUS_MESSAGES[activeIndex];
+  // One-way progress: advance through steps once, then hold near-complete
+  // on the final stage until the estimate resolves.
+  const progressPct = Math.min(97, (elapsedMs / (STATUS_MESSAGES.length * STAGE_MS)) * 100);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % STATUS_MESSAGES.length);
-    }, ROTATION_MS);
-
+    const startedAt = Date.now();
+    const id = window.setInterval(() => {
+      setElapsedMs(Date.now() - startedAt);
+    }, 100);
     return () => clearInterval(id);
   }, []);
 
-  const msg = STATUS_MESSAGES[index];
-
   return (
-    <div className="flex flex-col items-center justify-center text-center gap-6">
-      <RippleLoader />
+    <div className="mx-auto w-full max-w-5xl rounded-3xl border border-gray-200 bg-white/95 p-5 shadow-sm sm:p-7">
+      <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+        <div className="order-2">
+          <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-gray-900">
+            Building Your Estimate
+          </h2>
+          <p className="mt-2 text-base text-gray-600 leading-relaxed">
+            {activeMessage.body}
+          </p>
 
-      <div className="space-y-2">
-        <p className="text-lg font-semibold text-gray-800">{msg.title}</p>
-        <p className="text-sm text-gray-500 max-w-xs mx-auto">{msg.body}</p>
+          <div className="mt-5 h-2 w-full rounded-full bg-gray-200/90 overflow-hidden" aria-hidden>
+            <div
+              className={`${styles.progressFill} h-full rounded-full bg-primary`}
+              style={{ width: `${progressPct}%` }}
+            />
+          </div>
+
+          <ol className="mt-6 space-y-3">
+            {STATUS_MESSAGES.map((stage, idx) => {
+              const isComplete = idx < activeIndex;
+              const isActive = idx === activeIndex;
+
+              return (
+                <li
+                  key={stage.title}
+                  className={`flex items-start gap-3 rounded-xl border px-3 py-2 transition ${
+                    isActive
+                      ? "border-green-300 bg-green-50"
+                      : "border-gray-200 bg-white"
+                  }`}
+                >
+                  <span
+                    className={`mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${
+                      isComplete
+                        ? "bg-green-600 text-white"
+                        : isActive
+                        ? "bg-green-100 text-green-700"
+                        : "bg-gray-100 text-gray-500"
+                    }`}
+                  >
+                    {isComplete ? "✓" : idx + 1}
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900">{stage.title}</p>
+                    {isActive ? (
+                      <p className="mt-0.5 text-sm text-gray-600">{stage.body}</p>
+                    ) : null}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+
+        <div className="order-1">
+          <div className={styles.scanFrame} aria-hidden="true">
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt=""
+                className={styles.scanImage}
+              />
+            ) : (
+              <div className={styles.scanSilhouette} />
+            )}
+            <div className={styles.scanOverlay} />
+            <div className={styles.scanGrid} />
+            <div className={styles.scanLine} />
+          </div>
+        </div>
       </div>
     </div>
   );
