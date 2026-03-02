@@ -536,7 +536,7 @@ export default function ToolCategorySeoSection({
       ) : null}
 
       <CTA
-        title={`Recommended Starting Tool: ${content.cta.toolName}`}
+        title={`Start Here: ${content.cta.toolName}`}
         description={content.cta.description}
         buttonText={content.cta.label}
         href={`/${content.cta.toolSlug}`}

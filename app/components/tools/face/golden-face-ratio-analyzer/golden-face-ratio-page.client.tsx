@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
-import CTA from "@/app/components/common/cta";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
@@ -70,9 +69,9 @@ const GOLDEN_SCORE_BANDS: GoldenBand[] = [
 ];
 
 const FACE_EXAMPLES = [
-  { id: "golden-a", label: "Example A", src: "/examples/man-selfie.png" },
-  { id: "golden-b", label: "Example B", src: "/examples/woman-selfie.png" },
-  { id: "golden-c", label: "Example C", src: "/examples/boy-selfie.png" },
+  { id: "golden-a", label: "Example A", src: "/examples/man-selfie.webp" },
+  { id: "golden-b", label: "Example B", src: "/examples/woman-selfie.webp" },
+  { id: "golden-c", label: "Example C", src: "/examples/boy-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {
@@ -536,39 +535,29 @@ function GoldenFaceRatioPageContent() {
             <li>Use the same photo conditions each time if you compare multiple analyses.</li>
           </ul>
         </div>
-
         <div className={sectionWrap}>
-          <h2 className={h2Class}>Use This with Other Face Tools</h2>
+          <h2 className={h2Class}>Use This with Other Tools</h2>
           <p className={pClass}>
-            Pair this with the{" "}
-            <a className="text-primary underline" href="/face-shape-detector">
-              Face Shape Detector
+            Use this result as one signal, then run one complementary scan from the{" "}
+            <a className="text-primary underline" href="/tools/face">
+              Face Tools
+            </a>{" "}
+            page based on your goal.
+          </p>
+          <p className={pClass}>
+            For broader progress tracking, pair with the{" "}
+            <a className="text-primary underline" href="/estimate">
+              Body Fat Estimator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/face-symmetry-test">
-              Face Symmetry Test
-            </a>{" "}
-            for structure and balance context, plus{" "}
-            <a className="text-primary underline" href="/eyebrow-type-detector">
-              Eyebrow Type Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/eye-shape-detector">
-              Eye Shape Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/nose-shape-detector">
-              Nose Shape Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/skin-type-detector">
-              Skin Type Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/hair-color-detector">
-              Hair Color Detector
-            </a>{" "}
-            for upper-face detail analysis.
+            <a className="text-primary underline" href="/body-shape-analyzer">
+              Body Shape Analyzer
+            </a>
+            . If you want a metric-driven comparison, use{" "}
+            <a className="text-primary underline" href="/body-visualizer">
+              Body Visualizer
+            </a>
+            .
           </p>
         </div>
 
@@ -595,16 +584,6 @@ function GoldenFaceRatioPageContent() {
             </li>
           </ul>
         </div>
-
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <CTA
-            title="Want to check face symmetry too?"
-            description="Upload a portrait and compare left-right symmetry with score bands and mirrored previews."
-            buttonText="Try Face Symmetry Test →"
-            href="/face-symmetry-test"
-          />
-        </div>
-
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"

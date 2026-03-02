@@ -33,7 +33,7 @@ export default function BlogPostPage() {
         image={
           <figure className="max-w-3xl">
             <Image
-  src="/guides/why-body-fat-calculators-are-inaccurate.png"
+  src="/guides/why-body-fat-calculators-are-inaccurate.webp"
   alt="Body fat calculator vs estimation methods"
   width={1200}
   height={675}
@@ -213,7 +213,7 @@ export default function BlogPostPage() {
                 "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
                 date: "Jan 13, 2026",
                 readTime: "7 min read",
-                image: "/guides/why-body-fat-measurements-give-different-results.png",
+                image: "/guides/why-body-fat-measurements-give-different-results.webp",
                 },
                 {
                 slug: "body-fat-estimation-methods",
@@ -223,7 +223,7 @@ export default function BlogPostPage() {
                     "An overview of the most common body fat measurement methods — including the Navy tape method, skinfold calipers, BIA smart scales, and DEXA scans — with clear guidance on when each method makes sense.",
                 date: "Jan 8, 2026",
                 readTime: "7 min read",
-                image: "/guides/body-fat-estimation-methods.png",
+                image: "/guides/body-fat-estimation-methods.webp",
                 },
             ]}
         />

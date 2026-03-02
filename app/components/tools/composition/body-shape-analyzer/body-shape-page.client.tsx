@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
-import CTA from "@/app/components/common/cta";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
 import { MoreTools } from "@/app/components/tools/template/more-tools";
@@ -382,16 +381,6 @@ function BodyShapePageContent() {
             </li>
           </ul>
         </div>
-
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <CTA
-            title="Want a body-fat estimate too?"
-            description="Upload your photo to get an appearance-based body-fat % estimate and track changes over time."
-            buttonText="Try Body Fat Estimator →"
-            href="/estimate"
-          />
-        </div>
-
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"

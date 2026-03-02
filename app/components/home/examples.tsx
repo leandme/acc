@@ -2,14 +2,14 @@ import { siteConfig } from "@/site-config";
 
 export default function Examples() {
   const images = [
-    "/examples/boy-selfie.png",
-    "/examples/man-bf.png",
-    "/examples/boy-bf.png",
-    "/examples/woman-selfie.png",
-    "/examples/bfe-example1.png",
-    "/examples/man-selfie.png",
-    "/examples/bfe-example3.png",
-    "/examples/bfe-example4.png",
+    "/examples/boy-selfie.webp",
+    "/examples/man-bf.webp",
+    "/examples/boy-bf.webp",
+    "/examples/woman-selfie.webp",
+    "/examples/bfe-example1.webp",
+    "/examples/man-selfie.webp",
+    "/examples/bfe-example3.webp",
+    "/examples/bfe-example4.webp",
   ];
 
   return (

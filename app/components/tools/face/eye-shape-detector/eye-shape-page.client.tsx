@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
-import CTA from "@/app/components/common/cta";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
@@ -92,9 +91,9 @@ const EYE_SHAPE_ROWS: EyeShapeRow[] = [
 ];
 
 const FACE_EXAMPLES = [
-  { id: "eye-a", label: "Example A", src: "/examples/man-selfie.png" },
-  { id: "eye-b", label: "Example B", src: "/examples/woman-selfie.png" },
-  { id: "eye-c", label: "Example C", src: "/examples/boy-selfie.png" },
+  { id: "eye-a", label: "Example A", src: "/examples/man-selfie.webp" },
+  { id: "eye-b", label: "Example B", src: "/examples/woman-selfie.webp" },
+  { id: "eye-c", label: "Example C", src: "/examples/boy-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {
@@ -439,39 +438,29 @@ function EyeShapePageContent() {
             ))}
           </ul>
         </div>
-
         <div className={sectionWrap}>
-          <h2 className={h2Class}>Use This with Other Face Tools</h2>
+          <h2 className={h2Class}>Use This with Other Tools</h2>
           <p className={pClass}>
-            Combine this with the{" "}
-            <a className="text-primary underline" href="/eyebrow-type-detector">
-              Eyebrow Type Detector
+            Use this result as one signal, then run one complementary scan from the{" "}
+            <a className="text-primary underline" href="/tools/face">
+              Face Tools
             </a>{" "}
-            for brow-eye framing, the{" "}
-            <a className="text-primary underline" href="/face-shape-detector">
-              Face Shape Detector
-            </a>{" "}
-            for global geometry context, with the{" "}
-            <a className="text-primary underline" href="/nose-shape-detector">
-              Nose Shape Detector
-            </a>{" "}
-            for profile context, and the{" "}
-            <a className="text-primary underline" href="/face-symmetry-test">
-              Face Symmetry Test
-            </a>{" "}
-            plus{" "}
-            <a className="text-primary underline" href="/golden-face-ratio-analyzer">
-              Golden Face Ratio Analyzer
-            </a>{" "}
-            plus{" "}
-            <a className="text-primary underline" href="/skin-type-detector">
-              Skin Type Detector
+            page based on your goal.
+          </p>
+          <p className={pClass}>
+            For broader progress tracking, pair with the{" "}
+            <a className="text-primary underline" href="/estimate">
+              Body Fat Estimator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/hair-color-detector">
-              Hair Color Detector
-            </a>{" "}
-            for proportional analysis.
+            <a className="text-primary underline" href="/body-shape-analyzer">
+              Body Shape Analyzer
+            </a>
+            . If you want a metric-driven comparison, use{" "}
+            <a className="text-primary underline" href="/body-visualizer">
+              Body Visualizer
+            </a>
+            .
           </p>
         </div>
 
@@ -498,16 +487,6 @@ function EyeShapePageContent() {
             </li>
           </ul>
         </div>
-
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <CTA
-            title="Want a full face-shape read too?"
-            description="Run face-shape detection to combine eye-region analysis with full-face geometry."
-            buttonText="Try Face Shape Detector →"
-            href="/face-shape-detector"
-          />
-        </div>
-
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"

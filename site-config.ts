@@ -13,7 +13,7 @@ site: {
   founder: {
     name: "Matt Phelps",
     email: "matt@leandme.com",
-    image: "/profile/matt-phelps-headshot.jpg",
+    image: "/profile/matt-phelps-headshot.webp",
     bio:
       "Independent product builder focused on practical fitness tools, body composition, and visual progress tracking.",
     social: {

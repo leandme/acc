@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
-import CTA from "@/app/components/common/cta";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
@@ -107,9 +106,9 @@ const HAIR_COLOR_ROWS: HairColorRow[] = [
 ];
 
 const FACE_EXAMPLES = [
-  { id: "hair-a", label: "Example A", src: "/examples/man-selfie.png" },
-  { id: "hair-b", label: "Example B", src: "/examples/woman-selfie.png" },
-  { id: "hair-c", label: "Example C", src: "/examples/boy-selfie.png" },
+  { id: "hair-a", label: "Example A", src: "/examples/man-selfie.webp" },
+  { id: "hair-b", label: "Example B", src: "/examples/woman-selfie.webp" },
+  { id: "hair-c", label: "Example C", src: "/examples/boy-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {
@@ -467,23 +466,29 @@ function HairColorPageContent() {
             ))}
           </ul>
         </div>
-
         <div className={sectionWrap}>
-          <h2 className={h2Class}>Use This with Other Face Tools</h2>
+          <h2 className={h2Class}>Use This with Other Tools</h2>
           <p className={pClass}>
-            Pair this with the{" "}
-            <a className="text-primary underline" href="/skin-type-detector">
-              Skin Type Detector
+            Use this result as one signal, then run one complementary scan from the{" "}
+            <a className="text-primary underline" href="/tools/face">
+              Face Tools
             </a>{" "}
-            for skin-hair harmony context, and combine with the{" "}
-            <a className="text-primary underline" href="/eyebrow-type-detector">
-              Eyebrow Type Detector
+            page based on your goal.
+          </p>
+          <p className={pClass}>
+            For broader progress tracking, pair with the{" "}
+            <a className="text-primary underline" href="/estimate">
+              Body Fat Estimator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/eye-shape-detector">
-              Eye Shape Detector
-            </a>{" "}
-            for complete upper-face styling direction.
+            <a className="text-primary underline" href="/body-shape-analyzer">
+              Body Shape Analyzer
+            </a>
+            . If you want a metric-driven comparison, use{" "}
+            <a className="text-primary underline" href="/body-visualizer">
+              Body Visualizer
+            </a>
+            .
           </p>
         </div>
 
@@ -516,16 +521,6 @@ function HairColorPageContent() {
             </li>
           </ul>
         </div>
-
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <CTA
-            title="Want to match skin profile too?"
-            description="Run the Skin Type Detector to pair color results with skin-behavior context."
-            buttonText="Try Skin Type Detector →"
-            href="/skin-type-detector"
-          />
-        </div>
-
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"

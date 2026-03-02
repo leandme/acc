@@ -17,7 +17,7 @@ export default function Hero() {
             <div className="flex justify-center mb-6 lg:mb-8">
               <div className="relative w-full max-w-[360px] aspect-[3/2] mx-auto">
                 <Image
-                  src="/hero/body-fat-estimator-header.png"
+                  src="/hero/body-fat-estimator-header.webp"
                   alt="Body fat estimator preview"
                   fill
                   priority

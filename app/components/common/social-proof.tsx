@@ -5,17 +5,17 @@
   <div className="flex -space-x-3">
     <img
       className="w-9 h-9 rounded-full ring-2 ring-[#18181b] object-cover"
-      src="/examples/bfe-example3.png"
+      src="/examples/bfe-example3.webp"
       alt="User avatar"
     />
     <img
       className="w-9 h-9 rounded-full ring-2 ring-[#18181b] object-cover"
-      src="/examples/bfe-example2.png"
+      src="/examples/bfe-example2.webp"
       alt="User avatar"
     />
     <img
       className="w-9 h-9 rounded-full ring-2 ring-[#18181b] object-cover"
-      src="/examples/bfe-example4.png"
+      src="/examples/bfe-example4.webp"
       alt="User avatar"
     />
   </div>

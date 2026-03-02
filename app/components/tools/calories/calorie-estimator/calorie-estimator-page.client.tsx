@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
-import CTA from "@/app/components/common/cta";
 import RippleLoader from "@/app/components/common/loader";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
 import { MoreTools } from "../../template/more-tools";
@@ -440,16 +439,6 @@ function CalorieEstimatorPageContent() {
             </li>
           </ul>
         </div>
-
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <CTA
-            title="Want a body-fat estimate from photo too?"
-            description="Upload a full-body photo and get an appearance-based body-fat estimate for trend tracking."
-            buttonText="Try Body Fat Estimator →"
-            href="/estimate"
-          />
-        </div>
-
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"

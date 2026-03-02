@@ -57,7 +57,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
         image={
           <figure className="max-w-3xl">
             <Image
-  src="/guides/estimate-body-fat-percentage-from-photo.png"
+  src="/guides/estimate-body-fat-percentage-from-photo.webp"
   alt="How to estimate body fat percentage from photo and mirror selfie"
   width={1200}
   height={675}
@@ -232,7 +232,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
 
           <figure className="rounded-2xl border bg-white p-4">
             <Image
-  src="/guides/what-does-body-fat-percentage-look-like.png"
+  src="/guides/what-does-body-fat-percentage-look-like.webp"
   alt="Male and female body fat percentage appearance examples"
   width={1200}
   height={675}
@@ -351,7 +351,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
                 "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
               date: "Jan 13, 2026",
               readTime: "7 min read",
-              image: "/guides/why-body-fat-measurements-give-different-results.png",
+              image: "/guides/why-body-fat-measurements-give-different-results.webp",
             },
             {
               slug: "body-fat-estimation-methods",
@@ -361,7 +361,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
                 "An overview of the most common body fat measurement methods — including the Navy tape method, skinfold calipers, BIA smart scales, and DEXA scans — with clear guidance on when each method makes sense.",
               date: "Jan 8, 2026",
               readTime: "7 min read",
-              image: "/guides/body-fat-estimation-methods.png",
+              image: "/guides/body-fat-estimation-methods.webp",
             },
           ]}
           />

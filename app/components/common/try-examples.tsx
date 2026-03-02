@@ -32,10 +32,10 @@ type Example = {
 };
 
 const EXAMPLES: Example[] = [
-  { id: "m2", label: "Example B", sublabel: "", src: "/examples/bfe-example2.png" },
-  { id: "m3", label: "Example C", sublabel: "", src: "/examples/bfe-example3.png" },
-  { id: "m4", label: "Example D", sublabel: "", src: "/examples/bfe-example1.png" },
-  { id: "m1", label: "Example A", sublabel: "", src: "/examples/bfe-example4.png" },
+  { id: "m2", label: "Example B", sublabel: "", src: "/examples/bfe-example2.webp" },
+  { id: "m3", label: "Example C", sublabel: "", src: "/examples/bfe-example3.webp" },
+  { id: "m4", label: "Example D", sublabel: "", src: "/examples/bfe-example1.webp" },
+  { id: "m1", label: "Example A", sublabel: "", src: "/examples/bfe-example4.webp" },
 ];
 
 export default function TryExamples({ basePath, examples = EXAMPLES }: Props) {

@@ -7,7 +7,7 @@ export const POSTS = [
       "A practical guide to skinfolds, tape measures, smart scales, and AI photo estimates — plus how to track progress accurately.",
     date: "Jan 3, 2026",
     readTime: "5 min read",
-    image: "/guides/how-to-calculate-your-body-fat-percentage-at-home.png",
+    image: "/guides/how-to-calculate-your-body-fat-percentage-at-home.webp",
   },
    {
   slug: "what-does-body-fat-percentage-look-like",
@@ -17,7 +17,7 @@ export const POSTS = [
     "A visual guide to what different body fat percentages actually look like — with realistic examples, appearance differences, and how to estimate your own body fat using visual tools and AI.",
   date: "Jan 11, 2026",
   readTime: "6 min read",
-  image: "/guides/what-does-body-fat-percentage-look-like.png",
+  image: "/guides/what-does-body-fat-percentage-look-like.webp",
 },
 {
   slug: "why-body-fat-looks-different",
@@ -27,7 +27,7 @@ export const POSTS = [
     "Two people can have the same body fat percentage and look completely different. Learn how muscle mass, fat distribution, frame size, height, and genetics change appearance — and how to estimate your own body fat more realistically.",
   date: "Jan 23, 2026",
   readTime: "6 min read",
-  image: "/guides/why-body-fat-look-different.png",
+  image: "/guides/why-body-fat-look-different.webp",
 },
 {
   slug: "how-ai-body-fat-estimation-works",
@@ -37,7 +37,7 @@ export const POSTS = [
     "Learn how an AI body fat estimator analyzes photos, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
   date: "Jan 24, 2026",
   readTime: "6 min read",
-  image: "/guides/how-ai-body-fat-estimation-works.png",
+  image: "/guides/how-ai-body-fat-estimation-works.webp",
 },
 {
   slug: "how-accurate-is-ai-body-fat-estimation",
@@ -47,7 +47,7 @@ export const POSTS = [
     "Is AI body fat estimation accurate? Learn how accuracy differs from consistency, how AI compares to other at-home methods, and how to get the most reliable results from photo-based estimation.",
   date: "Jan 27, 2026",
   readTime: "6 min read",
-  image: "/guides/how-accurate-is-ai-body-fat-estimation.png",
+  image: "/guides/how-accurate-is-ai-body-fat-estimation.webp",
 },
 {
   slug: "best-way-to-measure-body-fat-at-home",
@@ -57,7 +57,7 @@ export const POSTS = [
     "Compare AI photo estimation, the Navy Method, and DEXA scans for body fat estimation. Learn the tradeoffs between cost, precision, accessibility, and which method makes sense for your goals.",
   date: "Jan 26, 2026",
   readTime: "7 min read",
-  image: "/guides/best-body-fat-estimation-method.png",
+  image: "/guides/best-body-fat-estimation-method.webp",
 },
 {
   slug: "body-fat-estimation-methods",
@@ -67,7 +67,7 @@ export const POSTS = [
     "An overview of the most common body fat measurement methods — including the Navy tape method, skinfold calipers, BIA smart scales, and DEXA scans — with clear guidance on when each method makes sense.",
   date: "Jan 8, 2026",
   readTime: "7 min read",
-  image: "/guides/body-fat-estimation-methods.png",
+  image: "/guides/body-fat-estimation-methods.webp",
 },
 {
   slug: "why-body-fat-estimators-give-different-results",
@@ -77,7 +77,7 @@ export const POSTS = [
     "Why do body fat estimators give different numbers? Learn how formula assumptions, hydration, timing, and measurement noise affect body fat percentage estimates — and how to interpret changes realistically.",
   date: "Jan 8, 2026",
   readTime: "5 min read",
-  image: "/guides/why-body-fat-estimators-give-different-results.png",
+  image: "/guides/why-body-fat-estimators-give-different-results.webp",
 },
 {
   slug: "how-to-take-photos-for-body-fat-estimation",
@@ -87,7 +87,7 @@ export const POSTS = [
     "Learn how to take consistent body fat photos for estimation and progress tracking, including lighting, pose, camera setup, and common mistakes to avoid.",
   date: "Dec 18, 2025",
   readTime: "5 min read",
-  image: "/guides/how-to-take-photos-for-body-fat-estimation.png",
+  image: "/guides/how-to-take-photos-for-body-fat-estimation.webp",
 },
 {
   slug: "how-often-should-you-measure-body-fat",
@@ -97,7 +97,7 @@ export const POSTS = [
     "How often should you measure body fat? Learn how measurement frequency affects accuracy, why daily checks create noise, and how to track progress realistically.",
   date: "Dec 16, 2025",
   readTime: "5 min read",
-  image: "/guides/how-often-should-you-measure-body-fat.png",
+  image: "/guides/how-often-should-you-measure-body-fat.webp",
 },
 {
   slug: "how-to-track-body-fat-changes",
@@ -107,7 +107,7 @@ export const POSTS = [
     "Learn how to track body fat progress over time without relying on the scale, using photos, consistency, and trend-based estimation.",
   date: "Jan 2 2026",
   readTime: "6 min read",
-  image: "/guides/how-to-track-body-fat-changes-over-time.png",
+  image: "/guides/how-to-track-body-fat-changes-over-time.webp",
 },
 {
   slug: "body-fat-calculator-vs-estimator",
@@ -117,7 +117,7 @@ export const POSTS = [
     "Learn the difference between body fat calculators and estimators, why they give different numbers, and which method is best for tracking progress at home.",
   date: "Jan 4, 2026",
   readTime: "6 min read",
-  image: "/guides/body-fat-calculator-vs-estimator.png",
+  image: "/guides/body-fat-calculator-vs-estimator.webp",
 },
 {
   slug: "best-body-fat-estimator",
@@ -127,7 +127,7 @@ export const POSTS = [
     "Learn the difference between body fat calculators and estimators, why they give different numbers, and which method is best for tracking progress at home.",
   date: "Jan 21, 2026",
   readTime: "6 min read",
-  image: "/guides/best-body-fat-estimator.png",
+  image: "/guides/best-body-fat-estimator.webp",
 },
 {
   slug: "bmi-vs-body-fat",
@@ -137,7 +137,7 @@ export const POSTS = [
   "BMI and body fat percentage measure different things. Learn how BMI works, why it often fails individuals, and when body fat % is the more useful metric for tracking health and appearance.",
   date: "Jan 19, 2026",
   readTime: "6 min read",
-  image: "/guides/BMI-vs-body-fat.png",
+  image: "/guides/BMI-vs-body-fat.webp",
 },
 {
   slug: "why-body-fat-calculators-are-inaccurate",
@@ -146,7 +146,7 @@ export const POSTS = [
   description: "Most body fat calculators do not measure body fat. They estimate it indirectly using population-based formulas.",
   date: "Jan 19, 2026",
   readTime: "6 min read",
-  image: "/guides/why-body-fat-calculators-are-inaccurate.png",
+  image: "/guides/why-body-fat-calculators-are-inaccurate.webp",
 },
 {
   slug: "why-body-fat-measurements-give-different-results",
@@ -156,7 +156,7 @@ export const POSTS = [
   "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
   date: "Jan 13, 2026",
   readTime: "7 min read",
-  image: "/guides/why-body-fat-measurements-give-different-results.png",
+  image: "/guides/why-body-fat-measurements-give-different-results.webp",
 },
 {
   slug: "how-accurate-are-smart-scales",
@@ -166,7 +166,7 @@ export const POSTS = [
   "Learn how smart scales estimate body fat using BIA, why results change overnight, and when smart scales are useful (and when they aren’t).",
   date: "Jan 11, 2026",
   readTime: "7 min read",
-  image: "/guides/how-accurate-are-smart-scales.png",
+  image: "/guides/how-accurate-are-smart-scales.webp",
 },
 {
   slug: "how-much-does-it-cost-to-measure-body-fat",
@@ -176,7 +176,7 @@ export const POSTS = [
   "Compare the cost of measuring body fat at home vs lab methods like DEXA. Learn price ranges, accuracy tradeoffs, and which option makes sense for tracking progress.",
   date: "Jan 1, 2026",
   readTime: "7 min read",
-  image: "/guides/body-fat-measurement-cost.png",
+  image: "/guides/body-fat-measurement-cost.webp",
 },
 {
   slug: "estimate-body-fat-percentage-from-photo",
@@ -186,7 +186,7 @@ export const POSTS = [
   "Learn how body fat percentage can be estimated from photos and mirror selfies, which visual cues matter, how accurate photo-based estimates are, and how automated tools compare to human eyeballing.",
   date: "Jan 27, 2026",
   readTime: "5 min read",
-  image: "/guides/estimate-body-fat-percentage-from-photo.png",
+  image: "/guides/estimate-body-fat-percentage-from-photo.webp",
 },
 ] as const;
 

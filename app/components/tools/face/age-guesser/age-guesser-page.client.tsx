@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
-import CTA from "@/app/components/common/cta";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
@@ -79,9 +78,9 @@ const AGE_BAND_ROWS: AgeBandRow[] = [
 ];
 
 const FACE_EXAMPLES = [
-  { id: "age-a", label: "Example A", src: "/examples/man-selfie.png" },
-  { id: "age-b", label: "Example B", src: "/examples/woman-selfie.png" },
-  { id: "age-c", label: "Example C", src: "/examples/boy-selfie.png" },
+  { id: "age-a", label: "Example A", src: "/examples/man-selfie.webp" },
+  { id: "age-b", label: "Example B", src: "/examples/woman-selfie.webp" },
+  { id: "age-c", label: "Example C", src: "/examples/boy-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {
@@ -474,56 +473,27 @@ function AgeGuesserPageContent() {
             </ul>
           </div>
         ) : null}
-
         <div className={sectionWrap}>
           <h2 className={h2Class}>Use This with Other Tools</h2>
           <p className={pClass}>
-            Pair apparent age with the{" "}
-            <a className="text-primary underline" href="/face-shape-detector">
-              Face Shape Detector
+            Use this result as one signal, then run one complementary scan from the{" "}
+            <a className="text-primary underline" href="/tools/face">
+              Face Tools
             </a>{" "}
-            for geometry classification and with the{" "}
-            <a className="text-primary underline" href="/face-symmetry-test">
-              Face Symmetry Test
-            </a>{" "}
-            for left-right balance context. You can also run the{" "}
-            <a className="text-primary underline" href="/attractiveness-test">
-              Attractiveness Test
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/golden-face-ratio-analyzer">
-              Golden Face Ratio Analyzer
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/eyebrow-type-detector">
-              Eyebrow Type Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/eye-shape-detector">
-              Eye Shape Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/nose-shape-detector">
-              Nose Shape Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/skin-type-detector">
-              Skin Type Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/hair-color-detector">
-              Hair Color Detector
-            </a>{" "}
-            for proportion benchmarking under the same photo setup.
+            page based on your goal.
           </p>
           <p className={pClass}>
-            For full-body visual analysis, use the{" "}
-            <a className="text-primary underline" href="/body-shape-analyzer">
-              Body Shape Analyzer
-            </a>{" "}
-            and the{" "}
+            For broader progress tracking, pair with the{" "}
             <a className="text-primary underline" href="/estimate">
               Body Fat Estimator
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/body-shape-analyzer">
+              Body Shape Analyzer
+            </a>
+            . If you want a metric-driven comparison, use{" "}
+            <a className="text-primary underline" href="/body-visualizer">
+              Body Visualizer
             </a>
             .
           </p>
@@ -567,16 +537,6 @@ function AgeGuesserPageContent() {
             </li>
           </ul>
         </div>
-
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <CTA
-            title="Want to check your face shape too?"
-            description="Run the face shape detector to classify facial geometry and compare styling direction."
-            buttonText="Try Face Shape Detector →"
-            href="/face-shape-detector"
-          />
-        </div>
-
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"

@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
-import CTA from "@/app/components/common/cta";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
@@ -88,9 +87,9 @@ const SYMMETRY_BANDS: SymmetryBand[] = [
 ];
 
 const FACE_EXAMPLES = [
-  { id: "face-a", label: "Example A", src: "/examples/man-selfie.png" },
-  { id: "face-b", label: "Example B", src: "/examples/woman-selfie.png" },
-  { id: "face-c", label: "Example C", src: "/examples/boy-selfie.png" },
+  { id: "face-a", label: "Example A", src: "/examples/man-selfie.webp" },
+  { id: "face-b", label: "Example B", src: "/examples/woman-selfie.webp" },
+  { id: "face-c", label: "Example C", src: "/examples/boy-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {
@@ -670,57 +669,26 @@ function FaceSymmetryPageContent() {
         <div className={sectionWrap}>
           <h2 className={h2Class}>Use This with Other Tools</h2>
           <p className={pClass}>
-            Pair facial analysis with full-body and composition tools for broader progress context. Use
-            the{" "}
-            <a className="text-primary underline" href="/face-shape-detector">
-              Face Shape Detector
+            Use this result as one signal, then run one complementary scan from the{" "}
+            <a className="text-primary underline" href="/tools/face">
+              Face Tools
             </a>{" "}
-            for shape classification, then use{" "}
-            <a className="text-primary underline" href="/age-guesser">
-              Age Guesser
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/attractiveness-test">
-              Attractiveness Test
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/golden-face-ratio-analyzer">
-              Golden Face Ratio Analyzer
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/eyebrow-type-detector">
-              Eyebrow Type Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/eye-shape-detector">
-              Eye Shape Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/nose-shape-detector">
-              Nose Shape Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/skin-type-detector">
-              Skin Type Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/hair-color-detector">
-              Hair Color Detector
-            </a>{" "}
-            for appearance-score context, then use
-            the{" "}
+            page based on your goal.
+          </p>
+          <p className={pClass}>
+            For broader progress tracking, pair with the{" "}
             <a className="text-primary underline" href="/estimate">
               Body Fat Estimator
             </a>{" "}
-            for appearance-based body-fat tracking, the{" "}
+            and{" "}
             <a className="text-primary underline" href="/body-shape-analyzer">
               Body Shape Analyzer
-            </a>{" "}
-            for silhouette classification, and the{" "}
+            </a>
+            . If you want a metric-driven comparison, use{" "}
             <a className="text-primary underline" href="/body-visualizer">
               Body Visualizer
-            </a>{" "}
-            to compare metric-driven shape changes.
+            </a>
+            .
           </p>
         </div>
 
@@ -765,16 +733,6 @@ function FaceSymmetryPageContent() {
             </li>
           </ul>
         </div>
-
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <CTA
-            title="Want a body-composition estimate too?"
-            description="Upload a full-body photo to estimate body fat percentage and track physique changes over time."
-            buttonText="Try Body Fat Estimator →"
-            href="/estimate"
-          />
-        </div>
-
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"

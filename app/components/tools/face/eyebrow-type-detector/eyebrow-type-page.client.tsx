@@ -4,7 +4,6 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
-import CTA from "@/app/components/common/cta";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
@@ -83,9 +82,9 @@ const EYEBROW_ROWS: EyebrowRow[] = [
 ];
 
 const FACE_EXAMPLES = [
-  { id: "brow-a", label: "Example A", src: "/examples/man-selfie.png" },
-  { id: "brow-b", label: "Example B", src: "/examples/woman-selfie.png" },
-  { id: "brow-c", label: "Example C", src: "/examples/boy-selfie.png" },
+  { id: "brow-a", label: "Example A", src: "/examples/man-selfie.webp" },
+  { id: "brow-b", label: "Example B", src: "/examples/woman-selfie.webp" },
+  { id: "brow-c", label: "Example C", src: "/examples/boy-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {
@@ -446,39 +445,29 @@ function EyebrowTypePageContent() {
             ))}
           </ul>
         </div>
-
         <div className={sectionWrap}>
-          <h2 className={h2Class}>Use This with Other Face Tools</h2>
+          <h2 className={h2Class}>Use This with Other Tools</h2>
           <p className={pClass}>
-            Combine this with the{" "}
-            <a className="text-primary underline" href="/face-shape-detector">
-              Face Shape Detector
+            Use this result as one signal, then run one complementary scan from the{" "}
+            <a className="text-primary underline" href="/tools/face">
+              Face Tools
             </a>{" "}
-            for geometry context, the{" "}
-            <a className="text-primary underline" href="/face-symmetry-test">
-              Face Symmetry Test
-            </a>{" "}
-            for balance checks, the{" "}
-            <a className="text-primary underline" href="/eye-shape-detector">
-              Eye Shape Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/nose-shape-detector">
-              Nose Shape Detector
-            </a>{" "}
-            plus{" "}
-            <a className="text-primary underline" href="/skin-type-detector">
-              Skin Type Detector
+            page based on your goal.
+          </p>
+          <p className={pClass}>
+            For broader progress tracking, pair with the{" "}
+            <a className="text-primary underline" href="/estimate">
+              Body Fat Estimator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/hair-color-detector">
-              Hair Color Detector
-            </a>{" "}
-            for full face styling context, and the{" "}
-            <a className="text-primary underline" href="/golden-face-ratio-analyzer">
-              Golden Face Ratio Analyzer
-            </a>{" "}
-            for broader proportion context.
+            <a className="text-primary underline" href="/body-shape-analyzer">
+              Body Shape Analyzer
+            </a>
+            . If you want a metric-driven comparison, use{" "}
+            <a className="text-primary underline" href="/body-visualizer">
+              Body Visualizer
+            </a>
+            .
           </p>
         </div>
 
@@ -505,16 +494,6 @@ function EyebrowTypePageContent() {
             </li>
           </ul>
         </div>
-
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <CTA
-            title="Want to check your full face proportions?"
-            description="Run the Golden Face Ratio Analyzer for a broader ratio-based facial proportion review."
-            buttonText="Try Golden Face Ratio Analyzer →"
-            href="/golden-face-ratio-analyzer"
-          />
-        </div>
-
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"

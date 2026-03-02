@@ -33,7 +33,7 @@ export default function BlogPostPage() {
         image={
           <figure className="max-w-3xl">
             <Image
-  src="/guides/why-body-fat-measurements-give-different-results.png"
+  src="/guides/why-body-fat-measurements-give-different-results.webp"
   alt="Different body fat measurement methods compared"
   width={1200}
   height={675}
@@ -210,7 +210,7 @@ export default function BlogPostPage() {
                 "Compare the cost of measuring body fat at home vs lab methods like DEXA. Learn price ranges, accuracy tradeoffs, and which option makes sense for tracking progress.",
                 date: "Jan 1, 2026",
                 readTime: "7 min read",
-                image: "/guides/body-fat-measurement-cost.png",
+                image: "/guides/body-fat-measurement-cost.webp",
                 },
                 {
                 slug: "body-fat-estimation-methods",
@@ -220,7 +220,7 @@ export default function BlogPostPage() {
                     "An overview of the most common body fat measurement methods — including the Navy tape method, skinfold calipers, BIA smart scales, and DEXA scans — with clear guidance on when each method makes sense.",
                 date: "Jan 8, 2026",
                 readTime: "7 min read",
-                image: "/guides/body-fat-estimation-methods.png",
+                image: "/guides/body-fat-estimation-methods.webp",
                 },
             ]}
         />

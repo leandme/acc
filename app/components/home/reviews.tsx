@@ -28,7 +28,7 @@ export default function Reviews() {
     <div className="mt-10 flex items-center gap-3">
       {/* Avatar */}
       <img
-        src="/profile/athlete-who-uses-body-fat-estimator.png" 
+        src="/profile/athlete-who-uses-body-fat-estimator.webp" 
         alt="Profile"
         className="w-12 h-12 rounded-full object-cover"
       />
@@ -61,7 +61,7 @@ export default function Reviews() {
     <div className="mt-10 flex items-center gap-3">
       {/* Avatar */}
       <img
-        src="/profile/gym-bro.png" 
+        src="/profile/gym-bro.webp" 
         alt="Profile"
         className="w-12 h-12 rounded-full object-cover"
       />
@@ -94,7 +94,7 @@ export default function Reviews() {
     <div className="mt-10 flex items-center gap-3">
       {/* Avatar */}
       <img
-        src="/profile/everyday-uses-body-fat-estimator.png" 
+        src="/profile/everyday-uses-body-fat-estimator.webp" 
         alt="Profile"
         className="w-12 h-12 rounded-full object-cover"
       />

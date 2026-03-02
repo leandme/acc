@@ -34,7 +34,7 @@ export default function ToolExplainer() {
         <div className="relative rounded-2xl border h-80 flex items-center justify-center overflow-hidden">
           {/* Replace this with screenshots / estimator output / before-after */}
           <img
-        src="/examples/body-fat-estimate-example.png"
+        src="/examples/body-fat-estimate-example.webp"
         alt="AI body fat estimation example showing photo input and estimated body fat percentage"
         className="rounded-xl shadow-sm"
         loading="lazy"
