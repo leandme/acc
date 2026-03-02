@@ -12,6 +12,7 @@ import { GoogleTag } from "../components/helpers/google-tag";
 import { GoogleAnalytics } from "../components/helpers/google-analytics";
 import Chrome from "../components/common/chrome";
 import { Ezoic } from "../components/helpers/ezoic";
+import { EzoicAdsRunner } from "../components/helpers/ezoic-ads-runner";
 
 export default function RootLayout({
   children,
@@ -32,6 +33,7 @@ export default function RootLayout({
 
       <body className="bg-base-100 text-base-content">
         <AmplitudeInitializer />
+        <EzoicAdsRunner />
 
         <Suspense
           fallback={
