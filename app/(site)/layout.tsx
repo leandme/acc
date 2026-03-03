@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-         <Ezoic /> 
+        {/* <Ezoic /> */} 
         <GoogleTag />
         <GoogleAnalytics />
         <WebsiteSchema />

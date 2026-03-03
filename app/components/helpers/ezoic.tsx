@@ -13,7 +13,6 @@ export function Ezoic() {
       ></script>
       <script
         id="ezoic-header"
-        async
         src="//www.ezojs.com/ezoic/sa.min.js"
       ></script>
       <script

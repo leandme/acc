@@ -62,7 +62,7 @@ function refreshMountedPlaceholders(ez: EzoicStandalone) {
   const mounted = getMountedPlaceholderIds();
   if (!mounted.length) {
     ez.destroyPlaceholders?.(...KNOWN_PLACEHOLDER_IDS);
-    return;
+    return false;
   }
 
   const mountedSet = new Set<number>(mounted);
@@ -72,6 +72,7 @@ function refreshMountedPlaceholders(ez: EzoicStandalone) {
   }
 
   ez.showAds?.(...mounted);
+  return true;
 }
 
 export function EzoicAdsRunner() {
@@ -80,13 +81,31 @@ export function EzoicAdsRunner() {
   useEffect(() => {
     const ez = getOrCreateEzoicStandalone();
     if (!ez) return;
+    let cancelled = false;
+
+    const MAX_RETRIES = 8;
+    const RETRY_DELAY_MS = 350;
+    const INITIAL_DELAY_MS = 120;
+
+    const runWithRetries = (attempt = 0) => {
+      if (cancelled) return;
+
+      const hasMountedPlaceholders = refreshMountedPlaceholders(ez);
+      if (hasMountedPlaceholders || attempt >= MAX_RETRIES) return;
+
+      window.setTimeout(() => {
+        window.requestAnimationFrame(() => {
+          runWithRetries(attempt + 1);
+        });
+      }, RETRY_DELAY_MS);
+    };
 
     const runWhenDomSettles = () => {
       if (typeof window === "undefined") return;
       window.requestAnimationFrame(() => {
         window.setTimeout(() => {
-          refreshMountedPlaceholders(ez);
-        }, 120);
+          runWithRetries();
+        }, INITIAL_DELAY_MS);
       });
     };
 
@@ -98,6 +117,9 @@ export function EzoicAdsRunner() {
 
     // Otherwise, queue for Ezoic init.
     ez.cmd.push(runWhenDomSettles);
+    return () => {
+      cancelled = true;
+    };
   }, [pathname]);
 
   return null;

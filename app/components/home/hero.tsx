@@ -3,6 +3,7 @@
 import Image from "next/image";
 import EstimateDropZone from "../tools/composition/body-fat-estimator/estimate-drop-zone";
 import TryExamples from "../common/try-examples";
+import { EzoicAdSlot } from "../helpers/ezoic-ad-slot";
 // import ReviewBox from "./ReviewBox";
 
 export default function Hero() {
@@ -53,6 +54,7 @@ export default function Hero() {
             <div className="mt-6">
               <TryExamples basePath="/estimate" />
             </div>
+            <EzoicAdSlot id={113} className="mt-8" />
           </div>
         </div>
 
