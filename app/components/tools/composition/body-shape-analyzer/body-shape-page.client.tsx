@@ -339,6 +339,8 @@ function BodyShapePageContent() {
             and{" "}
             <a className="text-primary underline" href="/face-shape-detector">Face Shape Detector</a>{" "}
             plus{" "}
+            <a className="text-primary underline" href="/jawline-check">Jawline Check</a>{" "}
+            plus{" "}
             <a className="text-primary underline" href="/age-guesser">Age Guesser</a>{" "}
             and{" "}
             <a className="text-primary underline" href="/attractiveness-test">Attractiveness Test</a>.
@@ -395,6 +397,7 @@ function BodyShapePageContent() {
               "age-guesser",
               "attractiveness-test",
               "face-shape-detector",
+              "jawline-check",
               "face-symmetry-test",
               "body-frame-size-calculator",
               "lean-body-mass-calculator",

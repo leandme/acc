@@ -500,6 +500,7 @@ function EyebrowTypePageContent() {
             columns={2}
             toolSlugs={[
               "face-shape-detector",
+              "jawline-check",
               "face-symmetry-test",
               "eye-shape-detector",
               "nose-shape-detector",

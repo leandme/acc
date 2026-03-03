@@ -10,6 +10,7 @@ type Props = {
     | "/height-estimator"
     | "/face-symmetry-test"
     | "/face-shape-detector"
+    | "/jawline-check"
     | "/age-guesser"
     | "/attractiveness-test"
     | "/golden-face-ratio-analyzer"

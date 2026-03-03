@@ -75,6 +75,7 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/face-shape-detector">Face Shape Detector</a></li>
+              <li><a className="hover:text-white" href="/jawline-check">Jawline Check</a></li>
               <li><a className="hover:text-white" href="/age-guesser">Age Guesser</a></li>
               <li><a className="hover:text-white" href="/attractiveness-test">Attractiveness Test</a></li>
               <li><a className="hover:text-white" href="/face-symmetry-test">Face Symmetry Test</a></li>

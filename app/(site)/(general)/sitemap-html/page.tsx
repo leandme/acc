@@ -105,6 +105,7 @@ export default function SitemapPage() {
     "age-guesser",
     "attractiveness-test",
     "face-shape-detector",
+    "jawline-check",
     "face-symmetry-test",
     "army-body-fat-calculator",
     "body-fat-calculator",

@@ -592,6 +592,7 @@ function AttractivenessTestPageContent() {
               "hair-color-detector",
               "face-symmetry-test",
               "face-shape-detector",
+              "jawline-check",
               "age-guesser",
               "body-shape-analyzer",
               "body-shape-calculator",

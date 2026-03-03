@@ -410,6 +410,7 @@ function NoseShapePageContent() {
               "skin-type-detector",
               "hair-color-detector",
               "face-shape-detector",
+              "jawline-check",
               "face-symmetry-test",
               "golden-face-ratio-analyzer",
               "age-guesser",

@@ -3,7 +3,7 @@ import FaceSymmetryPageClient from "@/app/components/tools/face/face-symmetry-te
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Face Symmetry Test – AI Face Symmetry Checker",
+  title: "Face Symmetry Test – AI Facial Symmetry Checker",
   description:
     "Upload a face photo to run an AI face symmetry test, generate mirrored facial halves, and get a symmetry score with interpretation bands.",
   canonical: "https://bodyfatestimator.ai/face-symmetry-test",

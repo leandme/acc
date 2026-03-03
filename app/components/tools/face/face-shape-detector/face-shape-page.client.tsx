@@ -501,7 +501,11 @@ function FaceShapePageContent() {
             <a className="text-primary underline" href="/tools/face">
               Face Tools
             </a>{" "}
-            page based on your goal.
+            page based on your goal. For side-profile structure, run{" "}
+            <a className="text-primary underline" href="/jawline-check">
+              Jawline Check
+            </a>
+            .
           </p>
           <p className={pClass}>
             For broader progress tracking, pair with the{" "}
@@ -574,6 +578,7 @@ function FaceShapePageContent() {
               "nose-shape-detector",
               "skin-type-detector",
               "hair-color-detector",
+              "jawline-check",
               "age-guesser",
               "attractiveness-test",
               "face-symmetry-test",

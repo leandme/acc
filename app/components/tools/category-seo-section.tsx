@@ -148,7 +148,7 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
       {
         title: "Feature classification",
         description:
-          "Use Face Shape, Eye Shape, Eyebrow, Nose, and Hair tools for trait-level analysis.",
+          "Use Face Shape, Jawline Check, Eye Shape, Eyebrow, Nose, and Hair tools for trait-level analysis.",
       },
       {
         title: "Appearance benchmarking",
@@ -177,6 +177,10 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
       "Using one result snapshot as a permanent assessment.",
     ],
     relatedLinks: [
+      {
+        href: "/jawline-check",
+        label: "Jawline Check",
+      },
       {
         href: "/guides/how-ai-body-fat-estimation-works",
         label: "How AI Visual Estimation Works",

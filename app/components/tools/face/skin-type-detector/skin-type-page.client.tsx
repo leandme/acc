@@ -510,6 +510,7 @@ function SkinTypePageContent() {
               "eye-shape-detector",
               "nose-shape-detector",
               "face-shape-detector",
+              "jawline-check",
               "face-symmetry-test",
               "golden-face-ratio-analyzer",
               "age-guesser",

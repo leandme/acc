@@ -549,6 +549,7 @@ function AgeGuesserPageContent() {
               "skin-type-detector",
               "hair-color-detector",
               "face-shape-detector",
+              "jawline-check",
               "face-symmetry-test",
               "attractiveness-test",
               "body-shape-analyzer",

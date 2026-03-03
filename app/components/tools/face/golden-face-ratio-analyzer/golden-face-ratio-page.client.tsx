@@ -596,6 +596,7 @@ function GoldenFaceRatioPageContent() {
               "hair-color-detector",
               "face-symmetry-test",
               "face-shape-detector",
+              "jawline-check",
               "attractiveness-test",
               "age-guesser",
               "body-shape-analyzer",

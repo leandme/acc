@@ -249,6 +249,12 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Upload a portrait to detect your face shape with AI and confidence scoring.",
     category: "Face",
   },
+  "jawline-check": {
+    slug: "jawline-check",
+    title: "Jawline Check",
+    description: "Upload a side-profile photo to estimate jawline angle and classify jawline type with AI.",
+    category: "Face",
+  },
   "age-guesser": {
     slug: "age-guesser",
     title: "Age Guesser",

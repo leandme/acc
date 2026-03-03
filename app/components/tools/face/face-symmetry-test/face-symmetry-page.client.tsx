@@ -747,6 +747,7 @@ function FaceSymmetryPageContent() {
               "age-guesser",
               "attractiveness-test",
               "face-shape-detector",
+              "jawline-check",
               "estimate",
               "body-shape-analyzer",
               "body-visualizer",
