@@ -22,7 +22,6 @@ export default function Footer() {
           <p className="mt-3 text-base text-gray-300 leading-relaxed">
             {siteConfig.site.tagline}
           </p>
-
         </div>
        
 
@@ -75,6 +74,7 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/face-shape-detector">Face Shape Detector</a></li>
+              <li><a className="hover:text-white" href="/skin-analyzer">Skin Analyzer</a></li>
               <li><a className="hover:text-white" href="/jawline-check">Jawline Check</a></li>
               <li><a className="hover:text-white" href="/age-guesser">Age Guesser</a></li>
               <li><a className="hover:text-white" href="/attractiveness-test">Attractiveness Test</a></li>

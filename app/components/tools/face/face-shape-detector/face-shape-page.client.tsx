@@ -576,7 +576,7 @@ function FaceShapePageContent() {
               "eyebrow-type-detector",
               "eye-shape-detector",
               "nose-shape-detector",
-              "skin-type-detector",
+              "skin-analyzer",
               "hair-color-detector",
               "jawline-check",
               "age-guesser",

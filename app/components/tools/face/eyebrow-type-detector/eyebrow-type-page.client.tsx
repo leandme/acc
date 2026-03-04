@@ -504,7 +504,7 @@ function EyebrowTypePageContent() {
               "face-symmetry-test",
               "eye-shape-detector",
               "nose-shape-detector",
-              "skin-type-detector",
+              "skin-analyzer",
               "hair-color-detector",
               "golden-face-ratio-analyzer",
               "age-guesser",

@@ -752,7 +752,7 @@ function JawlineCheckPageContent() {
               "eye-shape-detector",
               "eyebrow-type-detector",
               "nose-shape-detector",
-              "skin-type-detector",
+              "skin-analyzer",
               "hair-color-detector",
               "age-guesser",
               "attractiveness-test",

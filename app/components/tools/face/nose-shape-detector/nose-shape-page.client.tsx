@@ -407,7 +407,7 @@ function NoseShapePageContent() {
             toolSlugs={[
               "eye-shape-detector",
               "eyebrow-type-detector",
-              "skin-type-detector",
+              "skin-analyzer",
               "hair-color-detector",
               "face-shape-detector",
               "jawline-check",

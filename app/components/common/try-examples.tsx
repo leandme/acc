@@ -17,7 +17,7 @@ type BasePath =
   | "/eyebrow-type-detector"
   | "/eye-shape-detector"
   | "/nose-shape-detector"
-  | "/skin-type-detector"
+  | "/skin-analyzer"
   | "/hair-color-detector";
 
 type Props = {

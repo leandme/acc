@@ -15,18 +15,34 @@ export type SkinTypeKey =
   | "uncertain";
 
 type LevelKey = "low" | "medium" | "high" | "uncertain";
+type SkinToneDepthKey =
+  | "very-fair"
+  | "fair-light"
+  | "light-medium"
+  | "medium"
+  | "tan-olive"
+  | "deep"
+  | "very-deep"
+  | "uncertain";
+type UndertoneKey = "warm" | "cool" | "neutral" | "olive" | "mixed" | "uncertain";
 
 export type SkinTypeAnalysisResult = {
   type: SkinTypeKey;
   typeLabel: string;
   confidence: "low" | "medium" | "high";
   confidenceScore: number;
+  skinToneDepth: SkinToneDepthKey;
+  undertone: UndertoneKey;
+  toneEvenness: LevelKey;
+  pigmentationVisibility: LevelKey;
+  textureUniformity: LevelKey;
   sebumLevel: LevelKey;
   hydrationLevel: LevelKey;
   poreVisibility: LevelKey;
   rednessLevel: LevelKey;
   barrierSupport: LevelKey;
   rationale: string | null;
+  colorRationale: string | null;
   observationNotes: string[];
   careSuggestions: string[];
   retakeTips: string[];
@@ -131,6 +147,44 @@ function normalizeLevel(input: unknown): LevelKey {
   return "uncertain";
 }
 
+function normalizeSkinToneDepth(input: unknown): SkinToneDepthKey {
+  const raw = String(Array.isArray(input) ? input[0] : input ?? "")
+    .trim()
+    .toLowerCase();
+
+  if (!raw) return "uncertain";
+  if ((raw.includes("very") && raw.includes("fair")) || raw.includes("porcelain")) {
+    return "very-fair";
+  }
+  if (
+    raw.includes("fair-light") ||
+    (raw.includes("fair") && raw.includes("light")) ||
+    raw === "fair" ||
+    raw === "light"
+  ) {
+    return "fair-light";
+  }
+  if (raw.includes("light-medium")) return "light-medium";
+  if (raw.includes("medium")) return "medium";
+  if (raw.includes("tan") || raw.includes("olive")) return "tan-olive";
+  if (raw.includes("very") && raw.includes("deep")) return "very-deep";
+  if (raw.includes("deep") || raw.includes("dark")) return "deep";
+  return "uncertain";
+}
+
+function normalizeUndertone(input: unknown): UndertoneKey {
+  const raw = String(Array.isArray(input) ? input[0] : input ?? "")
+    .trim()
+    .toLowerCase();
+
+  if (raw.includes("warm")) return "warm";
+  if (raw.includes("cool")) return "cool";
+  if (raw.includes("neutral")) return "neutral";
+  if (raw.includes("olive")) return "olive";
+  if (raw.includes("mixed")) return "mixed";
+  return "uncertain";
+}
+
 function normalizeConfidence(input: unknown): "low" | "medium" | "high" {
   const value = String(Array.isArray(input) ? input[0] : input ?? "")
     .trim()
@@ -183,6 +237,13 @@ function normalizeResult(raw: any): SkinTypeAnalysisResult {
     typeLabel: typeLabel(type),
     confidence,
     confidenceScore,
+    skinToneDepth: normalizeSkinToneDepth(
+      assessment?.skin_tone_depth ?? assessment?.tone_depth ?? assessment?.skin_tone ?? null
+    ),
+    undertone: normalizeUndertone(assessment?.undertone ?? null),
+    toneEvenness: normalizeLevel(assessment?.tone_evenness ?? null),
+    pigmentationVisibility: normalizeLevel(assessment?.pigmentation_visibility ?? null),
+    textureUniformity: normalizeLevel(assessment?.texture_uniformity ?? null),
     sebumLevel: normalizeLevel(assessment?.sebum_level ?? null),
     hydrationLevel: normalizeLevel(assessment?.hydration_level ?? null),
     poreVisibility: normalizeLevel(assessment?.pore_visibility ?? null),
@@ -190,6 +251,7 @@ function normalizeResult(raw: any): SkinTypeAnalysisResult {
     barrierSupport: normalizeLevel(assessment?.barrier_support ?? null),
     rationale:
       String(assessment?.type_rationale ?? assessment?.rationale ?? "").trim() || null,
+    colorRationale: String(assessment?.color_rationale ?? "").trim() || null,
     observationNotes: asStringArray(assessment?.observation_notes, 8),
     careSuggestions: asStringArray(assessment?.care_suggestions, 8),
     retakeTips: asStringArray(assessment?.retake_tips, 8),
@@ -299,6 +361,8 @@ export function useSkinTypeAnalysis(
 
         trackEvent("Analyze Skin Type", {
           skin_type: analysis.typeLabel,
+          undertone: analysis.undertone,
+          tone_depth: analysis.skinToneDepth,
           confidence: analysis.confidence,
           confidence_score: analysis.confidenceScore,
           source,

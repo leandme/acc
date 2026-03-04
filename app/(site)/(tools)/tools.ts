@@ -291,10 +291,10 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Detect nose shape, bridge profile, and tip direction from a portrait with AI.",
     category: "Face",
   },
-  "skin-type-detector": {
-    slug: "skin-type-detector",
-    title: "Skin Type Detector",
-    description: "Detect likely skin type from a portrait with AI confidence and care-direction context.",
+  "skin-analyzer": {
+    slug: "skin-analyzer",
+    title: "Skin Analyzer",
+    description: "Analyze skin type, tone depth, undertone, and care-direction context from a portrait with AI.",
     category: "Face",
   },
   "hair-color-detector": {

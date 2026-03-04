@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
   const system_prompt = `You are a careful skin-type analysis assistant.
 Return ONLY valid JSON. No markdown. No extra text.`;
 
-  const prompt = `
+const prompt = `
 Analyze visible skin characteristics in the face image and estimate skin type.
 
 Return JSON exactly in this shape:
@@ -34,6 +34,11 @@ Return JSON exactly in this shape:
   "skin_assessment": {
     "primary_type": "dry" | "oily" | "combination" | "normal" | "sensitive" | "dehydrated" | "uncertain",
     "alternative_types": ["string"],
+    "skin_tone_depth": "very-fair" | "fair-light" | "light-medium" | "medium" | "tan-olive" | "deep" | "very-deep" | "uncertain",
+    "undertone": "warm" | "cool" | "neutral" | "olive" | "mixed" | "uncertain",
+    "tone_evenness": "low" | "medium" | "high" | "uncertain",
+    "pigmentation_visibility": "low" | "medium" | "high" | "uncertain",
+    "texture_uniformity": "low" | "medium" | "high" | "uncertain",
     "sebum_level": "low" | "medium" | "high" | "uncertain",
     "hydration_level": "low" | "medium" | "high" | "uncertain",
     "pore_visibility": "low" | "medium" | "high" | "uncertain",
@@ -42,6 +47,7 @@ Return JSON exactly in this shape:
     "confidence_rating": "low" | "medium" | "high",
     "confidence_score": number,
     "type_rationale": "string",
+    "color_rationale": "string",
     "observation_notes": ["string"],
     "care_suggestions": ["string"],
     "retake_tips": ["string"]
@@ -52,6 +58,7 @@ Rules:
 - confidence_score is an integer 0-100.
 - If lighting, heavy makeup, or filters reduce reliability, use "uncertain" values and lower confidence.
 - Keep observation_notes, care_suggestions, and retake_tips to 3-6 items each.
+- If tone/undertone cannot be estimated from the image, return "uncertain" for those fields.
 - Do not provide medical advice or diagnosis.
 - This is an appearance-based estimate only.
 `.trim();

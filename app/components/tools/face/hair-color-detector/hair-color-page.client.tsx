@@ -526,7 +526,7 @@ function HairColorPageContent() {
             heading="Related Tools"
             columns={2}
             toolSlugs={[
-              "skin-type-detector",
+              "skin-analyzer",
               "eyebrow-type-detector",
               "eye-shape-detector",
               "nose-shape-detector",

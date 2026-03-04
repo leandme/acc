@@ -22,6 +22,24 @@ type SkinTypeRow = {
   direction: string;
 };
 
+type SkinToneDepthKey =
+  | "very-fair"
+  | "fair-light"
+  | "light-medium"
+  | "medium"
+  | "tan-olive"
+  | "deep"
+  | "very-deep";
+
+type SkinToneRow = {
+  key: SkinToneDepthKey;
+  label: string;
+  colorClass: string;
+  textClass: string;
+  pattern: string;
+  direction: string;
+};
+
 const SKIN_TYPE_ROWS: SkinTypeRow[] = [
   {
     key: "normal",
@@ -29,7 +47,7 @@ const SKIN_TYPE_ROWS: SkinTypeRow[] = [
     colorClass: "bg-green-50",
     textClass: "text-green-800",
     pattern: "Balanced oil and hydration with relatively even surface texture.",
-    direction: "Use a simple maintenance routine with gentle cleanser, moisturizer, and SPF.",
+    direction: "Use a maintenance routine with gentle cleansing, moisturizer, and daily SPF.",
   },
   {
     key: "combination",
@@ -37,7 +55,7 @@ const SKIN_TYPE_ROWS: SkinTypeRow[] = [
     colorClass: "bg-blue-50",
     textClass: "text-blue-800",
     pattern: "Oilier T-zone with drier or balanced cheeks and mixed pore visibility.",
-    direction: "Use zone-based products: lighter texture in T-zone and richer hydration on dry areas.",
+    direction: "Use zone-based products: lighter hydration in T-zone and richer support on dry areas.",
   },
   {
     key: "oily",
@@ -45,14 +63,14 @@ const SKIN_TYPE_ROWS: SkinTypeRow[] = [
     colorClass: "bg-cyan-50",
     textClass: "text-cyan-800",
     pattern: "Higher shine and sebum production, often with more visible pores.",
-    direction: "Use non-comedogenic formulas and lightweight hydration to support barrier balance.",
+    direction: "Prefer lightweight non-comedogenic products and avoid over-stripping cleansers.",
   },
   {
     key: "dry",
     label: "Dry",
     colorClass: "bg-orange-50",
     textClass: "text-orange-800",
-    pattern: "Lower surface oil and tighter-feeling texture with potential flaking.",
+    pattern: "Lower surface oil with tighter-feeling texture and possible flaking.",
     direction: "Prioritize barrier-supportive moisturizers and reduce harsh cleansing frequency.",
   },
   {
@@ -60,16 +78,75 @@ const SKIN_TYPE_ROWS: SkinTypeRow[] = [
     label: "Dehydrated",
     colorClass: "bg-yellow-50",
     textClass: "text-yellow-800",
-    pattern: "Water-deficient appearance that can coexist with either oily or dry skin.",
-    direction: "Add humectants and gentle hydration layers while protecting the skin barrier.",
+    pattern: "Water-deficient appearance that can coexist with oily, dry, or normal skin.",
+    direction: "Add humectants and hydration layers, then seal with barrier-supportive products.",
   },
   {
     key: "sensitive",
     label: "Sensitive",
     colorClass: "bg-red-50",
     textClass: "text-red-800",
-    pattern: "Higher visible reactivity signs such as redness or irritation tendency.",
-    direction: "Keep routine minimal and patch-test new products before full use.",
+    pattern: "Higher visible reactivity signals such as redness or irritation tendency.",
+    direction: "Keep routine minimal, avoid aggressive actives at first, and patch-test new products.",
+  },
+];
+
+const SKIN_TONE_ROWS: SkinToneRow[] = [
+  {
+    key: "very-fair",
+    label: "Very Fair",
+    colorClass: "bg-slate-50",
+    textClass: "text-slate-800",
+    pattern: "Very light skin depth with low visible melanin concentration in the photo.",
+    direction: "High-SPF daily sun protection is especially important for photodamage prevention.",
+  },
+  {
+    key: "fair-light",
+    label: "Fair / Light",
+    colorClass: "bg-amber-50",
+    textClass: "text-amber-800",
+    pattern: "Light tone depth with moderate contrast between highlights and shadows.",
+    direction: "Use broad-spectrum SPF and gradual actives to avoid barrier irritation.",
+  },
+  {
+    key: "light-medium",
+    label: "Light-Medium",
+    colorClass: "bg-yellow-50",
+    textClass: "text-yellow-800",
+    pattern: "Balanced light-to-medium depth with moderate pigmentation expression.",
+    direction: "Prioritize tone-evenness support and consistent UV protection over harsh exfoliation.",
+  },
+  {
+    key: "medium",
+    label: "Medium",
+    colorClass: "bg-orange-100",
+    textClass: "text-orange-900",
+    pattern: "Mid-depth tone with stable melanin expression under neutral lighting.",
+    direction: "Target discoloration management with gentle brightening and daily sunscreen.",
+  },
+  {
+    key: "tan-olive",
+    label: "Tan / Olive",
+    colorClass: "bg-lime-100",
+    textClass: "text-lime-900",
+    pattern: "Deeper tan-to-olive profile with stronger undertone influence.",
+    direction: "Choose sunscreen formulas that blend well to improve daily consistency.",
+  },
+  {
+    key: "deep",
+    label: "Deep",
+    colorClass: "bg-amber-200",
+    textClass: "text-amber-950",
+    pattern: "Deep skin depth with higher visible melanin content.",
+    direction: "Protect barrier and tone evenness with photoprotection and non-irritating actives.",
+  },
+  {
+    key: "very-deep",
+    label: "Very Deep",
+    colorClass: "bg-amber-300",
+    textClass: "text-amber-950",
+    pattern: "Very deep tone with strong pigment richness in even light.",
+    direction: "Focus on barrier-safe routines and hyperpigmentation prevention through UV control.",
   },
 ];
 
@@ -100,6 +177,32 @@ function confidenceBandLabel(score: number) {
 function levelText(level: "low" | "medium" | "high" | "uncertain") {
   if (level === "uncertain") return "Uncertain";
   return level.charAt(0).toUpperCase() + level.slice(1);
+}
+
+function undertoneLabel(undertone: "warm" | "cool" | "neutral" | "olive" | "mixed" | "uncertain") {
+  if (undertone === "uncertain") return "Uncertain";
+  return undertone.charAt(0).toUpperCase() + undertone.slice(1);
+}
+
+function skinToneDepthLabel(
+  toneDepth:
+    | "very-fair"
+    | "fair-light"
+    | "light-medium"
+    | "medium"
+    | "tan-olive"
+    | "deep"
+    | "very-deep"
+    | "uncertain"
+) {
+  if (toneDepth === "very-fair") return "Very Fair";
+  if (toneDepth === "fair-light") return "Fair / Light";
+  if (toneDepth === "light-medium") return "Light-Medium";
+  if (toneDepth === "medium") return "Medium";
+  if (toneDepth === "tan-olive") return "Tan / Olive";
+  if (toneDepth === "deep") return "Deep";
+  if (toneDepth === "very-deep") return "Very Deep";
+  return "Uncertain";
 }
 
 function SkinConfidenceBar({ score }: { score: number }) {
@@ -244,7 +347,86 @@ function SkinTypeTable({ activeType }: { activeType: SkinTypeKey | null }) {
   );
 }
 
-function SkinTypePageContent() {
+function SkinToneTable({
+  activeTone,
+}: {
+  activeTone:
+    | "very-fair"
+    | "fair-light"
+    | "light-medium"
+    | "medium"
+    | "tan-olive"
+    | "deep"
+    | "very-deep"
+    | "uncertain"
+    | null;
+}) {
+  return (
+    <div className="mt-8 overflow-hidden rounded-2xl border bg-base-100">
+      <table className="w-full text-left border-separate border-spacing-0">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">
+              Tone Depth
+            </th>
+            <th className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">
+              Appearance Pattern
+            </th>
+            <th className="px-4 py-3 text-sm font-semibold text-gray-700 hidden sm:table-cell">
+              Practical Direction
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {SKIN_TONE_ROWS.map((row) => {
+            const isActive = activeTone === row.key;
+            const cellBase = "px-4 py-4 align-top";
+            const activeCell = isActive
+              ? "border-y-4 border-gray-900"
+              : "border-y border-transparent";
+
+            return (
+              <tr key={row.key} className={row.colorClass}>
+                <td
+                  className={[
+                    cellBase,
+                    activeCell,
+                    isActive ? "border-l-4 border-gray-900 rounded-l-xl" : "",
+                  ].join(" ")}
+                >
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className={`font-semibold ${row.textClass}`}>{row.label}</span>
+                    {isActive ? (
+                      <span className="inline-flex rounded-full border border-gray-900/20 bg-gray-900/10 px-2 py-0.5 text-xs font-semibold text-gray-900">
+                        Your Result
+                      </span>
+                    ) : null}
+                  </div>
+                </td>
+                <td className={[cellBase, activeCell].join(" ")}>
+                  <p className="text-gray-700">{row.pattern}</p>
+                  <p className="mt-1 text-sm text-gray-700 sm:hidden">{row.direction}</p>
+                </td>
+                <td
+                  className={[
+                    cellBase,
+                    activeCell,
+                    "hidden sm:table-cell text-gray-700",
+                    isActive ? "border-r-4 border-gray-900 rounded-r-xl" : "",
+                  ].join(" ")}
+                >
+                  {row.direction}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function SkinAnalyzerPageContent() {
   const searchParams = useSearchParams();
   const imageUrl = searchParams.get("imageUrl");
   const source = searchParams.get("source") === "example" ? "example" : "upload";
@@ -256,6 +438,8 @@ function SkinTypePageContent() {
   const pClass = "text-lg leading-relaxed";
 
   const activeType = analysis?.type ?? null;
+  const activeTone = analysis?.skinToneDepth ?? null;
+
   const alternativesText = useMemo(() => {
     if (!analysis?.alternatives?.length) return null;
     return analysis.alternatives.slice(0, 2).join(" or ");
@@ -264,19 +448,19 @@ function SkinTypePageContent() {
   return (
     <main className="bg-base-100">
       <section className="flex flex-col items-center justify-start pt-10 px-6">
-        <H1>Skin Type Detector</H1>
+        <H1>Skin Analyzer</H1>
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
-          Upload a clear face photo to detect likely skin type with AI, confidence scoring,
-          and practical routine direction.
+          Upload a clear face photo to analyze skin type, tone depth, undertone, hydration cues,
+          and practical skincare direction using AI.
         </p>
 
         {!imageUrl ? (
           <div className="w-full max-w-2xl mt-10 flex flex-col items-center">
             <div className="w-full max-w-md">
-              <EstimateDropZone basePath="/skin-type-detector" buttonLabel="Upload Face Photo" />
+              <EstimateDropZone basePath="/skin-analyzer" buttonLabel="Upload Face Photo" />
             </div>
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
-              <TryExamples basePath="/skin-type-detector" examples={FACE_EXAMPLES} />
+              <TryExamples basePath="/skin-analyzer" examples={FACE_EXAMPLES} />
             </div>
             <p className="mt-5 text-sm text-gray-600 max-w-md text-center">
               Best results come from makeup-light photos with even lighting and visible forehead,
@@ -289,22 +473,22 @@ function SkinTypePageContent() {
               <div className="w-full sm:max-w-sm lg:max-w-none justify-self-center">
                 <img
                   src={imageUrl}
-                  alt="Uploaded image for skin-type analysis"
+                  alt="Uploaded image for skin analysis"
                   className="w-full max-w-[95vw] sm:max-w-sm lg:w-[360px] mx-auto rounded-2xl shadow-xl object-cover aspect-[3/4] bg-base-200"
                 />
               </div>
 
               <div className="w-full rounded-2xl border bg-white p-6 lg:p-8 shadow-sm">
-                <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900">Skin Type Result</h2>
+                <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900">Skin Analysis Result</h2>
 
                 {loading ? (
                   <div className="mt-6">
                     <div className="flex items-center gap-4">
                       <RippleLoader />
                       <div>
-                        <p className="text-lg text-gray-800 font-semibold">Analyzing skin cues...</p>
+                        <p className="text-lg text-gray-800 font-semibold">Analyzing skin profile...</p>
                         <p className="text-sm text-gray-600">
-                          Estimating oil level, hydration pattern, pore visibility, and redness profile.
+                          Estimating skin type, tone depth, undertone, hydration pattern, and barrier cues.
                         </p>
                       </div>
                     </div>
@@ -335,6 +519,12 @@ function SkinTypePageContent() {
                     </p>
 
                     <p className="mt-2 text-sm text-gray-600">
+                      Tone depth: <span className="font-semibold">{skinToneDepthLabel(analysis.skinToneDepth)}</span>
+                      {" "}| Undertone: <span className="font-semibold">{undertoneLabel(analysis.undertone)}</span>
+                      {" "}| Tone evenness: <span className="font-semibold">{levelText(analysis.toneEvenness)}</span>
+                    </p>
+
+                    <p className="mt-2 text-sm text-gray-600">
                       Sebum: <span className="font-semibold">{levelText(analysis.sebumLevel)}</span>
                       {" "}| Hydration: <span className="font-semibold">{levelText(analysis.hydrationLevel)}</span>
                       {" "}| Pores: <span className="font-semibold">{levelText(analysis.poreVisibility)}</span>
@@ -342,11 +532,17 @@ function SkinTypePageContent() {
                     </p>
 
                     <p className="mt-2 text-sm text-gray-600">
-                      Barrier support estimate: <span className="font-semibold">{levelText(analysis.barrierSupport)}</span>
+                      Pigmentation visibility: <span className="font-semibold">{levelText(analysis.pigmentationVisibility)}</span>
+                      {" "}| Texture uniformity: <span className="font-semibold">{levelText(analysis.textureUniformity)}</span>
+                      {" "}| Barrier support estimate: <span className="font-semibold">{levelText(analysis.barrierSupport)}</span>
                     </p>
 
                     {analysis.rationale ? (
                       <p className="mt-5 text-gray-700 leading-relaxed">{analysis.rationale}</p>
+                    ) : null}
+
+                    {analysis.colorRationale ? (
+                      <p className="mt-3 text-gray-700 leading-relaxed">{analysis.colorRationale}</p>
                     ) : null}
 
                     {alternativesText ? (
@@ -367,7 +563,7 @@ function SkinTypePageContent() {
           <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
             <h2 className={h2Class}>Confidence Interpretation</h2>
             <p className="mt-4 text-center text-lg text-gray-700">
-              The confidence bar reflects how strongly the current image matches the detected skin-type profile.
+              The confidence bar reflects how strongly the current image matches the detected skin profile.
             </p>
             <div className="mt-8">
               <SkinConfidenceBar score={analysis.confidenceScore} />
@@ -382,6 +578,38 @@ function SkinTypePageContent() {
           </p>
           <SkinTypeTable activeType={activeType} />
         </div>
+
+        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+          <h2 className={h2Class}>Where Your Skin Tone Depth Fits</h2>
+          <p className="mt-4 text-center text-lg text-gray-700">
+            The highlighted row marks your detected skin-tone depth category.
+          </p>
+          <SkinToneTable activeTone={activeTone} />
+        </div>
+
+        {analysis ? (
+          <div className={sectionWrap}>
+            <h2 className={h2Class}>Skin Coloring Snapshot</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+              <div className="rounded-2xl border bg-white p-4">
+                <p className="text-sm text-gray-500">Undertone</p>
+                <p className="text-xl font-semibold text-gray-900 mt-1">{undertoneLabel(analysis.undertone)}</p>
+              </div>
+              <div className="rounded-2xl border bg-white p-4">
+                <p className="text-sm text-gray-500">Tone Depth</p>
+                <p className="text-xl font-semibold text-gray-900 mt-1">{skinToneDepthLabel(analysis.skinToneDepth)}</p>
+              </div>
+              <div className="rounded-2xl border bg-white p-4">
+                <p className="text-sm text-gray-500">Tone Evenness</p>
+                <p className="text-xl font-semibold text-gray-900 mt-1">{levelText(analysis.toneEvenness)}</p>
+              </div>
+              <div className="rounded-2xl border bg-white p-4">
+                <p className="text-sm text-gray-500">Pigmentation Visibility</p>
+                <p className="text-xl font-semibold text-gray-900 mt-1">{levelText(analysis.pigmentationVisibility)}</p>
+              </div>
+            </div>
+          </div>
+        ) : null}
 
         {analysis?.observationNotes?.length ? (
           <div className={sectionWrap}>
@@ -406,16 +634,40 @@ function SkinTypePageContent() {
         ) : null}
 
         <div className={sectionWrap}>
-          <h2 className={h2Class}>How This Skin Type Detector Works</h2>
+          <h2 className={h2Class}>What This Skin Analyzer Measures</h2>
           <p className={pClass}>
-            This tool estimates visible skin behavior from one portrait image by evaluating shine distribution,
-            texture cues, pore visibility, hydration appearance, and redness tendency. It then maps those cues
-            to a likely skin-type category.
+            This skin analyzer estimates visible skin behavior from one portrait image. It evaluates shine
+            distribution, hydration cues, pore visibility, texture uniformity, redness patterns, tone evenness,
+            and color-depth signals, then maps those cues to likely skin categories.
           </p>
           <p className={pClass}>
-            The output is a cosmetic and routine-planning aid, not a diagnostic system. Skin can shift with season,
-            hormones, current products, sleep, climate, and photo conditions.
+            The output is an appearance-based planning aid for skincare and product selection. It is not
+            a diagnosis, and results can shift with lighting, camera settings, climate, sleep, makeup,
+            current products, and recent irritation.
           </p>
+        </div>
+
+        <div className={sectionWrap}>
+          <h2 className={h2Class}>How To Use Skin Type and Skin Coloring Together</h2>
+          <p className={pClass}>
+            Skin type tells you how your skin behaves (oil, hydration, reactivity). Skin coloring metrics
+            tell you how tone and undertone appear in the current image. Combine both for better decisions:
+            type for routine structure, and coloring for product shades and irritation-safe brightening strategy.
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-lg">
+            <li>
+              <span className="font-semibold">Type first:</span> build cleanser, moisturizer, and SPF around
+              your primary type.
+            </li>
+            <li>
+              <span className="font-semibold">Tone/undertone second:</span> choose cosmetic shades and avoid
+              products that create visible cast.
+            </li>
+            <li>
+              <span className="font-semibold">Evenness and pigmentation:</span> use gradual routines and daily
+              sun protection before increasing active intensity.
+            </li>
+          </ul>
         </div>
 
         <div className={sectionWrap}>
@@ -423,7 +675,7 @@ function SkinTypePageContent() {
           <ul className="list-disc pl-6 space-y-2 text-lg">
             <li><span className="font-semibold">Normal:</span> balanced oil/water profile and generally stable tolerance.</li>
             <li><span className="font-semibold">Combination:</span> mixed oil behavior by region, often oily T-zone with drier cheeks.</li>
-            <li><span className="font-semibold">Oily:</span> stronger sebum production and more persistent shine through the day.</li>
+            <li><span className="font-semibold">Oily:</span> stronger sebum production and persistent shine through the day.</li>
             <li><span className="font-semibold">Dry:</span> lower oil support and tighter texture, especially after cleansing.</li>
             <li><span className="font-semibold">Dehydrated:</span> water-deficient state that can occur with any base skin type.</li>
             <li><span className="font-semibold">Sensitive:</span> higher reactivity profile and lower tolerance for aggressive formulas.</li>
@@ -431,20 +683,31 @@ function SkinTypePageContent() {
         </div>
 
         <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Improve Scan Quality</h2>
+          <h2 className={h2Class}>How To Improve Skin Analyzer Accuracy</h2>
           <ul className="list-disc pl-6 space-y-2 text-lg">
             {(analysis?.retakeTips?.length
               ? analysis.retakeTips
               : [
                   "Use front-facing daylight or neutral white light.",
-                  "Avoid heavy foundation, beauty filters, and strong smoothing effects.",
+                  "Avoid heavy foundation, beauty filters, and smoothing effects.",
                   "Keep forehead, nose, cheeks, and chin visible with minimal occlusion.",
-                  "Take the image on clean skin before rich occlusive products.",
+                  "Use a recent photo on relatively clean skin before rich occlusives.",
                 ]).map((tip, idx) => (
               <li key={`${tip}-${idx}`}>{tip}</li>
             ))}
           </ul>
         </div>
+
+        <div className={sectionWrap}>
+          <h2 className={h2Class}>Limitations and Safety Notes</h2>
+          <ul className="list-disc pl-6 space-y-2 text-lg">
+            <li>This tool does not diagnose skin disease and should not replace professional care.</li>
+            <li>Medical concerns such as persistent rashes, severe acne, or suspicious lesions require a clinician.</li>
+            <li>Photo quality strongly affects confidence and category stability.</li>
+            <li>If results are low-confidence, retake with neutral light and no beauty filters.</li>
+          </ul>
+        </div>
+
         <div className={sectionWrap}>
           <h2 className={h2Class}>Use This with Other Tools</h2>
           <p className={pClass}>
@@ -493,6 +756,12 @@ function SkinTypePageContent() {
               </a>
             </li>
             <li>
+              Review on Fitzpatrick skin phototype and pigmentation context:
+              <a className="text-primary underline ml-1" href="https://www.ncbi.nlm.nih.gov/books/NBK557626/">
+                Fitzpatrick Skin Type (NCBI Bookshelf)
+              </a>
+            </li>
+            <li>
               PubMed research index on skin barrier and stratum corneum function:
               <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/?term=stratum+corneum+barrier+function">
                 Skin Barrier Research Search
@@ -500,6 +769,7 @@ function SkinTypePageContent() {
             </li>
           </ul>
         </div>
+
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"
@@ -516,7 +786,7 @@ function SkinTypePageContent() {
               "age-guesser",
               "attractiveness-test",
             ]}
-            excludeSlug="skin-type-detector"
+            excludeSlug="skin-analyzer"
           />
         </div>
       </section>
@@ -524,7 +794,7 @@ function SkinTypePageContent() {
   );
 }
 
-const SkinTypePageClient = dynamic(() => Promise.resolve(SkinTypePageContent), {
+const SkinAnalyzerPageClient = dynamic(() => Promise.resolve(SkinAnalyzerPageContent), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center min-h-screen">
@@ -533,4 +803,4 @@ const SkinTypePageClient = dynamic(() => Promise.resolve(SkinTypePageContent), {
   ),
 });
 
-export default SkinTypePageClient;
+export default SkinAnalyzerPageClient;

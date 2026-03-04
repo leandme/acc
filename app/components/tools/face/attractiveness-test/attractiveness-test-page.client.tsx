@@ -588,7 +588,7 @@ function AttractivenessTestPageContent() {
               "eyebrow-type-detector",
               "eye-shape-detector",
               "nose-shape-detector",
-              "skin-type-detector",
+              "skin-analyzer",
               "hair-color-detector",
               "face-symmetry-test",
               "face-shape-detector",
