@@ -44,15 +44,14 @@ export default function Footer() {
 
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
-              Body
+              Fat
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/body-visualizer">Body Visualizer</a></li>
               <li><a className="hover:text-white" href="/body-shape-analyzer">Body Shape Analyzer</a></li>
               <li><a className="hover:text-white" href="/army-body-fat-calculator">Army Body Fat Calculator</a></li>
-               <li><a className="hover:text-white" href="/ffmi-calculator">FFMI Calculator</a></li>
                <li><a className="hover:text-white" href="/bai-calculator">BAI Calculator</a></li>
-              <li><a className="hover:text-white" href="/tools">All Body Tools</a></li>
+              <li><a className="hover:text-white" href="/tools/fat">All Fat Tools</a></li>
             </ul>
           </div>
 
