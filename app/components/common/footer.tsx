@@ -26,7 +26,7 @@ export default function Footer() {
        
 
         <div className="my-8 h-px bg-white/10" />
-<div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
+<div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-7">
         <div>
             <h6 className="text-lg font-semibold text-gray-200">
               Site
@@ -52,6 +52,19 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/army-body-fat-calculator">Army Body Fat Calculator</a></li>
                <li><a className="hover:text-white" href="/bai-calculator">BAI Calculator</a></li>
               <li><a className="hover:text-white" href="/tools/fat">All Fat Tools</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h6 className="text-lg font-semibold text-gray-200">
+              Muscle
+            </h6>
+            <ul className="mt-3 space-y-2 text-base text-gray-300">
+              <li><a className="hover:text-white" href="/ffmi-calculator">FMI Calculator</a></li>
+              <li><a className="hover:text-white" href="/muscular-potential-calculator">Muscular Potential Calculator</a></li>
+              <li><a className="hover:text-white" href="/casey-butt-calculator">Casey Butt Calculator</a></li>
+              <li><a className="hover:text-white" href="/natty-or-not-calculator">Natty or Not Calculator</a></li>
+              <li><a className="hover:text-white" href="/tools/muscle">All Muscle Tools</a></li>
             </ul>
           </div>
 
