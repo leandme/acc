@@ -14,20 +14,21 @@ import {
 } from "@/app/hooks/useJawlineCheckAnalysis";
 
 type JawlineBand = {
-  key: Exclude<JawlineTypeKey, "uncertain">;
+  key: Exclude<JawlineTypeKey, "uncertain"> | "blockish";
   label: string;
   min: number;
   max: number;
   colorClass: string;
   textClass: string;
   summary: string;
+  rangeLabel?: string;
 };
 
 const JAWLINE_BANDS: JawlineBand[] = [
   {
     key: "very-sharp",
     label: "Very Sharp",
-    min: 80,
+    min: 91,
     max: 114,
     colorClass: "bg-green-50",
     textClass: "text-green-800",
@@ -75,6 +76,20 @@ const JAWLINE_BANDS: JawlineBand[] = [
   },
 ];
 
+const LOW_ANGLE_BAND: JawlineBand = {
+  key: "blockish",
+  label: "Blockish (Not Desired)",
+  min: 0,
+  max: 90,
+  rangeLabel: "\u226490",
+  colorClass: "bg-blue-50",
+  textClass: "text-blue-800",
+  summary:
+    "Very low mandibular angle. This bucket is treated as a non-desired/blockish profile zone.",
+};
+
+const JAWLINE_TABLE_BANDS: JawlineBand[] = [LOW_ANGLE_BAND, ...JAWLINE_BANDS];
+
 const FACE_EXAMPLES = [
   { id: "jawline-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "jawline-b", label: "Example B", src: "/examples/woman-selfie.webp" },
@@ -101,6 +116,7 @@ function findBandByType(type: JawlineTypeKey | null) {
 
 function findBandByAngle(angle: number | null) {
   if (angle == null) return null;
+  if (angle <= LOW_ANGLE_BAND.max) return LOW_ANGLE_BAND;
   return JAWLINE_BANDS.find((band) => angle >= band.min && angle <= band.max) ?? null;
 }
 
@@ -287,7 +303,7 @@ function JawlineBandTable({
           </tr>
         </thead>
         <tbody>
-          {JAWLINE_BANDS.map((band) => {
+          {JAWLINE_TABLE_BANDS.map((band) => {
             const isActive = activeBand?.key === band.key;
             const cellBase = "px-4 py-4 align-top";
             const activeCell = isActive
@@ -304,7 +320,7 @@ function JawlineBandTable({
                   ].join(" ")}
                 >
                   <span className="font-semibold tabular-nums text-gray-900">
-                    {band.min}-{band.max}
+                    {band.rangeLabel ?? `${band.min}-${band.max}`}
                   </span>
                 </td>
                 <td className={[cellBase, activeCell].join(" ")}>
