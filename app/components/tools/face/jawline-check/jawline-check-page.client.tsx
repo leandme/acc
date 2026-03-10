@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
@@ -85,26 +85,6 @@ function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
 }
 
-function confidenceBadgeClass(confidence: "low" | "medium" | "high") {
-  if (confidence === "high") return "bg-green-100 text-green-800 border-green-200";
-  if (confidence === "low") return "bg-red-100 text-red-800 border-red-200";
-  return "bg-yellow-100 text-yellow-800 border-yellow-200";
-}
-
-function profileQualityClass(quality: "good" | "moderate" | "poor" | "uncertain") {
-  if (quality === "good") return "bg-green-100 text-green-800 border-green-200";
-  if (quality === "poor") return "bg-red-100 text-red-800 border-red-200";
-  if (quality === "moderate") return "bg-yellow-100 text-yellow-800 border-yellow-200";
-  return "bg-gray-100 text-gray-700 border-gray-200";
-}
-
-function qualityLabel(quality: "good" | "moderate" | "poor" | "uncertain") {
-  if (quality === "good") return "Good profile quality";
-  if (quality === "moderate") return "Moderate profile quality";
-  if (quality === "poor") return "Poor profile quality";
-  return "Profile quality uncertain";
-}
-
 function typeOneLiner(type: JawlineTypeKey) {
   if (type === "very-sharp") return "Acute jawline angle with strong angular profile definition.";
   if (type === "sharp") return "Defined jawline angle with clear mandibular contour break.";
@@ -130,6 +110,93 @@ function resolveActiveBand(angle: number | null, type: JawlineTypeKey | null) {
 
 function percent(v: number) {
   return `${(v * 100).toFixed(2)}%`;
+}
+
+type LandmarkPoint = { x: number; y: number };
+
+type JawlineManualLandmarks = {
+  ramusPoint: LandmarkPoint;
+  gonionPoint: LandmarkPoint;
+  mentonPoint: LandmarkPoint;
+};
+
+type JawlineManualKey = keyof JawlineManualLandmarks;
+
+const DEFAULT_MANUAL_LANDMARKS: JawlineManualLandmarks = {
+  ramusPoint: { x: 0.34, y: 0.38 },
+  gonionPoint: { x: 0.5, y: 0.62 },
+  mentonPoint: { x: 0.73, y: 0.76 },
+};
+
+const LANDMARK_UI: Record<
+  JawlineManualKey,
+  {
+    label: string;
+    dotClass: string;
+    labelClass: string;
+    lineColor: string;
+  }
+> = {
+  ramusPoint: {
+    label: "Ramus",
+    dotClass: "bg-emerald-500 border-emerald-700",
+    labelClass: "bg-emerald-600/90",
+    lineColor: "#10b981",
+  },
+  gonionPoint: {
+    label: "Gonion",
+    dotClass: "bg-gray-900 border-gray-950",
+    labelClass: "bg-gray-900/90",
+    lineColor: "#111827",
+  },
+  mentonPoint: {
+    label: "Menton",
+    dotClass: "bg-blue-600 border-blue-800",
+    labelClass: "bg-blue-600/90",
+    lineColor: "#2563eb",
+  },
+};
+
+function jawlineTypeLabel(type: JawlineTypeKey) {
+  if (type === "very-sharp") return "Very Sharp";
+  if (type === "sharp") return "Sharp";
+  if (type === "balanced") return "Balanced";
+  if (type === "soft") return "Soft";
+  if (type === "rounded") return "Rounded";
+  return "Uncertain";
+}
+
+function classifyJawlineByAngle(angle: number): Exclude<JawlineTypeKey, "uncertain"> {
+  if (angle <= 114) return "very-sharp";
+  if (angle <= 124) return "sharp";
+  if (angle <= 134) return "balanced";
+  if (angle <= 145) return "soft";
+  return "rounded";
+}
+
+function computeManualJawlineAngle(landmarks: JawlineManualLandmarks): number {
+  const ramus = landmarks.ramusPoint;
+  const gonion = landmarks.gonionPoint;
+  const menton = landmarks.mentonPoint;
+
+  const v1x = ramus.x - gonion.x;
+  const v1y = ramus.y - gonion.y;
+  const v2x = menton.x - gonion.x;
+  const v2y = menton.y - gonion.y;
+
+  const mag1 = Math.hypot(v1x, v1y);
+  const mag2 = Math.hypot(v2x, v2y);
+  if (mag1 < 0.01 || mag2 < 0.01) return 0;
+
+  const dot = v1x * v2x + v1y * v2y;
+  const cosine = clamp(dot / (mag1 * mag2), -1, 1);
+  const angle = (Math.acos(cosine) * 180) / Math.PI;
+  return Number(clamp(angle, 80, 170).toFixed(1));
+}
+
+function deriveAngleScore(angle: number): number {
+  const score = ((160 - angle) / 52) * 100;
+  return clamp(Math.round(score), 0, 100);
 }
 
 function JawlineAngleBar({ angle }: { angle: number }) {
@@ -270,130 +337,136 @@ function JawlineBandTable({
   );
 }
 
-function JawlineOverlayImage({
+function JawlineOverlayEditor({
   imageUrl,
   landmarks,
+  onChange,
 }: {
   imageUrl: string;
-  landmarks: {
-    ramusPoint: { x: number; y: number } | null;
-    gonionPoint: { x: number; y: number } | null;
-    mentonPoint: { x: number; y: number } | null;
-  };
+  landmarks: JawlineManualLandmarks;
+  onChange: (next: JawlineManualLandmarks) => void;
 }) {
-  const hasRamus = !!landmarks.ramusPoint;
-  const hasGonion = !!landmarks.gonionPoint;
-  const hasMenton = !!landmarks.mentonPoint;
+  const frameRef = useRef<HTMLDivElement | null>(null);
+  const [dragging, setDragging] = useState<JawlineManualKey | null>(null);
 
-  const canDrawRamusLine = hasRamus && hasGonion;
-  const canDrawJawBodyLine = hasGonion && hasMenton;
-  const hasAnyOverlay = hasRamus || hasGonion || hasMenton;
+  const clientToPoint = useCallback((clientX: number, clientY: number) => {
+    const frame = frameRef.current;
+    if (!frame) return null;
+    const rect = frame.getBoundingClientRect();
+    if (rect.width < 1 || rect.height < 1) return null;
+
+    return {
+      x: Number(clamp((clientX - rect.left) / rect.width, 0, 1).toFixed(5)),
+      y: Number(clamp((clientY - rect.top) / rect.height, 0, 1).toFixed(5)),
+    };
+  }, []);
+
+  const updateLandmark = useCallback(
+    (key: JawlineManualKey, point: LandmarkPoint) => {
+      onChange({
+        ...landmarks,
+        [key]: point,
+      });
+    },
+    [landmarks, onChange]
+  );
+
+  useEffect(() => {
+    const onPointerUp = () => setDragging(null);
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerUp);
+    return () => {
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerUp);
+    };
+  }, []);
 
   return (
-    <div className="relative w-full max-w-[95vw] sm:max-w-sm lg:w-[360px] mx-auto">
+    <div
+      ref={frameRef}
+      className="relative w-full max-w-[95vw] sm:max-w-sm lg:w-[360px] mx-auto touch-none select-none"
+    >
       <img
         src={imageUrl}
         alt="Uploaded side-profile image for jawline check"
         className="w-full rounded-2xl shadow-xl bg-base-200"
+        draggable={false}
       />
 
-      {hasAnyOverlay ? (
-        <>
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            {canDrawRamusLine ? (
-              <line
-                x1={(landmarks.ramusPoint!.x * 100).toFixed(2)}
-                y1={(landmarks.ramusPoint!.y * 100).toFixed(2)}
-                x2={(landmarks.gonionPoint!.x * 100).toFixed(2)}
-                y2={(landmarks.gonionPoint!.y * 100).toFixed(2)}
-                stroke="#10b981"
-                strokeWidth="0.7"
-                strokeDasharray="2 1"
-              />
-            ) : null}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <line
+          x1={(landmarks.ramusPoint.x * 100).toFixed(2)}
+          y1={(landmarks.ramusPoint.y * 100).toFixed(2)}
+          x2={(landmarks.gonionPoint.x * 100).toFixed(2)}
+          y2={(landmarks.gonionPoint.y * 100).toFixed(2)}
+          stroke={LANDMARK_UI.ramusPoint.lineColor}
+          strokeWidth="0.7"
+          strokeDasharray="2 1"
+        />
+        <line
+          x1={(landmarks.gonionPoint.x * 100).toFixed(2)}
+          y1={(landmarks.gonionPoint.y * 100).toFixed(2)}
+          x2={(landmarks.mentonPoint.x * 100).toFixed(2)}
+          y2={(landmarks.mentonPoint.y * 100).toFixed(2)}
+          stroke={LANDMARK_UI.mentonPoint.lineColor}
+          strokeWidth="0.7"
+          strokeDasharray="2 1"
+        />
+      </svg>
 
-            {canDrawJawBodyLine ? (
-              <line
-                x1={(landmarks.gonionPoint!.x * 100).toFixed(2)}
-                y1={(landmarks.gonionPoint!.y * 100).toFixed(2)}
-                x2={(landmarks.mentonPoint!.x * 100).toFixed(2)}
-                y2={(landmarks.mentonPoint!.y * 100).toFixed(2)}
-                stroke="#2563eb"
-                strokeWidth="0.7"
-                strokeDasharray="2 1"
-              />
-            ) : null}
+      {(Object.keys(LANDMARK_UI) as JawlineManualKey[]).map((key) => {
+        const point = landmarks[key];
+        const ui = LANDMARK_UI[key];
 
-            {hasRamus ? (
-              <circle
-                cx={(landmarks.ramusPoint!.x * 100).toFixed(2)}
-                cy={(landmarks.ramusPoint!.y * 100).toFixed(2)}
-                r="1.1"
-                fill="#10b981"
-              />
-            ) : null}
-            {hasGonion ? (
-              <circle
-                cx={(landmarks.gonionPoint!.x * 100).toFixed(2)}
-                cy={(landmarks.gonionPoint!.y * 100).toFixed(2)}
-                r="1.2"
-                fill="#111827"
-              />
-            ) : null}
-            {hasMenton ? (
-              <circle
-                cx={(landmarks.mentonPoint!.x * 100).toFixed(2)}
-                cy={(landmarks.mentonPoint!.y * 100).toFixed(2)}
-                r="1.1"
-                fill="#2563eb"
-              />
-            ) : null}
-          </svg>
+        return (
+          <div key={key}>
+            <button
+              type="button"
+              className={[
+                "absolute h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow-md",
+                "cursor-grab active:cursor-grabbing touch-none",
+                ui.dotClass,
+                dragging === key ? "scale-110 ring-2 ring-black/30" : "",
+              ].join(" ")}
+              style={{ left: percent(point.x), top: percent(point.y) }}
+              aria-label={`Drag ${ui.label} point`}
+              onPointerDown={(event) => {
+                event.preventDefault();
+                setDragging(key);
+                event.currentTarget.setPointerCapture(event.pointerId);
+                const next = clientToPoint(event.clientX, event.clientY);
+                if (next) updateLandmark(key, next);
+              }}
+              onPointerMove={(event) => {
+                if (dragging !== key) return;
+                const next = clientToPoint(event.clientX, event.clientY);
+                if (next) updateLandmark(key, next);
+              }}
+              onPointerUp={(event) => {
+                setDragging(null);
+                if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+                  event.currentTarget.releasePointerCapture(event.pointerId);
+                }
+              }}
+            />
 
-          {hasRamus ? (
             <div
-              className="absolute -translate-y-full rounded-md bg-emerald-600/90 px-2 py-1 text-[10px] font-semibold text-white"
+              className={`absolute -translate-y-full rounded-md px-2 py-1 text-[10px] font-semibold text-white pointer-events-none ${ui.labelClass}`}
               style={{
-                left: percent(landmarks.ramusPoint!.x),
-                top: percent(landmarks.ramusPoint!.y),
+                left: percent(point.x),
+                top: percent(point.y),
                 transform: "translate(-50%, -115%)",
               }}
             >
-              Ramus
+              {ui.label}
             </div>
-          ) : null}
-
-          {hasGonion ? (
-            <div
-              className="absolute -translate-y-full rounded-md bg-gray-900/90 px-2 py-1 text-[10px] font-semibold text-white"
-              style={{
-                left: percent(landmarks.gonionPoint!.x),
-                top: percent(landmarks.gonionPoint!.y),
-                transform: "translate(-50%, -115%)",
-              }}
-            >
-              Gonion
-            </div>
-          ) : null}
-
-          {hasMenton ? (
-            <div
-              className="absolute -translate-y-full rounded-md bg-blue-600/90 px-2 py-1 text-[10px] font-semibold text-white"
-              style={{
-                left: percent(landmarks.mentonPoint!.x),
-                top: percent(landmarks.mentonPoint!.y),
-                transform: "translate(-50%, -115%)",
-              }}
-            >
-              Menton
-            </div>
-          ) : null}
-        </>
-      ) : null}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -402,31 +475,73 @@ function JawlineCheckPageContent() {
   const searchParams = useSearchParams();
   const imageUrl = searchParams.get("imageUrl");
   const source = searchParams.get("source") === "example" ? "example" : "upload";
-  const { analysis, loading, error } = useJawlineCheckAnalysis(imageUrl, { source });
+
+  const [manualLandmarks, setManualLandmarks] = useState<JawlineManualLandmarks>(
+    DEFAULT_MANUAL_LANDMARKS
+  );
+  const [autoRequestKey, setAutoRequestKey] = useState(0);
+  const [autoImageUrl, setAutoImageUrl] = useState<string | null>(null);
+
+  const autoRunImageUrl = useMemo(() => {
+    if (!imageUrl || !autoImageUrl) return null;
+    return autoImageUrl === imageUrl ? imageUrl : null;
+  }, [autoImageUrl, imageUrl]);
+
+  const { analysis: autoAnalysis, loading: autoLoading, error: autoError } =
+    useJawlineCheckAnalysis(autoRequestKey > 0 ? autoRunImageUrl : null, {
+      source,
+      requestKey: autoRequestKey,
+    });
+
+  useEffect(() => {
+    setManualLandmarks(DEFAULT_MANUAL_LANDMARKS);
+    setAutoRequestKey(0);
+    setAutoImageUrl(null);
+  }, [imageUrl]);
+
+  useEffect(() => {
+    const landmarks = autoAnalysis?.landmarks;
+    if (!landmarks?.ramusPoint || !landmarks?.gonionPoint || !landmarks?.mentonPoint) return;
+
+    setManualLandmarks({
+      ramusPoint: landmarks.ramusPoint,
+      gonionPoint: landmarks.gonionPoint,
+      mentonPoint: landmarks.mentonPoint,
+    });
+  }, [autoAnalysis]);
 
   const sectionWrap =
     "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
   const pClass = "text-lg leading-relaxed";
 
+  const manualAngle = useMemo(() => computeManualJawlineAngle(manualLandmarks), [manualLandmarks]);
+  const manualType = useMemo(() => classifyJawlineByAngle(manualAngle), [manualAngle]);
+  const manualTypeText = useMemo(() => jawlineTypeLabel(manualType), [manualType]);
+  const manualAngleScore = useMemo(() => deriveAngleScore(manualAngle), [manualAngle]);
+
   const activeBand = useMemo(
-    () => resolveActiveBand(analysis?.jawlineAngle ?? null, analysis?.jawlineType ?? null),
-    [analysis?.jawlineAngle, analysis?.jawlineType]
+    () => resolveActiveBand(manualAngle, manualType),
+    [manualAngle, manualType]
   );
 
-  const alternativesText = useMemo(() => {
-    if (!analysis?.alternatives?.length) return null;
-    return analysis.alternatives.slice(0, 2).join(" or ");
-  }, [analysis?.alternatives]);
+  const onAutoDetect = useCallback(() => {
+    if (!imageUrl) return;
+    setAutoImageUrl(imageUrl);
+    setAutoRequestKey((value) => value + 1);
+  }, [imageUrl]);
+
+  const onReset = useCallback(() => {
+    setManualLandmarks(DEFAULT_MANUAL_LANDMARKS);
+  }, []);
 
   return (
     <main className="bg-base-100">
       <section className="flex flex-col items-center justify-start pt-10 px-6">
         <H1>Jawline Check</H1>
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
-          Upload a side-profile photo to estimate your jawline angle and classify jawline type with
-          AI. You will get landmark points, angle score, confidence, and a category interpretation
-          table.
+          Upload a side-profile photo, then drag three points on the image to set your jawline
+          angle manually. This gives you direct control when auto-placement is off.
         </p>
 
         {!imageUrl ? (
@@ -438,26 +553,26 @@ function JawlineCheckPageContent() {
               <TryExamples basePath="/jawline-check" examples={FACE_EXAMPLES} />
             </div>
             <p className="mt-5 text-sm text-gray-600 max-w-md text-center">
-              Best results come from a clear side profile where jawline contour from ear area to chin
-              is visible and unobstructed.
+              Use a clear side profile where ear-side jawline contour to chin is visible and not
+              blocked by hair, beard bulk, or collars.
             </p>
           </div>
         ) : (
           <div className="w-full max-w-5xl mt-10">
             <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 lg:gap-16 items-start">
               <div className="w-full sm:max-w-sm lg:max-w-none justify-self-center">
-                <JawlineOverlayImage
+                <JawlineOverlayEditor
                   imageUrl={imageUrl}
-                  landmarks={{
-                    ramusPoint: analysis?.landmarks.ramusPoint ?? null,
-                    gonionPoint: analysis?.landmarks.gonionPoint ?? null,
-                    mentonPoint: analysis?.landmarks.mentonPoint ?? null,
-                  }}
+                  landmarks={manualLandmarks}
+                  onChange={setManualLandmarks}
                 />
 
-                {analysis?.measurementAvailable ? (
-                  <p className="mt-3 text-xs text-gray-600 text-center">
-                    Dots mark ramus, gonion, and menton landmarks used for angle estimation.
+                <p className="mt-3 text-xs text-gray-600 text-center">
+                  Drag Ramus, Gonion, and Menton points to match your profile geometry.
+                </p>
+                {autoAnalysis && !autoLoading && !autoError ? (
+                  <p className="mt-2 text-xs text-emerald-700 text-center">
+                    Auto-detected points loaded. Fine-tune manually for best accuracy.
                   </p>
                 ) : null}
               </div>
@@ -465,100 +580,92 @@ function JawlineCheckPageContent() {
               <div className="w-full rounded-2xl border bg-white p-6 lg:p-8 shadow-sm">
                 <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900">Your Jawline Result</h2>
 
-                {loading ? (
-                  <div className="mt-6">
-                    <div className="flex items-center gap-4">
-                      <RippleLoader />
-                      <div>
-                        <p className="text-lg text-gray-800 font-semibold">Analyzing jawline geometry...</p>
-                        <p className="text-sm text-gray-600">
-                          Estimating profile visibility, landmark positions, and mandibular angle.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
-
-                {error ? (
-                  <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-4">
-                    <p className="whitespace-pre-line text-red-700">{error}</p>
-                  </div>
-                ) : null}
-
-                {!loading && !error && analysis ? (
-                  <div className="mt-5">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <p className="text-3xl lg:text-4xl font-bold text-primary">
-                        {analysis.jawlineTypeLabel}
-                      </p>
-                      <span
-                        className={`inline-flex rounded-full border px-3 py-1 text-sm font-semibold ${confidenceBadgeClass(
-                          analysis.confidence
-                        )}`}
-                      >
-                        {analysis.confidence.toUpperCase()} confidence
+                <div className="mt-5">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <p className="text-3xl lg:text-4xl font-bold text-primary">{manualTypeText}</p>
+                    <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-sm font-semibold text-blue-800">
+                      Manual landmarks
+                    </span>
+                    {autoAnalysis ? (
+                      <span className="inline-flex rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-sm font-semibold text-gray-700">
+                        Auto-detect: {autoAnalysis.confidence.toUpperCase()} confidence
                       </span>
-                      <span
-                        className={`inline-flex rounded-full border px-3 py-1 text-sm font-semibold ${profileQualityClass(
-                          analysis.profileQuality
-                        )}`}
-                      >
-                        {qualityLabel(analysis.profileQuality)}
-                      </span>
-                    </div>
-
-                    <p className="mt-3 text-lg text-gray-700">{typeOneLiner(analysis.jawlineType)}</p>
-
-                    <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      <div className="rounded-xl bg-base-200/70 p-3">
-                        <div className="text-xs text-gray-600">Jawline Angle</div>
-                        <div className="text-xl font-semibold text-gray-900 tabular-nums">
-                          {analysis.jawlineAngle == null ? "N/A" : `${analysis.jawlineAngle.toFixed(1)}°`}
-                        </div>
-                      </div>
-                      <div className="rounded-xl bg-base-200/70 p-3">
-                        <div className="text-xs text-gray-600">Angle Score</div>
-                        <div className="text-xl font-semibold text-gray-900 tabular-nums">
-                          {analysis.angleScore}/100
-                        </div>
-                      </div>
-                      <div className="rounded-xl bg-base-200/70 p-3">
-                        <div className="text-xs text-gray-600">Confidence Score</div>
-                        <div className="text-xl font-semibold text-gray-900 tabular-nums">
-                          {analysis.confidenceScore}/100
-                        </div>
-                      </div>
-                    </div>
-
-                    {analysis.rationale ? (
-                      <p className="mt-4 text-gray-700 leading-relaxed">{analysis.rationale}</p>
-                    ) : null}
-
-                    {alternativesText ? (
-                      <p className="mt-3 text-sm text-gray-600">
-                        Secondary possible type: {alternativesText}
-                      </p>
-                    ) : null}
-
-                    {!analysis.sideProfileVisible ? (
-                      <div className="mt-4 rounded-xl border border-yellow-200 bg-yellow-50 p-3 text-sm text-yellow-800">
-                        A clear side profile was not detected. Retake the photo with one full profile side
-                        visible for better angle measurement reliability.
-                      </div>
-                    ) : null}
-
-                    {analysis.measurementNotes.length ? (
-                      <div className="mt-6">
-                        <h3 className="font-semibold text-gray-900">Measurement notes</h3>
-                        <ul className="mt-2 list-disc pl-6 text-gray-700 space-y-1">
-                          {analysis.measurementNotes.map((note, idx) => (
-                            <li key={`${note}-${idx}`}>{note}</li>
-                          ))}
-                        </ul>
-                      </div>
                     ) : null}
                   </div>
-                ) : null}
+
+                  <p className="mt-3 text-lg text-gray-700">{typeOneLiner(manualType)}</p>
+
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="rounded-xl bg-base-200/70 p-3">
+                      <div className="text-xs text-gray-600">Jawline Angle</div>
+                      <div className="text-xl font-semibold text-gray-900 tabular-nums">
+                        {manualAngle.toFixed(1)}°
+                      </div>
+                    </div>
+                    <div className="rounded-xl bg-base-200/70 p-3">
+                      <div className="text-xs text-gray-600">Angle Score</div>
+                      <div className="text-xl font-semibold text-gray-900 tabular-nums">
+                        {manualAngleScore}/100
+                      </div>
+                    </div>
+                    <div className="rounded-xl bg-base-200/70 p-3">
+                      <div className="text-xs text-gray-600">Method</div>
+                      <div className="text-xl font-semibold text-gray-900">User-set points</div>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <button
+                      type="button"
+                      onClick={onReset}
+                      className="rounded-btn border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+                    >
+                      Reset Points
+                    </button>
+                    <button
+                      type="button"
+                      onClick={onAutoDetect}
+                      className="rounded-btn border border-gray-900 bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800"
+                    >
+                      Auto-Detect Points (Optional)
+                    </button>
+                  </div>
+
+                  {autoLoading ? (
+                    <div className="mt-5">
+                      <div className="flex items-center gap-4">
+                        <RippleLoader />
+                        <div>
+                          <p className="text-lg text-gray-800 font-semibold">Auto-detecting jawline points...</p>
+                          <p className="text-sm text-gray-600">
+                            This can help prefill landmarks before manual refinement.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {autoError ? (
+                    <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-4">
+                      <p className="whitespace-pre-line text-red-700">{autoError}</p>
+                    </div>
+                  ) : null}
+
+                  {autoAnalysis?.rationale ? (
+                    <p className="mt-4 text-gray-700 leading-relaxed">{autoAnalysis.rationale}</p>
+                  ) : null}
+
+                  {autoAnalysis?.measurementNotes.length ? (
+                    <div className="mt-6">
+                      <h3 className="font-semibold text-gray-900">Auto-detect notes</h3>
+                      <ul className="mt-2 list-disc pl-6 text-gray-700 space-y-1">
+                        {autoAnalysis.measurementNotes.map((note, idx) => (
+                          <li key={`${note}-${idx}`}>{note}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
               </div>
             </div>
           </div>
@@ -566,14 +673,14 @@ function JawlineCheckPageContent() {
       </section>
 
       <section className="px-6">
-        {typeof analysis?.jawlineAngle === "number" ? (
+        {imageUrl ? (
           <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
             <h2 className={h2Class}>Jawline Angle Interpretation Bar</h2>
             <p className="mt-4 text-center text-lg text-gray-700">
               Lower angle values generally map to sharper profile classification bands.
             </p>
             <div className="mt-8">
-              <JawlineAngleBar angle={analysis.jawlineAngle} />
+              <JawlineAngleBar angle={manualAngle} />
             </div>
           </div>
         ) : null}
@@ -581,18 +688,16 @@ function JawlineCheckPageContent() {
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
           <h2 className={h2Class}>Where Your Result Sits</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
-            The highlighted row marks your estimated jawline type band.
+            The highlighted row marks your current jawline type band from manual point placement.
           </p>
-          <JawlineBandTable
-            jawlineAngle={analysis?.jawlineAngle ?? null}
-            jawlineType={analysis?.jawlineType ?? null}
-          />
+          <JawlineBandTable jawlineAngle={manualAngle} jawlineType={manualType} />
         </div>
 
         {activeBand ? (
           <div className="w-full max-w-3xl mx-auto mt-8">
             <p className="text-center text-gray-700">
-              Current category: <span className={`font-semibold ${activeBand.textClass}`}>{activeBand.label}</span>
+              Current category:{" "}
+              <span className={`font-semibold ${activeBand.textClass}`}>{activeBand.label}</span>
             </p>
           </div>
         ) : null}
@@ -600,13 +705,13 @@ function JawlineCheckPageContent() {
         <div className={sectionWrap}>
           <h2 className={h2Class}>How Jawline Check Measures Angle</h2>
           <p className={pClass}>
-            This tool estimates a side-profile mandibular angle at the gonion using three landmarks:
+            This tool measures the side-profile mandibular angle at gonion using three landmarks:
             one point along the posterior ramus line, the gonial corner, and a chin-edge point near
-            menton. The angle between these two lines is used to classify jawline type.
+            menton. The interior angle between these two segments is used to classify jawline type.
           </p>
           <p className={pClass}>
-            The output is an appearance-based estimate from one photo, not a cephalometric diagnosis.
-            Camera angle, expression, hair occlusion, and perspective can all shift the visible angle.
+            The primary workflow is user-set geometry, so you can correct landmark placement directly.
+            Auto-detect is optional and meant as a starting point.
           </p>
         </div>
 
@@ -629,40 +734,39 @@ function JawlineCheckPageContent() {
             not be treated as fixed anatomical identity labels.
           </p>
           <p className={pClass}>
-            If confidence is low or profile quality is poor, prioritize retaking the photo and looking
-            for consistent outcomes across multiple uploads before drawing conclusions.
+            If point placement is uncertain, compare multiple placements and use consistent photo setup
+            before drawing conclusions.
           </p>
         </div>
 
         <div className={sectionWrap}>
           <h2 className={h2Class}>Landmark Overlay and Angle Geometry</h2>
           <p className={pClass}>
-            The overlay dots help visualize where the model placed the measurement points. Dashed lines
-            indicate the posterior mandibular segment and the mandibular body segment used to estimate
-            the angle.
+            The overlay dots represent user-controlled landmarks. Dashed lines indicate the posterior
+            mandibular segment and mandibular body segment used to estimate the angle.
           </p>
           <p className={pClass}>
-            When these points are misaligned because of occlusion or blur, the angle estimate becomes
-            less stable. In those cases, use retake guidance and compare multiple photos.
+            Small point shifts can materially change angle output. Zoom in visually, place points
+            carefully, and keep your method consistent if you are tracking over time.
           </p>
         </div>
 
-        {analysis?.recommendations?.length ? (
+        {autoAnalysis?.recommendations?.length ? (
           <div className={sectionWrap}>
-            <h2 className={h2Class}>Practical Interpretation Notes</h2>
+            <h2 className={h2Class}>Auto-Detect Interpretation Notes</h2>
             <ul className="list-disc pl-6 space-y-2 text-lg">
-              {analysis.recommendations.map((tip, idx) => (
+              {autoAnalysis.recommendations.map((tip, idx) => (
                 <li key={`${tip}-${idx}`}>{tip}</li>
               ))}
             </ul>
           </div>
         ) : null}
 
-        {analysis?.retakeTips?.length ? (
+        {autoAnalysis?.retakeTips?.length ? (
           <div className={sectionWrap}>
-            <h2 className={h2Class}>Retake Tips from Your Scan</h2>
+            <h2 className={h2Class}>Auto-Detect Retake Tips</h2>
             <ul className="list-disc pl-6 space-y-2 text-lg">
-              {analysis.retakeTips.map((tip, idx) => (
+              {autoAnalysis.retakeTips.map((tip, idx) => (
                 <li key={`${tip}-${idx}`}>{tip}</li>
               ))}
             </ul>
@@ -698,13 +802,11 @@ function JawlineCheckPageContent() {
         <div className={sectionWrap}>
           <h2 className={h2Class}>Limitations</h2>
           <p className={pClass}>
-            This is an appearance-based AI estimate. It is sensitive to camera perspective, occlusion,
-            beard density, posture, and image quality. It does not replace clinical cephalometric
-            assessment or medical evaluation.
+            This is an appearance-based estimate from one photo and manual landmark placement. It is
+            sensitive to camera perspective, occlusion, beard density, posture, and image quality.
           </p>
           <p className={pClass}>
-            A single image can be misleading. Use repeated photos with consistent setup to improve
-            reliability when tracking profile changes over time.
+            It does not replace clinical cephalometric assessment or medical evaluation.
           </p>
         </div>
 

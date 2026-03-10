@@ -372,9 +372,10 @@ function normalizeResult(raw: any): JawlineCheckResult {
 
 export function useJawlineCheckAnalysis(
   imageUrl: string | null,
-  options?: { source?: AnalyzeSource }
+  options?: { source?: AnalyzeSource; requestKey?: number | string }
 ) {
   const source: AnalyzeSource = options?.source ?? "upload";
+  const requestKey = options?.requestKey ?? 0;
   const [state, setState] = useState<State>({
     analysis: null,
     loading: false,
@@ -510,7 +511,7 @@ export function useJawlineCheckAnalysis(
     return () => {
       controller.abort();
     };
-  }, [imageUrl, source]);
+  }, [imageUrl, source, requestKey]);
 
   return state;
 }
