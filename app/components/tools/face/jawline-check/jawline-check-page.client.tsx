@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
+import CTA from "@/app/components/common/cta";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
@@ -95,6 +96,8 @@ const FACE_EXAMPLES = [
   { id: "jawline-b", label: "Example B", src: "/examples/woman-selfie.webp" },
   { id: "jawline-c", label: "Example C", src: "/examples/boy-selfie.webp" },
 ];
+
+const JAWLINER_SITE_URL = "https://jawliner.com/bite95384112hard";
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
@@ -598,7 +601,11 @@ function JawlineCheckPageContent() {
 
                 <div className="mt-5">
                   <div className="flex flex-wrap items-center gap-3">
-                    <p className="text-3xl lg:text-4xl font-bold text-primary">{manualTypeText}</p>
+                    <p
+                      className={`text-3xl lg:text-4xl font-bold ${activeBand?.textClass ?? "text-gray-900"}`}
+                    >
+                      {manualTypeText}
+                    </p>
                     <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-sm font-semibold text-blue-800">
                       Manual landmarks
                     </span>
@@ -611,10 +618,14 @@ function JawlineCheckPageContent() {
 
                   <p className="mt-3 text-lg text-gray-700">{typeOneLiner(manualType)}</p>
 
-                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="rounded-xl bg-base-200/70 p-3">
                       <div className="text-xs text-gray-600">Jawline Angle</div>
-                      <div className="text-xl font-semibold text-gray-900 tabular-nums">
+                      <div
+                        className={`text-3xl lg:text-4xl font-semibold tabular-nums ${
+                          activeBand?.textClass ?? "text-gray-900"
+                        }`}
+                      >
                         {manualAngle.toFixed(1)}°
                       </div>
                     </div>
@@ -623,10 +634,6 @@ function JawlineCheckPageContent() {
                       <div className="text-xl font-semibold text-gray-900 tabular-nums">
                         {manualAngleScore}/100
                       </div>
-                    </div>
-                    <div className="rounded-xl bg-base-200/70 p-3">
-                      <div className="text-xs text-gray-600">Method</div>
-                      <div className="text-xl font-semibold text-gray-900">User-set points</div>
                     </div>
                   </div>
 
@@ -729,6 +736,14 @@ function JawlineCheckPageContent() {
             The primary workflow is user-set geometry, so you can correct landmark placement directly.
             Auto-detect is optional and meant as a starting point.
           </p>
+          <CTA
+            title="Want a Sharper Jawline? Train it Daily."
+            description="You are already tracking your jawline angle here. Pair that progress with Jawliner and turn quick daily sessions into a stronger, more defined profile over time."
+            buttonText="Shop Jawliner Now →"
+            href={JAWLINER_SITE_URL}
+            image="/tools/jawline/jawliner.webp"
+            className="!my-0 !mt-40"
+          />
         </div>
 
         <div className={sectionWrap}>
@@ -812,6 +827,13 @@ function JawlineCheckPageContent() {
               Golden Face Ratio Analyzer
             </a>{" "}
             for proportion-based context.
+          </p>
+          <p className={pClass}>
+            If you want to pair analysis with daily jawline training, you can also explore{" "}
+            <a className="text-primary underline" href={JAWLINER_SITE_URL}>
+              jawline exercisers
+            </a>
+            .
           </p>
         </div>
 
