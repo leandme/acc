@@ -49,7 +49,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What makes a “good” body fat photo
           </h2>
 
@@ -67,7 +67,7 @@ export default function BlogPostPage() {
 
         {/* Lighting */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             1) Use consistent lighting
           </h2>
 
@@ -85,7 +85,7 @@ export default function BlogPostPage() {
 
         {/* Camera */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             2) Keep camera height and distance the same
           </h2>
 
@@ -102,7 +102,7 @@ export default function BlogPostPage() {
 
         {/* Pose */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             3) Use the same pose every time
           </h2>
 
@@ -119,7 +119,7 @@ export default function BlogPostPage() {
 
         {/* Clothing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             4) Wear minimal, consistent clothing
           </h2>
 
@@ -136,7 +136,7 @@ export default function BlogPostPage() {
 
         {/* Frequency */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How often to take body fat photos
           </h2>
 
@@ -154,7 +154,7 @@ export default function BlogPostPage() {
 
         {/* Common mistakes */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Common mistakes to avoid
           </h2>
 
@@ -169,7 +169,7 @@ export default function BlogPostPage() {
 
         {/* Bridge to tool */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why this improves estimation accuracy
           </h2>
 

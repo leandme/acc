@@ -105,7 +105,7 @@ export function MoreArticles({
   articles,
   basePath = "/guides",
   heading = "Read More",
-  maxItems = 4,
+  maxItems = 2,
   preferredTag,
   currentSlug,
   trackEvent,
@@ -118,13 +118,13 @@ export function MoreArticles({
   currentSlug?: string;
   trackEvent?: (event: string, props?: Record<string, any>) => void;
 }) {
-  const shownArticles = withDiversity(articles, maxItems, preferredTag, currentSlug);
+  const shownArticles = withDiversity(articles, Math.min(maxItems, 2), preferredTag, currentSlug);
 
   return (
     <>
       <EzoicAdSlot id={114} className="mt-12" />
       <section className="mt-14 border-t pt-10">
-        <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900"><a className="hover:underline" href="/guides">{heading} →</a></h2>
+        <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 text-left"><a className="hover:underline" href="/guides">{heading} →</a></h3>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
           {shownArticles.map((a) => (
@@ -147,22 +147,11 @@ export function MoreArticles({
               <div className="p-6">
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-xs text-gray-500">{a.date ?? ""}</span>
-                  {a.tag ? (
-                    <span className="rounded-full bg-base-200 px-2 py-1 text-xs text-gray-700">
-                      {a.tag.replace("-", " ")}
-                    </span>
-                  ) : null}
                 </div>
 
                 <h3 className="mt-4 text-xl lg:text-2xl font-semibold text-gray-900 group-hover:underline">
                   {a.title}
                 </h3>
-
-                {a.description ? (
-                  <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                    {a.description}
-                  </p>
-                ) : null}
               </div>
             </Link>
           ))}

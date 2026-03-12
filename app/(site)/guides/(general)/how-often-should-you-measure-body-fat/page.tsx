@@ -49,7 +49,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Body fat does not change day to day
           </h2>
 
@@ -66,7 +66,7 @@ export default function BlogPostPage() {
 
         {/* Noise */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why measuring too often creates noise
           </h2>
 
@@ -84,7 +84,7 @@ export default function BlogPostPage() {
 
         {/* Method-dependent frequency */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How frequency depends on the method
           </h2>
 
@@ -108,7 +108,7 @@ export default function BlogPostPage() {
 
         {/* Recommendation */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             A practical recommendation
           </h2>
 
@@ -154,7 +154,7 @@ export default function BlogPostPage() {
 
         {/* Bridge to photos */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why photos work especially well over time
           </h2>
 

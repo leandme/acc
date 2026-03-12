@@ -54,7 +54,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Body fat calculators don’t measure fat directly
           </h2>
 
@@ -72,7 +72,7 @@ export default function BlogPostPage() {
 
         {/* Formula assumptions */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             1) Formula assumptions
           </h2>
 
@@ -96,7 +96,7 @@ export default function BlogPostPage() {
 
         {/* Hydration & timing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             2) Hydration, food, and timing
           </h2>
 
@@ -120,7 +120,7 @@ export default function BlogPostPage() {
 
         {/* Measurement noise */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             3) Measurement noise
           </h2>
 
@@ -138,7 +138,7 @@ export default function BlogPostPage() {
 
         {/* Interpreting changes */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How to interpret changing body fat percentages
           </h2>
 
@@ -161,7 +161,7 @@ export default function BlogPostPage() {
 
         {/* Bridge to product */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             A more practical way to estimate body fat
           </h2>
 

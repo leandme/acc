@@ -51,7 +51,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* What calculators actually do */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What a body fat calculator actually does
           </h2>
 
@@ -75,7 +75,7 @@ export default function BlogPostPage() {
 
         {/* Averages vs individuals */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             The core problem: averages don’t describe individuals
           </h2>
 
@@ -93,7 +93,7 @@ export default function BlogPostPage() {
 
         {/* Muscle mass */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Muscle mass breaks most calculators
           </h2>
 
@@ -112,7 +112,7 @@ export default function BlogPostPage() {
 
         {/* Measurement error */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Small measurement errors create big swings
           </h2>
 
@@ -131,7 +131,7 @@ export default function BlogPostPage() {
 
         {/* Fat distribution */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Fat distribution varies more than formulas assume
           </h2>
 
@@ -148,7 +148,7 @@ export default function BlogPostPage() {
 
         {/* Precision illusion */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Precision is not the same as accuracy
           </h2>
 
@@ -164,7 +164,7 @@ export default function BlogPostPage() {
 
         {/* When calculators help */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             When body fat calculators are (somewhat) useful
           </h2>
 
@@ -182,7 +182,7 @@ export default function BlogPostPage() {
 
         {/* Better approach */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What works better for most people
           </h2>
 

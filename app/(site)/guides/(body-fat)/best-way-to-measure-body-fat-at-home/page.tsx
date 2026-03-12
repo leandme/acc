@@ -74,7 +74,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 [&>div+div]:mt-20 lg:[&>div+div]:mt-40 mt-12">
         {/* Framing */}
         <div className="space-y-4">
-          <h2 id="what-body-fat-means" className="text-3xl lg:text-4xl font-semibold">
+          <h2 id="what-body-fat-means" className="text-3xl lg:text-4xl font-semibold text-center">
             What “best” actually means for at-home tracking
           </h2>
 
@@ -97,7 +97,7 @@ export default function BlogPostPage() {
 
         {/* #1 Method */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             #1: Consistent photos + AI estimation (best for real life)
           </h2>
 
@@ -121,7 +121,7 @@ export default function BlogPostPage() {
 
         {/* Navy Method */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             The Navy Method (tape measurements)
           </h2>
 
@@ -155,7 +155,7 @@ export default function BlogPostPage() {
 
         {/* DEXA */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             DEXA scans (most precise, but not “at home”)
           </h2>
 
@@ -219,7 +219,7 @@ export default function BlogPostPage() {
 
         {/* Verdict */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             The verdict: what you should actually do
           </h2>
 

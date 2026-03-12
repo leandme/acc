@@ -55,7 +55,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Accuracy vs consistency */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Accuracy vs consistency (the distinction that matters)
           </h2>
 
@@ -73,7 +73,7 @@ export default function BlogPostPage() {
 
         {/* Directional accuracy */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What “directionally accurate” actually means
           </h2>
 
@@ -92,7 +92,7 @@ export default function BlogPostPage() {
 
         {/* Comparison */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How AI compares to other at-home body fat methods
           </h2>
 
@@ -126,7 +126,7 @@ export default function BlogPostPage() {
 
         {/* Limitations */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Limitations to understand
           </h2>
 
@@ -143,7 +143,7 @@ export default function BlogPostPage() {
 
         {/* Best practices */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How to get the most accurate results
           </h2>
 

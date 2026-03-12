@@ -20,9 +20,9 @@ export default function References({
 
   return (
     <section className={`mt-14 border-t pt-10 ${className}`}>
-      <h2 className="text-xl lg:text-2xl font-semibold text-gray-900">
+      <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 text-left">
         {heading}
-      </h2>
+      </h3>
 
       <ul className="mt-4 list-disc pl-6 space-y-2 text-lg text-gray-700">
         {references.map((ref, i) => (

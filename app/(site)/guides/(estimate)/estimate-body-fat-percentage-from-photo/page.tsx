@@ -73,7 +73,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
 
       <section className="mx-auto max-w-3xl px-6 pb-20">
         <div className="rounded-2xl border-2 border-primary/30 bg-white p-6 lg:p-8">
-          <h2 className="text-2xl lg:text-3xl font-semibold">Quick Answer + Free Tool</h2>
+          <h2 className="text-2xl lg:text-3xl font-semibold text-center">Quick Answer + Free Tool</h2>
           <p className="mt-4 text-gray-700 text-lg leading-relaxed">
             If you searched for "how to estimate body fat percentage from photo men", "from photo male",
             or "from mirror selfie," use a consistent front + side photo setup and estimate a range, not an
@@ -93,7 +93,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Quick Answer: Estimating Body Fat From Photos
           </h2>
 
@@ -119,7 +119,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
         </div>
 
         <div className="mt-20 lg:mt-40 space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How To Estimate Body Fat From a Photo Yourself
           </h2>
 
@@ -212,7 +212,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
         />
 
         <div className="mt-20 lg:mt-40 space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Men: Visual Cues That Matter Most
           </h2>
 
@@ -246,7 +246,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
         </div>
 
         <div className="mt-20 lg:mt-40 space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Women: Visual Cues That Are Often Weighted Differently
           </h2>
 
@@ -265,7 +265,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
         </div>
 
         <div className="mt-20 lg:mt-40 space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Mirror Selfie Checklist for Better Estimates
           </h2>
 
@@ -296,7 +296,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
         </div>
 
         <div className="mt-20 lg:mt-40 space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">FAQ</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">FAQ</h2>
 
           <div className="space-y-6">
             {faqs.map((faq) => (

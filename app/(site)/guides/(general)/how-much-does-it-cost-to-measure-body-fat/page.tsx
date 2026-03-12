@@ -52,7 +52,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Big picture */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why cost matters more than people think
           </h2>
 
@@ -70,7 +70,7 @@ export default function BlogPostPage() {
 
         {/* Home methods */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Cost of measuring body fat at home
           </h2>
 
@@ -104,7 +104,7 @@ export default function BlogPostPage() {
 
         {/* Lab methods */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Cost of lab-based body fat measurement
           </h2>
 
@@ -133,7 +133,7 @@ export default function BlogPostPage() {
 
         {/* Cost vs usefulness */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Cost vs usefulness: the real tradeoff
           </h2>
 
@@ -155,7 +155,7 @@ export default function BlogPostPage() {
 
         {/* Which should you choose */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Which body fat measurement method should you choose?
           </h2>
 
@@ -183,7 +183,7 @@ export default function BlogPostPage() {
 
         {/* Conclusion */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             The bottom line on body fat measurement cost
           </h2>
 

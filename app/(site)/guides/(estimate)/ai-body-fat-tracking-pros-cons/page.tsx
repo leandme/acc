@@ -51,7 +51,7 @@ export default function AIBodyFatTrackingGuidePage() {
 
       <section className="mx-auto mt-16 lg:mt-24 max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         <div className="space-y-6">
-          <h2 className="text-3xl lg:text-4xl font-semibold">Quick Pros And Cons At A Glance</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">Quick Pros And Cons At A Glance</h2>
           <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
               <h3 className="text-xl font-semibold text-emerald-900">✅ Pros</h3>
@@ -75,7 +75,7 @@ export default function AIBodyFatTrackingGuidePage() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">Where AI Gives You An Unfair Advantage</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">Where AI Gives You An Unfair Advantage</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
             AI is brutally consistent. It does not wake up emotional, distracted, or biased by how
             you felt in the mirror this morning. It reviews visual patterns the same way every
@@ -100,7 +100,7 @@ export default function AIBodyFatTrackingGuidePage() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">Where AI Can Mislead You</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">Where AI Can Mislead You</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
             AI does not directly measure fat tissue. It infers body fat from what it can see in a
             photo. Change the lighting, camera angle, distance, or pose and your output can shift
@@ -120,7 +120,7 @@ export default function AIBodyFatTrackingGuidePage() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">The 10-Minute Weekly Workflow</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">The 10-Minute Weekly Workflow</h2>
           <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
             <li>Take photos under the same lighting and camera setup each week</li>
             <li>Use the same pose, distance, and timing of day</li>
@@ -136,7 +136,7 @@ export default function AIBodyFatTrackingGuidePage() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">The Hidden Mistake That Wrecks Accuracy</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">The Hidden Mistake That Wrecks Accuracy</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
             Most bad AI results are not model problems. They are input problems. Different light,
             different camera distance, different posture, different hydration, then people compare
@@ -149,7 +149,7 @@ export default function AIBodyFatTrackingGuidePage() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">How To Interpret Results Without Self-Sabotage</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">How To Interpret Results Without Self-Sabotage</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
             Think in ranges and trends, not single numbers. A one-point move means almost nothing
             by itself. A steady multi-week direction paired with waist and weight trend usually
@@ -162,7 +162,7 @@ export default function AIBodyFatTrackingGuidePage() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">Bottom Line</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">Bottom Line</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
             AI is best at speed, repeatability, and trend support. It is worst at one-shot
             certainty. Use it as a disciplined decision aid, not a fortune teller, and it becomes

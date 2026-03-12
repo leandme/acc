@@ -50,7 +50,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What an AI body fat estimator actually does
           </h2>
 
@@ -69,7 +69,7 @@ export default function BlogPostPage() {
 
         {/* High-level CV explanation */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             A high-level explanation (no technical jargon)
           </h2>
 
@@ -88,7 +88,7 @@ export default function BlogPostPage() {
 
         {/* What it sees */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What the AI looks at in a photo
           </h2>
 
@@ -107,7 +107,7 @@ export default function BlogPostPage() {
 
         {/* What it ignores */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What the AI intentionally ignores
           </h2>
 
@@ -126,7 +126,7 @@ export default function BlogPostPage() {
 
         {/* Why photos work */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why photo-based estimation works directionally
           </h2>
 
@@ -145,7 +145,7 @@ export default function BlogPostPage() {
 
         {/* Limitations */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Limitations to understand
           </h2>
 
@@ -167,7 +167,7 @@ export default function BlogPostPage() {
 
         {/* Practical usage */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How to get the most accurate results
           </h2>
 

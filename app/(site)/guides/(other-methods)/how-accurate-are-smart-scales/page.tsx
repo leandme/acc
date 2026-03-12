@@ -52,7 +52,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* What smart scales actually measure */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What smart scales actually measure
           </h2>
 
@@ -75,7 +75,7 @@ export default function BlogPostPage() {
 
         {/* Why results change */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why smart scale body fat changes overnight
           </h2>
 
@@ -101,7 +101,7 @@ export default function BlogPostPage() {
 
         {/* Accuracy vs consistency */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Accuracy vs consistency (the real issue)
           </h2>
 
@@ -124,7 +124,7 @@ export default function BlogPostPage() {
 
         {/* When smart scales are useful */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             When smart scales are useful
           </h2>
 
@@ -150,7 +150,7 @@ export default function BlogPostPage() {
 
         {/* Comparison */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Smart scales vs other body fat methods
           </h2>
 
@@ -227,7 +227,7 @@ export default function BlogPostPage() {
 
         {/* Verdict */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             So, how accurate are smart scales?
           </h2>
 

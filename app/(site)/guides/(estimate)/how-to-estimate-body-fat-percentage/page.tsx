@@ -71,7 +71,7 @@ How to Estimate Body Fat % from Home */}
 <section className="space-y-12">
   {/* 1.1 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       What body fat percentage actually means
     </h2>
 
@@ -128,7 +128,7 @@ How to Estimate Body Fat % from Home */}
 <section className="space-y-12">
   {/* 2.1 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       The main ways to estimate body fat percentage
     </h2>
 
@@ -285,7 +285,7 @@ How to Estimate Body Fat % from Home */}
 
   {/* 2.6 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       Why different body fat methods give different results
     </h2>
 
@@ -319,7 +319,7 @@ How to Estimate Body Fat % from Home */}
 <section className="space-y-12">
   {/* 3.1 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       What does body fat percentage look like?
     </h2>
 
@@ -432,7 +432,7 @@ How to Estimate Body Fat % from Home */}
 
   {/* 3.3 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       Why two people at the same body fat percentage can look completely different
     </h2>
 
@@ -498,7 +498,7 @@ How to Estimate Body Fat % from Home */}
 <section className="space-y-12">
   {/* 4.1 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       AI body fat estimation: what it actually does
     </h2>
 
@@ -611,7 +611,7 @@ How to Estimate Body Fat % from Home */}
 
   {/* 4.5 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       Why AI estimation works best for tracking change
     </h2>
 
@@ -649,7 +649,7 @@ How to Estimate Body Fat % from Home */}
 <section className="space-y-12">
   {/* 5.1 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       How accurate are body fat estimates, really?
     </h2>
 
@@ -751,7 +751,7 @@ How to Estimate Body Fat % from Home */}
 
   {/* 5.5 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       How to interpret body fat estimates without overreacting
     </h2>
 
@@ -790,7 +790,7 @@ How to Estimate Body Fat % from Home */}
 <section className="space-y-12">
   {/* 6.1 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       The best body fat method depends on what you’re trying to do
     </h2>
 
@@ -877,7 +877,7 @@ How to Estimate Body Fat % from Home */}
 
   {/* 6.5 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       A simple decision framework
     </h2>
 
@@ -916,7 +916,7 @@ How to Estimate Body Fat % from Home */}
 <section className="space-y-12">
   {/* 7.1 */}
   <div className="space-y-4">
-    <h2 className="text-3xl lg:text-4xl font-semibold">
+    <h2 className="text-3xl lg:text-4xl font-semibold text-center">
       A simple, realistic way to use body fat estimation
     </h2>
 

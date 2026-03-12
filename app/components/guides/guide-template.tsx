@@ -44,7 +44,7 @@ export default function ZZ() {
 
         {/* H2 section */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             H2 Title #1
           </h2>
 
@@ -63,7 +63,7 @@ export default function ZZ() {
 
         {/* H2 section #2 */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             H2 Title #2
           </h2>
 

@@ -53,7 +53,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What “best” actually means for body fat estimation
           </h2>
 
@@ -78,7 +78,7 @@ export default function BlogPostPage() {
 
         {/* How AI works */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How AI body fat estimators work
           </h2>
 
@@ -96,7 +96,7 @@ export default function BlogPostPage() {
 
         {/* Strengths */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why AI estimation works well in practice
           </h2>
 
@@ -114,7 +114,7 @@ export default function BlogPostPage() {
 
         {/* Limitations */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Limitations to understand
           </h2>
 
@@ -138,7 +138,7 @@ export default function BlogPostPage() {
 
         {/* Verdict */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             So, what is the best AI body fat estimator of 2026?
           </h2>
 

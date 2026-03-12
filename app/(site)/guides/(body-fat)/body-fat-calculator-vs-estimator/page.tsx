@@ -61,7 +61,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why this confusion exists
           </h2>
 
@@ -106,7 +106,7 @@ export default function BlogPostPage() {
 
         {/* Section 1 */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What a body fat calculator actually is
           </h2>
 
@@ -177,7 +177,7 @@ export default function BlogPostPage() {
 
         {/* Section 2 */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What a body fat estimator actually is
           </h2>
 
@@ -232,7 +232,7 @@ export default function BlogPostPage() {
 
         {/* Section 3 */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why calculators and estimators give different results
           </h2>
 
@@ -271,7 +271,7 @@ export default function BlogPostPage() {
 
         {/* Section 4: Comparison table */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Calculator vs estimator: quick comparison
           </h2>
 
@@ -303,7 +303,7 @@ export default function BlogPostPage() {
 
         {/* Section 5: Decision framework */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Which one should you use?
           </h2>
 
@@ -340,7 +340,7 @@ export default function BlogPostPage() {
 
         {/* Section 6: AI fits here */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Where AI body fat estimation fits in
           </h2>
 
@@ -381,7 +381,7 @@ export default function BlogPostPage() {
 
         {/* Section 7: Most common mistake */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             The mistake most people make
           </h2>
 
@@ -408,7 +408,7 @@ export default function BlogPostPage() {
 
         {/* Section 8: Simple hybrid workflow */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             A simple way to use both (without losing your mind)
           </h2>
 

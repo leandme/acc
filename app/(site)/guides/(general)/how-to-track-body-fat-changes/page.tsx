@@ -53,7 +53,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Why not the scale */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why the scale fails at tracking body fat
           </h2>
 
@@ -71,7 +71,7 @@ export default function BlogPostPage() {
 
         {/* What actually changes */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How body fat actually changes over time
           </h2>
 
@@ -88,7 +88,7 @@ export default function BlogPostPage() {
 
         {/* Photos */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Use photos as your primary tracking tool
           </h2>
 
@@ -112,7 +112,7 @@ export default function BlogPostPage() {
 
         {/* Estimation */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Add estimation for context
           </h2>
 
@@ -136,7 +136,7 @@ export default function BlogPostPage() {
 
         {/* Frequency */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How often to track changes
           </h2>
 
@@ -153,7 +153,7 @@ export default function BlogPostPage() {
 
         {/* Putting it together */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             A simple tracking framework
           </h2>
 

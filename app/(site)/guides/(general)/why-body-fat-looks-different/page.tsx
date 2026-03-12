@@ -53,7 +53,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Body fat percentage is a number — appearance is context
           </h2>
 
@@ -71,7 +71,7 @@ export default function BlogPostPage() {
 
         {/* Muscle mass */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Muscle mass changes everything
           </h2>
 
@@ -95,7 +95,7 @@ export default function BlogPostPage() {
 
         {/* Fat distribution */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Fat distribution matters more than the total
           </h2>
 
@@ -126,7 +126,7 @@ export default function BlogPostPage() {
 
         {/* Frame & height */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Frame size and height affect perception
           </h2>
 
@@ -152,7 +152,7 @@ export default function BlogPostPage() {
 
         {/* Genetics */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Genetics influence shape — not outcomes
           </h2>
 
@@ -170,7 +170,7 @@ export default function BlogPostPage() {
 
         {/* Practical takeaway */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How to estimate your body fat more realistically
           </h2>
 

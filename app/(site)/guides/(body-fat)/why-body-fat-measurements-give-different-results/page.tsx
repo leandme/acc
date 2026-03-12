@@ -51,7 +51,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Core idea */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             There is no single “true” body fat number
           </h2>
 
@@ -69,7 +69,7 @@ export default function BlogPostPage() {
 
         {/* DEXA */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             DEXA scans: precise, but not perfect
           </h2>
 
@@ -87,7 +87,7 @@ export default function BlogPostPage() {
 
         {/* BIA */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Smart scales (BIA): highly sensitive to conditions
           </h2>
 
@@ -105,7 +105,7 @@ export default function BlogPostPage() {
 
         {/* Calculators */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Body fat calculators: population averages applied to individuals
           </h2>
 
@@ -124,7 +124,7 @@ export default function BlogPostPage() {
 
         {/* Visual / AI */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Visual and AI-based estimation: appearance-first by design
           </h2>
 
@@ -143,7 +143,7 @@ export default function BlogPostPage() {
 
         {/* Why results differ */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why the numbers don’t line up
           </h2>
 
@@ -163,7 +163,7 @@ export default function BlogPostPage() {
 
         {/* How to interpret */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How to use body fat measurements responsibly
           </h2>
 
@@ -182,7 +182,7 @@ export default function BlogPostPage() {
 
         {/* Takeaway */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             The real takeaway
           </h2>
 

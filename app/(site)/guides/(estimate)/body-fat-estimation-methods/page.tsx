@@ -54,7 +54,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Framing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why body fat measurement is harder than it sounds
           </h2>
 
@@ -72,7 +72,7 @@ export default function BlogPostPage() {
 
         {/* Navy Method */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             The Navy tape method
           </h2>
 
@@ -103,7 +103,7 @@ export default function BlogPostPage() {
 
         {/* Skinfolds */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Skinfold calipers
           </h2>
 
@@ -130,7 +130,7 @@ export default function BlogPostPage() {
 
         {/* BIA */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Bioelectrical impedance (BIA) smart scales
           </h2>
 
@@ -154,7 +154,7 @@ export default function BlogPostPage() {
 
         {/* DEXA */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             DEXA scans
           </h2>
 
@@ -177,7 +177,7 @@ export default function BlogPostPage() {
 
         {/* Putting it together */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             How to choose the right body fat method
           </h2>
 

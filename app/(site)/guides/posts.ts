@@ -30,6 +30,16 @@ export const POSTS = [
   image: "/guides/why-body-fat-look-different.webp",
 },
 {
+  slug: "what-makes-a-face-attractive",
+  title: "What Makes a Face Attractive?",
+   tag: "face",
+  description:
+    "A practical guide to facial attractiveness: structure, symmetry, expression, and the high-leverage habits that change first impressions.",
+  date: "Mar 12, 2026",
+  readTime: "6 min read",
+  image: "/examples/woman-selfie.webp",
+},
+{
   slug: "how-ai-body-fat-estimation-works",
   title: "How AI Body Fat Estimation Works (Photo-Based Estimation Explained)",
   tag: "fat",

@@ -52,7 +52,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* What BMI actually is */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What BMI actually measures
           </h2>
 
@@ -76,7 +76,7 @@ export default function BlogPostPage() {
 
         {/* Why BMI breaks down */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Why BMI often fails individuals
           </h2>
 
@@ -107,7 +107,7 @@ export default function BlogPostPage() {
 
         {/* What body fat % measures */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             What body fat percentage tells you instead
           </h2>
 
@@ -130,7 +130,7 @@ export default function BlogPostPage() {
 
         {/* Appearance vs health */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Appearance, health, and context
           </h2>
 
@@ -149,7 +149,7 @@ export default function BlogPostPage() {
 
         {/* Practical guidance */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Which should you actually care about?
           </h2>
 

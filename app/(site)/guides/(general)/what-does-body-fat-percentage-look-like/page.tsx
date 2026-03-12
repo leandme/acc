@@ -55,7 +55,7 @@ export default function BlogPostPage() {
       <section className="mx-auto max-w-3xl px-6 pb-20 [&>div+div]:mt-20 lg:[&>div+div]:mt-40">
         {/* Quick framing */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             First: treat body fat as a range, not a single number
           </h2>
 
@@ -89,7 +89,7 @@ export default function BlogPostPage() {
 
         {/* 10% */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">What does 10% body fat look like?</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">What does 10% body fat look like?</h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
             At around 10% body fat, most people look visibly lean in almost any
@@ -112,7 +112,7 @@ export default function BlogPostPage() {
 
         {/* 12% */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">What does 12% body fat look like?</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">What does 12% body fat look like?</h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
             Around 12%, most people look clearly lean day-to-day. In men, abs
@@ -135,7 +135,7 @@ export default function BlogPostPage() {
 
         {/* 15% */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">What does 15% body fat look like?</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">What does 15% body fat look like?</h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
             Around 15% body fat is where many people start asking “Am I lean?”
@@ -159,7 +159,7 @@ export default function BlogPostPage() {
 
         {/* 18% */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">What does 18% body fat look like?</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">What does 18% body fat look like?</h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
             Around 18%, most people look healthy and “normal lean” rather than
@@ -183,7 +183,7 @@ export default function BlogPostPage() {
 
         {/* 20% */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">What does 20% body fat look like?</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">What does 20% body fat look like?</h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
             Around 20%, many people look “average” with a noticeable softness in
@@ -206,7 +206,7 @@ export default function BlogPostPage() {
 
         {/* 25% */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">What does 25% body fat look like?</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">What does 25% body fat look like?</h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
             Around 25%, softness becomes the dominant visual trait. In men, the
@@ -230,7 +230,7 @@ export default function BlogPostPage() {
 
         {/* 30%+ */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">What does 30%+ body fat look like?</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">What does 30%+ body fat look like?</h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
             At 30% and above, body fat tends to dominate shape and silhouette.
@@ -253,7 +253,7 @@ export default function BlogPostPage() {
 
         {/* Wrap-up + next steps */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             The best way to use visual estimates
           </h2>
 
