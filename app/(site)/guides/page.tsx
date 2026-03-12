@@ -2,7 +2,7 @@
 import { Metadata } from "next";
 import H1 from "@/app/components/common/h1";
 import { POSTS } from "./posts";
-import GuideGridWithTabs from "@/app/components/guides/guide-grid-with-tabs";
+import GuideGridWithTabs, { type GuideTab } from "@/app/components/guides/guide-grid-with-tabs";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const dynamic = "force-dynamic";
@@ -13,6 +13,17 @@ export const metadata: Metadata = buildPageMetadata({
   canonical: "https://bodyfatestimator.ai/guides",
 });
 
+const GUIDE_TABS: GuideTab[] = [
+  { key: "all", label: "All" },
+  { key: "muscle", label: "Muscle" },
+  { key: "height", label: "Height" },
+  { key: "face", label: "Face" },
+  { key: "fat", label: "Fat" },
+  { key: "shape", label: "Shape" },
+  { key: "weight", label: "Weight" },
+  { key: "calories", label: "Calories" },
+];
+
 export default function GuidesIndexPage() {
   return (
     <main className="bg-base-100 pt-10">
@@ -20,7 +31,7 @@ export default function GuidesIndexPage() {
         <H1>Body Composition Guides</H1>
       </section>
 
-      <GuideGridWithTabs posts={POSTS} />
+      <GuideGridWithTabs posts={POSTS} tabs={GUIDE_TABS} />
     </main>
   );
 }

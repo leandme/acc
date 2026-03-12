@@ -208,7 +208,7 @@ export default function BlogPostPage() {
                 {
                 slug: "why-body-fat-measurements-give-different-results",
                 title: "Why Body Fat Measurement Methods Give Different Results",
-                tag: "body-analysis",
+                tag: "fat",
                 description:
                 "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
                 date: "Jan 13, 2026",
@@ -218,7 +218,7 @@ export default function BlogPostPage() {
                 {
                 slug: "body-fat-estimation-methods",
                 title: "Common Body Fat Estimation Methods Explained",
-                tag: "body-analysis",
+                tag: "fat",
                 description:
                     "An overview of the most common body fat measurement methods — including the Navy tape method, skinfold calipers, BIA smart scales, and DEXA scans — with clear guidance on when each method makes sense.",
                 date: "Jan 8, 2026",

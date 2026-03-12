@@ -205,7 +205,7 @@ export default function BlogPostPage() {
                 {
                 slug: "how-much-does-it-cost-to-measure-body-fat",
                 title: "How Much Does It Cost to Measure Body Fat? (Home vs Lab)",
-                tag: "body-analysis",
+                tag: "fat",
                 description:
                 "Compare the cost of measuring body fat at home vs lab methods like DEXA. Learn price ranges, accuracy tradeoffs, and which option makes sense for tracking progress.",
                 date: "Jan 1, 2026",
@@ -215,7 +215,7 @@ export default function BlogPostPage() {
                 {
                 slug: "body-fat-estimation-methods",
                 title: "Common Body Fat Estimation Methods Explained",
-                tag: "body-analysis",
+                tag: "fat",
                 description:
                     "An overview of the most common body fat measurement methods — including the Navy tape method, skinfold calipers, BIA smart scales, and DEXA scans — with clear guidance on when each method makes sense.",
                 date: "Jan 8, 2026",

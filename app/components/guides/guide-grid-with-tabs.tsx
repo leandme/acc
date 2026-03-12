@@ -4,41 +4,70 @@ import React, { useMemo } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { trackEvent } from "@/app/libs/amplitude";
+import type { ToolCategorySlug } from "@/app/(site)/(tools)/tools";
 
 type Post = {
   slug: string;
   title: string;
-  tag?: string; // "body-analysis" | "fat-loss" | "" | undefined
+  tag?: ToolCategorySlug;
   description: string;
   date: string;
   readTime: string;
   image: string;
 };
 
-type Tab = {
-  key: "all" | "body-analysis" | "fat-loss";
+export type GuideTab = {
+  key: "all" | ToolCategorySlug;
   label: string;
 };
 
-const TABS: Tab[] = [
+const DEFAULT_GUIDE_TABS: GuideTab[] = [
   { key: "all", label: "All" },
-  { key: "body-analysis", label: "Body Analysis" },
-  { key: "fat-loss", label: "Fat Loss" },
+  { key: "muscle", label: "Muscle" },
+  { key: "height", label: "Height" },
+  { key: "face", label: "Face" },
+  { key: "fat", label: "Fat" },
+  { key: "shape", label: "Shape" },
+  { key: "weight", label: "Weight" },
+  { key: "calories", label: "Calories" },
 ];
 
-export default function GuideGridWithTabs({ posts }: { posts: readonly Post[] }) {
+const LEGACY_GUIDE_TAG_MAP: Record<string, ToolCategorySlug> = {
+  "body-analysis": "fat",
+  "fat-loss": "weight",
+};
+
+export default function GuideGridWithTabs({
+  posts,
+  tabs,
+}: {
+  posts: readonly Post[];
+  tabs?: readonly GuideTab[];
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const resolvedTabs = useMemo(
+    () => (tabs?.length ? [...tabs] : DEFAULT_GUIDE_TABS),
+    [tabs]
+  );
+  const tabKeys = useMemo(() => new Set(resolvedTabs.map((tab) => tab.key)), [resolvedTabs]);
 
-  const activeTag = (searchParams.get("tag") ?? "all") as Tab["key"];
+  const activeTag = useMemo<GuideTab["key"]>(() => {
+    const rawTag = searchParams.get("tag");
+    if (!rawTag || rawTag === "all") return "all";
+    const normalizedTag = LEGACY_GUIDE_TAG_MAP[rawTag] ?? rawTag;
+    return tabKeys.has(normalizedTag as GuideTab["key"])
+      ? (normalizedTag as GuideTab["key"])
+      : "all";
+  }, [searchParams, tabKeys]);
 
   const filtered = useMemo(() => {
     if (activeTag === "all") return posts;
-    return posts.filter((p) => (p.tag ?? "").trim() === activeTag);
+    return posts.filter((post) => post.tag === activeTag);
   }, [posts, activeTag]);
 
-  function setTag(tag: Tab["key"]) {
+  function setTag(tag: GuideTab["key"]) {
     const next = new URLSearchParams(searchParams.toString());
     if (tag === "all") next.delete("tag");
     else next.set("tag", tag);
@@ -51,19 +80,19 @@ export default function GuideGridWithTabs({ posts }: { posts: readonly Post[] })
     <section className="pt-4 mx-auto max-w-5xl px-6 pb-20">
       {/* Tabs row (remove.bg-ish) */}
       <div className="mt-10 flex flex-wrap items-center justify-center gap-8">
-        {TABS.map((t) => {
-          const isActive = activeTag === t.key;
+        {resolvedTabs.map((tab) => {
+          const isActive = activeTag === tab.key;
 
           return (
             <button
-              key={t.key}
+              key={tab.key}
               type="button"
-              onClick={() => setTag(t.key)}
+              onClick={() => setTag(tab.key)}
               className={`relative text-lg transition ${
                 isActive ? "text-primary" : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              {t.label}
+              {tab.label}
               {/* underline */}
               <span
                 className={`absolute left-0 -bottom-2 h-1 w-full rounded-full transition ${
