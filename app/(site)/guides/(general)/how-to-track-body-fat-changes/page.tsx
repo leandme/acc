@@ -169,6 +169,19 @@ export default function BlogPostPage() {
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
+            If accountability helps you stay consistent, turn each check-in into a short update and share it.
+            Public progress posts can increase follow-through because people are watching your trend over time.
+            You can draft those updates quickly with a{" "}
+            <a
+              className="text-primary underline"
+              href="https://indzu.com/tools/social-media-post-generator/"
+            >
+              Social Media Post Generator
+            </a>
+            .
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
             If you also track scale-based targets, use the{" "}
             <a className="text-primary underline" href="/overweight-calculator">
               current gap-above-healthy check
