@@ -18,7 +18,8 @@ type Props = {
     | "/eye-shape-detector"
     | "/nose-shape-detector"
     | "/skin-analyzer"
-    | "/hair-color-detector";
+    | "/hair-color-detector"
+    | "/hair-type-detector";
   buttonLabel?: string;
 };
 

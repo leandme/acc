@@ -776,6 +776,7 @@ function SkinAnalyzerPageContent() {
             columns={2}
             toolSlugs={[
               "hair-color-detector",
+              "hair-type-detector",
               "eyebrow-type-detector",
               "eye-shape-detector",
               "nose-shape-detector",

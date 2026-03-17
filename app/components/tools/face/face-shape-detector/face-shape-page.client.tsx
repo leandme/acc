@@ -578,6 +578,7 @@ function FaceShapePageContent() {
               "nose-shape-detector",
               "skin-analyzer",
               "hair-color-detector",
+              "hair-type-detector",
               "jawline-check",
               "age-guesser",
               "attractiveness-test",

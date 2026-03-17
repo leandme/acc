@@ -894,6 +894,7 @@ function JawlineCheckPageContent() {
               "nose-shape-detector",
               "skin-analyzer",
               "hair-color-detector",
+              "hair-type-detector",
               "age-guesser",
               "attractiveness-test",
               "body-shape-analyzer",

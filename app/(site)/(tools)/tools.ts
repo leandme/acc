@@ -303,6 +303,12 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Detect hair color, undertone, and depth from a portrait with AI confidence scoring.",
     category: "Face",
   },
+  "hair-type-detector": {
+    slug: "hair-type-detector",
+    title: "Hair Type Detector",
+    description: "Detect likely hair type (1A-4C), curl family, and care-direction context from a portrait with AI.",
+    category: "Face",
+  },
 
   "body-visualizer": {
     slug: "body-visualizer",

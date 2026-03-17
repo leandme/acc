@@ -744,6 +744,7 @@ function FaceSymmetryPageContent() {
               "nose-shape-detector",
               "skin-analyzer",
               "hair-color-detector",
+              "hair-type-detector",
               "age-guesser",
               "attractiveness-test",
               "face-shape-detector",

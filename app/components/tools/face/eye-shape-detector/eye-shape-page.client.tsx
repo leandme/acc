@@ -496,6 +496,7 @@ function EyeShapePageContent() {
               "nose-shape-detector",
               "skin-analyzer",
               "hair-color-detector",
+              "hair-type-detector",
               "face-shape-detector",
               "jawline-check",
               "face-symmetry-test",

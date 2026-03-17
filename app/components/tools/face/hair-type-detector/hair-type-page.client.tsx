@@ -9,106 +9,135 @@ import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
 import { MoreTools } from "@/app/components/tools/template/more-tools";
 import {
-  HairColorKey,
-  useHairColorAnalysis,
-} from "@/app/hooks/useHairColorAnalysis";
+  HairTypeKey,
+  useHairTypeAnalysis,
+} from "@/app/hooks/useHairTypeAnalysis";
 
-type HairColorRow = {
-  key: Exclude<HairColorKey, "uncertain">;
+type HairTypeRow = {
+  key: Exclude<HairTypeKey, "uncertain">;
   label: string;
+  family: string;
   colorClass: string;
   textClass: string;
   pattern: string;
   direction: string;
 };
 
-const HAIR_COLOR_ROWS: HairColorRow[] = [
+const HAIR_TYPE_ROWS: HairTypeRow[] = [
   {
-    key: "black",
-    label: "Black",
-    colorClass: "bg-zinc-100",
-    textClass: "text-zinc-900",
-    pattern: "Deep dark pigment with very low lightness.",
-    direction: "Contrast styling often works well with lighter neutrals and jewel tones.",
+    key: "1a",
+    label: "Type 1A",
+    family: "Straight",
+    colorClass: "bg-sky-50",
+    textClass: "text-sky-900",
+    pattern: "Very straight with minimal visible bend and lower natural volume.",
+    direction: "Use lightweight hydration and avoid heavy stylers that flatten shape.",
   },
   {
-    key: "dark-brown",
-    label: "Dark Brown",
-    colorClass: "bg-amber-100",
+    key: "1b",
+    label: "Type 1B",
+    family: "Straight",
+    colorClass: "bg-blue-50",
+    textClass: "text-blue-900",
+    pattern: "Straight pattern with slight body and subtle bend through lengths.",
+    direction: "Layer volume-focused products near roots and keep moisture balanced.",
+  },
+  {
+    key: "1c",
+    label: "Type 1C",
+    family: "Straight",
+    colorClass: "bg-cyan-50",
+    textClass: "text-cyan-900",
+    pattern: "Straight-to-soft-wave behavior with thicker appearance and more texture.",
+    direction: "Use smoothing plus light hold to keep definition without stiffness.",
+  },
+  {
+    key: "2a",
+    label: "Type 2A",
+    family: "Wavy",
+    colorClass: "bg-emerald-50",
+    textClass: "text-emerald-900",
+    pattern: "Loose S-wave shape, often finer and easier to straighten.",
+    direction: "Use light mousse or spray to support wave pattern and reduce limpness.",
+  },
+  {
+    key: "2b",
+    label: "Type 2B",
+    family: "Wavy",
+    colorClass: "bg-green-50",
+    textClass: "text-green-900",
+    pattern: "Clearer S-waves starting mid-length with moderate frizz tendency.",
+    direction: "Pair leave-in hydration with medium hold gel for stable wave definition.",
+  },
+  {
+    key: "2c",
+    label: "Type 2C",
+    family: "Wavy",
+    colorClass: "bg-lime-50",
+    textClass: "text-lime-900",
+    pattern: "Deep wave pattern that can border loose curls with higher volume.",
+    direction: "Use moisture plus stronger hold to maintain definition and control puffiness.",
+  },
+  {
+    key: "3a",
+    label: "Type 3A",
+    family: "Curly",
+    colorClass: "bg-yellow-50",
+    textClass: "text-yellow-900",
+    pattern: "Large loose curls with visible loop pattern and moderate bounce.",
+    direction: "Use curl creams with balanced hold and avoid over-brushing dry hair.",
+  },
+  {
+    key: "3b",
+    label: "Type 3B",
+    family: "Curly",
+    colorClass: "bg-amber-50",
     textClass: "text-amber-900",
-    pattern: "Dark brown base with subtle warm or neutral reflections.",
-    direction: "Mid-contrast palettes and rich earth tones pair naturally with this depth.",
+    pattern: "Springier curls with smaller diameter and stronger definition needs.",
+    direction: "Combine moisture-rich styling and section-based application for consistency.",
   },
   {
-    key: "brown",
-    label: "Brown",
+    key: "3c",
+    label: "Type 3C",
+    family: "Curly",
     colorClass: "bg-orange-100",
     textClass: "text-orange-900",
-    pattern: "Medium brown depth with visible undertone shifts in light.",
-    direction: "Both warm and cool clothing palettes can be balanced around undertone.",
+    pattern: "Tight corkscrew curls with high density appearance and shrinkage.",
+    direction: "Prioritize slip, hydration, and gentle detangling to protect curl clumps.",
   },
   {
-    key: "light-brown",
-    label: "Light Brown",
-    colorClass: "bg-yellow-100",
-    textClass: "text-yellow-900",
-    pattern: "Lighter brown base with higher reflectance and softer contrast.",
-    direction: "Soft neutrals and medium-saturation colors often maintain harmony.",
-  },
-  {
-    key: "blonde",
-    label: "Blonde",
-    colorClass: "bg-lime-100",
-    textClass: "text-lime-900",
-    pattern: "High lightness range with yellow, beige, or ash undertone variants.",
-    direction: "Undertone-matched makeup and wardrobe tones can reduce color clash.",
-  },
-  {
-    key: "auburn",
-    label: "Auburn",
-    colorClass: "bg-red-100",
-    textClass: "text-red-800",
-    pattern: "Brown-red blend with warm copper undertone influence.",
-    direction: "Warm palettes, olive greens, and muted gold accents tend to work well.",
-  },
-  {
-    key: "red",
-    label: "Red",
+    key: "4a",
+    label: "Type 4A",
+    family: "Coily",
     colorClass: "bg-rose-100",
-    textClass: "text-rose-800",
-    pattern: "Clear red/copper direction with stronger warm wavelength reflection.",
-    direction: "Balanced complexion tones and controlled color intensity improve overall cohesion.",
+    textClass: "text-rose-900",
+    pattern: "Coily pattern with visible small S-coils and notable shrinkage.",
+    direction: "Use layered moisture and low-friction handling to keep coils defined.",
   },
   {
-    key: "gray",
-    label: "Gray",
-    colorClass: "bg-slate-100",
-    textClass: "text-slate-800",
-    pattern: "Reduced melanin expression with mixed dark/light fiber distribution.",
-    direction: "Cool-neutral palettes and clean contrast choices can feel polished.",
-  },
-  {
-    key: "white",
-    label: "White",
-    colorClass: "bg-gray-50",
-    textClass: "text-gray-800",
-    pattern: "Very low pigment appearance with high lightness and low saturation.",
-    direction: "Sharper contrasts and intentional tone balance help define features.",
-  },
-  {
-    key: "fantasy",
-    label: "Fantasy / Fashion",
+    key: "4b",
+    label: "Type 4B",
+    family: "Coily",
     colorClass: "bg-fuchsia-100",
-    textClass: "text-fuchsia-800",
-    pattern: "Non-natural dyed hues (blue, pink, purple, etc.) dominate visible color.",
-    direction: "Match styling intensity to the statement level of the selected fashion color.",
+    textClass: "text-fuchsia-900",
+    pattern: "Tighter zig-zag or less uniform coil pattern with high volume potential.",
+    direction: "Use rich conditioners and gentle sectioning to reduce breakage risk.",
+  },
+  {
+    key: "4c",
+    label: "Type 4C",
+    family: "Coily",
+    colorClass: "bg-violet-100",
+    textClass: "text-violet-900",
+    pattern: "Very tight coil profile with substantial shrinkage and dense appearance.",
+    direction: "Focus on consistent hydration, protective styling, and low-manipulation routines.",
   },
 ];
 
 const FACE_EXAMPLES = [
-  { id: "hair-a", label: "Example A", src: "/examples/man-selfie.webp" },
-  { id: "hair-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "hair-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "hair-type-a", label: "Example A", src: "/examples/man-selfie.webp" },
+  { id: "hair-type-b", label: "Example B", src: "/examples/woman-selfie.webp" },
+  { id: "hair-type-c", label: "Example C", src: "/examples/boy-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {
@@ -129,14 +158,20 @@ function confidenceBandLabel(score: number) {
   return "Low";
 }
 
-function titleCase(input: string) {
-  return input
-    .split("-")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
+function levelText(level: "low" | "medium" | "high" | "uncertain") {
+  if (level === "uncertain") return "Uncertain";
+  return level.charAt(0).toUpperCase() + level.slice(1);
 }
 
-function HairConfidenceBar({ score }: { score: number }) {
+function strandText(strand: "fine" | "medium" | "coarse" | "mixed" | "uncertain") {
+  if (strand === "fine") return "Fine";
+  if (strand === "medium") return "Medium";
+  if (strand === "coarse") return "Coarse";
+  if (strand === "mixed") return "Mixed";
+  return "Uncertain";
+}
+
+function HairTypeConfidenceBar({ score }: { score: number }) {
   const safe = clamp(score, 0, 100);
   const label = confidenceBandLabel(safe);
 
@@ -172,7 +207,7 @@ function HairConfidenceBar({ score }: { score: number }) {
           <div
             className="absolute -top-3"
             style={{ left: `${safe}%`, transform: "translateX(-50%)" }}
-            aria-label="Hair confidence marker"
+            aria-label="Hair type confidence marker"
             title={`Confidence ${safe}`}
           >
             <div
@@ -212,26 +247,26 @@ function HairConfidenceBar({ score }: { score: number }) {
   );
 }
 
-function HairColorTable({ activeColor }: { activeColor: HairColorKey | null }) {
+function HairTypeTable({ activeType }: { activeType: HairTypeKey | null }) {
   return (
     <div className="mt-8 overflow-hidden rounded-2xl border bg-base-100">
       <table className="w-full text-left border-separate border-spacing-0">
         <thead className="bg-gray-50">
           <tr>
             <th className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">
-              Hair Color
+              Hair Type
             </th>
             <th className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">
-              Visual Pattern
+              Pattern Clues
             </th>
             <th className="px-4 py-3 text-sm font-semibold text-gray-700 hidden sm:table-cell">
-              Styling Direction
+              Care Direction
             </th>
           </tr>
         </thead>
         <tbody>
-          {HAIR_COLOR_ROWS.map((row) => {
-            const isActive = activeColor === row.key;
+          {HAIR_TYPE_ROWS.map((row) => {
+            const isActive = activeType === row.key;
             const cellBase = "px-4 py-4 align-top";
             const activeCell = isActive
               ? "border-y-4 border-gray-900"
@@ -248,6 +283,9 @@ function HairColorTable({ activeColor }: { activeColor: HairColorKey | null }) {
                 >
                   <div className="flex flex-wrap items-center gap-2">
                     <span className={`font-semibold ${row.textClass}`}>{row.label}</span>
+                    <span className="inline-flex rounded-full border border-black/10 bg-white/50 px-2 py-0.5 text-xs font-semibold text-gray-700">
+                      {row.family}
+                    </span>
                     {isActive ? (
                       <span className="inline-flex rounded-full border border-gray-900/20 bg-gray-900/10 px-2 py-0.5 text-xs font-semibold text-gray-900">
                         Your Result
@@ -278,18 +316,18 @@ function HairColorTable({ activeColor }: { activeColor: HairColorKey | null }) {
   );
 }
 
-function HairColorPageContent() {
+function HairTypePageContent() {
   const searchParams = useSearchParams();
   const imageUrl = searchParams.get("imageUrl");
   const source = searchParams.get("source") === "example" ? "example" : "upload";
-  const { analysis, loading, error } = useHairColorAnalysis(imageUrl, { source });
+  const { analysis, loading, error } = useHairTypeAnalysis(imageUrl, { source });
 
   const sectionWrap =
     "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
   const pClass = "text-lg leading-relaxed";
 
-  const activeColor = analysis?.color ?? null;
+  const activeType = analysis?.type ?? null;
   const alternativesText = useMemo(() => {
     if (!analysis?.alternatives?.length) return null;
     return analysis.alternatives.slice(0, 2).join(" or ");
@@ -298,21 +336,23 @@ function HairColorPageContent() {
   return (
     <main className="bg-base-100">
       <section className="flex flex-col items-center justify-start pt-10 px-6">
-        <H1>Hair Color Detector</H1>
+        <H1>Hair Type Detector</H1>
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
-          Upload a clear portrait to detect likely hair color, undertone, and depth with AI confidence scoring.
+          Upload a clear portrait to detect likely hair type (1A to 4C) with AI confidence scoring,
+          pattern interpretation, and care-direction context.
         </p>
 
         {!imageUrl ? (
           <div className="w-full max-w-2xl mt-10 flex flex-col items-center">
             <div className="w-full max-w-md">
-              <EstimateDropZone basePath="/hair-color-detector" buttonLabel="Upload Face Photo" />
+              <EstimateDropZone basePath="/hair-type-detector" buttonLabel="Upload Face Photo" />
             </div>
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
-              <TryExamples basePath="/hair-color-detector" examples={FACE_EXAMPLES} />
+              <TryExamples basePath="/hair-type-detector" examples={FACE_EXAMPLES} />
             </div>
             <p className="mt-5 text-sm text-gray-600 max-w-md text-center">
-              Show the full hairline and crown area where possible, with neutral light and minimal color filters.
+              Best results come from front-facing photos where hair texture is visible without hats,
+              heavy filters, or strong motion blur.
             </p>
           </div>
         ) : (
@@ -321,22 +361,22 @@ function HairColorPageContent() {
               <div className="w-full sm:max-w-sm lg:max-w-none justify-self-center">
                 <img
                   src={imageUrl}
-                  alt="Uploaded image for hair-color analysis"
+                  alt="Uploaded image for hair-type analysis"
                   className="w-full max-w-[95vw] sm:max-w-sm lg:w-[360px] mx-auto rounded-2xl shadow-xl object-cover aspect-[3/4] bg-base-200"
                 />
               </div>
 
               <div className="w-full rounded-2xl border bg-white p-6 lg:p-8 shadow-sm">
-                <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900">Hair Color Result</h2>
+                <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900">Hair Type Result</h2>
 
                 {loading ? (
                   <div className="mt-6">
                     <div className="flex items-center gap-4">
                       <RippleLoader />
                       <div>
-                        <p className="text-lg text-gray-800 font-semibold">Analyzing hair color profile...</p>
+                        <p className="text-lg text-gray-800 font-semibold">Analyzing hair pattern...</p>
                         <p className="text-sm text-gray-600">
-                          Estimating dominant shade, undertone, depth band, and tonal complexity.
+                          Estimating curl family, subtype, pattern tightness, and confidence.
                         </p>
                       </div>
                     </div>
@@ -352,7 +392,7 @@ function HairColorPageContent() {
                 {!loading && !error && analysis ? (
                   <div className="mt-5">
                     <div className="flex flex-wrap items-center gap-3">
-                      <p className="text-4xl lg:text-5xl font-bold text-primary">{analysis.colorLabel}</p>
+                      <p className="text-4xl lg:text-5xl font-bold text-primary">{analysis.typeLabel}</p>
                       <span
                         className={`inline-flex rounded-full border px-3 py-1 text-sm font-semibold ${confidenceBadgeClass(
                           analysis.confidence
@@ -367,10 +407,15 @@ function HairColorPageContent() {
                     </p>
 
                     <p className="mt-2 text-sm text-gray-600">
-                      Undertone: <span className="font-semibold">{titleCase(analysis.undertone)}</span>
-                      {" "}| Depth: <span className="font-semibold">{titleCase(analysis.depthBand)}</span>
-                      {" "}| Saturation: <span className="font-semibold">{titleCase(analysis.saturationLevel)}</span>
-                      {" "}| Gray coverage: <span className="font-semibold">{titleCase(analysis.grayCoverage)}</span>
+                      Family: <span className="font-semibold">{analysis.familyLabel}</span>
+                      {" "}| Pattern tightness: <span className="font-semibold">{levelText(analysis.patternTightness)}</span>
+                      {" "}| Strand appearance: <span className="font-semibold">{strandText(analysis.strandAppearance)}</span>
+                    </p>
+
+                    <p className="mt-1 text-sm text-gray-600">
+                      Volume tendency: <span className="font-semibold">{levelText(analysis.volumeTendency)}</span>
+                      {" "}| Frizz tendency: <span className="font-semibold">{levelText(analysis.frizzTendency)}</span>
+                      {" "}| Shrinkage tendency: <span className="font-semibold">{levelText(analysis.shrinkageTendency)}</span>
                     </p>
 
                     {analysis.rationale ? (
@@ -380,12 +425,6 @@ function HairColorPageContent() {
                     {alternativesText ? (
                       <p className="mt-3 text-sm text-gray-600">
                         Close alternatives: <span className="font-semibold text-gray-800">{alternativesText}</span>
-                      </p>
-                    ) : null}
-
-                    {analysis.secondaryTones.length ? (
-                      <p className="mt-2 text-sm text-gray-600">
-                        Secondary tones: <span className="font-semibold text-gray-800">{analysis.secondaryTones.join(", ")}</span>
                       </p>
                     ) : null}
                   </div>
@@ -401,20 +440,20 @@ function HairColorPageContent() {
           <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
             <h2 className={h2Class}>Confidence Interpretation</h2>
             <p className="mt-4 text-center text-lg text-gray-700">
-              The confidence bar shows how strongly the uploaded photo matches the detected hair-color category.
+              The confidence bar shows how strongly your uploaded photo matches the detected hair type.
             </p>
             <div className="mt-8">
-              <HairConfidenceBar score={analysis.confidenceScore} />
+              <HairTypeConfidenceBar score={analysis.confidenceScore} />
             </div>
           </div>
         ) : null}
 
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <h2 className={h2Class}>Where Your Hair Color Fits</h2>
+          <h2 className={h2Class}>Hair Type Chart (1A to 4C)</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
-            The highlighted row marks your detected primary hair-color category.
+            The highlighted row marks your detected hair type and family.
           </p>
-          <HairColorTable activeColor={activeColor} />
+          <HairTypeTable activeType={activeType} />
         </div>
 
         {analysis?.observationNotes?.length ? (
@@ -428,11 +467,11 @@ function HairColorPageContent() {
           </div>
         ) : null}
 
-        {analysis?.styleSuggestions?.length ? (
+        {analysis?.careSuggestions?.length ? (
           <div className={sectionWrap}>
-            <h2 className={h2Class}>Style Suggestions</h2>
+            <h2 className={h2Class}>Care Suggestions</h2>
             <ul className="list-disc pl-6 space-y-2 text-lg">
-              {analysis.styleSuggestions.map((tip, idx) => (
+              {analysis.careSuggestions.map((tip, idx) => (
                 <li key={`${tip}-${idx}`}>{tip}</li>
               ))}
             </ul>
@@ -440,14 +479,41 @@ function HairColorPageContent() {
         ) : null}
 
         <div className={sectionWrap}>
-          <h2 className={h2Class}>How This Hair Color Detector Works</h2>
+          <h2 className={h2Class}>How This Hair Type Detector Works</h2>
           <p className={pClass}>
-            This detector estimates visible hair pigmentation patterns from one portrait image. It evaluates dominant
-            shade, tonal depth, undertone bias, and gray coverage context, then maps the result to a practical color category.
+            This hair type detector is an AI appearance classifier that estimates visible curl pattern from one
+            portrait image. It maps what it sees to common hair type categories (1A to 4C), then returns a
+            confidence score, alternative candidates, and practical routine context.
           </p>
           <p className={pClass}>
-            Results can shift with lighting temperature, camera white balance, salon dye, and filtering. Use a consistent
-            setup if you compare multiple photos over time.
+            Because this is image-based, results can shift with lighting, humidity, product build-up, heat styling,
+            brushing state, and camera angle. For trend tracking, compare photos captured under similar conditions.
+          </p>
+        </div>
+
+        <div className={sectionWrap}>
+          <h2 className={h2Class}>Hair Type Detector vs Hair Quiz or Hair Test</h2>
+          <p className={pClass}>
+            A classic hair type quiz asks subjective questions. This tool is different: it uses visual pattern cues
+            from your uploaded image to generate a direct AI estimate. That makes it a useful alternative when you
+            want a fast second opinion before building a routine.
+          </p>
+          <p className={pClass}>
+            The best workflow is to use both: take your visual AI result, compare it with your wash-day behavior,
+            and adjust based on real-world response over multiple weeks.
+          </p>
+        </div>
+
+        <div className={sectionWrap}>
+          <h2 className={h2Class}>Hair Type vs Texture, Density, and Porosity</h2>
+          <p className={pClass}>
+            Hair type describes visible pattern shape. It does not fully capture strand diameter, overall density,
+            porosity behavior, scalp oil production, or chemical-treatment history. Two people with the same type
+            can still need very different routines.
+          </p>
+          <p className={pClass}>
+            Use this result as your starting point, then personalize around how your hair actually responds to
+            cleansing frequency, conditioning weight, and hold level.
           </p>
         </div>
 
@@ -458,14 +524,15 @@ function HairColorPageContent() {
               ? analysis.retakeTips
               : [
                   "Use neutral daylight or balanced white indoor lighting.",
-                  "Avoid strong color grading, beauty filters, and heavy backlighting.",
-                  "Show enough visible hair area, not just hairline fragments.",
-                  "Avoid hats, shadows, and reflective color casts from nearby walls or clothes.",
+                  "Show visible hair texture without hats, heavy shadows, or motion blur.",
+                  "Avoid strong beauty filters and extreme smoothing effects.",
+                  "If possible, capture hair in its natural state instead of freshly heat-styled form.",
                 ]).map((tip, idx) => (
               <li key={`${tip}-${idx}`}>{tip}</li>
             ))}
           </ul>
         </div>
+
         <div className={sectionWrap}>
           <h2 className={h2Class}>Use This with Other Tools</h2>
           <p className={pClass}>
@@ -476,24 +543,23 @@ function HairColorPageContent() {
             page based on your goal.
           </p>
           <p className={pClass}>
-            For hair-pattern context, combine with the{" "}
-            <a className="text-primary underline" href="/hair-type-detector">
-              Hair Type Detector
-            </a>
-            .{" "}
-            For broader progress tracking, pair with the{" "}
-            <a className="text-primary underline" href="/estimate">
-              Body Fat Estimator
+            For a fuller appearance workflow, pair this with the{" "}
+            <a className="text-primary underline" href="/hair-color-detector">
+              Hair Color Detector
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/body-shape-analyzer">
-              Body Shape Analyzer
+            <a className="text-primary underline" href="/skin-analyzer">
+              Skin Analyzer
             </a>
-            . If you want a metric-driven comparison, use{" "}
-            <a className="text-primary underline" href="/body-visualizer">
-              Body Visualizer
-            </a>
-            .
+            . You can also combine with{" "}
+            <a className="text-primary underline" href="/face-shape-detector">
+              Face Shape Detector
+            </a>{" "}
+            and{" "}
+            <a className="text-primary underline" href="/face-symmetry-test">
+              Face Symmetry Test
+            </a>{" "}
+            for broader styling context.
           </p>
         </div>
 
@@ -501,38 +567,39 @@ function HairColorPageContent() {
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>
-              PubMed research index on human hair-color genetics:
-              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/?term=human+hair+color+genetics">
-                Hair Color Genetics Search
+              Curly hair biology and structure review (PubMed):
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/31824224/">
+                The what, why and how of curly hair: a review
               </a>
             </li>
             <li>
-              PubMed research index on melanin and hair pigmentation biology:
-              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/?term=hair+pigmentation+melanin">
-                Hair Pigmentation Research Search
+              Human hair morphology and curvature variation methods (PubMed):
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/34075066/">
+                Quantifying human scalp hair fiber morphology
               </a>
             </li>
             <li>
-              PubMed research index on hair graying mechanisms:
-              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/?term=hair+graying+oxidative+stress">
-                Hair Graying Research Search
+              Population variation in hair fiber shape and pigmentation (PubMed):
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/26955790/">
+                Human scalp hair fiber shape and pigmentation variation
               </a>
             </li>
             <li>
-              MedlinePlus genetics overview for graying of hair:
-              <a className="text-primary underline ml-1" href="https://medlineplus.gov/genetics/condition/graying-of-hair/">
-                MedlinePlus Graying of Hair
+              Hair curvature research overview (PubMed):
+              <a className="text-primary underline ml-1" href="https://pubmed.ncbi.nlm.nih.gov/24617997/">
+                Hair curvature and fiber morphology review
               </a>
             </li>
           </ul>
         </div>
+
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"
             columns={2}
             toolSlugs={[
+              "hair-color-detector",
               "skin-analyzer",
-              "hair-type-detector",
               "eyebrow-type-detector",
               "eye-shape-detector",
               "nose-shape-detector",
@@ -543,7 +610,7 @@ function HairColorPageContent() {
               "age-guesser",
               "attractiveness-test",
             ]}
-            excludeSlug="hair-color-detector"
+            excludeSlug="hair-type-detector"
           />
         </div>
       </section>
@@ -551,7 +618,7 @@ function HairColorPageContent() {
   );
 }
 
-const HairColorPageClient = dynamic(() => Promise.resolve(HairColorPageContent), {
+const HairTypePageClient = dynamic(() => Promise.resolve(HairTypePageContent), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center min-h-screen">
@@ -560,4 +627,4 @@ const HairColorPageClient = dynamic(() => Promise.resolve(HairColorPageContent),
   ),
 });
 
-export default HairColorPageClient;
+export default HairTypePageClient;

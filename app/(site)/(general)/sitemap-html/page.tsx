@@ -106,6 +106,8 @@ export default function SitemapPage() {
     "attractiveness-test",
     "face-shape-detector",
     "skin-analyzer",
+    "hair-type-detector",
+    "hair-color-detector",
     "jawline-check",
     "face-symmetry-test",
     "army-body-fat-calculator",
