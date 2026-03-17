@@ -515,6 +515,14 @@ function HairTypePageContent() {
             Use this result as your starting point, then personalize around how your hair actually responds to
             cleansing frequency, conditioning weight, and hold level.
           </p>
+          <p className={pClass}>
+            If you wear extensions, matching extension texture to your detected hair type can improve blend and
+            maintenance; see{" "}
+            <a className="text-primary underline" href="https://www.perfectlocks.com/">
+              human hair extensions
+            </a>
+            .
+          </p>
         </div>
 
         <div className={sectionWrap}>
