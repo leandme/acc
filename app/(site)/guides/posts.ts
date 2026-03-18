@@ -1,5 +1,16 @@
 export const POSTS = [
   {
+    slug: "body-analysis-tools-off-limits-for-kids",
+    title:
+      "Protecting Kids Online: Why Body Analysis Tools Should Be Off-Limits",
+    tag: "fat",
+    description:
+      "Body analysis tools can create privacy, consent, and body-image risks for minors. Learn why these tools should be off-limits for children and what adults should focus on instead.",
+    date: "Mar 18, 2026",
+    readTime: "7 min read",
+    image: "/examples/boy-selfie.webp",
+  },
+  {
     slug: "how-to-estimate-body-fat-percentage",
     title: "How to Estimate Body Fat Percentage (Methods + Accuracy)",
     tag: "fat",
