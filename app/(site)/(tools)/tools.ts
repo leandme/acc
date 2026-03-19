@@ -473,9 +473,9 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Estimate calories burned for many activities using MET-based exercise energy equations.",
     category: "Calories",
   },
-  "calorie-estimator": {
-    slug: "calorie-estimator",
-    title: "Calorie Estimator",
+  "calorie-scanner": {
+    slug: "calorie-scanner",
+    title: "Calorie Scanner",
     description: "Estimate meal calories from a photo with AI and confidence ranges.",
     category: "Calories",
   },

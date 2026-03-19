@@ -93,6 +93,11 @@ const nextConfig: NextConfig = {
         destination: "/sitemap-html",
         permanent: true, // 301 redirect
       },
+      {
+        source: "/calorie-estimator",
+        destination: "/calorie-scanner",
+        permanent: true, // 301 redirect
+      },
     ];
   },
 };

@@ -107,7 +107,7 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/calorie-calculator">Calorie Calculator</a></li>
-              <li><a className="hover:text-white" href="/calorie-estimator">Calorie Estimator</a></li>
+              <li><a className="hover:text-white" href="/calorie-scanner">Calorie Scanner</a></li>
               <li><a className="hover:text-white" href="/steps-to-calories-calculator">Steps to Calories Calculator</a></li>
               <li><a className="hover:text-white" href="/calorie-deficit-calculator">Calorie Deficit Calculator</a></li>
               <li><a className="hover:text-white" href="/calories-burned-calculator">Calories Burned Calculator</a></li>

@@ -87,8 +87,8 @@ export default function TDEEPageClient() {
               Calories Burned Calculator
             </a>
             . If you want meal-level intake estimates from photos, use the{" "}
-            <a className="text-primary underline" href="/calorie-estimator">
-              Calorie Estimator
+            <a className="text-primary underline" href="/calorie-scanner">
+              Calorie Scanner
             </a>{" "}
             and compare weekly average intake against this maintenance target. To convert calorie goals into
             protein, carb, and fat gram targets, use the{" "}
@@ -153,7 +153,7 @@ export default function TDEEPageClient() {
               "calorie-calculator",
               "bmr-calculator",
               "calorie-deficit-calculator",
-              "calorie-estimator",
+              "calorie-scanner",
               "macro-calculator",
               "steps-to-calories-calculator",
               "calories-burned-calculator",

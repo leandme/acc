@@ -105,8 +105,8 @@ export default function IntermittentFastingPageClient() {
               Calorie Calculator
             </a>
             . To estimate real meal intake by photo on feeding days, use the{" "}
-            <a className="text-primary underline" href="/calorie-estimator">
-              Calorie Estimator
+            <a className="text-primary underline" href="/calorie-scanner">
+              Calorie Scanner
             </a>
             . To estimate walking output from your daily step target, add the{" "}
             <a className="text-primary underline" href="/steps-to-calories-calculator">
@@ -172,7 +172,7 @@ export default function IntermittentFastingPageClient() {
               "fasting-weight-loss-calculator",
               "weight-loss-calculator",
               "calorie-deficit-calculator",
-              "calorie-estimator",
+              "calorie-scanner",
               "steps-to-calories-calculator",
               "tdee-calculator",
               "bmr-calculator",

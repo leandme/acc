@@ -600,7 +600,7 @@ function AttractivenessTestPageContent() {
               "estimate",
               "body-visualizer",
               "height-estimator",
-              "calorie-estimator",
+              "calorie-scanner",
             ]}
             excludeSlug="attractiveness-test"
           />

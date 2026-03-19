@@ -6,7 +6,7 @@ type Props = {
   basePath?:
     | "/estimate"
     | "/body-shape-analyzer"
-    | "/calorie-estimator"
+    | "/calorie-scanner"
     | "/height-estimator"
     | "/face-symmetry-test"
     | "/face-shape-detector"

@@ -557,7 +557,7 @@ function AgeGuesserPageContent() {
               "body-shape-calculator",
               "estimate",
               "height-estimator",
-              "calorie-estimator",
+              "calorie-scanner",
               "ffmi-calculator",
             ]}
             excludeSlug="age-guesser"

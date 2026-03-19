@@ -81,8 +81,8 @@ export default function FastingWeightLossPageClient() {
               Calorie Deficit Calculator
             </a>
             . For meal-level intake estimates from food photos, use the{" "}
-            <a className="text-primary underline" href="/calorie-estimator">
-              Calorie Estimator
+            <a className="text-primary underline" href="/calorie-scanner">
+              Calorie Scanner
             </a>
             . For step-based walking output, add the{" "}
             <a className="text-primary underline" href="/steps-to-calories-calculator">
@@ -146,7 +146,7 @@ export default function FastingWeightLossPageClient() {
               "intermittent-fasting-calculator",
               "tdee-calculator",
               "calorie-deficit-calculator",
-              "calorie-estimator",
+              "calorie-scanner",
               "steps-to-calories-calculator",
               "bmr-calculator",
               "weight-loss-calculator",
