@@ -211,10 +211,6 @@ export default function BodyAnalysisToolsOffLimitsForKidsPage() {
         <References
           references={[
             {
-              label: "Safe Search Kids - Internet Safety For Children",
-              href: "https://www.safesearchkids.com/",
-            },
-            {
               label: "FTC - Children's Online Privacy Protection Rule (COPPA)",
               href: "https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa",
             },
