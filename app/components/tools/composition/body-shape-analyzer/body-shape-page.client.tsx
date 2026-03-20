@@ -316,7 +316,16 @@ function BodyShapePageContent() {
             <li>Use a full-body front photo from head to feet.</li>
             <li>Keep camera height around torso level to reduce distortion.</li>
             <li>Wear fitted clothing so natural shape lines are visible.</li>
-            <li>Use even lighting and avoid heavy shadows.</li>
+            <li>
+              Use even lighting and avoid heavy shadows to{" "}
+              <a
+                className="text-primary underline"
+                href="https://www.adobe.com/express/feature/image/enhance"
+              >
+                enhance photos
+              </a>{" "}
+              and improve overall clarity.
+            </li>
             <li>Stand in a neutral pose with arms relaxed at your sides.</li>
           </ul>
         </div>
