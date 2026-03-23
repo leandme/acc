@@ -11,8 +11,8 @@ import { WebsiteSchema } from "../components/schema/website-schema";
 import { GoogleTag } from "../components/helpers/google-tag";
 import { GoogleAnalytics } from "../components/helpers/google-analytics";
 import Chrome from "../components/common/chrome";
-import { Ezoic } from "../components/helpers/ezoic";
 import { EzoicAdsRunner } from "../components/helpers/ezoic-ads-runner";
+import { MediavineGrow } from "../components/helpers/mediavine-grow";
 
 export default function RootLayout({
   children,
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* <Ezoic /> */} 
+        <MediavineGrow />
         <GoogleTag />
         <GoogleAnalytics />
         <WebsiteSchema />
