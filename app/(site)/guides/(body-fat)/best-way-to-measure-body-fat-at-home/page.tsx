@@ -299,6 +299,13 @@ export default function BlogPostPage() {
             If your photos look leaner over time, body fat is dropping, even if exact percentages
             fluctuate.
           </p>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            A simple weekly meal framework like the ones shared on{" "}
+            <a className="text-primary underline" href="https://wellorganichealth.com">
+              Well Organic Health
+            </a>{" "}
+            can make nutrition consistency easier, which improves trend quality.
+          </p>
         </div>
 
         {/* Accuracy */}
