@@ -14,11 +14,12 @@ export const metadata: Metadata = buildPageMetadata({
 
 const toc: TocItem[] = [
   { id: "what-body-fat-means", label: "What body fat % actually means", level: 2 },
-  { id: "estimation-methods", label: "Main ways to estimate body fat", level: 2 },
-  { id: "visual-looks-like", label: "What body fat % looks like", level: 2 },
-  { id: "ai-estimation", label: "AI body fat estimation", level: 2 },
-  { id: "accuracy", label: "Accuracy & limitations", level: 2 },
-  { id: "choose-method", label: "Choosing the right method", level: 2 },
+  { id: "what-best-means", label: "What best really means for tracking", level: 2 },
+  { id: "main-methods", label: "The 3 main methods (and when to use each)", level: 2 },
+  { id: "what-body-fat-looks-like", label: "What body fat % looks like", level: 2 },
+  { id: "track-step-by-step", label: "How to track body fat properly (step-by-step)", level: 2 },
+  { id: "accuracy-limitations", label: "Accuracy & limitations", level: 2 },
+  { id: "best-method-by-goal", label: "Best method based on your goal", level: 2 },
 ];
 
 export default function BlogPostPage() {
@@ -33,17 +34,17 @@ export default function BlogPostPage() {
               intro={
                 <>
                   <p>
-                    The “best” body fat method isn’t the one with the fanciest science —
-                    it’s the one you can repeat consistently enough to spot real trends.
+                    The “best” body fat method is not the one with the fanciest science. It is
+                    the one you can repeat consistently enough to spot real trends.
                   </p>
                   <p>
-                    For most people at home, that winner is{" "}
-                  <strong>consistent progress photos + an AI estimate</strong>. It’s
-                  appearance-aligned, low effort, and brutally practical for tracking
-                  change over time.
+                    For most people at home, that winner is simple:{" "}
+                    <strong>consistent progress photos + AI estimation</strong>.
                   </p>
-                  <p>This guide explains why that’s the #1 choice, and when the Navy Method
-                  or a DEXA scan is still worth using.
+                  <p>
+                    It is low effort, appearance-aligned, and usually better for trend tracking
+                    than methods that look more precise on paper. This guide explains why, plus
+                    when the Navy Method or DEXA scans still make sense.
                   </p>
                 </>
               }
@@ -72,121 +73,330 @@ export default function BlogPostPage() {
 
       {/* Content */}
       <section className="mx-auto max-w-3xl px-6 [&>div+div]:mt-20 lg:[&>div+div]:mt-40 mt-12">
-        {/* Framing */}
+        {/* Meaning */}
         <div className="space-y-4">
           <h2 id="what-body-fat-means" className="text-3xl lg:text-4xl font-semibold text-center">
-            What “best” actually means for at-home tracking
+            What body fat % actually means
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            When people ask for the “best” body fat method, they’re usually mixing
-            three different goals:
+            Body fat percentage is the proportion of your body made up of fat mass versus lean mass
+            (muscle, organs, bone, and water).
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            The part most people miss: body fat % is not something you can measure perfectly at home.
+            It is always an estimate, even with advanced tools.
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            That means the goal is not a perfect number. The goal is consistent measurement so you can
+            track real change over time.
+          </p>
+        </div>
+
+        {/* Best framing */}
+        <div className="space-y-4">
+          <h2 id="what-best-means" className="text-3xl lg:text-4xl font-semibold text-center">
+            What best really means for tracking
+          </h2>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            When people ask for the best method, they are usually mixing three separate goals:
           </p>
 
           <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
-            <li>Precision (how close is it to a true value?)</li>
-            <li>Consistency (can I repeat it reliably?)</li>
-            <li>Accessibility (can I actually do it often?)</li>
+            <li>
+              <strong>Precision:</strong> How close is the result to a true value?
+            </li>
+            <li>
+              <strong>Consistency:</strong> Can you repeat it reliably?
+            </li>
+            <li>
+              <strong>Accessibility:</strong> Can you do it often enough to see trends?
+            </li>
           </ul>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            At home, accessibility and consistency usually matter more than perfect
-            precision — because fat loss happens slowly, and noise happens fast.
+            At home, consistency usually beats precision. Fat loss happens slowly, often around
+            0.3% to 1% body weight per week, while measurement noise shows up fast from hydration,
+            food intake, lighting, and small technique changes.
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            The most useful method is the one you can repeat under consistent conditions.
           </p>
         </div>
 
-        {/* #1 Method */}
+        {/* 3 methods */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
+          <h2 id="main-methods" className="text-3xl lg:text-4xl font-semibold text-center">
+            The 3 main methods (and when to use each)
+          </h2>
+
+          <h3 className="text-2xl lg:text-3xl font-semibold text-center">
             #1: Consistent photos + AI estimation (best for real life)
-          </h2>
+          </h3>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            <a className="text-primary underline" href="/estimate">AI photo-based body fat estimation</a> analyzes visual cues in photos —
-            proportions, silhouette, and fat distribution — to estimate body fat
-            directionally.
+            <a className="text-primary underline" href="/estimate">
+              AI photo-based estimation
+            </a>{" "}
+            analyzes visual cues such as body proportions, fat distribution, muscle definition,
+            and silhouette changes.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            It doesn’t “measure” fat like a lab scan. Its strength is that it aligns
-            with what people actually care about:{" "}
-            <strong>how their body looks</strong>, and whether it’s changing over time.
+            It does not measure fat tissue directly, and that is exactly why it works well for
+            practical tracking. It aligns with what most people care about: how their body looks
+            and whether it is improving.
+          </p>
+
+          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>
+              <strong>Why it works:</strong> low friction, easy repeatability, and strong trend
+              signal under standardized photo conditions.
+            </li>
+            <li>
+              <strong>Best for:</strong> fat loss phases, physique improvement, and weekly
+              check-ins.
+            </li>
+          </ul>
+
+          <h3 className="text-2xl lg:text-3xl font-semibold text-center">
+            #2: The Navy Method (tape measurements)
+          </h3>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            The Navy Method estimates body fat from waist, neck, and hips (for women). It is low
+            cost and easy to run at home with a tape measure.
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            You can run this in the{" "}
+            <a className="text-primary underline" href="/body-fat-calculator">
+              Body Fat Calculator
+            </a>{" "}
+            and compare broader body composition context with the{" "}
+            <a className="text-primary underline" href="/lean-body-mass-calculator">
+              Lean Body Mass Calculator
+            </a>
+            ,{" "}
+            <a className="text-primary underline" href="/bri-calculator">
+              BRI Calculator
+            </a>
+            , and{" "}
+            <a className="text-primary underline" href="/bai-calculator">
+              BAI Calculator
+            </a>
+            .
+          </p>
+
+          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>
+              <strong>Downsides:</strong> sensitive to small tape errors, relies on population
+              averages, and can misread very muscular or lean physiques.
+            </li>
+            <li>
+              <strong>Best for:</strong> budget tracking and people who prefer numeric estimates.
+            </li>
+          </ul>
+
+          <h3 className="text-2xl lg:text-3xl font-semibold text-center">
+            #3: DEXA scans (most precise, least practical)
+          </h3>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            DEXA scans use low-dose X-rays to estimate fat mass, lean mass, and bone density.
+            They are often treated as a reference standard.
+          </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            The tradeoff is practicality. DEXA is relatively expensive, harder to repeat often,
+            and still affected by conditions such as hydration and protocol differences.
           </p>
 
           <p className="text-gray-500 text-lg leading-relaxed">
-            Best for: frequent check-ins, appearance-based tracking, and building a
-            clean trend line over weeks.
+            Best for: occasional baseline checks or a calibration point every few months. For
+            pricing context, see{" "}
+            <a
+              className="text-primary underline"
+              href="/guides/how-much-does-it-cost-to-measure-body-fat"
+            >
+              How Much Does It Cost to Measure Body Fat?
+            </a>
+            .
           </p>
         </div>
 
-        {/* Navy Method */}
+        {/* Looks like */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
-            The Navy Method (tape measurements)
+          <h2
+            id="what-body-fat-looks-like"
+            className="text-3xl lg:text-4xl font-semibold text-center"
+          >
+            What body fat % looks like
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            The Navy Method estimates body fat using tape measurements of the
-            waist, neck, and sometimes hips. It’s popular because it’s simple and
-            requires no equipment beyond a tape measure. You can run the method
-            directly in our{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">Body Fat Calculator</a>{" "}
-            and compare lean-mass-only estimates in the{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">Lean Body Mass Calculator</a>.
-            For waist-to-height roundness context, add the{" "}
-            <a className="text-primary underline" href="/bri-calculator">BRI Calculator</a>.
-            For hip-to-height adiposity, compare with the{" "}
-            <a className="text-primary underline" href="/bai-calculator">BAI Calculator</a>.
-            If you prefer calipers, the{" "}
-            <a className="text-primary underline" href="/skinfold-body-fat-calculator">Skinfold Body Fat Calculator</a>{" "}
-            uses site-based measurements.
+            Visual ranges are rough estimates, but they help explain why appearance-based tracking
+            is useful in real life.
           </p>
+
+          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>
+              <strong>10% to 12%:</strong> visible abs, sharper definition.
+            </li>
+            <li>
+              <strong>15%:</strong> athletic look, faint abs.
+            </li>
+            <li>
+              <strong>18% to 20%:</strong> softer physique, less visible abdominal definition.
+            </li>
+            <li>
+              <strong>25%+:</strong> rounder look with more central fat storage.
+            </li>
+          </ul>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            The downside is that it relies on formulas and averages. Small
-            measurement errors can change results, and it doesn’t account well
-            for muscle mass or fat distribution.
-          </p>
-
-          <p className="text-gray-500 text-lg leading-relaxed">
-            Best for: low-cost estimating if you’re careful and consistent with measurements.
+            The exact percentage is less important than direction of change over 3 to 4 weeks.
           </p>
         </div>
 
-        {/* DEXA */}
+        {/* Tracking protocol */}
         <div className="space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold text-center">
-            DEXA scans (most precise, but not “at home”)
+          <h2
+            id="track-step-by-step"
+            className="text-3xl lg:text-4xl font-semibold text-center"
+          >
+            How to track body fat properly (step-by-step)
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            DEXA scans use X-ray imaging to estimate body composition, including
-            fat mass, lean mass, and bone density. They’re often treated as a
-            reference standard.
+            Most tracking errors come from inconsistent setup. Use this protocol:
           </p>
+
+          <ol className="list-decimal pl-6 text-lg text-gray-700 space-y-4">
+            <li>
+              <strong>Take photos under identical conditions.</strong> Keep lighting, time of day,
+              camera distance, and poses the same (front, side, back).
+            </li>
+            <li>
+              <strong>Keep frequency low.</strong> One to two check-ins per week is enough; daily
+              checks mostly add noise.
+            </li>
+            <li>
+              <strong>Use the same method every time.</strong> Same tool, same angles, same process.
+              Avoid switching methods mid-cut.
+            </li>
+            <li>
+              <strong>Track trends, not single numbers.</strong> Ignore week-to-week noise and focus
+              on 3 to 4 week direction.
+            </li>
+          </ol>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            While DEXA is precise, it’s expensive, time-consuming, and impractical
-            for frequent tracking. Results can also vary slightly between
-            machines and facilities. For a full price breakdown, see{" "}
-            <a className="text-primary underline" href="/guides/how-much-does-it-cost-to-measure-body-fat">How Much Does It Cost to Measure Body Fat?</a>.
+            If your photos look leaner over time, body fat is dropping, even if exact percentages
+            fluctuate.
+          </p>
+        </div>
+
+        {/* Accuracy */}
+        <div className="space-y-4">
+          <h2
+            id="accuracy-limitations"
+            className="text-3xl lg:text-4xl font-semibold text-center"
+          >
+            Accuracy & limitations
+          </h2>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            No method is perfect. Each one fails in different ways:
           </p>
 
-          <p className="text-gray-500 text-lg leading-relaxed">
-            Best for: an occasional baseline or “calibration” point — not weekly tracking.
+          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>
+              <strong>DEXA:</strong> can shift with hydration, scan protocol, and machine/software
+              differences.
+            </li>
+            <li>
+              <strong>Navy Method:</strong> assumes average body proportions; small tape errors can
+              create large estimate swings.
+            </li>
+            <li>
+              <strong>AI estimation:</strong> sensitive to lighting, camera angle, and posture;
+              strongest for trends, weaker for exact single-point values.
+            </li>
+          </ul>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            The most useful method is not necessarily the most accurate in a lab. It is the most
+            repeatable in your real routine.
           </p>
+        </div>
+
+        {/* Method by goal */}
+        <div className="space-y-4">
+          <h2
+            id="best-method-by-goal"
+            className="text-3xl lg:text-4xl font-semibold text-center"
+          >
+            Best method based on your goal
+          </h2>
+
+          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
+            <li>
+              <strong>Lose fat or improve appearance:</strong> photos + AI.
+            </li>
+            <li>
+              <strong>Track numeric estimates:</strong> Navy Method.
+            </li>
+            <li>
+              <strong>Get an occasional baseline:</strong> DEXA scan.
+            </li>
+          </ul>
         </div>
 
         {/* Comparison */}
         <div className="rounded-2xl border bg-white p-6 space-y-4">
           <h3 className="text-xl font-semibold">Quick comparison</h3>
 
-          <ul className="text-lg text-gray-700 space-y-2">
-            <li><strong>Cost:</strong> AI (low) → Navy (low) → DEXA (high)</li>
-            <li><strong>Precision:</strong> DEXA (high) → AI/Navy (moderate)</li>
-            <li><strong>Consistency:</strong> AI (high with a consistent setup) → Navy (medium)</li>
-            <li><strong>Accessibility:</strong> AI (very high) → Navy (high) → DEXA (low)</li>
-          </ul>
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-left text-gray-700 text-base md:text-lg">
+              <thead>
+                <tr className="border-b">
+                  <th className="py-2 pr-4 font-semibold">Method</th>
+                  <th className="py-2 pr-4 font-semibold">Cost</th>
+                  <th className="py-2 pr-4 font-semibold">Accuracy</th>
+                  <th className="py-2 pr-4 font-semibold">Consistency</th>
+                  <th className="py-2 font-semibold">Best use</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b">
+                  <td className="py-2 pr-4">Photos + AI</td>
+                  <td className="py-2 pr-4">Low</td>
+                  <td className="py-2 pr-4">Moderate</td>
+                  <td className="py-2 pr-4">High</td>
+                  <td className="py-2">Progress tracking</td>
+                </tr>
+                <tr className="border-b">
+                  <td className="py-2 pr-4">Navy Method</td>
+                  <td className="py-2 pr-4">Low</td>
+                  <td className="py-2 pr-4">Moderate</td>
+                  <td className="py-2 pr-4">Medium</td>
+                  <td className="py-2">Numeric estimates</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4">DEXA</td>
+                  <td className="py-2 pr-4">High</td>
+                  <td className="py-2 pr-4">High</td>
+                  <td className="py-2 pr-4">Low</td>
+                  <td className="py-2">Occasional baseline</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <p className="text-gray-700 text-lg leading-relaxed">
             If micronutrient coverage is hard during a deficit, this guide to the{" "}
