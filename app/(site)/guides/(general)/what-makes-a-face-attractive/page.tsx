@@ -87,7 +87,12 @@ export default function WhatMakesAFaceAttractivePage() {
             <h3 className="text-2xl font-semibold text-gray-900">4. Skin Clarity And Texture</h3>
             <p className="text-gray-700 text-lg leading-relaxed">
               Skin quality has outsized influence. Even tone, lower irritation, and smoother texture
-              can improve perceived attractiveness faster than most people expect.
+              can improve perceived attractiveness faster than most people expect. If you want
+              in-person support, finding a{" "}
+              <a className="text-primary underline" href="https://www.findatopdoc.com/">
+                best skin care clinic
+              </a>{" "}
+              can help you compare providers.
             </p>
           </li>
 
