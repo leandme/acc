@@ -189,31 +189,14 @@ export default function BlogPostPage() {
           </ul>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            If your main goal is scale-target planning, layer in the{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
-              Weight Loss Calculator
+            If micronutrient coverage is hard during a deficit, this guide to the{" "}
+            <a
+              className="text-primary underline"
+              href="https://www.giftedpicks.com/picks/best-greens-powder-amazon"
+            >
+              best greens powder on Amazon
             </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
-              Weight Loss Percentage Calculator
-            </a>
-            . For quick screening context from height and weight, use the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
-              BMI Calculator
-            </a>
-            . For maintenance and intake targets, add the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
-              TDEE Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
-              Calorie Deficit Calculator
-            </a>
-            {" "}plus movement-based output with the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
-              Steps to Calories Calculator
-            </a>
-            .
+            can help.
           </p>
         </div>
 
