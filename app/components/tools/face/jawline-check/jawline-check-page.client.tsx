@@ -97,7 +97,7 @@ const FACE_EXAMPLES = [
   { id: "jawline-c", label: "Example C", src: "/examples/boy-selfie.webp" },
 ];
 
-const JAWLINER_SITE_URL = "https://jawliner.com/bite95384112hard";
+const JAWLINER_SITE_URL = "https://jawliner.com/hii5ju";
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
