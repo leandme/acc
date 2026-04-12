@@ -756,7 +756,7 @@ function FaceSymmetryPageContent() {
               "bmi-calculator",
               "height-estimator",
               "ffmi-calculator",
-              "calorie-scanner",
+              "calorie-counter",
             ]}
             excludeSlug="face-symmetry-test"
           />

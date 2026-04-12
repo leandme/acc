@@ -71,7 +71,7 @@ export default function SitemapPage() {
     "body-visualizer",
     "tdee-calculator",
     "bmr-calculator",
-    "calorie-scanner",
+    "calorie-counter",
     "calorie-deficit-calculator",
     "macro-calculator",
     "steps-to-calories-calculator",

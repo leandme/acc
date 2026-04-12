@@ -95,7 +95,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/calorie-estimator",
-        destination: "/calorie-scanner",
+        destination: "/calorie-counter",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/calorie-scanner",
+        destination: "/calorie-counter",
         permanent: true, // 301 redirect
       },
     ];

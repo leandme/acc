@@ -901,7 +901,7 @@ function JawlineCheckPageContent() {
               "estimate",
               "body-visualizer",
               "height-estimator",
-              "calorie-scanner",
+              "calorie-counter",
               "ffmi-calculator",
             ]}
             excludeSlug="jawline-check"

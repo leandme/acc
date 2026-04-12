@@ -588,7 +588,7 @@ function FaceShapePageContent() {
               "height-estimator",
               "estimate",
               "body-visualizer",
-              "calorie-scanner",
+              "calorie-counter",
               "ffmi-calculator",
             ]}
             excludeSlug="face-shape-detector"

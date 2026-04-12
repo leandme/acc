@@ -163,7 +163,7 @@ export default function CaloriesBurnedPageClient() {
               "bmr-calculator",
               "weight-loss-calculator",
               "intermittent-fasting-calculator",
-              "calorie-scanner",
+              "calorie-counter",
             ]}
             excludeSlug="calories-burned-calculator"
           />

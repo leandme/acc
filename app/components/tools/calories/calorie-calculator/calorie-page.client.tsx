@@ -96,8 +96,8 @@ export default function CalorieCalculatorPageClient() {
           </p>
           <p className={pClass}>
             You can also cross-check real intake with the{" "}
-            <a className="text-primary underline" href="/calorie-scanner">
-              Calorie Scanner
+            <a className="text-primary underline" href="/calorie-counter">
+              Calorie Counter
             </a>{" "}
             for meal-photo estimates, and model movement output with the{" "}
             <a className="text-primary underline" href="/steps-to-calories-calculator">
@@ -187,7 +187,7 @@ export default function CalorieCalculatorPageClient() {
               "fasting-weight-loss-calculator",
               "steps-to-calories-calculator",
               "calories-burned-calculator",
-              "calorie-scanner",
+              "calorie-counter",
             ]}
             excludeSlug="calorie-calculator"
           />

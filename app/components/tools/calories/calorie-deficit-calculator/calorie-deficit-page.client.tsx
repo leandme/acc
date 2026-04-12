@@ -84,8 +84,8 @@ export default function CalorieDeficitPageClient() {
               Calories Burned Calculator
             </a>
             . If your daily intake varies by meal composition, log meal photos in the{" "}
-            <a className="text-primary underline" href="/calorie-scanner">
-              Calorie Scanner
+            <a className="text-primary underline" href="/calorie-counter">
+              Calorie Counter
             </a>{" "}
             and average those values across the week. To set macro gram targets from this intake goal, use
             the{" "}
@@ -154,7 +154,7 @@ export default function CalorieDeficitPageClient() {
               "calorie-calculator",
               "tdee-calculator",
               "bmr-calculator",
-              "calorie-scanner",
+              "calorie-counter",
               "macro-calculator",
               "steps-to-calories-calculator",
               "calories-burned-calculator",

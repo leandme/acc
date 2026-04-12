@@ -153,7 +153,7 @@ function CalorieBandTable({ totalCalories }: { totalCalories: number | null }) {
   );
 }
 
-function CalorieScannerPageContent() {
+function CalorieCounterPageContent() {
   const searchParams = useSearchParams();
   const imageUrl = searchParams.get("imageUrl");
   const source = searchParams.get("source") === "example" ? "example" : "upload";
@@ -174,7 +174,7 @@ function CalorieScannerPageContent() {
   return (
     <main className="bg-base-100">
       <section className="flex flex-col items-center justify-start pt-10 px-6">
-        <H1>Calorie Scanner</H1>
+        <H1>Calorie Counter Powered by AI</H1>
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
           Upload a meal photo and get an AI calorie estimate with a confidence rating, calorie range,
           and item-level breakdown.
@@ -183,7 +183,7 @@ function CalorieScannerPageContent() {
         {!imageUrl ? (
           <div className="w-full max-w-2xl mt-10 flex flex-col items-center">
             <div className="w-full max-w-md">
-              <EstimateDropZone basePath="/calorie-scanner" buttonLabel="Upload Meal Photo" />
+              <EstimateDropZone basePath="/calorie-counter" buttonLabel="Upload Meal Photo" />
             </div>
             <p className="mt-6 text-sm text-gray-600 max-w-md text-center">
               Best results come from top-down or 45-degree photos with the full plate visible in even
@@ -337,7 +337,7 @@ function CalorieScannerPageContent() {
         </div>
 
         <div className={sectionWrap}>
-          <h2 className={h2Class}>How This Calorie Scanner Works</h2>
+          <h2 className={h2Class}>How This Calorie Counter Works</h2>
           <p className={pClass}>
             This tool uses visual cues from your meal photo to estimate total calories and build an
             item-level split. It evaluates likely ingredients, portion size, and preparation density,
@@ -456,7 +456,7 @@ function CalorieScannerPageContent() {
               "weight-loss-calculator",
               "estimate",
             ]}
-            excludeSlug="calorie-scanner"
+            excludeSlug="calorie-counter"
           />
         </div>
       </section>
@@ -464,7 +464,7 @@ function CalorieScannerPageContent() {
   );
 }
 
-const CalorieScannerPageClient = dynamic(() => Promise.resolve(CalorieScannerPageContent), {
+const CalorieCounterPageClient = dynamic(() => Promise.resolve(CalorieCounterPageContent), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center min-h-screen">
@@ -473,4 +473,4 @@ const CalorieScannerPageClient = dynamic(() => Promise.resolve(CalorieScannerPag
   ),
 });
 
-export default CalorieScannerPageClient;
+export default CalorieCounterPageClient;

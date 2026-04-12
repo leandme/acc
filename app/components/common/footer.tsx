@@ -45,7 +45,7 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/estimate">Body Fat Estimate</a></li>
               <li><a className="hover:text-white" href="/body-visualizer">Body Visualizer</a></li>
-              <li><a className="hover:text-white" href="/calorie-scanner">Calorie Scanner</a></li>
+              <li><a className="hover:text-white" href="/calorie-counter">Calorie Counter</a></li>
               <li><a className="hover:text-white" href="/calorie-calculator">Calorie Calculator</a></li>
               <li><a className="hover:text-white" href="/tdee-calculator">TDEE Calculator</a></li>
               <li><a className="hover:text-white" href="/bmi-calculator">BMI Calculator</a></li>

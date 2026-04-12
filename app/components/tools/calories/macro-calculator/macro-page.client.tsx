@@ -100,8 +100,8 @@ export default function MacroPageClient() {
           </p>
           <p className={pClass}>
             If you track meal photos for intake verification, use the{" "}
-            <a className="text-primary underline" href="/calorie-scanner">
-              Calorie Scanner
+            <a className="text-primary underline" href="/calorie-counter">
+              Calorie Counter
             </a>{" "}
             and compare your weekly average against this macro target.
           </p>
@@ -162,7 +162,7 @@ export default function MacroPageClient() {
               "calorie-deficit-calculator",
               "tdee-calculator",
               "bmr-calculator",
-              "calorie-scanner",
+              "calorie-counter",
               "steps-to-calories-calculator",
               "calories-burned-calculator",
               "weight-loss-calculator",
