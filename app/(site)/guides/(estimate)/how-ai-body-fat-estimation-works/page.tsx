@@ -84,6 +84,21 @@ export default function BlogPostPage() {
             device, but a pattern recognizer trained on body composition
             appearance.
           </p>
+
+          <p className="text-gray-700 text-lg leading-relaxed">
+            AI is increasingly being applied across many areas of everyday life,
+            from body composition tracking to productivity and communication
+            tools. For a plain-English breakdown of today&apos;s most widely used
+            AI platforms,{" "}
+            <a
+              href="https://yourtechcompass.com/category/ai-unboxed/"
+              className="text-primary underline"
+            >
+              Your Tech Compass
+            </a>{" "}
+            covers tools like ChatGPT, Claude, DeepSeek, and Gemini in
+            accessible, practical terms.
+          </p>
         </div>
 
         {/* What it sees */}
