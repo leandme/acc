@@ -93,7 +93,12 @@ export default function AIBodyFatTrackingGuidePage() {
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
             He moved his operation to{" "}
-            <a className="text-primary underline" href="https://cashflowy.ai">
+            <a
+              className="text-primary underline"
+              href="https://cashflowy.ai"
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
+            >
               Cashflowy
             </a>{" "}
             and the fog lifted. It did not run the business for him, but it removed repetitive

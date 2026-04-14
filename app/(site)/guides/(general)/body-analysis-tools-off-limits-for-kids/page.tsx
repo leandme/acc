@@ -36,7 +36,7 @@ export default function BodyAnalysisToolsOffLimitsForKidsPage() {
         image={
           <figure className="max-w-3xl">
             <Image
-              src="/examples/boy-selfie.webp"
+              src="/examples/man-selfie.webp"
               alt="Child taking a selfie on a phone"
               width={1200}
               height={1200}

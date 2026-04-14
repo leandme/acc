@@ -314,6 +314,8 @@ export default function BlogPostPage() {
             <a
               className="text-primary underline"
               href="https://indzu.com/tools/social-media-post-generator/"
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
             >
               Social Media Post Generator
             </a>{" "}

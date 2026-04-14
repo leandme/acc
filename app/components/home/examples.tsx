@@ -2,9 +2,9 @@ import { siteConfig } from "@/site-config";
 
 export default function Examples() {
   const images = [
-    "/examples/boy-selfie.webp",
+    "/examples/man-selfie.webp",
     "/examples/man-bf.webp",
-    "/examples/boy-bf.webp",
+    "/examples/man-bf.webp",
     "/examples/woman-selfie.webp",
     "/examples/bfe-example1.webp",
     "/examples/man-selfie.webp",

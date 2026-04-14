@@ -11,7 +11,6 @@ import { WebsiteSchema } from "../components/schema/website-schema";
 import { GoogleTag } from "../components/helpers/google-tag";
 import { GoogleAnalytics } from "../components/helpers/google-analytics";
 import Chrome from "../components/common/chrome";
-import { EzoicAdsRunner } from "../components/helpers/ezoic-ads-runner";
 import { MediavineGrow } from "../components/helpers/mediavine-grow";
 
 export default function RootLayout({
@@ -33,7 +32,6 @@ export default function RootLayout({
 
       <body className="bg-base-100 text-base-content">
         <AmplitudeInitializer />
-        <EzoicAdsRunner />
 
         <Suspense
           fallback={

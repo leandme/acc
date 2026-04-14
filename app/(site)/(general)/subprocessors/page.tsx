@@ -104,12 +104,14 @@ export default function SubProcessorsPage() {
             </p>
           </div>
 
-          {/* Analytics */}
+          {/* Analytics & engagement */}
           <div className="rounded-2xl bg-white p-6">
-            <h2 className="text-2xl font-semibold">Analytics</h2>
+            <h2 className="text-2xl font-semibold">Analytics & Audience Engagement</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We use analytics to understand site usage and improve reliability.
+              We use analytics and audience engagement tooling to understand site
+              usage, improve reliability, and support on-site engagement
+              features.
             </p>
 
             <ul className="mt-4 list-disc pl-5 text-lg space-y-2 text-gray-700">
@@ -120,6 +122,10 @@ export default function SubProcessorsPage() {
               <li>
                 <strong>Amplitude, Inc.</strong> — product analytics (United
                 States)
+              </li>
+              <li>
+                <strong>Mediavine, Inc. (Grow)</strong> — audience engagement
+                features and related measurement (United States)
               </li>
             </ul>
           </div>
@@ -143,20 +149,21 @@ export default function SubProcessorsPage() {
           {/* Advertising & cookies */}
           <div className="rounded-2xl bg-white p-6">
             <h2 className="text-2xl font-semibold">
-              Advertising, Email & Cookies
+              Advertising & Cookies
             </h2>
 
             <ul className="mt-4 list-disc pl-5 text-lg space-y-2 text-gray-700">
               <li>
                 We do not currently use third-party display advertising
-                networks.
+                networks and do not currently serve display ads.
               </li>
               <li>
-                We do not currently use a dedicated email marketing provider.
+                We do not use Ezoic.
               </li>
               <li>
                 Analytics cookies or similar identifiers are currently used by
-                Google Analytics and Amplitude.
+                Google Analytics and Amplitude. Engagement cookies or similar
+                identifiers may also be used by Mediavine Grow.
               </li>
             </ul>
           </div>
@@ -181,7 +188,7 @@ export default function SubProcessorsPage() {
 
         <div className="mt-10 pb-10 text-left">
           <p className="text-sm text-gray-400">
-            Last updated: February 2026
+            Last updated: April 2026
           </p>
         </div>
       </section>

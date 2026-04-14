@@ -153,7 +153,7 @@ const SKIN_TONE_ROWS: SkinToneRow[] = [
 const FACE_EXAMPLES = [
   { id: "skin-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "skin-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "skin-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "skin-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {

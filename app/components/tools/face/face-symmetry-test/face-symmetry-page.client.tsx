@@ -89,7 +89,7 @@ const SYMMETRY_BANDS: SymmetryBand[] = [
 const FACE_EXAMPLES = [
   { id: "face-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "face-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "face-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "face-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {

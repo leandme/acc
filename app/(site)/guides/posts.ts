@@ -8,7 +8,7 @@ export const POSTS = [
       "Body analysis tools can create privacy, consent, and body-image risks for minors. Learn why these tools should be off-limits for children and what adults should focus on instead.",
     date: "Mar 18, 2026",
     readTime: "7 min read",
-    image: "/examples/boy-selfie.webp",
+    image: "/examples/man-selfie.webp",
   },
   {
     slug: "how-to-estimate-body-fat-percentage",

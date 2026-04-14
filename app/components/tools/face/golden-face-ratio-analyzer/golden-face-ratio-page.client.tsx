@@ -71,7 +71,7 @@ const GOLDEN_SCORE_BANDS: GoldenBand[] = [
 const FACE_EXAMPLES = [
   { id: "golden-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "golden-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "golden-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "golden-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {

@@ -118,7 +118,7 @@ export default function HeightCalculator({ onChange }: Props) {
                 onChange={(e) => setChildSex(e.target.value as Sex)}
                 aria-label="Select child sex"
               >
-                <option value="male">Boy</option>
+                <option value="male">Man</option>
                 <option value="female">Girl</option>
               </select>
             </div>

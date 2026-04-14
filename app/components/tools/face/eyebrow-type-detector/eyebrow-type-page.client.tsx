@@ -84,7 +84,7 @@ const EYEBROW_ROWS: EyebrowRow[] = [
 const FACE_EXAMPLES = [
   { id: "brow-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "brow-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "brow-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "brow-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {

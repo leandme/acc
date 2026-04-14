@@ -137,7 +137,7 @@ const HAIR_TYPE_ROWS: HairTypeRow[] = [
 const FACE_EXAMPLES = [
   { id: "hair-type-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "hair-type-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "hair-type-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "hair-type-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {
@@ -518,7 +518,12 @@ function HairTypePageContent() {
           <p className={pClass}>
             If you wear extensions, matching extension texture to your detected hair type can improve blend and
             maintenance; see{" "}
-            <a className="text-primary underline" href="https://www.perfectlocks.com/">
+            <a
+              className="text-primary underline"
+              href="https://www.perfectlocks.com/"
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
+            >
               human hair extensions
             </a>
             .

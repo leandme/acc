@@ -3,6 +3,8 @@ type CTAProps = {
   description?: string;
   buttonText?: string;
   href?: string;
+  target?: string;
+  rel?: string;
   className?: string;
   image?: string;
 };
@@ -12,6 +14,8 @@ export default function CTA({
   description = "Upload a photo and get an estimate in seconds.",
   buttonText = "Try Body Fat Estimator →",
   href = "/",
+  target,
+  rel,
   className = "",
   image= "",
 }: CTAProps) {
@@ -48,6 +52,8 @@ export default function CTA({
         <div className="mt-12">
           <a
             href={href}
+            target={target}
+            rel={rel}
             className="btn btn-primary btn-lg text-white"
           >
             {buttonText}

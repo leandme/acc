@@ -81,7 +81,7 @@ export default function HeightPageClient() {
             The parent-based center estimate uses the standard mid-parental-height approach:
           </p>
           <div className="rounded-2xl border bg-white p-6 text-sm sm:text-base text-gray-800 overflow-x-auto">
-            <p className="font-mono">Boy target = (Father + Mother + 13 cm) / 2</p>
+            <p className="font-mono">Man target = (Father + Mother + 13 cm) / 2</p>
             <p className="font-mono mt-2">Girl target = (Father + Mother - 13 cm) / 2</p>
             <p className="font-mono mt-2">Typical family target band = center +/- 8.5 cm</p>
           </div>

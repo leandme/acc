@@ -115,8 +115,9 @@ export default function PrivacyPolicy() {
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               Our sub-processors may include: Vercel (hosting), Cloudflare
               (security/CDN), Replicate (AI processing), Google (analytics),
-              Amplitude (analytics), Namecheap (domain services), and Stripe
-              (payments). See our Sub-processors page for details.
+              Amplitude (analytics), Mediavine Grow (audience engagement
+              tooling), Namecheap (domain services), and Stripe (payments). See
+              our Sub-processors page for details.
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
@@ -138,20 +139,14 @@ export default function PrivacyPolicy() {
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We also use Ezoic to support third-party advertising on the
-              Service. Ezoic and its partners may use cookies, local storage,
-              and similar technologies to personalize content and ads, measure
-              ad performance, and prevent fraud. For additional details about
-              Ezoic disclosures and partners, see{" "}
-              <a
-                className="underline text-primary"
-                href="https://g.ezoic.net/privacy/bodyfatestimator.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ezoic&apos;s privacy disclosures for this site
-              </a>
-              .
+              We also use Mediavine Grow for audience engagement features.
+              Mediavine Grow may use cookies or similar identifiers to support
+              feature behavior, measure performance, and prevent abuse.
+            </p>
+
+            <p className="mt-3 text-gray-700 text-lg leading-relaxed">
+              We do not currently serve third-party display ads on the Service,
+              and we do not use Ezoic.
             </p>
           </div>
 
@@ -241,21 +236,10 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
-          {/* 12. Ezoic policy embed */}
-          <div className="rounded-2xl bg-white p-6">
-            <h2 className="text-2xl font-semibold">12. Ezoic Privacy Disclosures</h2>
-            <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              The following disclosures are provided by Ezoic and its
-              advertising partners:
-            </p>
-            <div className="mt-4 text-gray-700 text-lg leading-relaxed">
-              <span id="ezoic-privacy-policy-embed"></span>
-            </div>
-          </div>
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 27/2/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 14/4/2026</p>
         </div>
       </section>
     </main>

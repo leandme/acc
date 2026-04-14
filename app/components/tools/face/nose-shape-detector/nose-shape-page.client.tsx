@@ -92,7 +92,7 @@ const NOSE_ROWS: NoseRow[] = [
 const FACE_EXAMPLES = [
   { id: "nose-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "nose-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "nose-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "nose-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function confidenceBadgeClass(confidence: "low" | "medium" | "high") {

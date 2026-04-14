@@ -89,7 +89,12 @@ export default function WhatMakesAFaceAttractivePage() {
               Skin quality has outsized influence. Even tone, lower irritation, and smoother texture
               can improve perceived attractiveness faster than most people expect. If you want
               in-person support, finding a{" "}
-              <a className="text-primary underline" href="https://www.findatopdoc.com/">
+              <a
+                className="text-primary underline"
+                href="https://www.findatopdoc.com/"
+                target="_blank"
+                rel="sponsored nofollow noopener noreferrer"
+              >
                 best skin care clinic
               </a>{" "}
               can help you compare providers.
@@ -117,7 +122,12 @@ export default function WhatMakesAFaceAttractivePage() {
             <p className="text-gray-700 text-lg leading-relaxed">
               A natural smile can transform perception immediately. If dental appearance is holding
               you back, improving{" "}
-              <a className="text-primary underline" href="https://www.blancdentaire.ca">
+              <a
+                className="text-primary underline"
+                href="https://www.blancdentaire.ca"
+                target="_blank"
+                rel="sponsored nofollow noopener noreferrer"
+              >
                 good teeth
               </a>{" "}
               can materially improve first impressions.

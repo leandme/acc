@@ -94,10 +94,11 @@ const JAWLINE_TABLE_BANDS: JawlineBand[] = [LOW_ANGLE_BAND, ...JAWLINE_BANDS];
 const FACE_EXAMPLES = [
   { id: "jawline-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "jawline-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "jawline-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "jawline-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
-const JAWLINER_SITE_URL = "https://jawliner.com/hii5ju";
+const JAWLINER_SITE_URL =
+  "https://jawliner.com/products/ultra-hard-fitness-chewing-gum?variant=55606187491715";
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
@@ -741,6 +742,8 @@ function JawlineCheckPageContent() {
             description="You are already tracking your jawline angle here. Pair that progress with Jawliner and turn quick daily sessions into a stronger, more defined profile over time."
             buttonText="Shop Jawliner Now →"
             href={JAWLINER_SITE_URL}
+            target="_blank"
+            rel="sponsored nofollow noopener noreferrer"
             image="/tools/jawline/jawliner.webp"
             className="!my-0 !mt-40"
           />
@@ -830,7 +833,12 @@ function JawlineCheckPageContent() {
           </p>
           <p className={pClass}>
             If you want to pair analysis with daily jawline training, you can also explore{" "}
-            <a className="text-primary underline" href={JAWLINER_SITE_URL}>
+            <a
+              className="text-primary underline"
+              href={JAWLINER_SITE_URL}
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
+            >
               jawline exercisers
             </a>
             .

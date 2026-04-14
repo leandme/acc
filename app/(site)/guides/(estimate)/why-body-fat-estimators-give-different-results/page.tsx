@@ -187,6 +187,8 @@ export default function BlogPostPage() {
             <a
               href="https://auroracompoundingrx.ca/posts-categories/hormone-therapy"
               className="text-primary underline"
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
             >
               hormone therapy guidance
             </a>{" "}

@@ -108,7 +108,7 @@ const HAIR_COLOR_ROWS: HairColorRow[] = [
 const FACE_EXAMPLES = [
   { id: "hair-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "hair-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "hair-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "hair-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {

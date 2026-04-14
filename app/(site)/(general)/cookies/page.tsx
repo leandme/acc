@@ -51,12 +51,16 @@ export default function CookiesPage() {
                 to understand how the site is used and improve performance and
                 reliability.
               </li>
+              <li>
+                <strong>Audience engagement features</strong> — on-site
+                engagement tooling provided by Mediavine Grow.
+              </li>
             </ul>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We currently use Google Analytics and Amplitude. These services
-              may use cookies or similar identifiers and may load automatically
-              when you use the Service.
+              We currently use Google Analytics, Amplitude, and Mediavine Grow.
+              These services may use cookies or similar identifiers and may load
+              automatically when you use the Service.
             </p>
           </div>
 
@@ -67,7 +71,8 @@ export default function CookiesPage() {
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               Some cookies or similar technologies may be set by trusted
               third-party service providers that help us operate the Service,
-              such as analytics, security, and infrastructure providers.
+              such as analytics, security, infrastructure, and engagement
+              providers.
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
@@ -76,8 +81,8 @@ export default function CookiesPage() {
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We do not currently run third-party display advertising cookies on
-              the Service.
+              We do not currently run third-party display advertising cookies,
+              do not serve display ads on the Service, and do not use Ezoic.
             </p>
           </div>
 
@@ -126,7 +131,7 @@ export default function CookiesPage() {
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 16/2/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 14/4/2026</p>
         </div>
       </section>
     </main>

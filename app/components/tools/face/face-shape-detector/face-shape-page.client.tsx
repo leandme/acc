@@ -95,7 +95,7 @@ const SHAPE_ROWS: ShapeRow[] = [
 const FACE_EXAMPLES = [
   { id: "face-shape-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "face-shape-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "face-shape-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "face-shape-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {

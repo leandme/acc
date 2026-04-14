@@ -93,7 +93,7 @@ const EYE_SHAPE_ROWS: EyeShapeRow[] = [
 const FACE_EXAMPLES = [
   { id: "eye-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "eye-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "eye-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "eye-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {

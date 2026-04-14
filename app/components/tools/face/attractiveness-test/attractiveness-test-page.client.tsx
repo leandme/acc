@@ -92,7 +92,7 @@ const ATTRACTIVENESS_BANDS: AttractivenessBandRow[] = [
 const FACE_EXAMPLES = [
   { id: "attract-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "attract-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "attract-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "attract-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {

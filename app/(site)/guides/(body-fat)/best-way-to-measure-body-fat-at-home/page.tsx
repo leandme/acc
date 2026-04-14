@@ -301,7 +301,12 @@ export default function BlogPostPage() {
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
             A simple weekly meal framework like the ones shared on{" "}
-            <a className="text-primary underline" href="https://wellorganichealth.com">
+            <a
+              className="text-primary underline"
+              href="https://wellorganichealth.com"
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
+            >
               Well Organic Health
             </a>{" "}
             can make nutrition consistency easier, which improves trend quality.
@@ -410,6 +415,8 @@ export default function BlogPostPage() {
             <a
               className="text-primary underline"
               href="https://www.giftedpicks.com/picks/best-greens-powder-amazon"
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
             >
               best greens powder on Amazon
             </a>{" "}

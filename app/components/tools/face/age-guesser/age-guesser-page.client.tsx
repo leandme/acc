@@ -80,7 +80,7 @@ const AGE_BAND_ROWS: AgeBandRow[] = [
 const FACE_EXAMPLES = [
   { id: "age-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "age-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "age-c", label: "Example C", src: "/examples/boy-selfie.webp" },
+  { id: "age-c", label: "Example C", src: "/examples/man-selfie.webp" },
 ];
 
 function clamp(n: number, min: number, max: number) {
