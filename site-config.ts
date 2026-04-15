@@ -24,7 +24,7 @@ site: {
 
    // ESTIMATE
 estimate: {
-    totalCount: "12,655",
+    totalCount: "120,655",
   },
 
 // PAYMENT
