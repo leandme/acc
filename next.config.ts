@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/ads.txt",
-        destination: "https://srv.adstxtmanager.com/19390/bodyfatestimator.ai",
+        destination:
+          "https://adstxt.journeymv.com/sites/9e90e868-f929-4cda-97a0-ad92cf3a981d/ads.txt",
         permanent: true, // 301 redirect
       },
       {
