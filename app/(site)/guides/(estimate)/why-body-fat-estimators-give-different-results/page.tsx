@@ -183,16 +183,15 @@ export default function BlogPostPage() {
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            If hormones or medications are part of your health context, this{" "}
+            If hormones, recovery, or supplementation are part of your health context,{" "}
             <a
-              href="https://auroracompoundingrx.ca/posts-categories/hormone-therapy"
+              href="https://nugenelabs.com/"
               className="text-primary underline"
               target="_blank"
-              rel="sponsored nofollow noopener noreferrer"
             >
-              hormone therapy guidance
+              NuGeneLabs
             </a>{" "}
-            can help frame questions to discuss with your clinician.
+            can help you explore testing and protocol options to discuss with your clinician.
           </p>
         </div>
 
