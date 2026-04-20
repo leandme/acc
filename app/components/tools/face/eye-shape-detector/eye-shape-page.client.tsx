@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
+import FaqSection, { type FaqSectionItem } from "@/app/components/common/faq-section";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
 import { MoreTools } from "@/app/components/tools/template/more-tools";
 import {
@@ -21,6 +22,26 @@ type EyeShapeRow = {
   textClass: string;
   pattern: string;
   direction: string;
+};
+
+type EyeShapeVisual = {
+  id: string;
+  title: string;
+  src: string;
+  description: string;
+  shapeKey?: EyeShapeRow["key"];
+};
+
+type HowToStep = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+type EyeShapeBenefit = {
+  id: string;
+  title: string;
+  description: string;
 };
 
 const EYE_SHAPE_ROWS: EyeShapeRow[] = [
@@ -90,10 +111,167 @@ const EYE_SHAPE_ROWS: EyeShapeRow[] = [
   },
 ];
 
+const EYE_SHAPE_VISUALS: EyeShapeVisual[] = [
+  {
+    id: "almond",
+    title: "Almond Eyes",
+    src: "/tools/eye-shape-detector/almond-eyes.png",
+    description:
+      "Almond eyes have a slightly pointed outer corner and a visible crease. They are wider than they are tall, creating a naturally balanced look. This versatile shape works well with soft blends, bold liner, and subtle outer-corner lift.",
+    shapeKey: "almond",
+  },
+  {
+    id: "round",
+    title: "Round Eyes",
+    src: "/tools/eye-shape-detector/round-eyes.png",
+    description:
+      "Round eyes look open and circular, often with more visible white around the iris. They create a bright, youthful expression. Winged liner or smoky outer shading can add definition and gentle elongation.",
+    shapeKey: "round",
+  },
+  {
+    id: "hooded",
+    title: "Hooded Eyes",
+    src: "/tools/eye-shape-detector/hooded-eyes.png",
+    description:
+      "Hooded eyes have a lower-set upper fold that can partially cover the mobile lid and soften crease visibility. Lifted outer placement and controlled liner thickness usually work best. Blended, upward shadow placement helps keep the look open.",
+    shapeKey: "hooded",
+  },
+  {
+    id: "upturned",
+    title: "Upturned Eyes",
+    src: "/tools/eye-shape-detector/upturned%20eyes.png",
+    description:
+      "Upturned eyes have outer corners that sit higher than inner corners, giving a naturally lifted effect. This shape already carries cat-eye energy. Soft smoky blending or balanced liner width helps enhance lift without over-accentuating tilt.",
+    shapeKey: "upturned",
+  },
+  {
+    id: "downturned",
+    title: "Downturned Eyes",
+    src: "/tools/eye-shape-detector/downturned-eyes.png",
+    description:
+      "Downturned eyes have outer corners that sit lower than inner corners, creating a softer, gentler expression. Lifted outer-corner liner and upward shading can visually rebalance the tilt. Curled lashes and mascara also help open the eye area.",
+    shapeKey: "downturned",
+  },
+  {
+    id: "deep-set",
+    title: "Deep-Set Eyes",
+    src: "/tools/eye-shape-detector/deep-set-eyes.png",
+    description:
+      "Deep-set eyes sit farther under the brow bone, often creating natural crease depth and shadow. Light-reflective center-lid shades and soft blending can bring the eyes forward. Avoiding very heavy crease darkness helps maintain brightness.",
+    shapeKey: "deep-set",
+  },
+  {
+    id: "protruding",
+    title: "Protruding Eyes",
+    src: "/tools/eye-shape-detector/protruding-eyes.png",
+    description:
+      "Protruding eyes appear more forward relative to the orbital contour and often look expressive. Soft matte contouring and deeper outer-corner tones can add balance. Smudged liner and blended shadows help keep definition smooth, not harsh.",
+    shapeKey: "protruding",
+  },
+  {
+    id: "close-set",
+    title: "Close-Set Eyes",
+    src: "/tools/eye-shape-detector/close-set-eyes.png",
+    description:
+      "Close-set eyes have less space between inner corners. Brightening the inner corners and extending shadow outward can create the illusion of more distance. Winged or elongated liner styles usually enhance horizontal balance.",
+  },
+  {
+    id: "wide-set",
+    title: "Wide-Set Eyes",
+    src: "/tools/eye-shape-detector/wide-set-eyes.png",
+    description:
+      "Wide-set eyes have more space between inner corners and can look fresh and open. Deeper inner-corner shading and defined liner can visually bring the eyes closer together. This shape also supports bold shadow looks while maintaining symmetry.",
+  },
+];
+
 const FACE_EXAMPLES = [
   { id: "eye-a", label: "Example A", src: "/examples/man-selfie.webp" },
   { id: "eye-b", label: "Example B", src: "/examples/woman-selfie.webp" },
   { id: "eye-c", label: "Example C", src: "/examples/man-selfie.webp" },
+];
+
+const HOW_TO_USE_STEPS: HowToStep[] = [
+  {
+    id: "1",
+    title: "Upload a Clear Face Photo",
+    description: "Use a front-facing photo where both eyes are visible and not blocked by heavy shadows.",
+  },
+  {
+    id: "2",
+    title: "Let the Scan Process",
+    description:
+      "The detector estimates eye-shape geometry, canthal tilt, and color pattern from the uploaded image.",
+  },
+  {
+    id: "3",
+    title: "Review and Compare",
+    description:
+      "Check your primary result, then compare it with the visual examples and styling guidance below.",
+  },
+];
+
+const EYE_SHAPE_BENEFITS: EyeShapeBenefit[] = [
+  {
+    id: "makeup",
+    title: "Improve Makeup Placement",
+    description:
+      "Use liner, shadow, and lash direction that matches your natural eye structure instead of guessing.",
+  },
+  {
+    id: "eyewear",
+    title: "Choose Better Eyewear",
+    description:
+      "Pick frame shapes and lens balance that complement your eye contour and overall facial proportions.",
+  },
+  {
+    id: "confidence",
+    title: "Build Styling Confidence",
+    description:
+      "Knowing your shape makes beauty decisions faster and helps you repeat looks that actually suit you.",
+  },
+];
+
+const EYE_SHAPE_FAQS: FaqSectionItem[] = [
+  {
+    question: "What is an eye shape detector and how does it work?",
+    answer:
+      "Our eye shape detector is an AI-powered tool that analyzes a face photo to estimate your eye-shape category. It evaluates visible features like lid contour, crease visibility, and eye opening, then returns a primary match with styling-oriented guidance.",
+  },
+  {
+    question: "How can I determine my eye shape accurately?",
+    answer:
+      "Use a clear, front-facing image with both eyes visible and even lighting. The detector compares key eye-area cues from your photo to common shape patterns to produce a more reliable estimate.",
+  },
+  {
+    question: "Is this the best eye shape detector online?",
+    answer:
+      "This tool is designed to give fast, consistent eye-shape estimates with practical styling context. While no photo-based model is perfect, clear input photos and stable setup usually produce stronger results.",
+  },
+  {
+    question: "How do I find my eye shape using this online guide?",
+    answer:
+      "Upload a clear photo where you are looking directly at the camera, then review the detected primary shape and comparison table. You can use the visual examples and notes below to validate how your features align.",
+  },
+  {
+    question: "What types of photos work best for eye shape detection?",
+    answer:
+      "Choose a sharp, well-lit image with both eyes visible, neutral expression, and minimal glare. Heavy makeup, strong filters, large head tilt, or partial eye occlusion can reduce detection quality.",
+  },
+  {
+    question: "Are personalized eye shape tips included?",
+    answer:
+      "Yes. After analysis, the tool provides tailored styling guidance based on your detected shape pattern, including directional suggestions you can adapt for makeup and presentation choices.",
+  },
+  {
+    question: "Why might my result change between photos?",
+    answer:
+      "Small changes in camera angle, lighting direction, expression, and eye openness can alter the visible geometry. For the most comparable scans, keep framing, lighting, and pose as consistent as possible.",
+  },
+  {
+    question: "Is this tool medical advice?",
+    answer:
+      "No. This is a non-medical appearance analysis tool intended for educational and styling context. For clinical eye-health concerns, consult a qualified healthcare professional.",
+  },
 ];
 
 function clamp(n: number, min: number, max: number) {
@@ -267,9 +445,26 @@ function EyeShapePageContent() {
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
               <TryExamples basePath="/eye-shape-detector" examples={FACE_EXAMPLES} />
             </div>
-            <p className="mt-5 text-sm text-gray-600 max-w-md text-center">
-              Use a front-facing image with open eyes, even light, and minimal reflections on the iris.
-            </p>
+
+            <div className="w-full max-w-5xl mt-20 lg:mt-28">
+              <h2 className={h2Class}>How to Use Eye Shape Detector</h2>
+              <p className="mt-4 text-center text-lg text-gray-700 max-w-3xl mx-auto">
+                Follow these quick steps to get a clear eye-shape result and compare it with the reference
+                examples.
+              </p>
+
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+                {HOW_TO_USE_STEPS.map((step) => (
+                  <article key={step.id} className="rounded-2xl border bg-white p-6 shadow-sm">
+                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/15 text-primary text-xl font-bold">
+                      {step.id}
+                    </div>
+                    <h3 className="mt-4 text-xl font-semibold text-center text-gray-900">{step.title}</h3>
+                    <p className="mt-3 text-lg leading-relaxed text-left text-gray-700">{step.description}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         ) : (
           <div className="w-full max-w-5xl mt-10">
@@ -381,11 +576,67 @@ function EyeShapePageContent() {
         ) : null}
 
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-          <h2 className={h2Class}>Where Your Eye Shape Fits</h2>
+          <h2 className={h2Class}>What Is My Eye Shape?</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row shows the detected primary eye-shape category.
           </p>
           <EyeShapeTable activeShape={activeShape} />
+        </div>
+
+        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+          <h2 className={h2Class}>Common Eye Shapes</h2>
+          <p className="mt-4 text-center text-lg text-gray-700">
+            Quick visual examples of common eye-shape patterns.
+          </p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {EYE_SHAPE_VISUALS.map((visual) => {
+              const isActive = visual.shapeKey != null && activeShape === visual.shapeKey;
+              return (
+                <article
+                  key={visual.id}
+                  className={[
+                    "overflow-hidden rounded-2xl border bg-white shadow-sm",
+                    isActive ? "ring-2 ring-gray-900 border-gray-900/40" : "border-gray-200",
+                  ].join(" ")}
+                >
+                  <div className="aspect-[3/2] bg-base-200">
+                    <img
+                      src={visual.src}
+                      alt={`${visual.title} example`}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-xl lg:text-2xl font-semibold text-gray-900">{visual.title}</h4>
+                      {isActive ? (
+                        <span className="inline-flex rounded-full border border-gray-900/20 bg-gray-900/10 px-3 py-1 text-sm font-semibold text-gray-900">
+                          Your Result
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-3 text-lg text-gray-700 leading-relaxed">{visual.description}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+          <h2 className={h2Class}>Why Knowing Your Eye Shape Matters</h2>
+          <p className="mt-4 text-center text-lg text-gray-700">
+            A clearer read on your eye structure makes styling choices more consistent and intentional.
+          </p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+            {EYE_SHAPE_BENEFITS.map((benefit) => (
+              <article key={benefit.id} className="rounded-2xl border bg-white p-6 shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900">{benefit.title}</h3>
+                <p className="mt-3 text-lg leading-relaxed text-gray-700">{benefit.description}</p>
+              </article>
+            ))}
+          </div>
         </div>
 
         {analysis?.observationNotes?.length ? (
@@ -413,13 +664,25 @@ function EyeShapePageContent() {
         <div className={sectionWrap}>
           <h2 className={h2Class}>How This Eye Shape Detector Works</h2>
           <p className={pClass}>
-            This detector estimates periorbital geometry from one portrait image: lid contour pattern,
-            apparent canthal tilt direction/angle, and dominant iris color category. Output is a
-            non-medical appearance estimate intended for styling context.
+            Upload a clear, front-facing photo, and the tool maps key points around your eyes to
+            analyze your structure.
           </p>
           <p className={pClass}>
-            Results can change with lighting temperature, pupil size, makeup, lens reflections, and camera
-            angle. Keep photo setup consistent if you compare multiple scans.
+            We trace the eyelid contours to identify your eye shape (e.g. almond, round, hooded),
+            and measure your canthal tilt by comparing the angle between the inner and outer corners
+            of your eyes. We also estimate your dominant iris color based on pixel distribution.
+          </p>
+          <p className={pClass}>
+            From this, you get a breakdown of your eye structure - designed to help you better
+            understand your features and what suits you best.
+          </p>
+          <p className={pClass}>
+            This is not a medical tool, but a visual analysis based on what is detectable in a
+            single image.
+          </p>
+          <p className={pClass}>
+            For best results, use consistent photos - lighting, angle, makeup, and reflections can
+            all affect how features are detected.
           </p>
         </div>
 
@@ -438,31 +701,13 @@ function EyeShapePageContent() {
             ))}
           </ul>
         </div>
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>Use This with Other Tools</h2>
-          <p className={pClass}>
-            Use this result as one signal, then run one complementary scan from the{" "}
-            <a className="text-primary underline" href="/tools/face">
-              Face Tools
-            </a>{" "}
-            page based on your goal.
-          </p>
-          <p className={pClass}>
-            For broader progress tracking, pair with the{" "}
-            <a className="text-primary underline" href="/estimate">
-              Body Fat Estimator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/body-shape-analyzer">
-              Body Shape Analyzer
-            </a>
-            . If you want a metric-driven comparison, use{" "}
-            <a className="text-primary underline" href="/body-visualizer">
-              Body Visualizer
-            </a>
-            .
-          </p>
-        </div>
+        <FaqSection
+          heading="FAQs"
+          description="Common questions about eye-shape detection and how to interpret your result."
+          items={EYE_SHAPE_FAQS}
+          accordionName="eye-shape-faq-accordion"
+          className="mt-20 lg:mt-40"
+        />
 
         <div className={sectionWrap}>
           <h2 className={h2Class}>References</h2>
@@ -487,6 +732,7 @@ function EyeShapePageContent() {
             </li>
           </ul>
         </div>
+
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
           <MoreTools
             heading="Related Tools"

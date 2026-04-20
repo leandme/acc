@@ -51,6 +51,16 @@ export const POSTS = [
   image: "/examples/woman-selfie.webp",
 },
 {
+  slug: "canthal-tilt",
+  title: "Canthal Tilt: What It Means, Why It Matters, and How to Check Yours",
+   tag: "face",
+  description:
+    "Learn what canthal tilt is, how to estimate your tilt from a photo, and how to use that signal with eye-shape analysis for smarter styling choices.",
+  date: "Apr 20, 2026",
+  readTime: "6 min read",
+  image: "/examples/woman-selfie.webp",
+},
+{
   slug: "how-ai-body-fat-estimation-works",
   title: "How AI Body Fat Estimation Works (Photo-Based Estimation Explained)",
   tag: "fat",

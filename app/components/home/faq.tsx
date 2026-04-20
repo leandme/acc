@@ -1,4 +1,4 @@
-import FaqJsonLd from "../helpers/faq-json-ld";
+import FaqSection from "../common/faq-section";
 
 export default function FAQ() {
 
@@ -144,31 +144,12 @@ export default function FAQ() {
   ];
 
   return (
-    <div id="faqs" className="hero mt-10 lg:mt-40 flex items-center justify-center bg-base-100">
-
-      <div className="hero-content w-full px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl lg:text-4xl font-bold text-center mt-4">
-            Frequently Asked Questions
-          </h2>
-
-          <p className="py-6 text-lg mb-6 text-center">
-            Answers to common questions about our AI-powered body fat estimation tool.
-          </p>
-
-          <div className="space-y-4">
-            {FAQ_ITEMS.map((item, idx) => (
-              <div key={idx} className="collapse collapse-plus border bg-base-500 rounded-lg">
-                <input type="radio" name="faq-accordion" />
-                <div className="collapse-title text-lg lg:text-xl">{item.q}</div>
-                <div className="collapse-content">
-                  <p className="text-lg text-gray-700">{item.a}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+    <FaqSection
+      id="faqs"
+      accordionName="home-faq-accordion"
+      heading="Frequently Asked Questions"
+      description="Answers to common questions about our AI-powered body fat estimation tool."
+      items={FAQ_ITEMS.map((item) => ({ question: item.q, answer: item.a }))}
+    />
   );
 }
