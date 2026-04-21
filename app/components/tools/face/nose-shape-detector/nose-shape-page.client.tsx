@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
+import FaqSection, { type FaqSectionItem } from "@/app/components/common/faq-section";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
 import { MoreTools } from "@/app/components/tools/template/more-tools";
 import {
@@ -20,6 +21,14 @@ type NoseRow = {
   textClass: string;
   pattern: string;
   direction: string;
+};
+
+type NoseShapeVisual = {
+  id: string;
+  title: string;
+  src: string;
+  description: string;
+  shapeKey?: NoseRow["key"];
 };
 
 const NOSE_ROWS: NoseRow[] = [
@@ -89,10 +98,152 @@ const NOSE_ROWS: NoseRow[] = [
   },
 ];
 
+const NOSE_SHAPE_VISUALS: NoseShapeVisual[] = [
+  {
+    id: "greek",
+    title: "Greek Nose",
+    src: "/tools/nose-shape-detector/greek-nose-shape.png",
+    description:
+      "Usually appears with a straighter bridge profile and cleaner radix-to-tip line.",
+    shapeKey: "straight",
+  },
+  {
+    id: "roman",
+    title: "Roman Nose",
+    src: "/tools/nose-shape-detector/roman-nose-shape.png",
+    description:
+      "Often shows a convex bridge contour and stronger profile projection.",
+    shapeKey: "aquiline",
+  },
+  {
+    id: "hawk",
+    title: "Hawk Nose",
+    src: "/tools/nose-shape-detector/hawk-nose-shape.png",
+    description:
+      "Tends to present a more pronounced bridge curve and forward profile emphasis.",
+    shapeKey: "aquiline",
+  },
+  {
+    id: "button",
+    title: "Button Nose",
+    src: "/tools/nose-shape-detector/button-nose-shape.png",
+    description:
+      "Compact profile with softer bridge-to-tip transition and smaller tip structure.",
+    shapeKey: "button",
+  },
+  {
+    id: "nubian",
+    title: "Nubian Nose",
+    src: "/tools/nose-shape-detector/nubian-nose-shape.png",
+    description:
+      "Often appears longer with a broader base and lower tip tendency.",
+    shapeKey: "nubian",
+  },
+  {
+    id: "snub",
+    title: "Snub Nose",
+    src: "/tools/nose-shape-detector/snub-nose-shape.png",
+    description:
+      "Shorter bridge shape with a mildly lifted tip direction.",
+    shapeKey: "snub",
+  },
+  {
+    id: "turned-up",
+    title: "Turned-Up Nose",
+    src: "/tools/nose-shape-detector/turned_up-nose-shape.png",
+    description:
+      "Upward tip orientation with shorter visual bridge length.",
+    shapeKey: "snub",
+  },
+  {
+    id: "fleshy",
+    title: "Fleshy Nose",
+    src: "/tools/nose-shape-detector/fleshy-nose-shape.png",
+    description:
+      "Rounder, fuller soft-tissue appearance around the tip and lower third.",
+    shapeKey: "fleshy",
+  },
+  {
+    id: "bulbous",
+    title: "Bulbous Nose",
+    src: "/tools/nose-shape-detector/bulbous-nose-shape.png",
+    description:
+      "Broader, rounder tip structure that typically resembles fleshy-type patterns.",
+    shapeKey: "fleshy",
+  },
+  {
+    id: "flat",
+    title: "Flat Nose",
+    src: "/tools/nose-shape-detector/flat-nose-shape.png",
+    description:
+      "Lower bridge projection and softer dorsal contour with wider base tendency.",
+    shapeKey: "wide",
+  },
+];
+
 const FACE_EXAMPLES = [
-  { id: "nose-a", label: "Example A", src: "/examples/man-selfie.webp" },
-  { id: "nose-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "nose-c", label: "Example C", src: "/examples/man-selfie.webp" },
+  { id: "nose-a", label: "Example A", src: "/tools/lip-shape-detector/lip-shape-example.jpg" },
+  { id: "nose-b", label: "Example B", src: "/tools/eye-shape-detector/eyes-example-3.jpg" },
+  { id: "nose-c", label: "Example C", src: "/tools/eye-shape-detector/eye-example-2.jpg" },
+  { id: "nose-d", label: "Example D", src: "/tools/eye-shape-detector/eye-example-4.jpg" },
+];
+
+const NOSE_SHAPE_FAQS: FaqSectionItem[] = [
+  {
+    question: "What is a nose shape detector?",
+    answer:
+      "A nose shape detector is an AI tool that estimates your visible nose-shape pattern from one portrait image. It analyzes cues like bridge contour, tip direction, and relative width.",
+  },
+  {
+    question: "How accurate is nose-shape detection from one photo?",
+    answer:
+      "It is a visual estimate, not a clinical measurement. Accuracy is generally best with front-facing photos, neutral expression, and even lighting. Distortion from angle or lens choice can reduce reliability.",
+  },
+  {
+    question: "What photo gives the best result?",
+    answer: (
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Front-facing portrait with the full nose region visible</li>
+        <li>Level head position and neutral expression</li>
+        <li>Even lighting without strong side shadows</li>
+        <li>No heavy filters, overlays, or partial occlusion</li>
+      </ul>
+    ),
+  },
+  {
+    question: "Can makeup, contouring, or camera lens affect the output?",
+    answer:
+      "Yes. Nose contouring, highlights, strong beauty filters, and wide-angle close shots can change the apparent bridge and width. For baseline scans, use a natural photo with minimal editing.",
+  },
+  {
+    question: "What does confidence mean in my result?",
+    answer:
+      "Confidence reflects how clearly the model could identify nose landmarks and shape cues in your image. Low confidence usually means one or more quality issues such as shadows, blur, angle, or occlusion.",
+  },
+  {
+    question: "Why might I get different results across photos?",
+    answer:
+      "Small changes in camera height, focal length, lighting, and expression can significantly affect perceived nose geometry. Consistent setup is essential if you compare repeat scans over time.",
+  },
+  {
+    question: "Is this tool medical or diagnostic?",
+    answer:
+      "No. This tool is for appearance-based analysis and styling context only. It does not diagnose breathing issues, sinus conditions, trauma, or any medical concern.",
+  },
+  {
+    question: "Should I use this result alone for styling decisions?",
+    answer:
+      "It works best as one input among several. Pair it with overall face-context tools like Face Shape Detector or Face Symmetry Test to make more balanced styling decisions.",
+  },
+  {
+    question: "Is my uploaded photo stored?",
+    answer: (
+      <>
+        Image handling follows current site policy. For details on retention and sharing, see the{" "}
+        <a className="text-primary underline" href="/privacy">Privacy Policy</a>.
+      </>
+    ),
+  },
 ];
 
 function confidenceBadgeClass(confidence: "low" | "medium" | "high") {
@@ -201,9 +352,6 @@ function NoseShapePageContent() {
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
               <TryExamples basePath="/nose-shape-detector" examples={FACE_EXAMPLES} />
             </div>
-            <p className="mt-5 text-sm text-gray-600 max-w-md text-center">
-              Use a front-facing portrait with even lighting and minimal shadows across nose bridge and tip.
-            </p>
           </div>
         ) : (
           <div className="w-full max-w-5xl mt-10">
@@ -301,6 +449,47 @@ function NoseShapePageContent() {
           <NoseShapeTable activeShape={activeShape} />
         </div>
 
+        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+          <h2 className={h2Class}>Common Nose Shapes</h2>
+          <p className="mt-4 text-center text-lg text-gray-700">
+            Quick visual examples of common nose-shape patterns.
+          </p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {NOSE_SHAPE_VISUALS.map((visual) => {
+              const isActive = visual.shapeKey != null && activeShape === visual.shapeKey;
+              return (
+                <article
+                  key={visual.id}
+                  className={[
+                    "overflow-hidden rounded-2xl border bg-white shadow-sm",
+                    isActive ? "ring-2 ring-gray-900 border-gray-900/40" : "border-gray-200",
+                  ].join(" ")}
+                >
+                  <div className="h-72 sm:h-80 bg-base-100 p-4 flex items-center justify-center">
+                    <img
+                      src={visual.src}
+                      alt={`${visual.title} example`}
+                      className="max-h-full w-auto max-w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-xl lg:text-2xl font-semibold text-gray-900">{visual.title}</h4>
+                      {isActive ? (
+                        <span className="inline-flex rounded-full border border-gray-900/20 bg-gray-900/10 px-3 py-1 text-sm font-semibold text-gray-900">
+                          Your Result
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-3 text-lg text-gray-700 leading-relaxed">{visual.description}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+
         {analysis?.observationNotes?.length ? (
           <div className={sectionWrap}>
             <h2 className={h2Class}>Key Observation Notes</h2>
@@ -323,34 +512,13 @@ function NoseShapePageContent() {
           </div>
         ) : null}
 
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How This Nose Shape Detector Works</h2>
-          <p className={pClass}>
-            This tool estimates nose-shape categories from visual facial cues in a portrait, including
-            bridge contour, tip orientation, and base-width context. It is designed for non-medical
-            appearance interpretation and styling context.
-          </p>
-          <p className={pClass}>
-            Lighting direction, lens distortion, pose angle, and facial expression can shift perceived nose
-            contour. Use consistent photo conditions when comparing multiple scans.
-          </p>
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Improve Scan Quality</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg">
-            {(analysis?.retakeTips?.length
-              ? analysis.retakeTips
-              : [
-                  "Use a straight-on portrait with level head position.",
-                  "Avoid side-heavy shadows across bridge or tip.",
-                  "Keep the full nose region unobstructed by hands, filters, or overlays.",
-                  "Use neutral expression and avoid exaggerated flare/scrunch.",
-                ]).map((tip, idx) => (
-              <li key={`${tip}-${idx}`}>{tip}</li>
-            ))}
-          </ul>
-        </div>
+        <FaqSection
+          heading="Nose Shape Detector FAQ"
+          description="Common questions about AI nose-shape detection, confidence, and interpretation."
+          items={NOSE_SHAPE_FAQS}
+          accordionName="nose-shape-detector-faq-accordion"
+          className="mt-20 lg:mt-40"
+        />
 
         <div className={sectionWrap}>
           <h2 className={h2Class}>References</h2>

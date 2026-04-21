@@ -26,6 +26,7 @@ const LOW_LINK_TOOL_SLUGS = new Set<string>([
   "muscular-potential-calculator",
   "casey-butt-calculator",
   "bodybuilding-genetics-calculator",
+  "lip-shape-detector",
   "height-calculator",
   "height-estimator",
   "mid-parental-height-calculator",

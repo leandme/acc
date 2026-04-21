@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import H1 from "@/app/components/common/h1";
 import ToolsGridWithTabs from "@/app/components/tools/tools-grid-with-tabs";
-import ToolCategorySeoSection from "@/app/components/tools/category-seo-section";
 import {
   getToolCategoryMetaBySlug,
   getToolCategoryTabs,
@@ -68,8 +67,6 @@ export default async function ToolCategoryPage({
         tabs={tabs}
         activeTab={category.slug}
       />
-
-      <ToolCategorySeoSection category={category} toolCount={tools.length} />
     </main>
   );
 }

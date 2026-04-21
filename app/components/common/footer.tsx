@@ -50,6 +50,7 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/tdee-calculator">TDEE Calculator</a></li>
               <li><a className="hover:text-white" href="/bmi-calculator">BMI Calculator</a></li>
               <li><a className="hover:text-white" href="/face-shape-detector">Face Shape Detector</a></li>
+              <li><a className="hover:text-white" href="/lip-shape-detector">Lip Shape Detector</a></li>
             </ul>
           </div>
 

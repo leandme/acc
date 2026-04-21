@@ -16,6 +16,7 @@ type Props = {
     | "/golden-face-ratio-analyzer"
     | "/eyebrow-type-detector"
     | "/eye-shape-detector"
+    | "/lip-shape-detector"
     | "/nose-shape-detector"
     | "/skin-analyzer"
     | "/hair-color-detector"

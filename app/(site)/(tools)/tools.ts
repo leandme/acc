@@ -285,6 +285,12 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Detect eye shape, canthal tilt, and eye color from a portrait with AI.",
     category: "Face",
   },
+  "lip-shape-detector": {
+    slug: "lip-shape-detector",
+    title: "Lip Shape Detector",
+    description: "Detect lip shape, upper-lower balance, and cupid's bow pattern from a portrait with AI.",
+    category: "Face",
+  },
   "nose-shape-detector": {
     slug: "nose-shape-detector",
     title: "Nose Shape Detector",

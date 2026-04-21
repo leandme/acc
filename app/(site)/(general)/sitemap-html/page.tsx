@@ -105,6 +105,7 @@ export default function SitemapPage() {
     "age-guesser",
     "attractiveness-test",
     "face-shape-detector",
+    "lip-shape-detector",
     "skin-analyzer",
     "hair-type-detector",
     "hair-color-detector",

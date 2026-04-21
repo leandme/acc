@@ -4,12 +4,20 @@ import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
+import FaqSection, { type FaqSectionItem } from "@/app/components/common/faq-section";
 import TryExamples from "@/app/components/common/try-examples";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
 import { MoreTools } from "../../template/more-tools";
 import { cmToIn, formatFeetInches, round } from "@/app/components/tools/body-weight/shared/math";
 import HeightEstimatorInterpretation from "@/app/components/tools/height/height-estimator/height-estimator-interpretation";
 import { useHeightEstimate } from "@/app/hooks/useHeightEstimate";
+
+const HEIGHT_EXAMPLES = [
+  { id: "h1", label: "Example A", src: "/tools/height-estimator/height-example-1.jpg" },
+  { id: "h2", label: "Example B", src: "/tools/height-estimator/height-example-2.jpg" },
+  { id: "h3", label: "Example C", src: "/tools/height-estimator/height-example-3.jpg" },
+  { id: "h4", label: "Example D", src: "/tools/height-estimator/height-example-4.jpg" },
+];
 
 function confidenceBadgeClass(confidence: "low" | "medium" | "high") {
   if (confidence === "high") return "bg-green-100 text-green-800 border-green-200";
@@ -31,6 +39,70 @@ function perceivedGenderLabel(gender: "male" | "female" | "unknown") {
   if (gender === "female") return "Female (visual)";
   return "Unknown / unclear";
 }
+
+const HEIGHT_ESTIMATOR_FAQS: FaqSectionItem[] = [
+  {
+    question: "How accurate is height estimation from a photo?",
+    answer:
+      "Photo-based height estimation is a rough visual estimate, not an exact measurement. Accuracy depends heavily on image quality, camera angle, and whether the scene includes scale cues. It is most useful as a directional range.",
+  },
+  {
+    question: "Can you estimate height from just one image?",
+    answer:
+      "Yes, but indirectly. The model uses body proportions, posture, and perspective cues to infer apparent height. Without a known reference object, uncertainty is higher.",
+  },
+  {
+    question: "What type of photo gives the best result?",
+    answer: (
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Full body visible from head to feet</li>
+        <li>Standing upright on flat ground</li>
+        <li>Camera positioned farther away, not close-up</li>
+        <li>Minimal tilt and lens distortion</li>
+        <li>A visible reference object when possible</li>
+      </ul>
+    ),
+  },
+  {
+    question: "Does camera angle affect the estimate?",
+    answer:
+      "Yes, significantly. Top-down angles, low angles, and wide-angle close-ups can distort proportions and make someone appear shorter or taller than they are.",
+  },
+  {
+    question: "Do shoes and posture impact the result?",
+    answer:
+      "They can. Footwear adds visible height, and posture changes apparent stature. The tool estimates apparent height from the image, not barefoot measured height.",
+  },
+  {
+    question: "Why do you return a range instead of one exact number?",
+    answer:
+      "A single image rarely contains enough reliable scale information for exact measurement. A range better reflects uncertainty from perspective and missing reference points.",
+  },
+  {
+    question: "Can uploading multiple photos improve reliability?",
+    answer:
+      "Yes. Testing multiple photos with better framing and scale cues helps you see consistency across scans and usually produces more reliable directional estimates.",
+  },
+  {
+    question: "Does this work for children and teenagers?",
+    answer:
+      "This page is tuned for adult apparent-height estimation. Children and teenagers have changing proportions, so photo-based estimates are generally less reliable for them.",
+  },
+  {
+    question: "Can this replace measuring my height?",
+    answer:
+      "No. For exact height, use a stadiometer or a careful wall-based method. This tool is best for visual estimation, comparison, and curiosity.",
+  },
+  {
+    question: "How is my photo handled?",
+    answer: (
+      <>
+        Image handling follows the current site data policy. For details on storage, retention, and sharing,
+        review the <a className="text-primary underline" href="/privacy">Privacy Policy</a>.
+      </>
+    ),
+  },
+];
 
 function HeightEstimatorPageContent() {
   const searchParams = useSearchParams();
@@ -63,12 +135,8 @@ function HeightEstimatorPageContent() {
               <EstimateDropZone basePath="/height-estimator" buttonLabel="Upload Full-Body Photo" />
             </div>
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
-              <TryExamples basePath="/height-estimator" />
+              <TryExamples basePath="/height-estimator" examples={HEIGHT_EXAMPLES} />
             </div>
-            <p className="mt-6 text-sm text-gray-600 max-w-md text-center">
-              Best results come from a full-body standing photo with camera distance, minimal tilt, and
-              visible shoes/ground context.
-            </p>
           </div>
         ) : (
           <div className="w-full max-w-5xl mt-10">
@@ -208,6 +276,14 @@ function HeightEstimatorPageContent() {
             correct method. Use this page as directional context only.
           </p>
         </div>
+
+        <FaqSection
+          heading="Height Estimator FAQs"
+          description="Common questions about photo-based height estimation and how to interpret results."
+          items={HEIGHT_ESTIMATOR_FAQS}
+          accordionName="height-estimator-faq-accordion"
+          className="mt-20 lg:mt-40"
+        />
 
         <div className={sectionWrap}>
           <h2 className={h2Class}>References</h2>

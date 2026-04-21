@@ -1175,29 +1175,6 @@ export default function BodyVisualizerTool() {
           </div>
         </div>
 
-        <div className="border-t bg-white p-6 sm:p-8">
-          <h3 className="text-xl sm:text-2xl font-semibold text-gray-900">Results Snapshot</h3>
-
-          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCard label="BMI" value={round(bmi, 1).toString()} note={bmiClass.label} valueColor={bmiClass.color} />
-            <StatCard label="Body Fat" value={`${round(bodyFatPct, 1)}%`} note={bfClass.label} valueColor={bfClass.color} />
-            <StatCard label="Fat Mass" value={fatMassText} />
-            <StatCard label="Lean Mass" value={leanMassText} />
-            <StatCard label="FFMI" value={round(ffmi, 1).toString()} note="Fat-free mass index" />
-            <StatCard label="Est. Waist" value={waistText} note="Derived from body-fat and BMI" />
-            <StatCard label="Healthy BMI Weight" value={healthyWeightText} note="BMI 18.5-24.9 range" />
-            <StatCard
-              label="Current Weight"
-              value={units === "metric" ? `${round(weightKg, 1)} kg` : `${weightLbUI} lb`}
-              note={units === "metric" ? `${heightFeetUI}' ${heightRemainderInchesUI}"` : `${Math.round(heightCm)} cm`}
-            />
-          </div>
-
-          <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm text-gray-700 leading-relaxed">
-            Tip: keep one setup (same lighting, same pose, same time of day) and compare changes every 2-4 weeks
-            to reduce noise.
-          </div>
-        </div>
       </div>
     </section>
   );
