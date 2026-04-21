@@ -56,13 +56,6 @@ export default function Examples() {
           ))}
         </div>
       </div>
-      <a href="/estimate">
-      <p className="text-lg lg:text-xl text-gray-700 px-4 py-2 mt-10 rounded-full text-center transition transition-transform
-    duration-200
-    hover:scale-105">
-            See Success Stories →
-          </p>
-      </a>
     </section>
   );
 }

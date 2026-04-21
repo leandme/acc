@@ -360,10 +360,6 @@ function LipShapePageContent() {
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
               <TryExamples basePath="/lip-shape-detector" examples={FACE_EXAMPLES} />
             </div>
-            <p className="mt-5 text-sm text-gray-600 max-w-md text-center">
-              Use a front-facing photo where the lips are clearly visible, naturally relaxed, and not hidden
-              by strong shadows, hands, or heavy filters.
-            </p>
           </div>
         ) : (
           <div className="w-full max-w-5xl mt-10">
