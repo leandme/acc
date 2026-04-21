@@ -494,35 +494,6 @@ function FaceShapePageContent() {
           </p>
         </div>
 
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>Use This with Other Tools</h2>
-          <p className={pClass}>
-            Use this result as one signal, then run one complementary scan from the{" "}
-            <a className="text-primary underline" href="/tools/face">
-              Face Tools
-            </a>{" "}
-            page based on your goal. For side-profile structure, run{" "}
-            <a className="text-primary underline" href="/jawline-check">
-              Jawline Check
-            </a>
-            .
-          </p>
-          <p className={pClass}>
-            For broader progress tracking, pair with the{" "}
-            <a className="text-primary underline" href="/estimate">
-              Body Fat Estimator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/body-shape-analyzer">
-              Body Shape Analyzer
-            </a>
-            . If you want a metric-driven comparison, use{" "}
-            <a className="text-primary underline" href="/body-visualizer">
-              Body Visualizer
-            </a>
-            .
-          </p>
-        </div>
 
         {analysis?.recommendations?.length ? (
           <div className={sectionWrap}>

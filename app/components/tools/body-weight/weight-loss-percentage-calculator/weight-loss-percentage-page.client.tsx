@@ -71,43 +71,6 @@ export default function WeightLossPercentagePageClient() {
         </div>
 
         <div className={sectionWrap}>
-          <h2 className={h2Class}>Use This With Other Body-Weight Tools</h2>
-          <p className={pClass}>
-            Weight change percentage is only one view. Add the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
-              BMI category screener
-            </a>{" "}
-            for category screening and the{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
-              timeline-to-target planner
-            </a>{" "}
-            to estimate timeline-to-target based on energy intake and activity.
-          </p>
-          <p className={pClass}>
-            If you need to calculate intake targets first, use the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
-              TDEE Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
-              Calorie Deficit Calculator
-            </a>
-            .
-          </p>
-          <p className={pClass}>
-            If you use time-restricted eating or intermittent fasting, compare projections with the{" "}
-            <a className="text-primary underline" href="/fasting-weight-loss-calculator">
-              fasting-pattern projection model
-            </a>
-            {" "}or compare protocol scenarios in the{" "}
-            <a className="text-primary underline" href="/intermittent-fasting-calculator">
-              Intermittent Fasting Calculator
-            </a>
-            .
-          </p>
-        </div>
-
-        <div className={sectionWrap}>
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>

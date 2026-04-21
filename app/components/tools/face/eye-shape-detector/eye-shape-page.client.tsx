@@ -1,16 +1,16 @@
 "use client";
 
-import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import H1 from "@/app/components/common/h1";
-import RippleLoader from "@/app/components/common/loader";
+import LoadingStatus, { type LoadingStatusMessage } from "@/app/components/common/loading-status";
 import TryExamples from "@/app/components/common/try-examples";
 import FaqSection, { type FaqSectionItem } from "@/app/components/common/faq-section";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
 import { MoreTools } from "@/app/components/tools/template/more-tools";
 import {
   CanthalTiltKey,
+  EyeColorKey,
   EyeShapeKey,
   useEyeShapeAnalysis,
 } from "@/app/hooks/useEyeShapeAnalysis";
@@ -185,9 +185,10 @@ const EYE_SHAPE_VISUALS: EyeShapeVisual[] = [
 ];
 
 const FACE_EXAMPLES = [
-  { id: "eye-a", label: "Example A", src: "/examples/man-selfie.webp" },
-  { id: "eye-b", label: "Example B", src: "/examples/woman-selfie.webp" },
-  { id: "eye-c", label: "Example C", src: "/examples/man-selfie.webp" },
+  { id: "eye-a", label: "Example A", src: "/tools/eye-shape-detector/eye-example.jpg" },
+  { id: "eye-b", label: "Example B", src: "/tools/eye-shape-detector/eye-example-2.jpg" },
+  { id: "eye-c", label: "Example C", src: "/tools/eye-shape-detector/eyes-example-3.jpg" },
+  { id: "eye-d", label: "Example D", src: "/tools/eye-shape-detector/eye-example-4.jpg" },
 ];
 
 const HOW_TO_USE_STEPS: HowToStep[] = [
@@ -228,6 +229,29 @@ const EYE_SHAPE_BENEFITS: EyeShapeBenefit[] = [
     title: "Build Styling Confidence",
     description:
       "Knowing your shape makes beauty decisions faster and helps you repeat looks that actually suit you.",
+  },
+];
+
+const EYE_LOADING_MESSAGES: LoadingStatusMessage[] = [
+  {
+    title: "Photo intake and normalization",
+    body: "Preparing your image and standardizing angle, framing, and facial scale.",
+  },
+  {
+    title: "Eye landmark mapping",
+    body: "Detecting inner and outer eye-corner landmarks and key lid reference points.",
+  },
+  {
+    title: "Eyelid contour analysis",
+    body: "Tracing upper and lower lid contours to classify your primary eye-shape pattern.",
+  },
+  {
+    title: "Tilt and iris estimation",
+    body: "Estimating canthal tilt direction and dominant iris-color signal from visible pixels.",
+  },
+  {
+    title: "Final eye profile assembly",
+    body: "Combining shape, tilt, and confidence signals before returning your result.",
   },
 ];
 
@@ -284,11 +308,33 @@ function confidenceBadgeClass(confidence: "low" | "medium" | "high") {
   return "bg-yellow-100 text-yellow-800 border-yellow-200";
 }
 
-function tiltColor(tilt: CanthalTiltKey) {
-  if (tilt === "positive") return "text-green-700";
-  if (tilt === "negative") return "text-red-700";
-  if (tilt === "neutral") return "text-blue-700";
-  return "text-gray-700";
+function tiltBadgeClass(tilt: CanthalTiltKey) {
+  if (tilt === "positive") return "bg-green-100 text-green-800 border-green-200";
+  if (tilt === "negative") return "bg-red-100 text-red-800 border-red-200";
+  if (tilt === "neutral") return "bg-blue-100 text-blue-800 border-blue-200";
+  return "bg-gray-100 text-gray-700 border-gray-200";
+}
+
+function eyeColorBadgeClass(color: EyeColorKey) {
+  if (color === "brown") return "bg-amber-100 text-amber-900 border-amber-200";
+  if (color === "hazel") return "bg-yellow-100 text-yellow-800 border-yellow-200";
+  if (color === "blue") return "bg-sky-100 text-sky-800 border-sky-200";
+  if (color === "green") return "bg-emerald-100 text-emerald-800 border-emerald-200";
+  if (color === "gray") return "bg-slate-100 text-slate-800 border-slate-200";
+  if (color === "amber") return "bg-orange-100 text-orange-800 border-orange-200";
+  if (color === "black") return "bg-gray-200 text-gray-900 border-gray-300";
+  if (color === "mixed") return "bg-violet-100 text-violet-800 border-violet-200";
+  return "bg-gray-100 text-gray-700 border-gray-200";
+}
+
+function confidenceContext(confidence: "low" | "medium" | "high") {
+  if (confidence === "high") {
+    return "Most eye landmarks were clear and consistent across both eyes in this image.";
+  }
+  if (confidence === "low") {
+    return "Landmark clarity was limited, so the shape estimate is more uncertain and can shift on retake.";
+  }
+  return "Some key landmarks were only partially clear, so this estimate is directionally useful but can improve with a cleaner retake.";
 }
 
 function CanthalTiltBar({ angle }: { angle: number }) {
@@ -424,10 +470,7 @@ function EyeShapePageContent() {
   const pClass = "text-lg leading-relaxed";
 
   const activeShape = analysis?.shape ?? null;
-  const alternativesText = useMemo(() => {
-    if (!analysis?.alternatives?.length) return null;
-    return analysis.alternatives.slice(0, 2).join(" or ");
-  }, [analysis?.alternatives]);
+  const hasTiltMeasurement = analysis?.canthalTiltAngle != null;
 
   return (
     <main className="bg-base-100">
@@ -468,114 +511,131 @@ function EyeShapePageContent() {
           </div>
         ) : (
           <div className="w-full max-w-5xl mt-10">
-            <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 lg:gap-16 items-start">
-              <div className="w-full sm:max-w-sm lg:max-w-none justify-self-center">
-                <img
-                  src={imageUrl}
-                  alt="Uploaded image for eye-shape analysis"
-                  className="w-full max-w-[95vw] sm:max-w-sm lg:w-[360px] mx-auto rounded-2xl shadow-xl object-cover aspect-[3/4] bg-base-200"
+            {loading ? (
+              <div className="w-full max-w-none px-0 sm:px-4 lg:px-8">
+                <LoadingStatus
+                  imageUrl={imageUrl}
+                  title="Building Your Eye Analysis"
+                  messages={EYE_LOADING_MESSAGES}
                 />
               </div>
+            ) : (
+              <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 lg:gap-16 items-start">
+                <div className="w-full sm:max-w-sm lg:max-w-none justify-self-center">
+                  <img
+                    src={imageUrl}
+                    alt="Uploaded image for eye-shape analysis"
+                    className="w-full max-w-[95vw] sm:max-w-sm lg:w-[360px] mx-auto rounded-2xl shadow-xl object-cover aspect-[3/4] bg-base-200"
+                  />
+                </div>
 
-              <div className="w-full rounded-2xl border bg-white p-6 lg:p-8 shadow-sm">
-                <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900">Eye Analysis Result</h2>
+                <div className="w-full rounded-2xl bg-white p-6 lg:p-8 shadow-sm">
+                  {error ? (
+                    <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-4">
+                      <p className="whitespace-pre-line text-red-700">{error}</p>
+                    </div>
+                  ) : null}
 
-                {loading ? (
-                  <div className="mt-6">
-                    <div className="flex items-center gap-4">
-                      <RippleLoader />
-                      <div>
-                        <p className="text-lg text-gray-800 font-semibold">Analyzing eyes...</p>
-                        <p className="text-sm text-gray-600">
-                          Estimating shape contours, canthal tilt, and iris color profile.
+                  {!error && analysis ? (
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                        <p className="text-4xl lg:text-5xl font-bold text-primary">
+                          {analysis.shapeLabel}
                         </p>
                       </div>
-                    </div>
-                  </div>
-                ) : null}
 
-                {error ? (
-                  <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-4">
-                    <p className="whitespace-pre-line text-red-700">{error}</p>
-                  </div>
-                ) : null}
+                      <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4 text-sm sm:text-base font-semibold text-gray-800">
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold">Eye Shape:</span>
+                          <a
+                            href="#what-is-my-eye-shape"
+                            className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-800 no-underline cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+                            aria-label={`Jump to eye shape interpretation for ${analysis.shapeLabel}`}
+                          >
+                            {analysis.shapeLabel.toUpperCase()}
+                          </a>
+                        </div>
 
-                {!loading && !error && analysis ? (
-                  <div className="mt-5">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <p className="text-4xl lg:text-5xl font-bold text-primary">
-                        {analysis.shapeLabel}
-                      </p>
-                      <span
-                        className={`inline-flex rounded-full border px-3 py-1 text-sm font-semibold ${confidenceBadgeClass(
-                          analysis.confidence
-                        )}`}
-                      >
-                        {analysis.confidence.toUpperCase()} confidence
-                      </span>
-                    </div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold">Confidence:</span>
+                          <a
+                            href="#result-confidence"
+                            className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold no-underline cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 ${confidenceBadgeClass(
+                              analysis.confidence
+                            )}`}
+                            aria-label={`Jump to confidence section. Confidence is ${analysis.confidence}`}
+                          >
+                            {analysis.confidence.toUpperCase()}
+                          </a>
+                        </div>
 
-                    <p className="mt-3 text-lg text-gray-700">
-                      Eye color:{" "}
-                      <span className="font-semibold">{analysis.eyeColorLabel}</span>
-                      {" "}(
-                      <span className="font-semibold">{analysis.eyeColorConfidence}/100</span>)
-                    </p>
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold">Canthal Tilt:</span>
+                          <a
+                            href="#canthal-tilt-interpretation"
+                            className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold no-underline cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 ${tiltBadgeClass(
+                              analysis.canthalTilt
+                            )}`}
+                            aria-label={`Jump to canthal tilt section. Tilt is ${analysis.canthalTiltLabel}`}
+                          >
+                            {analysis.canthalTiltLabel.toUpperCase()}
+                            {hasTiltMeasurement ? ` ${analysis.canthalTiltAngle?.toFixed(1)}°` : ""}
+                          </a>
+                        </div>
 
-                    <p className="mt-2 text-lg text-gray-700">
-                      Canthal tilt:{" "}
-                      <span className={`font-semibold ${tiltColor(analysis.canthalTilt)}`}>
-                        {analysis.canthalTiltLabel}
-                      </span>
-                      {analysis.canthalTiltAngle != null ? (
-                        <>
-                          {" "}(
-                          <span className="font-semibold">{analysis.canthalTiltAngle.toFixed(1)}°</span>)
-                        </>
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold">Eye Color:</span>
+                          <span
+                            className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold ${eyeColorBadgeClass(
+                              analysis.eyeColor
+                            )}`}
+                            aria-label={`Estimated eye color ${analysis.eyeColorLabel}`}
+                          >
+                            {analysis.eyeColorLabel.toUpperCase()}
+                          </span>
+                          <span className="text-xs font-medium text-gray-500">{analysis.eyeColorConfidence}/100</span>
+                        </div>
+                      </div>
+
+                      {analysis.rationale ? (
+                        <p className="mt-5 text-gray-700 leading-relaxed">{analysis.rationale}</p>
                       ) : null}
-                    </p>
+                    </div>
+                  ) : null}
 
-                    {analysis.rationale ? (
-                      <p className="mt-5 text-gray-700 leading-relaxed">{analysis.rationale}</p>
-                    ) : null}
-
-                    {alternativesText ? (
-                      <p className="mt-3 text-sm text-gray-600">
-                        Close alternatives:{" "}
-                        <span className="font-semibold text-gray-800">{alternativesText}</span>
-                      </p>
-                    ) : null}
-
-                    {analysis.secondaryTones.length ? (
-                      <p className="mt-2 text-sm text-gray-600">
-                        Secondary eye-color tones:{" "}
-                        <span className="font-semibold text-gray-800">
-                          {analysis.secondaryTones.join(", ")}
-                        </span>
-                      </p>
-                    ) : null}
+                  <div className="mt-6 sm:mt-8 flex flex-col gap-3">
+                    <a href="/eye-shape-detector" className="btn btn-outline btn-lg w-full">
+                      <span className="whitespace-nowrap">Estimate Again</span>
+                    </a>
                   </div>
-                ) : null}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         )}
       </section>
 
       <section className="px-6">
-        {analysis?.canthalTiltAngle != null ? (
-          <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
-            <h2 className={h2Class}>Canthal Tilt Interpretation</h2>
-            <p className="mt-4 text-center text-lg text-gray-700">
-              Marker shows estimated canthal tilt angle from negative to positive range.
-            </p>
+        <div id="canthal-tilt-interpretation" className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+          <h2 className={h2Class}>Canthal Tilt Interpretation</h2>
+          <p className="mt-4 text-center text-lg text-gray-700">
+            Marker shows estimated canthal tilt angle from negative to positive range.
+          </p>
+          {analysis?.canthalTiltAngle != null ? (
             <div className="mt-8">
               <CanthalTiltBar angle={analysis.canthalTiltAngle} />
             </div>
-          </div>
-        ) : null}
+          ) : (
+            <div className="mt-8 rounded-2xl border bg-white p-6 shadow-sm">
+              <p className="text-center text-lg text-gray-700">
+                No numeric tilt angle was extracted from this image. Try a clearer front-facing photo with both
+                eyes fully visible.
+              </p>
+            </div>
+          )}
+        </div>
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div id="what-is-my-eye-shape" className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
           <h2 className={h2Class}>What Is My Eye Shape?</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row shows the detected primary eye-shape category.
@@ -624,6 +684,51 @@ function EyeShapePageContent() {
           </div>
         </div>
 
+        <div id="result-confidence" className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+          <h2 className={h2Class}>Result Confidence</h2>
+          <p className="mt-4 text-center text-lg text-gray-700">
+            Confidence reflects how clearly eyelid edges, eye corners, and iris boundaries were detected.
+          </p>
+          {analysis ? (
+            <div className="mt-8 rounded-2xl border bg-white p-6 shadow-sm">
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <span className="text-base font-semibold text-gray-900">Current scan:</span>
+                <span
+                  className={`inline-flex rounded-full border px-3 py-1 text-sm font-semibold ${confidenceBadgeClass(
+                    analysis.confidence
+                  )}`}
+                >
+                  {analysis.confidence.toUpperCase()} ({analysis.confidenceScore}/100)
+                </span>
+              </div>
+              <p className="mt-4 text-lg text-gray-700 leading-relaxed text-center">
+                {confidenceContext(analysis.confidence)}
+              </p>
+            </div>
+          ) : (
+            <p className="mt-6 text-center text-lg text-gray-700">
+              After upload, this section shows whether the scan quality is low, medium, or high and what to
+              improve for a stronger result.
+            </p>
+          )}
+        </div>
+
+        <div className={sectionWrap}>
+          <h2 className={h2Class}>How To Improve Scan Quality</h2>
+          <ul className="list-disc pl-6 space-y-2 text-lg">
+            {(analysis?.retakeTips?.length
+              ? analysis.retakeTips
+              : [
+                  "Use a front-facing portrait with both eyes clearly visible.",
+                  "Avoid tinted lenses, strong reflections, or heavy shadows on the eyes.",
+                  "Use neutral expression with natural eye opening.",
+                  "Prefer daylight or balanced white light for eye-color detection.",
+                ]).map((tip, idx) => (
+              <li key={`${tip}-${idx}`}>{tip}</li>
+            ))}
+          </ul>
+        </div>
+
         <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
           <h2 className={h2Class}>Why Knowing Your Eye Shape Matters</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
@@ -638,28 +743,6 @@ function EyeShapePageContent() {
             ))}
           </div>
         </div>
-
-        {analysis?.observationNotes?.length ? (
-          <div className={sectionWrap}>
-            <h2 className={h2Class}>Key Observation Notes</h2>
-            <ul className="list-disc pl-6 space-y-2 text-lg">
-              {analysis.observationNotes.map((note, idx) => (
-                <li key={`${note}-${idx}`}>{note}</li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-
-        {analysis?.styleSuggestions?.length ? (
-          <div className={sectionWrap}>
-            <h2 className={h2Class}>Style Suggestions</h2>
-            <ul className="list-disc pl-6 space-y-2 text-lg">
-              {analysis.styleSuggestions.map((tip, idx) => (
-                <li key={`${tip}-${idx}`}>{tip}</li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
 
         <div className={sectionWrap}>
           <h2 className={h2Class}>How This Eye Shape Detector Works</h2>
@@ -686,21 +769,6 @@ function EyeShapePageContent() {
           </p>
         </div>
 
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Improve Scan Quality</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg">
-            {(analysis?.retakeTips?.length
-              ? analysis.retakeTips
-              : [
-                  "Use a front-facing portrait with both eyes clearly visible.",
-                  "Avoid tinted lenses, strong reflections, or heavy shadows on the eyes.",
-                  "Use neutral expression with natural eye opening.",
-                  "Prefer daylight or balanced white light for eye-color detection.",
-                ]).map((tip, idx) => (
-              <li key={`${tip}-${idx}`}>{tip}</li>
-            ))}
-          </ul>
-        </div>
         <FaqSection
           heading="FAQs"
           description="Common questions about eye-shape detection and how to interpret your result."

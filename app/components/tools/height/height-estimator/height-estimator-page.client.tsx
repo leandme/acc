@@ -198,33 +198,6 @@ function HeightEstimatorPageContent() {
         </div>
 
         <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Use This With Other Height Tools</h2>
-          <p className={pClass}>
-            Photo-based height estimation is best used as an initial visual estimate. For family-based growth
-            context and planning, compare with the{" "}
-            <a className="text-primary underline" href="/height-calculator">
-              Height Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/mid-parental-height-calculator">
-              Mid-Parental Height Calculator
-            </a>
-            .
-          </p>
-          <p className={pClass}>
-            If your goal is weight-range planning after height estimation, continue with the{" "}
-            <a className="text-primary underline" href="/ideal-weight-calculator">
-              Ideal Weight Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
-              BMI Calculator
-            </a>
-            .
-          </p>
-        </div>
-
-        <div className={sectionWrap}>
           <h2 className={h2Class}>Limitations</h2>
           <p className={pClass}>
             Camera distance, lens type, tilt, footwear, and posture can change perceived body proportions

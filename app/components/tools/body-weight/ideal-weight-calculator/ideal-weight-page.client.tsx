@@ -79,54 +79,6 @@ export default function IdealWeightPageClient() {
         </div>
 
         <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Use This With Other Tools</h2>
-          <p className={pClass}>
-            Pair this with the{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
-              Weight Loss Calculator
-            </a>{" "}
-            to estimate timeline to a target and the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
-              BMI Calculator
-            </a>{" "}
-            for direct category screening.
-          </p>
-          <p className={pClass}>
-            If you need height-based context first, run the{" "}
-            <a className="text-primary underline" href="/height-calculator">
-              Height Calculator
-            </a>{" "}
-            or{" "}
-            <a className="text-primary underline" href="/height-estimator">
-              Height Estimator
-            </a>{" "}
-            or{" "}
-            <a className="text-primary underline" href="/mid-parental-height-calculator">
-              Mid-Parental Height Calculator
-            </a>
-            .
-          </p>
-          <p className={pClass}>
-            To plan calories around that target, estimate maintenance in the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
-              TDEE Calculator
-            </a>{" "}
-            and set intake in the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
-              Calorie Deficit Calculator
-            </a>
-            .
-          </p>
-          <p className={pClass}>
-            For medication-dosing contexts where adjusted weight is used, see the{" "}
-            <a className="text-primary underline" href="/adjusted-body-weight-calculator">
-              Adjusted Body Weight Calculator
-            </a>
-            .
-          </p>
-        </div>
-
-        <div className={sectionWrap}>
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>

@@ -75,25 +75,6 @@ export default function IdealWaistSizePageClient() {
             useful than a single reading. If your goal is fat loss, use the upper practical target to set
             short-term milestones and the stricter target as a longer-term benchmark.
           </p>
-          <p className={pClass}>
-            Combine this with the{" "}
-            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
-              Waist to Height Ratio Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
-              Waist to Hip Ratio Calculator
-            </a>{" "}
-            for screening context, then pair with{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
-              Calorie Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
-              Weight Loss Calculator
-            </a>{" "}
-            for action planning.
-          </p>
         </div>
 
         <div className={sectionWrap}>

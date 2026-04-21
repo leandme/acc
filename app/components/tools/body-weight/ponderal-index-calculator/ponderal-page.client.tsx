@@ -66,28 +66,6 @@ export default function PonderalPageClient() {
             categories. This calculator updates interpretation ranges using your current height so the
             classification remains comparable.
           </p>
-          <p className={pClass}>
-            For direct BMI outputs, use the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
-              BMI Calculator
-            </a>
-            . For broader weight targets, pair with the{" "}
-            <a className="text-primary underline" href="/ideal-weight-calculator">
-              Ideal Weight Calculator
-            </a>
-            .
-          </p>
-          <p className={pClass}>
-            If you are planning calorie targets around those goals, run the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
-              TDEE Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
-              Calorie Deficit Calculator
-            </a>
-            .
-          </p>
         </div>
 
         <div className={sectionWrap}>

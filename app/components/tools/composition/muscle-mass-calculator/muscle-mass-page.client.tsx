@@ -102,36 +102,6 @@ export default function MuscleMassPageClient() {
         </div>
 
         <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Use This With Other Body Composition Tools</h2>
-          <p className={pClass}>
-            Skeletal muscle mass gives absolute tissue context, while FFMI normalizes lean mass to height.
-            Use both when evaluating muscularity progress.
-          </p>
-          <p className={pClass}>
-            Pair this with the{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
-              FFMI Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/natty-or-not-calculator">
-              Natty or Not Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
-              Body Fat Calculator
-            </a>{" "}
-            to separate muscle-focused and fat-focused trends.
-          </p>
-          <p className={pClass}>
-            For a combined structure-and-potential muscle profile, compare with the{" "}
-            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
-              Bodybuilding Genetics Calculator
-            </a>
-            .
-          </p>
-        </div>
-
-        <div className={sectionWrap}>
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>

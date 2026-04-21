@@ -546,35 +546,6 @@ function HairTypePageContent() {
           </ul>
         </div>
 
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>Use This with Other Tools</h2>
-          <p className={pClass}>
-            Use this result as one signal, then run one complementary scan from the{" "}
-            <a className="text-primary underline" href="/tools/face">
-              Face Tools
-            </a>{" "}
-            page based on your goal.
-          </p>
-          <p className={pClass}>
-            For a fuller appearance workflow, pair this with the{" "}
-            <a className="text-primary underline" href="/hair-color-detector">
-              Hair Color Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/skin-analyzer">
-              Skin Analyzer
-            </a>
-            . You can also combine with{" "}
-            <a className="text-primary underline" href="/face-shape-detector">
-              Face Shape Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/face-symmetry-test">
-              Face Symmetry Test
-            </a>{" "}
-            for broader styling context.
-          </p>
-        </div>
 
         <div className={sectionWrap}>
           <h2 className={h2Class}>References</h2>

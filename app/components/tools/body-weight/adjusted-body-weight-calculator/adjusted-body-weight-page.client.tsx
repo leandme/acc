@@ -69,28 +69,6 @@ export default function AdjustedBodyWeightPageClient() {
             Drug properties, renal function, age, and diagnosis can change the appropriate dosing weight
             method.
           </p>
-          <p className={pClass}>
-            For non-dosing weight planning, use the{" "}
-            <a className="text-primary underline" href="/ideal-weight-calculator">
-              Ideal Weight Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
-              Weight Loss Calculator
-            </a>
-            .
-          </p>
-          <p className={pClass}>
-            To set intake from maintenance energy, pair with the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
-              TDEE Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
-              Calorie Deficit Calculator
-            </a>
-            .
-          </p>
         </div>
 
         <div className={sectionWrap}>

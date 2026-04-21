@@ -807,43 +807,6 @@ function JawlineCheckPageContent() {
           </div>
         ) : null}
 
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>Use This with Other Face Tools</h2>
-          <p className={pClass}>
-            Pair this jawline result with broader face scans from the{" "}
-            <a className="text-primary underline" href="/tools/face">
-              Face Tools
-            </a>{" "}
-            category to add context.
-          </p>
-          <p className={pClass}>
-            For complementary feature analysis, run{" "}
-            <a className="text-primary underline" href="/face-shape-detector">
-              Face Shape Detector
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/face-symmetry-test">
-              Face Symmetry Test
-            </a>
-            . You can also compare with{" "}
-            <a className="text-primary underline" href="/golden-face-ratio-analyzer">
-              Golden Face Ratio Analyzer
-            </a>{" "}
-            for proportion-based context.
-          </p>
-          <p className={pClass}>
-            If you want to pair analysis with daily jawline training, you can also explore{" "}
-            <a
-              className="text-primary underline"
-              href={JAWLINER_SITE_URL}
-              target="_blank"
-              rel="sponsored nofollow noopener noreferrer"
-            >
-              jawline exercisers
-            </a>
-            .
-          </p>
-        </div>
 
         <div className={sectionWrap}>
           <h2 className={h2Class}>Limitations</h2>

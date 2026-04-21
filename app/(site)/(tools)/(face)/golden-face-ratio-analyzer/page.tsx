@@ -3,7 +3,7 @@ import GoldenFaceRatioPageClient from "@/app/components/tools/face/golden-face-r
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Golden Face Ratio Analyzer",
+  title: "Golden Ratio Face Analyzer — Measure Your Facial Score",
   description:
     "Upload a portrait to analyze facial golden-ratio alignment with AI, then compare with a manual ratio calculator.",
   canonical: "https://bodyfatestimator.ai/golden-face-ratio-analyzer",

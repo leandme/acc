@@ -1194,9 +1194,8 @@ export default function BodyVisualizerTool() {
           </div>
 
           <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm text-gray-700 leading-relaxed">
-            Tip: keep one setup (same lighting, same pose, same time of day) and compare changes every 2-4 weeks.
-            Pair this with the <a href="/estimate" className="text-primary underline">Body Fat Estimator</a> for photo-based tracking and use
-            <a href="/guides/how-to-track-body-fat-changes" className="text-primary underline ml-1">this tracking guide</a> to reduce noise.
+            Tip: keep one setup (same lighting, same pose, same time of day) and compare changes every 2-4 weeks
+            to reduce noise.
           </div>
         </div>
       </div>

@@ -378,45 +378,6 @@ function CalorieCounterPageContent() {
         </div>
 
         <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Use This With Other Tools</h2>
-          <p className={pClass}>
-            Use meal-level calorie estimates as your intake side, then combine with expenditure and
-            target-planning tools for better decisions.
-          </p>
-          <p className={pClass}>
-            Pair this with the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
-              TDEE Calculator
-            </a>{" "}
-            or the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
-              Calorie Calculator
-            </a>{" "}
-            to estimate maintenance, and the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
-              Calorie Deficit Calculator
-            </a>{" "}
-            and track session expenditure with the{" "}
-            <a className="text-primary underline" href="/calories-burned-calculator">
-              Calories Burned Calculator
-            </a>
-            . For step-target calorie burn, use the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
-              Steps to Calories Calculator
-            </a>
-            . For protocol-based intake planning, use the{" "}
-            <a className="text-primary underline" href="/intermittent-fasting-calculator">
-              Intermittent Fasting Calculator
-            </a>
-            . If you want calorie targets converted into daily protein, carb, and fat gram goals, use the{" "}
-            <a className="text-primary underline" href="/macro-calculator">
-              Macro Calculator
-            </a>
-            .
-          </p>
-        </div>
-
-        <div className={sectionWrap}>
           <h2 className={h2Class}>References</h2>
           <ul className="list-disc pl-6 space-y-3 text-lg break-words">
             <li>

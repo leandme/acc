@@ -139,33 +139,6 @@ export default function BodyFrameSizePageClient() {
             Frame size helps contextualize composition tools. Smaller frames may look softer at the same
             body fat percentage, while larger frames can appear leaner at similar percentages.
           </p>
-          <p className={pClass}>
-            Pair this with the{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
-              FFMI Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/natty-or-not-calculator">
-              Natty or Not Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
-              Bodybuilding Genetics Calculator
-            </a>{" "}
-            and{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
-              Lean Body Mass Calculator
-            </a>{" "}
-            for better body-composition context. For waist-height roundness trends, use the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
-              BRI Calculator
-            </a>
-            . For hip-height adiposity context, compare with the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
-              BAI Calculator
-            </a>
-            .
-          </p>
         </div>
 
         <div className={sectionWrap}>

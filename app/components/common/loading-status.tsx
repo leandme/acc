@@ -5,7 +5,12 @@ import styles from "./loading-status.module.css";
 
 const STAGE_MS = 3200;
 
-const STATUS_MESSAGES = [
+export type LoadingStatusMessage = {
+  title: string;
+  body: string;
+};
+
+const DEFAULT_STATUS_MESSAGES: LoadingStatusMessage[] = [
   {
     title: "Photo intake and normalization",
     body: "Preparing the image and normalizing orientation, framing, and scale.",
@@ -30,16 +35,23 @@ const STATUS_MESSAGES = [
 
 type Props = {
   imageUrl?: string | null;
+  title?: string;
+  messages?: LoadingStatusMessage[];
 };
 
-export default function LoadingStatus({ imageUrl }: Props) {
+export default function LoadingStatus({
+  imageUrl,
+  title = "Building Your Estimate",
+  messages,
+}: Props) {
+  const statusMessages = messages?.length ? messages : DEFAULT_STATUS_MESSAGES;
   const [elapsedMs, setElapsedMs] = useState(0);
-  const lastIndex = STATUS_MESSAGES.length - 1;
+  const lastIndex = statusMessages.length - 1;
   const activeIndex = Math.min(lastIndex, Math.floor(elapsedMs / STAGE_MS));
-  const activeMessage = STATUS_MESSAGES[activeIndex];
+  const activeMessage = statusMessages[activeIndex];
   // One-way progress: advance through steps once, then hold near-complete
   // on the final stage until the estimate resolves.
-  const progressPct = Math.min(97, (elapsedMs / (STATUS_MESSAGES.length * STAGE_MS)) * 100);
+  const progressPct = Math.min(97, (elapsedMs / (statusMessages.length * STAGE_MS)) * 100);
 
   useEffect(() => {
     const startedAt = Date.now();
@@ -54,7 +66,7 @@ export default function LoadingStatus({ imageUrl }: Props) {
       <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
         <div className="order-2">
           <h2 className="mt-2 text-2xl sm:text-3xl font-semibold text-gray-900">
-            Building Your Estimate
+            {title}
           </h2>
           <p className="mt-2 text-base text-gray-600 leading-relaxed">
             {activeMessage.body}
@@ -68,7 +80,7 @@ export default function LoadingStatus({ imageUrl }: Props) {
           </div>
 
           <ol className="mt-6 space-y-3">
-            {STATUS_MESSAGES.map((stage, idx) => {
+            {statusMessages.map((stage, idx) => {
               const isComplete = idx < activeIndex;
               const isActive = idx === activeIndex;
 
