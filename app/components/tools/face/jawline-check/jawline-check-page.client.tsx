@@ -558,7 +558,7 @@ function JawlineCheckPageContent() {
   return (
     <main className="bg-base-100">
       <section className="flex flex-col items-center justify-start pt-10 px-6">
-        <H1>Jawline Check</H1>
+        <H1>Jawline Check: Analyze Jawline Type & Gonial Angle</H1>
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
           Upload a side-profile photo, then drag three points on the image to set your jawline
           angle manually. This gives you direct control when auto-placement is off.
