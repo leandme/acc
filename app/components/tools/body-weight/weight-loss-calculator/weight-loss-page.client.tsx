@@ -73,37 +73,37 @@ export default function WeightLossPageClient() {
           </p>
           <p className={pClass}>
             If you need to set calorie targets first, estimate maintenance in the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             or the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Calculator
             </a>
             , and convert that to an intake target in the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             . If movement is a major part of your plan, estimate daily walking output with the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
+            <a className="text-primary underline" href="/tools">
               Steps to Calories Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If you use fasting windows with different intake on fasting vs feeding days, use the{" "}
-            <a className="text-primary underline" href="/fasting-weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               fasting-specific intake projection
             </a>
             {" "}or compare popular fasting protocols quickly with the{" "}
-            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+            <a className="text-primary underline" href="/tools">
               Intermittent Fasting Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             To summarize completed progress, calculate net percentage change in the{" "}
-            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+            <a className="text-primary underline" href="/tools">
               start-to-current weight change calculator
             </a>
             .

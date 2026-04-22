@@ -77,34 +77,34 @@ export default function CalorieCalculatorPageClient() {
           </p>
           <p className={pClass}>
             For maintenance-only estimation, compare with the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/bmr-calculator">
+            <a className="text-primary underline" href="/tools">
               BMR Calculator
             </a>
             . For weekly fat-loss pacing, use the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             . If you want grams of protein, carbs, and fat from your target calories, use the{" "}
-            <a className="text-primary underline" href="/macro-calculator">
+            <a className="text-primary underline" href="/tools">
               Macro Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             You can also cross-check real intake with the{" "}
-            <a className="text-primary underline" href="/calorie-counter">
+            <a className="text-primary underline" href="/tools">
               Calorie Counter
             </a>{" "}
             for meal-photo estimates, and model movement output with the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
+            <a className="text-primary underline" href="/tools">
               Steps to Calories Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/calories-burned-calculator">
+            <a className="text-primary underline" href="/tools">
               Calories Burned Calculator
             </a>
             .
@@ -132,11 +132,11 @@ export default function CalorieCalculatorPageClient() {
           <p className={pClass}>
             Use this tool for planning and iteration, then calibrate with objective trend data. If you use
             fasting windows with variable intake days, compare with the{" "}
-            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+            <a className="text-primary underline" href="/tools">
               Intermittent Fasting Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/fasting-weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Fasting Weight Loss Calculator
             </a>
             .

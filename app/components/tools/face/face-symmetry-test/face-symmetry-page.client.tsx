@@ -646,7 +646,7 @@ function FaceSymmetryPageContent() {
           <p className={pClass}>
             In practice, this tool is best used as a structured visual check for balance and photo
             consistency, not as a universal attractiveness rating. If you want a direct score, run the{" "}
-            <a className="text-primary underline" href="/attractiveness-test">
+            <a className="text-primary underline" href="/tools">
               Attractiveness Test
             </a>
             .

@@ -156,7 +156,7 @@ export default function HeightCalculator({ onChange }: Props) {
                   helper={
                     <>
                       Compare the family-based prediction here with the{" "}
-                      <a href="/mid-parental-height-calculator" className="text-primary underline font-semibold">
+                      <a href="/tools" className="text-primary underline font-semibold">
                         Mid-Parental Height Calculator
                       </a>
                       .
@@ -197,7 +197,7 @@ export default function HeightCalculator({ onChange }: Props) {
                   helper={
                     <>
                       Compare the family-based prediction here with the{" "}
-                      <a href="/mid-parental-height-calculator" className="text-primary underline font-semibold">
+                      <a href="/tools" className="text-primary underline font-semibold">
                         Mid-Parental Height Calculator
                       </a>
                       .

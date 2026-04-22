@@ -93,7 +93,7 @@ export default function LeanBodyMassCalculatorPageClient() {
             Higher lean body mass can reflect more muscle and generally a lower fat share, but context
             matters. Height, frame size, and training history all affect what is realistic.
             For frame-only context, run the{" "}
-            <a className="text-primary underline" href="/body-frame-size-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Frame Size Calculator
             </a>
             .
@@ -104,40 +104,40 @@ export default function LeanBodyMassCalculatorPageClient() {
           </p>
           <p className={pClass}>
             If you want a skeletal-muscle-specific estimate from circumferences and skinfolds, use the{" "}
-            <a className="text-primary underline" href="/muscle-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscle Mass Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If you want to compare your height-adjusted muscularity to practical natural ceilings, run the{" "}
-            <a className="text-primary underline" href="/natty-or-not-calculator">
+            <a className="text-primary underline" href="/tools">
               Natty or Not Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             For a composite structure-and-potential score, use the{" "}
-            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
+            <a className="text-primary underline" href="/tools">
               Bodybuilding Genetics Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If you want body-fat context alongside this result, use the{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Fat Calculator
             </a>{" "}
             or the{" "}
-            <a className="text-primary underline" href="/rfm-calculator">
+            <a className="text-primary underline" href="/tools">
               RFM Calculator
             </a>
             . For waist-centered roundness, add the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>
             , and for hip-height adiposity use the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
+            <a className="text-primary underline" href="/tools">
               BAI Calculator
             </a>
             .
@@ -152,7 +152,7 @@ export default function LeanBodyMassCalculatorPageClient() {
           </p>
           <p className={pClass}>
             After estimating LBM, use the{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
+            <a className="text-primary underline" href="/tools">
               FFMI Calculator
             </a>{" "}
             if you want a height-normalized muscularity score.

@@ -131,7 +131,7 @@ export default function MidParentalHeightCalculator({ onChange }: Props) {
                   helper={
                     <>
                       Want a desired-target probability too? Use the{" "}
-                      <a href="/height-calculator" className="text-primary underline font-semibold">
+                      <a href="/tools" className="text-primary underline font-semibold">
                         Height Calculator
                       </a>
                       .
@@ -162,7 +162,7 @@ export default function MidParentalHeightCalculator({ onChange }: Props) {
                   helper={
                     <>
                       Want a desired-target probability too? Use the{" "}
-                      <a href="/height-calculator" className="text-primary underline font-semibold">
+                      <a href="/tools" className="text-primary underline font-semibold">
                         Height Calculator
                       </a>
                       .

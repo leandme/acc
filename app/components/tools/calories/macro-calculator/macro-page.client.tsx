@@ -81,26 +81,26 @@ export default function MacroPageClient() {
           </p>
           <p className={pClass}>
             For maintenance estimates, compare against the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>
             {" "}or the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Calculator
             </a>
             . For weekly pace planning, pair this with the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>{" "}
             and the{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If you track meal photos for intake verification, use the{" "}
-            <a className="text-primary underline" href="/calorie-counter">
+            <a className="text-primary underline" href="/tools">
               Calorie Counter
             </a>{" "}
             and compare your weekly average against this macro target.
@@ -118,11 +118,11 @@ export default function MacroPageClient() {
           </p>
           <p className={pClass}>
             For activity-driven calorie output from walking targets, compare with the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
+            <a className="text-primary underline" href="/tools">
               Steps to Calories Calculator
             </a>
             {" "}or the{" "}
-            <a className="text-primary underline" href="/calories-burned-calculator">
+            <a className="text-primary underline" href="/tools">
               Calories Burned Calculator
             </a>
             .

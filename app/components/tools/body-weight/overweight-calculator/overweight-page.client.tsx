@@ -94,7 +94,7 @@ export default function OverweightPageClient() {
           <h2 className={h2Class}>Why This Page Exists Alongside BMI Calculator</h2>
           <p className={pClass}>
             The{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
+            <a className="text-primary underline" href="/tools">
               main BMI screening page
             </a>{" "}
             is best for broad screening and category checks. This page is tuned for planning conversations
@@ -102,22 +102,22 @@ export default function OverweightPageClient() {
           </p>
           <p className={pClass}>
             If you are setting targets, pair this output with the{" "}
-            <a className="text-primary underline" href="/ideal-weight-calculator">
+            <a className="text-primary underline" href="/tools">
               healthy target-weight planner
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               timeline-to-target projection
             </a>
             .
           </p>
           <p className={pClass}>
             For calorie planning behind that timeline, use the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             and the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             .
@@ -133,7 +133,7 @@ export default function OverweightPageClient() {
           </ul>
           <p className={pClass}>
             If you only need category-level screening, the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
+            <a className="text-primary underline" href="/tools">
               BMI calculator
             </a>{" "}
             is usually the better starting point.
@@ -148,23 +148,23 @@ export default function OverweightPageClient() {
           </p>
           <p className={pClass}>
             For better context, combine BMI with waist-based tools and composition-focused tools such as the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               body roundness (waist-height) check
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               tape-based body fat estimate
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               waist-to-hip ratio risk check
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               waist-to-height ratio screen
             </a>
             , and{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               lean-mass estimate
             </a>
             .
@@ -175,11 +175,11 @@ export default function OverweightPageClient() {
           <h2 className={h2Class}>Related Tools</h2>
           <p className={pClass}>
             For direct BMI category screening, use the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
+            <a className="text-primary underline" href="/tools">
               adult BMI calculator
             </a>
             . For practical goal setting, pair this with the{" "}
-            <a className="text-primary underline" href="/ideal-weight-calculator">
+            <a className="text-primary underline" href="/tools">
               healthy-weight range planner
             </a>
             .

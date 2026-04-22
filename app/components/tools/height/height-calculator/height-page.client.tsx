@@ -100,15 +100,15 @@ export default function HeightPageClient() {
           </p>
           <p className={pClass}>
             If you want only the family target-height method without probability modeling, use the{" "}
-            <a className="text-primary underline" href="/mid-parental-height-calculator">
+            <a className="text-primary underline" href="/tools">
               Mid-Parental Height Calculator
             </a>
             . If you want a visual, photo-based adult-height estimate, try the{" "}
-            <a className="text-primary underline" href="/height-estimator">
+            <a className="text-primary underline" href="/tools">
               Height Estimator
             </a>
             . If you are planning around adult-weight context after height estimation, compare with the{" "}
-            <a className="text-primary underline" href="/ideal-weight-calculator">
+            <a className="text-primary underline" href="/tools">
               Ideal Weight Calculator
             </a>
             .

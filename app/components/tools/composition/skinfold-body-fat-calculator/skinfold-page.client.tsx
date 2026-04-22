@@ -204,19 +204,19 @@ export default function SkinfoldBodyFatPageClient() {
           </p>
           <p className={pClass}>
             For comparison, check the{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Navy Body Fat Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/army-body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Army Body Fat Calculator
             </a>
             {" "}plus the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>{" "}
             for waist-centered roundness context, or the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
+            <a className="text-primary underline" href="/tools">
               BAI Calculator
             </a>{" "}
             for hip-height adiposity.

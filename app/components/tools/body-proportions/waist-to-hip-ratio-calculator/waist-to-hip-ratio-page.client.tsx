@@ -76,19 +76,19 @@ export default function WaistToHipRatioPageClient() {
           </p>
           <p className={pClass}>
             For waist-size target planning, compare with the{" "}
-            <a className="text-primary underline" href="/ideal-waist-size-calculator">
+            <a className="text-primary underline" href="/tools">
               Ideal Waist Size Calculator
             </a>
             . For taper ratio context, use the{" "}
-            <a className="text-primary underline" href="/shoulder-to-waist-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Shoulder to Waist Ratio Calculator
             </a>
             . For broad screening, compare with the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
+            <a className="text-primary underline" href="/tools">
               BMI Calculator
             </a>
             . For waist-height context, use the{" "}
-            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Waist to Height Ratio Calculator
             </a>
             .

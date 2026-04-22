@@ -104,15 +104,15 @@ export default function MuscularPotentialPageClient() {
           </p>
           <p className={pClass}>
             For direct FFMI comparison, use the{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
+            <a className="text-primary underline" href="/tools">
               FFMI Calculator
             </a>
             . For frame context, use the{" "}
-            <a className="text-primary underline" href="/body-frame-size-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Frame Size Calculator
             </a>
             . For natural-vs-suspicious screening context, compare with the{" "}
-            <a className="text-primary underline" href="/natty-or-not-calculator">
+            <a className="text-primary underline" href="/tools">
               Natty or Not Calculator
             </a>
             .
@@ -120,14 +120,14 @@ export default function MuscularPotentialPageClient() {
           <p className={pClass}>
             If you want an anthropometric bodybuilding model using wrist and ankle structure, compare with
             the{" "}
-            <a className="text-primary underline" href="/casey-butt-calculator">
+            <a className="text-primary underline" href="/tools">
               Casey Butt Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If you want a single composite score blending structure leverage and projected potential, use the{" "}
-            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
+            <a className="text-primary underline" href="/tools">
               Bodybuilding Genetics Calculator
             </a>
             .

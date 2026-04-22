@@ -87,31 +87,31 @@ export default function RFMCalculatorPageClient() {
           <p className={pClass}>
             For practical tracking, pair RFM with waist logs, progress photos, and performance markers.
             If you also want a height/weight-based lean-mass estimate, run the{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Lean Body Mass Calculator
             </a>
             . For an anthropometric skeletal muscle estimate, compare with the{" "}
-            <a className="text-primary underline" href="/muscle-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscle Mass Calculator
             </a>
             . For waist-height roundness context, use the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>
             . For hip-adjusted waist context, use the{" "}
-            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Waist to Hip Ratio Calculator
             </a>
             . For waist-height screening context, use the{" "}
-            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Waist to Height Ratio Calculator
             </a>
             . For hip-height adiposity context, use the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
+            <a className="text-primary underline" href="/tools">
               BAI Calculator
             </a>
             . For caliper-based body-fat measurements, use the{" "}
-            <a className="text-primary underline" href="/skinfold-body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Skinfold Body Fat Calculator
             </a>
             .

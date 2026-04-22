@@ -87,11 +87,11 @@ export default function MidParentalHeightPageClient() {
           </p>
           <p className={pClass}>
             If you want to compare a specific target height against this estimate, use the{" "}
-            <a className="text-primary underline" href="/height-calculator">
+            <a className="text-primary underline" href="/tools">
               Height Calculator
             </a>{" "}
             for probability modeling. For photo-based visual height approximation, use the{" "}
-            <a className="text-primary underline" href="/height-estimator">
+            <a className="text-primary underline" href="/tools">
               Height Estimator
             </a>
             .

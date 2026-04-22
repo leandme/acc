@@ -274,7 +274,7 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
       {
         title: "Body-shape classification",
         description:
-          "Use Body Shape Analyzer and Body Shape Calculator for visual and measurement-based shape context.",
+          "Use Body Visualizer for visual body-shape context and scenario-based comparisons.",
       },
       {
         title: "Waist-centered screening",
@@ -317,11 +317,11 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
       },
     ],
     cta: {
-      toolSlug: "body-shape-calculator",
-      toolName: "Body Shape Calculator",
+      toolSlug: "body-visualizer",
+      toolName: "Body Visualizer",
       description:
-        "Start here for a practical baseline, then cross-check with waist-ratio and frame tools.",
-      label: "Open Body Shape Calculator",
+        "Start with visual body-shape scenarios, then cross-check with fat-estimation and measurement trends.",
+      label: "Open Body Visualizer",
     },
   },
   weight: {

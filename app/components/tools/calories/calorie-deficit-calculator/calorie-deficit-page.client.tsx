@@ -64,32 +64,32 @@ export default function CalorieDeficitPageClient() {
           <h2 className={h2Class}>How To Use Deficit Targets</h2>
           <p className={pClass}>
             Start with a conservative pace, then adjust based on 2 to 4 weeks of trend data. Use the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             or the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Calculator
             </a>{" "}
             for maintenance-and-goal calorie targets, and use the{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Calculator
             </a>{" "}
             for timeline projection. To estimate movement-driven calorie output from walking volume, use the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
+            <a className="text-primary underline" href="/tools">
               Steps to Calories Calculator
             </a>
             . For a broader menu of gym and cardio activities, use the{" "}
-            <a className="text-primary underline" href="/calories-burned-calculator">
+            <a className="text-primary underline" href="/tools">
               Calories Burned Calculator
             </a>
             . If your daily intake varies by meal composition, log meal photos in the{" "}
-            <a className="text-primary underline" href="/calorie-counter">
+            <a className="text-primary underline" href="/tools">
               Calorie Counter
             </a>{" "}
             and average those values across the week. To set macro gram targets from this intake goal, use
             the{" "}
-            <a className="text-primary underline" href="/macro-calculator">
+            <a className="text-primary underline" href="/tools">
               Macro Calculator
             </a>
             .
@@ -110,11 +110,11 @@ export default function CalorieDeficitPageClient() {
           </p>
           <p className={pClass}>
             For intermittent-fasting split intakes, compare with the{" "}
-            <a className="text-primary underline" href="/fasting-weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Fasting Weight Loss Calculator
             </a>
             {" "}or the{" "}
-            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+            <a className="text-primary underline" href="/tools">
               Intermittent Fasting Calculator
             </a>{" "}
             for protocol-based intake scenarios.

@@ -62,15 +62,15 @@ export default function BMRPageClient() {
           <h2 className={h2Class}>How BMR Relates to TDEE</h2>
           <p className={pClass}>
             BMR is not maintenance calories. To estimate maintenance, multiply by activity level in the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>
             . From there, build a practical intake with the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             {" "}or the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Calculator
             </a>
             .

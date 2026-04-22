@@ -253,7 +253,7 @@ export default function NattyOrNotCalculator({ onChange }: Props) {
                   helper={
                     <>
                       Measure at the narrowest wrist point. For context, compare with{" "}
-                      <a href="/body-frame-size-calculator" className="text-primary underline font-semibold">
+                      <a href="/tools" className="text-primary underline font-semibold">
                         Body Frame Size Calculator
                       </a>
                       .
@@ -312,7 +312,7 @@ export default function NattyOrNotCalculator({ onChange }: Props) {
                   helper={
                     <>
                       Measure at the narrowest wrist point. For context, compare with{" "}
-                      <a href="/body-frame-size-calculator" className="text-primary underline font-semibold">
+                      <a href="/tools" className="text-primary underline font-semibold">
                         Body Frame Size Calculator
                       </a>
                       .

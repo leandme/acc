@@ -63,12 +63,12 @@ export default function BodyFatCalculatorPageClient() {
             your weight to estimate fat mass and lean mass from the resulting
             body fat percentage. For height/weight-only lean-mass formulas,
             compare with the{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Lean Body Mass Calculator
             </a>
             . For a circumference-and-skinfold skeletal muscle estimate, compare
             with the{" "}
-            <a className="text-primary underline" href="/muscle-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscle Mass Calculator
             </a>
             .
@@ -123,14 +123,14 @@ export default function BodyFatCalculatorPageClient() {
             <li>Smart scales (BIA): convenient, hydration-sensitive.</li>
             <li>
               BRI: waist-height roundness estimate (try the{" "}
-              <a className="text-primary underline" href="/bri-calculator">
+              <a className="text-primary underline" href="/tools">
                 BRI Calculator
               </a>
               ).
             </li>
             <li>
               BAI: hip-height adiposity estimate (try the{" "}
-              <a className="text-primary underline" href="/bai-calculator">
+              <a className="text-primary underline" href="/tools">
                 BAI Calculator
               </a>
               ).

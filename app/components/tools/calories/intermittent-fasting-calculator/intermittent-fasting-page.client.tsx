@@ -93,23 +93,23 @@ export default function IntermittentFastingPageClient() {
           ) : null}
           <p className={pClass}>
             For a day-by-day projection based on fasting vs non-fasting days, compare this with the{" "}
-            <a className="text-primary underline" href="/fasting-weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Fasting Weight Loss Calculator
             </a>
             . For non-fasting setups, use the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             {" "}or the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Calculator
             </a>
             . To estimate real meal intake by photo on feeding days, use the{" "}
-            <a className="text-primary underline" href="/calorie-counter">
+            <a className="text-primary underline" href="/tools">
               Calorie Counter
             </a>
             . To estimate walking output from your daily step target, add the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
+            <a className="text-primary underline" href="/tools">
               Steps to Calories Calculator
             </a>
             .
@@ -128,11 +128,11 @@ export default function IntermittentFastingPageClient() {
           </p>
           <p className={pClass}>
             For underlying maintenance assumptions, run the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/bmr-calculator">
+            <a className="text-primary underline" href="/tools">
               BMR Calculator
             </a>
             .

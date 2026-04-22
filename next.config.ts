@@ -1,5 +1,77 @@
 import type { NextConfig } from "next";
 
+const REMOVED_TOOL_SLUGS = [
+  "skinfold-body-fat-calculator",
+  "calorie-calculator",
+  "tdee-calculator",
+  "bmr-calculator",
+  "army-body-fat-calculator",
+  "body-fat-calculator",
+  "lean-body-mass-calculator",
+  "body-frame-size-calculator",
+  "natty-or-not-calculator",
+  "muscular-potential-calculator",
+  "casey-butt-calculator",
+  "bodybuilding-genetics-calculator",
+  "rfm-calculator",
+  "bri-calculator",
+  "visceral-fat-calculator",
+  "body-shape-calculator",
+  "shoulder-to-waist-ratio-calculator",
+  "mid-parental-height-calculator",
+  "overweight-calculator",
+  "adjusted-body-weight-calculator",
+  "ponderal-index-calculator",
+  "broca-index-calculator",
+  "waist-to-hip-ratio-calculator",
+  "waist-to-height-ratio-calculator",
+  "bai-calculator",
+  "muscle-mass-calculator",
+  "ideal-waist-size-calculator",
+  "steps-to-calories-calculator",
+  "calories-burned-calculator",
+  "bmi-calculator",
+  "weight-loss-calculator",
+  "weight-loss-percentage-calculator",
+  "fasting-weight-loss-calculator",
+  "intermittent-fasting-calculator",
+  "ideal-weight-calculator",
+  "ape-index-calculator",
+  "calorie-deficit-calculator",
+  "macro-calculator",
+  "calorie-counter",
+  "age-guesser",
+  "height-calculator",
+  "ffmi-calculator",
+  "attractiveness-test",
+  "face-symmetry-test",
+  "eyebrow-type-detector",
+  "hair-color-detector",
+  "hair-type-detector",
+  "lip-shape-detector",
+  "nose-shape-detector",
+  "skin-analyzer",
+  "golden-face-ratio-analyzer",
+  "face-shape-detector",
+  "eye-shape-detector",
+  "height-estimator",
+  "body-shape-analyzer",
+] as const;
+
+const REMOVED_CATEGORY_SLUGS = ["muscle", "height", "face", "weight", "calories"] as const;
+
+const REMOVED_TOOL_REDIRECTS = REMOVED_TOOL_SLUGS.map((slug) => ({
+  source: `/${slug}`,
+  destination: "/",
+  permanent: true,
+}));
+
+const REMOVED_CATEGORY_REDIRECTS = REMOVED_CATEGORY_SLUGS.map((slug) => ({
+  source: `/tools/${slug}`,
+  destination: "/",
+  permanent: true,
+}));
+
 const nextConfig: NextConfig = {
   async redirects() {
     return [
@@ -12,6 +84,11 @@ const nextConfig: NextConfig = {
       {
         source: "/tools/body-fat",
         destination: "/tools/fat",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/tools",
+        destination: "/estimate",
         permanent: true, // 301 redirect
       },
       {
@@ -31,12 +108,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tools/body-weight",
-        destination: "/tools/weight",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
         source: "/tools/metabolism",
-        destination: "/tools/calories",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
@@ -96,14 +173,16 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/calorie-estimator",
-        destination: "/calorie-counter",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
         source: "/calorie-scanner",
-        destination: "/calorie-counter",
+        destination: "/",
         permanent: true, // 301 redirect
       },
+      ...REMOVED_CATEGORY_REDIRECTS,
+      ...REMOVED_TOOL_REDIRECTS,
     ];
   },
 };

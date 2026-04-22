@@ -256,15 +256,15 @@ export default function BodyShapePageClient() {
           </p>
           <p className={pClass}>
             For body-fat and waist-risk context, pair this result with the{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Fat Calculator
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Waist to Hip Ratio Calculator
             </a>
             , and{" "}
-            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Waist to Height Ratio Calculator
             </a>
             .

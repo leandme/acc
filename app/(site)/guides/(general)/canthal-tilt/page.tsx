@@ -145,11 +145,10 @@ export default function CanfulTiltGuidePage() {
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
             You can run this through our{" "}
-            <a className="text-primary underline" href="/eye-shape-detector">
-              cantal tilt calculator
+            <a className="text-primary underline" href="/tools">
+              facial analysis tools
             </a>{" "}
-            workflow, where the scan estimates canthal angle and category together with eye-shape
-            context.
+            workflow, where image-based scans estimate canthal angle and related eye-area context.
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
             A manual check also works: draw a horizontal reference line, then compare it to the line
@@ -246,8 +245,8 @@ export default function CanfulTiltGuidePage() {
               what makes a face attractive
             </a>{" "}
             and run one additional scan from{" "}
-            <a className="text-primary underline" href="/tools/face">
-              Face Tools
+            <a className="text-primary underline" href="/tools">
+              our tools library
             </a>
             .
           </p>

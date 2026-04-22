@@ -94,7 +94,7 @@ export default function MuscleMassPageClient() {
           </ul>
           <p className={pClass}>
             For a simpler estimate from height and weight only, compare with the{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Lean Body Mass Calculator
             </a>
             .

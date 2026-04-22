@@ -77,15 +77,15 @@ export default function ArmyBodyFatCalculatorPageClient() {
             Measurement technique is the largest driver of day-to-day variance.
             Keep protocol consistent to make trend lines useful.
             For caliper-based site measurements, compare with the{" "}
-            <a className="text-primary underline" href="/skinfold-body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Skinfold Body Fat Calculator
             </a>
             {" "}and for waist-height roundness, run the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>
             {" "}and for hip-height adiposity, compare with the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
+            <a className="text-primary underline" href="/tools">
               BAI Calculator
             </a>
             .

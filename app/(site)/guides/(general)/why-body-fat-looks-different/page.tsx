@@ -113,11 +113,11 @@ export default function BlogPostPage() {
 
           <p className="text-gray-700 text-lg leading-relaxed">
             To track waist-centered roundness directly, use the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>{" "}
             alongside your usual body-fat method, and compare hip-height adiposity with the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
+            <a className="text-primary underline" href="/tools">
               BAI Calculator
             </a>
             .
@@ -143,7 +143,7 @@ export default function BlogPostPage() {
 
           <p className="text-gray-700 text-lg leading-relaxed">
             If you want to quantify your skeletal build, use the{" "}
-            <a className="text-primary underline" href="/body-frame-size-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Frame Size Calculator
             </a>
             .
@@ -186,23 +186,23 @@ export default function BlogPostPage() {
           </ul>
           <p className="text-gray-700 text-lg leading-relaxed">
             For scale trend context while you track appearance, add the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
+            <a className="text-primary underline" href="/tools">
               BMI Calculator
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Calculator
             </a>
             , and{" "}
-            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Percentage Calculator
             </a>
             . To set maintenance and calorie targets for that trend, use the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             .

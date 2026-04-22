@@ -63,7 +63,7 @@ export default function BMIPageClient() {
           <p className={pClass}>
             BMI is best for general screening. If your intent is planning around how much weight sits above
             the healthy range, use the{" "}
-            <a className="text-primary underline" href="/overweight-calculator">
+            <a className="text-primary underline" href="/tools">
               BMI-based overweight calculator
             </a>{" "}
             for a direct kg-above-threshold result.
@@ -71,30 +71,30 @@ export default function BMIPageClient() {
           <p className={pClass}>
             A practical sequence is: screen with BMI, quantify current gap above healthy range, then map a
             timeline using the{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               target-weight timeline calculator
             </a>
             . For calorie targets behind that plan, run the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             For height-focused planning and family-based context, use the{" "}
-            <a className="text-primary underline" href="/height-calculator">
+            <a className="text-primary underline" href="/tools">
               Height Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/height-estimator">
+            <a className="text-primary underline" href="/tools">
               Height Estimator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/mid-parental-height-calculator">
+            <a className="text-primary underline" href="/tools">
               Mid-Parental Height Calculator
             </a>
             .
@@ -109,23 +109,23 @@ export default function BMIPageClient() {
           </p>
           <p className={pClass}>
             For body-composition context, compare with a{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               tape-based body fat estimate
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               waist-to-hip ratio risk check
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               waist-to-height ratio screen
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               waist-to-height roundness check
             </a>
             , and{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
+            <a className="text-primary underline" href="/tools">
               height-normalized muscularity score (FFMI)
             </a>
             .

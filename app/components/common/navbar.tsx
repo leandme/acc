@@ -49,18 +49,6 @@ export default function Navbar() {
                 Body Visualizer
               </a>
             </li>
-          
-            <li>
-              <a
-                href="/tools"
-                onClick={() =>
-                  trackEvent("Go to Tools Page", { location: "navbar mobile" })
-                }
-                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
-              >
-                <span className="">Tools</span>
-              </a>
-            </li>
           </ul>
         </div>
         
@@ -99,17 +87,6 @@ export default function Navbar() {
                 className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
               >
                 Body Visualizer
-              </a>
-            </li>
-            <li>
-              <a
-                href="/tools"
-                onClick={() =>
-                  trackEvent("Go to Tools Page", { location: "navbar desktop" })
-                }
-                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
-              >
-                <span className="">Tools</span>
               </a>
             </li>
           </ul>

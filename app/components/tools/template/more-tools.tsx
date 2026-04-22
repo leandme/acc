@@ -131,6 +131,12 @@ export function MoreTools({
     ? `/tools/${currentCategoryMeta.slug}`
     : "/tools";
 
+  const isRedundantSingleFatTool =
+    headingLabel === "More Fat Tools" &&
+    tools.length === 1 &&
+    tools[0]?.slug === "estimate";
+  if (isRedundantSingleFatTool) return null;
+
   return (
     <>
       <EzoicAdSlot id={112} className="mt-10" />

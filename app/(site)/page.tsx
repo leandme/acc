@@ -5,8 +5,6 @@ import Comparison from "../components/home/comparison";
 import ToolExplainer from "../components/home/tool-explainer";
 import Hero from "../components/home/hero";
 import Reviews from "../components/home/reviews";
-import ToolCardLinkGrid from "../components/home/tool-card-links";
-import SEOExplainer from "../components/home/seo-explainer";
 import GuideCards from "../components/home/guide-cards";
 import { buildPageMetadata } from "@/app/libs/seo";
 
@@ -26,8 +24,6 @@ export default function Home() {
       <Examples />
       <Comparison />
       <ToolExplainer />
-      <ToolCardLinkGrid columns={3} />
-      <SEOExplainer />
       <Reviews />
       <FAQ />
       <GuideCards />

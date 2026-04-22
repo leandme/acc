@@ -64,37 +64,37 @@ export default function BrocaPageClient() {
           <h2 className={h2Class}>How To Use Broca Index Today</h2>
           <p className={pClass}>
             Use Broca as a quick historical reference, then validate with modern tools: the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
+            <a className="text-primary underline" href="/tools">
               BMI Calculator
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/ideal-weight-calculator">
+            <a className="text-primary underline" href="/tools">
               Ideal Weight Calculator
             </a>
             , and{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             For calorie planning linked to these targets, use the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If your goal is body-composition quality rather than scale-only targets, combine with the{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Fat Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
+            <a className="text-primary underline" href="/tools">
               FFMI Calculator
             </a>
             .

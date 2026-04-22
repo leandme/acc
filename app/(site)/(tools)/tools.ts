@@ -126,6 +126,63 @@ export type ToolCategoryTab = {
   href: string;
 };
 
+const REMOVED_TOOL_SLUGS = new Set<string>([
+  "skinfold-body-fat-calculator",
+  "calorie-calculator",
+  "tdee-calculator",
+  "bmr-calculator",
+  "army-body-fat-calculator",
+  "body-fat-calculator",
+  "lean-body-mass-calculator",
+  "body-frame-size-calculator",
+  "natty-or-not-calculator",
+  "muscular-potential-calculator",
+  "casey-butt-calculator",
+  "bodybuilding-genetics-calculator",
+  "rfm-calculator",
+  "bri-calculator",
+  "visceral-fat-calculator",
+  "body-shape-calculator",
+  "shoulder-to-waist-ratio-calculator",
+  "mid-parental-height-calculator",
+  "overweight-calculator",
+  "adjusted-body-weight-calculator",
+  "ponderal-index-calculator",
+  "broca-index-calculator",
+  "waist-to-hip-ratio-calculator",
+  "waist-to-height-ratio-calculator",
+  "bai-calculator",
+  "muscle-mass-calculator",
+  "ideal-waist-size-calculator",
+  "steps-to-calories-calculator",
+  "calories-burned-calculator",
+  "bmi-calculator",
+  "weight-loss-calculator",
+  "weight-loss-percentage-calculator",
+  "fasting-weight-loss-calculator",
+  "intermittent-fasting-calculator",
+  "ideal-weight-calculator",
+  "ape-index-calculator",
+  "calorie-deficit-calculator",
+  "macro-calculator",
+  "calorie-counter",
+  "age-guesser",
+  "height-calculator",
+  "ffmi-calculator",
+  "attractiveness-test",
+  "face-symmetry-test",
+  "eyebrow-type-detector",
+  "hair-color-detector",
+  "hair-type-detector",
+  "lip-shape-detector",
+  "nose-shape-detector",
+  "skin-analyzer",
+  "golden-face-ratio-analyzer",
+  "face-shape-detector",
+  "eye-shape-detector",
+  "height-estimator",
+]);
+
 export const TOOLS: Record<string, ToolMeta> = {
 
 // BODY COMPOSITION / SHAPE
@@ -225,12 +282,6 @@ export const TOOLS: Record<string, ToolMeta> = {
     description: "Calculate wingspan-to-height ratio and wingspan-height reach difference.",
     category: "Shape",
   },
-  "body-shape-analyzer": {
-    slug: "body-shape-analyzer",
-    title: "Body Shape Analyzer",
-    description: "Upload a photo and analyze your visual body type.",
-    category: "Shape",
-  },
   "body-shape-calculator": {
     slug: "body-shape-calculator",
     title: "Body Shape Calculator",
@@ -253,7 +304,7 @@ export const TOOLS: Record<string, ToolMeta> = {
     slug: "jawline-check",
     title: "Jawline Check",
     description: "Upload a side-profile photo to estimate jawline angle and classify jawline type with AI.",
-    category: "Face",
+    category: "Shape",
   },
   "age-guesser": {
     slug: "age-guesser",
@@ -489,11 +540,13 @@ export const TOOLS: Record<string, ToolMeta> = {
 
 // --- helpers ---
 export function toolsArray() {
-  return Object.values(TOOLS);
+  return Object.values(TOOLS).filter((tool) => !REMOVED_TOOL_SLUGS.has(tool.slug));
 }
 
 export function pickTools(slugs: string[]) {
-  return slugs.map((s) => TOOLS[s]).filter(Boolean);
+  return slugs
+    .map((s) => TOOLS[s])
+    .filter((tool): tool is ToolMeta => Boolean(tool) && !REMOVED_TOOL_SLUGS.has(tool.slug));
 }
 
 export function getToolsByCategories(categories: ToolCategory[]) {
@@ -502,7 +555,11 @@ export function getToolsByCategories(categories: ToolCategory[]) {
 }
 
 export function toolCategoryArray() {
-  return TOOL_CATEGORY_ORDER.map((category) => TOOL_CATEGORY_META_BY_NAME[category]);
+  return TOOL_CATEGORY_ORDER
+    .filter((category) =>
+      toolsArray().some((tool) => tool.category === category)
+    )
+    .map((category) => TOOL_CATEGORY_META_BY_NAME[category]);
 }
 
 export function getToolCategoryMeta(category: ToolCategory) {

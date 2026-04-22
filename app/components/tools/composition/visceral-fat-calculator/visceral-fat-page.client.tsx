@@ -92,18 +92,18 @@ export default function VisceralFatCalculatorPageClient() {
           </p>
           <p className={pClass}>
             For lean-mass context alongside VAT trends, compare results with the{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Lean Body Mass Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             For a simpler waist-height roundness estimate, run the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>
             . For a hip-height adiposity estimate, compare with the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
+            <a className="text-primary underline" href="/tools">
               BAI Calculator
             </a>
             .

@@ -615,7 +615,7 @@ function EyeShapePageContent() {
                   ) : null}
 
                   <div className="mt-6 sm:mt-8 flex flex-col gap-3">
-                    <a href="/eye-shape-detector" className="btn btn-outline btn-lg w-full">
+                    <a href="/tools" className="btn btn-outline btn-lg w-full">
                       <span className="whitespace-nowrap">Estimate Again</span>
                     </a>
                   </div>
@@ -627,37 +627,6 @@ function EyeShapePageContent() {
       </section>
 
       <section className="px-6">
-        <div id="canthal-tilt-interpretation" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <h2 className={h2Class}>Canthal Tilt Interpretation</h2>
-            {analysis ? (
-              <span
-                className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold ${tiltBadgeClass(
-                  analysis.canthalTilt
-                )}`}
-              >
-                {analysis.canthalTiltLabel.toUpperCase()}
-                {analysis.canthalTiltAngle != null ? ` ${analysis.canthalTiltAngle.toFixed(1)}°` : ""}
-              </span>
-            ) : null}
-          </div>
-          <p className="mt-4 text-center text-lg text-gray-700">
-            Marker shows estimated canthal tilt angle from negative to positive range.
-          </p>
-          {analysis?.canthalTiltAngle != null ? (
-            <div className="mt-8">
-              <CanthalTiltBar angle={analysis.canthalTiltAngle} />
-            </div>
-          ) : (
-            <div className="mt-8 rounded-2xl border bg-white p-6 shadow-sm">
-              <p className="text-center text-lg text-gray-700">
-                No numeric tilt angle was extracted from this image. Try a clearer front-facing photo with both
-                eyes fully visible.
-              </p>
-            </div>
-          )}
-        </div>
-
         <div id="what-is-my-eye-shape" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <div className="flex flex-wrap items-center justify-center gap-3">
             <h2 className={h2Class}>What Is My Eye Shape?</h2>
@@ -712,6 +681,37 @@ function EyeShapePageContent() {
               );
             })}
           </div>
+        </div>
+
+        <div id="canthal-tilt-interpretation" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <h2 className={h2Class}>Canthal Tilt Interpretation</h2>
+            {analysis ? (
+              <span
+                className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold ${tiltBadgeClass(
+                  analysis.canthalTilt
+                )}`}
+              >
+                {analysis.canthalTiltLabel.toUpperCase()}
+                {analysis.canthalTiltAngle != null ? ` ${analysis.canthalTiltAngle.toFixed(1)}°` : ""}
+              </span>
+            ) : null}
+          </div>
+          <p className="mt-4 text-center text-lg text-gray-700">
+            Marker shows estimated canthal tilt angle from negative to positive range.
+          </p>
+          {analysis?.canthalTiltAngle != null ? (
+            <div className="mt-8">
+              <CanthalTiltBar angle={analysis.canthalTiltAngle} />
+            </div>
+          ) : (
+            <div className="mt-8 rounded-2xl border bg-white p-6 shadow-sm">
+              <p className="text-center text-lg text-gray-700">
+                No numeric tilt angle was extracted from this image. Try a clearer front-facing photo with both
+                eyes fully visible.
+              </p>
+            </div>
+          )}
         </div>
 
         <div id="result-confidence" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">

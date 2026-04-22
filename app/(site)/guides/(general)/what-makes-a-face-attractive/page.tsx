@@ -167,12 +167,12 @@ export default function WhatMakesAFaceAttractivePage() {
             <li>Pick 2 to 3 features to improve first, not all 10 at once.</li>
             <li>Take weekly photos under the same setup to reduce noise.</li>
             <li>Use{" "}
-              <a className="text-primary underline" href="/attractiveness-test">
+              <a className="text-primary underline" href="/tools">
                 Attractiveness Test
               </a>{" "}
               plus one supporting scan from{" "}
-              <a className="text-primary underline" href="/tools/face">
-                Face Tools
+              <a className="text-primary underline" href="/tools">
+                the tools library
               </a>{" "}
               for better context.
             </li>

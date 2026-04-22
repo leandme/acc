@@ -24,50 +24,27 @@ export default function Footer() {
         </div>
 
         <div className="my-8 h-px bg-white/10" />
-        <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
               Site
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/about">About</a></li>
-              <li><a className="hover:text-white" href="/examples">See Examples</a></li>
               <li><a className="hover:text-white" href="/guides">Guides</a></li>
               <li><a className="hover:text-white" href="/contact">Contact</a></li>
               <li><a className="hover:text-white" href="/sitemap-html">Sitemap</a></li>
-              <li><a className="hover:text-white" href="/tools">All Tools</a></li>
             </ul>
           </div>
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
-              Top Tools
+              Tools
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/estimate">Body Fat Estimate</a></li>
               <li><a className="hover:text-white" href="/body-visualizer">Body Visualizer</a></li>
-              <li><a className="hover:text-white" href="/calorie-counter">Calorie Counter</a></li>
-              <li><a className="hover:text-white" href="/calorie-calculator">Calorie Calculator</a></li>
-              <li><a className="hover:text-white" href="/tdee-calculator">TDEE Calculator</a></li>
-              <li><a className="hover:text-white" href="/bmi-calculator">BMI Calculator</a></li>
-              <li><a className="hover:text-white" href="/face-shape-detector">Face Shape Detector</a></li>
-              <li><a className="hover:text-white" href="/lip-shape-detector">Lip Shape Detector</a></li>
             </ul>
           </div>
-
-          <div>
-            <h6 className="text-lg font-semibold text-gray-200">
-              Tool Categories
-            </h6>
-            <ul className="mt-3 space-y-2 text-base text-gray-300">
-              <li><a className="hover:text-white" href="/tools/fat">Fat</a></li>
-              <li><a className="hover:text-white" href="/tools/muscle">Muscle</a></li>
-              <li><a className="hover:text-white" href="/tools/weight">Weight</a></li>
-              <li><a className="hover:text-white" href="/tools/face">Face</a></li>
-              <li><a className="hover:text-white" href="/tools/calories">Calories</a></li>
-              <li><a className="hover:text-white" href="/tools/height">Height</a></li>
-            </ul>
-          </div>
-
         </div>
 
         {/* Divider */}

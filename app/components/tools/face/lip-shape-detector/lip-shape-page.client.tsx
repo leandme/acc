@@ -554,8 +554,8 @@ function LipShapePageContent() {
               <h3 className="text-2xl font-semibold text-gray-900">Stronger Face Analysis Context</h3>
               <p className="mt-3 text-lg text-gray-700 leading-relaxed">
                 Lip shape is one part of facial harmony. Pairing this with {" "}
-                <a href="/face-shape-detector" className="text-primary underline">Face Shape Detector</a> and {" "}
-                <a href="/eye-shape-detector" className="text-primary underline">Eye Shape Detector</a> can provide
+                <a href="/tools" className="text-primary underline">Face Shape Detector</a> and {" "}
+                <a href="/tools" className="text-primary underline">Eye Shape Detector</a> can provide
                 a broader styling context.
               </p>
             </article>
@@ -597,7 +597,7 @@ function LipShapePageContent() {
           </p>
           <p className={pClass}>
             For wider facial proportion context, compare this result with {" "}
-            <a className="text-primary underline" href="/golden-face-ratio-analyzer">Golden Face Ratio Analyzer</a>{" "}
+            <a className="text-primary underline" href="/tools">Golden Face Ratio Analyzer</a>{" "}
             and face-structure tools.
           </p>
         </div>

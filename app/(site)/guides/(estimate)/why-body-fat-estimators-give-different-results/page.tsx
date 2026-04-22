@@ -256,11 +256,11 @@ export default function BlogPostPage() {
               how to track body fat over time
             </a>{" "}
             and combine it with structured intake planning from the{" "}
-            <a href="/calorie-deficit-calculator" className="text-primary underline">
+            <a href="/tools" className="text-primary underline">
               Calorie Deficit Calculator
             </a>{" "}
             or{" "}
-            <a href="/weight-loss-calculator" className="text-primary underline">
+            <a href="/tools" className="text-primary underline">
               Weight Loss Calculator
             </a>
             .
@@ -268,7 +268,7 @@ export default function BlogPostPage() {
 
           <p className="text-gray-700 text-lg leading-relaxed">
             If you also want context on muscle potential, pair body fat with an{" "}
-            <a href="/ffmi-calculator" className="text-primary underline">
+            <a href="/tools" className="text-primary underline">
               FFMI Calculator
             </a>{" "}
             so you can separate fat-loss progress from lean-mass changes.

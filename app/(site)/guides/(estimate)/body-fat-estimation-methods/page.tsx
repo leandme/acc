@@ -81,13 +81,13 @@ export default function BlogPostPage() {
             waist, neck, and sometimes hips. These measurements are plugged into
             a formula derived from population averages.
             You can test this with the{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">Navy Body Fat Calculator</a>{" "}
+            <a className="text-primary underline" href="/tools">Navy Body Fat Calculator</a>{" "}
             or compare against the{" "}
-            <a className="text-primary underline" href="/army-body-fat-calculator">Army Body Fat Calculator</a>.
+            <a className="text-primary underline" href="/tools">Army Body Fat Calculator</a>.
             For a roundness-focused waist-height metric, compare with the{" "}
-            <a className="text-primary underline" href="/bri-calculator">BRI Calculator</a>. For hip-height
+            <a className="text-primary underline" href="/tools">BRI Calculator</a>. For hip-height
             adiposity context, compare with the{" "}
-            <a className="text-primary underline" href="/bai-calculator">BAI Calculator</a>.
+            <a className="text-primary underline" href="/tools">BAI Calculator</a>.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -112,7 +112,7 @@ export default function BlogPostPage() {
             subcutaneous fat at specific sites on the body. These measurements
             are then converted into a body fat estimate using formulas. You can
             run this method in the{" "}
-            <a className="text-primary underline" href="/skinfold-body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Skinfold Body Fat Calculator
             </a>
             .
@@ -198,23 +198,23 @@ export default function BlogPostPage() {
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
             For scale-based target planning alongside these methods, use the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
+            <a className="text-primary underline" href="/tools">
               BMI Calculator
             </a>
             ,{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Calculator
             </a>
             , and{" "}
-            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Percentage Calculator
             </a>
             . For maintenance and intake targets, add the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             .

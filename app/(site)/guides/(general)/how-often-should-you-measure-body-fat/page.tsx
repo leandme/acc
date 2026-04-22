@@ -125,27 +125,27 @@ export default function BlogPostPage() {
 
           <p className="text-gray-700 text-lg leading-relaxed">
             If you are running a structured fat-loss phase, pair your check-in cadence with a{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               target timeline
             </a>{" "}
             or a{" "}
-            <a className="text-primary underline" href="/fasting-weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               fasting-day / feeding-day projection
             </a>{" "}
             and the{" "}
-            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+            <a className="text-primary underline" href="/tools">
               intermittent fasting protocol estimator
             </a>{" "}
             so your measurements match an actual plan. To set intake targets for that plan, add the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             {" "}and the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
+            <a className="text-primary underline" href="/tools">
               Steps to Calories Calculator
             </a>
             .

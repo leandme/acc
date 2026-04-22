@@ -107,15 +107,15 @@ export default function BodybuildingGeneticsPageClient() {
           </p>
           <p className={pClass}>
             For direct FFMI context, compare with the{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
+            <a className="text-primary underline" href="/tools">
               FFMI Calculator
             </a>
             . For frame-adjusted natural ceiling screening, use the{" "}
-            <a className="text-primary underline" href="/natty-or-not-calculator">
+            <a className="text-primary underline" href="/tools">
               Natty or Not Calculator
             </a>
             . For ceiling utilization and target-weight planning, use the{" "}
-            <a className="text-primary underline" href="/muscular-potential-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscular Potential Calculator
             </a>
             .
@@ -123,7 +123,7 @@ export default function BodybuildingGeneticsPageClient() {
           <p className={pClass}>
             If you want an anthropometric bodybuilding model centered on wrist/ankle structure and estimated
             circumference targets, compare this against the{" "}
-            <a className="text-primary underline" href="/casey-butt-calculator">
+            <a className="text-primary underline" href="/tools">
               Casey Butt Calculator
             </a>
             .
@@ -140,7 +140,7 @@ export default function BodybuildingGeneticsPageClient() {
           <p className={pClass}>
             Body-fat error can distort both current and projected FFMI. For cleaner trend quality, repeat
             inputs under consistent conditions and cross-check body-fat assumptions with methods like the{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Fat Calculator
             </a>{" "}
             or{" "}

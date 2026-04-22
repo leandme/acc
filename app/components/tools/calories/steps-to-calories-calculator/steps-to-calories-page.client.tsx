@@ -75,23 +75,23 @@ export default function StepsToCaloriesPageClient() {
           </p>
           <p className={pClass}>
             For full maintenance setup, run the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>
             {" "}or the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Calculator
             </a>
             . Then convert maintenance into a goal intake with the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>{" "}
             and timeline-check the pace in the{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Calculator
             </a>
             . For non-step activities like cycling, rowing, and HIIT, use the{" "}
-            <a className="text-primary underline" href="/calories-burned-calculator">
+            <a className="text-primary underline" href="/tools">
               Calories Burned Calculator
             </a>
             .

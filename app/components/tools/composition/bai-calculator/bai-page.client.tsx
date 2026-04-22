@@ -97,26 +97,26 @@ export default function BAIPageClient() {
           </p>
           <p className={pClass}>
             For waist-based alternatives, compare with the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/rfm-calculator">
+            <a className="text-primary underline" href="/tools">
               RFM Calculator
             </a>
             . For caliper-based body-fat estimates, use the{" "}
-            <a className="text-primary underline" href="/skinfold-body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Skinfold Body Fat Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If you want lean-mass context in parallel, run the{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Lean Body Mass Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
+            <a className="text-primary underline" href="/tools">
               FFMI Calculator
             </a>
             .

@@ -87,11 +87,11 @@ export default function NattyOrNotPageClient() {
           </div>
           <p className={pClass}>
             If you want to isolate the FFMI part without the frame adjustment, use the{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
+            <a className="text-primary underline" href="/tools">
               FFMI Calculator
             </a>
             . If you want to verify the frame context directly, use the{" "}
-            <a className="text-primary underline" href="/body-frame-size-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Frame Size Calculator
             </a>
             .
@@ -130,15 +130,15 @@ export default function NattyOrNotPageClient() {
           </p>
           <p className={pClass}>
             For better context, pair this with the{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Lean Body Mass Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/muscle-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscle Mass Calculator
             </a>
             . If body-fat is uncertain, cross-check with the{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Fat Calculator
             </a>{" "}
             or{" "}
@@ -149,14 +149,14 @@ export default function NattyOrNotPageClient() {
           </p>
           <p className={pClass}>
             For a dedicated ceiling-utilization model with stage projections, use the{" "}
-            <a className="text-primary underline" href="/muscular-potential-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscular Potential Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             For a combined structure-plus-potential composite score, compare with the{" "}
-            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
+            <a className="text-primary underline" href="/tools">
               Bodybuilding Genetics Calculator
             </a>
             .

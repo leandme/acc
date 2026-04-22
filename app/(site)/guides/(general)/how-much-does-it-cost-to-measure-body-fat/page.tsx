@@ -82,7 +82,7 @@ export default function BlogPostPage() {
           <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
             <li>
               <strong>Body fat calculators (Navy, BMI-based):</strong> Free (try the{" "}
-              <a className="text-primary underline" href="/body-fat-calculator">Body Fat Calculator</a>)
+              <a className="text-primary underline" href="/tools">Body Fat Calculator</a>)
             </li>
             <li>
               <strong>Smart scales (BIA):</strong> $20–$150 one-time

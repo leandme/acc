@@ -67,32 +67,32 @@ export default function TDEEPageClient() {
           <p className={pClass}>
             TDEE is a starting anchor, not a fixed truth. For weight-loss planning, convert this into a
             target intake with the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>{" "}
             or use the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Calculator
             </a>{" "}
             for a maintenance-to-goal intake setup in one view, then timeline-check with the{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Calculator
             </a>
             . To model calorie output from a walking step target, use the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
+            <a className="text-primary underline" href="/tools">
               Steps to Calories Calculator
             </a>
             . For more activity types (running, lifting, HIIT, cycling, and more), use the{" "}
-            <a className="text-primary underline" href="/calories-burned-calculator">
+            <a className="text-primary underline" href="/tools">
               Calories Burned Calculator
             </a>
             . If you want meal-level intake estimates from photos, use the{" "}
-            <a className="text-primary underline" href="/calorie-counter">
+            <a className="text-primary underline" href="/tools">
               Calorie Counter
             </a>{" "}
             and compare weekly average intake against this maintenance target. To convert calorie goals into
             protein, carb, and fat gram targets, use the{" "}
-            <a className="text-primary underline" href="/macro-calculator">
+            <a className="text-primary underline" href="/tools">
               Macro Calculator
             </a>
             .
@@ -114,7 +114,7 @@ export default function TDEEPageClient() {
           </p>
           <p className={pClass}>
             For resting-only energy needs, use the{" "}
-            <a className="text-primary underline" href="/bmr-calculator">
+            <a className="text-primary underline" href="/tools">
               BMR Calculator
             </a>{" "}
             and then layer activity on top.

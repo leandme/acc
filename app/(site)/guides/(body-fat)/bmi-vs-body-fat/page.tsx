@@ -60,7 +60,7 @@ export default function BlogPostPage() {
             BMI (Body Mass Index) is calculated using only height and weight. It
             does not measure fat, muscle, bone density, or body composition.
             You can run a direct BMI check with the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
+            <a className="text-primary underline" href="/tools">
               BMI Calculator
             </a>
             .
@@ -168,37 +168,37 @@ export default function BlogPostPage() {
             composition changes, BMI will quickly become noise.
             If you also want to separate lean-mass progress from fat changes,
             use the{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">FFMI Calculator</a>{" "}
+            <a className="text-primary underline" href="/tools">FFMI Calculator</a>{" "}
             and the{" "}
-            <a className="text-primary underline" href="/muscle-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscle Mass Calculator
             </a>{" "}
             alongside body-fat tracking. For skeletal-build context, add the{" "}
-            <a className="text-primary underline" href="/body-frame-size-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Frame Size Calculator
             </a>
             . For waist-centered roundness, compare with the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>
             . For hip-height adiposity context, add the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
+            <a className="text-primary underline" href="/tools">
               BAI Calculator
             </a>
             . For weight-target planning, add the{" "}
-            <a className="text-primary underline" href="/ideal-weight-calculator">
+            <a className="text-primary underline" href="/tools">
               Ideal Weight Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Calculator
             </a>
             . To convert goals into calorie targets, run the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             .
@@ -206,15 +206,15 @@ export default function BlogPostPage() {
 
           <p className="text-gray-700 text-lg leading-relaxed">
             For height-weight-only screening variants, compare your{" "}
-            <a className="text-primary underline" href="/overweight-calculator">
+            <a className="text-primary underline" href="/tools">
               weight above the healthy BMI ceiling
             </a>
             , check the{" "}
-            <a className="text-primary underline" href="/ponderal-index-calculator">
+            <a className="text-primary underline" href="/tools">
               ponderal index alternative
             </a>
             , and contrast with the{" "}
-            <a className="text-primary underline" href="/broca-index-calculator">
+            <a className="text-primary underline" href="/tools">
               Broca reference method
             </a>
             .

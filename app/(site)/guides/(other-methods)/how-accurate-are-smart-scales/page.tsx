@@ -141,7 +141,7 @@ export default function BlogPostPage() {
           </ul>
           <p className="text-gray-700 text-lg leading-relaxed">
             To quantify progress cleanly from your scale logs, use the{" "}
-            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+            <a className="text-primary underline" href="/tools">
               Weight Loss Percentage Calculator
             </a>
             .
@@ -162,60 +162,60 @@ export default function BlogPostPage() {
           <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
             <li><strong>DEXA scans:</strong> more accurate, but expensive and infrequent</li>
             <li><strong>Tape or Navy method:</strong> formula-based, assumption-heavy (compare with the{" "}
-              <a className="text-primary underline" href="/body-fat-calculator">Body Fat Calculator</a>)</li>
+              <a className="text-primary underline" href="/tools">Body Fat Calculator</a>)</li>
             <li>
               <strong>BRI:</strong> waist-height roundness estimate (try the{" "}
-              <a className="text-primary underline" href="/bri-calculator">
+              <a className="text-primary underline" href="/tools">
                 BRI Calculator
               </a>
               )
             </li>
             <li>
               <strong>BAI:</strong> hip-height adiposity estimate (try the{" "}
-              <a className="text-primary underline" href="/bai-calculator">
+              <a className="text-primary underline" href="/tools">
                 BAI Calculator
               </a>
               )
             </li>
             <li>
               <strong>Lean mass equations:</strong> fast height/weight estimates (try the{" "}
-              <a className="text-primary underline" href="/lean-body-mass-calculator">
+              <a className="text-primary underline" href="/tools">
                 Lean Body Mass Calculator
               </a>
               )
             </li>
             <li>
               <strong>BMI screening:</strong> quick category context from height and weight (try the{" "}
-              <a className="text-primary underline" href="/bmi-calculator">
+              <a className="text-primary underline" href="/tools">
                 BMI Calculator
               </a>
               )
             </li>
             <li>
               <strong>Timeline planning:</strong> estimate pace to target weight (try the{" "}
-              <a className="text-primary underline" href="/weight-loss-calculator">
+              <a className="text-primary underline" href="/tools">
                 Weight Loss Calculator
               </a>
               )
             </li>
             <li>
               <strong>Calorie planning:</strong> estimate maintenance and set intake targets (try the{" "}
-              <a className="text-primary underline" href="/tdee-calculator">
+              <a className="text-primary underline" href="/tools">
                 TDEE Calculator
               </a>{" "}
               and{" "}
-              <a className="text-primary underline" href="/calorie-deficit-calculator">
+              <a className="text-primary underline" href="/tools">
                 Calorie Deficit Calculator
               </a>
               {" "}and the{" "}
-              <a className="text-primary underline" href="/steps-to-calories-calculator">
+              <a className="text-primary underline" href="/tools">
                 Steps to Calories Calculator
               </a>
               )
             </li>
             <li>
               <strong>Skinfold calipers:</strong> site-based fat-thickness estimates (try the{" "}
-              <a className="text-primary underline" href="/skinfold-body-fat-calculator">
+              <a className="text-primary underline" href="/tools">
                 Skinfold Body Fat Calculator
               </a>
               )

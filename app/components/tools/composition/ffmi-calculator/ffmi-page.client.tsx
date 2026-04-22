@@ -91,12 +91,12 @@ export default function FFMICalculatorPageClient() {
           <p className={pClass}>
             If you want an absolute lean-mass estimate before normalizing for
             height, use the{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Lean Body Mass Calculator
             </a>
             . For a skeletal-muscle-specific estimate from circumferences and
             skinfolds, use the{" "}
-            <a className="text-primary underline" href="/muscle-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscle Mass Calculator
             </a>
             .
@@ -105,7 +105,7 @@ export default function FFMICalculatorPageClient() {
           <p className={pClass}>
             To understand how skeletal build can change visual appearance at the
             same body-fat level, check the{" "}
-            <a className="text-primary underline" href="/body-frame-size-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Frame Size Calculator
             </a>
             .
@@ -114,7 +114,7 @@ export default function FFMICalculatorPageClient() {
           <p className={pClass}>
             If your goal is estimating whether your current mass is still within
             common natural limits after frame adjustment, use the{" "}
-            <a className="text-primary underline" href="/natty-or-not-calculator">
+            <a className="text-primary underline" href="/tools">
               Natty or Not Calculator
             </a>
             .
@@ -122,7 +122,7 @@ export default function FFMICalculatorPageClient() {
 
           <p className={pClass}>
             If you want an explicit lean-mass ceiling model and stage table, use the{" "}
-            <a className="text-primary underline" href="/muscular-potential-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscular Potential Calculator
             </a>
             .
@@ -131,7 +131,7 @@ export default function FFMICalculatorPageClient() {
           <p className={pClass}>
             If you want a combined score that blends structure leverage with projected muscular potential, use
             the{" "}
-            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
+            <a className="text-primary underline" href="/tools">
               Bodybuilding Genetics Calculator
             </a>
             .
@@ -139,11 +139,11 @@ export default function FFMICalculatorPageClient() {
 
           <p className={pClass}>
             If you want a waist-centered roundness score, compare with the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>
             . If you prefer a hip-height adiposity estimate, use the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
+            <a className="text-primary underline" href="/tools">
               BAI Calculator
             </a>
             .

@@ -5,7 +5,6 @@ import { showErrorToast } from "@/app/libs/toast";
 type Props = {
   basePath?:
     | "/estimate"
-    | "/body-shape-analyzer"
     | "/calorie-counter"
     | "/height-estimator"
     | "/face-symmetry-test"

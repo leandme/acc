@@ -88,19 +88,19 @@ export default function ShoulderToWaistRatioPageClient() {
           ) : null}
           <p className={pClass}>
             For central-fat screening, use the{" "}
-            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Waist to Height Ratio Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Waist to Hip Ratio Calculator
             </a>
             . For frame and shape context, compare with the{" "}
-            <a className="text-primary underline" href="/body-shape-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Shape Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/body-frame-size-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Frame Size Calculator
             </a>
             .

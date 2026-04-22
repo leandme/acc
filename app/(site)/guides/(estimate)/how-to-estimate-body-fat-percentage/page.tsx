@@ -239,19 +239,19 @@ How to Estimate Body Fat % from Home */}
 
     <p className="text-gray-700 text-lg leading-relaxed">
       If you want a broader height-weight screening set, compare outputs from the{" "}
-      <a className="text-primary underline" href="/overweight-calculator">
+      <a className="text-primary underline" href="/tools">
         overweight gap calculator
       </a>
       , the{" "}
-      <a className="text-primary underline" href="/ponderal-index-calculator">
+      <a className="text-primary underline" href="/tools">
         ponderal index calculator
       </a>
       , and the{" "}
-      <a className="text-primary underline" href="/broca-index-calculator">
+      <a className="text-primary underline" href="/tools">
         Broca index calculator
       </a>
       . For dosing-style planning contexts, layer in the{" "}
-      <a className="text-primary underline" href="/adjusted-body-weight-calculator">
+      <a className="text-primary underline" href="/tools">
         adjusted body weight calculator
       </a>
       .

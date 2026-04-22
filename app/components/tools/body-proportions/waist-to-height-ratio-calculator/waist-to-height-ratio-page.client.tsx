@@ -76,23 +76,23 @@ export default function WaistToHeightRatioPageClient() {
           </p>
           <p className={pClass}>
             For height-based target planning, use the{" "}
-            <a className="text-primary underline" href="/ideal-waist-size-calculator">
+            <a className="text-primary underline" href="/tools">
               Ideal Waist Size Calculator
             </a>
             . For upper-body taper context, run the{" "}
-            <a className="text-primary underline" href="/shoulder-to-waist-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Shoulder to Waist Ratio Calculator
             </a>
             . For hip-adjusted central-fat context, run the{" "}
-            <a className="text-primary underline" href="/waist-to-hip-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Waist to Hip Ratio Calculator
             </a>
             . For broad weight-status screening, use the{" "}
-            <a className="text-primary underline" href="/bmi-calculator">
+            <a className="text-primary underline" href="/tools">
               BMI Calculator
             </a>
             . For roundness modeling from waist and height, use the{" "}
-            <a className="text-primary underline" href="/bri-calculator">
+            <a className="text-primary underline" href="/tools">
               BRI Calculator
             </a>
             .

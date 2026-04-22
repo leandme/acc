@@ -264,7 +264,7 @@ export default function BodyVisualizerPage() {
           <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2">
             <li>
               <strong>BMI:</strong> weight (kg) / height (m)^2 (compare with the{" "}
-              <a className="text-primary underline" href="/bmi-calculator">
+              <a className="text-primary underline" href="/tools">
                 BMI Calculator
               </a>
               )
@@ -272,7 +272,7 @@ export default function BodyVisualizerPage() {
             <li><strong>Fat mass:</strong> weight x body fat %</li>
             <li>
               <strong>Lean mass:</strong> weight x (1 - body fat %) (compare with the{" "}
-              <a className="text-primary underline" href="/lean-body-mass-calculator">
+              <a className="text-primary underline" href="/tools">
                 Lean Body Mass Calculator
               </a>
               )
@@ -280,14 +280,14 @@ export default function BodyVisualizerPage() {
             <li><strong>FFMI:</strong> lean mass (kg) / height (m)^2</li>
             <li>
               <strong>BRI:</strong> roundness from waist-height geometry (compare with the{" "}
-              <a className="text-primary underline" href="/bri-calculator">
+              <a className="text-primary underline" href="/tools">
                 BRI Calculator
               </a>
               )
             </li>
             <li>
               <strong>BAI:</strong> adiposity estimate from hip and height (compare with the{" "}
-              <a className="text-primary underline" href="/bai-calculator">
+              <a className="text-primary underline" href="/tools">
                 BAI Calculator
               </a>
               )

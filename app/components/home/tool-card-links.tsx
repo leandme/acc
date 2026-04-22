@@ -20,32 +20,7 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
   {
     title: "Shape",
     href: "/tools/shape",
-    description: "Body-shape, frame-size, and proportion calculators for structure context.",
-  },
-  {
-    title: "Muscle",
-    href: "/tools/muscle",
-    description: "FFMI, muscular potential, and bodybuilding-focused planning tools.",
-  },
-  {
-    title: "Weight",
-    href: "/tools/weight",
-    description: "BMI, ideal-weight, and progress-tracking tools for practical planning.",
-  },
-  {
-    title: "Calories",
-    href: "/tools/calories",
-    description: "BMR, TDEE, calorie, deficit, macro, and energy-burn calculators.",
-  },
-  {
-    title: "Height",
-    href: "/tools/height",
-    description: "Parent-based and photo-based height estimation tools.",
-  },
-  {
-    title: "Face",
-    href: "/tools/face",
-    description: "AI-based facial analysis tools for shape, symmetry, and feature detection.",
+    description: "Body-shape analysis tools for practical silhouette and structure context.",
   },
   {
     title: "All Tools",

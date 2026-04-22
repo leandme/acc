@@ -100,26 +100,26 @@ export default function CaloriesBurnedPageClient() {
           <p className={pClass}>
             Use this as your movement-expenditure layer, then align intake targets with your actual training
             week. For maintenance setup, run the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>
             {" "}or the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Calculator
             </a>
             . For intake targeting, use the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>{" "}
             and convert calories into macros in the{" "}
-            <a className="text-primary underline" href="/macro-calculator">
+            <a className="text-primary underline" href="/tools">
               Macro Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If your primary movement target is step count, compare this with the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
+            <a className="text-primary underline" href="/tools">
               Steps to Calories Calculator
             </a>
             .

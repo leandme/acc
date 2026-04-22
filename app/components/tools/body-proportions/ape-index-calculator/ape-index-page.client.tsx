@@ -78,19 +78,19 @@ export default function ApeIndexPageClient() {
           </p>
           <p className={pClass}>
             For growth and stature context, pair this with the{" "}
-            <a className="text-primary underline" href="/height-calculator">
+            <a className="text-primary underline" href="/tools">
               Height Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/mid-parental-height-calculator">
+            <a className="text-primary underline" href="/tools">
               Mid-Parental Height Calculator
             </a>
             . For body proportion and waist-based metrics, compare with the{" "}
-            <a className="text-primary underline" href="/waist-to-height-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Waist to Height Ratio Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/shoulder-to-waist-ratio-calculator">
+            <a className="text-primary underline" href="/tools">
               Shoulder to Waist Ratio Calculator
             </a>
             .

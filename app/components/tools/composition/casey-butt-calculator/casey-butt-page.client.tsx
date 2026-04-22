@@ -90,22 +90,22 @@ export default function CaseyButtPageClient() {
           <h2 className={h2Class}>How To Use It With Other Muscle Tools</h2>
           <p className={pClass}>
             For a frame-adjusted FFMI ceiling model, compare with the{" "}
-            <a className="text-primary underline" href="/muscular-potential-calculator">
+            <a className="text-primary underline" href="/tools">
               Muscular Potential Calculator
             </a>
             . For current lean-mass status versus natural screening ranges, compare with the{" "}
-            <a className="text-primary underline" href="/natty-or-not-calculator">
+            <a className="text-primary underline" href="/tools">
               Natty or Not Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
+            <a className="text-primary underline" href="/tools">
               FFMI Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If body-fat inputs are uncertain, validate with the{" "}
-            <a className="text-primary underline" href="/body-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Fat Calculator
             </a>{" "}
             or{" "}
@@ -117,7 +117,7 @@ export default function CaseyButtPageClient() {
           <p className={pClass}>
             For a combined score that blends structural leverage with projected FFMI potential, compare with
             the{" "}
-            <a className="text-primary underline" href="/bodybuilding-genetics-calculator">
+            <a className="text-primary underline" href="/tools">
               Bodybuilding Genetics Calculator
             </a>
             .

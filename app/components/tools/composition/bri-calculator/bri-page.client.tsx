@@ -96,19 +96,19 @@ export default function BRIPageClient() {
           </p>
           <p className={pClass}>
             For related waist-height estimation, compare with the{" "}
-            <a className="text-primary underline" href="/rfm-calculator">
+            <a className="text-primary underline" href="/tools">
               RFM Calculator
             </a>
             . For a hip-height alternative, compare with the{" "}
-            <a className="text-primary underline" href="/bai-calculator">
+            <a className="text-primary underline" href="/tools">
               BAI Calculator
             </a>
             . For a broader risk-screening estimate, add the{" "}
-            <a className="text-primary underline" href="/visceral-fat-calculator">
+            <a className="text-primary underline" href="/tools">
               Visceral Fat Calculator
             </a>
             . For proportion-based silhouette context, compare with the{" "}
-            <a className="text-primary underline" href="/body-shape-calculator">
+            <a className="text-primary underline" href="/tools">
               Body Shape Calculator
             </a>
             {" "}or the{" "}
@@ -119,11 +119,11 @@ export default function BRIPageClient() {
           </p>
           <p className={pClass}>
             To separate lean-mass progress from fat trends, pair BRI with the{" "}
-            <a className="text-primary underline" href="/lean-body-mass-calculator">
+            <a className="text-primary underline" href="/tools">
               Lean Body Mass Calculator
             </a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/ffmi-calculator">
+            <a className="text-primary underline" href="/tools">
               FFMI Calculator
             </a>
             .

@@ -69,44 +69,44 @@ export default function FastingWeightLossPageClient() {
           </p>
           <p className={pClass}>
             For non-fasting calorie setup, estimate maintenance with the{" "}
-            <a className="text-primary underline" href="/tdee-calculator">
+            <a className="text-primary underline" href="/tools">
               TDEE Calculator
             </a>{" "}
             or the{" "}
-            <a className="text-primary underline" href="/calorie-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Calculator
             </a>
             , and set a target with the{" "}
-            <a className="text-primary underline" href="/calorie-deficit-calculator">
+            <a className="text-primary underline" href="/tools">
               Calorie Deficit Calculator
             </a>
             . For meal-level intake estimates from food photos, use the{" "}
-            <a className="text-primary underline" href="/calorie-counter">
+            <a className="text-primary underline" href="/tools">
               Calorie Counter
             </a>
             . For step-based walking output, add the{" "}
-            <a className="text-primary underline" href="/steps-to-calories-calculator">
+            <a className="text-primary underline" href="/tools">
               Steps to Calories Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If you want a quick protocol comparison (16:8, 18:6, OMAD, or 5:2), use the{" "}
-            <a className="text-primary underline" href="/intermittent-fasting-calculator">
+            <a className="text-primary underline" href="/tools">
               Intermittent Fasting Calculator
             </a>
             .
           </p>
           <p className={pClass}>
             If you prefer a non-fasting setup based on one daily calorie target, use the{" "}
-            <a className="text-primary underline" href="/weight-loss-calculator">
+            <a className="text-primary underline" href="/tools">
               standard daily-intake timeline model
             </a>
             .
           </p>
           <p className={pClass}>
             To summarize progress after a phase, calculate net percentage change with the{" "}
-            <a className="text-primary underline" href="/weight-loss-percentage-calculator">
+            <a className="text-primary underline" href="/tools">
               start-to-current percentage tracker
             </a>
             .
