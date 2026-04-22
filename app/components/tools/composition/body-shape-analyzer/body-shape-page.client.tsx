@@ -156,6 +156,29 @@ const MEN_BODY_TYPE_VISUALS: BodyTypeVisual[] = [
   },
 ];
 
+const BODY_SHAPE_EXAMPLES = [
+  {
+    id: "body-shape-a",
+    label: "Example A",
+    src: "/tools/body-shape-analyzer/hourglass-body-shape-example.jpg",
+  },
+  {
+    id: "body-shape-b",
+    label: "Example B",
+    src: "/tools/body-shape-analyzer/rectangle-body-type-example.jpg",
+  },
+  {
+    id: "body-shape-c",
+    label: "Example C",
+    src: "/examples/bfe-example2.webp",
+  },
+  {
+    id: "body-shape-d",
+    label: "Example D",
+    src: "/examples/bfe-example3.webp",
+  },
+];
+
 const BODY_SHAPE_FAQS: FaqSectionItem[] = [
   {
     question: "How does the Body Shape Analyzer work?",
@@ -456,7 +479,7 @@ function BodyShapePageContent() {
               <EstimateDropZone basePath="/body-shape-analyzer" buttonLabel="Upload Full-Body Photo" />
             </div>
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
-              <TryExamples basePath="/body-shape-analyzer" />
+              <TryExamples basePath="/body-shape-analyzer" examples={BODY_SHAPE_EXAMPLES} />
             </div>
           </div>
         ) : (
@@ -546,7 +569,7 @@ function BodyShapePageContent() {
       <section className="px-6">
         <div
           id="where-your-result-fits"
-          className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20 scroll-mt-28"
+          className="w-full max-w-3xl mx-auto pt-14 pb-10 lg:pt-24 lg:pb-20 scroll-mt-28"
         >
           <h2 className={h2Class}>Your Body Shape</h2>
           <p className="mt-4 text-center text-lg text-gray-700">

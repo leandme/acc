@@ -318,9 +318,6 @@ function AttractivenessTestPageContent() {
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
               <TryExamples basePath="/attractiveness-test" examples={FACE_EXAMPLES} />
             </div>
-            <p className="mt-5 text-sm text-gray-600 max-w-md text-center">
-              Best results come from a front-facing portrait, neutral expression, and even lighting.
-            </p>
           </div>
         ) : (
           <div className="w-full max-w-5xl mt-10">

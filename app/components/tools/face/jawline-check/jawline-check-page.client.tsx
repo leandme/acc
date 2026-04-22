@@ -7,6 +7,7 @@ import H1 from "@/app/components/common/h1";
 import CTA from "@/app/components/common/cta";
 import RippleLoader from "@/app/components/common/loader";
 import TryExamples from "@/app/components/common/try-examples";
+import FaqSection, { type FaqSectionItem } from "@/app/components/common/faq-section";
 import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
 import { MoreTools } from "@/app/components/tools/template/more-tools";
 import {
@@ -99,6 +100,91 @@ const FACE_EXAMPLES = [
 
 const JAWLINER_SITE_URL =
   "https://jawliner.com/products/ultra-hard-fitness-chewing-gum?variant=55606187491715";
+
+const JAWLINE_FAQS: FaqSectionItem[] = [
+  {
+    question: "What is the gonial angle in jawline analysis?",
+    answer:
+      "The gonial angle is the angle at the jaw corner where the posterior mandibular ramus meets the lower jaw body. In profile analysis, it is used as one visual marker of how sharp or rounded the jawline appears.",
+  },
+  {
+    question: "How does Jawline Check estimate my jawline type?",
+    answer:
+      "The tool uses three landmarks (ramus, gonion, and menton) to calculate the jaw angle, then maps that angle into practical jawline-type bands such as sharp, balanced, soft, or rounded.",
+  },
+  {
+    question: "Is manual point placement better than auto-detect?",
+    answer:
+      "Manual placement gives you direct control and is often best for difficult photos. Auto-detect is useful as a starting point, but refining landmark points manually usually improves consistency.",
+  },
+  {
+    question: "What photo setup gives the best jawline result?",
+    answer: (
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Use a true side profile (around 90 degrees), not a three-quarter angle.</li>
+        <li>Keep head posture neutral without chin tuck or extension.</li>
+        <li>Use even lighting with minimal shadows across jaw contour.</li>
+        <li>Keep hair, beard bulk, and clothing away from the jawline edge.</li>
+      </ul>
+    ),
+  },
+  {
+    question: "How do I take better jawline photos?",
+    answer: (
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Use a true side profile (about 90 degrees) instead of a three-quarter angle.</li>
+        <li>Keep your head neutral without chin tuck or neck extension.</li>
+        <li>Use even lighting; avoid deep shadows under the jaw border.</li>
+        <li>Pull hair, beard bulk, scarves, or collars away from the jawline edge.</li>
+        <li>Use normal camera distance to reduce perspective distortion.</li>
+      </ul>
+    ),
+  },
+  {
+    question: "Why does my jawline result change between photos?",
+    answer:
+      "Small changes in camera distance, lens perspective, head tilt, lighting, or landmark placement can shift angle output. For tracking, keep setup and point-placement method as consistent as possible.",
+  },
+  {
+    question: "Does beard density affect jawline angle detection?",
+    answer:
+      "Yes. Heavy beard bulk can obscure the true jaw border and influence where points are placed. Cleaner contour visibility generally improves angle reliability.",
+  },
+  {
+    question: "Can this tool diagnose skeletal or dental issues?",
+    answer:
+      "No. This is a non-medical visual analysis tool for appearance context. It does not replace clinical cephalometric assessment or evaluation by a qualified healthcare professional.",
+  },
+  {
+    question: "What are the limitations of this tool?",
+    answer: (
+      <>
+        <p>
+          This is an appearance-based estimate from one photo and manual landmark placement. It is
+          sensitive to camera perspective, occlusion, beard density, posture, and image quality.
+        </p>
+        <p className="mt-3">
+          It does not replace clinical cephalometric assessment or medical evaluation.
+        </p>
+      </>
+    ),
+  },
+  {
+    question: "What does the landmark overlay mean?",
+    answer: (
+      <>
+        <p>
+          The overlay dots represent user-controlled landmarks. Dashed lines indicate the posterior
+          mandibular segment and mandibular body segment used to estimate the angle.
+        </p>
+        <p className="mt-3">
+          Small point shifts can materially change angle output. Zoom in visually, place points
+          carefully, and keep your method consistent if you are tracking over time.
+        </p>
+      </>
+    ),
+  },
+];
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
@@ -558,24 +644,19 @@ function JawlineCheckPageContent() {
   return (
     <main className="bg-base-100">
       <section className="flex flex-col items-center justify-start pt-10 px-6">
-        <H1>Jawline Check: Analyze Jawline Type & Gonial Angle</H1>
+        <H1>Jawline Check Analyzer</H1>
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
-          Upload a side-profile photo, then drag three points on the image to set your jawline
-          angle manually. This gives you direct control when auto-placement is off.
+          Upload a side-profile photo to detect your jawline angle and jawline type.
         </p>
 
         {!imageUrl ? (
           <div className="w-full max-w-2xl mt-10 flex flex-col items-center">
             <div className="w-full max-w-md">
-              <EstimateDropZone basePath="/jawline-check" buttonLabel="Upload Side-Profile Photo" />
+              <EstimateDropZone basePath="/jawline-check" buttonLabel="Upload Side-Profile" />
             </div>
             <div className="w-full max-w-lg mt-6 lg:max-w-xl">
               <TryExamples basePath="/jawline-check" examples={FACE_EXAMPLES} />
             </div>
-            <p className="mt-5 text-sm text-gray-600 max-w-md text-center">
-              Use a clear side profile where ear-side jawline contour to chin is visible and not
-              blocked by hair, beard bulk, or collars.
-            </p>
           </div>
         ) : (
           <div className="w-full max-w-5xl mt-10">
@@ -710,21 +791,15 @@ function JawlineCheckPageContent() {
         ) : null}
 
         <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
-          <h2 className={h2Class}>Where Your Result Sits</h2>
+          <h2 className={h2Class}>Your Jawline (Gonial) Angle</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row marks your current jawline type band from manual point placement.
           </p>
-          <JawlineBandTable jawlineAngle={manualAngle} jawlineType={manualType} />
+          <JawlineBandTable
+            jawlineAngle={imageUrl ? manualAngle : null}
+            jawlineType={imageUrl ? manualType : null}
+          />
         </div>
-
-        {activeBand ? (
-          <div className="w-full max-w-3xl mx-auto mt-8">
-            <p className="text-center text-gray-700">
-              Current category:{" "}
-              <span className={`font-semibold ${activeBand.textClass}`}>{activeBand.label}</span>
-            </p>
-          </div>
-        ) : null}
 
         <div className={sectionWrap}>
           <h2 className={h2Class}>How Jawline Check Measures Angle</h2>
@@ -747,42 +822,6 @@ function JawlineCheckPageContent() {
             image="/tools/jawline/jawliner.webp"
             className="!my-0 !mt-40"
           />
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Take Better Jawline Photos</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg">
-            <li>Use a true side profile (about 90 degrees) instead of a three-quarter angle.</li>
-            <li>Keep your head neutral without chin tuck or neck extension.</li>
-            <li>Use even lighting; avoid deep shadows under the jaw border.</li>
-            <li>Pull hair, beard bulk, scarves, or collars away from the jawline edge.</li>
-            <li>Use normal camera distance to reduce perspective distortion.</li>
-          </ul>
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Interpret Jawline Angle and Type</h2>
-          <p className={pClass}>
-            Jawline type labels in this tool are practical visual buckets for profile analysis. They are
-            useful for grooming, haircut planning, and photo-comparison consistency, but they should
-            not be treated as fixed anatomical identity labels.
-          </p>
-          <p className={pClass}>
-            If point placement is uncertain, compare multiple placements and use consistent photo setup
-            before drawing conclusions.
-          </p>
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>Landmark Overlay and Angle Geometry</h2>
-          <p className={pClass}>
-            The overlay dots represent user-controlled landmarks. Dashed lines indicate the posterior
-            mandibular segment and mandibular body segment used to estimate the angle.
-          </p>
-          <p className={pClass}>
-            Small point shifts can materially change angle output. Zoom in visually, place points
-            carefully, and keep your method consistent if you are tracking over time.
-          </p>
         </div>
 
         {autoAnalysis?.recommendations?.length ? (
@@ -808,16 +847,13 @@ function JawlineCheckPageContent() {
         ) : null}
 
 
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>Limitations</h2>
-          <p className={pClass}>
-            This is an appearance-based estimate from one photo and manual landmark placement. It is
-            sensitive to camera perspective, occlusion, beard density, posture, and image quality.
-          </p>
-          <p className={pClass}>
-            It does not replace clinical cephalometric assessment or medical evaluation.
-          </p>
-        </div>
+        <FaqSection
+          heading="FAQs"
+          description="Common questions about jawline angle estimation, landmark placement, and result consistency."
+          items={JAWLINE_FAQS}
+          accordionName="jawline-check-faq-accordion"
+          className="pt-10 pb-10 lg:pt-20 lg:pb-20"
+        />
 
         <div className={sectionWrap}>
           <h2 className={h2Class}>References</h2>

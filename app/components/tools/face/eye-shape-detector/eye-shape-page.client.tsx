@@ -628,7 +628,19 @@ function EyeShapePageContent() {
 
       <section className="px-6">
         <div id="canthal-tilt-interpretation" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
-          <h2 className={h2Class}>Canthal Tilt Interpretation</h2>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <h2 className={h2Class}>Canthal Tilt Interpretation</h2>
+            {analysis ? (
+              <span
+                className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold ${tiltBadgeClass(
+                  analysis.canthalTilt
+                )}`}
+              >
+                {analysis.canthalTiltLabel.toUpperCase()}
+                {analysis.canthalTiltAngle != null ? ` ${analysis.canthalTiltAngle.toFixed(1)}°` : ""}
+              </span>
+            ) : null}
+          </div>
           <p className="mt-4 text-center text-lg text-gray-700">
             Marker shows estimated canthal tilt angle from negative to positive range.
           </p>
@@ -647,7 +659,14 @@ function EyeShapePageContent() {
         </div>
 
         <div id="what-is-my-eye-shape" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
-          <h2 className={h2Class}>What Is My Eye Shape?</h2>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <h2 className={h2Class}>What Is My Eye Shape?</h2>
+            {analysis ? (
+              <span className="inline-flex items-center rounded-full border bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-800">
+                {analysis.shapeLabel.toUpperCase()}
+              </span>
+            ) : null}
+          </div>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row shows the detected primary eye-shape category.
           </p>
@@ -696,7 +715,18 @@ function EyeShapePageContent() {
         </div>
 
         <div id="result-confidence" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
-          <h2 className={h2Class}>Result Confidence</h2>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <h2 className={h2Class}>Result Confidence</h2>
+            {analysis ? (
+              <span
+                className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold ${confidenceBadgeClass(
+                  analysis.confidence
+                )}`}
+              >
+                {analysis.confidence.toUpperCase()} ({analysis.confidenceScore}/100)
+              </span>
+            ) : null}
+          </div>
           <p className="mt-4 text-center text-lg text-gray-700">
             Confidence reflects how clearly eyelid edges, eye corners, and iris boundaries were detected.
           </p>
@@ -722,22 +752,6 @@ function EyeShapePageContent() {
               improve for a stronger result.
             </p>
           )}
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Improve Scan Quality</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg">
-            {(analysis?.retakeTips?.length
-              ? analysis.retakeTips
-              : [
-                  "Use a front-facing portrait with both eyes clearly visible.",
-                  "Avoid tinted lenses, strong reflections, or heavy shadows on the eyes.",
-                  "Use neutral expression with natural eye opening.",
-                  "Prefer daylight or balanced white light for eye-color detection.",
-                ]).map((tip, idx) => (
-              <li key={`${tip}-${idx}`}>{tip}</li>
-            ))}
-          </ul>
         </div>
 
         <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">

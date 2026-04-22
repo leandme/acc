@@ -52,7 +52,7 @@ const onPick = (src: string) => {
 };
 
   return (
-    <div className="w-full mt-10">
+    <div className="w-full mt-10 mb-10 lg:mb-14">
       {/* Header row: text left, thumbnails right */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
        <div className="leading-tight font-bold text-base-content/70">
