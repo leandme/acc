@@ -18,7 +18,6 @@ import EstimateRefineInline from "@/app/components/tools/composition/body-fat-es
 import EstimateExportCard from "@/app/components/tools/composition/body-fat-estimator/estimate-export-card";
 import EstimateCompositionSnapshot from "@/app/components/tools/composition/body-fat-estimator/estimate-composition-snapshot";
 import LoadingStatus from "@/app/components/common/loading-status";
-import { MoreTools } from "@/app/components/tools/template/more-tools";
 import { getCategoryFemale, getCategoryMale } from "@/app/libs/estimateUtils";
 import { showErrorToast, showSuccessToast } from "@/app/libs/toast";
 import { trackEvent } from "@/app/libs/amplitude";
@@ -376,9 +375,6 @@ function EstimatePageContent() {
             </div>
           )}
 
-          <div className="w-full max-w-3xl mx-auto mt-10 lg:mt-20 mb-10">
-            <MoreTools columns={2} excludeSlug="estimate" />
-          </div>
         </>
       )}
     </section>
