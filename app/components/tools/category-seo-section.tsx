@@ -480,7 +480,7 @@ export default function ToolCategorySeoSection({
         ))}
       </div>
 
-      <div className="mt-20 lg:mt-40 space-y-4">
+      <div className="pt-10 pb-10 lg:pt-20 lg:pb-20 space-y-4">
         <h2 className="text-3xl lg:text-4xl font-semibold text-center">
           What This Category Is Best For
         </h2>
@@ -493,7 +493,7 @@ export default function ToolCategorySeoSection({
         </ul>
       </div>
 
-      <div className="mt-20 lg:mt-40 space-y-4">
+      <div className="pt-10 pb-10 lg:pt-20 lg:pb-20 space-y-4">
         <h2 className="text-3xl lg:text-4xl font-semibold text-center">
           Input Quality Checklist
         </h2>
@@ -504,7 +504,7 @@ export default function ToolCategorySeoSection({
         </ul>
       </div>
 
-      <div className="mt-20 lg:mt-40 space-y-4">
+      <div className="pt-10 pb-10 lg:pt-20 lg:pb-20 space-y-4">
         <h2 className="text-3xl lg:text-4xl font-semibold text-center">
           Interpretation Notes
         </h2>
@@ -515,7 +515,7 @@ export default function ToolCategorySeoSection({
         </ul>
       </div>
 
-      <div className="mt-20 lg:mt-40 space-y-4">
+      <div className="pt-10 pb-10 lg:pt-20 lg:pb-20 space-y-4">
         <h2 className="text-3xl lg:text-4xl font-semibold text-center">
           Common Mistakes To Avoid
         </h2>
@@ -527,7 +527,7 @@ export default function ToolCategorySeoSection({
       </div>
 
       {showRelatedReading ? (
-        <div className="mt-20 lg:mt-40 space-y-4">
+        <div className="pt-10 pb-10 lg:pt-20 lg:pb-20 space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold text-center">
             Related Reading
           </h2>

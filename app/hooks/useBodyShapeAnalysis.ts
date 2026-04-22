@@ -13,9 +13,12 @@ export type BodyShapeKey =
   | "apple"
   | "uncertain";
 
+export type BodyDetectedGender = "female" | "male" | "unknown";
+
 export type BodyShapeAnalysisResult = {
   shape: BodyShapeKey;
   shapeLabel: string;
+  detectedGender: BodyDetectedGender;
   confidence: "low" | "medium" | "high";
   rationale: string | null;
   proportionNotes: string[];
@@ -131,6 +134,20 @@ function normalizeConfidence(input: unknown): "low" | "medium" | "high" {
   return "medium";
 }
 
+function normalizeDetectedGender(input: unknown): BodyDetectedGender {
+  const raw = String(Array.isArray(input) ? input[0] : input ?? "")
+    .trim()
+    .toLowerCase();
+
+  if (raw.includes("female") || raw.includes("woman") || raw.includes("girl")) {
+    return "female";
+  }
+  if (raw.includes("male") || raw.includes("man") || raw.includes("boy")) {
+    return "male";
+  }
+  return "unknown";
+}
+
 function asStringArray(input: unknown) {
   if (!Array.isArray(input)) return [];
   return input
@@ -146,6 +163,14 @@ function normalizeResult(raw: any): BodyShapeAnalysisResult {
 
   const confidence = normalizeConfidence(
     raw?.analysis?.confidence ?? raw?.confidence ?? null
+  );
+
+  const detectedGender = normalizeDetectedGender(
+    raw?.analysis?.perceived_gender ??
+      raw?.perceived_gender ??
+      raw?.gender ??
+      raw?.sex ??
+      null
   );
 
   const rationale =
@@ -172,6 +197,7 @@ function normalizeResult(raw: any): BodyShapeAnalysisResult {
   return {
     shape,
     shapeLabel: shapeLabel(shape),
+    detectedGender,
     confidence,
     rationale: typeof rationale === "string" && rationale.trim() ? rationale.trim() : null,
     proportionNotes,
@@ -285,6 +311,7 @@ export function useBodyShapeAnalysis(
 
         trackEvent("Analyze Body Shape", {
           shape: analysis.shapeLabel,
+          detected_gender: analysis.detectedGender,
           confidence: analysis.confidence,
           source,
         });

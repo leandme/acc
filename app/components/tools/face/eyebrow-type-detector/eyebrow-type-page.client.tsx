@@ -256,7 +256,7 @@ function EyebrowTypePageContent() {
   const { analysis, loading, error } = useEyebrowTypeAnalysis(imageUrl, { source });
 
   const sectionWrap =
-    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
+    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
   const pClass = "text-lg leading-relaxed";
 
@@ -376,7 +376,7 @@ function EyebrowTypePageContent() {
 
       <section className="px-6">
         {analysis?.confidenceScore != null ? (
-          <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+          <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
             <h2 className={h2Class}>Confidence Interpretation</h2>
             <p className="mt-4 text-center text-lg text-gray-700">
               The confidence bar shows how strongly the current photo matches the detected eyebrow type.
@@ -387,7 +387,7 @@ function EyebrowTypePageContent() {
           </div>
         ) : null}
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <h2 className={h2Class}>Where Your Result Sits</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row marks your detected eyebrow type.
@@ -469,7 +469,7 @@ function EyebrowTypePageContent() {
             </li>
           </ul>
         </div>
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20 pb-20">
           <MoreTools
             heading="Related Tools"
             columns={2}

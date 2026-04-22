@@ -14,7 +14,7 @@ export default function LeanBodyMassCalculatorPageClient() {
   const [lbmi, setLbmi] = useState<number | null>(null);
 
   const sectionWrap =
-    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
+    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
   const pClass = "text-lg leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
 
@@ -41,7 +41,7 @@ export default function LeanBodyMassCalculatorPageClient() {
           </div>
         </div>
 
-        <div id="lean-body-mass-interpretation" className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div id="lean-body-mass-interpretation" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <LeanBodyMassInterpretation gender={gender} leanMassPct={leanMassPct} />
         </div>
 

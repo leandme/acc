@@ -5,7 +5,7 @@ import { MoreTools } from "../../template/more-tools";
 
 export default function BodyFatCalculatorPageClient() {
   const sectionWrap =
-    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
+    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
   const pClass = "text-lg leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
 

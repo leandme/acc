@@ -61,7 +61,7 @@ export default function BodyFrameSizePageClient() {
   const [frameLabel, setFrameLabel] = useState<string | null>(null);
 
   const sectionWrap =
-    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
+    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
   const pClass = "text-lg leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
 
@@ -86,7 +86,7 @@ export default function BodyFrameSizePageClient() {
           </div>
         </div>
 
-        <div id="body-frame-size-interpretation" className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div id="body-frame-size-interpretation" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <FrameInterpretation sex={sex} ratio={ratio} />
         </div>
 
@@ -124,7 +124,7 @@ export default function BodyFrameSizePageClient() {
           </p>
         </div>
 
-        <div className="w-full max-w-6xl mx-auto mt-20 lg:mt-40 px-6 space-y-8">
+        <div className="w-full max-w-6xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20 px-6 space-y-8">
           <h2 className="text-3xl lg:text-4xl font-semibold text-center">How To Measure Input Sections</h2>
           <p className="text-lg text-gray-700 leading-relaxed text-center max-w-3xl mx-auto">
             This tool uses body-size measurements only and does not require skinfold calipers. Use the

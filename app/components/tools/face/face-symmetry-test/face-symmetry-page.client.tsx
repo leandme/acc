@@ -447,7 +447,7 @@ function FaceSymmetryPageContent() {
   const { result, loading, error } = useFaceSymmetryAnalysis(imageUrl, { source });
 
   const sectionWrap =
-    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
+    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
   const pClass = "text-lg leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
 
@@ -568,7 +568,7 @@ function FaceSymmetryPageContent() {
 
       <section className="px-6">
         {typeof score === "number" ? (
-          <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+          <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
             <h2 className={h2Class}>Symmetry Interpretation Bar</h2>
             <p className="mt-4 text-center text-lg text-gray-700">
               Your score is marked on the same red-to-violet interpretation scale used across our tools.
@@ -580,7 +580,7 @@ function FaceSymmetryPageContent() {
         ) : null}
 
         {imageUrl && !loading && !error ? (
-          <div className="w-full max-w-5xl mx-auto mt-20 lg:mt-40">
+          <div className="w-full max-w-5xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
             <h2 className={h2Class}>Mirrored Face Comparison</h2>
             <p className="mt-4 text-center text-lg text-gray-700 max-w-3xl mx-auto">
               These side-by-side composites mirror each half of your face across the detected midline.
@@ -590,7 +590,7 @@ function FaceSymmetryPageContent() {
           </div>
         ) : null}
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <h2 className={h2Class}>Where Your Result Sits</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row marks your current face symmetry score band.
@@ -708,7 +708,7 @@ function FaceSymmetryPageContent() {
             </li>
           </ul>
         </div>
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20 pb-20">
           <MoreTools
             heading="Related Tools"
             columns={2}

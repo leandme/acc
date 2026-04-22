@@ -433,7 +433,7 @@ function SkinAnalyzerPageContent() {
   const { analysis, loading, error } = useSkinTypeAnalysis(imageUrl, { source });
 
   const sectionWrap =
-    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
+    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
   const pClass = "text-lg leading-relaxed";
 
@@ -560,7 +560,7 @@ function SkinAnalyzerPageContent() {
 
       <section className="px-6">
         {analysis?.confidenceScore != null ? (
-          <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+          <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
             <h2 className={h2Class}>Confidence Interpretation</h2>
             <p className="mt-4 text-center text-lg text-gray-700">
               The confidence bar reflects how strongly the current image matches the detected skin profile.
@@ -571,7 +571,7 @@ function SkinAnalyzerPageContent() {
           </div>
         ) : null}
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <h2 className={h2Class}>Where Your Skin Type Fits</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row marks your detected primary skin-type category.
@@ -579,7 +579,7 @@ function SkinAnalyzerPageContent() {
           <SkinTypeTable activeType={activeType} />
         </div>
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <h2 className={h2Class}>Where Your Skin Tone Depth Fits</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row marks your detected skin-tone depth category.
@@ -745,7 +745,7 @@ function SkinAnalyzerPageContent() {
           </ul>
         </div>
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20 pb-20">
           <MoreTools
             heading="Related Tools"
             columns={2}

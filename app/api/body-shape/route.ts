@@ -43,6 +43,7 @@ Return JSON exactly in this shape:
   "version": "1.0",
   "analysis": {
     "primary_body_shape": "hourglass" | "pear" | "rectangle" | "inverted_triangle" | "apple" | "uncertain",
+    "perceived_gender": "female" | "male" | "uncertain",
     "alternative_shapes": ["string"],
     "confidence": "low" | "medium" | "high",
     "shape_rationale": "string",
@@ -52,6 +53,7 @@ Return JSON exactly in this shape:
 }
 
 Rules:
+- Use "perceived_gender" as a visual read only and set "uncertain" when not clear.
 - Do not provide medical advice or diagnosis.
 - Keep rationale practical and concise.
 - Limit proportion_notes and styling_recommendations to 3-5 items each.

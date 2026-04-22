@@ -282,6 +282,17 @@ const EYE_SHAPE_FAQS: FaqSectionItem[] = [
       "Choose a sharp, well-lit image with both eyes visible, neutral expression, and minimal glare. Heavy makeup, strong filters, large head tilt, or partial eye occlusion can reduce detection quality.",
   },
   {
+    question: "How can I improve scan quality?",
+    answer: (
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Use a front-facing portrait with both eyes clearly visible.</li>
+        <li>Avoid tinted lenses, strong reflections, or heavy shadows on the eyes.</li>
+        <li>Use a neutral expression with natural eye opening.</li>
+        <li>Prefer daylight or balanced white light for eye-color detection.</li>
+      </ul>
+    ),
+  },
+  {
     question: "Are personalized eye shape tips included?",
     answer:
       "Yes. After analysis, the tool provides tailored styling guidance based on your detected shape pattern, including directional suggestions you can adapt for makeup and presentation choices.",
@@ -465,7 +476,7 @@ function EyeShapePageContent() {
   const { analysis, loading, error } = useEyeShapeAnalysis(imageUrl, { source });
 
   const sectionWrap =
-    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
+    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
   const pClass = "text-lg leading-relaxed";
 
@@ -616,7 +627,7 @@ function EyeShapePageContent() {
       </section>
 
       <section className="px-6">
-        <div id="canthal-tilt-interpretation" className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div id="canthal-tilt-interpretation" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <h2 className={h2Class}>Canthal Tilt Interpretation</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             Marker shows estimated canthal tilt angle from negative to positive range.
@@ -635,7 +646,7 @@ function EyeShapePageContent() {
           )}
         </div>
 
-        <div id="what-is-my-eye-shape" className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div id="what-is-my-eye-shape" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <h2 className={h2Class}>What Is My Eye Shape?</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row shows the detected primary eye-shape category.
@@ -643,7 +654,7 @@ function EyeShapePageContent() {
           <EyeShapeTable activeShape={activeShape} />
         </div>
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <h2 className={h2Class}>Common Eye Shapes</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             Quick visual examples of common eye-shape patterns.
@@ -684,7 +695,7 @@ function EyeShapePageContent() {
           </div>
         </div>
 
-        <div id="result-confidence" className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div id="result-confidence" className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <h2 className={h2Class}>Result Confidence</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             Confidence reflects how clearly eyelid edges, eye corners, and iris boundaries were detected.
@@ -729,7 +740,7 @@ function EyeShapePageContent() {
           </ul>
         </div>
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <h2 className={h2Class}>Why Knowing Your Eye Shape Matters</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             A clearer read on your eye structure makes styling choices more consistent and intentional.
@@ -774,7 +785,7 @@ function EyeShapePageContent() {
           description="Common questions about eye-shape detection and how to interpret your result."
           items={EYE_SHAPE_FAQS}
           accordionName="eye-shape-faq-accordion"
-          className="mt-20 lg:mt-40"
+          className="pt-10 pb-10 lg:pt-20 lg:pb-20"
         />
 
         <div className={sectionWrap}>
@@ -801,7 +812,7 @@ function EyeShapePageContent() {
           </ul>
         </div>
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40 pb-20">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20 pb-20">
           <MoreTools
             heading="Related Tools"
             columns={2}

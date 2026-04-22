@@ -7,6 +7,140 @@ import BodyShapeInterpretation from "@/app/components/tools/composition/body-sha
 import { BODY_SHAPE_ROWS, type BodyShapeKey } from "@/app/components/tools/composition/body-shape-calculator/body-shape-types";
 import { MoreTools } from "../../template/more-tools";
 
+type BodyTypeVisual = {
+  id: string;
+  title: string;
+  src: string;
+  description: string;
+  shapeKey?: BodyShapeKey;
+};
+
+const WOMEN_BODY_TYPE_VISUALS: BodyTypeVisual[] = [
+  {
+    id: "women-hourglass",
+    title: "Hourglass",
+    src: "/tools/body-shape-analyzer/hourglass-body-type.png",
+    description: "Balanced shoulder and hip width with more visible waist definition.",
+    shapeKey: "hourglass",
+  },
+  {
+    id: "women-triangle",
+    title: "Triangle (Pear)",
+    src: "/tools/body-shape-analyzer/triangle-body-type.png",
+    description: "Lower body reads wider than upper body.",
+    shapeKey: "pear",
+  },
+  {
+    id: "women-rectangle",
+    title: "Rectangle",
+    src: "/tools/body-shape-analyzer/rectangle-body-type.png",
+    description: "Straighter silhouette with less waist contrast.",
+    shapeKey: "rectangle",
+  },
+  {
+    id: "women-inverted-triangle",
+    title: "Inverted Triangle",
+    src: "/tools/body-shape-analyzer/inverted-triangle-body-type.png",
+    description: "Upper body appears broader than hips.",
+    shapeKey: "inverted-triangle",
+  },
+  {
+    id: "women-oval",
+    title: "Oval (Apple)",
+    src: "/tools/body-shape-analyzer/oval-body-type.png",
+    description: "More visual fullness around the midsection.",
+    shapeKey: "apple",
+  },
+];
+
+const MEN_BODY_TYPE_VISUALS: BodyTypeVisual[] = [
+  {
+    id: "men-trapezoid",
+    title: "Trapezoid",
+    src: "/tools/body-shape-analyzer/male-trapezoid-body-type.jpg",
+    description: "Balanced shoulders and hips with moderate waist taper.",
+    shapeKey: "hourglass",
+  },
+  {
+    id: "men-triangle",
+    title: "Triangle",
+    src: "/tools/body-shape-analyzer/male-triangle-body-type.jpg",
+    description: "Lower body and waist read wider than upper torso.",
+    shapeKey: "pear",
+  },
+  {
+    id: "men-rectangle",
+    title: "Rectangle",
+    src: "/tools/body-shape-analyzer/male-rectangle-body-type.jpg",
+    description: "Straight shoulder-to-waist silhouette with less taper.",
+    shapeKey: "rectangle",
+  },
+  {
+    id: "men-inverted-triangle",
+    title: "Inverted Triangle",
+    src: "/tools/body-shape-analyzer/male-inverted-triangle-body-type.jpg",
+    description: "Upper torso appears wider than hips with stronger V-taper.",
+    shapeKey: "inverted-triangle",
+  },
+  {
+    id: "men-oval",
+    title: "Oval",
+    src: "/tools/body-shape-analyzer/male-oval-body-type.jpg",
+    description: "Visual fullness concentrated more in the midsection.",
+    shapeKey: "apple",
+  },
+];
+
+function BodyTypeVisualGrid({
+  title,
+  visuals,
+  activeShape,
+}: {
+  title: string;
+  visuals: BodyTypeVisual[];
+  activeShape: BodyShapeKey | null;
+}) {
+  return (
+    <div>
+      <h3 className="mt-2 text-2xl lg:text-3xl font-semibold text-gray-900 text-center">{title}</h3>
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {visuals.map((visual) => {
+          const isActive = visual.shapeKey != null && activeShape === visual.shapeKey;
+          return (
+            <article
+              key={visual.id}
+              className={[
+                "overflow-hidden rounded-2xl border bg-white shadow-sm",
+                isActive ? "ring-2 ring-gray-900 border-gray-900/40" : "border-gray-200",
+              ].join(" ")}
+            >
+              <div className="h-72 sm:h-80 bg-base-100 p-4 flex items-center justify-center">
+                <img
+                  src={visual.src}
+                  alt={`${visual.title} body type example`}
+                  className="max-h-full w-auto max-w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="text-xl lg:text-2xl font-semibold text-gray-900">{visual.title}</h4>
+                  {isActive ? (
+                    <span className="inline-flex rounded-full border border-gray-900/20 bg-gray-900/10 px-3 py-1 text-sm font-semibold text-gray-900">
+                      Your Result
+                    </span>
+                  ) : null}
+                </div>
+                <p className="mt-3 text-lg text-gray-700 leading-relaxed">{visual.description}</p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function BodyShapePageClient() {
   const [shape, setShape] = useState<BodyShapeKey | null>(null);
   const [topScore, setTopScore] = useState<number | null>(null);
@@ -18,7 +152,7 @@ export default function BodyShapePageClient() {
   const [waistToHip, setWaistToHip] = useState<number | null>(null);
 
   const sectionWrap =
-    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 mt-20 lg:mt-40 leading-relaxed";
+    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
   const pClass = "text-lg leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
 
@@ -30,7 +164,7 @@ export default function BodyShapePageClient() {
         <h1 className="text-3xl lg:text-5xl font-bold text-center">Body Shape Calculator</h1>
 
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
-          Estimate your likely body-shape category from bust/chest, waist, and hip measurements.
+          Calculate your body shape category from bust/chest, waist, and hip measurements.
         </p>
 
         <div className="mt-8 w-full flex justify-center px-6">
@@ -50,8 +184,29 @@ export default function BodyShapePageClient() {
           </div>
         </div>
 
-        <div className="w-full max-w-3xl mx-auto mt-20 lg:mt-40" id="body-shape-interpretation">
+        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20" id="body-shape-interpretation">
           <BodyShapeInterpretation shape={shape} topScore={topScore} />
+        </div>
+
+        <div className={sectionWrap}>
+          <h2 className={h2Class}>Common Body Types</h2>
+          <p className="text-lg text-gray-700 text-center">
+            Visual reference cards to compare common silhouette patterns for women and men.
+          </p>
+
+          <div className="space-y-12 pt-2">
+            <BodyTypeVisualGrid
+              title="Women Body Types (Female)"
+              visuals={WOMEN_BODY_TYPE_VISUALS}
+              activeShape={shape}
+            />
+
+            <BodyTypeVisualGrid
+              title="Men Body Types (Male)"
+              visuals={MEN_BODY_TYPE_VISUALS}
+              activeShape={shape}
+            />
+          </div>
         </div>
 
         <div className={sectionWrap}>

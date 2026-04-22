@@ -303,7 +303,7 @@ function EstimatePageContent() {
 
       {!isAnalyzing && (
         <>
-          <div id="where-you-sit" className="w-full max-w-3xl mt-20 lg:mt-40">
+          <div id="where-you-sit" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
             <EstimateWhereYouSit
               estimate={activeBodyFat}
               gender={activeGender}
@@ -311,11 +311,11 @@ function EstimatePageContent() {
             />
           </div>
 
-          <div id="rationale" className="w-full max-w-3xl mt-20 lg:mt-40">
+          <div id="rationale" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
             <EstimateRationale estimate={activeBodyFat} rationale={activeRationale} />
           </div>
 
-          <div id="current-snapshot" className="w-full max-w-3xl mt-20 lg:mt-40">
+          <div id="current-snapshot" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
             <EstimateCompositionSnapshot
               bodyFat={activeBodyFat}
               units={analysisUnits}
@@ -340,7 +340,7 @@ function EstimatePageContent() {
             />
           </div>
 
-          <div id="accuracy" className="w-full max-w-3xl mt-20 lg:mt-40">
+          <div id="accuracy" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
             <EstimateAccuracy
               accuracy={normalizedActiveAccuracy}
               improvements={activeImprovements}
@@ -350,7 +350,7 @@ function EstimatePageContent() {
           </div>
 
           {showRefine && (
-            <div ref={refineRef} className="w-full max-w-3xl mt-20 lg:mt-40">
+            <div ref={refineRef} className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
               <EstimateRefineInline
                 initialImageUrl={imageUrl}
                 onRefine={(payload) => {
