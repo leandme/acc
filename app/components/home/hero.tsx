@@ -1,12 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import EstimateDropZone from "../tools/composition/body-fat-estimator/estimate-drop-zone";
 import TryExamples from "../common/try-examples";
 import { EzoicAdSlot } from "../helpers/ezoic-ad-slot";
 // import ReviewBox from "./ReviewBox";
 
-export default function Hero() {
+type HeroProps = {
+  basePath?: "/" | "/estimate";
+};
+
+export default function Hero({ basePath }: HeroProps) {
+  const pathname = usePathname();
+  const resolvedBasePath = basePath ?? (pathname === "/" ? "/" : "/estimate");
+
   return (
     <div className="hero min-h-screen lg:-mt-28 flex items-start lg:items-center justify-center pt-0 lg:pt-0">
       <div className="hero-content w-full max-w-6xl px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-6 lg:gap-16">
@@ -50,9 +58,9 @@ export default function Hero() {
         {/* Right side: upload zone */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <div className="w-full max-w-xl">
-            <EstimateDropZone />
+            <EstimateDropZone basePath={resolvedBasePath} />
             <div className="mt-6">
-              <TryExamples basePath="/estimate" />
+              <TryExamples basePath={resolvedBasePath} />
             </div>
             <EzoicAdSlot id={113} className="mt-8" />
           </div>

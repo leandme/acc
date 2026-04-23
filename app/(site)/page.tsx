@@ -1,11 +1,7 @@
 import { Metadata } from "next";
-import Examples from "../components/home/examples";
 import FAQ from "../components/home/faq";
-import Comparison from "../components/home/comparison";
-import ToolExplainer from "../components/home/tool-explainer";
-import Hero from "../components/home/hero";
-import Reviews from "../components/home/reviews";
 import GuideCards from "../components/home/guide-cards";
+import EstimatePageClient from "@/app/components/tools/composition/body-fat-estimator/estimate-page-client";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 const title = "Body Fat Estimator – Estimate Body Fat % from a Photo";
@@ -20,11 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function Home() {
   return (
    <>
-      <Hero />
-      <Examples />
-      <Comparison />
-      <ToolExplainer />
-      <Reviews />
+      <EstimatePageClient basePath="/" />
       <FAQ />
       <GuideCards />
    </>

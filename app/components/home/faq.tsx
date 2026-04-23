@@ -124,8 +124,7 @@ export default function FAQ() {
       q: "Is this free?",
       a: (
         <>
-          You can start with a free estimate. If you want higher accuracy, multiple photos, and more check-ins for tracking,
-          there’s an upgrade option.
+          Yes. The tool is free to use.
         </>
       ),
     },
@@ -150,6 +149,7 @@ export default function FAQ() {
       heading="Frequently Asked Questions"
       description="Answers to common questions about our AI-powered body fat estimation tool."
       items={FAQ_ITEMS.map((item) => ({ question: item.q, answer: item.a }))}
+      className="mt-0"
     />
   );
 }

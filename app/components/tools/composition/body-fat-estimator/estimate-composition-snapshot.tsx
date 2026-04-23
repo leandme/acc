@@ -3,9 +3,11 @@
 import React from "react";
 
 type Units = "metric" | "imperial";
+type Gender = "male" | "female";
 
 type Props = {
   bodyFat: number | null;
+  gender?: Gender;
   units: Units;
   weight: number | null;
   prefilledFromRefine?: boolean;
@@ -34,23 +36,54 @@ function formatMass(kg: number, units: Units) {
   return `${rounded} ${units === "metric" ? "kg" : "lb"}`;
 }
 
+type Tone = {
+  bg: string;
+  border: string;
+  valueText: string;
+};
+
+function getTone(gender: Gender, bodyFat: number): Tone {
+  if (gender === "female") {
+    if (bodyFat <= 13) return { bg: "bg-blue-50", border: "border-blue-200", valueText: "text-blue-900" };
+    if (bodyFat <= 28) return { bg: "bg-green-50", border: "border-green-200", valueText: "text-green-900" };
+    if (bodyFat <= 38) return { bg: "bg-yellow-50", border: "border-yellow-200", valueText: "text-yellow-900" };
+    if (bodyFat <= 43) return { bg: "bg-orange-50", border: "border-orange-200", valueText: "text-orange-900" };
+    return { bg: "bg-red-50", border: "border-red-200", valueText: "text-red-900" };
+  }
+
+  if (bodyFat <= 5) return { bg: "bg-blue-50", border: "border-blue-200", valueText: "text-blue-900" };
+  if (bodyFat <= 17) return { bg: "bg-green-50", border: "border-green-200", valueText: "text-green-900" };
+  if (bodyFat <= 26) return { bg: "bg-yellow-50", border: "border-yellow-200", valueText: "text-yellow-900" };
+  if (bodyFat <= 30) return { bg: "bg-orange-50", border: "border-orange-200", valueText: "text-orange-900" };
+  return { bg: "bg-red-50", border: "border-red-200", valueText: "text-red-900" };
+}
+
 function StatCard({
   label,
   value,
+  tone,
 }: {
   label: string;
   value: string;
+  tone?: Tone;
 }) {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5">
+    <div
+      className={`rounded-2xl border p-5 ${
+        tone
+          ? `${tone.bg} ${tone.border}`
+          : "border-gray-200 bg-white"
+      }`}
+    >
       <p className="text-sm font-semibold uppercase tracking-[0.12em] text-gray-500">{label}</p>
-      <p className="mt-2 text-3xl font-semibold text-gray-900">{value}</p>
+      <p className={`mt-2 text-3xl font-semibold ${tone ? tone.valueText : "text-gray-900"}`}>{value}</p>
     </div>
   );
 }
 
 export default function EstimateCompositionSnapshot({
   bodyFat,
+  gender = "male",
   units,
   weight,
   prefilledFromRefine = false,
@@ -69,6 +102,7 @@ export default function EstimateCompositionSnapshot({
   const defaultWeight = units === "metric" ? 75 : 165;
   const weightSliderValue = hasWeight ? clamp(weight!, minWeight, maxWeight) : defaultWeight;
   const weightLabel = `${Number(weightSliderValue.toFixed(1))} ${units === "metric" ? "kg" : "lb"}`;
+  const tone = getTone(gender, bodyFat);
 
   return (
     <section className={`w-full max-w-3xl ${className}`}>
@@ -141,10 +175,10 @@ export default function EstimateCompositionSnapshot({
 
         {hasWeight && fatMassKg !== null && leanMassKg !== null ? (
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <StatCard label="Current Weight" value={formatMass(weightKg!, units)} />
-            <StatCard label="Body Fat" value={`${bodyFat.toFixed(1)}%`} />
-            <StatCard label="Fat Mass" value={formatMass(fatMassKg, units)} />
-            <StatCard label="Lean Mass" value={formatMass(leanMassKg, units)} />
+            <StatCard label="Current Weight" value={formatMass(weightKg!, units)} tone={tone} />
+            <StatCard label="Body Fat" value={`${bodyFat.toFixed(1)}%`} tone={tone} />
+            <StatCard label="Fat Mass" value={formatMass(fatMassKg, units)} tone={tone} />
+            <StatCard label="Lean Mass" value={formatMass(leanMassKg, units)} tone={tone} />
           </div>
         ) : null}
       </div>

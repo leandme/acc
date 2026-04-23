@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { trackEvent } from "@/app/libs/amplitude";
 
 type BasePath =
+  | "/"
   | "/estimate"
   | "/height-estimator"
   | "/face-symmetry-test"

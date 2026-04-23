@@ -87,8 +87,13 @@ const nextConfig: NextConfig = {
         permanent: true, // 301 redirect
       },
       {
+        source: "/estimate",
+        destination: "/",
+        permanent: true, // 301 redirect
+      },
+      {
         source: "/tools",
-        destination: "/estimate",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
@@ -143,7 +148,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/upload",
-        destination: "/estimate",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
@@ -153,7 +158,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/pricing",
-        destination: "/estimate",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {

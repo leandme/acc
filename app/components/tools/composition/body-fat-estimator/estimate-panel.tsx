@@ -30,6 +30,7 @@ type Props = {
   downloadingResults?: boolean;
   compactGauge?: boolean;
   showActions?: boolean;
+  estimateAgainHref?: "/" | "/estimate";
 };
 
 export default function EstimatePanel({
@@ -42,6 +43,7 @@ export default function EstimatePanel({
   downloadingResults = false,
   compactGauge = false,
   showActions = true,
+  estimateAgainHref = "/estimate",
 }: Props) {
   const p = !loading && typeof estimate === "number" ? estimate : null;
   const canShowDownload = !loading && p !== null && !error && !!onDownloadResults;
@@ -129,7 +131,7 @@ export default function EstimatePanel({
             )}
 
             <a
-              href="/estimate"
+              href={estimateAgainHref}
               onClick={() =>
                 trackEvent("Go to Tool", { tool: "body fat estimator", location: "estimate panel cta" })
               }

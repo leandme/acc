@@ -10,6 +10,7 @@ type Props = {
   rationale?: string | null;   // ✅ add this
   country?: string;
   className?: string;
+  title?: string;
 };
 
 
@@ -286,6 +287,7 @@ export default function EstimateWhereYouSit({
   rationale = null,            // ✅ add this
   country,
   className = "",
+  title,
 }: Props) {
 
   const bf = typeof estimate === "number" ? clamp(estimate, 2, 60) : null;
@@ -308,11 +310,15 @@ export default function EstimateWhereYouSit({
         {/* Headline: What X% body fat means */}
         <h2 className="text-3xl lg:text-4xl font-semibold text-center flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
           <span>
-            What{" "}
-            <span className="underline decoration-blue-500 decoration-4 underline-offset-4">
-              {bf ?? "—"}
-            </span>
-            % Means
+            {title ?? (
+              <>
+                What{" "}
+                <span className="underline decoration-blue-500 decoration-4 underline-offset-4">
+                  {bf ?? "—"}
+                </span>
+                % Body Fat Means
+              </>
+            )}
           </span>
 
           <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-base font-semibold tracking-wide text-gray-700">
@@ -387,22 +393,16 @@ export default function EstimateWhereYouSit({
         </div>
 
         {/* Explanation under table */}
-        <div className="mt-6 space-y-3">
-          {bf !== null && activeRow ? (
-            <>
-              <p className="text-gray-700 text-lg text-center leading-relaxed">
-                Your estimate of{" "}
-                <span className="font-semibold text-gray-900">{bf}%</span>{" "}
-                falls into{" "}
-                <span className="font-semibold text-gray-900">{activeRow.label}</span>.
-              </p>
-            </>
-          ) : (
-            <p className="text-gray-700 text-lg leading-relaxed">
-             
+        {bf !== null && activeRow ? (
+          <div className="mt-6 space-y-3">
+            <p className="text-gray-700 text-lg text-center leading-relaxed">
+              Your estimate of{" "}
+              <span className="font-semibold text-gray-900">{bf}%</span>{" "}
+              falls into{" "}
+              <span className="font-semibold text-gray-900">{activeRow.label}</span>.
             </p>
-          )}
-        </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );

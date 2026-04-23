@@ -2,16 +2,13 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { toBlob as toImageBlob } from "html-to-image";
-import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
-import TryExamples from "@/app/components/common/try-examples";
 import EstimatePanel from "@/app/components/tools/composition/body-fat-estimator/estimate-panel";
 import { useBodyFatEstimate } from "@/app/hooks/useBodyFatEstimate";
 import { useBodyFatEstimateRefine } from "@/app/hooks/useBodyFatEstimateRefine";
-import H1 from "@/app/components/common/h1";
-import EstimateSeoExplainer from "@/app/components/tools/composition/body-fat-estimator/estimate-seo-explainer";
 import EstimateWhereYouSit from "@/app/components/tools/composition/body-fat-estimator/estimate-where-you-sit";
+import EstimateBodyFatLooksLike from "@/app/components/tools/composition/body-fat-estimator/estimate-body-fat-looks-like";
 import EstimateAccuracy from "@/app/components/tools/composition/body-fat-estimator/estimate-accuracy";
 import EstimateRationale from "@/app/components/tools/composition/body-fat-estimator/estimate-rationale";
 import EstimateRefineInline from "@/app/components/tools/composition/body-fat-estimator/estimate-refine-inline";
@@ -22,6 +19,7 @@ import { getCategoryFemale, getCategoryMale } from "@/app/libs/estimateUtils";
 import { showErrorToast, showSuccessToast } from "@/app/libs/toast";
 import { trackEvent } from "@/app/libs/amplitude";
 import { useMediaQuery } from "@/app/hooks/use-media-query";
+import Hero from "@/app/components/home/hero";
 
 type Gender = "male" | "female";
 type EstimateSource = "example" | "upload";
@@ -32,7 +30,13 @@ type Units = "metric" | "imperial";
 const CARD_EXPORT_WIDTH = 1080;
 const CARD_EXPORT_HEIGHT = 1920;
 
-function EstimatePageContent() {
+type EstimatePageContentProps = {
+  basePath?: "/" | "/estimate";
+};
+
+function EstimatePageContent({ basePath }: EstimatePageContentProps) {
+  const pathname = usePathname();
+  const resolvedBasePath = basePath ?? (pathname === "/" ? "/" : "/estimate");
   const searchParams = useSearchParams();
 
   const sourceParam = searchParams.get("source");
@@ -198,22 +202,16 @@ function EstimatePageContent() {
 
   if (!imageUrl) {
     return (
-      <div className="hero min-h-screen flex items-center justify-center">
-        <div className="flex flex-col items-center mt-10 gap-6">
-          <div className="text-center lg:text-left w-full max-w-md">
-            <div className="mb-12">
-              <H1>Estimate Your Body Fat %</H1>
-            </div>
-            <EstimateDropZone />
-          </div>
-
-          <div className="w-full max-w-lg mt-6 lg:max-w-xl">
-            <TryExamples basePath="/estimate" />
-          </div>
-
-          <div className="mt-20">
-            <EstimateSeoExplainer />
-          </div>
+      <div className="mt-0">
+        <Hero basePath={resolvedBasePath} />
+        <div className="w-full max-w-3xl mx-auto pt-4 pb-10 lg:pt-8 lg:pb-16">
+          <EstimateWhereYouSit
+            title="What Your Body Fat % Means"
+            gender="male"
+          />
+        </div>
+        <div className="w-full max-w-5xl mx-auto pt-6 pb-12 lg:pt-12 lg:pb-20">
+          <EstimateBodyFatLooksLike />
         </div>
       </div>
     );
@@ -249,6 +247,7 @@ function EstimatePageContent() {
                     downloadingResults={downloadingImage}
                     compactGauge={isMobile}
                     showActions={!isMobile}
+                    estimateAgainHref={resolvedBasePath}
                   />
                 </div>
               </div>
@@ -270,7 +269,7 @@ function EstimatePageContent() {
                 </button>
 
                 <a
-                  href="/estimate"
+                  href={resolvedBasePath}
                   onClick={() =>
                     trackEvent("Go to Tool", {
                       tool: "body fat estimator",
@@ -302,12 +301,16 @@ function EstimatePageContent() {
 
       {!isAnalyzing && (
         <>
-          <div id="where-you-sit" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
+          <div id="where-you-sit" className="w-full max-w-3xl pt-14 pb-10 lg:pt-24 lg:pb-20">
             <EstimateWhereYouSit
               estimate={activeBodyFat}
               gender={activeGender}
               rationale={activeRationale}
             />
+          </div>
+
+          <div id="what-it-looks-like" className="w-full max-w-5xl pt-6 pb-10 lg:pt-12 lg:pb-20">
+            <EstimateBodyFatLooksLike estimate={activeBodyFat} />
           </div>
 
           <div id="rationale" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
@@ -317,6 +320,7 @@ function EstimatePageContent() {
           <div id="current-snapshot" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
             <EstimateCompositionSnapshot
               bodyFat={activeBodyFat}
+              gender={activeGender}
               units={analysisUnits}
               weight={analysisWeight}
               prefilledFromRefine={analysisAutofilledFromRefine}

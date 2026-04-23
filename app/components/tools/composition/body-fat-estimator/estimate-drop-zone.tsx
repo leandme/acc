@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { showErrorToast } from "@/app/libs/toast";
 
 type Props = {
   basePath?:
+    | "/"
     | "/estimate"
     | "/calorie-counter"
     | "/height-estimator"
@@ -24,12 +25,14 @@ type Props = {
 };
 
 export default function EstimateDropZone({
-  basePath = "/estimate",
+  basePath,
   buttonLabel = "Upload Photo",
 }: Props) {
   const [fileName, setFileName] = useState<string | null>(null);
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
   const router = useRouter();
+  const pathname = usePathname();
+  const resolvedBasePath = basePath ?? (pathname === "/" ? "/" : "/estimate");
 
   const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB limit
 
@@ -46,7 +49,7 @@ export default function EstimateDropZone({
       setFileName(droppedFile.name);
 
       const objectUrl = URL.createObjectURL(droppedFile);
-      router.push(`${basePath}?imageUrl=${encodeURIComponent(objectUrl)}`);
+      router.push(`${resolvedBasePath}?imageUrl=${encodeURIComponent(objectUrl)}`);
     }
   };
 
@@ -62,7 +65,7 @@ export default function EstimateDropZone({
       setFileName(uploadedFile.name);
 
       const objectUrl = URL.createObjectURL(uploadedFile);
-      router.push(`${basePath}?imageUrl=${encodeURIComponent(objectUrl)}`);
+      router.push(`${resolvedBasePath}?imageUrl=${encodeURIComponent(objectUrl)}`);
     }
   };
 
@@ -85,7 +88,7 @@ export default function EstimateDropZone({
       return;
     }
 
-    router.push(`${basePath}?imageUrl=${encodeURIComponent(cleaned)}`);
+    router.push(`${resolvedBasePath}?imageUrl=${encodeURIComponent(cleaned)}`);
   };
 
   return (

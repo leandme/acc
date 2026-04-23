@@ -1,10 +1,6 @@
 "use client";
 
 import React from "react";
-import CTA from "@/app/components/common/cta";
-import { MoreTools
-  
- } from "../../template/more-tools";
 type Props = {
   className?: string;
 };
@@ -241,32 +237,6 @@ export default function EstimateSeoExplainer({ className = "" }: Props) {
           </p>
         </div>
 
-        {/* CTA */}
-        <div className="mt-10">
-          <CTA
-            title="Ready to estimate your body fat from a photo?"
-            description="Upload a clear photo in consistent lighting and use the result as a trend signal — not a one-time verdict."
-            buttonText="Get your estimate →"
-            href="/estimate"
-          />
-        </div>
-
-         <div className="w-full max-w-3xl mx-auto mt-10 lg:mt-20 mb-10">
-                 <MoreTools
-                    heading="More Tools"
-                    columns={2}
-                    toolSlugs={[
-                      "skinfold-body-fat-calculator",
-                      "bai-calculator",
-                      "bri-calculator",
-                      "lean-body-mass-calculator",
-                      "body-frame-size-calculator",
-                      "ffmi-calculator",
-                      "body-visualizer",
-                    ]}
-                    excludeSlug="estimate"
-                  />
-                </div>
       </div>
     </section>
   );
