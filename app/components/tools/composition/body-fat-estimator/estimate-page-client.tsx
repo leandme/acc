@@ -64,6 +64,7 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
   const [analysisUnits, setAnalysisUnits] = useState<Units>("imperial");
   const [analysisWeight, setAnalysisWeight] = useState<number | null>(null);
   const [analysisAutofilledFromRefine, setAnalysisAutofilledFromRefine] = useState(false);
+  const [previewGender, setPreviewGender] = useState<Gender>("male");
   const refineRef = useRef<HTMLDivElement | null>(null);
   const exportCardRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -205,13 +206,49 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
       <div className="mt-0">
         <Hero basePath={resolvedBasePath} />
         <div className="w-full max-w-3xl mx-auto pt-4 pb-10 lg:pt-8 lg:pb-16">
+          <div className="mb-6 flex items-center justify-center">
+            <div
+              role="tablist"
+              aria-label="Body fat ranges gender preview"
+              className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white p-1 shadow-sm"
+            >
+              <button
+                type="button"
+                role="tab"
+                aria-selected={previewGender === "male"}
+                onClick={() => setPreviewGender("male")}
+                className={[
+                  "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
+                  previewGender === "male"
+                    ? "bg-gray-900 text-white"
+                    : "text-gray-700 hover:bg-gray-100",
+                ].join(" ")}
+              >
+                MEN
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={previewGender === "female"}
+                onClick={() => setPreviewGender("female")}
+                className={[
+                  "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
+                  previewGender === "female"
+                    ? "bg-gray-900 text-white"
+                    : "text-gray-700 hover:bg-gray-100",
+                ].join(" ")}
+              >
+                WOMEN
+              </button>
+            </div>
+          </div>
           <EstimateWhereYouSit
             title="What Your Body Fat % Means"
-            gender="male"
+            gender={previewGender}
           />
         </div>
         <div className="w-full max-w-5xl mx-auto pt-6 pb-12 lg:pt-12 lg:pb-20">
-          <EstimateBodyFatLooksLike />
+          <EstimateBodyFatLooksLike gender={previewGender} />
         </div>
       </div>
     );
@@ -310,7 +347,7 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
           </div>
 
           <div id="what-it-looks-like" className="w-full max-w-5xl pt-6 pb-10 lg:pt-12 lg:pb-20">
-            <EstimateBodyFatLooksLike estimate={activeBodyFat} />
+            <EstimateBodyFatLooksLike estimate={activeBodyFat} gender={activeGender} />
           </div>
 
           <div id="rationale" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
