@@ -34,6 +34,7 @@ type Props = {
   error: string | null;
   gender?: Gender;
   bodyShapeLabel?: string | null;
+  onBodyShapeClick?: () => void;
   accuracy?: Accuracy;
   onDownloadResults?: () => void;
   downloadingResults?: boolean;
@@ -48,6 +49,7 @@ export default function EstimatePanel({
   error,
   gender = "male",
   bodyShapeLabel = null,
+  onBodyShapeClick,
   accuracy = "low",
   onDownloadResults,
   downloadingResults = false,
@@ -114,14 +116,26 @@ export default function EstimatePanel({
               <div className="flex items-center gap-2">
                 <span className="font-semibold">Body Shape:</span>
 
-                <a
-                  href="#body-shape"
-                  className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-800 no-underline cursor-pointer
-                            focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
-                  aria-label={`Jump to body shape section. Body shape is ${normalizedBodyShapeLabel}`}
-                >
-                  {normalizedBodyShapeLabel}
-                </a>
+                {onBodyShapeClick ? (
+                  <button
+                    type="button"
+                    onClick={onBodyShapeClick}
+                    className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-800 no-underline cursor-pointer
+                              focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+                    aria-label={`Show body shape section. Body shape is ${normalizedBodyShapeLabel}`}
+                  >
+                    {normalizedBodyShapeLabel}
+                  </button>
+                ) : (
+                  <a
+                    href="#body-shape"
+                    className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-800 no-underline cursor-pointer
+                              focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+                    aria-label={`Jump to body shape section. Body shape is ${normalizedBodyShapeLabel}`}
+                  >
+                    {normalizedBodyShapeLabel}
+                  </a>
+                )}
               </div>
             ) : null}
 

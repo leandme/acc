@@ -59,7 +59,7 @@ export default function EstimateBodyShape({
             </div>
 
             <div className="px-6 pt-4 pb-6">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center justify-center gap-2">
                 <h4 className="text-2xl lg:text-3xl font-semibold text-gray-900">
                   {activeShape.title}
                 </h4>
@@ -67,18 +67,20 @@ export default function EstimateBodyShape({
                   YOUR RESULT
                 </span>
               </div>
-              <p className="mt-3 text-lg text-gray-700 leading-relaxed">
+              <p className="mt-3 text-lg text-gray-700 leading-relaxed text-center">
                 {activeShape.description}
               </p>
 
               {!showOtherShapes && otherShapes.length > 0 ? (
-                <button
-                  type="button"
-                  className="mt-4 text-sm font-semibold text-primary underline underline-offset-2"
-                  onClick={() => setShowOtherShapes(true)}
-                >
-                  See other body shapes
-                </button>
+                <div className="mt-4 text-center">
+                  <button
+                    type="button"
+                    className="text-lg font-semibold text-primary underline underline-offset-2"
+                    onClick={() => setShowOtherShapes(true)}
+                  >
+                    See other body shapes
+                  </button>
+                </div>
               ) : null}
             </div>
           </article>

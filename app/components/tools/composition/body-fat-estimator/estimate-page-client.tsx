@@ -67,6 +67,7 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
   const [previewGender, setPreviewGender] = useState<Gender>("male");
   const [visitorCountryCode, setVisitorCountryCode] = useState<string | null>(null);
   const [refineAge, setRefineAge] = useState<number | null>(null);
+  const [showBodyShapeSection, setShowBodyShapeSection] = useState(false);
   const exportCardRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useMediaQuery("(max-width: 767px)");
 
@@ -102,6 +103,10 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
     month: "short",
     day: "numeric",
   })}`;
+
+  useEffect(() => {
+    setShowBodyShapeSection(false);
+  }, [activeBodyShapeLabel, imageUrl]);
 
   useEffect(() => {
     let cancelled = false;
@@ -311,6 +316,15 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
                     error={activeEstimate.error}
                     gender={activeGender}
                     bodyShapeLabel={activeBodyShapeLabel}
+                    onBodyShapeClick={() => {
+                      setShowBodyShapeSection(true);
+                      window.setTimeout(() => {
+                        document.getElementById("body-shape")?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        });
+                      }, 0);
+                    }}
                     accuracy={normalizedActiveAccuracy}
                     onDownloadResults={() => downloadResultsImage("estimate cta")}
                     downloadingResults={downloadingImage}
@@ -414,7 +428,7 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
             />
           </div>
 
-          {activeBodyShape ? (
+          {activeBodyShape && showBodyShapeSection ? (
             <div id="body-shape" className="w-full max-w-5xl pt-6 pb-10 lg:pt-12 lg:pb-20">
               <EstimateBodyShape bodyShape={activeBodyShape} gender={activeGender} />
             </div>

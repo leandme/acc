@@ -293,7 +293,7 @@ export default function EstimateBodyFatLooksLike({
                     <div className="mt-4 text-center">
                       <button
                         type="button"
-                        className="text-sm font-semibold text-primary underline underline-offset-2"
+                        className="text-lg font-semibold text-primary underline underline-offset-2"
                         onClick={() => setShowOtherPercentages(true)}
                       >
                         Show other body fat percentages

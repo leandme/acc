@@ -402,16 +402,18 @@ export default function EstimateWhereYouSit({
     const genderLabel = gender === "female" ? "women" : "men";
     if (!normalizedCountryCode) return genderLabel;
 
+    const flagEmoji = countryCodeToFlag(normalizedCountryCode);
+    const withFlag = (label: string) => (flagEmoji ? `${label} ${flagEmoji}` : label);
+
     const benchmark = COUNTRY_BENCHMARKS[normalizedCountryCode];
-    if (benchmark) return `${benchmark.demonym} ${genderLabel}`;
+    if (benchmark) return withFlag(`${benchmark.demonym} ${genderLabel}`);
 
     const countryName = getCountryName(normalizedCountryCode);
-    if (countryName) return `${genderLabel} in ${countryName}`;
+    if (countryName) return withFlag(`${genderLabel} in ${countryName}`);
     return genderLabel;
   }, [countryCode, gender]);
 
   const ageBracket = useMemo(() => getAgeBracket(age), [age]);
-  const flag = useMemo(() => countryCodeToFlag(countryCode), [countryCode]);
   const percentileToneClass =
     leanerThanPercent !== null && leanerThanPercent >= 50
       ? "text-emerald-600"
@@ -514,8 +516,7 @@ export default function EstimateWhereYouSit({
                 {leanerThanPercent}%
               </span>{" "}
               of {countryLabel} in your age bracket
-              {ageBracket ? ` (${ageBracket})` : ""}.
-              {flag ? ` ${flag}` : ""}
+              {ageBracket ? ` (${ageBracket})` : ""}
             </p>
           </div>
         ) : null}
