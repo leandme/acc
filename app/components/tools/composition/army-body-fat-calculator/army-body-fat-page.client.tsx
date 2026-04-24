@@ -150,9 +150,9 @@ export default function ArmyBodyFatCalculatorPageClient() {
             judgment. Pair tape-based trends with progress photos and performance
             markers for stronger context.
             For comparison and cadence guidance, see{" "}
-            <a className="text-primary underline" href="/guides/body-fat-calculator-vs-estimator">Body Fat Calculator vs Body Fat Estimator</a>{" "}
+            <a className="text-primary underline" href="/blog/body-fat-calculator-vs-estimator">Body Fat Calculator vs Body Fat Estimator</a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/guides/how-often-should-you-measure-body-fat">How Often Should You Measure Body Fat?</a>.
+            <a className="text-primary underline" href="/blog/how-often-should-you-measure-body-fat">How Often Should You Measure Body Fat?</a>.
           </p>
         </div>
 

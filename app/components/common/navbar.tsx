@@ -31,17 +31,6 @@ export default function Navbar() {
           >
             <li>
               <a
-                href="/estimate"
-                onClick={() =>
-                  trackEvent("Go to Tool", { tool: "body fat estimator", location: "navbar mobile" })
-                }
-                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
-              >
-                Estimate Body Fat
-              </a>
-            </li>
-            <li>
-              <a
                 href="/body-visualizer"
                 onClick={() => trackEvent("Go to Tool", { tool: "body visualizer", location: "navbar mobile" })}
                 className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
@@ -67,17 +56,6 @@ export default function Navbar() {
         </a>
         <div className="hidden lg:flex ml-4 xl:ml-8">
           <ul className="menu menu-horizontal px-1 gap-2 xl:gap-4 text-base whitespace-nowrap flex-nowrap">
-            <li>
-              <a
-                href="/estimate"
-                onClick={() =>
-                  trackEvent("Go to Tool", { tool: "body fat estimator", location: "navbar desktop" })
-                }
-                className="hover:bg-transparent hover:underline focus:bg-transparent active:bg-transparent"
-              >
-                Estimate Body Fat
-              </a>
-            </li>
             <li>
               <a
                 href="/body-visualizer"

@@ -6,7 +6,6 @@ const REMOVED_TOOL_SLUGS = [
   "tdee-calculator",
   "bmr-calculator",
   "army-body-fat-calculator",
-  "body-fat-calculator",
   "lean-body-mass-calculator",
   "body-frame-size-calculator",
   "natty-or-not-calculator",
@@ -123,12 +122,22 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/blog/calculate-body-fat-percentage-at-home",
-        destination: "/guides/how-to-estimate-body-fat-percentage",
+        destination: "/blog/how-to-estimate-body-fat-percentage",
         permanent: true, // 301 redirect
       },
       {
         source: "/guides/best-body-fat-estimation-method",
-        destination: "/guides/best-way-to-measure-body-fat-at-home",
+        destination: "/blog/best-way-to-measure-body-fat-at-home",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/guides",
+        destination: "/blog",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/guides/:path*",
+        destination: "/blog/:path*",
         permanent: true, // 301 redirect
       },
       {
@@ -138,12 +147,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/best-ai-body-fat-estimator",
-        destination: "/guides/best-body-fat-estimator",
-        permanent: true, // 301 redirect
-      },
-      {
-        source: "/blog",
-        destination: "/guides",
+        destination: "/blog/best-body-fat-estimator",
         permanent: true, // 301 redirect
       },
       {

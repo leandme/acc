@@ -132,7 +132,7 @@ export default function BMIPageClient() {
           </p>
           <p className={pClass}>
             For a deeper breakdown, read our guide on{" "}
-            <a className="text-primary underline" href="/guides/bmi-vs-body-fat">
+            <a className="text-primary underline" href="/blog/bmi-vs-body-fat">
               when BMI helps and when body-fat percentage is more useful
             </a>
             .

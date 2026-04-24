@@ -132,7 +132,6 @@ const REMOVED_TOOL_SLUGS = new Set<string>([
   "tdee-calculator",
   "bmr-calculator",
   "army-body-fat-calculator",
-  "body-fat-calculator",
   "lean-body-mass-calculator",
   "body-frame-size-calculator",
   "natty-or-not-calculator",
@@ -387,8 +386,8 @@ export const TOOLS: Record<string, ToolMeta> = {
   },
   "body-fat-calculator": {
     slug: "body-fat-calculator",
-    title: "Body Fat Calculator",
-    description: "Estimate body fat % from measurements and formulas.",
+    title: "Navy Body Fat Calculator",
+    description: "Estimate body fat % with the U.S. Navy circumference formula.",
     category: "Fat",
   },
   "skinfold-body-fat-calculator": {

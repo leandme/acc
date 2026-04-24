@@ -9,13 +9,14 @@ import { useBodyFatEstimate } from "@/app/hooks/useBodyFatEstimate";
 import { useBodyFatEstimateRefine } from "@/app/hooks/useBodyFatEstimateRefine";
 import EstimateWhereYouSit from "@/app/components/tools/composition/body-fat-estimator/estimate-where-you-sit";
 import EstimateBodyFatLooksLike from "@/app/components/tools/composition/body-fat-estimator/estimate-body-fat-looks-like";
-import EstimateAccuracy from "@/app/components/tools/composition/body-fat-estimator/estimate-accuracy";
-import EstimateRationale from "@/app/components/tools/composition/body-fat-estimator/estimate-rationale";
 import EstimateRefineInline from "@/app/components/tools/composition/body-fat-estimator/estimate-refine-inline";
 import EstimateExportCard from "@/app/components/tools/composition/body-fat-estimator/estimate-export-card";
 import EstimateCompositionSnapshot from "@/app/components/tools/composition/body-fat-estimator/estimate-composition-snapshot";
+import EstimateBodyShape from "@/app/components/tools/composition/body-fat-estimator/estimate-body-shape";
 import LoadingStatus from "@/app/components/common/loading-status";
+import HowBodyFatAiWorks from "@/app/components/home/how-body-fat-ai-works";
 import { getCategoryFemale, getCategoryMale } from "@/app/libs/estimateUtils";
+import { getBodyShapeCard, type BodyShapeKey } from "@/app/libs/body-shape";
 import { showErrorToast, showSuccessToast } from "@/app/libs/toast";
 import { trackEvent } from "@/app/libs/amplitude";
 import { useMediaQuery } from "@/app/hooks/use-media-query";
@@ -56,16 +57,16 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
 
   const bodyFat = initial.estimate?.bodyFat ?? null;
   const accuracy = initial.estimate?.accuracy ?? "low";
-  const improvements = initial.estimate?.improve ?? null;
+  const bodyShape = initial.estimate?.bodyShape ?? null;
   const rationale = initial.estimate?.rationale ?? null;
 
-  const [showRefine, setShowRefine] = useState(false);
   const [downloadingImage, setDownloadingImage] = useState(false);
   const [analysisUnits, setAnalysisUnits] = useState<Units>("imperial");
   const [analysisWeight, setAnalysisWeight] = useState<number | null>(null);
   const [analysisAutofilledFromRefine, setAnalysisAutofilledFromRefine] = useState(false);
   const [previewGender, setPreviewGender] = useState<Gender>("male");
-  const refineRef = useRef<HTMLDivElement | null>(null);
+  const [visitorCountryCode, setVisitorCountryCode] = useState<string | null>(null);
+  const [refineAge, setRefineAge] = useState<number | null>(null);
   const exportCardRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useMediaQuery("(max-width: 767px)");
 
@@ -76,8 +77,11 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
 
   const activeBodyFat = active?.bodyFat ?? bodyFat;
   const activeAccuracy = active?.accuracy ?? accuracy;
+  const activeBodyShape: BodyShapeKey | null = active?.bodyShape ?? bodyShape;
   const activeRationale = active?.rationale ?? rationale;
-  const activeImprovements = active?.improve ?? improvements;
+  const activePerceivedAge =
+    active?.perceivedAge ?? initial.estimate?.perceivedAge ?? null;
+  const activeAgeForComparison = refineAge ?? activePerceivedAge;
   const normalizedActiveAccuracy: Accuracy =
     activeAccuracy === "high" || activeAccuracy === "medium" ? activeAccuracy : "low";
 
@@ -90,12 +94,42 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
         ? getCategoryFemale(activeBodyFat)
         : getCategoryMale(activeBodyFat)
       : null;
+  const activeBodyShapeCard = getBodyShapeCard(activeGender, activeBodyShape);
+  const activeBodyShapeLabel = activeBodyShapeCard?.title ?? null;
   const isAnalyzing = activeEstimate.loading;
   const generatedAtLabel = `Estimated ${new Date().toLocaleDateString(undefined, {
     year: "numeric",
     month: "short",
     day: "numeric",
   })}`;
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadVisitorGeo() {
+      try {
+        const response = await fetch("/api/geo", { cache: "no-store" });
+        if (!response.ok) return;
+
+        const data = (await response.json()) as { countryCode?: string | null };
+        const rawCode =
+          typeof data.countryCode === "string" ? data.countryCode : null;
+        const normalizedCode = rawCode?.trim().toUpperCase() ?? null;
+
+        if (!cancelled && normalizedCode && /^[A-Z]{2}$/.test(normalizedCode)) {
+          setVisitorCountryCode(normalizedCode);
+        }
+      } catch {
+        // geo lookup is optional; we fall back gracefully
+      }
+    }
+
+    loadVisitorGeo();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   async function downloadResultsImage(
     location: "estimate cta" | "estimate mobile cta" = "estimate cta"
@@ -192,20 +226,14 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
     }
   }
 
-  // scroll to refine block when it opens
-  useEffect(() => {
-    if (!showRefine) return;
-    const t = window.setTimeout(() => {
-      refineRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 50);
-    return () => window.clearTimeout(t);
-  }, [showRefine]);
-
   if (!imageUrl) {
+    const isHomepage = pathname === "/";
+
     return (
       <div className="mt-0">
         <Hero basePath={resolvedBasePath} />
-        <div className="w-full max-w-3xl mx-auto pt-4 pb-10 lg:pt-8 lg:pb-16">
+        {isHomepage ? <HowBodyFatAiWorks /> : null}
+        <div className="w-full max-w-3xl mx-auto pt-12 pb-10 lg:pt-16 lg:pb-16">
           <div className="mb-6 flex items-center justify-center">
             <div
               role="tablist"
@@ -243,12 +271,15 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
             </div>
           </div>
           <EstimateWhereYouSit
-            title="What Your Body Fat % Means"
+            title="What Each Body Fat % Means"
             gender={previewGender}
           />
         </div>
         <div className="w-full max-w-5xl mx-auto pt-6 pb-12 lg:pt-12 lg:pb-20">
-          <EstimateBodyFatLooksLike gender={previewGender} />
+          <EstimateBodyFatLooksLike
+            title="What Each Body Fat % Looks Like"
+            gender={previewGender}
+          />
         </div>
       </div>
     );
@@ -279,6 +310,7 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
                     loading={activeEstimate.loading}
                     error={activeEstimate.error}
                     gender={activeGender}
+                    bodyShapeLabel={activeBodyShapeLabel}
                     accuracy={normalizedActiveAccuracy}
                     onDownloadResults={() => downloadResultsImage("estimate cta")}
                     downloadingResults={downloadingImage}
@@ -343,15 +375,17 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
               estimate={activeBodyFat}
               gender={activeGender}
               rationale={activeRationale}
+              age={activeAgeForComparison}
+              countryCode={visitorCountryCode}
             />
           </div>
 
           <div id="what-it-looks-like" className="w-full max-w-5xl pt-6 pb-10 lg:pt-12 lg:pb-20">
-            <EstimateBodyFatLooksLike estimate={activeBodyFat} gender={activeGender} />
-          </div>
-
-          <div id="rationale" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
-            <EstimateRationale estimate={activeBodyFat} rationale={activeRationale} />
+            <EstimateBodyFatLooksLike
+              estimate={activeBodyFat}
+              gender={activeGender}
+              rationale={activeRationale}
+            />
           </div>
 
           <div id="current-snapshot" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
@@ -380,41 +414,36 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
             />
           </div>
 
-          <div id="accuracy" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
-            <EstimateAccuracy
-              accuracy={normalizedActiveAccuracy}
-              improvements={activeImprovements}
-              onImproveAccuracy={() => setShowRefine(true)}
-              improveCtaLabel="Improve Accuracy →"
+          {activeBodyShape ? (
+            <div id="body-shape" className="w-full max-w-5xl pt-6 pb-10 lg:pt-12 lg:pb-20">
+              <EstimateBodyShape bodyShape={activeBodyShape} gender={activeGender} />
+            </div>
+          ) : null}
+
+          <div id="increase-accuracy" className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
+            <EstimateRefineInline
+              initialImageUrl={imageUrl}
+              onRefine={(payload) => {
+                if (!imageUrl) return;
+
+                setAnalysisUnits(payload.units);
+                setAnalysisWeight(payload.weight);
+                setAnalysisAutofilledFromRefine(true);
+                setRefineAge(payload.age);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+
+                refine.refine({
+                  imageUrl,
+                  units: payload.units,
+                  age: payload.age,
+                  height: payload.height,
+                  weight: payload.weight,
+                  waist: payload.waist ?? null,
+                  extraImageFiles: payload.extraImages,
+                });
+              }}
             />
           </div>
-
-          {showRefine && (
-            <div ref={refineRef} className="w-full max-w-3xl pt-10 pb-10 lg:pt-20 lg:pb-20">
-              <EstimateRefineInline
-                initialImageUrl={imageUrl}
-                onRefine={(payload) => {
-                  if (!imageUrl) return;
-
-                  setShowRefine(true);
-                  setAnalysisUnits(payload.units);
-                  setAnalysisWeight(payload.weight);
-                  setAnalysisAutofilledFromRefine(true);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-
-                  refine.refine({
-                    imageUrl,
-                    units: payload.units,
-                    age: payload.age,
-                    height: payload.height,
-                    weight: payload.weight,
-                    waist: payload.waist ?? null,
-                    extraImageFiles: payload.extraImages,
-                  });
-                }}
-              />
-            </div>
-          )}
 
         </>
       )}

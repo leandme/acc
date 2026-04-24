@@ -38,11 +38,11 @@ export default function Hero({ basePath }: HeroProps) {
 
 
           <h1 className="text-4xl lg:text-5xl font-bold">
-            Estimate Your Body Fat % from a Photo
+            Calculate Body Fat % with AI
           </h1>
 
           <p className="py-6 text-lg mt-2">
-            Upload a photo and get a body fat AI estimate in seconds. Fast, accurate, and{" "}
+            Upload a photo and get a body fat % estimate in seconds. Fast, accurate, and{" "}
             <span className="inline-block bg-primary text-white px-2 py-0.5 rounded-md text-base font-semibold">
               free
             </span>

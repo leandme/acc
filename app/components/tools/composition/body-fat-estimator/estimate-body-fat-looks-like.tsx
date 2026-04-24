@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 type Gender = "male" | "female";
 
 type Props = {
   estimate?: number | null;
   gender?: Gender;
+  rationale?: string | null;
+  title?: string;
   className?: string;
 };
 
@@ -152,17 +154,43 @@ function getVisualCards(gender: Gender): BodyFatVisualCard[] {
 export default function EstimateBodyFatLooksLike({
   estimate = null,
   gender = "male",
+  rationale = null,
+  title,
   className = "",
 }: Props) {
-  const visuals = React.useMemo(() => getVisualCards(gender), [gender]);
+  const visuals = useMemo(() => getVisualCards(gender), [gender]);
+  const [showOtherPercentages, setShowOtherPercentages] = useState(false);
+  const rationaleText = (rationale ?? "").trim();
 
   const selectedPercent =
     typeof estimate === "number" && Number.isFinite(estimate) ? getClosestPercent(estimate) : null;
 
+  const selectedVisual =
+    selectedPercent !== null
+      ? visuals.find((visual) => visual.percent === selectedPercent) ?? null
+      : null;
+
+  const otherVisuals = selectedVisual
+    ? visuals.filter((visual) => visual.percent !== selectedVisual.percent)
+    : visuals;
+
+  const rationaleLines = useMemo(() => {
+    if (!rationaleText) return [];
+    return rationaleText
+      .replace(/\s+/g, " ")
+      .split(/(?<=[.!?])\s+/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+  }, [rationaleText]);
+
+  useEffect(() => {
+    setShowOtherPercentages(false);
+  }, [selectedPercent, gender]);
+
   const heading =
     selectedPercent !== null
       ? `What ${selectedPercent}% Body Fat Looks Like`
-      : "What Your Body Fat % Looks Like";
+      : title ?? "What Your Body Fat % Looks Like";
 
   return (
     <section className={`w-full max-w-5xl ${className}`}>
@@ -173,21 +201,102 @@ export default function EstimateBodyFatLooksLike({
             {gender === "female" ? "WOMEN" : "MEN"}
           </span>
         </h2>
-        <p className="mt-4 text-center text-lg text-gray-700">
-          See what different body-fat percentages can look like, so you can quickly compare your result with realistic visual reference points.
-        </p>
+        {selectedVisual ? (
+          <>
+            <div className="mt-8">
+              <article className="overflow-hidden rounded-2xl border bg-white shadow-sm ring-2 ring-gray-900 border-gray-900/40">
+                <div className="px-6 pt-6 pb-6">
+                  <div className="mx-auto w-full max-w-xl">
+                    <div className="bg-base-100 aspect-[3/4] rounded-xl">
+                      <img
+                        src={selectedVisual.imageSrc}
+                        alt={`${gender} ${selectedVisual.percent}% body fat visual reference`}
+                        className="h-full w-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {visuals.map((visual) => {
-            const isActive = selectedPercent === visual.percent;
+                  <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+                    <h4 className="text-2xl lg:text-3xl font-semibold text-gray-900">
+                      {selectedVisual.title}
+                    </h4>
+                    <span className="inline-flex rounded-full border border-gray-900/20 bg-gray-900/10 px-3 py-1 text-sm font-semibold text-gray-900">
+                      YOUR RESULT
+                    </span>
+                  </div>
+                  {rationaleLines.length > 0 ? (
+                    <div className="mt-3 space-y-2">
+                      {rationaleLines.map((line, idx) => (
+                        <p
+                          key={`${selectedVisual.percent}-rationale-${idx}`}
+                          className="text-lg text-gray-700 leading-relaxed text-left"
+                        >
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="mt-3 text-lg text-gray-700 leading-relaxed text-center">
+                      {selectedVisual.description}
+                    </p>
+                  )}
 
-            return (
+                  {!showOtherPercentages && otherVisuals.length > 0 ? (
+                    <div className="mt-4 text-center">
+                      <button
+                        type="button"
+                        className="text-sm font-semibold text-primary underline underline-offset-2"
+                        onClick={() => setShowOtherPercentages(true)}
+                      >
+                        Show other body fat percentages
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              </article>
+            </div>
+
+            {showOtherPercentages && otherVisuals.length > 0 ? (
+              <div className="mt-10">
+                <h3 className="text-2xl lg:text-3xl font-semibold text-center">
+                  Other Body Fat Percentages
+                </h3>
+                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                  {otherVisuals.map((visual) => (
+                    <article
+                      key={visual.percent}
+                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
+                    >
+                      <div className="bg-base-100 aspect-[3/4]">
+                        <img
+                          src={visual.imageSrc}
+                          alt={`${gender} ${visual.percent}% body fat visual reference`}
+                          className="h-full w-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+
+                      <div className="px-6 pt-4 pb-6">
+                        <h4 className="text-xl lg:text-2xl font-semibold text-gray-900">
+                          {visual.title}
+                        </h4>
+                        <p className="mt-3 text-lg text-gray-700 leading-relaxed">
+                          {visual.description}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </>
+        ) : (
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {visuals.map((visual) => (
               <article
                 key={visual.percent}
-                className={[
-                  "overflow-hidden rounded-2xl border bg-white shadow-sm",
-                  isActive ? "ring-2 ring-gray-900 border-gray-900/40" : "border-gray-200",
-                ].join(" ")}
+                className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
               >
                 <div className="bg-base-100 aspect-[3/4]">
                   <img
@@ -199,20 +308,13 @@ export default function EstimateBodyFatLooksLike({
                 </div>
 
                 <div className="px-6 pt-4 pb-6">
-                  <div className="flex items-center gap-2">
-                    <h4 className="text-xl lg:text-2xl font-semibold text-gray-900">{visual.title}</h4>
-                    {isActive ? (
-                      <span className="inline-flex rounded-full border border-gray-900/20 bg-gray-900/10 px-3 py-1 text-sm font-semibold text-gray-900">
-                        Closest Match
-                      </span>
-                    ) : null}
-                  </div>
+                  <h4 className="text-xl lg:text-2xl font-semibold text-gray-900">{visual.title}</h4>
                   <p className="mt-3 text-lg text-gray-700 leading-relaxed">{visual.description}</p>
                 </div>
               </article>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

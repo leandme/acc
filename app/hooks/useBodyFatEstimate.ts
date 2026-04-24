@@ -2,6 +2,7 @@
 
   import { useEffect, useState } from "react";
   import { trackEvent } from "@/app/libs/amplitude";
+  import { normalizeBodyShapeKey, type BodyShapeKey } from "@/app/libs/body-shape";
 
   type EstimateSource = "example" | "upload";
 
@@ -9,6 +10,7 @@
     bodyFat: number | null;
     perceivedAge: number | null;
     perceivedGender: string | null;
+    bodyShape: BodyShapeKey | null;
     accuracy: "low" | "medium" | "high" | null;
     rationale: string | null;
     improve: string[];
@@ -208,8 +210,13 @@
 
             perceivedGender: (() => {
               const v = finalEstimate?.photo_assessment?.perceived_gender;
-              return Array.isArray(v) ? v[0] ?? null : v ?? null;
+              const raw = Array.isArray(v) ? v[0] : v;
+              return typeof raw === "string" ? raw.toLowerCase().trim() : null;
             })(),
+
+            bodyShape: normalizeBodyShapeKey(
+              finalEstimate?.photo_assessment?.body_shape
+            ),
 
             accuracy: finalEstimate?.estimation?.accuracy_rating ?? null,
 
@@ -235,6 +242,7 @@
             'body fat': normalized.bodyFat,
             'perceived age': normalized.perceivedAge,
             'perceived gender': normalized.perceivedGender,
+            'body shape': normalized.bodyShape,
              accuracy: normalized.accuracy,
              source,
              type: 'basic'

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { POSTS } from "@/app/(site)/guides/posts";
+import { POSTS } from "@/app/(site)/blog/posts";
 import { EzoicAdSlot } from "@/app/components/helpers/ezoic-ad-slot";
 
 type ArticleCard = {
@@ -67,7 +67,7 @@ function withDiversity(
     (article) => article.tag && article.tag !== primaryTag
   );
 
-  const hashBase = stableHash(currentSlug ?? primaryTag ?? "guides");
+  const hashBase = stableHash(currentSlug ?? primaryTag ?? "blog");
   const rotatedSeed = rotate(seed, hashBase);
   const rotatedSameTag = rotate(sameTag, hashBase);
   const rotatedCrossTag = rotate(crossTag, hashBase >> 1);
@@ -103,7 +103,7 @@ function withDiversity(
 
 export function MoreArticles({
   articles,
-  basePath = "/guides",
+  basePath = "/blog",
   heading = "Read More",
   maxItems = 2,
   preferredTag,
@@ -124,7 +124,7 @@ export function MoreArticles({
     <>
       <EzoicAdSlot id={114} className="mt-12" />
       <section className="mt-14 border-t pt-10">
-        <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 text-left"><a className="hover:underline" href="/guides">{heading} →</a></h3>
+        <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 text-left"><a className="hover:underline" href="/blog">{heading} →</a></h3>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
           {shownArticles.map((a) => (

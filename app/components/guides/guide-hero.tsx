@@ -63,7 +63,7 @@ export default function GuideHero({
               image={
                 <figure className="max-w-3xl">
                   <img
-                    src="/guides/"
+                    src="/blog/"
                     alt="Guide hero image for body fat estimator article"
                     loading="lazy"
                     className="rounded-xl border"

@@ -12,9 +12,9 @@ export type GuideCardItem = {
 };
 
 type Props = {
-  headline?: string; // e.g. "Guides" / "Blog"
+  headline?: string; // e.g. "Body Fat Blog"
   viewAllLabel?: string; // e.g. "See more articles →"
-  viewAllHref?: string; // e.g. "/guides"
+  viewAllHref?: string; // e.g. "/blog"
   items?: GuideCardItem[]; // if omitted, defaults are used
   className?: string;
 };
@@ -23,24 +23,24 @@ const DEFAULT_ITEMS: GuideCardItem[] = [
   {
     date: "Jan 27, 2026",
     title: "How to Estimate Body Fat % at Home (Free)",
-    href: "/guides/how-to-estimate-body-fat-percentage",
+    href: "/blog/how-to-estimate-body-fat-percentage",
   },
   {
     date: "Jan 20, 2026",
     title: "Body Fat Calculator vs Estimator: What’s Better?",
-    href: "/guides/body-fat-calculator-vs-estimator",
+    href: "/blog/body-fat-calculator-vs-estimator",
   },
   {
     date: "Jan 27, 2026",
     title: "How to Estimate Body Fat % from a Photo",
-    href: "/guides/estimate-body-fat-percentage-from-photo",
+    href: "/blog/estimate-body-fat-percentage-from-photo",
   },
 ];
 
 export default function GuideCards({
-  headline = "Guides",
-  viewAllLabel = "See more guides →",
-  viewAllHref = "/guides",
+  headline = "Body Fat Blog",
+  viewAllLabel = "See more blog posts →",
+  viewAllHref = "/blog",
   items = DEFAULT_ITEMS,
   className = "",
 }: Props) {

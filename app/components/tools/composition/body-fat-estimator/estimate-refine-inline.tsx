@@ -161,10 +161,10 @@ export default function EstimateRefineInline({
     <section className={`w-full max-w-3xl ${className}`}>
       <div className="p-5">
         <h2 className="text-3xl lg:text-4xl font-semibold text-center">
-          Refine Your Estimate
+          Increase Your Estimate Accuracy
         </h2>
         <p className="mt-4 text-gray-700 text-lg leading-relaxed text-center">
-          Add masurements and up to 3 angles to tighten the estimate.
+          Add measurements and up to 3 angles to tighten the estimate.
         </p>
 
         {/* Units toggle: Imperial on the LEFT, Metric on the RIGHT */}
@@ -233,8 +233,8 @@ export default function EstimateRefineInline({
                         <div className="w-10 h-10 rounded-full bg-base-100 flex items-center justify-center border">
                           <span className="text-xl">+</span>
                         </div>
-                        <div className="text-sm font-semibold text-gray-800">{label}</div>
-                        <div className="text-xs text-gray-600">Tap to upload</div>
+                        <div className="text-lg font-semibold text-gray-800">{label}</div>
+                        <div className="text-lg text-gray-600">Tap to upload</div>
                       </div>
                     )}
                   </button>
@@ -261,11 +261,11 @@ export default function EstimateRefineInline({
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <label className="form-control">
             <div className="label">
-              <span className="label-text font-semibold">Age</span>
+              <span className="label-text text-lg font-semibold">Age</span>
               <span className="label-text-alt text-gray-600">required</span>
             </div>
             <select
-              className="select select-bordered w-full"
+              className="select select-bordered w-full text-lg"
               value={age}
               onChange={(e) => setAge(e.target.value)}
             >
@@ -282,11 +282,11 @@ export default function EstimateRefineInline({
 
           <label className="form-control">
             <div className="label">
-              <span className="label-text font-semibold">{heightLabel}</span>
+              <span className="label-text text-lg font-semibold">{heightLabel}</span>
               <span className="label-text-alt text-gray-600">required</span>
             </div>
             <select
-              className="select select-bordered w-full"
+              className="select select-bordered w-full text-lg"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
             >
@@ -303,11 +303,11 @@ export default function EstimateRefineInline({
 
           <label className="form-control">
             <div className="label">
-              <span className="label-text font-semibold">{weightLabel}</span>
+              <span className="label-text text-lg font-semibold">{weightLabel}</span>
               <span className="label-text-alt text-gray-600">required</span>
             </div>
             <select
-              className="select select-bordered w-full"
+              className="select select-bordered w-full text-lg"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
             >
@@ -324,11 +324,11 @@ export default function EstimateRefineInline({
 
           <label className="form-control">
             <div className="label">
-              <span className="label-text font-semibold">{waistLabel}</span>
+              <span className="label-text text-lg font-semibold">{waistLabel}</span>
               <span className="label-text-alt text-gray-600">optional</span>
             </div>
             <select
-              className="select select-bordered w-full"
+              className="select select-bordered w-full text-lg"
               value={waist}
               onChange={(e) => setWaist(e.target.value)}
             >

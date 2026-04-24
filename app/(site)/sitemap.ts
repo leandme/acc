@@ -15,7 +15,7 @@ const LEGAL_ROUTES = new Set([
 const UTILITY_ROUTES = new Set(["/sitemap-html"]);
 
 function stripRouteGroups(route: string) {
-  // route like "/(general)/about" or "/guides/(body-fat)/bmi-vs-body-fat"
+  // route like "/(general)/about" or "/blog/(body-fat)/bmi-vs-body-fat"
   const cleaned =
     "/" +
     route
@@ -51,7 +51,7 @@ function getRouteSignals(
     return { changeFrequency: "weekly", priority: 0.95 };
   }
 
-  if (route === "/tools" || route === "/guides") {
+  if (route === "/tools" || route === "/blog") {
     return { changeFrequency: "weekly", priority: 0.9 };
   }
 
@@ -59,7 +59,7 @@ function getRouteSignals(
     return { changeFrequency: "weekly", priority: 0.85 };
   }
 
-  if (absolutePath.includes(`${path.sep}guides${path.sep}`)) {
+  if (absolutePath.includes(`${path.sep}blog${path.sep}`)) {
     return { changeFrequency: "monthly", priority: 0.8 };
   }
 

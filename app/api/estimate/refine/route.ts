@@ -82,7 +82,8 @@ Return JSON exactly in this shape:
   "version": "1.0",
   "photo_assessment": {
     "perceived_gender": "string",
-    "perceived_age": "string"
+    "perceived_age": "string",
+    "body_shape": "string"
   },
   "estimation": {
     "body_fat_percent": number | null,
@@ -95,6 +96,9 @@ Return JSON exactly in this shape:
 Rules:
 - Estimate age to the nearest year. Be as specific as possible.
 - Estimate body fat percentage as accurate as possible with 1 decimal place. Be as specific as possible.
+- Return "body_shape" using ONE of these values:
+  - For women: "hourglass", "triangle", "rectangle", "inverted-triangle", or "oval"
+  - For men: "trapezoid", "triangle", "rectangle", "inverted-triangle", or "oval"
 - Use all images provided. If images disagree due to lighting/pose, explain briefly in rationale.
 - In "estimation_rationale", avoid generic appearance judgments and focus only on specific observable cues.
 - Do not provide medical advice or diagnosis. Provide an approximate, appearance-based estimate for fitness tracking.

@@ -20,11 +20,20 @@ function accuracyStyles(level: Accuracy) {
   }
 }
 
+function formatBodyShapeLabel(label: string) {
+  return label
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toUpperCase();
+}
+
 type Props = {
   estimate: number | null;
   loading: boolean;
   error: string | null;
   gender?: Gender;
+  bodyShapeLabel?: string | null;
   accuracy?: Accuracy;
   onDownloadResults?: () => void;
   downloadingResults?: boolean;
@@ -38,6 +47,7 @@ export default function EstimatePanel({
   loading,
   error,
   gender = "male",
+  bodyShapeLabel = null,
   accuracy = "low",
   onDownloadResults,
   downloadingResults = false,
@@ -47,6 +57,9 @@ export default function EstimatePanel({
 }: Props) {
   const p = !loading && typeof estimate === "number" ? estimate : null;
   const canShowDownload = !loading && p !== null && !error && !!onDownloadResults;
+  const normalizedBodyShapeLabel = bodyShapeLabel
+    ? formatBodyShapeLabel(bodyShapeLabel)
+    : null;
 
   const categoryLabel =
     p !== null
@@ -97,17 +110,32 @@ export default function EstimatePanel({
               </a>
             </div>
 
+            {normalizedBodyShapeLabel ? (
+              <div className="flex items-center gap-2">
+                <span className="font-semibold">Body Shape:</span>
+
+                <a
+                  href="#body-shape"
+                  className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-800 no-underline cursor-pointer
+                            focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+                  aria-label={`Jump to body shape section. Body shape is ${normalizedBodyShapeLabel}`}
+                >
+                  {normalizedBodyShapeLabel}
+                </a>
+              </div>
+            ) : null}
+
             {/* Accuracy */}
             <div className="flex items-center gap-2">
               <span className="font-semibold">Accuracy:</span>
 
               <a
-                href="#accuracy"
+                href="#increase-accuracy"
                 className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold no-underline cursor-pointer
                             focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2
                             ${accuracyStyles(accuracy)}`}
                 title="Photo-based estimates vary with lighting, pose, distance, and clothing."
-                aria-label={`Jump to accuracy section. Accuracy is ${accuracy}`}
+                aria-label={`Jump to increase estimate accuracy section. Accuracy is ${accuracy}`}
               >
                 {accuracy.toUpperCase()}
               </a>

@@ -60,15 +60,15 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
     ],
     relatedLinks: [
       {
-        href: "/guides/best-body-fat-estimator",
+        href: "/blog/best-body-fat-estimator",
         label: "Best Body Fat Estimator Guide",
       },
       {
-        href: "/guides/how-to-track-body-fat-changes",
+        href: "/blog/how-to-track-body-fat-changes",
         label: "How to Track Body Fat Changes",
       },
       {
-        href: "/guides/why-body-fat-measurements-give-different-results",
+        href: "/blog/why-body-fat-measurements-give-different-results",
         label: "Why Methods Give Different Results",
       },
     ],
@@ -119,15 +119,15 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
     ],
     relatedLinks: [
       {
-        href: "/guides/how-to-track-body-fat-changes",
+        href: "/blog/how-to-track-body-fat-changes",
         label: "How to Track Changes Consistently",
       },
       {
-        href: "/guides/how-often-should-you-measure-body-fat",
+        href: "/blog/how-often-should-you-measure-body-fat",
         label: "How Often to Recheck Measurements",
       },
       {
-        href: "/guides/why-body-fat-measurements-give-different-results",
+        href: "/blog/why-body-fat-measurements-give-different-results",
         label: "Why Different Methods Disagree",
       },
     ],
@@ -186,15 +186,15 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
         label: "Lip Shape Detector",
       },
       {
-        href: "/guides/how-ai-body-fat-estimation-works",
+        href: "/blog/how-ai-body-fat-estimation-works",
         label: "How AI Visual Estimation Works",
       },
       {
-        href: "/guides/how-accurate-is-ai-body-fat-estimation",
+        href: "/blog/how-accurate-is-ai-body-fat-estimation",
         label: "How to Interpret AI Accuracy",
       },
       {
-        href: "/guides/how-to-take-photos-for-body-fat-estimation",
+        href: "/blog/how-to-take-photos-for-body-fat-estimation",
         label: "Photo Standardization Best Practices",
       },
     ],
@@ -245,15 +245,15 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
     ],
     relatedLinks: [
       {
-        href: "/guides/how-to-estimate-body-fat-percentage",
+        href: "/blog/how-to-estimate-body-fat-percentage",
         label: "How to Estimate Body Fat Percentage",
       },
       {
-        href: "/guides/body-fat-estimation-methods",
+        href: "/blog/body-fat-estimation-methods",
         label: "Body Fat Estimation Methods Explained",
       },
       {
-        href: "/guides/why-body-fat-estimators-give-different-results",
+        href: "/blog/why-body-fat-estimators-give-different-results",
         label: "Why Estimators Give Different Results",
       },
     ],
@@ -304,15 +304,15 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
     ],
     relatedLinks: [
       {
-        href: "/guides/best-way-to-measure-body-fat-at-home",
+        href: "/blog/best-way-to-measure-body-fat-at-home",
         label: "Best Ways to Measure at Home",
       },
       {
-        href: "/guides/body-fat-estimation-methods",
+        href: "/blog/body-fat-estimation-methods",
         label: "Method Comparison Guide",
       },
       {
-        href: "/guides/why-body-fat-measurements-give-different-results",
+        href: "/blog/why-body-fat-measurements-give-different-results",
         label: "Why Results Differ",
       },
     ],
@@ -363,15 +363,15 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
     ],
     relatedLinks: [
       {
-        href: "/guides/bmi-vs-body-fat",
+        href: "/blog/bmi-vs-body-fat",
         label: "BMI vs Body Fat Guide",
       },
       {
-        href: "/guides/how-to-track-body-fat-changes",
+        href: "/blog/how-to-track-body-fat-changes",
         label: "How to Track Changes Better",
       },
       {
-        href: "/guides/how-often-should-you-measure-body-fat",
+        href: "/blog/how-often-should-you-measure-body-fat",
         label: "How Often to Recheck",
       },
     ],
@@ -427,15 +427,15 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
     ],
     relatedLinks: [
       {
-        href: "/guides/how-to-track-body-fat-changes",
+        href: "/blog/how-to-track-body-fat-changes",
         label: "Progress Tracking Framework",
       },
       {
-        href: "/guides/how-often-should-you-measure-body-fat",
+        href: "/blog/how-often-should-you-measure-body-fat",
         label: "Measurement Frequency Guidance",
       },
       {
-        href: "/guides/how-much-does-it-cost-to-measure-body-fat",
+        href: "/blog/how-much-does-it-cost-to-measure-body-fat",
         label: "Budget-Friendly Measurement Options",
       },
     ],

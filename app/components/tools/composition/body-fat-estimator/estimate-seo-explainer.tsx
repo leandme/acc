@@ -117,7 +117,7 @@ export default function EstimateSeoExplainer({ className = "" }: Props) {
           <p className="text-gray-700 text-lg leading-relaxed">
             For a deeper guide:{" "}
             <a
-              href="/guides/how-to-take-photos-for-body-fat-estimation"
+              href="/blog/how-to-take-photos-for-body-fat-estimation"
               className="text-primary underline"
             >
               how to take photos for body fat estimation
@@ -186,7 +186,7 @@ export default function EstimateSeoExplainer({ className = "" }: Props) {
           <p className="text-gray-700 text-lg leading-relaxed">
             If you want more:{" "}
             <a
-              href="/guides/why-body-fat-estimators-give-different-results"
+              href="/blog/why-body-fat-estimators-give-different-results"
               className="text-primary underline"
             >
               why body fat methods give different numbers
@@ -216,7 +216,7 @@ export default function EstimateSeoExplainer({ className = "" }: Props) {
           <p className="text-gray-700 text-lg leading-relaxed">
             More practical tracking guidance:{" "}
             <a
-              href="/guides/how-to-track-body-fat-changes"
+              href="/blog/how-to-track-body-fat-changes"
               className="text-primary underline"
             >
               how to track body fat changes over time

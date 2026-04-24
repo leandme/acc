@@ -8,7 +8,8 @@ type Props = {
   estimate?: number | null;
   gender?: Gender;
   rationale?: string | null;   // ✅ add this
-  country?: string;
+  countryCode?: string | null;
+  age?: number | null;
   className?: string;
   title?: string;
 };
@@ -278,6 +279,83 @@ function estimateLeanerThanPercent(gender: Gender, bf: number) {
   return 50;
 }
 
+type CountryBenchmark = {
+  demonym: string;
+  bfOffset: Record<Gender, number>;
+};
+
+const COUNTRY_BENCHMARKS: Record<string, CountryBenchmark> = {
+  US: {
+    demonym: "American",
+    bfOffset: { male: 0, female: 0 },
+  },
+  KR: {
+    demonym: "South Korean",
+    bfOffset: { male: -2, female: -1.8 },
+  },
+  CN: {
+    demonym: "Chinese",
+    bfOffset: { male: -1.4, female: -1.2 },
+  },
+  GB: {
+    demonym: "British",
+    bfOffset: { male: 0.8, female: 0.6 },
+  },
+  CA: {
+    demonym: "Canadian",
+    bfOffset: { male: 0.6, female: 0.4 },
+  },
+  AU: {
+    demonym: "Australian",
+    bfOffset: { male: 0.5, female: 0.3 },
+  },
+};
+
+function normalizeCountryCode(value?: string | null) {
+  const code = (value ?? "").trim().toUpperCase();
+  return /^[A-Z]{2}$/.test(code) ? code : null;
+}
+
+function countryCodeToFlag(countryCode?: string | null) {
+  const code = normalizeCountryCode(countryCode);
+  if (!code) return null;
+  return String.fromCodePoint(
+    ...Array.from(code).map((c) => 127397 + c.charCodeAt(0))
+  );
+}
+
+function getCountryName(countryCode?: string | null) {
+  const code = normalizeCountryCode(countryCode);
+  if (!code) return null;
+  try {
+    const names = new Intl.DisplayNames(["en"], { type: "region" });
+    return names.of(code) ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function getAgeBodyFatOffset(gender: Gender, age?: number | null) {
+  const n = Number(age);
+  if (!Number.isFinite(n)) return 0;
+
+  const boundedAge = clamp(n, 18, 80);
+  const decadesFrom25 = (boundedAge - 25) / 10;
+  const shiftPerDecade = gender === "female" ? 0.9 : 1.1;
+  return decadesFrom25 * shiftPerDecade;
+}
+
+function getAgeBracket(age?: number | null) {
+  const n = Number(age);
+  if (!Number.isFinite(n)) return null;
+  if (n < 25) return "18–24";
+  if (n < 35) return "25–34";
+  if (n < 45) return "35–44";
+  if (n < 55) return "45–54";
+  if (n < 65) return "55–64";
+  return "65+";
+}
+
 /** -------------------------
  *  Component
  *  ------------------------- */
@@ -285,7 +363,8 @@ export default function EstimateWhereYouSit({
   estimate = null,
   gender = "male",
   rationale = null,            // ✅ add this
-  country,
+  countryCode,
+  age,
   className = "",
   title,
 }: Props) {
@@ -303,6 +382,40 @@ export default function EstimateWhereYouSit({
     if (bf === null) return null;
     return rows.find((r) => inRange(bf, r)) ?? null;
   }, [bf, rows]);
+
+  const leanerThanPercent = useMemo(() => {
+    if (bf === null) return null;
+
+    const normalizedCountryCode = normalizeCountryCode(countryCode);
+    const countryOffset =
+      normalizedCountryCode && COUNTRY_BENCHMARKS[normalizedCountryCode]
+        ? COUNTRY_BENCHMARKS[normalizedCountryCode].bfOffset[gender]
+        : 0;
+    const ageOffset = getAgeBodyFatOffset(gender, age);
+
+    const adjustedBf = clamp(bf - countryOffset - ageOffset, 2, 60);
+    return clamp(estimateLeanerThanPercent(gender, adjustedBf), 1, 99);
+  }, [age, bf, countryCode, gender]);
+
+  const countryLabel = useMemo(() => {
+    const normalizedCountryCode = normalizeCountryCode(countryCode);
+    const genderLabel = gender === "female" ? "women" : "men";
+    if (!normalizedCountryCode) return genderLabel;
+
+    const benchmark = COUNTRY_BENCHMARKS[normalizedCountryCode];
+    if (benchmark) return `${benchmark.demonym} ${genderLabel}`;
+
+    const countryName = getCountryName(normalizedCountryCode);
+    if (countryName) return `${genderLabel} in ${countryName}`;
+    return genderLabel;
+  }, [countryCode, gender]);
+
+  const ageBracket = useMemo(() => getAgeBracket(age), [age]);
+  const flag = useMemo(() => countryCodeToFlag(countryCode), [countryCode]);
+  const percentileToneClass =
+    leanerThanPercent !== null && leanerThanPercent >= 50
+      ? "text-emerald-600"
+      : "text-red-600";
 
   return (
     <section className={`w-full max-w-3xl ${className}`}>
@@ -393,13 +506,16 @@ export default function EstimateWhereYouSit({
         </div>
 
         {/* Explanation under table */}
-        {bf !== null && activeRow ? (
+        {bf !== null && activeRow && leanerThanPercent !== null ? (
           <div className="mt-6 space-y-3">
             <p className="text-gray-700 text-lg text-center leading-relaxed">
-              Your estimate of{" "}
-              <span className="font-semibold text-gray-900">{bf}%</span>{" "}
-              falls into{" "}
-              <span className="font-semibold text-gray-900">{activeRow.label}</span>.
+              You are leaner than{" "}
+              <span className={`font-semibold ${percentileToneClass}`}>
+                {leanerThanPercent}%
+              </span>{" "}
+              of {countryLabel} in your age bracket
+              {ageBracket ? ` (${ageBracket})` : ""}.
+              {flag ? ` ${flag}` : ""}
             </p>
           </div>
         ) : null}

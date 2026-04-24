@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import H1 from "@/app/components/common/h1";
-import { POSTS } from "../../guides/posts";
+import { POSTS } from "../../blog/posts";
 import { toolCategoryArray, toolsArray } from "../../(tools)/tools";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Sitemap",
-  description: "Browse all pages on BodyFatEstimator.ai — tools, guides, and key resources.",
+  description: "Browse all pages on BodyFatEstimator.ai — tools, blog posts, and key resources.",
   canonical: "https://bodyfatestimator.ai/sitemap-html",
   robots: {
     index: false,
@@ -137,11 +137,11 @@ export default function SitemapPage() {
     label: topic.h1,
   }));
 
-  // --- Guides ---
-    const guides: SiteLink[] = [
+  // --- Blog ---
+    const blogPosts: SiteLink[] = [
     {
-      href: "/guides",
-      label: "All Guides",
+      href: "/blog",
+      label: "All Blog Posts",
     },
 
     ...POSTS
@@ -151,11 +151,11 @@ export default function SitemapPage() {
       .map((p) => {
         const raw = p.slug.startsWith("/") ? p.slug : `/${p.slug}`;
 
-        const href = raw.startsWith("/guides/")
+        const href = raw.startsWith("/blog/")
           ? raw
           : raw.startsWith("/best-way") 
-            ? `/guides${raw}`       
-            : `/guides${raw}`;        
+            ? `/blog${raw}`       
+            : `/blog${raw}`;        
 
         return {
           href,
@@ -171,7 +171,7 @@ export default function SitemapPage() {
     { href: "/about", label: "About" },
     { href: "/examples", label: "Examples" },
     { href: "/tools", label: "Tools" },
-    { href: "/guides", label: "Guides" },
+    { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
     { href: "/sitemap-html", label: "Sitemap" },
   ];
@@ -191,7 +191,7 @@ export default function SitemapPage() {
         <H1>Sitemap</H1>
 
         <p className="mt-6 text-center text-lg text-gray-700 max-w-3xl mx-auto">
-          A complete index of tools, guides, and important pages on
+          A complete index of tools, blog posts, and important pages on
           BodyFatEstimator.ai.
         </p>
       </section>
@@ -217,9 +217,9 @@ export default function SitemapPage() {
           />
 
           <SectionCard
-            title="Guides"
+            title="Body Fat Blog"
             subtitle="Deep dives on body fat estimation, accuracy, and tracking."
-            items={guides}
+            items={blogPosts}
           />
 
           <SectionCard

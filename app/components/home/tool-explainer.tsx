@@ -19,7 +19,7 @@ export default function ToolExplainer() {
             Upload a photo and receive a visual body fat estimate in seconds. Unlike
             traditional body fat calculators that use fixed formulas,{" "}
             <a
-              href="/guides/how-ai-body-fat-estimation-works"
+              href="/blog/how-ai-body-fat-estimation-works"
               className="text-primary underline"
             >
               how AI body fat estimation works

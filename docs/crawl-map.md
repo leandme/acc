@@ -8,12 +8,12 @@ This policy defines which URL patterns should be indexed, noindexed, or canonica
 
 | Route type | Example patterns | Indexing policy | Canonical policy | Sitemap policy |
 | --- | --- | --- | --- | --- |
-| Core landing pages | `/`, `/estimate`, `/tools`, `/guides`, `/examples` | `index, follow` | Self canonical | Include |
+| Core landing pages | `/`, `/estimate`, `/tools`, `/blog`, `/examples` | `index, follow` | Self canonical | Include |
 | Tool detail pages | `/<tool-slug>` | `index, follow` | Self canonical | Include |
-| Guide detail pages | `/guides/<guide-slug>` | `index, follow` | Self canonical | Include |
+| Blog detail pages | `/blog/<post-slug>` | `index, follow` | Self canonical | Include |
 | Company and legal pages | `/about`, `/contact`, `/privacy`, `/terms`, `/cookies`, `/security`, `/subprocessors` | `index, follow` | Self canonical | Include |
 | Utility pages | `/sitemap-html` | `noindex, follow` | Self canonical | Exclude |
-| Filter/tab query URLs | `/guides?tag=*`, `/tools?tag=*` | Canonicalize to clean route | `/guides`, `/tools` | Exclude (query URLs are never listed) |
+| Filter/tab query URLs | `/blog?tag=*`, `/tools?tag=*` | Canonicalize to clean route | `/blog`, `/tools` | Exclude (query URLs are never listed) |
 | Ephemeral result query URLs | `/estimate?imageUrl=*&source=*`, `/body-shape-analyzer?imageUrl=*&source=*`, `/calorie-scanner?imageUrl=*&source=*`, `/face-symmetry-test?imageUrl=*&source=*`, `/face-shape-detector?imageUrl=*&source=*`, `/age-guesser?imageUrl=*&source=*`, `/attractiveness-test?imageUrl=*&source=*` | Canonicalize to clean route | Base route without query params | Exclude (query URLs are never listed) |
 | API endpoints | `/api/*` | Not indexable pages | N/A | Exclude |
 

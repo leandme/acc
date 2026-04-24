@@ -118,9 +118,9 @@ export default function RFMCalculatorPageClient() {
           </p>
           <p className={pClass}>
             For deeper context, read{" "}
-            <a className="text-primary underline" href="/guides/why-body-fat-calculators-are-inaccurate">Why Body Fat Calculators Are Inaccurate</a>{" "}
+            <a className="text-primary underline" href="/blog/why-body-fat-calculators-are-inaccurate">Why Body Fat Calculators Are Inaccurate</a>{" "}
             and{" "}
-            <a className="text-primary underline" href="/guides/body-fat-calculator-vs-estimator">Body Fat Calculator vs Body Fat Estimator</a>.
+            <a className="text-primary underline" href="/blog/body-fat-calculator-vs-estimator">Body Fat Calculator vs Body Fat Estimator</a>.
           </p>
         </div>
 

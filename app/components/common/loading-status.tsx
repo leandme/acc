@@ -41,7 +41,7 @@ type Props = {
 
 export default function LoadingStatus({
   imageUrl,
-  title = "Building Your Estimate",
+  title = "Analyzing Your Body...",
   messages,
 }: Props) {
   const statusMessages = messages?.length ? messages : DEFAULT_STATUS_MESSAGES;

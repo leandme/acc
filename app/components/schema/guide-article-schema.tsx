@@ -1,4 +1,4 @@
-import { getGuidePostBySlug } from "@/app/(site)/guides/posts";
+import { getGuidePostBySlug } from "@/app/(site)/blog/posts";
 import {
   DEFAULT_SOCIAL_IMAGE,
   SITE_NAME,
@@ -14,7 +14,7 @@ export default function GuideArticleSchema({ slug }: GuideArticleSchemaProps) {
   const post = getGuidePostBySlug(slug);
   if (!post) return null;
 
-  const canonicalUrl = `${SITE_URL}/guides/${slug}`;
+  const canonicalUrl = `${SITE_URL}/blog/${slug}`;
   const imageUrl = post.image.startsWith("http")
     ? post.image
     : `${SITE_URL}${post.image}`;

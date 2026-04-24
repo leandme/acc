@@ -4,139 +4,211 @@ export default function FAQ() {
 
   const FAQ_ITEMS = [
     {
-      q: "How does an AI body fat estimate work?",
+      q: "How does the body fat calculator work?",
       a: (
         <>
-          Upload a clear full-body photo and our body fat AI analyzes visual cues like body
-          shape, fat distribution, and proportions to estimate your body fat percentage. This is a
-          visual body fat estimate (not a calculator using formulas), so lighting, pose, and
-          clothing can affect results. For the best accuracy, use a front-facing photo in good lighting.
+          Upload a clear full-body photo and the AI analyzes visual cues like shape, fat
+          distribution, and proportions to estimate body fat percentage. This is a photo-based
+          estimate, so photo quality, lighting, pose, and clothing affect results.
         </>
       ),
     },
     {
-      q: "Is this an AI body fat calculator or a photo estimator?",
+      q: "What data does Body Fat Estimator AI require from users?",
       a: (
         <>
-          It’s a photo-based AI body fat estimator. Traditional “body fat calculators” usually
-          estimate using formulas (like Navy measurements), while body fat AI estimates based on
-          what your body looks like in the photo. If you want, you can use both: calculators are good for
-          consistency; photo AI is great for visual reality-checks.
+          The core input is a clear, recent full-body photo. Better results usually come from
+          neutral posture, even lighting, and fitted clothing that does not hide body shape.
         </>
       ),
     },
     {
-      q: "How accurate is the body fat AI?",
+      q: "Can I use my smartphone to assess my body fat percentage?",
       a: (
         <>
-          The body fat AI is designed to be directionally accurate for most people, especially
-          when the photo is clear and consistent. It’s not medical-grade like DEXA, but it can be very useful
-          for tracking trends over time. Accuracy improves when you upload better photos (and multiple photos
-          if available).
+          Yes. Most users upload smartphone photos. Use good lighting, keep the camera level, and
+          take the photo from a consistent distance each time.
         </>
       ),
     },
     {
-      q: "How long does it take to get an estimate?",
+      q: "Is the body fat calculator easy to use?",
       a: (
         <>
-          Most AI body fat estimates are generated in under 20 seconds. If the image is very large
-          or your connection is slow, it may take slightly longer.
+          Yes. Upload your photo, wait for the estimate, and review the range and guidance. No tape
+          measurements or manual formulas are required.
         </>
       ),
     },
     {
-      q: "What types of photos should I upload for best results?",
+      q: "How accurate is the body fat calculator?",
       a: (
         <>
-          Use a well-lit, full-body photo facing the camera head-on. Minimal or better-fitting clothing
-          (like underwear or swimwear) helps the AI see your shape more clearly. Avoid
-          harsh shadows, extreme angles, flexing, or baggy shirts. Only one person per photo.
+          It is designed to be directionally accurate, especially for tracking changes over time.
+          It is not a medical test like DEXA, so use it as a trend tool rather than an exact
+          clinical measurement.
         </>
       ),
     },
     {
-      q: "What is the best AI for body fat estimates?",
+      q: "How can I improve the accuracy of my results?",
       a: (
         <>
-          BodyFatEstimator.ai is designed to deliver accurate body fat estimates from photos using computer vision.
-          For best results, use clear photos and consistent lighting, pose, and clothing.
+          Use the accuracy panel recommendations as a checklist before your next upload:
+          <ul className="mt-3 list-disc space-y-2 pl-6">
+            <li>
+              Provide front, side, and back photos in neutral, even lighting without strong
+              window light or hard shadows.
+            </li>
+            <li>
+              Include a fully relaxed stance and a non-flexed abdomen in addition to any flexed
+              poses.
+            </li>
+            <li>
+              Stand farther from the camera so the full body from head to ankles is visible with
+              consistent framing.
+            </li>
+            <li>
+              Wear form-fitting shorts so hip and upper-thigh fat distribution is visible.
+            </li>
+            <li>
+              Add a straight-on photo with arms at your sides to better assess waist-to-shoulder
+              ratio and abdominal definition.
+            </li>
+            <li>
+              Avoid morning pump or immediate post-workout photos to reduce temporary muscle
+              fullness affecting visible definition.
+            </li>
+          </ul>
         </>
       ),
     },
     {
-      q: "Is there a free AI body fat estimator?",
+      q: "How quickly can I get my results?",
       a: (
         <>
-          Yes. BodyFatEstimator.ai offers a free AI body fat estimate using a single photo. This provides a quick,
-          rough estimate.
-          .
+          Most results are returned in seconds. Very large images or slow connections can take a
+          little longer.
         </>
       ),
     },
     {
-      q: "Why does my estimate change when I upload different photos?",
+      q: "Can I track my progress over time?",
       a: (
         <>
-          Because this is a visual estimate. Lighting, camera angle, distance, posture, and clothing can change
-          how lean or soft you look in a single image — and the AI reacts to that.
-          If you want stable tracking, use the same photo conditions each time.
+          Yes. That is one of the best use cases. Take photos under similar conditions every one
+          to two weeks and compare trend direction instead of focusing on one single estimate.
         </>
       ),
     },
     {
-      q: "What if my result seems wrong?",
+      q: "How does AI enhance body composition analysis?",
       a: (
         <>
-          Try again with a clearer photo: full-body, head-on, bright even lighting, neutral posture, and no baggy clothing.
-          Use the estimate as a trend signal, not a medical diagnosis.
+          AI can evaluate many visual signals at once and apply them consistently. This helps turn
+          photos into a repeatable body-fat estimate workflow when your photo setup is consistent.
         </>
       ),
     },
     {
-      q: "Does this work for men and women?",
+      q: "Can I compare results with traditional methods?",
       a: (
         <>
-          Yes. The AI body fat estimator is designed to work across body types. Accuracy depends
-          heavily on photo quality and consistency.
+          Yes. Many people compare AI estimates with formula-based calculators or occasional scans.
+          Comparing methods can give better context than relying on one method alone.
         </>
       ),
     },
     {
-      q: "Is my data safe? Are my photos stored?",
+      q: "How does lighting affect the analysis results?",
       a: (
         <>
-          Privacy matters. Your photos are processed securely to generate your estimate and
-          are not sold or shared. We aim to minimize retention and delete data after processing whenever possible.
+          Lighting has a major impact. Harsh shadows or low light can hide or exaggerate visual
+          definition, which can shift the estimate. Even, front-facing light works best.
         </>
       ),
     },
     {
-      q: "Can I use this to track progress over time?",
+      q: "What should I wear for the best results?",
       a: (
         <>
-          That’s the best use case. A single estimate can be noisy, but repeated estimates under the same conditions show
-          real trends. Use the AI body fat estimate as a check-in every one to two weeks.
+          Wear fitted clothing that allows clear body-shape visibility, such as athletic wear.
+          Avoid baggy outfits, heavy layers, and poses that distort posture.
         </>
       ),
     },
     {
-      q: "Is this free?",
+      q: "How often should I use the calculator?",
       a: (
         <>
-          Yes. The tool is free to use.
+          Every one to two weeks is usually enough for meaningful trend tracking. Daily checks often
+          add noise without useful signal.
         </>
       ),
     },
     {
-      q: "I have another question…",
+      q: "What are the limitations of the body fat calculator?",
       a: (
         <>
-          No worries — contact us via{" "}
+          It is appearance-based, not a diagnostic tool. Results can vary with lighting, pose,
+          camera angle, and clothing, so it is best for trend tracking rather than medical
+          decision-making.
+        </>
+      ),
+    },
+    {
+      q: "Can I use photos from social media for analysis?",
+      a: (
+        <>
+          You can, but results are usually less reliable because social photos often include filters,
+          strong edits, non-neutral poses, or difficult lighting. A fresh, neutral photo is better.
+        </>
+      ),
+    },
+    {
+      q: "Is there a cost associated with using this tool?",
+      a: (
+        <>
+          The body fat estimator includes a free experience for quick estimates.
+        </>
+      ),
+    },
+    {
+      q: "Are there any privacy concerns with Body Fat Estimator AI?",
+      a: (
+        <>
+          Privacy matters. Photos are processed to generate your estimate and are not sold. We aim
+          to minimize retention and protect user data.
+        </>
+      ),
+    },
+    {
+      q: "Can I use the tool without an internet connection?",
+      a: (
+        <>
+          No. The estimator runs online, so you need an internet connection to upload a photo and
+          receive results.
+        </>
+      ),
+    },
+    {
+      q: "How does the calculator handle different body types?",
+      a: (
+        <>
+          The tool is designed for broad body-type coverage, but quality can still vary by photo
+          conditions and individual variance. Consistent photos improve reliability for everyone.
+        </>
+      ),
+    },
+    {
+      q: "What support does Body Fat Estimator AI offer users?",
+      a: (
+        <>
+          If you have questions, contact us via{" "}
           <a href="mailto:matt@leandme.com" className="text-primary">
             email
           </a>{" "}
-          and we’ll get back to you.
+          and we will help.
         </>
       ),
     },
@@ -146,7 +218,7 @@ export default function FAQ() {
     <FaqSection
       id="faqs"
       accordionName="home-faq-accordion"
-      heading="Frequently Asked Questions"
+      heading="Body Fat Calculator FAQ"
       description="Answers to common questions about our AI-powered body fat estimation tool."
       items={FAQ_ITEMS.map((item) => ({ question: item.q, answer: item.a }))}
       className="mt-0"

@@ -172,7 +172,7 @@ export default function FFMICalculatorPageClient() {
             with the same BMI, even though their bodies — and health profiles —
             are completely different.
             That tradeoff is covered in{" "}
-            <a className="text-primary underline" href="/guides/bmi-vs-body-fat">BMI vs Body Fat % – Which Is Important?</a>.
+            <a className="text-primary underline" href="/blog/bmi-vs-body-fat">BMI vs Body Fat % – Which Is Important?</a>.
           </p>
 
           <p className={pClass}>
@@ -187,7 +187,7 @@ export default function FFMICalculatorPageClient() {
             physique changes, or want to know whether your training is building
             muscle — not just adding scale weight.
             For appearance variability at the same percentages, see{" "}
-            <a className="text-primary underline" href="/guides/why-body-fat-looks-different">Why Two People at the Same Body Fat Percentage Look Different</a>.
+            <a className="text-primary underline" href="/blog/why-body-fat-looks-different">Why Two People at the Same Body Fat Percentage Look Different</a>.
           </p>
         </div>
 

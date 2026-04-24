@@ -2,11 +2,13 @@
 
 import { useRef, useState } from "react";
 import { trackEvent } from "@/app/libs/amplitude";
+import { normalizeBodyShapeKey, type BodyShapeKey } from "@/app/libs/body-shape";
 
 type EstimateResult = {
   bodyFat: number | null;
   perceivedAge: number | null;
   perceivedGender: string | null;
+  bodyShape: BodyShapeKey | null;
   accuracy: "low" | "medium" | "high" | null;
   rationale: string | null;
   improve: string[];
@@ -194,8 +196,20 @@ export function useBodyFatEstimateRefine() {
 
       const normalized: EstimateResult = {
         bodyFat: finalEstimate?.estimation?.body_fat_percent ?? null,
-        perceivedAge: Number(finalEstimate?.photo_assessment?.perceived_age) ?? null,
-        perceivedGender: finalEstimate?.photo_assessment?.perceived_gender ?? null,
+        perceivedAge: (() => {
+          const v = finalEstimate?.photo_assessment?.perceived_age;
+          const s = Array.isArray(v) ? v[0] : v;
+          const n = Number(s);
+          return Number.isFinite(n) ? n : null;
+        })(),
+        perceivedGender: (() => {
+          const v = finalEstimate?.photo_assessment?.perceived_gender;
+          const raw = Array.isArray(v) ? v[0] : v;
+          return typeof raw === "string" ? raw.toLowerCase().trim() : null;
+        })(),
+        bodyShape: normalizeBodyShapeKey(
+          finalEstimate?.photo_assessment?.body_shape
+        ),
         accuracy: finalEstimate?.estimation?.accuracy_rating ?? null,
         rationale: finalEstimate?.estimation?.estimation_rationale ?? null,
         improve: finalEstimate?.estimation?.accuracy_improvements ?? [],
@@ -210,6 +224,7 @@ export function useBodyFatEstimateRefine() {
         'body fat': normalized.bodyFat,
         'perceived age': normalized.perceivedAge,
         'perceived gender': normalized.perceivedGender,
+        'body shape': normalized.bodyShape,
         accuracy: normalized.accuracy,
         source: "upload",
         type: "refine"

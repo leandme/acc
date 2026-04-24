@@ -1,116 +1,33 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React from "react";
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { trackEvent } from "@/app/libs/amplitude";
-import type { ToolCategorySlug } from "@/app/(site)/(tools)/tools";
 
 type Post = {
   slug: string;
   title: string;
-  tag?: ToolCategorySlug;
+  tag?: string;
   description: string;
   date: string;
   readTime: string;
   image: string;
 };
 
-export type GuideTab = {
-  key: "all" | ToolCategorySlug;
-  label: string;
-};
-
-const DEFAULT_GUIDE_TABS: GuideTab[] = [
-  { key: "all", label: "All" },
-  { key: "muscle", label: "Muscle" },
-  { key: "height", label: "Height" },
-  { key: "face", label: "Face" },
-  { key: "fat", label: "Fat" },
-  { key: "shape", label: "Shape" },
-  { key: "weight", label: "Weight" },
-  { key: "calories", label: "Calories" },
-];
-
-const LEGACY_GUIDE_TAG_MAP: Record<string, ToolCategorySlug> = {
-  "body-analysis": "fat",
-  "fat-loss": "weight",
-};
-
 export default function GuideGridWithTabs({
   posts,
-  tabs,
 }: {
   posts: readonly Post[];
-  tabs?: readonly GuideTab[];
 }) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const resolvedTabs = useMemo(
-    () => (tabs?.length ? [...tabs] : DEFAULT_GUIDE_TABS),
-    [tabs]
-  );
-  const tabKeys = useMemo(() => new Set(resolvedTabs.map((tab) => tab.key)), [resolvedTabs]);
-
-  const activeTag = useMemo<GuideTab["key"]>(() => {
-    const rawTag = searchParams.get("tag");
-    if (!rawTag || rawTag === "all") return "all";
-    const normalizedTag = LEGACY_GUIDE_TAG_MAP[rawTag] ?? rawTag;
-    return tabKeys.has(normalizedTag as GuideTab["key"])
-      ? (normalizedTag as GuideTab["key"])
-      : "all";
-  }, [searchParams, tabKeys]);
-
-  const filtered = useMemo(() => {
-    if (activeTag === "all") return posts;
-    return posts.filter((post) => post.tag === activeTag);
-  }, [posts, activeTag]);
-
-  function setTag(tag: GuideTab["key"]) {
-    const next = new URLSearchParams(searchParams.toString());
-    if (tag === "all") next.delete("tag");
-    else next.set("tag", tag);
-
-    router.push(`${pathname}?${next.toString()}`, { scroll: false });
-    trackEvent("guides_tab_click", { tag });
-  }
-
   return (
     <section className="pt-4 mx-auto max-w-5xl px-6 pb-20">
-      {/* Tabs row (remove.bg-ish) */}
-      <div className="mt-10 flex flex-wrap items-center justify-center gap-8">
-        {resolvedTabs.map((tab) => {
-          const isActive = activeTag === tab.key;
-
-          return (
-            <button
-              key={tab.key}
-              type="button"
-              onClick={() => setTag(tab.key)}
-              className={`relative text-lg transition ${
-                isActive ? "text-primary" : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              {tab.label}
-              {/* underline */}
-              <span
-                className={`absolute left-0 -bottom-2 h-1 w-full rounded-full transition ${
-                  isActive ? "bg-primary" : "bg-transparent"
-                }`}
-              />
-            </button>
-          );
-        })}
-      </div>
-
       {/* Grid */}
       <div className="mt-10 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
-        {filtered.map((post) => (
+        {posts.map((post) => (
           <Link
             key={post.slug}
-            href={`/guides/${post.slug}`}
-            onClick={() => trackEvent("Go to Guide", { slug: post.slug, tag: post.tag ?? "" })}
+            href={`/blog/${post.slug}`}
+            onClick={() => trackEvent("Go to Blog", { slug: post.slug, tag: post.tag ?? "" })}
             className="group rounded-2xl border bg-white transition hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
           >
             {/* Image */}

@@ -1,12 +1,13 @@
 import { Metadata } from "next";
 import BodyVisualizerTool from "@/app/components/tools/composition/body-visualizer/visualizer";
 import { MoreTools } from "@/app/components/tools/template/more-tools";
+import CTA from "@/app/components/common/cta";
 import FaqJsonLd from "@/app/components/helpers/faq-json-ld";
 import FaqSection, { type FaqSectionItem } from "@/app/components/common/faq-section";
 import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Body Visualizer - BMI, Weight, Body Fat & Height",
+  title: "Body Fat Visualizer – BMI, Weight, Height & Measurements",
   description: "Use an interactive body visualizer to test BMI, weight, height, and body-fat scenarios. Compare fat mass and lean mass outputs with a dynamic body render.",
   canonical: "https://bodyfatestimator.ai/body-visualizer",
 });
@@ -129,7 +130,7 @@ const WHY_CHOOSE_BV_ITEMS = [
   {
     title: "Growing Ecosystem of Specialized Tools",
     description:
-      "The Body Visualizer is supported by complementary tools that continue to expand across composition, nutrition, and planning workflows. Each connected tool adds context to your scenarios and improves decision quality.",
+      "The Body Fat Visualizer is supported by complementary tools that continue to expand across composition, nutrition, and planning workflows. Each connected tool adds context to your scenarios and improves decision quality.",
   },
   {
     title: "Comprehensive Body Understanding",
@@ -149,7 +150,7 @@ const WHY_CHOOSE_BV_ITEMS = [
   {
     title: "Continuous Knowledge Updates",
     description:
-      "Use the latest guides and research-backed explainers on body composition, tracking, and interpretation. You can apply that knowledge directly to your Body Visualizer scenarios for clearer next steps.",
+      "Use the latest blog posts and research-backed explainers on body composition, tracking, and interpretation. You can apply that knowledge directly to your Body Fat Visualizer scenarios for clearer next steps.",
   },
 ] as const;
 
@@ -198,7 +199,7 @@ export default function BodyVisualizerPage() {
       <FaqJsonLd faqs={[...VISUALIZER_FAQS]} />
 
       <section className="mx-auto max-w-4xl px-6 pt-10 text-center">
-        <h1 className="text-4xl lg:text-5xl font-bold">Body Visualizer</h1>
+        <h1 className="text-4xl lg:text-5xl font-bold">Body Fat Visualizer</h1>
         <p className="mt-4 text-lg text-gray-700 leading-relaxed">
           Visualize your body shape with our male or female body visualizer based on body fat, bmi, height, weight and measurements.
         </p>
@@ -209,7 +210,7 @@ export default function BodyVisualizerPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 mt-20 lg:mt-40">
-        <h2 className="text-3xl lg:text-4xl font-semibold text-center">How to Use Body Visualizer</h2>
+        <h2 className="text-3xl lg:text-4xl font-semibold text-center">How to Use Body Fat Visualizer</h2>
         <p className="mt-4 text-center text-lg text-gray-700 max-w-3xl mx-auto">
           Follow these quick steps to run useful body-shape scenarios and interpret the output clearly.
         </p>
@@ -228,9 +229,9 @@ export default function BodyVisualizerPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 mt-20 lg:mt-40">
-        <h2 className="text-3xl lg:text-4xl font-semibold text-center">Why Choose Our Body Visualizer</h2>
+        <h2 className="text-3xl lg:text-4xl font-semibold text-center">Why Choose Our Body Fat Visualizer</h2>
         <p className="mt-4 text-center text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed">
-          Our Body Visualizer is not just a 3D tool. It is the intelligent centerpiece of a complete
+          Our Body Fat Visualizer is not just a 3D tool. It is the intelligent centerpiece of a complete
           body-transformation workflow, designed to connect visual modeling with practical composition insights.
         </p>
 
@@ -246,7 +247,7 @@ export default function BodyVisualizerPage() {
 
       <section id="learn-more" className="mx-auto max-w-3xl px-6 pb-20">
         <div className="mt-20 lg:mt-40 space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">How this Body Visualizer works</h2>
+          <h2 className="text-3xl lg:text-4xl font-semibold">How this Body Fat Visualizer Works</h2>
           <p className="text-gray-700 text-lg leading-relaxed">
             This tool combines a dynamic body render with body-composition math so your visual and numeric outputs update together.
             You can control body fat %, BMI, height, and weight directly. The figure changes immediately using a consistent shape model,
@@ -322,7 +323,7 @@ export default function BodyVisualizerPage() {
           </ul>
           <p className="text-gray-700 text-lg leading-relaxed">
             If you want a deeper comparison of BMI versus composition-based tracking, see{" "}
-            <a className="text-primary underline" href="/guides/bmi-vs-body-fat">
+            <a className="text-primary underline" href="/blog/bmi-vs-body-fat">
               BMI vs Body Fat
             </a>
             .
@@ -363,49 +364,21 @@ export default function BodyVisualizerPage() {
         </div>
 
         <FaqSection
-          heading="Body Visualizer FAQ"
+          heading="Body Fat Visualizer FAQ"
           description="Common questions about body visualizer outputs, slider behavior, and accuracy limits."
           items={VISUALIZER_FAQ_ITEMS}
           accordionName="body-visualizer-faq-accordion"
           className="mt-20 lg:mt-40"
         />
 
-        <div className="mt-20 lg:mt-40 space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-semibold">References</h2>
-          <ul className="list-disc pl-6 text-lg text-gray-700 space-y-2 break-words">
-            <li>
-              CDC overview of BMI context:
-              <a href="https://www.cdc.gov/bmi/" className="text-primary underline ml-1">CDC BMI resource</a>
-            </li>
-            <li>
-              Deurenberg BMI-to-body-fat relationship reference:
-              <a href="https://pubmed.ncbi.nlm.nih.gov/2043597/" className="text-primary underline ml-1">Deurenberg et al. (PubMed)</a>
-            </li>
-            <li>
-              FFMI reference context used across this project:
-              <a href="https://pubmed.ncbi.nlm.nih.gov/7496846/" className="text-primary underline ml-1">Kouri et al. (PubMed)</a>
-            </li>
-            <li>
-              MakeHuman + MPFB asset stack for the Phase 2 body model:
-              <a href="https://github.com/makehumancommunity/makehuman-assets" className="text-primary underline ml-1">MakeHuman assets (CC0)</a>
-              {" | "}
-              <a href="https://static.makehumancommunity.org/mpfb/docs.html" className="text-primary underline">MPFB docs</a>
-              {" | "}
-              <a href="/models/body-visualizer/mpfb/asset-manifest.json" className="text-primary underline">Local asset manifest</a>
-            </li>
-            <li>
-              3D mannequin model source:
-              <a href="https://github.com/BoQsc/Godot-3D-Male-Base-Mesh" className="text-primary underline ml-1">Godot 3D Male Base Mesh</a>
-              {" | "}
-              <a href="/models/body-visualizer/LICENSE-BoQsc-Godot-3D-Male-Base-Mesh.txt" className="text-primary underline">Local license copy</a>
-            </li>
-            <li>
-              Related guides:
-              <a href="/guides/what-does-body-fat-percentage-look-like" className="text-primary underline ml-1">Visual body-fat examples</a>
-              {" | "}
-              <a href="/guides/how-to-track-body-fat-changes" className="text-primary underline">Tracking body-fat changes</a>
-            </li>
-          </ul>
+        <div className="mt-20 lg:mt-40">
+          <CTA
+            title="Want a Photo-Based Body Fat Estimate?"
+            description="Use the Body Fat Estimator to upload a photo and get a fast body fat % estimate you can track over time."
+            buttonText="Go to Body Fat Estimator →"
+            href="/"
+            className="my-0"
+          />
         </div>
 
         <div className="mt-20 lg:mt-40">

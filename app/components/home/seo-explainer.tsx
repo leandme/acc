@@ -5,7 +5,7 @@ export default function SEOExplainer() {
         {/* Visual */}
         <div className="relative rounded-2xl border h-80 flex items-center justify-center overflow-hidden">
           <img
-            src="/guides/best-body-fat-estimator.webp"
+            src="/blog/best-body-fat-estimator.webp"
             alt="AI body fat estimation example showing photo input and estimated body fat percentage"
             className="rounded-xl shadow-sm"
             loading="lazy"

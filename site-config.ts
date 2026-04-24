@@ -3,7 +3,7 @@ export const siteConfig = {
 site: {
     name: "Body Fat Estimator",
     url: "https://bodyfatestimator.ai",
-    tagline: "Estimate your body fat % from a photo with AI.",
+    tagline: "Calculate your body fat % from a photo with AI.",
     domain: "bodyfatestimator.ai",
     legalName: "BodyFatEstimator.ai",
     logo: "/logo.png",
