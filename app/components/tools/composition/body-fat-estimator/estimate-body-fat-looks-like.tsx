@@ -22,7 +22,7 @@ type BodyFatVisualCard = BodyFatVisual & {
   imageSrc: string;
 };
 
-const BODY_FAT_VISUALS: BodyFatVisual[] = [
+const MALE_BODY_FAT_VISUALS: BodyFatVisual[] = [
   {
     title: "Dead (0%)",
     percent: 0,
@@ -75,6 +75,49 @@ const BODY_FAT_VISUALS: BodyFatVisual[] = [
   },
 ];
 
+const FEMALE_BODY_FAT_VISUALS: BodyFatVisual[] = [
+  {
+    title: "Essential (10%)",
+    percent: 10,
+    description: "Extremely lean, competition-level look with very pronounced definition and minimal subcutaneous fat.",
+  },
+  {
+    title: "Lean (15%)",
+    percent: 15,
+    description: "Very lean appearance with visible definition and clear muscular contours in good lighting.",
+  },
+  {
+    title: "Fit (20%)",
+    percent: 20,
+    description: "Lean and athletic look with visible waist definition and moderate softness at rest.",
+  },
+  {
+    title: "Average (25%)",
+    percent: 25,
+    description: "Average-fit appearance with more softness through the midsection, hips, and thighs.",
+  },
+  {
+    title: "Above Average (30%)",
+    percent: 30,
+    description: "Noticeable softness with reduced muscular definition in most lighting conditions.",
+  },
+  {
+    title: "High (35%)",
+    percent: 35,
+    description: "Higher body-fat presentation with fuller contours and less visible separation.",
+  },
+  {
+    title: "Very High (40%)",
+    percent: 40,
+    description: "Very high body-fat appearance with substantial softness and rounder overall shape.",
+  },
+];
+
+const VISUALS_BY_GENDER: Record<Gender, BodyFatVisual[]> = {
+  male: MALE_BODY_FAT_VISUALS,
+  female: FEMALE_BODY_FAT_VISUALS,
+};
+
 const MALE_IMAGE_BY_PERCENT: Record<number, string> = {
   0: "/tools/body-fat-estimator/male-0-body-fat.jpg",
   5: "/tools/body-fat-estimator/male-5-body-fat.jpg",
@@ -103,20 +146,20 @@ const FEMALE_AVAILABLE_PERCENTS = Object.keys(FEMALE_IMAGE_BY_PERCENT)
   .filter((value) => Number.isFinite(value))
   .sort((a, b) => a - b);
 
-const MIN_VISUAL_PERCENT = BODY_FAT_VISUALS[0]?.percent ?? 0;
-const MAX_VISUAL_PERCENT = BODY_FAT_VISUALS[BODY_FAT_VISUALS.length - 1]?.percent ?? 45;
-
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
 }
 
-function getClosestPercent(estimate: number) {
-  const clamped = clamp(estimate, MIN_VISUAL_PERCENT, MAX_VISUAL_PERCENT);
-  return BODY_FAT_VISUALS.reduce((closest, item) => {
+function getClosestPercent(estimate: number, visuals: BodyFatVisual[]) {
+  if (visuals.length === 0) return null;
+  const minVisualPercent = visuals[0]?.percent ?? 0;
+  const maxVisualPercent = visuals[visuals.length - 1]?.percent ?? 45;
+  const clamped = clamp(estimate, minVisualPercent, maxVisualPercent);
+  return visuals.reduce((closest, item) => {
     const currentDistance = Math.abs(item.percent - clamped);
     const closestDistance = Math.abs(closest.percent - clamped);
     return currentDistance < closestDistance ? item : closest;
-  }, BODY_FAT_VISUALS[0]).percent;
+  }, visuals[0]).percent;
 }
 
 function getClosestAvailablePercent(target: number, available: number[]) {
@@ -145,7 +188,8 @@ function getImageForPercent(gender: Gender, percent: number) {
 }
 
 function getVisualCards(gender: Gender): BodyFatVisualCard[] {
-  return BODY_FAT_VISUALS.map((item) => ({
+  const visuals = VISUALS_BY_GENDER[gender];
+  return visuals.map((item) => ({
     ...item,
     imageSrc: getImageForPercent(gender, item.percent),
   }));
@@ -159,11 +203,14 @@ export default function EstimateBodyFatLooksLike({
   className = "",
 }: Props) {
   const visuals = useMemo(() => getVisualCards(gender), [gender]);
+  const scaleVisuals = useMemo(() => VISUALS_BY_GENDER[gender], [gender]);
   const [showOtherPercentages, setShowOtherPercentages] = useState(false);
   const rationaleText = (rationale ?? "").trim();
 
   const selectedPercent =
-    typeof estimate === "number" && Number.isFinite(estimate) ? getClosestPercent(estimate) : null;
+    typeof estimate === "number" && Number.isFinite(estimate)
+      ? getClosestPercent(estimate, scaleVisuals)
+      : null;
 
   const selectedVisual =
     selectedPercent !== null
