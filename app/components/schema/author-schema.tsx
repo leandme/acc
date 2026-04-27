@@ -7,7 +7,7 @@ export function AuthorSchema() {
           "@context": "https://schema.org",
           "@type": "Person",
           "name": "Matt Phelps",
-          "url": "https://aicaloriecounter.ai",
+          "url": "https://ai-calorie-counter.com",
           "sameAs": [
             "https://www.linkedin.com/in/matt-phelps/",
             "https://www.youtube.com/@mgphelps"
@@ -15,7 +15,7 @@ export function AuthorSchema() {
           "worksFor": {
             "@type": "Organization",
             "name": "AI Calorie Counter",
-            "url": "https://aicaloriecounter.ai"
+            "url": "https://ai-calorie-counter.com"
           }
         })
       }}

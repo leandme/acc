@@ -12,7 +12,7 @@ export function WebsiteSchema() {
               "@type": "WebSite",
               name: "AI Calorie Counter",
               alternateName: "AI Calorie Counter",
-              url: "https://aicaloriecounter.ai",
+              url: "https://ai-calorie-counter.com",
             }),
           }}
         />

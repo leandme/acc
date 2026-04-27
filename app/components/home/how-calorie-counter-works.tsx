@@ -1,19 +1,27 @@
+import Image from "next/image";
+
 const HOW_CALORIE_COUNTER_WORKS_STEPS = [
   {
     id: 1,
     title: "Upload a Meal Photo",
+    imageSrc: "/home/salmon-bowl.jpg",
+    imageAlt: "Example meal photo upload for AI calorie counting",
     description:
       "Take one clear photo of your full meal. Include sides, sauces, and drinks when possible so the estimate reflects total intake.",
   },
   {
     id: 2,
     title: "AI Estimates Calories and Macros",
+    imageSrc: "/home/analyzing-meal.png",
+    imageAlt: "AI calorie counter analyzing an uploaded meal photo",
     description:
       "The model analyzes visible ingredients, portion size, and preparation density to estimate calories, meal type, and macro split.",
   },
   {
     id: 3,
     title: "Review and Track Over Time",
+    imageSrc: "/home/estimated-calories.png",
+    imageAlt: "AI calorie estimate results with calories and macro breakdown",
     description:
       "Use the calorie range, confidence level, and macro breakdown as a practical tracker. Repeat with similar photo conditions for better consistency.",
   },
@@ -31,8 +39,14 @@ export default function HowCalorieCounterWorks() {
               {step.id}
             </div>
 
-            <div className="flex aspect-video w-full items-center justify-center rounded-xl border border-dashed border-base-300 bg-base-100 px-3 text-center text-sm text-gray-500">
-              Image slot for step {step.id}
+            <div className="relative w-full aspect-video overflow-hidden rounded-xl bg-base-100">
+              <Image
+                src={step.imageSrc}
+                alt={step.imageAlt}
+                fill
+                className="object-contain p-2"
+                sizes="(max-width: 767px) 100vw, 33vw"
+              />
             </div>
 
             <h3 className="mt-4 text-xl font-semibold text-center text-gray-900">{step.title}</h3>

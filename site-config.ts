@@ -2,9 +2,9 @@ export const siteConfig = {
   // SITE
 site: {
     name: "AI Calorie Counter",
-    url: "https://aicaloriecounter.ai",
+    url: "https://ai-calorie-counter.com",
     tagline: "Count your calories from a photo with AI",
-    domain: "aicaloriecounter.ai",
+    domain: "ai-calorie-counter.com",
     legalName: "AI Calorie Counter",
     logo: "/logo.png",
   },

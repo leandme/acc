@@ -256,9 +256,6 @@ function CalorieCounterPageContent({ basePath = "/" }: CalorieCounterPageContent
     );
   }, [estimate?.detectedItems]);
 
-  const sectionWrap =
-    "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
-  const pClass = "text-lg leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
   const foodClassification = useMemo(
     () => classifyFood(estimate?.totalCalories ?? null, estimate?.macroSplit ?? null),
@@ -440,70 +437,6 @@ function CalorieCounterPageContent({ basePath = "/" }: CalorieCounterPageContent
           <CalorieBandTable totalCalories={estimate?.totalCalories ?? null} />
         </div>
 
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How This Calorie Counter Works</h2>
-          <p className={pClass}>
-            This tool uses visual cues from your meal photo to estimate total calories and build an
-            item-level split. It evaluates likely ingredients, portion size, and preparation density,
-            then returns a calorie estimate with a confidence rating and range.
-          </p>
-          <p className={pClass}>
-            This is a practical tracking estimate, not a lab-verified measurement. Use repeatable photo
-            conditions to improve consistency over time.
-          </p>
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Improve Accuracy</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg">
-            {(estimate?.improvements?.length
-              ? estimate.improvements
-              : [
-                  "Shoot from top-down or 45-degree angle with the full plate visible.",
-                  "Avoid heavy shadows and keep lighting bright and even.",
-                  "Include all sides, sauces, and drinks in the frame.",
-                  "Use one clear image per meal without clutter from other plates.",
-                  "Retake if ingredients are stacked or hidden by toppings.",
-                ]
-            ).map((tip, idx) => (
-              <li key={`${tip}-${idx}`}>{tip}</li>
-            ))}
-          </ul>
-          {estimate?.assumptions?.length ? (
-            <div className="rounded-2xl border bg-white p-5">
-              <p className="font-semibold text-gray-900">Current serving assumptions</p>
-              <ul className="mt-2 list-disc pl-6 text-gray-700 space-y-1">
-                {estimate.assumptions.map((note, idx) => (
-                  <li key={`${note}-${idx}`}>{note}</li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>References</h2>
-          <ul className="list-disc pl-6 space-y-3 text-lg break-words">
-            <li>
-              USDA FoodData Central (nutrient and calorie database):
-              <a className="text-primary underline ml-1" href="https://fdc.nal.usda.gov/">
-                USDA FoodData Central
-              </a>
-            </li>
-            <li>
-              FDA reference guide for serving sizes and labels:
-              <a className="text-primary underline ml-1" href="https://www.fda.gov/food/nutrition-facts-label">
-                FDA Nutrition Facts Label
-              </a>
-            </li>
-            <li>
-              NIH body weight planner context for intake/expenditure:
-              <a className="text-primary underline ml-1" href="https://www.niddk.nih.gov/bwp">
-                NIDDK Body Weight Planner
-              </a>
-            </li>
-          </ul>
-        </div>
         </section>
       ) : null}
     </main>

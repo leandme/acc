@@ -188,7 +188,7 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
           await navigator.share({
             files: [file],
             title: "Body Fat Estimate",
-            text: "Generated with aicaloriecounter.ai",
+            text: "Generated with ai-calorie-counter.com",
           });
           trackEvent("Result Image Shared", {
             tool: "AI Calorie Counter",

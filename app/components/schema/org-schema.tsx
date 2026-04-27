@@ -12,8 +12,8 @@ export function OrgSchema() {
               "@type": "Organization",
               "name": "AI Calorie Counter",
               "alternateName": "AI Calorie Counter",
-              "url": "https://aicaloriecounter.ai",
-              "logo": "https://aicaloriecounter.ai/logo.png",
+              "url": "https://ai-calorie-counter.com",
+              "logo": "https://ai-calorie-counter.com/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Matt Phelps"

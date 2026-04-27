@@ -19,12 +19,12 @@ export function SiteNavSchema() {
                 "Privacy",
               ],
               url: [
-                "https://aicaloriecounter.ai/",
-                "https://aicaloriecounter.ai/about",
-                "https://aicaloriecounter.ai/blog",
-                "https://aicaloriecounter.ai/contact",
-                "https://aicaloriecounter.ai/terms",
-                "https://aicaloriecounter.ai/privacy",
+                "https://ai-calorie-counter.com/",
+                "https://ai-calorie-counter.com/about",
+                "https://ai-calorie-counter.com/blog",
+                "https://ai-calorie-counter.com/contact",
+                "https://ai-calorie-counter.com/terms",
+                "https://ai-calorie-counter.com/privacy",
               ],
             }),
           }}

@@ -9,7 +9,7 @@ const description = "AI-Calorie-Counter.com is a free AI-powered calorie tracker
 export const metadata: Metadata = buildPageMetadata({
   title: title,
   description: description,
-  canonical: "https://aicaloriecounter.ai/",
+  canonical: "https://ai-calorie-counter.com/",
 });
 
 export default function Home() {
