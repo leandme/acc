@@ -272,7 +272,16 @@ export default function HowToEstimateBodyFatFromPhotos() {
           <p className="text-gray-700 text-lg leading-relaxed">
             Mirror selfies can work well if your setup is repeatable. The goal is
             to reduce visual noise so body composition changes are easier to
-            detect.
+            detect, and lightly{" "}
+            <a
+              className="underline text-primary"
+              href="https://www.adobe.com/express/feature/image/enhance"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              enhance photos
+            </a>{" "}
+            when needed to maintain consistent clarity across check-ins.
           </p>
 
           <ol className="list-decimal pl-6 text-lg text-gray-700 space-y-2">
