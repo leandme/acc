@@ -10,7 +10,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Body analysis tools can create privacy, consent, and body-image risks for minors. Learn why these tools should be off-limits for children and what parents should focus on instead.",
   canonical:
-    "https://bodyfatestimator.ai/blog/body-analysis-tools-off-limits-for-kids",
+    "https://aicaloriecounter.ai/blog/body-analysis-tools-off-limits-for-kids",
 });
 
 export default function BodyAnalysisToolsOffLimitsForKidsPage() {
@@ -238,7 +238,7 @@ export default function BodyAnalysisToolsOffLimitsForKidsPage() {
             {
               slug: "body-fat-calculator-vs-estimator",
               title:
-                "Body Fat Calculator vs Body Fat Estimator - What's the Difference?",
+                "Body Fat Calculator vs AI Calorie Counter - What's the Difference?",
               tag: "fat",
               description:
                 "Understand how body fat calculators and image-based estimators differ, and why interpretation matters.",

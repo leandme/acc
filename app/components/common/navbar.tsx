@@ -49,7 +49,7 @@ export default function Navbar() {
         >
           <img
             src= {siteConfig.site.logo}
-            alt="Body Fat Estimator Logo"
+            alt="AI Calorie Counter Logo"
             className="w-6 h-6"
           />
             {siteConfig.site.name}

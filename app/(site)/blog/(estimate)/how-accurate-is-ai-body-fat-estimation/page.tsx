@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "How Accurate Is AI Body Fat Estimation?",
   description: "Is AI body fat estimation accurate? Learn how accuracy differs from consistency, how AI compares to at-home methods, and how to get the most reliable results from photo-based estimation.",
-  canonical: "https://bodyfatestimator.ai/blog/how-accurate-is-ai-body-fat-estimation",
+  canonical: "https://aicaloriecounter.ai/blog/how-accurate-is-ai-body-fat-estimation",
 });
 
 
@@ -60,7 +60,7 @@ export default function BlogPostPage() {
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            When people ask if an AI body fat estimator is “accurate,” they often
+            When people ask if an AI Calorie Counter is “accurate,” they often
             mean: “Will this give me my true body fat percentage?”
           </p>
 
@@ -120,7 +120,7 @@ export default function BlogPostPage() {
           <p className="text-gray-700 text-lg leading-relaxed">
             AI’s advantage is that it measures what people care about most:
             visible change. You can run a check directly with the{" "}
-            <a className="text-primary underline" href="/estimate">Body Fat Estimator</a>.
+            <a className="text-primary underline" href="/estimate">AI Calorie Counter</a>.
           </p>
         </div>
 

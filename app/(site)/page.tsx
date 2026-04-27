@@ -4,13 +4,13 @@ import CTA from "../components/common/cta";
 import EstimatePageClient from "@/app/components/tools/composition/body-fat-estimator/estimate-page-client";
 import { buildPageMetadata } from "@/app/libs/seo";
 
-const title = "Body Fat Estimator AI – Calculate Body Fat % from Photo";
+const title = "AI Calorie Counter – Calculate Body Fat % from Photo";
 const description = "Upload a photo to estimate your body fat percentage visually. A simple, repeatable way to track body fat changes over time.";
 
 export const metadata: Metadata = buildPageMetadata({
   title: title,
   description: description,
-  canonical: "https://bodyfatestimator.ai/",
+  canonical: "https://aicaloriecounter.ai/",
 });
 
 export default function Home() {

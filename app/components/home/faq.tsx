@@ -14,7 +14,7 @@ export default function FAQ() {
       ),
     },
     {
-      q: "What data does Body Fat Estimator AI require from users?",
+      q: "What data does AI Calorie Counter require from users?",
       a: (
         <>
           The core input is a clear, recent full-body photo. Better results usually come from
@@ -169,12 +169,12 @@ export default function FAQ() {
       q: "Is there a cost associated with using this tool?",
       a: (
         <>
-          The body fat estimator includes a free experience for quick estimates.
+          The AI Calorie Counter includes a free experience for quick estimates.
         </>
       ),
     },
     {
-      q: "Are there any privacy concerns with Body Fat Estimator AI?",
+      q: "Are there any privacy concerns with AI Calorie Counter?",
       a: (
         <>
           Privacy matters. Photos are processed to generate your estimate and are not sold. We aim
@@ -201,7 +201,7 @@ export default function FAQ() {
       ),
     },
     {
-      q: "What support does Body Fat Estimator AI offer users?",
+      q: "What support does AI Calorie Counter offer users?",
       a: (
         <>
           If you have questions, contact us via{" "}

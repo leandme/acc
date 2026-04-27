@@ -9,7 +9,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Canthal Tilt: What It Is and Why It Matters",
   description:
     "Learn what canthal tilt means, how to estimate it from a photo, why it affects facial perception, and what can realistically change it.",
-  canonical: "https://bodyfatestimator.ai/blog/canthal-tilt",
+  canonical: "https://aicaloriecounter.ai/blog/canthal-tilt",
 });
 
 export default function CanfulTiltGuidePage() {

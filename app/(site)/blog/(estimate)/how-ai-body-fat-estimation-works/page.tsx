@@ -7,8 +7,8 @@ import Image from "next/image";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "How AI Body Fat Estimation Works",
-  description: "Learn how an AI body fat estimator works, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
-  canonical: "https://bodyfatestimator.ai/blog/how-ai-body-fat-estimation-works",
+  description: "Learn how an AI Calorie Counter works, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
+  canonical: "https://aicaloriecounter.ai/blog/how-ai-body-fat-estimation-works",
 });
 
 export default function BlogPostPage() {
@@ -22,7 +22,7 @@ export default function BlogPostPage() {
               intro={
                 <>
                   <p>
-                    An AI body fat estimator doesn’t “measure” fat the way a scan does.
+                    An AI Calorie Counter doesn’t “measure” fat the way a scan does.
                     Instead, it analyzes visual patterns in photos to estimate body fat
                     percentage directionally — similar to how experienced coaches make
                     visual assessments.
@@ -51,11 +51,11 @@ export default function BlogPostPage() {
         {/* Framing */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold text-center">
-            What an AI body fat estimator actually does
+            What an AI Calorie Counter actually does
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            An AI body fat estimator uses computer vision to analyze visible
+            An AI Calorie Counter uses computer vision to analyze visible
             characteristics in a photo — things like body proportions, overall
             silhouette, and fat distribution patterns.
           </p>

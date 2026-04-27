@@ -4,8 +4,8 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Privacy Policy",
-  description: "Privacy policy for BodyFatEstimator.ai. Learn what data we collect, how we use it, how photos are handled, and your privacy rights.",
-  canonical: "https://bodyfatestimator.ai/privacy",
+  description: "Privacy policy for AI Calorie Counter. Learn what data we collect, how we use it, how photos are handled, and your privacy rights.",
+  canonical: "https://aicaloriecounter.ai/privacy",
 });
 
 export default function PrivacyPolicy() {
@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
         <H1>Privacy Policy</H1>
 
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
-          This Privacy Policy explains how BodyFatEstimator.ai (“we”, “us”, or
+          This Privacy Policy explains how AI Calorie Counter (“we”, “us”, or
           “our”) collects, uses, and protects information when you use our
           website and services (the “Service”).
         </p>

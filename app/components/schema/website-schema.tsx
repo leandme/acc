@@ -10,9 +10,9 @@ export function WebsiteSchema() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Body Fat Estimator",
-              alternateName: "BodyFatEstimator.ai",
-              url: "https://bodyfatestimator.ai",
+              name: "AI Calorie Counter",
+              alternateName: "AI Calorie Counter",
+              url: "https://aicaloriecounter.ai",
             }),
           }}
         />

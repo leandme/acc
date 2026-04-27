@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "How Much Does It Cost to Measure Body Fat? (Home vs Lab)",
   description: "Compare the cost of measuring body fat at home vs lab methods like DEXA. Learn price ranges, accuracy tradeoffs, and which option makes sense for tracking progress.",
-  canonical: "https://bodyfatestimator.ai/blog/how-much-does-it-cost-to-measure-body-fat",
+  canonical: "https://aicaloriecounter.ai/blog/how-much-does-it-cost-to-measure-body-fat",
 });
 
 export default function BlogPostPage() {
@@ -92,7 +92,7 @@ export default function BlogPostPage() {
             </li>
             <li>
               <strong>Photo-based estimation tools:</strong> Free to ~$10 per estimate (see{" "}
-              <a className="text-primary underline" href="/estimate">Body Fat Estimator</a>)
+              <a className="text-primary underline" href="/estimate">AI Calorie Counter</a>)
             </li>
           </ul>
 

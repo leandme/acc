@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "How to Take Photos for Body Fat Estimation",
   description: "Learn how to take consistent body fat photos for estimation and progress tracking. Lighting, pose, camera setup, and common mistakes explained.",
-  canonical: "https://bodyfatestimator.ai/blog/how-to-take-photos-for-body-fat-estimation",
+  canonical: "https://aicaloriecounter.ai/blog/how-to-take-photos-for-body-fat-estimation",
 });
 
 export default function BlogPostPage() {

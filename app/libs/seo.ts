@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://bodyfatestimator.ai";
-export const SITE_NAME = "Body Fat Estimator";
+export const SITE_URL = "https://aicaloriecounter.ai";
+export const SITE_NAME = "AI Calorie Counter";
 export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/logo.png`;
 
 type BuildPageMetadataInput = {

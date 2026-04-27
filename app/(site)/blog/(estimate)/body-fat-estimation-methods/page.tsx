@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "Common Body Fat Estimation Methods Explained",
   description: "Learn the most common body fat measurement methods — including the Navy tape method, skinfold calipers, BIA smart scales, and DEXA scans — and understand when each method makes sense.",
-  canonical: "https://bodyfatestimator.ai/blog/body-fat-estimation-methods",
+  canonical: "https://aicaloriecounter.ai/blog/body-fat-estimation-methods",
 });
 
 

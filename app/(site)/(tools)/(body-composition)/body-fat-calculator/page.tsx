@@ -6,7 +6,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Navy Body Fat Calculator",
   description:
     "Estimate body fat percentage with the U.S. Navy circumference formula using waist, neck, height, and optional hip measurements.",
-  canonical: "https://bodyfatestimator.ai/body-fat-calculator",
+  canonical: "https://aicaloriecounter.ai/body-fat-calculator",
 });
 
 export default function BodyFatCalculatorPage() {

@@ -19,12 +19,12 @@ export function SiteNavSchema() {
                 "Blog",
               ],
               url: [
-                "https://bodyfatestimator.ai/body-visualizer",
-                "https://bodyfatestimator.ai/jawline-check",
-                "https://bodyfatestimator.ai/skin-type-detector",
-                "https://bodyfatestimator.ai/tools",
-                "https://bodyfatestimator.ai/examples",
-                "https://bodyfatestimator.ai/blog",
+                "https://aicaloriecounter.ai/body-visualizer",
+                "https://aicaloriecounter.ai/jawline-check",
+                "https://aicaloriecounter.ai/skin-type-detector",
+                "https://aicaloriecounter.ai/tools",
+                "https://aicaloriecounter.ai/examples",
+                "https://aicaloriecounter.ai/blog",
               ],
             }),
           }}

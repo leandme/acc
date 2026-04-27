@@ -12,7 +12,7 @@ type CTAProps = {
 export default function CTA({
   title = "Estimate your body fat %",
   description = "Upload a photo and get an estimate in seconds.",
-  buttonText = "Try Body Fat Estimator →",
+  buttonText = "Try AI Calorie Counter →",
   href = "/",
   target,
   rel,

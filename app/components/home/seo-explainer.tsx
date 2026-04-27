@@ -19,7 +19,7 @@ export default function SEOExplainer() {
           </h2>
 
           <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-            BodyFatEstimator.ai is designed for one simple goal: helping you understand
+            AI Calorie Counter is designed for one simple goal: helping you understand
             whether what you’re doing is actually changing how your body looks.
           </p>
 

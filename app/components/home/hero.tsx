@@ -27,7 +27,7 @@ export default function Hero({ basePath }: HeroProps) {
               <div className="relative w-full max-w-[360px] aspect-[3/2] mx-auto">
                 <Image
                   src="/hero/body-fat-estimator-header.webp"
-                  alt="Body fat estimator preview"
+                  alt="AI Calorie Counter preview"
                   fill
                   priority
                   className="object-contain"
@@ -38,7 +38,7 @@ export default function Hero({ basePath }: HeroProps) {
 
 
           <h1 className="text-4xl lg:text-5xl font-bold">
-            Calculate Body Fat % with AI
+            AI Calorie Counter: Calculate Body Fat % with AI
           </h1>
 
           <p className="py-6 text-lg mt-2">

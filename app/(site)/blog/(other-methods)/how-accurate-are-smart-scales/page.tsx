@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "How Accurate Are Smart Scales?",
   description: "Learn how smart scales estimate body fat using BIA, why results change overnight, and when smart scales are useful (and when they aren’t).",
-  canonical: "https://bodyfatestimator.ai/blog/how-accurate-are-smart-scales",
+  canonical: "https://aicaloriecounter.ai/blog/how-accurate-are-smart-scales",
 });
 
 export default function BlogPostPage() {
@@ -241,7 +241,7 @@ export default function BlogPostPage() {
             If your goal is understanding how your body actually looks and changes,
             combining visual context with consistent tracking usually beats relying on
             a single device. If your estimates disagree, this guide explains why:{" "}
-            <a className="text-primary underline" href="/blog/why-body-fat-estimators-give-different-results">Why Body Fat Estimators Give Different Results</a>.
+            <a className="text-primary underline" href="/blog/why-body-fat-estimators-give-different-results">Why AI Calorie Counters Give Different Results</a>.
           </p>
         </div>
 

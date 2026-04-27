@@ -9,7 +9,7 @@ import { buildPageMetadata } from "@/app/libs/seo";
 export const metadata: Metadata = buildPageMetadata({
   title: "Body Fat Visualizer – BMI, Weight, Height & Measurements",
   description: "Use an interactive body visualizer to test BMI, weight, height, and body-fat scenarios. Compare fat mass and lean mass outputs with a dynamic body render.",
-  canonical: "https://bodyfatestimator.ai/body-visualizer",
+  canonical: "https://aicaloriecounter.ai/body-visualizer",
 });
 
 const VISUALIZER_FAQS: Array<{ question: string; answer: string }> = [
@@ -374,8 +374,8 @@ export default function BodyVisualizerPage() {
         <div className="mt-20 lg:mt-40">
           <CTA
             title="Want a Photo-Based Body Fat Estimate?"
-            description="Use the Body Fat Estimator to upload a photo and get a fast body fat % estimate you can track over time."
-            buttonText="Go to Body Fat Estimator →"
+            description="Use the AI Calorie Counter to upload a photo and get a fast body fat % estimate you can track over time."
+            buttonText="Go to AI Calorie Counter →"
             href="/"
             className="my-0"
           />

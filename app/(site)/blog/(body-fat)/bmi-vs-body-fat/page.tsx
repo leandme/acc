@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "BMI vs Body Fat % – Which Is Important?",
   description: "BMI and body fat percentage measure different things. Learn how BMI works, why it often fails individuals, and when body fat % is the more useful metric for tracking health and appearance.",
-  canonical: "https://bodyfatestimator.ai/blog/bmi-vs-body-fat",
+  canonical: "https://aicaloriecounter.ai/blog/bmi-vs-body-fat",
 });
 
 export default function BlogPostPage() {

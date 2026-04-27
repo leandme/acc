@@ -9,7 +9,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: "What Makes a Face Attractive?",
   description:
     "A practical guide to facial attractiveness: structure, symmetry, expression, and the high-leverage habits that change first impressions.",
-  canonical: "https://bodyfatestimator.ai/blog/what-makes-a-face-attractive",
+  canonical: "https://aicaloriecounter.ai/blog/what-makes-a-face-attractive",
 });
 
 export default function WhatMakesAFaceAttractivePage() {

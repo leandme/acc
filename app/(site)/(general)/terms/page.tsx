@@ -4,8 +4,8 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Terms & Conditions",
-  description: "Terms and conditions for using BodyFatEstimator.ai, including acceptable use, disclaimers, and limitations of liability.",
-  canonical: "https://bodyfatestimator.ai/terms",
+  description: "Terms and conditions for using AI Calorie Counter, including acceptable use, disclaimers, and limitations of liability.",
+  canonical: "https://aicaloriecounter.ai/terms",
 });
 
 export default function TermsPage() {
@@ -16,7 +16,7 @@ export default function TermsPage() {
 
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
           These Terms &amp; Conditions (“Terms”) govern your use of
-          BodyFatEstimator.ai (the “Service”). By accessing or using the Service,
+          AI Calorie Counter (the “Service”). By accessing or using the Service,
           you agree to these Terms. If you do not agree, do not use the Service.
         </p>
 
@@ -26,7 +26,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-semibold">1. The Service</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              BodyFatEstimator.ai provides an AI-powered estimate of body fat
+              AI Calorie Counter provides an AI-powered estimate of body fat
               percentage based on information you provide (such as an uploaded
               image and basic body measurements). Outputs are estimates only and
               may be inaccurate.
@@ -132,7 +132,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-semibold">8. Limitation of Liability</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              To the maximum extent permitted by law, BodyFatEstimator.ai and
+              To the maximum extent permitted by law, AI Calorie Counter and
               its operators will not be liable for any indirect, incidental,
               special, consequential, or punitive damages, or any loss of data,
               profits, or revenue, arising from or related to your use of (or

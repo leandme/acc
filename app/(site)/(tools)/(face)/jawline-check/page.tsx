@@ -6,7 +6,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Jawline Check Analyzer",
   description:
     "Upload a side-profile photo to estimate jawline angle and classify jawline type with AI. Get confidence scoring, landmark overlay, and interpretation table.",
-  canonical: "https://bodyfatestimator.ai/jawline-check",
+  canonical: "https://aicaloriecounter.ai/jawline-check",
 });
 
 export default function JawlineCheckPage() {

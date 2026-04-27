@@ -61,7 +61,7 @@ const CATEGORY_SEO_CONTENT: Record<ToolCategorySlug, CategorySeoContent> = {
     relatedLinks: [
       {
         href: "/blog/best-body-fat-estimator",
-        label: "Best Body Fat Estimator Guide",
+        label: "Best AI Calorie Counter Guide",
       },
       {
         href: "/blog/how-to-track-body-fat-changes",

@@ -8,7 +8,7 @@ export default function ToolExplainer() {
           </h2>
 
           <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-            BodyFatEstimator.ai is an AI tool that analyzes photos of people and
+            AI Calorie Counter is an AI tool that analyzes photos of people and
             estimates their body fat percentage. Instead of relying on formulas or
             manual measurements, it uses computer vision to evaluate visible body
             composition,

@@ -380,7 +380,7 @@ export const TOOLS: Record<string, ToolMeta> = {
   },
   estimate: {
     slug: "estimate",
-    title: "Body Fat Estimator",
+    title: "AI Calorie Counter",
     description: "Estimate your body fat % from a photo.",
     category: "Fat",
   },

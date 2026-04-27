@@ -52,7 +52,7 @@ export default function Comparison() {
           <div className="card bg-[#DEFCED] w-full lg:w-1/3 shadow-xl border border-green-200">
             <div className="card-body">
               <h3 className="card-title text-center justify-center text-xl font-semibold">
-                AI Body Fat Estimator
+                AI Calorie Counter
               </h3>
 
               <ul className="mt-4 space-y-4 text-gray-700">

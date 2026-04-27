@@ -15,7 +15,7 @@ const DEFAULT_ITEMS: LinkCardItem[] = [
   {
     title: "Fat",
     href: "/tools/fat",
-    description: "Body fat estimators, visualizers, and measurement-based calculators.",
+    description: "AI Calorie Counter tools, visualizers, and measurement-based calculators.",
   },
   {
     title: "Shape",

@@ -6,9 +6,9 @@ import { buildPageMetadata } from "@/app/libs/seo";
 import Image from "next/image";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Why Body Fat Estimators Give Different Results",
-  description: "Why do body fat estimators give different numbers? Learn how formula assumptions, hydration, timing, and measurement noise affect body fat percentage estimates — and how to interpret changes realistically.",
-  canonical: "https://bodyfatestimator.ai/blog/why-body-fat-estimators-give-different-results",
+  title: "Why AI Calorie Counters Give Different Results",
+  description: "Why do AI Calorie Counters give different numbers? Learn how formula assumptions, hydration, timing, and measurement noise affect body fat percentage estimates — and how to interpret changes realistically.",
+  canonical: "https://aicaloriecounter.ai/blog/why-body-fat-estimators-give-different-results",
 });
 
 export default function BlogPostPage() {
@@ -18,7 +18,7 @@ export default function BlogPostPage() {
 
       <GuideHero
               slug="why-body-fat-estimators-give-different-results"
-                    title="Why Body Fat Estimators Give Different Results"
+                    title="Why AI Calorie Counters Give Different Results"
                     intro={
                       <>
                         <p>
@@ -287,7 +287,7 @@ export default function BlogPostPage() {
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            That is exactly what our Body Fat Estimator is built for. It analyzes visual
+            That is exactly what our AI Calorie Counter is built for. It analyzes visual
             body cues from photos instead of relying only on population-average equations.
           </p>
 

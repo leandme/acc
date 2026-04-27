@@ -14,7 +14,7 @@ type TBreadCrumbProps = {
   includeSchema?: boolean;
 };
 
-const DEFAULT_SITE_URL = "https://bodyfatestimator.ai";
+const DEFAULT_SITE_URL = "https://aicaloriecounter.ai";
 
 const Breadcrumb = ({
   homeElement = "Home",

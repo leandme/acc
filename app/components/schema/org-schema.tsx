@@ -10,10 +10,10 @@ export function OrgSchema() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Body Fat Estimator",
-              "alternateName": "BodyFatEstimator.ai",
-              "url": "https://bodyfatestimator.ai",
-              "logo": "https://bodyfatestimator.ai/logo.png",
+              "name": "AI Calorie Counter",
+              "alternateName": "AI Calorie Counter",
+              "url": "https://aicaloriecounter.ai",
+              "logo": "https://aicaloriecounter.ai/logo.png",
               "founder": {
                 "@type": "Person",
                 "name": "Matt Phelps"

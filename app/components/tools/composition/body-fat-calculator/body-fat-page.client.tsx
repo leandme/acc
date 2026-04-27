@@ -112,9 +112,9 @@ export default function BodyFatCalculatorPageClient() {
 
         <div className="w-full max-w-3xl mx-auto mt-10 lg:mt-20 mb-10">
           <CTA
-            title="Try the Body Fat Estimator"
+            title="Try the AI Calorie Counter"
             description="Upload a photo and get a body fat % estimate in seconds."
-            buttonText="Go to Body Fat Estimator →"
+            buttonText="Go to AI Calorie Counter →"
             href="/"
             className="my-0"
           />

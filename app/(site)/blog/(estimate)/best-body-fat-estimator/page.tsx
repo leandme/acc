@@ -6,9 +6,9 @@ import { buildPageMetadata } from "@/app/libs/seo";
 import Image from "next/image";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "The Best Body Fat Estimator of 2026",
-  description: "What makes the best body fat estimator in 2026? Learn how modern photo-based tools work, how to evaluate accuracy and consistency, and which approach makes the most sense for tracking real progress.",
-  canonical: "https://bodyfatestimator.ai/blog/best-body-fat-estimator",
+  title: "The Best AI Calorie Counter of 2026",
+  description: "What makes the best AI Calorie Counter in 2026? Learn how modern photo-based tools work, how to evaluate accuracy and consistency, and which approach makes the most sense for tracking real progress.",
+  canonical: "https://aicaloriecounter.ai/blog/best-body-fat-estimator",
 });
 
 export default function BlogPostPage() {
@@ -18,16 +18,16 @@ export default function BlogPostPage() {
 
       <GuideHero
               slug="best-body-fat-estimator"
-              title="The Best Body Fat Estimator of 2026"
+              title="The Best AI Calorie Counter of 2026"
               intro={
                 <>
                   <p>
-                    Body fat estimators have improved rapidly in recent years. But
+                    AI Calorie Counter tools have improved rapidly in recent years. But
           “best” doesn’t mean perfect — it means useful, repeatable, and aligned
           with how people actually understand body composition.
                   </p>
                   <p >
-          This guide explains what to look for in an AI body fat estimator, how
+          This guide explains what to look for in an AI Calorie Counter, how
           modern tools work, and which approach makes the most sense in 2026.
         </p>
                 </>
@@ -36,7 +36,7 @@ export default function BlogPostPage() {
                 <figure className="max-w-3xl">
                   <Image
   src="/blog/best-body-fat-estimator.webp"
-  alt="Best AI body fat estimator guide cover image showing photo-based body fat estimation comparison"
+  alt="Best AI Calorie Counter guide cover image showing photo-based body fat estimation comparison"
   width={1200}
   height={675}
   sizes="(max-width: 768px) 100vw, 768px"
@@ -71,7 +71,7 @@ export default function BlogPostPage() {
           </ul>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            The best AI body fat estimator is the one that answers those
+            The best AI Calorie Counter is the one that answers those
             questions well.
           </p>
         </div>
@@ -79,11 +79,11 @@ export default function BlogPostPage() {
         {/* How AI works */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold text-center">
-            How AI body fat estimators work
+            How AI Calorie Counters work
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            AI body fat estimators analyze visual cues in photos — such as body
+            AI Calorie Counters analyze visual cues in photos — such as body
             proportions, silhouette, and fat distribution — to infer body fat
             ranges.
           </p>
@@ -139,11 +139,11 @@ export default function BlogPostPage() {
         {/* Verdict */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold text-center">
-            So, what is the best AI body fat estimator of 2026?
+            So, what is the best AI Calorie Counter of 2026?
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            The best AI body fat estimator in 2026 is one that prioritizes
+            The best AI Calorie Counter in 2026 is one that prioritizes
             consistency, visual interpretation, and realistic expectations —
             not perfect precision.
           </p>

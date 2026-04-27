@@ -4,8 +4,8 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact",
-  description: "Contact BodyFatEstimator.ai support. Questions about your AI body fat estimate, accuracy, pricing, refunds, or privacy? Email us and we’ll help.",
-  canonical: "https://bodyfatestimator.ai/contact",
+  description: "Contact AI Calorie Counter support. Questions about your AI body fat estimate, accuracy, pricing, refunds, or privacy? Email us and we’ll help.",
+  canonical: "https://aicaloriecounter.ai/contact",
 });
 
 export default function ContactPage() {

@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <img
                 src={siteConfig.site.logo}
-                alt="Body Fat Estimator Logo"
+                alt="AI Calorie Counter Logo"
                 className="w-8 h-8"
               />
               <span className="text-lg font-semibold">
@@ -41,7 +41,7 @@ export default function Footer() {
               Tools
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
-              <li><a className="hover:text-white" href="/estimate">Body Fat Estimator</a></li>
+              <li><a className="hover:text-white" href="/estimate">AI Calorie Counter</a></li>
               <li><a className="hover:text-white" href="/body-fat-calculator">Navy Body Fat Calculator</a></li>
               <li><a className="hover:text-white" href="/body-visualizer">Body Visualizer</a></li>
             </ul>

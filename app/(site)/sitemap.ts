@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 import { toolCategoryArray } from "./(tools)/tools";
 
-const BASE_URL = "https://bodyfatestimator.ai";
+const BASE_URL = "https://aicaloriecounter.ai";
 const LEGAL_ROUTES = new Set([
   "/privacy",
   "/terms",

@@ -65,7 +65,7 @@ export const POSTS = [
   title: "How AI Body Fat Estimation Works (Photo-Based Estimation Explained)",
   tag: "fat",
   description:
-    "Learn how an AI body fat estimator analyzes photos, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
+    "Learn how an AI Calorie Counter analyzes photos, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
   date: "Jan 24, 2026",
   readTime: "6 min read",
   image: "/blog/how-ai-body-fat-estimation-works.webp",
@@ -112,10 +112,10 @@ export const POSTS = [
 },
 {
   slug: "why-body-fat-estimators-give-different-results",
-  title: "Why Body Fat Estimators Give Different Results",
+  title: "Why AI Calorie Counters Give Different Results",
    tag: "fat",
   description:
-    "Why do body fat estimators give different numbers? Learn how formula assumptions, hydration, timing, and measurement noise affect body fat percentage estimates — and how to interpret changes realistically.",
+    "Why do AI Calorie Counters give different numbers? Learn how formula assumptions, hydration, timing, and measurement noise affect body fat percentage estimates — and how to interpret changes realistically.",
   date: "Jan 8, 2026",
   readTime: "5 min read",
   image: "/blog/why-body-fat-estimators-give-different-results.webp",
@@ -152,7 +152,7 @@ export const POSTS = [
 },
 {
   slug: "body-fat-calculator-vs-estimator",
-  title: "Body Fat Calculator vs Body Fat Estimator — What’s the Difference?",
+  title: "Body Fat Calculator vs AI Calorie Counter — What’s the Difference?",
    tag: "fat",
   description:
     "Learn the difference between body fat calculators and estimators, why they give different numbers, and which method is best for tracking progress at home.",
@@ -162,7 +162,7 @@ export const POSTS = [
 },
 {
   slug: "best-body-fat-estimator",
-  title: "The Best Body Fat Estimator of 2026",
+  title: "The Best AI Calorie Counter of 2026",
    tag: "fat",
   description:
     "Learn the difference between body fat calculators and estimators, why they give different numbers, and which method is best for tracking progress at home.",
@@ -244,7 +244,7 @@ export function getGuidePostBySlug(slug: string) {
 {/* 
 # BLOG POSTS
 - How to Measure Body Fat at Home Without Equipment
-- I built an AI body fat estimator and measured how wrong it is
+- I built an AI Calorie Counter and measured how wrong it is
 - Calories In vs Calories out
 - BMI is beyond stupid and irrelevant
 - weight loss is psychological

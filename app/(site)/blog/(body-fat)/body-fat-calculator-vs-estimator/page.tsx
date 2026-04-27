@@ -6,9 +6,9 @@ import { buildPageMetadata } from "@/app/libs/seo";
 import Image from "next/image";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Body Fat Calculator vs Body Fat Estimator — What’s the Difference?",
+  title: "Body Fat Calculator vs AI Calorie Counter — What’s the Difference?",
   description: "Learn the difference between body fat calculators and estimators, why they give different results, and which approach is best for tracking progress at home.",
-  canonical: "https://bodyfatestimator.ai/blog/body-fat-calculator-vs-estimator",
+  canonical: "https://aicaloriecounter.ai/blog/body-fat-calculator-vs-estimator",
 });
 
 
@@ -22,7 +22,7 @@ export default function BlogPostPage() {
 
       <GuideHero
               slug="body-fat-calculator-vs-estimator"
-                                                        title="Body Fat Calculator vs Body Fat Estimator — What’s the Difference?"
+                                                        title="Body Fat Calculator vs AI Calorie Counter — What’s the Difference?"
                                                         intro={
                                                           <>
                                                             <p>
@@ -178,11 +178,11 @@ export default function BlogPostPage() {
         {/* Section 2 */}
         <div className="space-y-4">
           <h2 className="text-3xl lg:text-4xl font-semibold text-center">
-            What a body fat estimator actually is
+            What a AI Calorie Counter actually is
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed">
-            A body fat estimator doesn’t apply a single fixed formula. It
+            A AI Calorie Counter doesn’t apply a single fixed formula. It
             produces an estimate by <strong>inferring</strong> body fat from
             indirect signals.
           </p>

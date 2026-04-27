@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = buildPageMetadata({
   title: "How to Estimate Body Fat Percentage (Methods + Accuracy)",
   description: "Learn how to estimate your body fat percentage, compare methods like visual charts, AI photo estimation, calculators, and DEXA, and understand which approach makes sense for you.",
-  canonical: "https://bodyfatestimator.ai/blog/how-to-estimate-body-fat-percentage",
+  canonical: "https://aicaloriecounter.ai/blog/how-to-estimate-body-fat-percentage",
 });
 
 

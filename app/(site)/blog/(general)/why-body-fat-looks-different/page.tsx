@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "Why Two People at the Same Body Fat Percentage Look Different",
   description: "Two people can have the same body fat percentage and look completely different. Learn how muscle mass, fat distribution, frame size, height, and genetics change appearance — and how to estimate your own body fat more realistically.",
-  canonical: "https://bodyfatestimator.ai/blog/why-body-fat-looks-different",
+  canonical: "https://aicaloriecounter.ai/blog/why-body-fat-looks-different",
 });
 
 export default function BlogPostPage() {

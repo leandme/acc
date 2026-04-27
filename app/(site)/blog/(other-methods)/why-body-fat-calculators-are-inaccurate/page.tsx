@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "Why Body Fat Calculators Are Inaccurate",
   description: "Body fat calculators look precise, but their results are often misleading. Learn why formulas fail at the individual level, what they actually estimate, and better ways to track body fat over time.",
-  canonical: "https://bodyfatestimator.ai/blog/why-body-fat-calculators-are-inaccurate",
+  canonical: "https://aicaloriecounter.ai/blog/why-body-fat-calculators-are-inaccurate",
 });
 
 export default function BlogPostPage() {
@@ -59,7 +59,7 @@ export default function BlogPostPage() {
             Most body fat calculators do not measure body fat. They estimate it
             indirectly using population-based formulas. If you want the full
             method comparison, start with{" "}
-            <a className="text-primary underline" href="/blog/body-fat-calculator-vs-estimator">Body Fat Calculator vs Body Fat Estimator</a>.
+            <a className="text-primary underline" href="/blog/body-fat-calculator-vs-estimator">Body Fat Calculator vs AI Calorie Counter</a>.
           </p>
 
           <p className="text-gray-700 text-lg leading-relaxed">
@@ -195,7 +195,7 @@ export default function BlogPostPage() {
             Visual estimation combined with consistency and trend tracking
             often aligns better with real-world progress. You can test this flow
             with the{" "}
-            <a className="text-primary underline" href="/estimate">Body Fat Estimator</a>.
+            <a className="text-primary underline" href="/estimate">AI Calorie Counter</a>.
           </p>
         </div>
 

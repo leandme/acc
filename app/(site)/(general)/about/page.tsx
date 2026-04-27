@@ -5,12 +5,12 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 const title = "About";
 const description =
-  "Learn what BodyFatEstimator is, how our AI-based body fat estimation works, its limitations, and how to use it responsibly for fitness tracking.";
+  "Learn what AI Calorie Counter is, how our AI-based body fat estimation works, its limitations, and how to use it responsibly for fitness tracking.";
 
 export const metadata: Metadata = buildPageMetadata({
   title,
   description,
-  canonical: "https://bodyfatestimator.ai/about",
+  canonical: "https://aicaloriecounter.ai/about",
 });
 
 export default function AboutPage() {
@@ -23,7 +23,7 @@ export default function AboutPage() {
 
           <div className="prose prose-invert max-w-3xl text-center lg:text-left">
             <p className="text-lg">
-              BodyFatEstimator is a free AI tool designed to help people get a
+              AI Calorie Counter is a free AI tool designed to help people get a
               quick, visual estimate of their body fat percentage using a single photo.
               The goal is simple: make body composition tracking more accessible,
               private, and practical for everyday fitness use.
@@ -34,7 +34,7 @@ export default function AboutPage() {
               Tracking body fat is useful for understanding physical changes that
               scale weight alone can’t explain. However, traditional methods like
               DEXA scans are expensive, inconvenient, and impractical for frequent use.
-              BodyFatEstimator exists as a lightweight alternative for people who want
+              AI Calorie Counter exists as a lightweight alternative for people who want
               to track trends over time without appointments, devices, or subscriptions.
             </p>
 
@@ -55,7 +55,7 @@ export default function AboutPage() {
 
             <h2>Accuracy and limitations</h2>
             <p className="text-lg">
-              BodyFatEstimator provides a directional estimate, not a precise measurement.
+              AI Calorie Counter provides a directional estimate, not a precise measurement.
               It is not a substitute for clinical methods or professional medical advice.
               The tool is best used to observe relative changes over time rather than to
               determine an exact body fat percentage on a single day.

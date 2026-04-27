@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "How to Track Body Fat Changes Over Time (Without a Scale)",
   description: "Learn how to track body fat progress over time without relying on a scale. Use photos, consistency, and trends to understand real changes in body composition.",
-  canonical: "https://bodyfatestimator.ai/blog/how-to-track-body-fat-changes",
+  canonical: "https://aicaloriecounter.ai/blog/how-to-track-body-fat-changes",
 });
 
 export default function BlogPostPage() {

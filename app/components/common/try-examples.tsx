@@ -91,7 +91,7 @@ const onPick = (src: string) => {
       <p className="mt-4 text-xs text-base-content/60 leading-relaxed">
         By uploading a photo, you agree to our{" "}
         <a className="link" href="/terms">Terms of Service</a>. To learn more about how
-        bodyfatestimator.ai handles your personal data, check our{" "}
+        aicaloriecounter.ai handles your personal data, check our{" "}
         <a className="link" href="/privacy">Privacy Policy</a>.
       </p>
     </div>

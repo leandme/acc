@@ -28,7 +28,7 @@ const faqs = [
 export const metadata: Metadata = buildPageMetadata({
   title: "How to Estimate Body Fat Percentage from Photo Men, Photo Male, and Mirror Selfie",
   description: "Searching \"how to estimate body fat percentage from photo men\" or \"from photo male\"? Use this mirror selfie workflow, visual cue checklist, and free AI estimator.",
-  canonical: "https://bodyfatestimator.ai/blog/estimate-body-fat-percentage-from-photo",
+  canonical: "https://aicaloriecounter.ai/blog/estimate-body-fat-percentage-from-photo",
 });
 
 export default function HowToEstimateBodyFatFromPhotos() {
@@ -87,7 +87,7 @@ export default function HowToEstimateBodyFatFromPhotos() {
 
           <div className="mt-6">
             <a href="/estimate" className="btn btn-primary btn-lg text-white">
-              Try the free body fat estimator →
+              Try the free AI Calorie Counter →
             </a>
           </div>
         </div>

@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "What Does Body Fat Percentage Look Like? (Visual Guide + Examples)",
   description: "See what different body fat percentages look like (10%, 12%, 15%, 18%, 20%, 25%, 30%+) with realistic descriptions, disclaimers, and how to estimate your own body fat visually or with AI.",
-  canonical: "https://bodyfatestimator.ai/blog/what-does-body-fat-percentage-look-like",
+  canonical: "https://aicaloriecounter.ai/blog/what-does-body-fat-percentage-look-like",
 });
 
 export default function BlogPostPage() {

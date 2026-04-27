@@ -4,8 +4,8 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Cookie Policy",
-  description: "Cookie policy for BodyFatEstimator.ai. Learn how we use cookies and similar technologies, and how you can control them.",
-  canonical: "https://bodyfatestimator.ai/cookies",
+  description: "Cookie policy for AI Calorie Counter. Learn how we use cookies and similar technologies, and how you can control them.",
+  canonical: "https://aicaloriecounter.ai/cookies",
 });
 
 export default function CookiesPage() {
@@ -15,7 +15,7 @@ export default function CookiesPage() {
         <H1>Cookie Policy</H1>
 
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
-          This Cookie Policy explains how BodyFatEstimator.ai (“we”, “us”, or
+          This Cookie Policy explains how AI Calorie Counter (“we”, “us”, or
           “our”) uses cookies and similar technologies when you visit or use the
           Service.
         </p>
@@ -37,7 +37,7 @@ export default function CookiesPage() {
             <h2 className="text-2xl font-semibold">2. How We Use Cookies</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              BodyFatEstimator.ai uses a minimal set of cookies and similar
+              AI Calorie Counter uses a minimal set of cookies and similar
               technologies for the following purposes:
             </p>
 

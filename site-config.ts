@@ -1,11 +1,11 @@
 export const siteConfig = {
   // SITE
 site: {
-    name: "Body Fat Estimator",
-    url: "https://bodyfatestimator.ai",
+    name: "AI Calorie Counter",
+    url: "https://aicaloriecounter.ai",
     tagline: "Calculate your body fat % from a photo with AI.",
-    domain: "bodyfatestimator.ai",
-    legalName: "BodyFatEstimator.ai",
+    domain: "aicaloriecounter.ai",
+    legalName: "AI Calorie Counter",
     logo: "/logo.png",
   },
 

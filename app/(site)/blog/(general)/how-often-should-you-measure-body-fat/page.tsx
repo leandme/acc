@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "How Often Should You Measure Body Fat?",
   description: "How often should you measure body fat? Learn how measurement frequency affects accuracy, why daily checks create noise, and how to choose a schedule that actually shows progress.",
-  canonical: "https://bodyfatestimator.ai/blog/how-often-should-you-measure-body-fat",
+  canonical: "https://aicaloriecounter.ai/blog/how-often-should-you-measure-body-fat",
 });
 
 export default function BlogPostPage() {

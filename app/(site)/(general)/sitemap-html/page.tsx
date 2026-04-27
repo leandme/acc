@@ -7,8 +7,8 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Sitemap",
-  description: "Browse all pages on BodyFatEstimator.ai — tools, blog posts, and key resources.",
-  canonical: "https://bodyfatestimator.ai/sitemap-html",
+  description: "Browse all pages on AI Calorie Counter — tools, blog posts, and key resources.",
+  canonical: "https://aicaloriecounter.ai/sitemap-html",
   robots: {
     index: false,
     follow: true,
@@ -192,7 +192,7 @@ export default function SitemapPage() {
 
         <p className="mt-6 text-center text-lg text-gray-700 max-w-3xl mx-auto">
           A complete index of tools, blog posts, and important pages on
-          BodyFatEstimator.ai.
+          AI Calorie Counter.
         </p>
       </section>
 

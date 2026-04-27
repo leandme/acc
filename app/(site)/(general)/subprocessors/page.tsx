@@ -4,8 +4,8 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Sub-processors",
-  description: "Learn about the sub-processors used by BodyFatEstimator.ai, including hosting, AI processing, analytics, and payment providers.",
-  canonical: "https://bodyfatestimator.ai/subprocessors",
+  description: "Learn about the sub-processors used by AI Calorie Counter, including hosting, AI processing, analytics, and payment providers.",
+  canonical: "https://aicaloriecounter.ai/subprocessors",
 });
 
 export default function SubProcessorsPage() {
@@ -16,7 +16,7 @@ export default function SubProcessorsPage() {
 
         <p className="mt-4 text-center text-lg  text-gray-700 max-w-2xl mx-auto">
           This page explains the third-party service providers (“sub-processors”)
-          used by BodyFatEstimator.ai to deliver and support our services.
+          used by AI Calorie Counter to deliver and support our services.
         </p>
 
         <div className="mt-12 space-y-10">
@@ -28,7 +28,7 @@ export default function SubProcessorsPage() {
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               A sub-processor is a third-party data processor engaged by
-              BodyFatEstimator.ai who may have limited access to data solely for
+              AI Calorie Counter who may have limited access to data solely for
               the purpose of providing core functionality such as hosting, AI
               processing, analytics, or payment processing.
             </p>
@@ -41,7 +41,7 @@ export default function SubProcessorsPage() {
             </h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              BodyFatEstimator.ai evaluates the security, privacy, and
+              AI Calorie Counter evaluates the security, privacy, and
               confidentiality practices of each sub-processor before engagement.
               Where required, appropriate data protection agreements are in
               place.
@@ -92,7 +92,7 @@ export default function SubProcessorsPage() {
             </h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              BodyFatEstimator.ai does not intentionally maintain a long-term
+              AI Calorie Counter does not intentionally maintain a long-term
               archive of uploaded images.
             </p>
 
@@ -136,7 +136,7 @@ export default function SubProcessorsPage() {
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               Payments are securely handled by a third-party processor.
-              BodyFatEstimator.ai does not store full payment card details.
+              AI Calorie Counter does not store full payment card details.
             </p>
 
             <ul className="mt-4 list-disc pl-5 text-lg space-y-2 text-gray-700">

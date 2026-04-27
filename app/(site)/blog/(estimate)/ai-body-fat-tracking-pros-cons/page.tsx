@@ -10,7 +10,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "A practical guide to what AI does well in body fat tracking, where it fails, and how to use it for better long-term decisions.",
   canonical:
-    "https://bodyfatestimator.ai/blog/ai-body-fat-tracking-pros-cons",
+    "https://aicaloriecounter.ai/blog/ai-body-fat-tracking-pros-cons",
 });
 
 export default function AIBodyFatTrackingGuidePage() {
@@ -237,7 +237,7 @@ export default function AIBodyFatTrackingGuidePage() {
               title: "How AI Body Fat Estimation Works",
               tag: "fat",
               description:
-                "Learn how an AI body fat estimator works, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
+                "Learn how an AI Calorie Counter works, what visual signals it uses, what it ignores, and why photo-based body fat estimation can be directionally accurate for tracking changes over time.",
               date: "Jan 24, 2026",
               readTime: "6 min read",
               image: "/blog/how-ai-body-fat-estimation-works.webp",

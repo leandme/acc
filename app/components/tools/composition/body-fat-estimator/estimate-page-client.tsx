@@ -148,7 +148,7 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
 
     trackEvent("Download File", {
       "file type": "image",
-      tool: "body fat estimator",
+      tool: "AI Calorie Counter",
       "download type": refineIsActive ? "refined estimate" : "standard estimate",
       location,
     });
@@ -188,10 +188,10 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
           await navigator.share({
             files: [file],
             title: "Body Fat Estimate",
-            text: "Generated with bodyfatestimator.ai",
+            text: "Generated with aicaloriecounter.ai",
           });
           trackEvent("Result Image Shared", {
-            tool: "body fat estimator",
+            tool: "AI Calorie Counter",
             location,
             accuracy: normalizedActiveAccuracy,
           });
@@ -214,7 +214,7 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
       window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
 
       trackEvent("Result Image Downloaded", {
-        tool: "body fat estimator",
+        tool: "AI Calorie Counter",
         location,
         accuracy: normalizedActiveAccuracy,
       });
@@ -355,7 +355,7 @@ function EstimatePageContent({ basePath }: EstimatePageContentProps) {
                   href={resolvedBasePath}
                   onClick={() =>
                     trackEvent("Go to Tool", {
-                      tool: "body fat estimator",
+                      tool: "AI Calorie Counter",
                       location: "estimate page mobile actions",
                     })
                   }

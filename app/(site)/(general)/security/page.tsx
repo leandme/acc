@@ -4,8 +4,8 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Security Policy",
-  description: "Learn how BodyFatEstimator.ai protects your data using secure infrastructure, minimal data handling, and trusted providers.",
-  canonical: "https://bodyfatestimator.ai/security",
+  description: "Learn how AI Calorie Counter protects your data using secure infrastructure, minimal data handling, and trusted providers.",
+  canonical: "https://aicaloriecounter.ai/security",
 });
 
 export default function SecurityPage() {
@@ -16,7 +16,7 @@ export default function SecurityPage() {
 
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
           Protecting your data matters. This page summarizes how
-          BodyFatEstimator.ai approaches security, data handling, and third-party
+          AI Calorie Counter approaches security, data handling, and third-party
           infrastructure used to deliver the Service.
         </p>
 
@@ -26,7 +26,7 @@ export default function SecurityPage() {
             <h2 className="text-2xl font-semibold">Overview</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              BodyFatEstimator.ai is built with a minimal-data philosophy. We
+              AI Calorie Counter is built with a minimal-data philosophy. We
               aim to process only what’s needed to generate your body fat
               estimate and avoid retaining sensitive data (like uploaded photos)
               beyond what’s required to provide the Service.
@@ -109,7 +109,7 @@ export default function SecurityPage() {
             <h2 className="text-2xl font-semibold">Transport Security</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              Traffic to and from BodyFatEstimator.ai is encrypted using HTTPS
+              Traffic to and from AI Calorie Counter is encrypted using HTTPS
               (TLS). This helps protect data in transit between your browser and
               our infrastructure providers.
             </p>

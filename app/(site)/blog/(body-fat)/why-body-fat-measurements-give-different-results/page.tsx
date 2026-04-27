@@ -8,7 +8,7 @@ import Image from "next/image";
 export const metadata: Metadata = buildPageMetadata({
   title: "Why Body Fat Measurement Methods Give Different Results",
   description: "DEXA, smart scales, calculators, and visual estimates often disagree. Learn why body fat measurement methods give different results and how to interpret them correctly.",
-  canonical: "https://bodyfatestimator.ai/blog/why-body-fat-measurements-give-different-results",
+  canonical: "https://aicaloriecounter.ai/blog/why-body-fat-measurements-give-different-results",
 });
 
 export default function BlogPostPage() {

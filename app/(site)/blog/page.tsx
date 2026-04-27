@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = buildPageMetadata({
   title: "Body Fat Blog",
   description: "Body composition blog posts, photo tips, accuracy improvements, and tracking strategies for all things related to body composition.",
-  canonical: "https://bodyfatestimator.ai/blog",
+  canonical: "https://aicaloriecounter.ai/blog",
 });
 
 export default function BlogIndexPage() {

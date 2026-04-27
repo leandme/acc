@@ -7,15 +7,15 @@ export function AuthorSchema() {
           "@context": "https://schema.org",
           "@type": "Person",
           "name": "Matt Phelps",
-          "url": "https://bodyfatestimator.ai",
+          "url": "https://aicaloriecounter.ai",
           "sameAs": [
             "https://www.linkedin.com/in/matt-phelps/",
             "https://www.youtube.com/@mgphelps"
           ],
           "worksFor": {
             "@type": "Organization",
-            "name": "BodyFatEstimator.ai",
-            "url": "https://bodyfatestimator.ai"
+            "name": "AI Calorie Counter",
+            "url": "https://aicaloriecounter.ai"
           }
         })
       }}

@@ -30,8 +30,8 @@ export async function generateMetadata({
   if (!category) {
     return buildPageMetadata({
       title: "Tools",
-      description: "Browse all tools on BodyFatEstimator.ai.",
-      canonical: "https://bodyfatestimator.ai/tools",
+      description: "Browse all tools on AI Calorie Counter.",
+      canonical: "https://aicaloriecounter.ai/tools",
       robots: { index: false, follow: false },
     });
   }
@@ -39,7 +39,7 @@ export async function generateMetadata({
   return buildPageMetadata({
     title: category.h1,
     description: category.description,
-    canonical: `https://bodyfatestimator.ai/tools/${category.slug}`,
+    canonical: `https://aicaloriecounter.ai/tools/${category.slug}`,
     robots: { index: true, follow: true },
   });
 }
