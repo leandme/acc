@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
 
         <div className="my-8 h-px bg-white/10" />
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-1 lg:grid-cols-1">
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
               Site
@@ -33,17 +33,6 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/about">About</a></li>
               <li><a className="hover:text-white" href="/blog">Blog</a></li>
               <li><a className="hover:text-white" href="/contact">Contact</a></li>
-              <li><a className="hover:text-white" href="/sitemap-html">Sitemap</a></li>
-            </ul>
-          </div>
-          <div>
-            <h6 className="text-lg font-semibold text-gray-200">
-              Tools
-            </h6>
-            <ul className="mt-3 space-y-2 text-base text-gray-300">
-              <li><a className="hover:text-white" href="/estimate">AI Calorie Counter</a></li>
-              <li><a className="hover:text-white" href="/body-fat-calculator">Navy Body Fat Calculator</a></li>
-              <li><a className="hover:text-white" href="/body-visualizer">Body Visualizer</a></li>
             </ul>
           </div>
         </div>
@@ -62,8 +51,7 @@ export default function Footer() {
             <a href="/privacy" className="hover:underline">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/cookies" className="hover:underline">Cookie</a>&nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/security" className="hover:underline">Security</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-            <a href="/subprocessors" className="hover:underline">Subprocessors</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-            <a href="/sitemap-html" className="hover:underline">Sitemap</a>
+            <a href="/subprocessors" className="hover:underline">Subprocessors</a>
           </span>
           
         </div>

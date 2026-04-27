@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { trackEvent } from "@/app/libs/amplitude";
 import type { ToolCategoryTab, ToolMeta } from "@/app/(site)/(tools)/tools";
-import { EzoicAdSlot } from "@/app/components/helpers/ezoic-ad-slot";
 
 function slugToHref(slug: string) {
   return `/${slug}`;
@@ -38,8 +37,6 @@ export default function ToolsGridWithTabs({
           );
         })}
       </div>
-
-      <EzoicAdSlot id={113} className="mt-8" />
 
       <div className="mt-10 grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
         {tools.map((tool) => (

@@ -3,7 +3,7 @@ export const siteConfig = {
 site: {
     name: "AI Calorie Counter",
     url: "https://aicaloriecounter.ai",
-    tagline: "Calculate your body fat % from a photo with AI.",
+    tagline: "Count your calories from a photo with AI",
     domain: "aicaloriecounter.ai",
     legalName: "AI Calorie Counter",
     logo: "/logo.png",

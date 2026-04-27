@@ -2,7 +2,6 @@ import React from "react";
 import Breadcrumb from "../common/breadcrumb";
 import GuideAuthor from "./guide-author";
 import GuideArticleSchema from "../schema/guide-article-schema";
-import { EzoicAdSlot } from "../helpers/ezoic-ad-slot";
 
 type BlogHeroProps = {
   slug?: string;
@@ -34,10 +33,6 @@ export default function GuideHero({
             {intro}
         </div>
         )}
-
-      <EzoicAdSlot id={109} className="mt-8" />
-
-      
 
       {image && (
         <div className="mt-12 flex justify-center">

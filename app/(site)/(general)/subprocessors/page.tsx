@@ -123,10 +123,6 @@ export default function SubProcessorsPage() {
                 <strong>Amplitude, Inc.</strong> — product analytics (United
                 States)
               </li>
-              <li>
-                <strong>Mediavine, Inc. (Grow)</strong> — audience engagement
-                features and related measurement (United States)
-              </li>
             </ul>
           </div>
 
@@ -158,12 +154,8 @@ export default function SubProcessorsPage() {
                 networks and do not currently serve display ads.
               </li>
               <li>
-                We do not use Ezoic.
-              </li>
-              <li>
                 Analytics cookies or similar identifiers are currently used by
-                Google Analytics and Amplitude. Engagement cookies or similar
-                identifiers may also be used by Mediavine Grow.
+                Google Analytics and Amplitude.
               </li>
             </ul>
           </div>

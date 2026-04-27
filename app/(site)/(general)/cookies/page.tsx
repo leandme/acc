@@ -51,16 +51,12 @@ export default function CookiesPage() {
                 to understand how the site is used and improve performance and
                 reliability.
               </li>
-              <li>
-                <strong>Audience engagement features</strong> — on-site
-                engagement tooling provided by Mediavine Grow.
-              </li>
             </ul>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We currently use Google Analytics, Amplitude, and Mediavine Grow.
-              These services may use cookies or similar identifiers and may load
-              automatically when you use the Service.
+              We currently use Google Analytics and Amplitude. These services
+              may use cookies or similar identifiers and may load automatically
+              when you use the Service.
             </p>
           </div>
 
@@ -82,7 +78,7 @@ export default function CookiesPage() {
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               We do not currently run third-party display advertising cookies,
-              do not serve display ads on the Service, and do not use Ezoic.
+              and do not serve display ads on the Service.
             </p>
           </div>
 

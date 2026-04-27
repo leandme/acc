@@ -11,7 +11,6 @@ import { getToolsByCategories } from "@/app/(site)/(tools)/tools";
 import { TOOLS } from "@/app/(site)/(tools)/tools";
 import { ToolMeta } from "@/app/(site)/(tools)/tools";
 import { pickTools } from "@/app/(site)/(tools)/tools";
-import { EzoicAdSlot } from "@/app/components/helpers/ezoic-ad-slot";
 
 const LOW_LINK_TOOL_SLUGS = new Set<string>([
   "overweight-calculator",
@@ -139,7 +138,6 @@ export function MoreTools({
 
   return (
     <>
-      <EzoicAdSlot id={112} className="mt-10" />
       <section className={`mt-14 border-t pt-10 ${className}`}>
         <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900">
           <Link className="hover:underline" href={headingHref}>

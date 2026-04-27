@@ -11,7 +11,6 @@ import { WebsiteSchema } from "../components/schema/website-schema";
 import { GoogleTag } from "../components/helpers/google-tag";
 import { GoogleAnalytics } from "../components/helpers/google-analytics";
 import Chrome from "../components/common/chrome";
-import { MediavineGrow } from "../components/helpers/mediavine-grow";
 
 export default function RootLayout({
   children,
@@ -21,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <MediavineGrow />
         <GoogleTag />
         <GoogleAnalytics />
         <WebsiteSchema />

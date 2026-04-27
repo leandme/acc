@@ -3,11 +3,10 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
-import H1 from "@/app/components/common/h1";
-import RippleLoader from "@/app/components/common/loader";
-import EstimateDropZone from "@/app/components/tools/composition/body-fat-estimator/estimate-drop-zone";
-import { MoreTools } from "../../template/more-tools";
-import { useCalorieEstimate } from "@/app/hooks/useCalorieEstimate";
+import LoadingStatus, { type LoadingStatusMessage } from "@/app/components/common/loading-status";
+import Hero from "@/app/components/home/hero";
+import HowCalorieCounterWorks from "@/app/components/home/how-calorie-counter-works";
+import { useCalorieEstimate, type MacroSplit } from "@/app/hooks/useCalorieEstimate";
 
 type CalorieBand = {
   key: string;
@@ -67,6 +66,29 @@ const CALORIE_BANDS: CalorieBand[] = [
   },
 ];
 
+const CALORIE_LOADING_MESSAGES: LoadingStatusMessage[] = [
+  {
+    title: "Photo intake and normalization",
+    body: "Preparing your meal image and normalizing orientation, framing, and scale cues.",
+  },
+  {
+    title: "Ingredient detection pass",
+    body: "Scanning visible foods, sides, sauces, and drink cues across the image.",
+  },
+  {
+    title: "Portion and density modeling",
+    body: "Estimating portion size and likely preparation density for each detected item.",
+  },
+  {
+    title: "Calorie and macro assembly",
+    body: "Combining item-level estimates into total kcal and a practical macro split.",
+  },
+  {
+    title: "Confidence and range calibration",
+    body: "Finalizing confidence level, calorie range, and result summary before output.",
+  },
+];
+
 function confidenceBadgeClass(confidence: "low" | "medium" | "high") {
   if (confidence === "high") return "bg-green-100 text-green-800 border-green-200";
   if (confidence === "low") return "bg-red-100 text-red-800 border-red-200";
@@ -83,6 +105,69 @@ function findBand(totalCalories: number | null) {
 function formatRange(min: number | null, max: number | null) {
   if (min == null || max == null) return "Range unavailable";
   return `${min}-${max} kcal`;
+}
+
+type FoodClassification = {
+  label: string;
+  styleClass: string;
+  summary: string;
+};
+
+function classifyFood(totalCalories: number | null, macroSplit: MacroSplit | null): FoodClassification | null {
+  const band = findBand(totalCalories);
+  if (!band) return null;
+
+  const proteinPct = macroSplit?.protein ?? 0;
+  const fatPct = macroSplit?.fat ?? 0;
+  const balancedMacros = proteinPct >= 25 && fatPct <= 35;
+
+  if (band.key === "snack") {
+    return {
+      label: "Snack",
+      styleClass: "bg-green-100 text-green-800 border-green-200",
+      summary: "Lower-calorie portion. Good fit for snack-sized intake.",
+    };
+  }
+
+  if (band.key === "light_meal" || band.key === "standard_meal") {
+    if (balancedMacros) {
+      return {
+        label: "Likely Healthy Meal",
+        styleClass: "bg-emerald-100 text-emerald-800 border-emerald-200",
+        summary: "Balanced calorie range with macro split that leans protein-forward.",
+      };
+    }
+
+    return {
+      label: "Balanced Meal",
+      styleClass: "bg-blue-100 text-blue-800 border-blue-200",
+      summary: "Meal-sized intake in a typical calorie range.",
+    };
+  }
+
+  if (band.key === "large_meal") {
+    return {
+      label: "Hearty Meal",
+      styleClass: "bg-orange-100 text-orange-800 border-orange-200",
+      summary: "Larger meal portion with elevated energy density.",
+    };
+  }
+
+  return {
+    label: "Calorie-Dense Meal",
+    styleClass: "bg-red-100 text-red-800 border-red-200",
+    summary: "High-calorie portion, often from larger serving size or richer ingredients.",
+  };
+}
+
+function toMacroGrams(totalCalories: number | null, macroSplit: MacroSplit | null) {
+  if (totalCalories == null || !macroSplit) return null;
+
+  const protein = Math.max(0, Math.round((totalCalories * (macroSplit.protein / 100)) / 4));
+  const carbs = Math.max(0, Math.round((totalCalories * (macroSplit.carbs / 100)) / 4));
+  const fat = Math.max(0, Math.round((totalCalories * (macroSplit.fat / 100)) / 9));
+
+  return { protein, carbs, fat };
 }
 
 function CalorieBandTable({ totalCalories }: { totalCalories: number | null }) {
@@ -153,11 +238,16 @@ function CalorieBandTable({ totalCalories }: { totalCalories: number | null }) {
   );
 }
 
-function CalorieCounterPageContent() {
+type CalorieCounterPageContentProps = {
+  basePath?: "/" | "/calorie-counter";
+};
+
+function CalorieCounterPageContent({ basePath = "/" }: CalorieCounterPageContentProps) {
   const searchParams = useSearchParams();
   const imageUrl = searchParams.get("imageUrl");
   const source = searchParams.get("source") === "example" ? "example" : "upload";
   const { estimate, loading, error } = useCalorieEstimate(imageUrl, { source });
+  const isAnalyzing = Boolean(imageUrl) && loading;
 
   const topItem = useMemo(() => {
     if (!estimate?.detectedItems?.length) return null;
@@ -170,27 +260,34 @@ function CalorieCounterPageContent() {
     "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
   const pClass = "text-lg leading-relaxed";
   const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
+  const foodClassification = useMemo(
+    () => classifyFood(estimate?.totalCalories ?? null, estimate?.macroSplit ?? null),
+    [estimate?.macroSplit, estimate?.totalCalories]
+  );
+  const macroGrams = useMemo(
+    () => toMacroGrams(estimate?.totalCalories ?? null, estimate?.macroSplit ?? null),
+    [estimate?.macroSplit, estimate?.totalCalories]
+  );
 
   return (
     <main className="bg-base-100">
-      <section className="flex flex-col items-center justify-start pt-10 px-6">
-        <H1>Calorie Counter Powered by AI</H1>
-        <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
-          Upload a meal photo and get an AI calorie estimate with a confidence rating, calorie range,
-          and item-level breakdown.
-        </p>
-
-        {!imageUrl ? (
-          <div className="w-full max-w-2xl mt-10 flex flex-col items-center">
-            <div className="w-full max-w-md">
-              <EstimateDropZone basePath="/calorie-counter" buttonLabel="Upload Meal Photo" />
-            </div>
-            <p className="mt-6 text-sm text-gray-600 max-w-md text-center">
-              Best results come from top-down or 45-degree photos with the full plate visible in even
-              lighting.
-            </p>
+      {!imageUrl ? (
+        <section className="w-full">
+          <Hero basePath={basePath} showExamples={false} />
+          <HowCalorieCounterWorks />
+        </section>
+      ) : isAnalyzing ? (
+        <section className="flex flex-col items-center justify-start min-h-screen">
+          <div className="w-full max-w-none px-4 pt-4 sm:px-6 sm:pt-6 lg:max-w-5xl lg:px-8 lg:pt-10">
+            <LoadingStatus
+              imageUrl={imageUrl}
+              title="Analyzing Your Meal..."
+              messages={CALORIE_LOADING_MESSAGES}
+            />
           </div>
-        ) : (
+        </section>
+      ) : (
+        <section className="flex flex-col items-center justify-start pt-10 px-6">
           <div className="w-full max-w-5xl mt-10">
             <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 lg:gap-16 items-start">
               <div className="w-full sm:max-w-sm lg:max-w-none justify-self-center">
@@ -203,18 +300,6 @@ function CalorieCounterPageContent() {
 
               <div className="w-full rounded-2xl border bg-white p-6 lg:p-8 shadow-sm">
                 <h2 className="text-2xl lg:text-3xl font-semibold text-gray-900">Estimated Calories</h2>
-
-                {loading ? (
-                  <div className="mt-6">
-                    <div className="flex items-center gap-4">
-                      <RippleLoader />
-                      <div>
-                        <p className="text-lg text-gray-800 font-semibold">Analyzing meal composition...</p>
-                        <p className="text-sm text-gray-600">Estimating portions, ingredient density, and likely total kcal.</p>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
 
                 {error ? (
                   <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-4">
@@ -241,6 +326,15 @@ function CalorieCounterPageContent() {
                       Estimated range: <span className="font-semibold">{formatRange(estimate.rangeMin, estimate.rangeMax)}</span>
                     </p>
 
+                    {foodClassification ? (
+                      <div className="mt-3">
+                        <span className={`inline-flex rounded-full border px-3 py-1 text-sm font-semibold ${foodClassification.styleClass}`}>
+                          {foodClassification.label}
+                        </span>
+                        <p className="mt-2 text-sm text-gray-600">{foodClassification.summary}</p>
+                      </div>
+                    ) : null}
+
                     {estimate.mealName ? (
                       <p className="mt-2 text-sm text-gray-600">
                         Meal type detected: <span className="font-semibold text-gray-800">{estimate.mealName}</span>
@@ -251,15 +345,24 @@ function CalorieCounterPageContent() {
                       <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div className="rounded-xl bg-blue-50 border border-blue-100 p-3">
                           <p className="text-xs uppercase tracking-wide text-blue-700 font-semibold">Protein</p>
-                          <p className="text-xl font-semibold text-blue-800">{estimate.macroSplit.protein}%</p>
+                          <p className="text-xl font-semibold text-blue-800">
+                            {macroGrams ? `${macroGrams.protein}g` : `${estimate.macroSplit.protein}%`}
+                          </p>
+                          <p className="text-xs text-blue-700/80">{estimate.macroSplit.protein}% of calories</p>
                         </div>
                         <div className="rounded-xl bg-yellow-50 border border-yellow-100 p-3">
                           <p className="text-xs uppercase tracking-wide text-yellow-700 font-semibold">Carbs</p>
-                          <p className="text-xl font-semibold text-yellow-800">{estimate.macroSplit.carbs}%</p>
+                          <p className="text-xl font-semibold text-yellow-800">
+                            {macroGrams ? `${macroGrams.carbs}g` : `${estimate.macroSplit.carbs}%`}
+                          </p>
+                          <p className="text-xs text-yellow-700/80">{estimate.macroSplit.carbs}% of calories</p>
                         </div>
                         <div className="rounded-xl bg-red-50 border border-red-100 p-3">
                           <p className="text-xs uppercase tracking-wide text-red-700 font-semibold">Fat</p>
-                          <p className="text-xl font-semibold text-red-800">{estimate.macroSplit.fat}%</p>
+                          <p className="text-xl font-semibold text-red-800">
+                            {macroGrams ? `${macroGrams.fat}g` : `${estimate.macroSplit.fat}%`}
+                          </p>
+                          <p className="text-xs text-red-700/80">{estimate.macroSplit.fat}% of calories</p>
                         </div>
                       </div>
                     ) : null}
@@ -272,10 +375,11 @@ function CalorieCounterPageContent() {
               </div>
             </div>
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
-      <section className="px-6">
+      {!isAnalyzing ? (
+        <section className="px-6">
         {estimate?.detectedItems?.length ? (
           <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
             <h2 className={h2Class}>Detected Item Breakdown</h2>
@@ -400,32 +504,15 @@ function CalorieCounterPageContent() {
             </li>
           </ul>
         </div>
-        <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20 pb-20">
-          <MoreTools
-            heading="Related Tools"
-            columns={2}
-            toolSlugs={[
-              "calorie-calculator",
-              "calorie-deficit-calculator",
-              "macro-calculator",
-              "tdee-calculator",
-              "bmr-calculator",
-              "calories-burned-calculator",
-              "steps-to-calories-calculator",
-              "intermittent-fasting-calculator",
-              "fasting-weight-loss-calculator",
-              "weight-loss-calculator",
-              "estimate",
-            ]}
-            excludeSlug="calorie-counter"
-          />
-        </div>
-      </section>
+        </section>
+      ) : null}
     </main>
   );
 }
 
-const CalorieCounterPageClient = dynamic(() => Promise.resolve(CalorieCounterPageContent), {
+const CalorieCounterPageClient = dynamic<CalorieCounterPageContentProps>(
+  () => Promise.resolve(CalorieCounterPageContent),
+  {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center min-h-screen">

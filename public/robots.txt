@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /guides
 
-Sitemap: https://aicaloriecounter.ai/sitemap.xml
+Sitemap: https://ai-calorie-counter.com/sitemap.xml

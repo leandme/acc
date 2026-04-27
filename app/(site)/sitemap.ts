@@ -2,9 +2,8 @@
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
-import { toolCategoryArray } from "./(tools)/tools";
 
-const BASE_URL = "https://aicaloriecounter.ai";
+const BASE_URL = "https://ai-calorie-counter.com";
 const LEGAL_ROUTES = new Set([
   "/privacy",
   "/terms",
@@ -51,7 +50,7 @@ function getRouteSignals(
     return { changeFrequency: "weekly", priority: 0.95 };
   }
 
-  if (route === "/tools" || route === "/blog") {
+  if (route === "/blog") {
     return { changeFrequency: "weekly", priority: 0.9 };
   }
 
@@ -122,24 +121,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   readPagesDirectory(pagesDirectory);
-
-  const toolsConfigPath = path.join(process.cwd(), "app/(site)/(tools)/tools.ts");
-  const categoryMTime = fs.existsSync(toolsConfigPath)
-    ? fs.statSync(toolsConfigPath).mtime
-    : new Date();
-  const categoryTemplatePath = path.join(
-    process.cwd(),
-    "app/(site)/(tools)/tools/[category]/page.tsx"
-  );
-
-  toolCategoryArray().forEach((category) => {
-    entries.push({
-      url: `${BASE_URL}/tools/${category.slug}`,
-      route: `/tools/${category.slug}`,
-      absolutePath: categoryTemplatePath,
-      lastModified: categoryMTime,
-    });
-  });
 
   const dedupedEntries = Array.from(new Map(entries.map((entry) => [entry.url, entry])).values());
 

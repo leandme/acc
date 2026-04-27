@@ -1,214 +1,184 @@
 import FaqSection from "../common/faq-section";
 
 export default function FAQ() {
-
   const FAQ_ITEMS = [
     {
-      q: "How does the body fat calculator work?",
+      q: "How does AI Calorie Counter estimate calories from a food photo?",
       a: (
         <>
-          Upload a clear full-body photo and the AI analyzes visual cues like shape, fat
-          distribution, and proportions to estimate body fat percentage. This is a photo-based
-          estimate, so photo quality, lighting, pose, and clothing affect results.
+          Upload a clear photo of your meal and the model estimates total calories from visible
+          portion size, ingredients, and common preparation methods. It is an estimate, not a lab
+          measurement, so image quality and portion visibility matter.
         </>
       ),
     },
     {
-      q: "What data does AI Calorie Counter require from users?",
+      q: "What kind of photos give the best calorie estimate?",
       a: (
         <>
-          The core input is a clear, recent full-body photo. Better results usually come from
-          neutral posture, even lighting, and fitted clothing that does not hide body shape.
+          Use bright, sharp photos where the full plate is visible. Avoid heavy filters, dark
+          lighting, and extreme camera angles. For better consistency, take photos from a similar
+          distance each time.
         </>
       ),
     },
     {
-      q: "Can I use my smartphone to assess my body fat percentage?",
+      q: "How accurate is the AI calorie estimate?",
       a: (
         <>
-          Yes. Most users upload smartphone photos. Use good lighting, keep the camera level, and
-          take the photo from a consistent distance each time.
+          Accuracy is usually directional, not exact. It is useful for tracking trends and making
+          better daily decisions, but it should not replace nutrition labels, food scales, or
+          medical nutrition guidance when precision is required.
         </>
       ),
     },
     {
-      q: "Is the body fat calculator easy to use?",
+      q: "How To Improve Accuracy",
       a: (
         <>
-          Yes. Upload your photo, wait for the estimate, and review the range and guidance. No tape
-          measurements or manual formulas are required.
+          <ul className="list-disc space-y-2 pl-6">
+            <li>Shoot from top-down or 45-degree angle with the full plate visible.</li>
+            <li>Avoid heavy shadows and keep lighting bright and even.</li>
+            <li>Include all sides, sauces, and drinks in the frame.</li>
+            <li>Use one clear image per meal without clutter from other plates.</li>
+            <li>Retake if ingredients are stacked or hidden by toppings.</li>
+          </ul>
         </>
       ),
     },
     {
-      q: "How accurate is the body fat calculator?",
+      q: "Can it estimate calories for mixed meals like bowls, casseroles, or takeout?",
       a: (
         <>
-          It is designed to be directionally accurate, especially for tracking changes over time.
-          It is not a medical test like DEXA, so use it as a trend tool rather than an exact
-          clinical measurement.
+          Yes, but mixed meals are harder than single-item foods because ingredients can be hidden.
+          The tool still provides a best estimate based on visible cues and common serving patterns.
         </>
       ),
     },
     {
-      q: "How can I improve the accuracy of my results?",
+      q: "Does the result include protein, carbs, and fat?",
       a: (
         <>
-          Use the accuracy panel recommendations as a checklist before your next upload:
-          <ul className="mt-3 list-disc space-y-2 pl-6">
+          Yes. The results card provides an estimated macro breakdown in grams for protein, carbs,
+          and fat, plus macro percentages to help you quickly understand meal composition.
+        </>
+      ),
+    },
+    {
+      q: "What does the meal classification mean (for example, healthy or snack)?",
+      a: (
+        <>
+          Classification is a quick, high-level label based on the estimated energy density and
+          macro balance of the meal. It is informational only and should not be treated as medical
+          advice.
+        </>
+      ),
+    },
+    {
+      q: "Why do I get different calorie results for similar photos?",
+      a: (
+        <>
+          Small changes in photo angle, lighting, hidden ingredients, and plate size can shift the
+          estimate. Keep photo conditions consistent to improve repeatability.
+        </>
+      ),
+    },
+    {
+      q: "Can I use this for drinks, smoothies, and coffee beverages?",
+      a: (
+        <>
+          Yes, but drinks can be harder when ingredients are not visible. Results are most useful
+          when you also include context such as cup size and known add-ins when possible.
+        </>
+      ),
+    },
+    {
+      q: "Can I use AI Calorie Counter for daily calorie tracking?",
+      a: (
+        <>
+          Yes. Many users use it as a fast logging aid. It works best as part of a routine where
+          you compare totals across days and weeks instead of obsessing over one meal estimate.
+        </>
+      ),
+    },
+    {
+      q: "Is AI Calorie Counter free to use?",
+      a: (
+        <>
+          Yes. AI Calorie Counter offers a free online experience so you can upload a meal photo
+          and get a calorie estimate quickly.
+        </>
+      ),
+    },
+    {
+      q: "Do you store or sell my uploaded food photos?",
+      a: (
+        <>
+          We process images to generate results and aim to minimize retention. Uploaded content is
+          not sold. For details, review the privacy page and terms.
+        </>
+      ),
+    },
+    {
+      q: "Can this replace advice from a doctor or registered dietitian?",
+      a: (
+        <>
+          No. This tool is for informational and educational use. If you have medical conditions,
+          dietary restrictions, or performance-specific goals, work with a qualified professional.
+        </>
+      ),
+    },
+    {
+      q: "What references are used for calorie and serving context?",
+      a: (
+        <>
+          <ul className="list-disc space-y-2 pl-6">
             <li>
-              Provide front, side, and back photos in neutral, even lighting without strong
-              window light or hard shadows.
+              USDA FoodData Central (nutrient and calorie database):{" "}
+              <a
+                href="https://fdc.nal.usda.gov/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline"
+              >
+                USDA FoodData Central
+              </a>
             </li>
             <li>
-              Include a fully relaxed stance and a non-flexed abdomen in addition to any flexed
-              poses.
+              FDA reference guide for serving sizes and labels:{" "}
+              <a
+                href="https://www.fda.gov/food/nutrition-facts-label"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline"
+              >
+                FDA Nutrition Facts Label
+              </a>
             </li>
             <li>
-              Stand farther from the camera so the full body from head to ankles is visible with
-              consistent framing.
-            </li>
-            <li>
-              Wear form-fitting shorts so hip and upper-thigh fat distribution is visible.
-            </li>
-            <li>
-              Add a straight-on photo with arms at your sides to better assess waist-to-shoulder
-              ratio and abdominal definition.
-            </li>
-            <li>
-              Avoid morning pump or immediate post-workout photos to reduce temporary muscle
-              fullness affecting visible definition.
+              NIH body weight planner context for intake/expenditure:{" "}
+              <a
+                href="https://www.niddk.nih.gov/bwp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline"
+              >
+                NIDDK Body Weight Planner
+              </a>
             </li>
           </ul>
         </>
       ),
     },
     {
-      q: "How quickly can I get my results?",
+      q: "How can I contact support?",
       a: (
         <>
-          Most results are returned in seconds. Very large images or slow connections can take a
-          little longer.
-        </>
-      ),
-    },
-    {
-      q: "Can I track my progress over time?",
-      a: (
-        <>
-          Yes. That is one of the best use cases. Take photos under similar conditions every one
-          to two weeks and compare trend direction instead of focusing on one single estimate.
-        </>
-      ),
-    },
-    {
-      q: "How does AI enhance body composition analysis?",
-      a: (
-        <>
-          AI can evaluate many visual signals at once and apply them consistently. This helps turn
-          photos into a repeatable body-fat estimate workflow when your photo setup is consistent.
-        </>
-      ),
-    },
-    {
-      q: "Can I compare results with traditional methods?",
-      a: (
-        <>
-          Yes. Many people compare AI estimates with formula-based calculators or occasional scans.
-          Comparing methods can give better context than relying on one method alone.
-        </>
-      ),
-    },
-    {
-      q: "How does lighting affect the analysis results?",
-      a: (
-        <>
-          Lighting has a major impact. Harsh shadows or low light can hide or exaggerate visual
-          definition, which can shift the estimate. Even, front-facing light works best.
-        </>
-      ),
-    },
-    {
-      q: "What should I wear for the best results?",
-      a: (
-        <>
-          Wear fitted clothing that allows clear body-shape visibility, such as athletic wear.
-          Avoid baggy outfits, heavy layers, and poses that distort posture.
-        </>
-      ),
-    },
-    {
-      q: "How often should I use the calculator?",
-      a: (
-        <>
-          Every one to two weeks is usually enough for meaningful trend tracking. Daily checks often
-          add noise without useful signal.
-        </>
-      ),
-    },
-    {
-      q: "What are the limitations of the body fat calculator?",
-      a: (
-        <>
-          It is appearance-based, not a diagnostic tool. Results can vary with lighting, pose,
-          camera angle, and clothing, so it is best for trend tracking rather than medical
-          decision-making.
-        </>
-      ),
-    },
-    {
-      q: "Can I use photos from social media for analysis?",
-      a: (
-        <>
-          You can, but results are usually less reliable because social photos often include filters,
-          strong edits, non-neutral poses, or difficult lighting. A fresh, neutral photo is better.
-        </>
-      ),
-    },
-    {
-      q: "Is there a cost associated with using this tool?",
-      a: (
-        <>
-          The AI Calorie Counter includes a free experience for quick estimates.
-        </>
-      ),
-    },
-    {
-      q: "Are there any privacy concerns with AI Calorie Counter?",
-      a: (
-        <>
-          Privacy matters. Photos are processed to generate your estimate and are not sold. We aim
-          to minimize retention and protect user data.
-        </>
-      ),
-    },
-    {
-      q: "Can I use the tool without an internet connection?",
-      a: (
-        <>
-          No. The estimator runs online, so you need an internet connection to upload a photo and
-          receive results.
-        </>
-      ),
-    },
-    {
-      q: "How does the calculator handle different body types?",
-      a: (
-        <>
-          The tool is designed for broad body-type coverage, but quality can still vary by photo
-          conditions and individual variance. Consistent photos improve reliability for everyone.
-        </>
-      ),
-    },
-    {
-      q: "What support does AI Calorie Counter offer users?",
-      a: (
-        <>
-          If you have questions, contact us via{" "}
+          Questions or feedback can be sent by{" "}
           <a href="mailto:matt@leandme.com" className="text-primary">
             email
           </a>{" "}
-          and we will help.
+          and we will help as quickly as possible.
         </>
       ),
     },
@@ -218,8 +188,8 @@ export default function FAQ() {
     <FaqSection
       id="faqs"
       accordionName="home-faq-accordion"
-      heading="Body Fat Calculator FAQ"
-      description="Answers to common questions about our AI-powered body fat estimation tool."
+      heading="AI Calorie Counter FAQ"
+      description="Answers to common questions about estimating calories from food photos with AI."
       items={FAQ_ITEMS.map((item) => ({ question: item.q, answer: item.a }))}
       className="mt-0"
     />

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { POSTS } from "@/app/(site)/blog/posts";
-import { EzoicAdSlot } from "@/app/components/helpers/ezoic-ad-slot";
 
 type ArticleCard = {
   slug: string;
@@ -122,7 +121,6 @@ export function MoreArticles({
 
   return (
     <>
-      <EzoicAdSlot id={114} className="mt-12" />
       <section className="mt-14 border-t pt-10">
         <h3 className="text-2xl lg:text-3xl font-semibold text-gray-900 text-left"><a className="hover:underline" href="/blog">{heading} →</a></h3>
 

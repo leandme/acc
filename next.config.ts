@@ -72,17 +72,24 @@ const REMOVED_CATEGORY_REDIRECTS = REMOVED_CATEGORY_SLUGS.map((slug) => ({
 }));
 
 const nextConfig: NextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/guides/:path*",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow, noarchive",
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
-        source: "/ads.txt",
-        destination:
-          "https://adstxt.journeymv.com/sites/9e90e868-f929-4cda-97a0-ad92cf3a981d/ads.txt",
-        permanent: true, // 301 redirect
-      },
-      {
         source: "/tools/body-fat",
-        destination: "/tools/fat",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
@@ -97,17 +104,22 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tools/body-composition",
-        destination: "/tools/shape",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
         source: "/tools/composition",
-        destination: "/tools/shape",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
         source: "/tools/body-proportions",
-        destination: "/tools/shape",
+        destination: "/",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/tools/:path*",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
@@ -142,7 +154,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/body-fat-visualizer",
-        destination: "/body-visualizer",
+        destination: "/",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/body-visualizer",
+        destination: "/",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/body-fat-calculator",
+        destination: "/",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/jawline-check",
+        destination: "/",
+        permanent: true, // 301 redirect
+      },
+      {
+        source: "/skin-type-detector",
+        destination: "/",
         permanent: true, // 301 redirect
       },
       {
@@ -173,11 +205,6 @@ const nextConfig: NextConfig = {
       {
         source: "/refund",
         destination: "/terms",
-        permanent: true, // 301 redirect
-      },
-      {
-        source: "/html-sitemap",
-        destination: "/sitemap-html",
         permanent: true, // 301 redirect
       },
       {

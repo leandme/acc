@@ -7,6 +7,7 @@ import { trackEvent } from "@/app/libs/amplitude";
 type BasePath =
   | "/"
   | "/estimate"
+  | "/calorie-counter"
   | "/height-estimator"
   | "/face-symmetry-test"
   | "/face-shape-detector"

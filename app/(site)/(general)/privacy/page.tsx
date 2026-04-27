@@ -115,9 +115,8 @@ export default function PrivacyPolicy() {
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               Our sub-processors may include: Vercel (hosting), Cloudflare
               (security/CDN), Replicate (AI processing), Google (analytics),
-              Amplitude (analytics), Mediavine Grow (audience engagement
-              tooling), Namecheap (domain services), and Stripe (payments). See
-              our Sub-processors page for details.
+              Amplitude (analytics), Namecheap (domain services), and Stripe
+              (payments). See our Sub-processors page for details.
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
@@ -139,14 +138,8 @@ export default function PrivacyPolicy() {
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              We also use Mediavine Grow for audience engagement features.
-              Mediavine Grow may use cookies or similar identifiers to support
-              feature behavior, measure performance, and prevent abuse.
-            </p>
-
-            <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               We do not currently serve third-party display ads on the Service,
-              and we do not use Ezoic.
+              and we do not run third-party display ad networks.
             </p>
           </div>
 

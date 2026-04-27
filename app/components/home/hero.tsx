@@ -4,14 +4,14 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import EstimateDropZone from "../tools/composition/body-fat-estimator/estimate-drop-zone";
 import TryExamples from "../common/try-examples";
-import { EzoicAdSlot } from "../helpers/ezoic-ad-slot";
 // import ReviewBox from "./ReviewBox";
 
 type HeroProps = {
-  basePath?: "/" | "/estimate";
+  basePath?: "/" | "/estimate" | "/calorie-counter";
+  showExamples?: boolean;
 };
 
-export default function Hero({ basePath }: HeroProps) {
+export default function Hero({ basePath, showExamples = true }: HeroProps) {
   const pathname = usePathname();
   const resolvedBasePath = basePath ?? (pathname === "/" ? "/" : "/estimate");
 
@@ -27,7 +27,7 @@ export default function Hero({ basePath }: HeroProps) {
               <div className="relative w-full max-w-[360px] aspect-[3/2] mx-auto">
                 <Image
                   src="/hero/body-fat-estimator-header.webp"
-                  alt="AI Calorie Counter preview"
+                  alt="AI calorie food estimator preview"
                   fill
                   priority
                   className="object-contain"
@@ -38,11 +38,11 @@ export default function Hero({ basePath }: HeroProps) {
 
 
           <h1 className="text-4xl lg:text-5xl font-bold">
-            AI Calorie Counter: Calculate Body Fat % with AI
+            Calorie Counter Powered by AI
           </h1>
 
           <p className="py-6 text-lg mt-2">
-            Upload a photo and get a body fat % estimate in seconds. Fast, accurate, and{" "}
+            Upload a food photo and get an estimated calorie breakdown in seconds. Fast, practical, and{" "}
             <span className="inline-block bg-primary text-white px-2 py-0.5 rounded-md text-base font-semibold">
               free
             </span>
@@ -58,11 +58,12 @@ export default function Hero({ basePath }: HeroProps) {
         {/* Right side: upload zone */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <div className="w-full max-w-xl">
-            <EstimateDropZone basePath={resolvedBasePath} />
-            <div className="mt-6">
-              <TryExamples basePath={resolvedBasePath} />
-            </div>
-            <EzoicAdSlot id={113} className="mt-8" />
+            <EstimateDropZone basePath={resolvedBasePath} buttonLabel="Upload Meal Photo" />
+            {showExamples ? (
+              <div className="mt-6">
+                <TryExamples basePath={resolvedBasePath} />
+              </div>
+            ) : null}
           </div>
         </div>
 
