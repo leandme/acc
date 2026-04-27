@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { POSTS } from "@/app/(site)/blog/posts";
+import { POSTS } from "@/app/libs/posts";
 
 type ArticleCard = {
   slug: string;

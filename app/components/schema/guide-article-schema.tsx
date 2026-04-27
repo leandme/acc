@@ -1,4 +1,4 @@
-import { getGuidePostBySlug } from "@/app/(site)/blog/posts";
+import { getGuidePostBySlug } from "@/app/libs/posts";
 import {
   DEFAULT_SOCIAL_IMAGE,
   SITE_NAME,
