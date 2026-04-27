@@ -99,7 +99,7 @@ export default function MacroPageClient() {
             .
           </p>
           <p className={pClass}>
-            If you track meal photos for intake verification, use the{" "}
+            If you track food photos for intake verification, use the{" "}
             <a className="text-primary underline" href="/tools">
               Calorie Counter
             </a>{" "}

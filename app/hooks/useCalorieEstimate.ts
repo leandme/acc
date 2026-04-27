@@ -79,7 +79,7 @@ function buildFriendlyErrorMessage(rawMsg: string) {
     return [
       "This image could not be processed.",
       "The moderation filter flagged it as sensitive.",
-      "Try another clear meal photo and upload again.",
+      "Try another clear food photo and upload again.",
     ].join("\n");
   }
 
@@ -87,7 +87,7 @@ function buildFriendlyErrorMessage(rawMsg: string) {
     return "This estimation timed out. Please retry with a clearer image.";
   }
 
-  return msg || "Something went wrong. Please try a different meal photo.";
+  return msg || "Something went wrong. Please try a different food photo.";
 }
 
 function parseNumber(input: unknown): number | null {

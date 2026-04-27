@@ -3,7 +3,7 @@ export const siteConfig = {
 site: {
     name: "AI Calorie Counter",
     url: "https://ai-calorie-counter.com",
-    tagline: "Count your calories from a photo with AI",
+    tagline: "Your calorie tracking companion that helps you understand what you eat. Scan meals, track macros, count calories and spot patterns that shape your eating habits and fitness goals.",
     domain: "ai-calorie-counter.com",
     legalName: "AI Calorie Counter",
     logo: "/logo.png",

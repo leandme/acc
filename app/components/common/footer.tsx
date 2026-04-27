@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
 
         <div className="my-8 h-px bg-white/10" />
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-1 lg:grid-cols-1">
+        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
               Site
@@ -33,6 +33,23 @@ export default function Footer() {
               <li><a className="hover:text-white" href="/about">About</a></li>
               <li><a className="hover:text-white" href="/blog">Blog</a></li>
               <li><a className="hover:text-white" href="/contact">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h6 className="text-lg font-semibold text-gray-200">
+              More Tools
+            </h6>
+            <ul className="mt-3 space-y-2 text-base text-gray-300">
+              <li>
+                <a
+                  className="hover:text-white"
+                  href="https://bodyfatestimator.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Body Fat Estimator
+                </a>
+              </li>
             </ul>
           </div>
         </div>

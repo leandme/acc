@@ -27,7 +27,7 @@ export default function SecurityPage() {
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
               AI Calorie Counter is built with a minimal-data philosophy. We
-              aim to process only what’s needed to generate your body fat
+              aim to process only what’s needed to generate your calorie
               estimate and avoid retaining sensitive data (like uploaded photos)
               beyond what’s required to provide the Service.
             </p>
@@ -78,8 +78,9 @@ export default function SecurityPage() {
             <h2 className="text-2xl font-semibold">Data Handling & Photos</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              Uploaded photos are processed only to generate your body fat
-              estimate. We do not sell photos or use them for advertising.
+              Uploaded photos are processed only to generate your calorie and
+              meal-analysis estimate. We do not sell photos or use them for
+              advertising.
               We do not use uploaded photos to train our own models.
             </p>
 
@@ -179,7 +180,7 @@ export default function SecurityPage() {
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 16/2/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 27/4/2026</p>
         </div>
       </section>
     </main>

@@ -26,9 +26,9 @@ export default function TermsPage() {
             <h2 className="text-2xl font-semibold">1. The Service</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              AI Calorie Counter provides an AI-powered estimate of body fat
-              percentage based on information you provide (such as an uploaded
-              image and basic body measurements). Outputs are estimates only and
+              AI Calorie Counter provides AI-powered calorie and meal-analysis
+              estimates based on information you provide (such as uploaded food
+              images and optional meal context). Outputs are estimates only and
               may be inaccurate.
             </p>
           </div>
@@ -72,7 +72,8 @@ export default function TermsPage() {
                 abusive, harassing, hateful, or otherwise harmful.
               </li>
               <li>
-                You agree not to upload images of anyone under 18 years old.
+                You agree to use the Service for food and meal analysis only,
+                and not for identifying or analyzing people.
               </li>
               <li>
                 You agree not to misuse the Service (for example: attempting to
@@ -187,7 +188,7 @@ export default function TermsPage() {
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 16/2/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 27/4/2026</p>
         </div>
       </section>
     </main>

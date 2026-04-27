@@ -3,101 +3,39 @@ import FaqSection from "../common/faq-section";
 export default function FAQ() {
   const FAQ_ITEMS = [
     {
-      q: "How does AI Calorie Counter estimate calories from a food photo?",
+      q: "How accurate is AI Calorie Counter?",
       a: (
         <>
-          Upload a clear photo of your meal and the model estimates total calories from visible
-          portion size, ingredients, and common preparation methods. It is an estimate, not a lab
-          measurement, so image quality and portion visibility matter.
+          AI Calorie Counter is designed for practical, directional calorie tracking. Accuracy can
+          vary by photo quality, portion visibility, and hidden ingredients, so results are best
+          used for trend tracking rather than exact lab-level measurement.
         </>
       ),
     },
     {
-      q: "What kind of photos give the best calorie estimate?",
+      q: "Can AI really estimate calories from food photos?",
       a: (
         <>
-          Use bright, sharp photos where the full plate is visible. Avoid heavy filters, dark
-          lighting, and extreme camera angles. For better consistency, take photos from a similar
-          distance each time.
+          Yes. The model estimates likely foods, portion size, and preparation density from the
+          image, then returns a calorie estimate and range.
         </>
       ),
     },
     {
-      q: "How accurate is the AI calorie estimate?",
+      q: "Can I analyze multiple food items in one image?",
       a: (
         <>
-          Accuracy is usually directional, not exact. It is useful for tracking trends and making
-          better daily decisions, but it should not replace nutrition labels, food scales, or
-          medical nutrition guidance when precision is required.
+          Yes. Multi-item meals are supported. The result includes a total estimate and item-level
+          breakdown where detection confidence is sufficient.
         </>
       ),
     },
     {
-      q: "How To Improve Accuracy",
+      q: "What nutritional information does the tool provide?",
       a: (
         <>
-          <ul className="list-disc space-y-2 pl-6">
-            <li>Shoot from top-down or 45-degree angle with the full plate visible.</li>
-            <li>Avoid heavy shadows and keep lighting bright and even.</li>
-            <li>Include all sides, sauces, and drinks in the frame.</li>
-            <li>Use one clear image per meal without clutter from other plates.</li>
-            <li>Retake if ingredients are stacked or hidden by toppings.</li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      q: "Can it estimate calories for mixed meals like bowls, casseroles, or takeout?",
-      a: (
-        <>
-          Yes, but mixed meals are harder than single-item foods because ingredients can be hidden.
-          The tool still provides a best estimate based on visible cues and common serving patterns.
-        </>
-      ),
-    },
-    {
-      q: "Does the result include protein, carbs, and fat?",
-      a: (
-        <>
-          Yes. The results card provides an estimated macro breakdown in grams for protein, carbs,
-          and fat, plus macro percentages to help you quickly understand meal composition.
-        </>
-      ),
-    },
-    {
-      q: "What does the meal classification mean (for example, healthy or snack)?",
-      a: (
-        <>
-          Classification is a quick, high-level label based on the estimated energy density and
-          macro balance of the meal. It is informational only and should not be treated as medical
-          advice.
-        </>
-      ),
-    },
-    {
-      q: "Why do I get different calorie results for similar photos?",
-      a: (
-        <>
-          Small changes in photo angle, lighting, hidden ingredients, and plate size can shift the
-          estimate. Keep photo conditions consistent to improve repeatability.
-        </>
-      ),
-    },
-    {
-      q: "Can I use this for drinks, smoothies, and coffee beverages?",
-      a: (
-        <>
-          Yes, but drinks can be harder when ingredients are not visible. Results are most useful
-          when you also include context such as cup size and known add-ins when possible.
-        </>
-      ),
-    },
-    {
-      q: "Can I use AI Calorie Counter for daily calorie tracking?",
-      a: (
-        <>
-          Yes. Many users use it as a fast logging aid. It works best as part of a routine where
-          you compare totals across days and weeks instead of obsessing over one meal estimate.
+          You get estimated total calories, a calorie range, confidence level, and macro split
+          (protein, carbs, and fat) when available.
         </>
       ),
     },
@@ -105,68 +43,106 @@ export default function FAQ() {
       q: "Is AI Calorie Counter free to use?",
       a: (
         <>
-          Yes. AI Calorie Counter offers a free online experience so you can upload a meal photo
-          and get a calorie estimate quickly.
+          Yes. The core experience is free, so you can upload food photos and get estimates
+          without a paid subscription.
         </>
       ),
     },
     {
-      q: "Do you store or sell my uploaded food photos?",
+      q: "How does AI Calorie Counter identify food from images?",
       a: (
         <>
-          We process images to generate results and aim to minimize retention. Uploaded content is
-          not sold. For details, review the privacy page and terms.
+          It uses computer vision to detect food patterns and contextual cues in your photo, then
+          estimates likely items and portions before calculating calories.
         </>
       ),
     },
     {
-      q: "Can this replace advice from a doctor or registered dietitian?",
+      q: "Can I scan my meal for calories online?",
       a: (
         <>
-          No. This tool is for informational and educational use. If you have medical conditions,
-          dietary restrictions, or performance-specific goals, work with a qualified professional.
+          Yes. Upload directly from your phone or desktop and receive results in your browser.
         </>
       ),
     },
     {
-      q: "What references are used for calorie and serving context?",
+      q: "How accurate are AI food scanners compared to manual calorie tracking?",
       a: (
         <>
-          <ul className="list-disc space-y-2 pl-6">
-            <li>
-              USDA FoodData Central (nutrient and calorie database):{" "}
-              <a
-                href="https://fdc.nal.usda.gov/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline"
-              >
-                USDA FoodData Central
-              </a>
-            </li>
-            <li>
-              FDA reference guide for serving sizes and labels:{" "}
-              <a
-                href="https://www.fda.gov/food/nutrition-facts-label"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline"
-              >
-                FDA Nutrition Facts Label
-              </a>
-            </li>
-            <li>
-              NIH body weight planner context for intake/expenditure:{" "}
-              <a
-                href="https://www.niddk.nih.gov/bwp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline"
-              >
-                NIDDK Body Weight Planner
-              </a>
-            </li>
-          </ul>
+          Manual tracking with weighed portions can be more precise, but AI scanners are usually
+          faster and easier to maintain consistently. For many users, consistency beats perfection.
+        </>
+      ),
+    },
+    {
+      q: "Does AI Calorie Counter save my scans or track my meals automatically?",
+      a: (
+        <>
+          The tool processes uploads to generate results. We do not sell your photos, and we aim to
+          minimize retention. Review our privacy and terms pages for full details.
+        </>
+      ),
+    },
+    {
+      q: "What foods can the AI recognize?",
+      a: (
+        <>
+          It works best with common meals, snacks, drinks, and mixed plates. Recognition can be
+          less reliable when ingredients are hidden, heavily covered, or visually ambiguous.
+        </>
+      ),
+    },
+    {
+      q: "Can AI Calorie Counter estimate macros automatically?",
+      a: (
+        <>
+          Yes. The result includes estimated protein, carbs, and fat split, plus gram values when
+          enough confidence is available.
+        </>
+      ),
+    },
+    {
+      q: "Can AI estimate portion size and serving weight from pictures?",
+      a: (
+        <>
+          It can estimate portion size directionally from visual cues, but serving weight is still
+          an inference. For high-precision nutrition planning, combine AI estimates with weighing.
+        </>
+      ),
+    },
+    {
+      q: "Can the tool analyze restaurant meals or recipes?",
+      a: (
+        <>
+          Yes. Restaurant and mixed meals are supported, but hidden oils, sauces, and preparation
+          details can increase uncertainty. Use the returned range for practical decision-making.
+        </>
+      ),
+    },
+    {
+      q: "Are AI food scanners safe to use?",
+      a: (
+        <>
+          For general meal tracking, yes. They are informational tools, not medical devices. If you
+          have clinical dietary needs, follow a registered dietitian or physician’s plan first.
+        </>
+      ),
+    },
+    {
+      q: "What makes AI Calorie Counter different from other food scanner apps?",
+      a: (
+        <>
+          It focuses on a fast web-based workflow, clear calorie ranges, confidence signaling, and
+          practical output for daily tracking without app store friction.
+        </>
+      ),
+    },
+    {
+      q: "What is the best free AI food scanner in 2026?",
+      a: (
+        <>
+          The best tool is the one you will actually use consistently. AI Calorie Counter is built
+          to be free, fast, and simple so daily calorie tracking is easier to maintain.
         </>
       ),
     },
@@ -189,7 +165,7 @@ export default function FAQ() {
       id="faqs"
       accordionName="home-faq-accordion"
       heading="AI Calorie Counter FAQ"
-      description="Answers to common questions about estimating calories from food photos with AI."
+      description="Answers to common questions about AI food scanning, calorie estimates, and macro tracking."
       items={FAQ_ITEMS.map((item) => ({ question: item.q, answer: item.a }))}
       className="mt-0"
     />

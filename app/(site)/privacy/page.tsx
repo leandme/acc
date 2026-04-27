@@ -38,9 +38,8 @@ export default function PrivacyPolicy() {
             <ul className="mt-4 list-disc pl-5 space-y-2 text-gray-700 text-lg">
               <li>
                 <strong>Inputs you provide</strong> — such as an uploaded photo
-                and basic body measurements you enter (for example: age,
-                height, weight, and optional waist) in order to generate an
-                estimate.
+                and optional meal context you enter (for example: meal name,
+                serving context, or notes) in order to generate an estimate.
               </li>
               <li>
                 <strong>Usage data</strong> — analytics and technical telemetry
@@ -82,8 +81,9 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-semibold">3. Photos & AI Processing</h2>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              Photos are used only to generate your body fat estimate. We do not
-              sell your photos and do not use them for advertising.
+              Photos are used only to generate your calorie and meal-analysis
+              estimate. We do not sell your photos and do not use them for
+              advertising.
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
@@ -232,7 +232,7 @@ export default function PrivacyPolicy() {
         </div>
 
         <div className="mt-10 pb-10 text-left">
-          <p className="text-sm text-gray-400">Last updated: 14/4/2026</p>
+          <p className="text-sm text-gray-400">Last updated: 27/4/2026</p>
         </div>
       </section>
     </main>

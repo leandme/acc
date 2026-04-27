@@ -97,10 +97,11 @@ export default function SubProcessorsPage() {
             </p>
 
             <p className="mt-3 text-gray-700 text-lg leading-relaxed">
-              Images are processed to generate a body fat estimate. Temporary
-              copies may exist in provider systems for processing, reliability,
-              security, and abuse-prevention purposes. We do not build
-              long-term user photo histories inside the product.
+              Images are processed to generate calorie and meal-analysis
+              estimates. Temporary copies may exist in provider systems for
+              processing, reliability, security, and abuse-prevention purposes.
+              We do not build long-term user photo histories inside the
+              product.
             </p>
           </div>
 
@@ -180,7 +181,7 @@ export default function SubProcessorsPage() {
 
         <div className="mt-10 pb-10 text-left">
           <p className="text-sm text-gray-400">
-            Last updated: April 2026
+            Last updated: 27/4/2026
           </p>
         </div>
       </section>

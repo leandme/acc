@@ -83,7 +83,7 @@ export default function CalorieDeficitPageClient() {
             <a className="text-primary underline" href="/tools">
               Calories Burned Calculator
             </a>
-            . If your daily intake varies by meal composition, log meal photos in the{" "}
+            . If your daily intake varies by meal composition, log food photos in the{" "}
             <a className="text-primary underline" href="/tools">
               Calorie Counter
             </a>{" "}

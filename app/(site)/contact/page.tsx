@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/app/libs/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Contact",
-  description: "Contact AI Calorie Counter support. Questions about your AI body fat estimate, accuracy, pricing, refunds, or privacy? Email us and we’ll help.",
+  description: "Contact AI Calorie Counter support. Questions about calorie estimates, food recognition, scan quality, privacy, or refunds? Email us and we’ll help.",
   canonical: "https://ai-calorie-counter.com/contact",
 });
 
@@ -15,7 +15,7 @@ export default function ContactPage() {
         <H1>Contact</H1>
 
         <p className="mt-4 text-center text-lg text-gray-700 max-w-2xl mx-auto">
-          Questions about your AI body fat estimate, pricing, refunds, or privacy?
+          Questions about your calorie estimate, food recognition results, pricing, refunds, or privacy?
           Email us and we’ll get back to you as soon as we can.
         </p>
 
@@ -40,13 +40,13 @@ export default function ContactPage() {
           <div className="collapse collapse-plus border rounded-xl bg-base-100">
             <input type="radio" name="contact-faq" defaultChecked />
             <div className="collapse-title text-lg font-medium">
-              How do I get the most accurate AI body fat estimate?
+              How do I get the most accurate calorie estimate?
             </div>
             <div className="collapse-content">
               <p className="text-gray-700">
-                Use a clear, well-lit full-body photo facing the camera. Avoid harsh shadows,
-                extreme angles, and baggy clothing. For best consistency, use the same setup
-                each time and consider multiple photos.
+                Use a clear food photo with the full plate visible in bright, even lighting.
+                Include sides, sauces, and drinks. Keep angle and distance consistent if you are
+                comparing meals over time.
               </p>
             </div>
           </div>
@@ -54,12 +54,12 @@ export default function ContactPage() {
           <div className="collapse collapse-plus border rounded-xl bg-base-100">
             <input type="radio" name="contact-faq" />
             <div className="collapse-title text-lg font-medium">
-              Why does my body fat estimate change between photos?
+              Why can results change between similar food photos?
             </div>
             <div className="collapse-content">
               <p className="text-gray-700">
-                This is a visual AI estimate. Lighting, pose, camera distance, and clothing can
-                change visible body markers, which can shift the estimate.
+                Small changes in angle, lighting, hidden ingredients, and portion visibility can
+                shift the estimate. This tool is directional and works best with consistent photo setup.
               </p>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function ContactPage() {
           <div className="collapse collapse-plus border rounded-xl bg-base-100">
             <input type="radio" name="contact-faq" />
             <div className="collapse-title text-lg font-medium">
-              Are my photos stored or used for training?
+              Are my food photos stored or sold?
             </div>
             <div className="collapse-content">
               <p className="text-gray-700">
@@ -85,8 +85,8 @@ export default function ContactPage() {
             </div>
             <div className="collapse-content">
               <p className="text-gray-700">
-                Include your receipt email (if applicable), what happened, and a screenshot if there’s an error.
-                That usually lets us solve it in one reply.
+                Include what happened, the device/browser used, and a screenshot if there is an
+                error. If it is billing-related, include your receipt email so we can resolve it faster.
               </p>
             </div>
           </div>

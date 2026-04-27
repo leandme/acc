@@ -381,7 +381,7 @@ function CalorieCounterPageContent({ basePath = "/" }: CalorieCounterPageContent
           <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
             <h2 className={h2Class}>Detected Item Breakdown</h2>
             <p className="mt-4 text-center text-lg text-gray-700">
-              Item-level estimate from the uploaded meal photo.
+              Item-level estimate from the uploaded food photo.
             </p>
             <div className="mt-8 overflow-hidden rounded-2xl border bg-base-100">
               <table className="w-full text-left border-separate border-spacing-0">
@@ -430,7 +430,7 @@ function CalorieCounterPageContent({ basePath = "/" }: CalorieCounterPageContent
         ) : null}
 
         <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
-          <h2 className={h2Class}>Where Your Result Sits</h2>
+          <h2 className={h2Class}>How Many Calories in Your Meal</h2>
           <p className="mt-4 text-center text-lg text-gray-700">
             The highlighted row maps your current calorie estimate to a practical meal-size band.
           </p>

@@ -3,9 +3,9 @@ import Image from "next/image";
 const HOW_CALORIE_COUNTER_WORKS_STEPS = [
   {
     id: 1,
-    title: "Upload a Meal Photo",
+    title: "Upload a Food Photo",
     imageSrc: "/home/salmon-bowl.jpg",
-    imageAlt: "Example meal photo upload for AI calorie counting",
+    imageAlt: "Example food photo upload for AI calorie counting",
     description:
       "Take one clear photo of your full meal. Include sides, sauces, and drinks when possible so the estimate reflects total intake.",
   },
@@ -13,7 +13,7 @@ const HOW_CALORIE_COUNTER_WORKS_STEPS = [
     id: 2,
     title: "AI Estimates Calories and Macros",
     imageSrc: "/home/analyzing-meal.png",
-    imageAlt: "AI calorie counter analyzing an uploaded meal photo",
+    imageAlt: "AI calorie counter analyzing an uploaded food photo",
     description:
       "The model analyzes visible ingredients, portion size, and preparation density to estimate calories, meal type, and macro split.",
   },

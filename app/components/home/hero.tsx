@@ -38,11 +38,11 @@ export default function Hero({ basePath, showExamples = true }: HeroProps) {
 
 
           <h1 className="text-4xl lg:text-5xl font-bold">
-            Free AI Calorie Counter
+            AI Calorie Counter
           </h1>
 
           <p className="py-6 text-lg mt-2">
-            Upload a food photo and get an estimated calorie breakdown in seconds. Fast, practical, and{" "}
+            Track food and count calories from a photo instantly with AI calorie counter. The best online calorie tracker app - 100%{" "}
             <span className="inline-block bg-primary text-white px-2 py-0.5 rounded-md text-base font-semibold">
               free
             </span>
@@ -58,7 +58,7 @@ export default function Hero({ basePath, showExamples = true }: HeroProps) {
         {/* Right side: upload zone */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <div className="w-full max-w-xl">
-            <EstimateDropZone basePath={resolvedBasePath} buttonLabel="Upload Meal Photo" />
+            <EstimateDropZone basePath={resolvedBasePath} buttonLabel="Upload Food Photo" />
             {showExamples ? (
               <div className="mt-6">
                 <TryExamples basePath={resolvedBasePath} />
