@@ -44,11 +44,71 @@ export default function Footer() {
               <li>
                 <a
                   className="hover:text-white"
+                  href="https://bodyfatestimator.ai/height-estimator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Height Estimator
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
                   href="https://bodyfatestimator.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Body Fat Estimator
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
+                  href="https://bodyvisualizer.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Body Visualizer
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
+                  href="https://bodyfatestimator.ai/jawline-check"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Jawline Check
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
+                  href="https://skoy.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Skoy
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
+                  href="https://bodyfatestimator.ai/eye-shape-detector"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Canthal Tilt Test
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
+                  href="https://bodyfatestimator.ai/body-shape-analyzer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Body Shape Analyzer
                 </a>
               </li>
             </ul>
