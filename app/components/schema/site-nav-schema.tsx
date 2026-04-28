@@ -12,6 +12,7 @@ export function SiteNavSchema() {
               "@type": "SiteNavigationElement",
               name: [
                 "Home",
+                "How It Works",
                 "About",
                 "Blog",
                 "Contact",
@@ -20,6 +21,7 @@ export function SiteNavSchema() {
               ],
               url: [
                 "https://ai-calorie-counter.com/",
+                "https://ai-calorie-counter.com/how-it-works",
                 "https://ai-calorie-counter.com/about",
                 "https://ai-calorie-counter.com/blog",
                 "https://ai-calorie-counter.com/contact",

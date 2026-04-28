@@ -66,6 +66,10 @@ function getRouteSignals(
     return { changeFrequency: "yearly", priority: 0.2 };
   }
 
+  if (route === "/how-it-works") {
+    return { changeFrequency: "monthly", priority: 0.7 };
+  }
+
   if (route === "/about" || route === "/contact") {
     return { changeFrequency: "monthly", priority: 0.4 };
   }

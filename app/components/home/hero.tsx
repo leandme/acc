@@ -42,7 +42,7 @@ export default function Hero({ basePath, showExamples = true }: HeroProps) {
           </h1>
 
           <p className="py-6 text-lg mt-2">
-            Track food and count calories from a photo instantly with AI calorie counter. The best online calorie tracker app - 100%{" "}
+            Track calories from a photo instantly with AI Calorie Counter. The best online calorie tracker app - 100%{" "}
             <span className="inline-block bg-primary text-white px-2 py-0.5 rounded-md text-base font-semibold">
               free
             </span>

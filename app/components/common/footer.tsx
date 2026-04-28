@@ -31,6 +31,7 @@ export default function Footer() {
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
               <li><a className="hover:text-white" href="/about">About</a></li>
+              <li><a className="hover:text-white" href="/how-it-works">How It Works</a></li>
               <li><a className="hover:text-white" href="/blog">Blog</a></li>
               <li><a className="hover:text-white" href="/contact">Contact</a></li>
             </ul>

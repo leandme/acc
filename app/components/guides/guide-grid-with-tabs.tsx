@@ -6,6 +6,7 @@ import { trackEvent } from "@/app/libs/amplitude";
 
 type Post = {
   slug: string;
+  href?: string;
   title: string;
   tag?: string;
   description: string;
@@ -26,7 +27,7 @@ export default function GuideGridWithTabs({
         {posts.map((post) => (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={post.href ?? `/blog/${post.slug}`}
             onClick={() => trackEvent("Go to Blog", { slug: post.slug, tag: post.tag ?? "" })}
             className="group rounded-2xl border bg-white transition hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
           >
