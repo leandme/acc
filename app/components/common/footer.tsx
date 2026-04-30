@@ -94,7 +94,7 @@ export default function Footer() {
               <li>
                 <a
                   className="hover:text-white"
-                  href="https://bodyfatestimator.ai/eye-shape-detector"
+                  href="https://canthaltilttest.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -131,7 +131,7 @@ export default function Footer() {
             <a href="/security" className="hover:underline">Security</a>&nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="/subprocessors" className="hover:underline">Subprocessors</a>
           </span>
-          
+
         </div>
       </div>
     </footer>
