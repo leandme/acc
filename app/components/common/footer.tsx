@@ -1,6 +1,14 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/site-config";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const normalizedPathname =
+    pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
+  const isAboutPage = normalizedPathname === "/about";
+
   return (
     <footer className="bg-[#18181b] text-white">
       <div className="mx-auto max-w-7xl px-6 py-12">
@@ -24,93 +32,22 @@ export default function Footer() {
         </div>
 
         <div className="my-8 h-px bg-white/10" />
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-8">
           <div>
             <h6 className="text-lg font-semibold text-gray-200">
               Site
             </h6>
             <ul className="mt-3 space-y-2 text-base text-gray-300">
-              <li><a className="hover:text-white" href="/about">About</a></li>
+              <li>
+                {isAboutPage ? (
+                  <span aria-current="page" className="text-white">About</span>
+                ) : (
+                  <a className="hover:text-white" href="/about">About</a>
+                )}
+              </li>
               <li><a className="hover:text-white" href="/how-it-works">How It Works</a></li>
               <li><a className="hover:text-white" href="/blog">Blog</a></li>
               <li><a className="hover:text-white" href="/contact">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h6 className="text-lg font-semibold text-gray-200">
-              More Tools
-            </h6>
-            <ul className="mt-3 space-y-2 text-base text-gray-300">
-              <li>
-                <a
-                  className="hover:text-white"
-                  href="https://bodyfatestimator.ai/height-estimator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Height Estimator
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-white"
-                  href="https://bodyfatestimator.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Body Fat Estimator
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-white"
-                  href="https://bodyvisualizer.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Body Visualizer
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-white"
-                  href="https://bodyfatestimator.ai/jawline-check"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Jawline Check
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-white"
-                  href="https://skoy.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Skoy
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-white"
-                  href="https://canthaltilttest.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Canthal Tilt Test
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-white"
-                  href="https://bodyfatestimator.ai/body-shape-analyzer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Body Shape Analyzer
-                </a>
-              </li>
             </ul>
           </div>
         </div>
