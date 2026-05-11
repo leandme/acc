@@ -36,6 +36,16 @@ export default function Navbar() {
                 How It Works
               </a>
             </li>
+            <li>
+              <a
+                href="https://skoy.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-normal hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
+                Skoy
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -60,6 +70,16 @@ export default function Navbar() {
                 className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
               >
                 How It Works
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://skoy.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-normal hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
+                Skoy
               </a>
             </li>
           </ul>
